@@ -23,6 +23,12 @@ import { HtmlSitemapPage } from './pages/HtmlSitemapPage';
 import { AdminPricingPage } from './pages/AdminPricingPage';
 import { AdvisorPage } from './pages/AdvisorPage';
 import { Landing490kPage } from './pages/Landing490kPage';
+import { GeoServicePage } from './pages/GeoServicePage';
+import { AeoServicePage } from './pages/AeoServicePage';
+import { SeoAiServicePage } from './pages/SeoAiServicePage';
+import { SeoChatGptServicePage } from './pages/SeoChatGptServicePage';
+import { OperationalCareClusterPage } from './pages/OperationalCareClusterPage';
+import { LocalSearchClusterPage } from './pages/LocalSearchClusterPage';
 
 // Modals
 import { AdvisorModal } from './components/advisor/AdvisorModal';
@@ -34,6 +40,7 @@ const MainContent: React.FC = () => {
   const [isConceptModalOpen, setIsConceptModalOpen] = useState(false);
   const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
   const [selectedServiceName, setSelectedServiceName] = useState('Tư vấn giải pháp Website & Marketing');
+  const [leadBusinessInput, setLeadBusinessInput] = useState('');
 
   // Initialize attribution and track page view on path change
   useEffect(() => {
@@ -41,10 +48,11 @@ const MainContent: React.FC = () => {
     trackPageView(currentPath);
   }, [currentPath]);
 
-  const handleOpenLeadForm = (serviceName?: string) => {
+  const handleOpenLeadForm = (serviceName?: string, businessInput?: string) => {
     if (serviceName) {
       setSelectedServiceName(serviceName);
     }
+    setLeadBusinessInput(businessInput || '');
     setIsLeadModalOpen(true);
   };
 
@@ -71,8 +79,100 @@ const MainContent: React.FC = () => {
     if (currentPath === '/dich-vu' || currentPath === '/dich-vu/') {
       return <ServicesPage />;
     }
+    if (
+      currentPath === '/dich-vu/local-search' ||
+      currentPath === '/dich-vu/local-search/' ||
+      currentPath === '/dich-vu/google-maps-seo' ||
+      currentPath === '/dich-vu/google-maps-seo/' ||
+      currentPath === '/dich-vu/seo-maps' ||
+      currentPath === '/dich-vu/seo-maps/' ||
+      currentPath === '/local-search' ||
+      currentPath === '/local-search/' ||
+      currentPath.startsWith('/dich-vu/local-search') ||
+      currentPath.startsWith('/dich-vu/google-maps-seo') ||
+      currentPath.startsWith('/dich-vu/seo-maps')
+    ) {
+      return <LocalSearchClusterPage onOpenConsultForm={handleOpenLeadForm} />;
+    }
+    if (
+      currentPath === '/dich-vu/chay-khach-cham-soc' ||
+      currentPath === '/dich-vu/chay-khach-cham-soc/' ||
+      currentPath === '/dich-vu/chay-khach-van-hanh' ||
+      currentPath === '/dich-vu/chay-khach-van-hanh/' ||
+      currentPath === '/chay-khach-van-hanh' ||
+      currentPath === '/chay-khach-van-hanh/' ||
+      currentPath === '/chay-khach-cham-soc' ||
+      currentPath === '/chay-khach-cham-soc/' ||
+      currentPath.startsWith('/dich-vu/chay-khach')
+    ) {
+      return <OperationalCareClusterPage onOpenConsultForm={handleOpenLeadForm} />;
+    }
+    if (
+      currentPath === '/dich-vu/geo' ||
+      currentPath === '/dich-vu/geo/' ||
+      currentPath === '/dich-vu-geo' ||
+      currentPath === '/dich-vu-geo/' ||
+      currentPath === '/geo' ||
+      currentPath === '/geo/' ||
+      currentPath.startsWith('/dich-vu/toi-uu-ai-geo') ||
+      currentPath.startsWith('/dich-vu/geo') ||
+      currentPath.startsWith('/dich-vu-geo')
+    ) {
+      return <GeoServicePage onOpenConsultForm={handleOpenLeadForm} />;
+    }
+    if (
+      currentPath === '/dich-vu/aeo' ||
+      currentPath === '/dich-vu/aeo/' ||
+      currentPath === '/dich-vu-aeo' ||
+      currentPath === '/dich-vu-aeo/' ||
+      currentPath === '/aeo' ||
+      currentPath === '/aeo/' ||
+      currentPath.startsWith('/dich-vu/toi-uu-aeo') ||
+      currentPath.startsWith('/dich-vu/aeo')
+    ) {
+      return <AeoServicePage onOpenConsultForm={handleOpenLeadForm} />;
+    }
+    if (
+      currentPath === '/dich-vu/seo-ai' ||
+      currentPath === '/dich-vu/seo-ai/' ||
+      currentPath === '/dich-vu-seo-ai' ||
+      currentPath === '/dich-vu-seo-ai/' ||
+      currentPath === '/seo-ai' ||
+      currentPath === '/seo-ai/' ||
+      currentPath.startsWith('/dich-vu/google-ai-overviews') ||
+      currentPath.startsWith('/dich-vu/seo-ai')
+    ) {
+      return <SeoAiServicePage onOpenConsultForm={handleOpenLeadForm} />;
+    }
+    if (
+      currentPath === '/dich-vu/seo-chatgpt' ||
+      currentPath === '/dich-vu/seo-chatgpt/' ||
+      currentPath === '/dich-vu-seo-chatgpt' ||
+      currentPath === '/dich-vu-seo-chatgpt/' ||
+      currentPath === '/seo-chatgpt' ||
+      currentPath === '/seo-chatgpt/' ||
+      currentPath.startsWith('/dich-vu/chatgpt-seo') ||
+      currentPath.startsWith('/dich-vu/seo-chatgpt')
+    ) {
+      return <SeoChatGptServicePage onOpenConsultForm={handleOpenLeadForm} />;
+    }
     if (currentPath.startsWith('/dich-vu/')) {
       const slug = currentPath.replace('/dich-vu/', '').replace(/\/$/, '');
+      if (slug === 'local-search' || slug === 'google-maps-seo' || slug === 'seo-maps') {
+        return <LocalSearchClusterPage onOpenConsultForm={handleOpenLeadForm} />;
+      }
+      if (slug === 'geo' || slug === 'toi-uu-ai-geo' || slug === 'toi-uu-de-xuat-ai') {
+        return <GeoServicePage onOpenConsultForm={handleOpenLeadForm} />;
+      }
+      if (slug === 'aeo' || slug === 'toi-uu-aeo' || slug === 'dich-vu-aeo') {
+        return <AeoServicePage onOpenConsultForm={handleOpenLeadForm} />;
+      }
+      if (slug === 'seo-ai' || slug === 'google-ai-overviews' || slug === 'seo-google-ai') {
+        return <SeoAiServicePage onOpenConsultForm={handleOpenLeadForm} />;
+      }
+      if (slug === 'seo-chatgpt' || slug === 'chatgpt-seo' || slug === 'seo-ai-chatgpt') {
+        return <SeoChatGptServicePage onOpenConsultForm={handleOpenLeadForm} />;
+      }
       return <ServiceDetailPage slug={slug} onOpenConsultForm={handleOpenLeadForm} />;
     }
 
@@ -101,7 +201,7 @@ const MainContent: React.FC = () => {
 
     // 8. Industry Solutions
     if (currentPath.startsWith('/giai-phap')) {
-      return <SolutionsPage />;
+      return <SolutionsPage onOpenConsultForm={handleOpenLeadForm} />;
     }
 
     // 9. About & Contact
@@ -146,6 +246,7 @@ const MainContent: React.FC = () => {
         isOpen={isLeadModalOpen}
         onClose={() => setIsLeadModalOpen(false)}
         defaultServiceName={selectedServiceName}
+        initialBusinessInput={leadBusinessInput}
       />
       <AdvisorModal isOpen={isAdvisorModalOpen} onClose={() => setIsAdvisorModalOpen(false)} />
       <ConceptModal isOpen={isConceptModalOpen} onClose={() => setIsConceptModalOpen(false)} />

@@ -13,6 +13,39 @@
 - **Anti-Glassmorphism & Light Theme Tương Phản Cao**: Tuyệt đối không dùng `backdrop-filter: blur`, nền mờ đục hoặc viền phát sáng làm bẩn giao diện. Sử dụng nền sáng `#ffffff` / `#fbfcfb`, border 1px crisp `#e2e8f0` và shadow nhẹ tự nhiên để tạo cảm giác chuyên nghiệp, đáng tin cậy.
 - **Audit Thực Tế Đa Viewport Bằng Agent-Browser**: Luôn đo lường `document.documentElement.scrollWidth <= window.innerWidth` trên 10 viewports thực tế (360px đến 1920px) trước khi bàn giao.
 
+## 9. Chính Sách Bảo Hành Kỹ Thuật 5 Năm & Cam Kết Đồng Hành Địa Phương (Warranty5YearSection)
+- **Giải tỏa rào cản tâm lý lớn nhất của khách hàng SMB**: Khách hàng làm website hoặc định vị Google Maps sợ nhất là tình trạng "đem con bỏ chợ" — đơn vị làm xong thu tiền rồi mất hút, mỗi lần website lỗi hay muốn đổi số hotline lại bị tính phí vài trăm nghìn hoặc chờ đợi cả tuần.
+- **4 Trụ cột cam kết thiết thực, dễ hiểu**:
+  1. *Mã nguồn & vận hành vĩnh viễn trên Cloudflare*: Uptime 99.99%, SSL tự động, không lo sập server do lỗi database cồng kềnh.
+  2. *Hỗ trợ sự cố khẩn cấp trong 2 giờ*: Zalo nhóm riêng 1-1 có kỹ thuật viên túc trực, sẵn sàng ghé tận nơi tại địa phương khi có phát sinh lớn.
+  3. *Cập nhật cơ bản định kỳ 0đ*: Đổi hotline, địa chỉ, thay menu, bảng giá miễn phí, triệt tiêu cảm giác bị "vòi tiền lắt nhắt".
+  4. *Bảo vệ tài sản số trọn đời*: Giữ vững Google Maps chống bị đối thủ cướp/báo đóng cửa, sao lưu dữ liệu tự động hàng tuần, 100% tài khoản chính chủ giao tận tay.
+- **Bảng so sánh trực diện (Table Comparison)**: Đặt song song "Đơn vị thông thường" (phủi trách nhiệm, phát sinh phí ẩn, giam tài khoản) vs "LocalMate" (đồng hành 5 năm, phản hồi 2h, minh bạch hợp đồng) giúp gia tăng tỷ lệ chuyển đổi mạnh mẽ.
+- **Tích hợp kép (Double-Touch Integration)**: Đặt sau DemoShowcaseSection trên `HomePage.tsx` để củng cố niềm tin sau khi xem mẫu bàn giao; và đặt trước Final CTA trên `ServiceDetailPage.tsx` để khách hàng yên tâm click đăng ký bất kỳ dịch vụ nào.
+
+## 10. Chuyển Hóa Cụm Dịch Vụ AI Search & GEO (GEO, AEO, SEO AI, SEO ChatGPT) Theo Tinh Thần LocalMate
+- **Thách thức thị trường**: Các agency lớn và FastMarketing tiếp cận thị trường với mức giá 15.000.000đ – 45.000.000đ/tháng, nặng tính hàn lâm, sử dụng thuật ngữ đao to búa lớn và chỉ làm việc qua slide/Google Meet từ xa. Hộ kinh doanh, phòng khám, nhà hàng địa phương rất hoang mang và không có khả năng chi trả.
+- **Giải pháp chuyển hóa của LocalMate**:
+  1. *Đi từ gốc rễ kỹ thuật*: Thay vì hứa hẹn viển vông, tập trung làm chuẩn 100% hạ tầng máy đọc hiểu (Schema JSON-LD LocalBusiness & FAQPage, tệp chuẩn `llms.txt` & `llms-full.txt`, Entity NAP đồng bộ 15+ danh bạ, tối ưu tốc độ Core Web Vitals < 1.2s).
+  2. *Mức giá bình dân thực tế*: Định giá trọn gói chỉ từ **2.900.000đ/tháng** (tiết kiệm 75-80%), minh bạch 100% không chi phí ẩn.
+  3. *Người đồng hành số tại địa phương*: Kỹ thuật viên 1-1 ghé tận nơi tại cửa hàng, cùng chủ quán test trực tiếp trên điện thoại người dùng, chụp hình xác thực tại tiệm để tạo Information Gain mà AI không thể tự bịa ra được.
+  4. *Chính sách bảo hành kỹ thuật 5 năm*: Duy trì cấu trúc Schema, tệp llms.txt không bị lỗi thời, cập nhật miễn phí theo thuật toán mới của Google Gemini và OpenAI.
+- **Cấu trúc 4 dịch vụ độc lập nhưng liên kết chặt chẽ**:
+  - *GEO (Generative Engine Optimization)*: Tối ưu đề xuất trên ChatGPT & Gemini khi người dùng hỏi quán xá quanh khu vực.
+  - *AEO (Answer Engine Optimization)*: Tối ưu cấu trúc Atomic Answers để trở thành nguồn trích dẫn được AI dẫn link bấm vào trên Perplexity & ChatGPT Search.
+  - *SEO AI (Google AI Overviews)*: Chiếm lĩnh vị trí số 0 đầu trang Google, giữ vững 60% click trước làn sóng tóm tắt AI.
+  - *SEO ChatGPT*: Đưa thương hiệu vào luồng hội thoại mua sắm của 600M+ người dùng ChatGPT.
+- **Component Tương Tác Trực Quan**: Sử dụng `AiSearchClusterNav` cho phép chuyển đổi tức thì giữa 4 dịch vụ; và `AiPromptSimulator` giúp chủ tiệm nhìn thấy ngay kết quả trước/sau khi tối ưu. Giao diện 100% Light Mode, không glassmorphism, tương phản cao.
+
+## 8. Đóng Gói Bộ Danh Mục Triển Khai GEO (GEO Implementation Tasks Checklist)
+- **Học hỏi FastMarketing & Tinh gọn cho Địa phương**: Thay vì áp dụng nguyên si 69 tasks phức tạp vốn dành cho tập đoàn enterprise, LocalMate cô đọng thành **35 đầu việc kỹ thuật cốt lõi chia thành 5 nhóm** rõ ràng, dễ hiểu cho hộ kinh doanh và SME:
+  1. *Khảo sát & Đo Baseline*: Quét tỷ lệ nhắc tên (Mention Rate), kiểm tra ảo giác AI (Hallucination), lập điểm chuẩn ban đầu.
+  2. *Schema JSON-LD & Entity*: Cấu hình Schema LocalBusiness sâu, @id định danh duy nhất, sameAs đa kênh, hasOfferCatalog bảng giá và tệp `llms.txt`.
+  3. *Đồng bộ NAP*: Audit tên, địa chỉ, hotline nhất quán 100% trên Google Maps, Cốc Cốc, Trang Vàng Việt Nam, Facebook Location.
+  4. *Bộ 50–80 Prompt Test*: Xây dựng prompt thực tế theo 4 hành vi khách (tìm gần, so sánh, giá cả, uy tín) và cấu trúc Direct-Answer Engine.
+  5. *Báo cáo Ảnh Chụp Thực Tế*: Nghiệm thu bằng ảnh màn hình chat thật từ ChatGPT, Gemini, Perplexity; nói không với báo cáo số liệu ảo.
+- **Tính Minh Bạch và Giá Trị Trực Quan**: Mỗi đầu việc đều có tên việc, diễn giải ngắn gọn, tag phân loại và Deliverable cụ thể để khách hàng nắm rõ từng đồng chi phí 2.900.000đ/tháng được sử dụng vào đâu.
+
 
 ## 7. Hero Section & Trust Badges Ergonomics — SaosangEdu Benchmark (Subagent 2)
 - **Sub-badge tinh tế (Pill Eyebrow)**: Thay vì chuỗi từ khóa viết hoa thô cứng, dùng badge mềm mại với nền xanh nhạt (`#e8f5e9`), chữ xanh đậm (`#065f46`), icon `Sparkles` và nội dung súc tích: "Đồng hành số địa phương • Bàn giao demo trong 48h". Cảm giác trang nhã, nhẹ nhàng và uy tín theo phong cách saosangedu.
@@ -160,4 +193,55 @@
   - Bảng đối chiếu 5 trụ cột: Nền tảng Website, Google Maps & Local SEO, Chuyển đổi & Lead Gen, Bàn giao & Sở hữu, Cam kết & Bảo hành.
   - Thiết kế Light Mode, `scrollbar-gutter: stable`, `text-wrap: pretty`, hoàn toàn không dùng glassmorphism, tương phản cao đạt chuẩn accessibility.
 
+## 13. Market Mapping & Comparative Positioning: FastMarketing vs LocalMate
+- **Giải mã chiến lược định vị của Agency lớn (FastMarketing Benchmark)**:
+  - Các agency lớn nhắm vào khách hàng enterprise với ngân sách khủng (15 – 50 triệu/tháng), dùng chiến thuật "bủa vây bằng thuật ngữ công nghệ" (GEO, AEO, Entity AI, SGE, Full-funnel Conversion...) và slide deck năng lực dày cộp để tạo cảm giác phức tạp, biện minh cho mức phí cao.
+  - Sau khi ký hợp đồng, họ thường đùn đẩy việc cho intern/fresher, hỗ trợ qua ticket chậm chạp, giữ tài khoản quản trị làm "con tin kỹ thuật", và phủi tay ngay khi hết hạn hợp đồng.
+- **Chiến lược "Đồng hành số địa phương" của LocalMate (Gỡ bỏ 6 rào cản cốt lõi)**:
+  - *1. Chi phí đầu tư*: Chỉ từ 490k – 2.9tr trọn gói giá từ gốc, 0đ phụ phí ẩn (tiết kiệm 85% ngân sách cho chủ tiệm).
+  - *2. Người triển khai*: Kỹ thuật viên địa phương hỗ trợ 1-1 tại chỗ, ghé tận quán khảo sát và hướng dẫn cầm tay chỉ việc.
+  - *3. Trách nhiệm sau bàn giao*: Cam kết bảo hành kỹ thuật lên đến 5 NĂM, hỗ trợ qua nhóm Zalo riêng trong 15-30 phút như người nhà.
+  - *4. Quyền sở hữu tài sản*: Bàn giao 100% tài khoản chính chủ bằng CCCD & Gmail của khách hàng. Không giam lỏng, toàn quyền làm chủ vĩnh viễn.
+  - *5. Ngôn ngữ & Tư vấn*: Nói tiếng bình dân, đo lường trực tiếp bằng cuộc gọi, khách ghé quán và đơn hàng thay vì các chỉ số impression/traffic ảo.
+  - *6. Rủi ro thanh toán*: Dựng Demo xem thử 0đ trước trên chính thông tin của tiệm; nghiệm thu hài lòng 100% mới thanh toán.
+- **Kinh nghiệm thiết kế UI Component so sánh minh bạch**:
+  - Tích hợp cả 3 tầng hiển thị: Quick Highlights Stat Cards (tóm tắt nhanh), Tab Pills (chọn xem theo nhu cầu), và Full Comparative Table (desktop)/Card Stack (mobile).
+  - CSS responsive thông minh: Ẩn table header trên mobile (<= 860px) và chuyển card sang 1 cột để loại bỏ hoàn toàn lỗi tràn viền ngang (zero horizontal overflow).
+  - Giữ vững chuẩn Light Mode, tương phản sắc nét, CTA kép hành động rõ ràng (Dựng Demo 0đ & Gặp KTV 1-1).
+
+## 14. Catalog Hub & Dynamic Service Router Integration (15 Dịch Vụ Chuẩn Hóa)
+- **Đóng gói toàn diện 15 dịch vụ thực chiến trong `src/data/operationsData.ts`**:
+  - Đầy đủ mã slug, tên dịch vụ, badge, headline, giá khởi điểm từ gốc (minh bạch, bình dân), cam kết bảo hành lên đến 5 năm, đối tượng phù hợp, danh sách deliverables cụ thể, quy trình và FAQs.
+  - Phủ đủ 5 nhóm: Đề xuất AI & GEO (4 dịch vụ), Website & Tối ưu (4 dịch vụ), Google Maps & Local SEO (3 dịch vụ), Quảng cáo & Kéo khách (3 dịch vụ), Đào tạo & Chuyển giao (1 dịch vụ).
+- **Kiến trúc Router động hai tầng (Dynamic Service Router)**:
+  - `ServiceDetailPage.tsx` hợp nhất `getOperationServiceBySlug(slug)` và `getServiceBySlug(slug)`, hiển thị chi tiết mọi dịch vụ theo link `/dich-vu/:slug`.
+  - Tích hợp 4 trụ cột niềm tin: Cam kết bảo hành 5 năm, Bàn giao 100% tài khoản, Nghiệm thu mới thanh toán, Hỗ trợ 1-1 tại chỗ.
+  - Tích hợp `Warranty5YearSection` và hệ sinh thái dịch vụ liên quan giúp điều hướng mượt mà, không có dead ends.
+- **Trang Danh mục Dịch vụ `ServicesPage.tsx` nâng cấp toàn diện**:
+  - Hỗ trợ thanh tìm kiếm thời gian thực (Search Bar) và 6 tab phân loại danh mục.
+  - Mỗi card dịch vụ có badge, giá khởi điểm to rõ, 5-year warranty pill, 3 deliverables chính và nút xem chi tiết.
+- **Đồng bộ Header Mega Menu & Footer Navigation**:
+  - Header Mega Menu 3 cột chuẩn chỉ (AI Search & GEO, Website & Tối ưu, Google Maps & Ads) kèm thanh liên kết xem toàn bộ 15 dịch vụ.
+  - Mobile drawer phẳng, tap target >= 44px, điều hướng trực tiếp không gây rối mắt.
+  - Footer Cột 2 liên kết các dịch vụ trọng điểm và dẫn về trang danh mục đầy đủ.
+- **Kết quả nghiệm thu**: `npm run build` PASS 100% (0 lỗi TypeScript, 0 cú pháp vỡ).
+
+## 15. Cụm Dịch Vụ Local Search, Google Maps & Technical — Chuẩn Hóa Từ FastMarketing Cho LocalMate
+- **Giải mã chiến lược Local Search & Google Maps cho điểm bán địa phương**:
+  - *Google Maps GPS chính chủ 100%*: Nhiều agency tạo Maps bằng email của agency rồi giữ quyền, hoặc bỏ qua tọa độ GPS chuẩn dẫn đến việc khách đi lạc ngõ hẻm. LocalMate chuẩn hóa: xác minh bằng Gmail của chính khách (Primary Owner), khóa khiên bảo vệ chống đối thủ đề xuất đổi số điện thoại hay báo đóng cửa.
+  - *Bộ QR Review 5 sao để bàn*: Khách lười đánh giá vì tìm tiệm mất công. Giải pháp standee mã QR để bàn / quầy thu ngân giúp khách chỉ cần mở camera điện thoại quét 1 chạm là vào thẳng màn hình chấm 5 sao, kích hoạt hàng trăm review thật mà an toàn tuyệt đối với Google.
+  - *SEO Tổng Thể Địa Phương (Bán kính 3–10km)*: Đa số agency chỉ làm từ khóa có dấu. Người dùng Việt Nam khi mở điện thoại tìm kiếm lúc đang đi đường có tới 70% gõ không dấu (như "sua xe gan day", "tiem thuoc q7"). Tối ưu song song có dấu & không dấu giúp tiệm đón trọn lượng khách nóng quanh bán kính 3-10km.
+  - *Tối Ưu Tốc Độ Web (PageSpeed 90+ trên Cloudflare)*: Đưa web lên Cloudflare Edge CDN toàn cầu, nén ảnh WebP/AVIF, loại bỏ render-blocking, zero CLS giúp trang mở dưới 1s, hạ tỷ lệ thoát trang và giảm chi phí click Google Ads.
+  - *Thực Thể Số & Schema LocalBusiness*: Khai báo mã JSON-LD chuẩn schema.org (GeoCoordinates, OpeningHours, SameAs, PriceRange) và đồng bộ NAP giúp cả Google Search và AI (ChatGPT, Gemini) nhận diện thương hiệu độc nhất.
+  - *SEO Audit Hiện Trạng 0đ*: Khảo sát hiện trạng miễn phí 100%, vạch trần đúng chỗ ngứa (tại sao có web/maps mà không có khách gọi) và đưa bảng việc cần làm sau 24h mà không ép mua dịch vụ.
+- **Kinh nghiệm thiết kế UX Trang Hub Cụm Dịch Vụ (`LocalSearchClusterPage.tsx`)**:
+  - 100% Light Mode sáng sủa, nền `#ffffff` và `#f8fafc`, chữ đậm `#0f172a`, viền sắc nét, cấm glassmorphism.
+  - Tích hợp công cụ chẩn đoán sức khỏe số tương tác (Self-Diagnosis Calculator) cho phép chủ tiệm tự tích chọn triệu chứng và tính điểm nghẽn trực tiếp.
+  - Live Simulator đối sánh tốc độ Cloudflare Edge vs Hosting thường (96/100 vs 38/100).
+  - Khối mô phỏng Standee Mica mã QR Review 5 sao trực quan để bàn.
+  - Bảng cam kết 4 KHÔNG & 4 CÓ và bảo hành kỹ thuật lên đến 5 năm.
+- **TypeScript Typings Lesson**:
+  - `BreadcrumbItem` định nghĩa là `{ name: string, url: string }`, không dùng `{ label, href }`.
+  - `SEOHeadProps` không có thuộc tính `keywords`, bắt buộc có `canonicalPath`.
+- **Kết quả nghiệm thu**: `npm run build` PASS 100% không lỗi.
 

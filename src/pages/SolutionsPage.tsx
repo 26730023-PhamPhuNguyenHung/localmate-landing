@@ -4,6 +4,8 @@ import { INDUSTRY_SOLUTIONS } from '../data/landingContent';
 import { CheckCircle2, ArrowRight, Sparkles, Building2, Utensils, GraduationCap, Store, Briefcase } from 'lucide-react';
 import { useRouter } from '../components/layout/Router';
 import { SolutionJourneySection } from '../components/sections/SolutionJourneySection';
+import { GrowthFlywheelSection } from '../components/sections/GrowthFlywheelSection';
+import { MarketComparisonSection } from '../components/sections/MarketComparisonSection';
 
 const ICON_MAP: Record<string, React.ComponentType<any>> = {
   'nha-hang': Utensils,
@@ -14,7 +16,11 @@ const ICON_MAP: Record<string, React.ComponentType<any>> = {
   'doanh-nghiep-nho': Briefcase
 };
 
-export const SolutionsPage: React.FC = () => {
+interface SolutionsPageProps {
+  onOpenConsultForm?: (serviceName?: string) => void;
+}
+
+export const SolutionsPage: React.FC<SolutionsPageProps> = ({ onOpenConsultForm }) => {
   const { currentPath, navigate } = useRouter();
 
   const activeSubSlug = currentPath.replace('/giai-phap/', '');
@@ -246,6 +252,12 @@ export const SolutionsPage: React.FC = () => {
 
       {/* Lộ trình đầu tư thông minh 3 bước */}
       <SolutionJourneySection />
+
+      {/* Bánh đà Tăng trưởng Doanh thu Địa phương 4 Giai đoạn */}
+      <GrowthFlywheelSection onOpenConsultForm={onOpenConsultForm} />
+
+      {/* So sánh minh bạch thị trường — Agency lớn vs LocalMate */}
+      <MarketComparisonSection onOpenConsultForm={onOpenConsultForm} />
     </div>
   );
 };

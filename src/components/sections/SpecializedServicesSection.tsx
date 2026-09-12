@@ -11,7 +11,8 @@ export const SpecializedServicesSection: React.FC = () => {
     <LayoutGrid key="3" size={24} />,
     <MapPin key="4" size={24} />,
     <Megaphone key="5" size={24} />,
-    <Bot key="6" size={24} />
+    <Bot key="6" size={24} />,
+    <Bot key="7" size={24} />
   ];
 
   const scrollToForm = () => {

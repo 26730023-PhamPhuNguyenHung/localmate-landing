@@ -190,14 +190,14 @@ export const DIGITAL_CARE_TIERS: DigitalCareTier[] = [
     unit: 'tháng',
     badge: 'Phổ biến nhất ⭐',
     isRecommended: true,
-    description: 'Dành cho doanh nghiệp cần cập nhật nội dung và tối ưu hiện diện Google Maps.',
+    description: 'Dành cho doanh nghiệp cần cập nhật nội dung, bảo trì website và chăm sóc Google Maps.',
     tasksQuota: '4 task nhỏ / tháng',
     features: [
       'Toàn bộ quyền lợi gói Care Mini',
-      'Cập nhật sản phẩm / bài viết mới',
+      'Cam kết bảo hành kỹ thuật web lên đến 5 năm',
+      'Cập nhật sản phẩm / bài viết mới qua Zalo',
       'Chăm sóc Google Maps định kỳ',
-      'Kiểm tra hệ thống form & nút gọi',
-      'Hỗ trợ 04 việc nội dung/kỹ thuật'
+      'Kiểm tra hệ thống form & nút gọi hotline'
     ]
   },
   {
@@ -205,14 +205,14 @@ export const DIGITAL_CARE_TIERS: DigitalCareTier[] = [
     name: 'Care Growth',
     priceDisplay: '990.000đ',
     unit: 'tháng',
-    description: 'Dành cho cửa hàng/công ty muốn tăng trưởng lượt tìm kiếm Local SEO.',
+    description: 'Dành cho cửa hàng/công ty muốn tăng trưởng lượt tìm kiếm chuẩn SEO & an tâm vận hành.',
     tasksQuota: '6 - 8 task / tháng',
     features: [
       'Toàn bộ quyền lợi gói Care Business',
+      'Bảo hành kỹ thuật toàn diện lên đến 5 năm',
       'Local SEO & Tối ưu Google Maps',
-      'Tối ưu tỷ lệ chuyển đổi nút bấm',
-      'Biên tập 04 bài viết chuẩn SEO',
-      'Báo cáo hiệu quả & lượt gọi hàng tháng'
+      'Biên tập 04 bài viết chuẩn SEO/tháng',
+      'Báo cáo thứ hạng & lượt khách gọi hàng tháng'
     ]
   },
   {
@@ -225,10 +225,10 @@ export const DIGITAL_CARE_TIERS: DigitalCareTier[] = [
     tasksQuota: 'Ưu tiên hỗ trợ không giới hạn việc nhỏ',
     features: [
       'Toàn bộ quyền lợi gói Care Growth',
+      'Bảo hành & đồng hành kỹ thuật 5 năm',
       'Xử lý ưu tiên trong 2-4 giờ làm việc',
       'Tối ưu chiến dịch quảng cáo & theo dõi',
-      'Tư vấn tự động hóa quy trình khách hàng',
-      'Báo cáo chiến lược định kỳ 1:1'
+      'Tư vấn tự động hóa quy trình khách hàng'
     ]
   }
 ];
@@ -376,15 +376,16 @@ export const INITIAL_SERVICES_CATALOG: CatalogServiceItem[] = [
   {
     id: '11',
     code: 'FIX-SPEED',
-    name: 'Tăng Tốc Độ Tải Trang Web',
+    name: 'Tối Ưu Tốc Độ Web (Cam Kết PageSpeed 90+, Dưới 1s Cloudflare)',
     categoryGroup: 'website-fix',
     goalGroup: 'van-hanh-lau-dai',
-    scope: 'Nén hình ảnh dung lượng nhẹ, dọn dẹp mã nguồn thừa, giúp website mở tức thì dưới 2 giây trên điện thoại.',
+    scope: 'Cam kết điểm PageSpeed 90+, mở dưới 1s trên Cloudflare Edge, nén ảnh WebP/AVIF lossless, Zero CLS, bảo hành 5 năm.',
     effort: '1–2 giờ',
     priceDisplay: '299.000đ',
     numericPrice: 299000,
     unit: 'trọn gói',
-    isActive: true
+    isActive: true,
+    isPopular: true
   },
   {
     id: '12',
@@ -428,15 +429,16 @@ export const INITIAL_SERVICES_CATALOG: CatalogServiceItem[] = [
   {
     id: '15',
     code: 'FIX-AUDIT',
-    name: 'Kiểm Tra & Đánh Giá Toàn Diện Website',
+    name: 'Khảo Sát Hiện Trạng & SEO Audit 0đ',
     categoryGroup: 'website-fix',
     goalGroup: 'van-hanh-lau-dai',
-    scope: 'Rà soát toàn bộ tốc độ, lỗi hiển thị mobile, nút gọi, tính năng đặt hàng và gửi báo cáo chi tiết kèm giải pháp.',
+    scope: 'Khảo sát hiện trạng 0đ toàn diện Maps + Web + Từ khóa, chỉ ra điểm nghẽn chuyển đổi và bảng việc cần làm ngay sau 24h.',
     effort: '30–60 phút',
-    priceDisplay: 'Miễn phí',
+    priceDisplay: '0đ (Miễn phí)',
     numericPrice: 0,
     unit: 'trọn gói',
-    isActive: true
+    isActive: true,
+    isPopular: true
   },
 
   // 3. GOOGLE MAPS & LOCAL SEO (16 - 22)
@@ -456,10 +458,10 @@ export const INITIAL_SERVICES_CATALOG: CatalogServiceItem[] = [
   {
     id: '17',
     code: 'SEO-SCHEMA',
-    name: 'Khai Báo Dữ Liệu Doanh Nghiệp (Schema)',
+    name: 'Thực Thể Số (Entity) & Schema LocalBusiness',
     categoryGroup: 'google-seo',
     goalGroup: 'co-them-khach',
-    scope: 'Khai báo mã dữ liệu chuẩn giúp Google hiển thị địa chỉ, giờ mở cửa, số điện thoại và đánh giá sao trên kết quả tìm kiếm.',
+    scope: 'Khai báo trọn bộ mã JSON-LD chuẩn LocalBusiness (GeoCoordinates, OpeningHours, SameAs, PriceRange) và đồng bộ thực thể NAP.',
     effort: '30–60 phút',
     priceDisplay: '199.000đ',
     numericPrice: 199000,
@@ -482,10 +484,10 @@ export const INITIAL_SERVICES_CATALOG: CatalogServiceItem[] = [
   {
     id: '19',
     code: 'SEO-GBP',
-    name: 'Tạo Mới & Đưa Địa Điểm Lên Google Maps',
+    name: 'Google Maps Chính Chủ 100% & Bộ QR Review 5 Sao',
     categoryGroup: 'google-seo',
     goalGroup: 'co-them-khach',
-    scope: 'Tạo trang doanh nghiệp trên Google Maps, điền đầy đủ số điện thoại, giờ mở cửa, địa chỉ chuẩn xác và đăng ảnh đại diện.',
+    scope: 'Xác minh GPS chính chủ 100% bằng Gmail của bạn, chống cướp Maps, tặng bộ QR Review 5 sao để bàn, bảo hành 5 năm.',
     effort: '1–2 giờ',
     priceDisplay: '299.000đ',
     numericPrice: 299000,
@@ -496,15 +498,16 @@ export const INITIAL_SERVICES_CATALOG: CatalogServiceItem[] = [
   {
     id: '20',
     code: 'SEO-MAPS',
-    name: 'Tối Ưu & Tăng Đánh Giá Google Maps',
+    name: 'SEO Tổng Thể Địa Phương (Bán Kính 3–10km)',
     categoryGroup: 'google-seo',
     goalGroup: 'co-them-khach',
-    scope: 'Tối ưu danh mục ngành nghề, gắn từ khóa tìm kiếm, đăng ảnh sản phẩm chuẩn vị trí và tạo link rút gọn xin đánh giá 5 sao.',
+    scope: 'Phủ sóng bán kính 3–10km, từ khóa có dấu & không dấu, Local Citations, thu hút khách ghé tiệm, bảo hành 5 năm.',
     effort: '1–2 giờ',
     priceDisplay: '390.000đ',
     numericPrice: 390000,
     unit: 'trọn gói',
-    isActive: true
+    isActive: true,
+    isPopular: true
   },
   {
     id: '21',
@@ -606,10 +609,25 @@ export const INITIAL_SERVICES_CATALOG: CatalogServiceItem[] = [
   {
     id: '28',
     code: 'ADS-GADS',
-    name: 'Khởi Tạo Quảng Cáo Google Tìm Kiếm (Google Ads)',
+    name: 'Khởi Tạo Google Ads Địa Phương (0% Phí Kê Giá)',
     categoryGroup: 'ads-conversion',
     goalGroup: 'co-them-khach',
-    scope: 'Tạo tài khoản chính chủ, chọn lọc từ khóa đúng người đang cần mua, viết mẫu quảng cáo hấp dẫn và cài đặt ngân sách phù hợp.',
+    scope: 'Tạo tài khoản chính chủ 100%, chọn lọc từ khóa quanh tiệm, viết mẫu quảng cáo hấp dẫn, gắn nút gọi Hotline & Google Maps.',
+    effort: '1–2 ngày',
+    priceDisplay: '390.000đ',
+    numericPrice: 390000,
+    unit: 'trọn gói',
+    isActive: true,
+    isPopular: true,
+    disclaimer: '0% phí chênh lệch: Khách hàng tự nạp tiền cho Google bằng thẻ cá nhân, LocalMate chỉ thu phí setup cố định'
+  },
+  {
+    id: '29',
+    code: 'ADS-META',
+    name: 'Facebook Ads Địa Phương (Bán Kính 5km Quanh Tiệm)',
+    categoryGroup: 'ads-conversion',
+    goalGroup: 'co-them-khach',
+    scope: 'Cắm mốc định vị GPS quét bán kính 1km - 5km quanh tiệm, nhắm chuẩn cư dân lân cận, bài viết & banner thu hút, kịch bản tin nhắn tự động.',
     effort: '1–2 ngày',
     priceDisplay: '390.000đ',
     numericPrice: 390000,
@@ -618,25 +636,12 @@ export const INITIAL_SERVICES_CATALOG: CatalogServiceItem[] = [
     isPopular: true
   },
   {
-    id: '29',
-    code: 'ADS-META',
-    name: 'Khởi Tạo Quảng Cáo Facebook Nhắn Tin',
-    categoryGroup: 'ads-conversion',
-    goalGroup: 'co-them-khach',
-    scope: 'Thiết lập chiến dịch quảng cáo nhắn tin Fanpage, nhắm đúng khách hàng theo khu vực quận/huyện và độ tuổi mục tiêu.',
-    effort: '1–2 ngày',
-    priceDisplay: '390.000đ',
-    numericPrice: 390000,
-    unit: 'trọn gói',
-    isActive: true
-  },
-  {
     id: '30',
     code: 'ADS-MGMT-LITE',
-    name: 'Chăm Sóc & Tối Ưu Quảng Cáo Hàng Tháng',
+    name: 'Quản Trị & Tối Ưu Ads Hàng Tháng (Chặn Click Rác)',
     categoryGroup: 'ads-conversion',
     goalGroup: 'co-them-khach',
-    scope: 'Theo dõi chi tiêu hàng tuần, loại trừ các từ khóa tìm kiếm rác lãng phí tiền và tối ưu giá thầu để nhận nhiều cuộc gọi nhất.',
+    scope: 'Rà soát Search Terms 48h/lần, phủ định từ khóa rác, tối ưu giá thầu nhận nhiều cuộc gọi nhất, minh bạch 100% ngân sách.',
     effort: 'Hàng tháng',
     priceDisplay: '690.000đ',
     numericPrice: 690000,
@@ -645,16 +650,18 @@ export const INITIAL_SERVICES_CATALOG: CatalogServiceItem[] = [
   },
   {
     id: '31',
-    code: 'ADS-CRO',
-    name: 'Đánh Giá & Tối Ưu Nút Bấm Chuyển Đổi',
+    code: 'ADS-REPAIR-FIX',
+    name: 'Khắc Phục Lỗi Ads Sửa Chữa (Điện Thoại / Laptop / Điện Lạnh)',
     categoryGroup: 'ads-conversion',
     goalGroup: 'co-them-khach',
-    scope: 'Rà soát xem tại sao khách vào web mà không bấm gọi, sắp xếp lại vị trí bảng giá, số điện thoại để tăng số người liên hệ.',
-    effort: '1 giờ',
-    priceDisplay: '299.000đ',
-    numericPrice: 299000,
-    unit: 'trọn gói',
-    isActive: true
+    scope: 'Audit vi phạm chính sách bên thứ ba & nhãn hiệu, thêm disclaimer độc lập, gỡ logo Trademark, nộp hồ sơ kháng nghị & tài khoản whitelist.',
+    effort: '1–3 ngày',
+    priceDisplay: '1.290.000đ',
+    numericPrice: 1290000,
+    unit: 'lần xử lý',
+    isActive: true,
+    isPopular: true,
+    disclaimer: 'Đánh giá hồ sơ 0đ trước khi nhận. Hoàn tiền 100% nếu không khôi phục được điều kiện quảng cáo.'
   },
 
   // 6. TỰ ĐỘNG HÓA & CRM (32 - 36)
@@ -764,6 +771,21 @@ export const INITIAL_SERVICES_CATALOG: CatalogServiceItem[] = [
     numericPrice: 3900000,
     unit: 'trọn gói',
     isActive: true
+  },
+  {
+    id: '40',
+    code: 'GEO-LOCAL',
+    name: 'Tối Ưu Đề Xuất AI (GEO Local)',
+    categoryGroup: 'ai-software',
+    goalGroup: 'co-them-khach',
+    scope: 'Tối ưu hóa dữ liệu để ChatGPT, Google Gemini & Perplexity nhận diện và chủ động đề xuất cơ sở của bạn khi khách hàng hỏi tìm kiếm dịch vụ trong khu vực.',
+    effort: 'Hàng tháng (triển khai 48h)',
+    priceDisplay: '2.900.000đ',
+    numericPrice: 2900000,
+    unit: 'tháng',
+    isActive: true,
+    isPopular: true,
+    notes: 'Kèm tệp llms.txt, Schema LocalBusiness và báo cáo minh chứng AI hàng tháng.'
   },
 
   // 8. PHÁP LÝ & BỘ CÔNG THƯƠNG (41a - 41e)

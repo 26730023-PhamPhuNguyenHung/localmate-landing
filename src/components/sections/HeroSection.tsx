@@ -20,9 +20,10 @@ import {
   ShieldCheck
 } from 'lucide-react';
 import { useRouter } from '../layout/Router';
+import { InstantAuditHook } from '../audit/InstantAuditHook';
 
 interface HeroSectionProps {
-  onOpenDemoForm?: () => void;
+  onOpenDemoForm?: (serviceOrStore?: string) => void;
   showTrustStrip?: boolean;
 }
 
@@ -81,9 +82,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     };
   }, []);
 
-  const handleOpenDemo = () => {
+  const handleOpenDemo = (storeName?: string) => {
     if (onOpenDemoForm) {
-      onOpenDemoForm();
+      onOpenDemoForm(storeName);
     } else {
       navigate('/lien-he');
     }
@@ -185,39 +186,32 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               Giải pháp số thực tế cho hộ kinh doanh và doanh nghiệp vừa &amp; nhỏ: từ website bán hàng tải siêu tốc, định vị Google Maps đến quảng cáo đa kênh. Dựng demo xem trước 0đ, báo giá cố định, nghiệm thu hài lòng mới thanh toán.
             </p>
 
-            {/* Cụm CTA kép: Nút chính 'Tư vấn miễn phí / Xem Demo' & nút phụ 'Xem bảng giá / Tìm hiểu thêm' */}
-            <div className="hero-cta-group">
-              <Button
-                variant="primary"
-                size="lg"
-                onClick={handleOpenDemo}
-                className="hero-btn-primary"
-              >
-                <Sparkles size={16} />
-                <span>Tư vấn miễn phí / Xem Demo</span>
-                <ArrowRight size={16} />
-              </Button>
-
-              <Button
-                variant="white"
-                size="lg"
-                onClick={handleScrollToServices}
-                className="hero-btn-secondary"
-              >
-                <span>Xem bảng giá / Tìm hiểu thêm</span>
-              </Button>
+            {/* INSTANT AUDIT HOOK (WebFX Style) — Cho phép nhập tên tiệm/link web và nhận phân tích + Demo 0đ tức thì */}
+            <div className="hero-audit-hook-wrapper">
+              <InstantAuditHook
+                onOpenDetailedLeadModal={handleOpenDemo}
+                variant="hero"
+              />
             </div>
 
-            {/* Micro-copy cam kết cốt lõi */}
-            <div className="hero-microcopy">
-              <span className="microcopy-check">✓</span>
-              <span className="microcopy-text">Dựng demo xem trước 0đ</span>
-              <span className="microcopy-dot">•</span>
-              <span className="microcopy-check">✓</span>
-              <span className="microcopy-text">Báo giá cố định trước khi làm</span>
-              <span className="microcopy-dot">•</span>
-              <span className="microcopy-check">✓</span>
-              <span className="microcopy-text">Nghiệm thu mới thanh toán</span>
+            {/* Quick Secondary Actions */}
+            <div className="hero-secondary-links">
+              <button
+                type="button"
+                onClick={handleScrollToServices}
+                className="hero-secondary-link-btn"
+              >
+                <span>Xem bảng giá 41 dịch vụ niêm yết</span>
+                <ArrowRight size={13} />
+              </button>
+              <span className="hero-link-divider">•</span>
+              <button
+                type="button"
+                onClick={() => handleOpenDemo('Cần chuyên viên khảo sát 1-1')}
+                className="hero-secondary-link-btn"
+              >
+                <span>Khảo sát 1-1 tại cơ sở</span>
+              </button>
             </div>
           </div>
 
@@ -363,7 +357,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                       <Navigation size={11} />
                       <span>Chỉ đường</span>
                     </button>
-                    <button type="button" className="maps-btn maps-btn-call" onClick={handleOpenDemo}>
+                    <button type="button" className="maps-btn maps-btn-call" onClick={() => handleOpenDemo()}>
                       <Phone size={11} />
                       <span>Gọi điện</span>
                     </button>
@@ -553,7 +547,49 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           text-wrap: pretty;
         }
 
-        /* CTA Buttons: Cụm CTA kép */
+        /* INSTANT AUDIT HOOK & SECONDARY ACTIONS */
+        .hero-audit-hook-wrapper {
+          width: 100%;
+          margin-bottom: 0.85rem;
+        }
+
+        .hero-secondary-links {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          flex-wrap: wrap;
+          font-size: 0.86rem;
+          margin-bottom: 0.5rem;
+        }
+
+        .hero-secondary-link-btn {
+          background: transparent;
+          border: none;
+          padding: 0;
+          color: #1e293b;
+          font-weight: 600;
+          font-size: 0.86rem;
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          gap: 0.3rem;
+          text-decoration: underline;
+          text-decoration-color: #94a3b8;
+          text-underline-offset: 3px;
+          transition: color 0.15s ease, text-decoration-color 0.15s ease;
+        }
+
+        .hero-secondary-link-btn:hover {
+          color: #0d7647;
+          text-decoration-color: #0d7647;
+        }
+
+        .hero-link-divider {
+          color: #cbd5e1;
+          font-size: 0.85rem;
+        }
+
+        /* CTA Buttons fallback */
         .hero-cta-group {
           display: flex;
           flex-direction: row;

@@ -80,3 +80,18 @@
 - **Zero Horizontal Overflow & Zero CLS**:
   - Kiểm thử thực tế bằng `agent-browser` trên toàn bộ 9 viewports (1536, 1440, 1366, 1228, 1024, 768, 430, 390, 375): `overflow = 0` trên 100% viewports.
   - Khắc phục nguy cơ CLS trên Header và Footer bằng cách gán kích thước cố định `width`/`height` cho logo.
+
+## 11. Bài học về Chuẩn Hóa Cụm Dịch Vụ Chạy Khách & Chăm Sóc Vận Hành (Học Hỏi Từ FastMarketing)
+- **Minh bạch tài chính tuyệt đối (0% phí kê giá / Không ăn chênh lệch)**:
+  - Nỗi đau của khách hàng: Các agency cũ thường thu % ngân sách hoặc nâng khống giá bid click (báo 10k nhưng thực chạy 3k-4k), đồng thời giấu tài khoản Ads làm con tin.
+  - Giải pháp LocalMate: 100% tài khoản chính chủ của khách (khách giữ quyền Admin cao nhất). Thẻ Visa/Mastercard cá nhân hoặc công ty của khách được add trực tiếp vào Google/Meta, sao kê trừ bao nhiêu khách trả bấy nhiêu. LocalMate chỉ thu phí kỹ thuật (setup & quản trị tối ưu) cố định được niêm yết công khai.
+- **Xử lý chuyên sâu ngành nhạy cảm (Sửa điện thoại, laptop, điện lạnh, thông hút bể phốt, sửa khóa)**:
+  - Bản chất vấn đề: Google siết gắt chính sách "Third-party consumer technical support" và "Misrepresentation/Trademark" để ngăn chặn mạo danh trung tâm bảo hành Apple/Samsung. Các thủ thuật blackhat (bọc link, cloaking) chỉ chạy được vài ngày là bị khóa vĩnh viễn tên miền lẫn thẻ vì tội "Tránh né hệ thống".
+  - Giải pháp chính ngạch chuẩn hóa theo FastMarketing: (1) Sửa landing page, thêm Tuyên bố miễn trừ trách nhiệm pháp lý độc lập (Independent Disclaimer); (2) Gỡ bỏ toàn bộ logo nhãn hiệu vi phạm bản quyền Trademark; (3) Công khai thông tin pháp nhân, bảng giá niêm yết, quy trình và cam kết bảo hành; (4) Chuẩn bị hồ sơ ĐKKD/hợp đồng thuê nhà và soạn đơn giải trình kháng nghị song ngữ (Việt - Anh) trực tiếp tới bộ phận Trust & Safety của Google Ads; (5) Nuôi tài khoản whitelist an toàn.
+- **Chiến lược cắm mốc GPS bán kính 1km – 5km quanh tiệm (Facebook Ads)**:
+  - Nhắm mục tiêu chính xác vào cư dân đang sinh sống, làm việc quanh tiệm. Loại bỏ hoàn toàn đối tượng vãng lai hoặc ở tỉnh xa.
+  - Sử dụng hình ảnh/video chụp thật tại quán, thiết kế kịch bản tin nhắn tự động (Quick Replies) hỏi số điện thoại và báo giá ngay để chốt lịch hẹn.
+- **Chính sách Cam kết Bảo hành Kỹ thuật Lên Đến 5 Năm (Website Care)**:
+  - Đóng vai trò phòng IT & Content thuê ngoài cho SME: giám sát Uptime 24/7, tự động backup hàng tuần, tối ưu Cloudflare CDN < 1.2s, hỗ trợ cập nhật nội dung qua nhóm Zalo riêng trong 15–30 phút, viết 4–8 bài chuẩn SEO kéo traffic tự nhiên.
+  - Bảo hành toàn diện 5 năm về hạ tầng, mã nguồn và bảo mật giúp chủ tiệm an tâm kinh doanh dài lâu.
+

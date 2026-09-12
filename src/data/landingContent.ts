@@ -44,6 +44,9 @@ export const COMPANY_INFO = {
 export const CONTACT_INFO = {
   phoneDisplay: '0834.422.439 / Zalo 24/7',
   phone: '0834.422.439 / Zalo 24/7',
+  phoneFormatted: '0834.422.439',
+  hotline: '0834.422.439',
+  hotlineRaw: '0834422439',
   phoneRaw: '0834422439',
   zaloUrl: 'https://zalo.me/0834422439',
   mailtoUrl: 'mailto:contact@localmate.vn',
@@ -251,6 +254,14 @@ export const SPECIALIZED_SERVICES = [
     description: 'Cài đặt công cụ đo lường để biết mỗi ngày có bao nhiêu người bấm nút gọi hoặc nhắn Zalo trên website.',
     priceFrom: 'Từ 99.000đ',
     icon: 'BarChart'
+  },
+  {
+    id: 'geo-local',
+    title: 'Tối Ưu Đề Xuất AI (GEO Local)',
+    desc: 'Tối ưu hóa dữ liệu để ChatGPT, Gemini & Perplexity chủ động gợi ý cửa hàng của bạn khi khách tìm quanh vùng.',
+    description: 'Tối ưu hóa dữ liệu để ChatGPT, Gemini & Perplexity chủ động gợi ý cửa hàng của bạn khi khách tìm quanh vùng.',
+    priceFrom: 'Từ 2.900.000đ/tháng',
+    icon: 'Bot'
   }
 ];
 
@@ -273,13 +284,14 @@ export const SERVICE_GROUPS: ServiceGroup[] = [
   },
   {
     id: 'google-presence',
-    title: 'Đưa Lên Google Maps',
-    tagline: 'Khách tìm quanh khu vực là thấy tiệm ngay',
+    title: 'Đưa Lên Google Maps & Đề Xuất AI',
+    tagline: 'Khách tìm quanh khu vực hoặc hỏi AI là thấy tiệm ngay',
     iconName: 'MapPin',
-    description: 'Đưa vị trí cửa hàng lên Google Maps để khách dễ xem đường đi, số điện thoại và đánh giá.',
+    description: 'Đưa vị trí cửa hàng lên Google Maps và tối ưu để ChatGPT, Gemini đề xuất tiệm của bạn.',
     services: [
       'Đăng ký mới Google Maps 299k',
       'Tối ưu hoàn thiện hồ sơ Maps 390k',
+      'Tối ưu đề xuất AI (GEO Local) 2.900k/th',
       'Tạo mã QR xin đánh giá 5 sao 99k',
       'Chăm sóc vị trí Maps hàng tháng 490k'
     ],

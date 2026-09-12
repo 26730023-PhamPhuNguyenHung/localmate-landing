@@ -19,6 +19,8 @@ interface LeadModalProps {
   isOpen: boolean;
   onClose: () => void;
   defaultServiceName?: string;
+  initialBusinessInput?: string;
+  initialNote?: string;
 }
 
 const COMMON_SERVICES = [
@@ -32,13 +34,15 @@ const COMMON_SERVICES = [
 export const LeadModal: React.FC<LeadModalProps> = ({
   isOpen,
   onClose,
-  defaultServiceName = 'Tư vấn giải pháp Website & Marketing'
+  defaultServiceName = 'Tư vấn giải pháp Website & Marketing',
+  initialBusinessInput = '',
+  initialNote = ''
 }) => {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
     service: defaultServiceName,
-    message: ''
+    message: initialNote || (initialBusinessInput ? `Cửa hàng/Website: ${initialBusinessInput}` : '')
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -49,7 +53,13 @@ export const LeadModal: React.FC<LeadModalProps> = ({
     if (defaultServiceName) {
       setFormData((prev) => ({ ...prev, service: defaultServiceName }));
     }
-  }, [defaultServiceName]);
+    if (initialBusinessInput || initialNote) {
+      setFormData((prev) => ({
+        ...prev,
+        message: initialNote || (initialBusinessInput ? `Cửa hàng/Website: ${initialBusinessInput}` : prev.message)
+      }));
+    }
+  }, [defaultServiceName, initialBusinessInput, initialNote]);
 
   useEffect(() => {
     if (isOpen) {

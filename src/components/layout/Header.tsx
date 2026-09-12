@@ -13,7 +13,8 @@ import {
   TrendingUp,
   Briefcase,
   CheckCircle2,
-  ArrowRight
+  ArrowRight,
+  Cpu
 } from 'lucide-react';
 import { useRouter, Link } from './Router';
 import { CONTACT_INFO } from '../../data/landingContent';
@@ -160,11 +161,70 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
                     <div className="mega-menu-card">
                       {/* 3 Columns Categorized Services */}
                       <div className="mega-columns-grid">
-                        {/* Col 1: Website & Bán hàng */}
+                        {/* Col 1: Đề Xuất AI & GEO */}
+                        <div className="mega-col">
+                          <div className="mega-col-heading">
+                            <Cpu size={15} color="var(--color-primary)" />
+                            <span>Đề Xuất AI &amp; GEO</span>
+                          </div>
+                          <div className="mega-link-list">
+                            <Link to="/dich-vu/geo" onClick={closeMenus} className="mega-item">
+                              <div className="mega-item-icon icon-emerald">
+                                <Cpu size={16} />
+                              </div>
+                              <div className="mega-item-body">
+                                <div className="mega-item-title">
+                                  <span>Dịch Vụ GEO (AI Search)</span>
+                                  <span className="mega-badge badge-green">Hot 2026</span>
+                                </div>
+                                <p className="mega-item-desc">Được ChatGPT, Gemini đề xuất tiệm đầu tiên.</p>
+                              </div>
+                            </Link>
+
+                            <Link to="/dich-vu/aeo" onClick={closeMenus} className="mega-item">
+                              <div className="mega-item-icon icon-blue">
+                                <Sparkles size={16} />
+                              </div>
+                              <div className="mega-item-body">
+                                <div className="mega-item-title">
+                                  <span>Dịch Vụ AEO (Answer AI)</span>
+                                  <span className="mega-badge badge-neutral">Mới</span>
+                                </div>
+                                <p className="mega-item-desc">Tối ưu trích dẫn câu trả lời trên Perplexity &amp; Siri.</p>
+                              </div>
+                            </Link>
+
+                            <Link to="/dich-vu/seo-ai" onClick={closeMenus} className="mega-item">
+                              <div className="mega-item-icon icon-purple">
+                                <TrendingUp size={16} />
+                              </div>
+                              <div className="mega-item-body">
+                                <div className="mega-item-title">
+                                  <span>SEO Google AI Overviews</span>
+                                </div>
+                                <p className="mega-item-desc">Xuất hiện ngay trong khung tóm tắt AI của Google.</p>
+                              </div>
+                            </Link>
+
+                            <Link to="/dich-vu/seo-chatgpt" onClick={closeMenus} className="mega-item">
+                              <div className="mega-item-icon icon-amber">
+                                <FileText size={16} />
+                              </div>
+                              <div className="mega-item-body">
+                                <div className="mega-item-title">
+                                  <span>SEO ChatGPT &amp; SearchGPT</span>
+                                </div>
+                                <p className="mega-item-desc">Để AI ghi nhớ và gợi ý thương hiệu khi khách hỏi.</p>
+                              </div>
+                            </Link>
+                          </div>
+                        </div>
+
+                        {/* Col 2: Website & Tối Ưu */}
                         <div className="mega-col">
                           <div className="mega-col-heading">
                             <Globe size={15} color="var(--color-primary)" />
-                            <span>Website &amp; Bán Hàng</span>
+                            <span>Website &amp; Tối Ưu</span>
                           </div>
                           <div className="mega-link-list">
                             <Link to="/landing-490k" onClick={closeMenus} className="mega-item">
@@ -173,45 +233,58 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
                               </div>
                               <div className="mega-item-body">
                                 <div className="mega-item-title">
-                                  <span>Website 1 Trang</span>
+                                  <span>Website 1 Trang Bán Hàng</span>
                                   <span className="mega-badge badge-red">490k</span>
                                 </div>
-                                <p className="mega-item-desc">Gọn gàng, rõ giá, có nút gọi / Zalo ngay.</p>
+                                <p className="mega-item-desc">Gọn gàng, rõ giá, có nút gọi Hotline &amp; Zalo ngay.</p>
                               </div>
                             </Link>
 
-                            <Link to="/dich-vu/website-landing-page" onClick={closeMenus} className="mega-item">
+                            <Link to="/dich-vu/thiet-ke-website" onClick={closeMenus} className="mega-item">
                               <div className="mega-item-icon icon-blue">
                                 <Globe size={16} />
                               </div>
                               <div className="mega-item-body">
                                 <div className="mega-item-title">
-                                  <span>Web Doanh Nghiệp</span>
+                                  <span>Thiết Kế Web Doanh Nghiệp</span>
                                   <span className="mega-badge badge-neutral">3–5 trang</span>
                                 </div>
-                                <p className="mega-item-desc">Đầy đủ giới thiệu, dịch vụ và dự án.</p>
+                                <p className="mega-item-desc">Đầy đủ giới thiệu, dịch vụ, bảng giá và hồ sơ năng lực.</p>
                               </div>
                             </Link>
 
-                            <Link to="/dich-vu/website-landing-page" onClick={closeMenus} className="mega-item">
-                              <div className="mega-item-icon icon-purple">
+                            <Link to="/dich-vu/toi-uu-toc-do-web" onClick={closeMenus} className="mega-item">
+                              <div className="mega-item-icon icon-amber">
                                 <Sparkles size={16} />
                               </div>
                               <div className="mega-item-body">
                                 <div className="mega-item-title">
-                                  <span>Chỉnh Sửa &amp; Nâng Cấp Web</span>
+                                  <span>Tăng Tốc Web PageSpeed &gt; 90</span>
+                                  <span className="mega-badge badge-green">&lt; 1s</span>
                                 </div>
-                                <p className="mega-item-desc">Sửa lỗi, đổi banner, cập nhật bảng giá nhanh.</p>
+                                <p className="mega-item-desc">Nén ảnh WebP, CDN Cloudflare, mở trang tức thì.</p>
+                              </div>
+                            </Link>
+
+                            <Link to="/dich-vu/cham-soc-website" onClick={closeMenus} className="mega-item">
+                              <div className="mega-item-icon icon-purple">
+                                <Briefcase size={16} />
+                              </div>
+                              <div className="mega-item-body">
+                                <div className="mega-item-title">
+                                  <span>Chăm Sóc Web (Bảo Hành 5 Năm)</span>
+                                </div>
+                                <p className="mega-item-desc">Đội IT riêng túc trực hỗ trợ 1-1, sao lưu hàng tuần.</p>
                               </div>
                             </Link>
                           </div>
                         </div>
 
-                        {/* Col 2: Google Maps & Tìm kiếm */}
+                        {/* Col 3: Google Maps & Quảng Cáo */}
                         <div className="mega-col">
                           <div className="mega-col-heading">
                             <MapPin size={15} color="var(--color-primary)" />
-                            <span>Google Maps &amp; Tìm Kiếm</span>
+                            <span>Google Maps &amp; Quảng Cáo</span>
                           </div>
                           <div className="mega-link-list">
                             <Link to="/dich-vu/google-maps" onClick={closeMenus} className="mega-item">
@@ -220,46 +293,25 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
                               </div>
                               <div className="mega-item-body">
                                 <div className="mega-item-title">
-                                  <span>Đưa Tiệm Lên Maps</span>
+                                  <span>Đưa Tiệm Lên Google Maps</span>
                                   <span className="mega-badge badge-green">Từ 299k</span>
                                 </div>
-                                <p className="mega-item-desc">Khách tìm quanh khu vực thấy tiệm ngay.</p>
+                                <p className="mega-item-desc">Xác minh chính chủ 100%, tặng mã QR xin 5 sao.</p>
                               </div>
                             </Link>
 
-                            <Link to="/dich-vu/google-maps" onClick={closeMenus} className="mega-item">
+                            <Link to="/dich-vu/seo-tong-the" onClick={closeMenus} className="mega-item">
                               <div className="mega-item-icon icon-emerald">
                                 <TrendingUp size={16} />
                               </div>
                               <div className="mega-item-body">
                                 <div className="mega-item-title">
-                                  <span>Tối Ưu &amp; SEO Local Maps</span>
+                                  <span>SEO Tổng Thể Địa Phương</span>
                                 </div>
-                                <p className="mega-item-desc">Tăng thứ hạng hiển thị top tìm kiếm gần.</p>
+                                <p className="mega-item-desc">Phủ từ khóa bán kính 3–10km kéo khách ghé tiệm.</p>
                               </div>
                             </Link>
 
-                            <Link to="/dich-vu/google-maps" onClick={closeMenus} className="mega-item">
-                              <div className="mega-item-icon icon-blue">
-                                <Sparkles size={16} />
-                              </div>
-                              <div className="mega-item-body">
-                                <div className="mega-item-title">
-                                  <span>Mã QR Đánh Giá 5 Sao</span>
-                                </div>
-                                <p className="mega-item-desc">In để bàn giúp khách quét đánh giá dễ dàng.</p>
-                              </div>
-                            </Link>
-                          </div>
-                        </div>
-
-                        {/* Col 3: Quảng cáo & Bài viết */}
-                        <div className="mega-col">
-                          <div className="mega-col-heading">
-                            <Sparkles size={15} color="var(--color-primary)" />
-                            <span>Quảng Cáo &amp; Bài Viết</span>
-                          </div>
-                          <div className="mega-link-list">
                             <Link to="/dich-vu/google-ads" onClick={closeMenus} className="mega-item">
                               <div className="mega-item-icon icon-amber">
                                 <Sparkles size={16} />
@@ -269,32 +321,20 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
                                   <span>Quảng Cáo Google Ads</span>
                                   <span className="mega-badge badge-red">Từ 390k</span>
                                 </div>
-                                <p className="mega-item-desc">Nhắm đúng người đang cần mua, gọi ngay.</p>
+                                <p className="mega-item-desc">Nhắm đúng người đang cần mua, 0% kê giá ads.</p>
                               </div>
                             </Link>
 
-                            <Link to="/dich-vu/content-marketing" onClick={closeMenus} className="mega-item">
+                            <Link to="/dich-vu/khac-phuc-loi-google-ads" onClick={closeMenus} className="mega-item">
                               <div className="mega-item-icon icon-pink">
                                 <FileText size={16} />
                               </div>
                               <div className="mega-item-body">
                                 <div className="mega-item-title">
-                                  <span>Chăm Sóc Fanpage FB</span>
-                                  <span className="mega-badge badge-green">990k/th</span>
+                                  <span>Khắc Phục Lỗi Ads Sửa Chữa</span>
+                                  <span className="mega-badge badge-neutral">Chữa ca khó</span>
                                 </div>
-                                <p className="mega-item-desc">15 bài viết + thiết kế ảnh đẹp mắt.</p>
-                              </div>
-                            </Link>
-
-                            <Link to="/dich-vu/content-marketing" onClick={closeMenus} className="mega-item">
-                              <div className="mega-item-icon icon-purple">
-                                <Briefcase size={16} />
-                              </div>
-                              <div className="mega-item-body">
-                                <div className="mega-item-title">
-                                  <span>Thiết Kế Banner &amp; Ảnh Lẻ</span>
-                                </div>
-                                <p className="mega-item-desc">Ảnh menu, banner khuyến mãi từ 99k/ảnh.</p>
+                                <p className="mega-item-desc">Gỡ khóa ngành sửa điện thoại, laptop, điện lạnh.</p>
                               </div>
                             </Link>
                           </div>
@@ -608,6 +648,54 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
                     </div>
                     <span className="drawer-service-name">Đưa Tiệm Lên Google Maps</span>
                     <span className="drawer-price-badge badge-green">Từ 299k</span>
+                  </Link>
+
+                  <Link
+                    to="/dich-vu/geo"
+                    onClick={closeMenus}
+                    className="drawer-service-link"
+                  >
+                    <div className="drawer-service-icon icon-emerald">
+                      <Cpu size={15} />
+                    </div>
+                    <span className="drawer-service-name">Tối Ưu Đề Xuất AI (GEO Local)</span>
+                    <span className="drawer-price-badge badge-green">2.9tr/th</span>
+                  </Link>
+
+                  <Link
+                    to="/dich-vu/aeo"
+                    onClick={closeMenus}
+                    className="drawer-service-link"
+                  >
+                    <div className="drawer-service-icon icon-blue">
+                      <Sparkles size={15} />
+                    </div>
+                    <span className="drawer-service-name">Tối Ưu Trích Dẫn Nguồn (AEO)</span>
+                    <span className="drawer-price-badge badge-neutral">Mới</span>
+                  </Link>
+
+                  <Link
+                    to="/dich-vu/seo-ai"
+                    onClick={closeMenus}
+                    className="drawer-service-link"
+                  >
+                    <div className="drawer-service-icon icon-purple">
+                      <TrendingUp size={15} />
+                    </div>
+                    <span className="drawer-service-name">SEO Google AI Overviews</span>
+                    <span className="drawer-price-badge badge-green">Top 0</span>
+                  </Link>
+
+                  <Link
+                    to="/dich-vu/seo-chatgpt"
+                    onClick={closeMenus}
+                    className="drawer-service-link"
+                  >
+                    <div className="drawer-service-icon icon-amber">
+                      <FileText size={15} />
+                    </div>
+                    <span className="drawer-service-name">SEO Đề Xuất ChatGPT</span>
+                    <span className="drawer-price-badge badge-green">2.9tr/th</span>
                   </Link>
 
                   <Link

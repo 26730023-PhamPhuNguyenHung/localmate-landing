@@ -52,6 +52,59 @@
   - Thẻ nền trắng tinh, viền crisp 1px `#e2e8f0`, icon xanh dịu `#edf7f1`, responsive 4 cột desktop, 2 cột tablet/mobile.
 - **Tinh gọn CSS & Bố Cục**: Tối ưu padding `clamp(2.5rem, 4.5vw, 4.25rem)`, triệt tiêu hoàn toàn nguy cơ horizontal overflow, giữ nguyên hiệu ứng boomerang loop của background video. Build pass 100%.
 
+### G. Thiết Kế & Tích Hợp Bánh Đà Tăng Trưởng Doanh Thu Địa Phương (Local Growth Flywheel - WebFX Inspiration):
+- **Tạo mới component**: `src/components/sections/GrowthFlywheelSection.tsx`.
+- **4 Giai đoạn cốt lõi gắn liền hệ sinh thái dịch vụ LocalMate**:
+  1. **Giai đoạn 01 - Thu hút (Stay Visible)**: Lên top tìm kiếm Google Maps & Google Search, tối ưu bán kính 3–10km, phủ từ khóa địa phương không dấu/có dấu, 100% tài khoản chính chủ.
+  2. **Giai đoạn 02 - Chuyển đổi (Capture Leads)**: Tốc độ website tải siêu tốc < 1s trên Cloudflare Edge, bộ nút Gọi/Zalo/Chỉ đường một chạm, form nhận demo 0đ không rào cản.
+  3. **Giai đoạn 03 - Chăm sóc & Vận hành (Care & RevOps)**: Gói Digital Care chăm sóc Fanpage & website 990k/tháng, quy trình QR tích lũy đánh giá Google Maps 5 sao thật, bảo mật SSL dữ liệu.
+  4. **Giai đoạn 04 - Đòn bẩy & Tái đầu tư (Scale & Automate)**: Tái đầu tư lợi nhuận vào quảng cáo Google Ads / Meta Ads bám đuổi, tự động hóa đơn hàng & đặt lịch qua Zalo OA, đồng bộ CRM.
+- **Thiết kế & Tương tác**:
+  - Giao diện 100% Light Mode sáng sủa, nền sáng chữ đậm, viền nhẹ `#e2e8f0`, hệ icon pastel dịu mắt theo 4 gam màu chủ đạo.
+  - Vòng tròn Bánh đà tương tác (Flywheel Visual Wheel) 4 góc xoay tuần hoàn, hỗ trợ auto-play có nút tạm dừng, click chọn mượt mà.
+  - Bảng đối chiếu thực tế: Phễu Marketing tuyến tính cũ (chi phí tăng dần, tiền hết khách tắt) vs Bánh đà LocalMate (khách hàng làm tâm điểm, chi phí giảm dần theo thời gian).
+- **Tích hợp toàn diện**:
+  - `HomePage.tsx`: Đặt trang trọng sau BeforeAfterSection, dẫn dắt sang Bảng giá niêm yết.
+  - `SolutionsPage.tsx`: Đặt cuối trang Giải pháp theo ngành để củng cố năng lực vận hành.
+### H. Triển Khai Tính Năng 'Instant Website/Business Audit Hook' Học Hỏi Từ WebFX:
+- **Tạo component Hook**: `src/components/audit/InstantAuditHook.tsx`.
+  - Ô input to rõ (min-height: 48px trên mobile, 52px desktop), placeholder: "Nhập tên tiệm, link Facebook hoặc Website hiện có...".
+  - Nút CTA dứt khoát màu xanh chủ đạo `#0d7647`: "Nhận phân tích & Demo 0đ".
+  - Chip gợi ý ngành nghề thử nhanh: Tiệm Cà Phê Mộc, Nha Khoa Tâm Đức, Tiệm Bánh An An, Spa Thẩm Mỹ Lan Hương.
+  - Micro-trust cam kết: Quét 3 tiêu chí trong 30s • Demo 0đ xem trước • KTV địa phương hỗ trợ 1-1.
+- **Tạo component Modal Kết Quả**: `src/components/audit/InstantAuditModal.tsx`.
+  - Hiệu ứng quét chẩn đoán 3 bước trực quan (~1.2s) tạo độ tin cậy.
+  - Phân tích chi tiết 3 tiêu chí cốt lõi:
+    1. **Tốc độ mở trang (Speed & Uptime)**: Đo lường thời gian tải, cảnh báo nguy cơ 53% khách di động thoát trang nếu load >3s, giải pháp LocalMate tải <0.8s.
+    2. **Thứ hạng Google Maps (Local SEO)**: Độ phủ định vị bán kính 2-5km, cảnh báo mất khách vào tay đối thủ kế bên, giải pháp đẩy Top 3 bản đồ.
+    3. **Trải nghiệm trên điện thoại (Mobile UX & Nút chuyển đổi)**: Kiểm tra nút gọi/Zalo 1-chạm, cảnh báo tỷ lệ chốt cuộc hẹn thấp, giải pháp thanh liên hệ dính chân màn hình.
+  - Khung kết nối KTV địa phương: Form nhập Số điện thoại/Zalo để KTV gửi Báo cáo kỹ thuật chi tiết + Dựng demo xem trước 0đ trong 48h, tích hợp `submitLead` đồng bộ CRM và nút Chat Zalo trực tiếp.
+- **Tích hợp HeroSection**: `src/components/sections/HeroSection.tsx` đặt Instant Audit Hook tại vị trí trung tâm, kèm link phụ xem bảng giá niêm yết và đăng ký khảo sát 1-1.
+- **Tối ưu Khối chuyên biệt**: `src/components/sections/FreeAuditSection.tsx` cung cấp Dedicated Instant Audit Block với 3 cột giải thích trụ cột, tích hợp mượt mà vào `HomePage.tsx`.
+- **Chuyển tiếp dữ liệu LeadModal**: Mở rộng `LeadModalProps` (`initialBusinessInput`, `initialNote`) và `App.tsx` để đồng bộ thông tin cửa hàng liền mạch.
+### I. Triển Khai Hoàn Chỉnh Cụm Dịch Vụ AI Search & GEO 2026 (GEO, AEO, SEO AI, SEO ChatGPT):
+- **Học hỏi & Chuyển hóa từ FastMarketing**:
+  - Giữ vững các luận điểm kỹ thuật tiến bộ (Schema JSON-LD đa tầng, tệp chuẩn `llms.txt`, Entity Knowledge Graph, Inverted Pyramid Q&A, Information Gain).
+  - Chuyển hóa 100% sang tinh thần LocalMate: Đi từ gốc, giá cả bình dân thực tế (chỉ từ **2.900.000đ/tháng**, tiết kiệm 75-80% so với agency lớn hét giá 15-40 triệu).
+  - Định vị "Người đồng hành số tại địa phương": Kỹ thuật viên 1-1 ghé tận nơi tại cửa hàng/tiệm/phòng khám, cùng chủ quán test máy thực tế.
+  - Chính sách bảo hành kỹ thuật hạ tầng lên đến **5 năm**, đồng hành dài lâu.
+- **Xây dựng 4 Trang Dịch Vụ Chuyên Sâu**:
+  1. `GeoServicePage.tsx` (`/dich-vu/geo`): Tối ưu đề xuất trên ChatGPT & Google Gemini.
+  2. `AeoServicePage.tsx` (`/dich-vu/aeo`): Tối ưu Answer Engine Optimization — Đưa website thành nguồn trích dẫn tin cậy số 1 trên Perplexity, ChatGPT Search, Google Answer Box.
+  3. `SeoAiServicePage.tsx` (`/dich-vu/seo-ai`): Thống trị Google AI Overviews — Giữ vững vị trí số 0 đầu trang tìm kiếm, tối ưu Information Gain & Helpful Content 2026.
+  4. `SeoChatGptServicePage.tsx` (`/dich-vu/seo-chatgpt`): SEO ChatGPT — Đưa thương hiệu vào luồng hội thoại mua hàng của 600M+ người dùng AI.
+- **Bộ Components Chuyên Dụng Tương Tác**:
+  - `AiSearchClusterNav.tsx`: Thanh điều hướng cụm 4 dịch vụ đặt đầu trang, tích hợp badges "Chỉ từ 2.900.000đ/tháng", "Bảo hành 5 năm", "KTV 1-1 tận nơi".
+  - `AiPromptSimulator.tsx`: Widget giả lập tương tác cho phép người dùng chọn ngành (quán ăn, nha khoa, spa, gara, nội thất) và chọn AI (ChatGPT, Gemini, Perplexity, AI Overviews) để so sánh trực quan Trước vs Sau khi tối ưu cùng LocalMate.
+  - `AiSearchPricingTable.tsx`: Bảng 3 gói giá minh bạch (Khởi Động 2.9tr, Phủ Vùng 4.9tr, Toàn Diện 7.9tr) kèm bảng đối chiếu đối lập trực diện với Agency truyền thống / FastMarketing.
+- **Hạ Tầng Dữ Liệu & Routing**:
+  - `servicesData.ts`: Bổ sung 4 dịch vụ đầy đủ 7 câu hỏi định vị khách hàng và alias mapping.
+  - `App.tsx`: Định tuyến hoàn chỉnh các đường dẫn `/dich-vu/geo`, `/dich-vu/aeo`, `/dich-vu/seo-ai`, `/dich-vu/seo-chatgpt`.
+  - `Header.tsx` & `Footer.tsx`: Cập nhật liên kết trong Mega Menu, Mobile Drawer và Cột Dịch Vụ chân trang.
+- **Tiêu Chuẩn Thiết Kế & Kiểm Thử**:
+  - 100% Light Mode sáng sủa, nền sáng chữ đậm, tương phản cao, tuyệt đối không glassmorphism.
+  - Build pass 100% (`npm run build`).
+
 ---
 
 ## 3. Production Readiness & Ads Launch Sprint (Current SSOT)
@@ -187,3 +240,117 @@
   - Tự động cộng khoảng đệm an toàn `padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px)) !important;` cho thẻ `body` trên mobile, triệt tiêu hoàn toàn lỗi che khuất chân trang (footer) hoặc nút tương tác dưới cùng.
 - **Kiểm thử nghiệm thu**: `npm run build` pass 100% không lỗi (Vite build thành công trong ~7.3s).
 
+## 12. Market Mapping & Comparative Positioning: FastMarketing vs LocalMate
+- **Nghiên cứu & Đối chiếu thực tế từ FastMarketing (https://fastmarketing.com.vn/)**:
+  - *Agency lớn / Tập trung doanh nghiệp lớn*: Pitching bằng slide deck 2026 hoành tráng, dùng thuật ngữ đao to búa lớn (GEO, AEO, Entity AI, Search Generative Experience, Full-funnel, SGE...), mức giá rất cao từ 15 – 50 triệu/tháng (chưa tính ngân sách chạy Ads).
+  - *Nỗi đau của chủ tiệm / SMB*: Bị ép ký hợp đồng dài hạn, sale chốt xong đẩy qua intern/fresher làm qua loa gián tiếp, hết hợp đồng bị phủi tay hoặc tính phí sửa chữa cắt cổ, bị giam lỏng tài khoản (hosting, domain, Google Maps), bắt cọc 50-100% rủi ro cao.
+- **Xây dựng component đối chiếu minh bạch `src/components/sections/MarketComparisonSection.tsx`**:
+  - Bảng đối chiếu 6 khía cạnh sống còn của chủ tiệm & hộ kinh doanh SMB:
+    1. **Chi phí đầu tư**: Agency lớn (15 – 50tr/tháng, hợp đồng dài hạn, phụ phí phát sinh) vs LocalMate (Chỉ từ 490k – 2.9tr trọn gói, giá từ gốc, 0đ phụ phí ẩn).
+    2. **Người triển khai**: Agency lớn (Sale chốt xong đẩy qua intern/fresher, ticket chờ cả tuần) vs LocalMate (Kỹ thuật viên địa phương hỗ trợ 1-1 tại chỗ, ghé tận quán, Zalo 15-30 phút).
+    3. **Trách nhiệm sau bàn giao**: Agency lớn (Hết hợp đồng là phủi tay, bỏ rơi web) vs LocalMate (Người đồng hành số địa phương, cam kết bảo hành kỹ thuật lên đến 5 NĂM).
+    4. **Quyền sở hữu tài sản**: Agency lớn (Giữ tài khoản, giam con tin kỹ thuật) vs LocalMate (Bàn giao 100% tài khoản chính chủ bằng CCCD & Gmail của khách).
+    5. **Ngôn ngữ & Tư vấn**: Agency lớn (Nói thuật ngữ công nghệ phức tạp, báo cáo số liệu ảo) vs LocalMate (Nói tiếng bình dân, chỉ rõ khách gọi điện từ đâu, tăng đơn ra sao).
+    6. **Rủi ro thanh toán**: Agency lớn (Bắt cọc 50-100% mới làm, rủi ro khách chịu) vs LocalMate (Dựng Demo xem thử 0đ, nghiệm thu hài lòng 100% mới thanh toán).
+  - **Thiết kế UI/UX**:
+    - Chuẩn Light Mode, không glassmorphism, tương phản cao, nền sáng chữ đậm (`#0f172a`, `#111827`), xanh thương hiệu `#0d7647`.
+    - Dải 4 thẻ tóm tắt nổi bật (Quick Stats Summary).
+    - Bộ lọc tab theo từng khía cạnh so sánh.
+    - Bố cục lưới 3 cột desktop + tự động thích ứng 1 cột trên mobile không tràn viền ngang (zero horizontal overflow).
+    - Hộp kêu gọi hành động với cam kết xem trước Demo 0đ và nút gặp KTV tại chỗ 1-1.
+- **Tích hợp thực tế**:
+  - Trang chủ `src/pages/HomePage.tsx`: Vị trí đắc địa ngay trước `PricingMatrixSection` để giải tỏa triệt để băn khoăn về giá và giá trị của khách hàng.
+  - Trang giải pháp `src/pages/SolutionsPage.tsx`: Củng cố lý do tại sao các ngành nghề nên chọn LocalMate thay vì thuê agency trung tâm đắt đỏ.
+- **Nghiệm thu**: Build pass 100% không lỗi (Vite build thành công trong 5.43s).
+
+---
+
+## 13. Xây Dựng & Chuẩn Hóa Cụm Dịch Vụ Chạy Khách & Chăm Sóc Vận Hành (Học Hỏi Từ FastMarketing)
+- **Bối cảnh & Nghiên cứu thị trường**:
+  - Học hỏi thế mạnh chuyên môn thực chiến của FastMarketing tại Việt Nam: chuyên chạy Google Ads địa phương, gỡ lỗi tài khoản vi phạm chính sách cho các ngành sửa chữa nhạy cảm (sửa điện thoại, laptop, máy lạnh, cứu hộ khóa...), Facebook Ads bán kính quanh tiệm và chăm sóc website định kỳ.
+  - Chuẩn hóa theo triết lý LocalMate: Bình dân, thực tế, 0% kê giá ăn chênh lệch, 100% tài khoản chính chủ của khách, bảo hành kỹ thuật lên đến 5 năm, giao diện 100% Light mode, không glassmorphism.
+- **4 Dịch Vụ Cốt Lõi Được Chuẩn Hóa Toàn Diện**:
+  1. **Google Ads Địa Phương (`google-ads-dia-phuong`)**:
+     - Tìm kiếm khách có nhu cầu mua thực tế quanh bán kính 3–10km quanh tiệm.
+     - **0% phí chênh lệch**: Khách hàng tự nạp tiền cho Google bằng thẻ Visa/Mastercard cá nhân/công ty, sao kê trừ bao nhiêu trả bấy nhiêu. LocalMate chỉ thu phí kỹ thuật cài đặt (từ 390k) hoặc tối ưu hàng tháng (từ 690k).
+     - **100% tài khoản chính chủ**: Khách giữ quyền Admin cao nhất, sở hữu trọn đời lịch sử tìm kiếm và tệp khách.
+     - Chặn 200+ từ khóa rác, cài nút gọi Hotline 1 chạm và đo lường chuyển đổi chuẩn xác qua GA4/GTM.
+  2. **Khắc Phục Lỗi Ads Ngành Sửa Chữa (`khac-phuc-loi-google-ads-sua-chua`)**:
+     - Chuyên trị các ca khó cho thợ sửa điện thoại (iPhone/Android), ép kính, sửa laptop (Macbook/Dell/ThinkPad), điện lạnh (máy lạnh, tủ lạnh, máy giặt), sửa khóa.
+     - Xử lý triệt để chính sách Google: "Dịch vụ kỹ thuật bên thứ ba", "Mạo danh nhãn hiệu", "Tránh né hệ thống".
+     - Quy trình chính ngạch: Sửa trang đích bổ sung Independent Disclaimer, gỡ bỏ logo vi phạm Trademark, công khai thông tin pháp nhân & bảng giá, soạn hồ sơ giải trình song ngữ kèm ĐKKD/hợp đồng thuê tiệm và thiết lập tài khoản whitelist an toàn.
+     - Đánh giá hồ sơ 0đ trước khi nhận việc, không mở khóa được hoàn tiền 100%. Giá từ 1.290.000đ/lần.
+  3. **Facebook Ads Địa Phương (`facebook-ads-dia-phuong`)**:
+     - Cắm mốc GPS tại địa chỉ tiệm, quét bán kính 1km – 5km quanh tiệm (loại bỏ hoàn toàn đối tượng ở tỉnh xa).
+     - Thiết kế banner & bài viết từ ảnh thật tại quán, kích thích cư dân lân cận nhắn tin đặt lịch hoặc ghé trải nghiệm trực tiếp.
+     - Cài kịch bản FAQ tin nhắn tự động (Quick Replies) hỏi số điện thoại và báo giá tức thì.
+     - Giá từ 490k setup, chăm sóc 790k/tháng.
+  4. **Chăm Sóc Website Chuẩn SEO & Vận Hành (`cham-soc-website-chuan-seo`)**:
+     - Đóng vai trò phòng IT & Content thuê ngoài: giám sát Uptime 24/7, gia hạn SSL, sao lưu (backup) cơ sở dữ liệu hàng tuần, tối ưu CDN Cloudflare < 1.2s.
+     - Nhận yêu cầu qua nhóm Zalo riêng 1-1, sửa đổi nội dung và đổi banner sau 15–30 phút.
+     - Biên tập 4–8 bài viết chuẩn SEO/tháng đưa website lên top Google bền vững.
+     - **Cam kết bảo hành kỹ thuật lên đến 5 NĂM** (duy nhất tại LocalMate). Giá từ 590k – 990k/tháng.
+- **Các Thành Phần Kỹ Thuật Đã Triển Khai**:
+  - `src/pages/OperationalCareClusterPage.tsx`: Trang landing chuyên sâu cho Cụm Dịch Vụ Chạy Khách & Vận Hành với Hero, Trust Bar, 4 Card dịch vụ chi tiết, bảng đối chiếu với Agency truyền thống, quy trình 4 bước và FAQ.
+  - `src/App.tsx`: Định tuyến `/dich-vu/chay-khach-cham-soc`, `/dich-vu/chay-khach-van-hanh`, `/chay-khach-van-hanh`, `/chay-khach-cham-soc`.
+  - `src/data/servicesData.ts`: Bổ sung 4 ServiceEntity hoàn chỉnh với Problem, Outcome, Deliverables, Process, FAQs và bộ alias URLs toàn diện.
+  - `src/data/servicesCatalog.ts`: Cập nhật bảng giá niêm yết (dịch vụ 28, 29, 30, 31) và bổ sung cam kết bảo hành 5 năm vào `DIGITAL_CARE_TIERS`.
+  - `src/data/operationsData.ts`: Cập nhật aliases đồng bộ cho `ALL_15_SERVICES_DATA`.
+  - `src/pages/ServicesPage.tsx`: Thêm banner nổi bật điều hướng người dùng khám phá cụm dịch vụ chuyên sâu.
+  - `src/components/layout/Header.tsx`: Cập nhật mega menu bổ sung link trực tiếp tới Facebook Ads 5km và Cụm Chạy Khách & Vận Hành.
+- **Kiểm Thử Nghiệm Thu**:
+  - `npx tsc --noEmit` PASS 100% không lỗi.
+  - `npm run build` PASS 100% trong 5.83s (0 lỗi cú pháp, 0 lỗi TypeScript).
+
+
+## 13. Cụm Dịch Vụ Local Search, Google Maps & Technical (Chuẩn Hóa Từ FastMarketing Cho LocalMate)
+- **Học hỏi FastMarketing & Chuẩn hóa cho LocalMate**:
+  1. **Dịch vụ Google Maps**: Xác minh GPS chính chủ 100% bằng Gmail của khách (Primary Owner), thiết lập khiên bảo vệ chống đối thủ chơi xấu cướp Maps hoặc đổi số điện thoại lén, tặng kèm bộ ấn phẩm mã QR Review 5 sao để bàn chuẩn file in vector, cam kết bảo hành kỹ thuật lên đến 5 năm (giá gốc từ 299k).
+  2. **Dịch vụ SEO Tổng Thể Địa Phương**: Phủ sóng bán kính 3–10km xung quanh điểm bán, tối ưu 100% cụm từ khóa có dấu & không dấu (ví dụ: "sua xe gan day", "nha khoa uy tin q7"), phủ 25+ trích dẫn địa phương Local Citations kéo khách ghé tiệm và gọi hotline liên tục (từ 390k).
+  3. **Dịch vụ Tối Ưu Tốc Độ Web**: Cam kết điểm Google PageSpeed Insights 90+ trên cả Mobile & Desktop, tốc độ mở trang dưới 1s trên mạng lưới biên Cloudflare Edge CDN toàn cầu, nén ảnh WebP/AVIF lossless, Zero CLS (0.000), bảo hành tốc độ 5 năm (từ 299k).
+  4. **Dịch vụ Thực Thể Số (Entity & Schema)**: Cấu hình trọn bộ Schema JSON-LD LocalBusiness (GeoCoordinates, OpeningHours, PriceRange, SameAs) và đồng bộ NAP trên Knowledge Graph, giúp cả Google và AI (ChatGPT, Gemini) nhận diện thương hiệu độc nhất (từ 199k).
+  5. **Dịch vụ SEO Audit Hiện Trạng 0đ**: Khảo sát hiện trạng toàn diện 0đ miễn phí 100%, vạch trần điểm nghẽn chuyển đổi (tại sao có web/maps mà không có khách gọi), báo cáo sau 24h kèm lộ trình Quick-Win xử lý ngay.
+- **Trang Hub Chuyên Sâu Mới**: `src/pages/LocalSearchClusterPage.tsx` tại tuyến đường `/dich-vu/local-search` (hỗ trợ các alias `/dich-vu/google-maps-seo`, `/local-search`).
+- **Tính năng tương tác độc đáo**:
+  - Tab navigator 5 dịch vụ trực quan, đầy đủ bài toán, giải pháp, bảng giá, quy trình 5 bước.
+  - Công cụ tự chẩn đoán sức khỏe số 0đ (Local Health Score Checker) cho phép chủ quán tích chọn triệu chứng và tính điểm nghẽn trực tiếp.
+  - Widget so sánh trực quan tốc độ Cloudflare Edge vs Hosting truyền thống.
+  - Mô hình Standee mã QR Review 5 sao để bàn cho quán ăn, spa, nha khoa.
+  - Bảng cam kết 4 KHÔNG & 4 CÓ của Người đồng hành số địa phương.
+- **Tích hợp hệ sinh thái**:
+  - Cập nhật 5 dịch vụ trong `src/data/servicesData.ts` và `src/data/servicesCatalog.ts`.
+  - Header Mega Menu gắn liên kết trực tiếp tới Cụm Local Search và các dịch vụ thành phần.
+  - ServicesPage gắn banner nổi bật cho Cụm Local Search bên cạnh Cụm Vận Hành.
+- **Nghiệm thu**: Build pass 100% không lỗi (`npm run build` hoàn tất sạch sẽ).
+## 14. Catalog Hub & Dynamic Service Router Integration (15 Dịch Vụ Chuẩn Hóa)
+- **Tập hợp 15 dịch vụ tiêu chuẩn trong `src/data/operationsData.ts`**:
+  1. `geo`: Dịch vụ GEO — Tối ưu đề xuất AI (ChatGPT & Gemini) (2.9tr/th)
+  2. `aeo`: Dịch vụ AEO — Tối ưu câu trả lời AI Search (2.49tr/th)
+  3. `seo-ai`: Dịch vụ SEO AI — Google AI Overviews 2026 (2.9tr/th)
+  4. `seo-chatgpt`: Dịch vụ SEO ChatGPT & SearchGPT (2.49tr/th)
+  5. `thiet-ke-website`: Thiết Kế Website Chuyên Nghiệp Tốc Độ < 1s (từ 490k)
+  6. `seo-tong-the`: Dịch vụ SEO Tổng Thể Địa Phương (1.99tr/th)
+  7. `google-maps`: Dịch vụ Google Maps Xác Minh GPS Chính Chủ & Top 3-Pack (từ 299k)
+  8. `toi-uu-toc-do-web`: Tối Ưu Tốc Độ Web PageSpeed > 90 (490k)
+  9. `dich-vu-entity`: Dịch vụ Entity Xây Dựng Thực Thể Số (1.49tr)
+  10. `seo-audit`: Dịch vụ SEO Audit Website Khảo Sát 0đ (0đ - 990k)
+  11. `google-ads`: Dịch vụ Quảng Cáo Google Ads 0% Kê Giá (từ 390k)
+  12. `khac-phuc-loi-google-ads`: Khắc Phục Lỗi Ads Sửa Chữa Điện Thoại/Laptop/Điện Lạnh (990k)
+  13. `facebook-ads`: Dịch vụ Quảng Cáo Facebook Ads Quanh Bán Kính Điểm Bán (từ 490k)
+  14. `cham-soc-website`: Dịch Vụ Chăm Sóc & Vận Hành Web Bảo Hành 5 Năm (990k/th)
+  15. `khoa-hoc-geo-ai`: Khóa Đào Tạo Chuyển Giao GEO & AI Thực Chiến (1.99tr)
+- **Đặc trưng cấu trúc**:
+  - Khai báo kiểu TypeScript rõ ràng (`OperationServiceItem`), mỗi dịch vụ gồm slug, tên, icon, badge, giá gốc minh bạch, cam kết bảo hành lên đến 5 năm, 3 deliverables chính, danh sách deliverables cụ thể, đối tượng phù hợp/chưa phù hợp, quy trình 5 bước và FAQs thực tế.
+  - Cung cấp hàm tra cứu `getAllOperationServices()` và `getOperationServiceBySlug(slug)` hỗ trợ hệ thống alias đa dạng (`geo-local`, `dich-vu-geo`, `thiet-ke-web`, `google-ads`, v.v.).
+- **Tối ưu Catalog Hub `src/pages/ServicesPage.tsx`**:
+  - Giao diện Light Mode sáng sủa, thanh tìm kiếm Search Bar thời gian thực và 6 tab phân loại danh mục.
+  - Hiển thị 15 thẻ Card tiêu chuẩn với badge, giá to rõ, pill bảo hành 5 năm, 3 deliverables checkmark và link điều hướng mượt mà đến `/dich-vu/:slug`.
+  - Tích hợp `Warranty5YearSection` và `PricingMatrixSection` (bảng giá 41 dịch vụ chi tiết).
+- **Master Dynamic Template `src/pages/ServiceDetailPage.tsx`**:
+  - Phân giải dịch vụ kết hợp `getOperationServiceBySlug` và `getServiceBySlug`, tương thích 100% với 15 dịch vụ chuẩn hóa và các slug chuyên biệt.
+  - Hiển thị thông tin toàn diện: Hero với bảo hành 5 năm, 4 giá trị niềm tin, Vấn đề & Cam kết giải pháp, Danh sách sản phẩm bàn giao, Quy trình 5 bước, Yêu cầu chuẩn bị, FAQs, Dịch vụ liên quan gợi ý chéo và CTA Footer.
+- **Điều hướng Header & Footer đồng bộ**:
+  - Header Mega Menu 3 cột phân loại logic và Mobile Drawer có danh sách dịch vụ nhanh + liên kết "Xem tất cả 15 dịch vụ & bảng giá".
+  - Footer Cột 2 liên kết trực tiếp tới các dịch vụ trọng điểm.
+- **Nghiệm thu**:
+  - `npm run build` PASS 100% không lỗi (build xong trong ~3.9s).

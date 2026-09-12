@@ -145,6 +145,31 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/dich-vu/geo" className="nav-item-link">
+                  <ArrowRight size={13} className="nav-arrow" />
+                  <span>Dịch vụ GEO — Đề xuất AI</span>
+                  <span className="hot-tag">Mới</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/dich-vu/aeo" className="nav-item-link">
+                  <ArrowRight size={13} className="nav-arrow" />
+                  <span>Dịch vụ AEO — Trích dẫn AI</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/dich-vu/seo-ai" className="nav-item-link">
+                  <ArrowRight size={13} className="nav-arrow" />
+                  <span>SEO Google AI Overviews</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/dich-vu/seo-chatgpt" className="nav-item-link">
+                  <ArrowRight size={13} className="nav-arrow" />
+                  <span>SEO Đề xuất ChatGPT</span>
+                </Link>
+              </li>
+              <li>
                 <Link to="/dich-vu/google-maps" className="nav-item-link">
                   <ArrowRight size={13} className="nav-arrow" />
                   <span>Đưa tiệm lên Google Maps</span>
@@ -153,25 +178,25 @@ export const Footer: React.FC = () => {
               <li>
                 <Link to="/dich-vu/google-ads" className="nav-item-link">
                   <ArrowRight size={13} className="nav-arrow" />
-                  <span>Quảng cáo Google Ads ra số</span>
+                  <span>Quảng cáo Google Ads 0% kê giá</span>
                 </Link>
               </li>
               <li>
-                <Link to="/dich-vu/content-marketing" className="nav-item-link">
+                <Link to="/dich-vu/khac-phuc-loi-google-ads" className="nav-item-link">
                   <ArrowRight size={13} className="nav-arrow" />
-                  <span>Chăm sóc Fanpage từ 990k/tháng</span>
+                  <span>Khắc phục lỗi Ads sửa chữa</span>
                 </Link>
               </li>
               <li>
-                <Link to="/dich-vu/website-landing-page" className="nav-item-link">
+                <Link to="/dich-vu/cham-soc-website" className="nav-item-link">
                   <ArrowRight size={13} className="nav-arrow" />
-                  <span>Website doanh nghiệp SME trọn gói</span>
+                  <span>Chăm sóc Web bảo hành 5 năm</span>
                 </Link>
               </li>
               <li>
-                <Link to="/bang-gia" className="nav-item-link highlight-menu-link">
+                <Link to="/dich-vu" className="nav-item-link highlight-menu-link">
                   <ArrowRight size={13} className="nav-arrow" />
-                  <span>Bảng giá niêm yết công khai →</span>
+                  <span>Xem tất cả 15 dịch vụ &amp; báo giá →</span>
                 </Link>
               </li>
             </ul>
