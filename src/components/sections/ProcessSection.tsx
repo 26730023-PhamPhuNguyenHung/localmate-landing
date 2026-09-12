@@ -1,439 +1,230 @@
 import React from 'react';
 import { Container } from '../ui/Container';
-import { SectionHeader } from '../ui/SectionHeader';
-import {
-  MessageSquareQuote,
-  Smartphone,
-  Receipt,
-  Gauge,
-  KeyRound,
-  CheckCircle2,
-  ChevronRight,
-  Sparkles
-} from 'lucide-react';
-import { OPERATIONAL_STEPS_DATA } from '../../data/operationsData';
+import { Sparkles, CheckCircle2 } from 'lucide-react';
 
 export const ProcessSection: React.FC = () => {
-  const stepIcons = [
-    <MessageSquareQuote key="1" size={18} aria-hidden="true" />,
-    <Smartphone key="2" size={18} aria-hidden="true" />,
-    <Receipt key="3" size={18} aria-hidden="true" />,
-    <Gauge key="4" size={18} aria-hidden="true" />,
-    <KeyRound key="5" size={18} aria-hidden="true" />
+  const steps = [
+    {
+      num: '01',
+      title: 'Hiểu việc cần làm',
+      lead: 'Lắng nghe nhu cầu thực tế',
+      desc: 'Trao đổi qua Zalo hoặc gặp trực tiếp tại địa phương. LocalMate làm rõ tiệm cần website bán hàng, vị trí Google Maps hay quảng cáo ra số — tuyệt đối không vẽ thêm tính năng thừa.',
+      deliverable: 'Bản phân tích nhu cầu 0đ'
+    },
+    {
+      num: '02',
+      title: 'Chốt phạm vi & giá',
+      lead: 'Báo giá cố định trọn gói',
+      desc: 'Báo giá minh bạch kèm phạm vi công việc chi tiết. Dựng bản demo xem trước 0đ chạy trực tiếp trên điện thoại của bạn để kiểm chứng giao diện trước khi quyết định.',
+      deliverable: 'Xem demo chạy thử 0đ'
+    },
+    {
+      num: '03',
+      title: 'Triển khai & Kiểm thử',
+      lead: 'Kỷ luật kỹ thuật chuẩn mực',
+      desc: 'Thiết kế giao diện sắc nét, tối ưu tốc độ tải trang dưới 1.5s, cài đặt nút gọi hotline & chat Zalo 1 chạm, xác minh vị trí cửa hàng trên Google Maps.',
+      deliverable: 'PageSpeed 95+ & Mobile Ready'
+    },
+    {
+      num: '04',
+      title: 'Bàn giao & Hỗ trợ',
+      lead: 'Bạn làm chủ 100% tài khoản',
+      desc: 'Bàn giao quyền quản trị tối cao (tên miền, máy chủ, Google Maps) vào Gmail của bạn. Video 2 phút hướng dẫn tự sửa nội dung và KTV địa phương đồng hành 24/7.',
+      deliverable: 'Nghiệm thu ưng ý mới thanh toán'
+    }
   ];
 
   return (
-    <section className="process-section" id="quy-trinh" aria-label="Cách Localmate làm việc">
-      <Container size="lg">
-        <SectionHeader
-          eyebrow="QUY TRÌNH MINH BẠCH 5 BƯỚC"
-          title="Cách Localmate làm việc cùng bạn"
-          subtitle="Trải nghiệm web demo 0đ trước ngay trên điện thoại. Hài lòng từng tính năng mới tiến hành, nghiệm thu 100% mới thanh toán."
-        />
-
-        {/* Timeline Flow: Horizontal on Desktop, Vertical Stepper on Mobile */}
-        <div className="process-flow-wrapper">
-          <ol className="process-pipeline-list" aria-label="5 bước triển khai">
-            {OPERATIONAL_STEPS_DATA.map((step, idx) => {
-              const isLast = idx === OPERATIONAL_STEPS_DATA.length - 1;
-              const stepNumber = step.step;
-
-              return (
-                <li
-                  key={step.step}
-                  className={`process-step-item ${isLast ? 'step-item-final' : ''}`}
-                >
-                  {/* Stepper Node (Timeline Tracker) */}
-                  <div className="step-tracker-header">
-                    <div className={`step-badge-node ${isLast ? 'badge-node-final' : ''}`}>
-                      <span className="step-num-text">{stepNumber}</span>
-                    </div>
-
-                    {/* Desktop Connector Line */}
-                    {!isLast && (
-                      <div className="step-connector-desktop" aria-hidden="true">
-                        <span className="connector-line-fill" />
-                        <ChevronRight size={15} className="connector-arrow-icon" />
-                      </div>
-                    )}
-
-                    {/* Mobile Connector Spine Line */}
-                    {!isLast && (
-                      <div className="step-connector-mobile-spine" aria-hidden="true" />
-                    )}
-                  </div>
-
-                  {/* Step Card Box */}
-                  <div className={`step-content-card ${isLast ? 'card-final-highlight' : ''}`}>
-                    <div className="card-header-bar">
-                      <div className={`step-icon-bubble ${isLast ? 'icon-bubble-final' : ''}`}>
-                        {stepIcons[idx]}
-                      </div>
-                      <span className="step-badge-code">
-                        BƯỚC {stepNumber}
-                        {isLast && <span className="final-tag">BÀN GIAO</span>}
-                      </span>
-                    </div>
-
-                    <h3 className="step-card-title">{step.title}</h3>
-                    <h4 className="step-card-subtitle">{step.subtitle}</h4>
-                    <p className="step-card-desc">{step.description}</p>
-
-                    <div className="step-card-footer">
-                      <div className="step-evidence-pill">
-                        <CheckCircle2 size={13} className="pill-check-icon" aria-hidden="true" />
-                        <span>{step.evidence}</span>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              );
-            })}
-          </ol>
+    <section className="section-component process-story-section" id="quy-trinh" aria-label="Cách LocalMate làm việc">
+      <Container>
+        <div className="section-header">
+          <span className="section-eyebrow">
+            <Sparkles size={14} /> QUY TRÌNH MINH BẠCH 4 BƯỚC
+          </span>
+          <h2>Cách LocalMate làm việc cùng bạn</h2>
+          <p className="subtitle">
+            Không mập mờ, không giam tài khoản, không chi phí phát sinh. Mọi giai đoạn triển khai đều được kiểm chứng và nghiệm thu thực tế.
+          </p>
         </div>
 
-        {/* Trust Callout Banner */}
-        <div className="process-trust-banner">
-          <div className="trust-banner-badge">
-            <Sparkles size={16} className="trust-sparkle-icon" aria-hidden="true" />
-            <span>CAM KẾT 3 KHÔNG TẠI LOCALMATE</span>
+        {/* 4-Step Horizontal Process on Desktop, Vertical Timeline on Mobile */}
+        <div className="process-timeline-track">
+          <div className="process-line-connector" aria-hidden="true" />
+          
+          <div className="process-steps-grid">
+            {steps.map((step) => (
+              <div key={step.num} className="process-step-column">
+                <div className="process-step-node">
+                  <span className="process-step-number">{step.num}</span>
+                </div>
+
+                <div className="process-step-body">
+                  <div className="process-step-lead-badge">{step.lead}</div>
+                  <h3 className="process-step-title">{step.title}</h3>
+                  <p className="process-step-desc">{step.desc}</p>
+                  
+                  <div className="process-step-deliverable">
+                    <CheckCircle2 size={15} className="step-check-icon" />
+                    <span>{step.deliverable}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
-          <p className="trust-banner-text">
-            <strong>Không bắt buộc biết kỹ thuật</strong> — <strong>Không phát sinh phụ phí ẩn</strong> — <strong>Không giữ tài khoản của khách hàng</strong>. Nghiệm thu hài lòng 100% mới thanh toán.
-          </p>
+        </div>
+
+        {/* Reassurance Footer Banner */}
+        <div className="process-reassurance-banner">
+          <div className="reassurance-text">
+            <strong>Cam kết thanh toán:</strong> Bạn luôn được xem trước demo trên điện thoại, nghiệm thu hài lòng từng tính năng mới tiến hành thanh toán.
+          </div>
         </div>
       </Container>
 
       <style>{`
-        .process-section {
-          padding: clamp(3.5rem, 5.5vw, 5.5rem) 0;
-          background-color: #fbfcfb;
-          border-bottom: 1px solid #e5e7eb;
+        .process-story-section {
+          background-color: var(--color-surface);
+          border-bottom: 1px solid var(--color-border);
+        }
+
+        .process-timeline-track {
           position: relative;
+          margin-top: clamp(2rem, 3.5vw, 3.5rem);
+          margin-bottom: clamp(2.5rem, 4vw, 4rem);
         }
 
-        .process-flow-wrapper {
-          margin-bottom: 2.75rem;
-          position: relative;
-        }
-
-        .process-pipeline-list {
-          list-style: none;
-          padding: 0;
-          margin: 0;
-          display: flex;
-          flex-direction: column;
-          gap: 1.25rem;
-          position: relative;
-        }
-
-        /* Responsive Desktop: Horizontal Timeline */
-        @media (min-width: 1024px) {
-          .process-pipeline-list {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 1rem;
-            align-items: stretch;
-          }
-        }
-
-        .process-step-item {
-          display: flex;
-          flex-direction: row;
-          gap: 1rem;
-          position: relative;
-        }
-
-        @media (min-width: 1024px) {
-          .process-step-item {
-            flex-direction: column;
-            gap: 0.85rem;
-          }
-        }
-
-        /* Stepper Node & Connector */
-        .step-tracker-header {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          flex-shrink: 0;
-          position: relative;
-        }
-
-        @media (min-width: 1024px) {
-          .step-tracker-header {
-            flex-direction: row;
-            width: 100%;
-            margin-bottom: 0.25rem;
-          }
-        }
-
-        .step-badge-node {
-          width: 38px;
-          height: 38px;
-          border-radius: 50%;
-          background-color: #ffffff;
-          border: 2px solid var(--color-primary);
-          color: var(--color-primary);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-weight: 800;
-          font-size: 0.95rem;
-          box-shadow: 0 2px 8px rgba(13, 118, 71, 0.12);
-          z-index: 2;
-          flex-shrink: 0;
-          transition: transform 0.2s ease, background-color 0.2s ease;
-        }
-
-        .step-step-item:hover .step-badge-node {
-          transform: scale(1.06);
-        }
-
-        .badge-node-final {
-          background-color: var(--color-primary);
-          color: #ffffff;
-          border-color: var(--color-primary-dark);
-          box-shadow: 0 4px 12px rgba(13, 118, 71, 0.28);
-        }
-
-        /* Desktop horizontal connector */
-        .step-connector-desktop {
+        .process-line-connector {
           display: none;
         }
 
         @media (min-width: 1024px) {
-          .step-connector-desktop {
-            display: flex;
-            align-items: center;
-            flex: 1;
-            margin: 0 0.35rem;
-            position: relative;
-          }
-
-          .connector-line-fill {
-            flex: 1;
+          .process-line-connector {
+            display: block;
+            position: absolute;
+            top: 28px;
+            left: 5%;
+            right: 5%;
             height: 2px;
-            background: linear-gradient(90deg, #86efac 0%, #bbf7d0 100%);
-            border-radius: 2px;
-          }
-
-          .connector-arrow-icon {
-            color: var(--color-primary);
-            margin-left: -2px;
-            opacity: 0.75;
+            background: linear-gradient(90deg, var(--color-primary-border) 0%, var(--color-primary) 50%, var(--color-primary-border) 100%);
+            z-index: 1;
           }
         }
 
-        /* Mobile vertical connector spine */
-        .step-connector-mobile-spine {
-          display: block;
-          width: 2px;
-          flex: 1;
-          background: linear-gradient(180deg, #86efac 0%, #dcfce7 100%);
-          margin-top: 0.35rem;
-          margin-bottom: -0.35rem;
-          border-radius: 2px;
+        .process-steps-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 2rem;
+          position: relative;
+          z-index: 2;
+        }
+
+        @media (min-width: 640px) and (max-width: 1023px) {
+          .process-steps-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem 1.5rem;
+          }
         }
 
         @media (min-width: 1024px) {
-          .step-connector-mobile-spine {
-            display: none;
+          .process-steps-grid {
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
           }
         }
 
-        /* Step Card */
-        .step-content-card {
-          flex: 1;
-          background-color: #ffffff;
-          border: 1px solid #e5e7eb;
-          border-radius: 14px;
-          padding: 1.25rem 1.15rem;
+        .process-step-column {
           display: flex;
           flex-direction: column;
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
-          transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+          align-items: flex-start;
+          position: relative;
         }
 
-        .step-content-card:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 8px 18px rgba(13, 118, 71, 0.07);
-          border-color: #86efac;
-        }
-
-        .card-final-highlight {
-          background: linear-gradient(180deg, #ffffff 0%, #f6fcf8 100%);
+        .process-step-node {
+          width: 56px;
+          height: 56px;
+          border-radius: var(--radius-full);
+          background-color: #ffffff;
           border: 2px solid var(--color-primary);
-          box-shadow: 0 3px 12px rgba(13, 118, 71, 0.1);
-        }
-
-        .card-final-highlight:hover {
-          border-color: var(--color-primary);
-          box-shadow: 0 8px 22px rgba(13, 118, 71, 0.15);
-        }
-
-        /* Card Header Bar */
-        .card-header-bar {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          margin-bottom: 0.75rem;
-        }
-
-        .step-icon-bubble {
-          width: 34px;
-          height: 34px;
-          border-radius: 9px;
-          background-color: var(--color-primary-soft);
-          color: var(--color-primary-dark);
-          border: 1px solid var(--color-primary-border);
+          box-shadow: 0 0 0 4px var(--color-primary-soft);
           display: flex;
           align-items: center;
           justify-content: center;
+          margin-bottom: 1.5rem;
           flex-shrink: 0;
         }
 
-        .icon-bubble-final {
-          background-color: var(--color-primary);
-          color: #ffffff;
-          border-color: var(--color-primary-dark);
-        }
-
-        .step-badge-code {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.35rem;
-          font-size: 0.725rem;
-          font-weight: 800;
-          letter-spacing: 0.05em;
-          color: #64748b;
-        }
-
-        .final-tag {
-          font-size: 0.65rem;
+        .process-step-number {
+          font-size: 1.25rem;
           font-weight: 800;
           color: var(--color-primary-dark);
-          background-color: #dcfce7;
-          padding: 0.15rem 0.4rem;
-          border-radius: 4px;
-          letter-spacing: 0.02em;
+          font-variant-numeric: tabular-nums;
         }
 
-        /* Card Typography */
-        .step-card-title {
-          font-size: 1.05rem;
-          font-weight: 800;
-          color: var(--color-navy);
-          line-height: 1.35;
-          margin: 0 0 0.35rem 0;
-          letter-spacing: -0.01em;
-          text-wrap: balance;
-        }
-
-        .step-card-subtitle {
-          font-size: 0.8rem;
-          font-weight: 700;
-          color: var(--color-primary-dark);
-          line-height: 1.45;
-          margin: 0 0 0.65rem 0;
-          text-wrap: pretty;
-        }
-
-        .step-card-desc {
-          font-size: 0.835rem;
-          color: var(--color-text-muted);
-          line-height: 1.55;
-          margin: 0 0 1rem 0;
-          text-wrap: pretty;
-          flex: 1;
-        }
-
-        /* Footer & Evidence Pill */
-        .step-card-footer {
-          margin-top: auto;
-        }
-
-        .step-evidence-pill {
-          font-size: 0.75rem;
-          font-weight: 600;
-          color: #334155;
-          background-color: #f8fafc;
-          border: 1px solid #e2e8f0;
-          border-left: 3px solid var(--color-primary);
-          padding: 0.4rem 0.65rem;
-          border-radius: 6px;
-          line-height: 1.4;
-          display: flex;
-          align-items: flex-start;
-          gap: 0.4rem;
-          text-wrap: pretty;
-        }
-
-        .pill-check-icon {
-          color: var(--color-primary);
-          flex-shrink: 0;
-          margin-top: 2px;
-        }
-
-        /* Trust Banner Callout */
-        .process-trust-banner {
-          max-width: 860px;
-          margin: 0 auto;
-          background-color: #ffffff;
-          border: 1px solid #bbf7d0;
-          border-radius: 14px;
-          padding: 1.15rem 1.75rem;
+        .process-step-body {
           display: flex;
           flex-direction: column;
-          align-items: center;
-          text-align: center;
-          gap: 0.65rem;
-          box-shadow: 0 2px 8px rgba(13, 118, 71, 0.05);
+          gap: 0.5rem;
         }
 
-        @media (min-width: 640px) {
-          .process-trust-banner {
-            border-radius: 999px;
-            padding: 0.95rem 2rem;
-            flex-direction: row;
-            text-align: left;
-            gap: 1.15rem;
-          }
+        .process-step-lead-badge {
+          font-size: 0.8125rem;
+          font-weight: 600;
+          color: var(--color-primary);
+          text-transform: uppercase;
+          letter-spacing: 0.04em;
         }
 
-        .trust-banner-badge {
+        .process-step-title {
+          font-size: 1.25rem;
+          font-weight: 700;
+          color: var(--ink);
+          margin: 0;
+          line-height: 1.25;
+        }
+
+        .process-step-desc {
+          font-size: 0.9375rem;
+          color: var(--ink-soft);
+          line-height: 1.6;
+          margin: 0.25rem 0 0.75rem 0;
+        }
+
+        .process-step-deliverable {
           display: inline-flex;
           align-items: center;
-          gap: 0.4rem;
-          background-color: #f0fdf4;
-          border: 1px solid #bbf7d0;
+          gap: 0.45rem;
+          font-size: 0.8125rem;
+          font-weight: 600;
           color: var(--color-primary-dark);
-          font-size: 0.75rem;
-          font-weight: 800;
-          padding: 0.35rem 0.75rem;
-          border-radius: 999px;
-          white-space: nowrap;
-          flex-shrink: 0;
-          letter-spacing: 0.03em;
+          background-color: var(--color-primary-soft);
+          padding: 0.35rem 0.65rem;
+          border-radius: var(--radius-sm);
+          width: fit-content;
         }
 
-        .trust-sparkle-icon {
+        .step-check-icon {
           color: var(--color-primary);
+          flex-shrink: 0;
         }
 
-        .trust-banner-text {
-          font-size: 0.875rem;
-          color: var(--color-navy);
-          margin: 0;
-          line-height: 1.5;
-          text-wrap: pretty;
+        .process-reassurance-banner {
+          background-color: var(--color-surface-subtle);
+          border: 1px solid var(--color-border);
+          border-radius: var(--radius-lg);
+          padding: 1.25rem 1.75rem;
+          text-align: center;
+          font-size: var(--font-size-body);
+          color: var(--ink);
+          max-width: 860px;
+          margin: 0 auto;
         }
 
-        .trust-banner-text strong {
-          color: var(--color-navy);
-          font-weight: 700;
+        .reassurance-text strong {
+          color: var(--color-primary-dark);
         }
       `}</style>
     </section>
   );
 };
+
+export default ProcessSection;

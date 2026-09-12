@@ -142,16 +142,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </span>
             </div>
 
-            {/* H1 lớn: clamp(2.35rem, 3.8vw, 3.5rem), line-height: 1.12, letter-spacing: -0.03em */}
+            {/* H1 lớn: clamp(2.5rem, 4vw, 4rem), line-height: 1.08 */}
             <h1 className="hero-headline">
               Giúp doanh nghiệp nhỏ<br className="hero-desktop-br" />
               {' '}có website, lên Google<br className="hero-desktop-br" />
               {' '}và <span className="hero-highlight">tìm thêm khách.</span>
             </h1>
 
-            {/* Body text: 1.05rem, #475569, line-height: 1.62, max-width: 54ch */}
+            {/* Body text: 1.1rem, line-height: 1.62 */}
             <p className="hero-body">
-              Chọn đúng việc bạn cần — từ website, Google Maps đến quảng cáo và nội dung. Localmate triển khai nhanh, bàn giao rõ ràng và hỗ trợ sau khi hoàn thành.
+              Chọn đúng việc bạn cần — từ website bán hàng, định vị Google Maps đến chạy quảng cáo và chăm sóc nội dung. Báo giá cố định trước khi làm, dựng demo xem thử 0đ, nghiệm thu hài lòng mới thanh toán.
             </p>
 
             {/* CTA Buttons */}
@@ -163,7 +163,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 className="hero-btn-primary"
               >
                 <span>Nhận website demo 0đ</span>
-                <ArrowRight size={17} />
+                <ArrowRight size={18} />
               </Button>
 
               <Button
@@ -179,9 +179,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             {/* Micro-copy Desktop */}
             <div className="hero-microcopy hero-microcopy-desktop">
               <span className="microcopy-check">✓</span>
-              <span className="microcopy-text">Không cần ký hợp đồng</span>
+              <span className="microcopy-text">Dựng demo xem trước 0đ</span>
               <span className="microcopy-dot">•</span>
-              <span className="microcopy-text">Xem trước rồi quyết định</span>
+              <span className="microcopy-check">✓</span>
+              <span className="microcopy-text">Nghiệm thu mới thanh toán</span>
+              <span className="microcopy-dot">•</span>
+              <span className="microcopy-check">✓</span>
+              <span className="microcopy-text">100% tài khoản chính chủ</span>
             </div>
           </div>
 

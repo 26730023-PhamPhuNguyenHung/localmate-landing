@@ -3,11 +3,10 @@ import { SEOHead } from '../components/seo/SEOHead';
 import { HeroSection } from '../components/sections/HeroSection';
 import { TrustBar } from '../components/sections/TrustBar';
 import { ProblemMapperSection } from '../components/sections/ProblemMapperSection';
-import { ServiceCardsSection } from '../components/sections/ServiceCardsSection';
 import { ProcessSection } from '../components/sections/ProcessSection';
 import { PhilosophySection } from '../components/sections/PhilosophySection';
-import { DemoShowcaseSection } from '../components/sections/DemoShowcaseSection';
 import { PricingMatrixSection } from '../components/sections/PricingMatrixSection';
+import { DemoShowcaseSection } from '../components/sections/DemoShowcaseSection';
 import { TrustSection } from '../components/sections/TrustSection';
 import { KnowledgeHubSection } from '../components/sections/KnowledgeHubSection';
 import { FAQSection } from '../components/sections/FAQSection';
@@ -20,46 +19,43 @@ interface HomePageProps {
 export const HomePage: React.FC<HomePageProps> = ({ onOpenConsultForm }) => {
   return (
     <>
-      {/* 0. Dynamic SEO Meta for Homepage (Optimized for Customer Search Intent) */}
+      {/* 0. Dynamic SEO Meta for Homepage */}
       <SEOHead
         title="LocalMate | Người đồng hành số & Đội ngũ triển khai kỹ thuật tại địa phương"
-        description="LocalMate đồng hành số cùng doanh nghiệp, agency và đối tác SaaS: website 24h, tự động hóa quy trình, gom lead CRM và triển khai kỹ thuật tại địa phương. Báo giá minh bạch, nghiệm thu mới thanh toán."
+        description="LocalMate đồng hành số cùng doanh nghiệp và hộ kinh doanh: website bán hàng, định vị Google Maps và hỗ trợ kỹ thuật tại địa phương. Báo giá cố định, dựng demo xem thử 0đ, nghiệm thu mới thanh toán."
         canonicalPath="/"
       />
 
-      {/* 1. HERO (HeroSection) — Bạn tập trung bán hàng. LocalMate lo phần công nghệ. */}
+      {/* 1. HERO — Giúp doanh nghiệp nhỏ có website, lên Google và tìm thêm khách */}
       <HeroSection onOpenDemoForm={() => onOpenConsultForm && onOpenConsultForm('Tư vấn giải pháp LocalMate')} />
 
-      {/* 2. TRUST BAR (TrustBar 4 điểm nhẹ) — Minh bạch, thực tế, làm chủ tài khoản */}
+      {/* 2. TRUST STRIP — 4 Cam kết cốt lõi tối giản, không card */}
       <TrustBar />
 
-      {/* 3. “BẠN ĐANG CẦN VIỆC GÌ?” (ProblemMapperSection) — Chọn theo nhu cầu thực tế */}
+      {/* 3. DỊCH VỤ THEO NHU CẦU — Service Discovery Editorial Split 35/65 */}
       <ProblemMapperSection onSelectTask={(serviceName) => onOpenConsultForm && onOpenConsultForm(serviceName)} />
 
-      {/* 4. 4 DỊCH VỤ CHÍNH (ServiceCardsSection) — 4 Dịch vụ trọng điểm cho SME & Doanh nghiệp */}
-      <ServiceCardsSection onOpenLeadForm={(serviceName) => onOpenConsultForm && onOpenConsultForm(serviceName)} />
-
-      {/* 5. CÁCH LOCALMATE LÀM VIỆC (ProcessSection & PhilosophySection) — Quy trình 5 bước & Triết lý vận hành */}
+      {/* 4. CÁCH LOCALMATE LÀM VIỆC — Quy trình 4 bước kể chuyện minh bạch */}
       <ProcessSection />
+
+      {/* 5. VISUAL BREAK — Không cần mua thêm phần mềm đắt đỏ, tận dụng thứ đã có */}
       <PhilosophySection />
 
-      {/* 6. "XEM TRƯỚC THỨ BẠN SẼ NHẬN" (DemoShowcaseSection) — Build & Test công khai */}
-      <DemoShowcaseSection />
-
-      {/* 7. BẢNG GIÁ DỊCH VỤ (PricingMatrixSection) — Toàn bộ dịch vụ niêm yết công khai */}
+      {/* 6. BẢNG GIÁ NIÊM YẾT — Asymmetric 3-Package Layout + Drawer tra cứu 41 dịch vụ */}
       <PricingMatrixSection onOpenLeadForm={(srvName) => onOpenConsultForm && onOpenConsultForm(srvName || 'Tư vấn Bảng giá dịch vụ')} />
 
-      {/* 8. PHÁP NHÂN & CAM KẾT MINH BẠCH (TrustSection) — CÔNG TY TNHH LOCALMATE */}
+      {/* 7. XEM TRƯỚC BÀN GIAO — Demo Showcase kiểm chứng thực tế */}
+      <DemoShowcaseSection />
+
+      {/* 8. PHÁP NHÂN & BÀN GIAO MINH BẠCH — Công ty TNHH LocalMate & 5 thứ cầm tay */}
       <TrustSection />
 
-      {/* 9. KIẾN THỨC & FAQ (KnowledgeHubSection & FAQSection) — Hướng dẫn thực tế & Giải đáp thắc mắc */}
+      {/* 9. CẨM NANG & FAQ — Bố cục Tạp chí Editorial & Accordion tối giản */}
       <KnowledgeHubSection />
       <FAQSection onOpenDemoForm={() => onOpenConsultForm && onOpenConsultForm('Hỗ trợ trực tiếp 1-1')} />
 
-      {/* 10. CTA CUỐI TRANG (FinalCTASection) — Gửi yêu cầu triển khai kỹ thuật */}
+      {/* 10. FINAL CTA — Nền Dark Slate Navy & Form tinh gọn 3 trường */}
       <FinalCTASection />
-
-      {/* 11. FOOTER (Footer được render từ App.tsx bao bọc toàn bộ trang) */}
     </>
   );
 };

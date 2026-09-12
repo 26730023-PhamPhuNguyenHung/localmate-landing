@@ -1,94 +1,68 @@
 import React from 'react';
 import { Container } from '../ui/Container';
 import { KNOWLEDGE_ARTICLES } from '../../data/landingContent';
-import { BookOpen, ArrowRight, Clock, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { BookOpen, ArrowRight, Clock } from 'lucide-react';
 import { useRouter } from '../layout/Router';
 
 export const KnowledgeHubSection: React.FC = () => {
   const { navigate } = useRouter();
 
-  const getCategoryTheme = (category: string) => {
-    switch (category) {
-      case 'Google Maps':
-        return { bg: '#ecfdf5', text: '#065f46', border: '#a7f3d0' };
-      case 'Làm Website':
-        return { bg: '#eff6ff', text: '#1e40af', border: '#bfdbfe' };
-      case 'Bảo Mật Số':
-        return { bg: '#fffbeb', text: '#92400e', border: '#fde68a' };
-      case 'Quảng Cáo Google':
-        return { bg: '#f5f3ff', text: '#5b21b6', border: '#ddd6fe' };
-      default:
-        return { bg: '#f1f5f9', text: '#334155', border: '#e2e8f0' };
-    }
-  };
+  if (!KNOWLEDGE_ARTICLES || KNOWLEDGE_ARTICLES.length === 0) return null;
+
+  const featuredArticle = KNOWLEDGE_ARTICLES[0];
+  const sideArticles = KNOWLEDGE_ARTICLES.slice(1, 4);
 
   return (
-    <section
-      id="kien-thuc"
-      style={{
-        padding: 'clamp(3.5rem, 5vw, 5rem) 0',
-        backgroundColor: '#ffffff',
-        borderBottom: '1px solid var(--color-border)'
-      }}
-    >
-      <Container size="lg">
-        {/* Section Header */}
-        <div style={{ textAlign: 'center', maxWidth: '780px', margin: '0 auto 3rem auto' }}>
-          <span
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.45rem',
-              fontSize: '0.8rem',
-              fontWeight: 700,
-              textTransform: 'uppercase',
-              letterSpacing: '0.06em',
-              color: 'var(--color-primary-dark)',
-              backgroundColor: 'var(--color-primary-soft)',
-              padding: '0.4rem 0.95rem',
-              borderRadius: 'var(--radius-full)',
-              marginBottom: '0.85rem'
-            }}
-          >
-            <BookOpen size={14} /> CẨM NANG THỰC TẾ CHO DOANH NGHIỆP
+    <section className="section-component knowledge-editorial-section" id="kien-thuc" aria-label="Kiến thức thực tế">
+      <Container>
+        <div className="section-header">
+          <span className="section-eyebrow">
+            <BookOpen size={14} /> CẨM NANG THỰC TẾ
           </span>
-
-          <h2
-            style={{
-              fontSize: 'var(--font-size-h2)',
-              color: '#0f172a',
-              fontWeight: 800,
-              lineHeight: 1.25,
-              letterSpacing: '-0.02em',
-              margin: '0 0 0.75rem 0'
-            }}
-          >
-            Kiến Thức &amp; Hướng Dẫn Thực Tế — Tránh Mất Tiền Oan
-          </h2>
-
-          <p
-            style={{
-              fontSize: '1rem',
-              color: '#475569',
-              lineHeight: 1.6,
-              margin: 0,
-              textWrap: 'pretty'
-            }}
-          >
-            Kinh nghiệm đúc kết từ hàng trăm dự án: cách tự kiểm tra Google Maps, checklist 7 điều cần có trước khi làm website và cách giữ toàn quyền tài khoản số chính chủ 100%.
+          <h2>Kinh Nghiệm Tránh Mất Tiền Oan Khi Số Hóa</h2>
+          <p className="subtitle">
+            Những lưu ý thực tế để bạn tự kiểm tra website, định vị Google Maps và bảo vệ 100% quyền làm chủ tài khoản số.
           </p>
         </div>
 
-        {/* Knowledge Articles Grid */}
-        <div className="knowledge-grid">
-          {KNOWLEDGE_ARTICLES.map((art) => {
-            const badgeTheme = getCategoryTheme(art.category);
+        <div className="knowledge-editorial-grid">
+          {/* LEFT: Featured Large Article */}
+          <article
+            className="featured-article-card"
+            onClick={() => navigate('/kien-thuc/' + featuredArticle.slug)}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                navigate('/kien-thuc/' + featuredArticle.slug);
+              }
+            }}
+          >
+            <div className="featured-content">
+              <div className="article-meta-row">
+                <span className="article-badge">{featuredArticle.category}</span>
+                <span className="article-time">
+                  <Clock size={14} /> {featuredArticle.readTime}
+                </span>
+                <span className="article-date">{featuredArticle.date}</span>
+              </div>
+              <h3 className="featured-article-title">{featuredArticle.title}</h3>
+              <p className="featured-excerpt">{featuredArticle.excerpt}</p>
+              <div className="read-more-link">
+                <span>Đọc toàn bộ bài viết</span>
+                <ArrowRight size={16} />
+              </div>
+            </div>
+          </article>
 
-            return (
+          {/* RIGHT: Stacked Secondary Articles */}
+          <div className="side-articles-stack">
+            {sideArticles.map((art) => (
               <article
                 key={art.id}
+                className="side-article-item"
                 onClick={() => navigate('/kien-thuc/' + art.slug)}
-                className="knowledge-card"
                 role="button"
                 tabIndex={0}
                 onKeyDown={(e) => {
@@ -98,211 +72,208 @@ export const KnowledgeHubSection: React.FC = () => {
                   }
                 }}
               >
-                <div className="card-top">
-                  <div className="card-meta">
-                    <span
-                      className="category-badge"
-                      style={{
-                        backgroundColor: badgeTheme.bg,
-                        color: badgeTheme.text,
-                        border: `1px solid ${badgeTheme.border}`
-                      }}
-                    >
-                      {art.category}
-                    </span>
-
-                    <div className="read-time">
-                      <Clock size={12} />
-                      <span>{art.readTime}</span>
-                    </div>
-                  </div>
-
-                  <h3 className="card-title">
-                    {art.title}
-                  </h3>
-
-                  <p className="card-desc">
-                    {art.desc}
-                  </p>
+                <div className="side-meta-row">
+                  <span className="side-badge">{art.category}</span>
+                  <span className="side-time">{art.readTime}</span>
                 </div>
-
-                <div className="card-footer">
-                  <span className="footer-link-text">Đọc hướng dẫn chi tiết</span>
-                  <div className="footer-arrow-icon">
-                    <ArrowRight size={15} />
-                  </div>
+                <h4 className="side-article-title">{art.title}</h4>
+                <p className="side-excerpt">{art.excerpt}</p>
+                <div className="side-arrow-link">
+                  <span>Chi tiết</span> <ArrowRight size={14} />
                 </div>
               </article>
-            );
-          })}
-        </div>
-
-        {/* Hub Footer Action */}
-        <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-          <button
-            type="button"
-            onClick={() => navigate('/kien-thuc')}
-            className="knowledge-hub-btn"
-          >
-            <span>Khám phá toàn bộ cẩm nang &amp; bài viết hướng dẫn</span>
-            <ArrowRight size={16} />
-          </button>
+            ))}
+          </div>
         </div>
       </Container>
 
       <style>{`
-        .knowledge-grid {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 1.5rem;
+        .knowledge-editorial-section {
+          background-color: var(--color-surface);
+          border-bottom: 1px solid var(--color-border);
         }
 
-        @media (min-width: 640px) {
-          .knowledge-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
+        .knowledge-editorial-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 2rem;
         }
 
         @media (min-width: 1024px) {
-          .knowledge-grid {
-            grid-template-columns: repeat(4, 1fr);
+          .knowledge-editorial-grid {
+            grid-template-columns: 1.35fr 1fr;
+            gap: 2.5rem;
+            align-items: stretch;
           }
         }
 
-        .knowledge-card {
+        /* FEATURED ARTICLE */
+        .featured-article-card {
           background-color: #ffffff;
-          border: 1px solid #e2e8f0;
-          border-radius: 16px;
-          padding: 1.5rem;
+          border: 1px solid var(--color-border);
+          border-radius: var(--radius-xl);
+          overflow: hidden;
           cursor: pointer;
           display: flex;
           flex-direction: column;
-          justify-content: space-between;
-          gap: 1.25rem;
-          box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
-          transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-          outline: none;
+          transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
         }
 
-        .knowledge-card:hover,
-        .knowledge-card:focus-visible {
-          transform: translateY(-4px);
-          border-color: #86efac;
-          box-shadow: 0 12px 24px -4px rgba(13, 118, 71, 0.12), 0 0 0 1px #22c55e;
+        .featured-article-card:hover {
+          transform: translateY(-2px);
+          border-color: var(--color-primary-border);
+          box-shadow: var(--shadow-card-hover);
         }
 
-        .card-top {
+        .featured-img-wrap {
+          width: 100%;
+          height: 240px;
+          background-color: var(--color-surface-subtle);
+          overflow: hidden;
+        }
+
+        .featured-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.4s ease;
+        }
+
+        .featured-article-card:hover .featured-img {
+          transform: scale(1.02);
+        }
+
+        .featured-content {
+          padding: clamp(1.5rem, 2.5vw, 2rem);
           display: flex;
           flex-direction: column;
-        }
-
-        .card-meta {
-          display: flex;
+          flex: 1;
           justify-content: space-between;
-          align-items: center;
-          margin-bottom: 0.85rem;
-          gap: 0.5rem;
         }
 
-        .category-badge {
-          font-size: 0.725rem;
-          font-weight: 700;
-          padding: 0.2rem 0.65rem;
-          border-radius: 999px;
-          letter-spacing: 0.02em;
-          white-space: nowrap;
-        }
-
-        .read-time {
+        .article-meta-row {
           display: flex;
           align-items: center;
-          gap: 0.3rem;
+          gap: 0.75rem;
+          margin-bottom: 0.75rem;
+        }
+
+        .article-badge {
           font-size: 0.75rem;
-          color: #64748b;
-          font-weight: 500;
-          white-space: nowrap;
+          font-weight: 700;
+          color: var(--color-primary-dark);
+          background-color: var(--color-primary-soft);
+          padding: 0.25rem 0.65rem;
+          border-radius: var(--radius-full);
         }
 
-        .card-title {
-          font-size: 1.05rem;
+        .article-time {
+          font-size: 0.8125rem;
+          color: var(--ink-muted);
+          display: flex;
+          align-items: center;
+          gap: 0.35rem;
+        }
+
+        .featured-article-title {
+          font-size: 1.4rem;
           font-weight: 800;
-          color: #0f172a;
+          color: var(--ink);
           margin: 0 0 0.65rem 0;
-          line-height: 1.42;
-          text-wrap: pretty;
-          transition: color 0.2s ease;
+          line-height: 1.25;
         }
 
-        .knowledge-card:hover .card-title {
-          color: #0d7647;
-        }
-
-        .card-desc {
-          font-size: 0.85rem;
-          color: #475569;
+        .featured-excerpt {
+          font-size: 0.9375rem;
+          color: var(--ink-soft);
           line-height: 1.6;
+          margin: 0 0 1.5rem 0;
+        }
+
+        .read-more-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          font-size: 0.9375rem;
+          font-weight: 700;
+          color: var(--color-primary);
+        }
+
+        /* SIDE STACK */
+        .side-articles-stack {
+          display: flex;
+          flex-direction: column;
+          gap: 1.25rem;
+        }
+
+        .side-article-item {
+          background-color: #ffffff;
+          border: 1px solid var(--color-border);
+          border-radius: var(--radius-lg);
+          padding: 1.25rem 1.5rem;
+          cursor: pointer;
+          transition: transform var(--transition-fast), border-color var(--transition-fast);
+          display: flex;
+          flex-direction: column;
+          gap: 0.4rem;
+        }
+
+        .side-article-item:hover {
+          transform: translateX(4px);
+          border-color: var(--color-primary-border);
+        }
+
+        .side-meta-row {
+          display: flex;
+          align-items: center;
+          gap: 0.65rem;
+        }
+
+        .side-badge {
+          font-size: 0.75rem;
+          font-weight: 700;
+          color: var(--color-primary-dark);
+          background-color: var(--color-primary-soft);
+          padding: 0.2rem 0.55rem;
+          border-radius: var(--radius-sm);
+        }
+
+        .side-time {
+          font-size: 0.75rem;
+          color: var(--ink-muted);
+        }
+
+        .side-article-title {
+          font-size: 1.0625rem;
+          font-weight: 700;
+          color: var(--ink);
+          margin: 0;
+          line-height: 1.35;
+        }
+
+        .side-excerpt {
+          font-size: 0.875rem;
+          color: var(--ink-soft);
+          line-height: 1.5;
           margin: 0;
           display: -webkit-box;
-          -webkit-line-clamp: 4;
+          -webkit-line-clamp: 2;
           -webkit-box-orient: vertical;
           overflow: hidden;
         }
 
-        .card-footer {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding-top: 0.85rem;
-          border-top: 1px dashed #e2e8f0;
-          font-size: 0.825rem;
-          font-weight: 700;
-          color: #0d7647;
-          gap: 0.5rem;
-        }
-
-        .footer-arrow-icon {
-          width: 26px;
-          height: 26px;
-          border-radius: 50%;
-          background-color: var(--color-primary-soft);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-shrink: 0;
-          transition: transform 0.2s ease, background-color 0.2s ease;
-        }
-
-        .knowledge-card:hover .footer-arrow-icon {
-          transform: translateX(3px);
-          background-color: #bbf7d0;
-        }
-
-        .knowledge-hub-btn {
+        .side-arrow-link {
           display: inline-flex;
           align-items: center;
-          justify-content: center;
-          gap: 0.5rem;
-          min-height: 44px;
-          padding: 0.75rem 1.75rem;
-          background-color: #ffffff;
-          color: #0f172a;
-          border: 1px solid #cbd5e1;
-          border-radius: 999px;
+          gap: 0.35rem;
+          font-size: 0.8125rem;
           font-weight: 700;
-          font-size: 0.9rem;
-          cursor: pointer;
-          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
-          transition: all 0.2s ease;
-        }
-
-        .knowledge-hub-btn:hover {
-          background-color: #f8fafc;
-          border-color: #0d7647;
-          color: #0d7647;
-          transform: translateY(-1px);
+          color: var(--color-primary);
+          margin-top: 0.25rem;
         }
       `}</style>
     </section>
   );
 };
 
+export default KnowledgeHubSection;

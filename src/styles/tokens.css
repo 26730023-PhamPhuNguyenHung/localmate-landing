@@ -1,4 +1,4 @@
-/* LocalMate Design Tokens — Premium Modern Vietnamese Local Brand */
+/* LocalMate Design Tokens — Premium Modern Vietnamese Local Brand (SSOT) */
 :root {
   /* Brand Palette — Calibrated Deep Emerald & Clean Accent */
   --color-primary: #0d7647;
@@ -8,107 +8,114 @@
   --color-primary-soft: #edf7f1;
   --color-primary-border: #c6ebd4;
 
-  /* Deep Slate & Navy for High Contrast Readability */
+  /* Deep Slate & Navy for High Contrast Readability (No pure harsh blacks) */
   --color-navy: #0f172a;
   --color-navy-deep: #020617;
-  --color-teal: #0d7647;
-  --color-teal-dark: #095935;
-  --color-teal-soft: #edf7f1;
+  --ink: #0f172a;
+  --ink-body: #1e293b;
+  --ink-soft: #334155;
+  --ink-muted: #64748b;
   
-  /* Accent Warm Orange (Reserved for pricing highlights & limited CTAs) */
-  --color-orange: #f59e0b;
-  --color-orange-dark: #d97706;
+  /* Accent Warm Amber/Orange (Reserved for key CTA highlights) */
+  --color-orange: #d97706;
+  --color-orange-dark: #b45309;
   --color-orange-soft: #fef3c7;
-  
-  --color-blue-soft: #e0f2fe;
-  --color-blue-text: #0369a1;
+  --color-orange-border: #fde68a;
 
-  /* Surfaces & Clean Backgrounds (Strictly Light Theme, No blur glassmorphism) */
-  --color-bg: #fafbfa;
+  /* Surfaces & Clean Backgrounds (Strictly Light Theme, NO glassmorphism, NO backdrop-blur) */
+  --color-bg: #fbfcfb;
   --color-surface: #ffffff;
   --color-surface-subtle: #f4f7f5;
-  --color-text: #0f172a;
-  --color-text-muted: #475569;
-  --color-text-subtle: #64748b;
+  --color-surface-break: #eff4f1;
+  --color-surface-dark: #0f172a;
+  --color-surface-dark-soft: #1e293b;
+  
+  /* Borders — 1px crisp subtle definition */
   --color-border: #e2e8f0;
+  --color-border-subtle: #ebf0ec;
   --color-border-light: #f1f5f9;
   --color-border-strong: #cbd5e1;
 
-  /* Button Design System Tokens */
-  --btn-height-desktop: clamp(48px, 3.2vw, 52px); /* 48-52px desktop */
-  --btn-height-mobile: clamp(48px, 5vw, 54px);   /* 48-54px mobile */
+  /* Button Design System Tokens (WCAG 2.1 AA Compliant) */
+  --btn-height-desktop: clamp(48px, 3.2vw, 54px);
+  --btn-height-mobile: 48px;
   --btn-min-height: 48px;
   --btn-tap-target: 44px; /* WCAG touch target min >= 44px */
-  --btn-radius: 12px;     /* 10-14px standard */
+  --btn-radius: 12px;
   --btn-radius-pill: 9999px;
 
-  /* Button Primary: Green #0d7647, Hover #095935, Text #ffffff */
+  /* Button Primary: Deep Forest Green #0d7647 */
   --btn-primary-bg: #0d7647;
   --btn-primary-bg-hover: #095935;
   --btn-primary-text: #ffffff;
   --btn-primary-border: transparent;
-  --btn-primary-shadow: 0 2px 8px rgba(13, 118, 71, 0.2);
-  --btn-primary-shadow-hover: 0 4px 14px rgba(13, 118, 71, 0.3);
+  --btn-primary-shadow: 0 2px 8px rgba(13, 118, 71, 0.18);
+  --btn-primary-shadow-hover: 0 4px 14px rgba(13, 118, 71, 0.28);
 
-  /* Button Secondary: bg #ffffff, border #e2e8f0, text #0f172a, hover bg #f4f7f5 */
+  /* Button Accent: Amber #d97706 */
+  --btn-accent-bg: #d97706;
+  --btn-accent-bg-hover: #b45309;
+  --btn-accent-text: #ffffff;
+  --btn-accent-shadow: 0 2px 8px rgba(217, 119, 6, 0.2);
+
+  /* Button Secondary: bg #ffffff, border #e2e8f0, text #0f172a */
   --btn-secondary-bg: #ffffff;
   --btn-secondary-border: #e2e8f0;
   --btn-secondary-text: #0f172a;
   --btn-secondary-hover-bg: #f4f7f5;
   --btn-secondary-hover-border: #cbd5e1;
 
-  /* Button Ghost / Text: bg transparent, text #0d7647, hover underline / bg #edf7f1 */
+  /* Button Ghost / Text */
   --btn-ghost-bg: transparent;
   --btn-ghost-text: #0d7647;
   --btn-ghost-hover-bg: #edf7f1;
   --btn-ghost-hover-text: #095935;
 
-  /* Button Focus-visible standard (WCAG 2.1 AA) */
+  /* Focus Standard */
   --btn-focus-ring-color: #0d7647;
   --btn-focus-ring-offset: 2px;
   --btn-focus-ring-width: 2px;
 
-  /* Typography */
+  /* Typography: Be Vietnam Pro */
   --font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   
-  /* Typography Weights */
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
   --font-weight-extrabold: 800;
 
-  /* Fluid Typography Scale (clamp SSOT) */
-  --font-size-h1: clamp(2.35rem, 3.8vw + 0.5rem, 3.75rem);
-  --font-size-h2: clamp(1.85rem, 2.5vw + 0.3rem, 2.65rem);
-  --font-size-h3: clamp(1.2rem, 1.5vw + 0.2rem, 1.55rem);
-  --font-size-h4: clamp(1.05rem, 0.8vw + 0.2rem, 1.25rem);
-  --font-size-body-lg: clamp(1.05rem, 0.4vw + 0.95rem, 1.15rem);
-  --font-size-body: clamp(0.9375rem, 0.2vw + 0.9rem, 1rem);
-  --font-size-sm: 0.875rem; /* 14px min */
-  --font-size-xs: 0.75rem;
-  --font-size-subtitle: clamp(1.05rem, 0.4vw + 0.95rem, 1.15rem);
+  /* Premium Fluid Typography Scale (clamp SSOT) — Tối ưu cho Laptop 14" Scale 125% */
+  --font-size-h1: clamp(2.5rem, 4vw + 0.5rem, 4.25rem);       /* 40px - 68px */
+  --font-size-h2: clamp(2rem, 2.8vw + 0.3rem, 3rem);          /* 32px - 48px */
+  --font-size-h3: clamp(1.35rem, 1.6vw + 0.2rem, 1.75rem);    /* 22px - 28px */
+  --font-size-h4: clamp(1.125rem, 1vw + 0.2rem, 1.35rem);     /* 18px - 22px */
+  --font-size-body-lg: clamp(1.125rem, 0.4vw + 1rem, 1.25rem); /* 18px - 20px */
+  --font-size-body: clamp(1rem, 0.2vw + 0.95rem, 1.0625rem);   /* 16px - 17px */
+  --font-size-sm: 0.875rem;                                    /* 14px (Tối thiểu cho metadata) */
+  --font-size-xs: 0.8125rem;                                   /* 13px (Chỉ dùng cho tag/badge ngắn) */
+  --font-size-subtitle: clamp(1.125rem, 0.5vw + 0.95rem, 1.25rem);
 
   /* Line Heights */
-  --line-height-h1: 1.1;
-  --line-height-h2: 1.18;
-  --line-height-h3: 1.28;
+  --line-height-h1: 1.08;
+  --line-height-h2: 1.16;
+  --line-height-h3: 1.25;
   --line-height-h4: 1.35;
-  --line-height-body-lg: 1.6;
-  --line-height-body: 1.62;
+  --line-height-body-lg: 1.62;
+  --line-height-body: 1.65;
   --line-height-sm: 1.5;
   --line-height-subtitle: 1.6;
 
   /* Letter Spacing */
-  --letter-spacing-h1: -0.03em;
-  --letter-spacing-h2: -0.02em;
-  --letter-spacing-h3: -0.01em;
+  --letter-spacing-h1: -0.035em;
+  --letter-spacing-h2: -0.025em;
+  --letter-spacing-h3: -0.015em;
   --letter-spacing-normal: 0em;
 
-  /* Paragraph Measure (58-68ch optimal) */
-  --paragraph-max-width: 65ch;
+  /* Paragraph Measure (60-70ch optimal) */
+  --paragraph-max-width: 68ch;
 
-  /* Border Radius — Standardized (10-14px buttons, 16px cards, 20-24px panels) */
+  /* Border Radius */
   --radius-xs: 4px;
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -117,33 +124,33 @@
   --radius-2xl: 24px;
   --radius-full: 9999px;
 
-  /* Shadows — Subtle, Crisp 1px + Elevation */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.05);
-  --shadow-lg: 0 10px 24px rgba(0, 0, 0, 0.06);
-  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.04), 0 0 0 1px var(--color-border);
-  --shadow-card-hover: 0 8px 20px rgba(13, 118, 71, 0.08), 0 0 0 1px var(--color-primary-border);
+  /* Shadows — Tinh tế, phẳng & tự nhiên, không shadow đen sì */
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.05);
+  --shadow-lg: 0 10px 24px rgba(15, 23, 42, 0.06);
+  --shadow-card: 0 1px 3px rgba(15, 23, 42, 0.04), 0 0 0 1px var(--color-border);
+  --shadow-card-hover: 0 8px 24px rgba(13, 118, 71, 0.08), 0 0 0 1px var(--color-primary-border);
 
-  /* Container SSOT (1220px desktop max-width: optimal for 1180-1240px & 14" laptop 125% scale ~ 1228px effective) */
-  --container-max: 1220px;
-  --container-wide: 1360px;
-  --container-narrow: 980px;
+  /* Container SSOT: 3 tầng chuẩn mực */
+  --container-max: 1240px;      /* Chuẩn cho 14" laptop 125% (~1228px) & desktop */
+  --container-wide: 1360px;     /* Bảng giá, Showcase rộng rãi */
+  --container-narrow: 860px;    /* FAQ, Bài viết, Form CTA */
 
-  /* Horizontal Padding: Mobile default (16px-20px), Tablet (24px), Desktop (32px-40px) */
-  --space-container-px-mobile: clamp(1rem, 4vw, 1.25rem); /* 16px - 20px */
-  --space-container-px-tablet: 1.5rem; /* 24px */
-  --space-container-px-desktop: clamp(2rem, 2.5vw, 2.5rem); /* 32px - 40px */
+  /* Responsive Horizontal Padding SSOT */
+  --space-container-px-mobile: 1.25rem;  /* 20px */
+  --space-container-px-tablet: 1.75rem;  /* 28px */
+  --space-container-px-desktop: 2.25rem; /* 36px */
   --space-container-px: var(--space-container-px-mobile);
 
-  /* Section Spacing: Mobile clamp(3rem, 5vw, 4.5rem) (48-72px), Desktop clamp(4.5rem, 6vw, 6.5rem) (72-104px) */
-  --space-section-py-mobile: clamp(3rem, 5vw, 4.5rem); /* 48px - 72px */
-  --space-section-py-desktop: clamp(4.5rem, 6vw, 6.5rem); /* 72px - 104px */
+  /* Section Spacing: Thoáng đãng, nhịp điệu mạnh - nhẹ rõ rệt */
+  --space-section-py-mobile: clamp(3.5rem, 6vw, 4.5rem);   /* 56px - 72px */
+  --space-section-py-desktop: clamp(5.5rem, 7vw, 8rem);    /* 88px - 128px */
   --space-section-py: var(--space-section-py-mobile);
 
-  --space-card-p: clamp(1.25rem, 2.5vw, 1.75rem);
-  --space-gap: clamp(1rem, 2vw, 1.5rem);
+  --space-card-p: clamp(1.5rem, 2.5vw, 2.25rem);
+  --space-gap: clamp(1.25rem, 2vw, 2rem);
 
-  /* Spacing Scale (4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 80, 96, 120px) */
+  /* Spacing Scale */
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -158,21 +165,22 @@
   --space-24: 96px;
   --space-30: 120px;
 
-  /* Transitions */
-  --transition-fast: 150ms ease;
-  --transition-base: 220ms ease;
+  /* Motion & Transitions (Subtle & fast: 180ms - 280ms) */
+  --transition-fast: 160ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-base: 240ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Responsive Overrides for Root Tokens */
 @media (min-width: 768px) {
   :root {
-    --space-container-px: var(--space-container-px-tablet); /* 24px */
-    --space-section-py: var(--space-section-py-desktop); /* 72px - 104px */
+    --space-container-px: var(--space-container-px-tablet);
+    --space-section-py: clamp(4.5rem, 6vw, 6rem); /* 72px - 96px */
   }
 }
 
 @media (min-width: 1024px) {
   :root {
-    --space-container-px: var(--space-container-px-desktop); /* 32px - 40px */
+    --space-container-px: var(--space-container-px-desktop);
+    --space-section-py: var(--space-section-py-desktop); /* 88px - 128px */
   }
 }

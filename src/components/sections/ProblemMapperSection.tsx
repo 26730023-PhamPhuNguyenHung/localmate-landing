@@ -1,19 +1,6 @@
 import React from 'react';
 import { Container } from '../ui/Container';
-import {
-  ArrowRight,
-  HelpCircle,
-  Globe,
-  MapPin,
-  TrendingUp,
-  FileText,
-  Users,
-  Zap,
-  Briefcase,
-  CheckCircle2,
-  Sparkles,
-  type LucideIcon
-} from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 import { useRouter } from '../layout/Router';
 import { TASK_GROUPS_DATA, TaskGroupItem } from '../../data/operationsData';
 
@@ -21,21 +8,10 @@ interface ProblemMapperSectionProps {
   onSelectTask?: (serviceName: string) => void;
 }
 
-const iconMap: Record<string, LucideIcon> = {
-  Globe,
-  MapPin,
-  TrendingUp,
-  FileText,
-  HelpCircle,
-  Users,
-  Zap,
-  Briefcase
-};
-
 export const ProblemMapperSection: React.FC<ProblemMapperSectionProps> = ({ onSelectTask }) => {
   const { navigate } = useRouter();
 
-  const handleCardClick = (item: TaskGroupItem) => {
+  const handleRowClick = (item: TaskGroupItem) => {
     if (onSelectTask) {
       onSelectTask(item.serviceNameForLead);
     } else {
@@ -44,309 +20,238 @@ export const ProblemMapperSection: React.FC<ProblemMapperSectionProps> = ({ onSe
   };
 
   return (
-    <section
-      style={{
-        padding: 'clamp(3rem, 5vw, 4.5rem) 0',
-        backgroundColor: '#ffffff',
-        borderBottom: '1px solid var(--color-border)'
-      }}
-      id="can-lam-gi"
-      aria-label="Chọn nhu cầu thực tế"
-    >
-      <Container size="lg">
-        {/* Section Header */}
-        <div className="section-header" style={{ maxWidth: '720px', margin: '0 auto clamp(2rem, 4vw, 3rem) auto', textAlign: 'center' }}>
-          <span className="section-eyebrow" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', marginBottom: '0.65rem', fontWeight: 700, letterSpacing: '0.05em' }}>
-            <Sparkles size={14} /> CHỌN THEO NHU CẦU THỰC TẾ
-          </span>
-          <h2 style={{ fontSize: 'var(--font-size-h2)', color: 'var(--color-navy)', fontWeight: 800, margin: '0 0 0.6rem 0', letterSpacing: '-0.02em', textWrap: 'balance', overflowWrap: 'break-word' }}>
-            Bạn đang cần giải quyết công việc gì?
-          </h2>
-          <p className="subtitle" style={{ fontSize: 'var(--font-size-subtitle)', color: 'var(--color-text-muted)', lineHeight: 1.6, margin: 0, textWrap: 'pretty', overflowWrap: 'break-word' }}>
-            Không cần biết tên công nghệ hay từ ngữ lập trình phức tạp. Hãy chọn đúng tình trạng bạn đang cần xử lý để nhận giải pháp và mức giá phù hợp nhất.
-          </p>
-        </div>
+    <section className="section-component problem-discovery-section" id="can-lam-gi" aria-label="Khám phá dịch vụ theo nhu cầu">
+      <Container>
+        <div className="editorial-split">
+          {/* LEFT: Large sticky heading */}
+          <div className="editorial-split-sticky">
+            <span className="section-eyebrow">
+              <Sparkles size={14} /> CHỌN THEO NHU CẦU THỰC TẾ
+            </span>
+            <h2 className="editorial-heading">
+              Bạn đang cần giải quyết công việc gì?
+            </h2>
+            <p className="editorial-sub">
+              Không cần nhớ thuật ngữ lập trình hay công nghệ phức tạp. Hãy chọn đúng nhu cầu thực tế của tiệm, LocalMate sẽ cử nhân sự phụ trách phương án và báo giá cố định trong 24 giờ.
+            </p>
+            <div className="editorial-support-note">
+              <div className="editorial-dot" />
+              <span>Khảo sát phương án & dựng bản web demo 0đ trước khi ký kết.</span>
+            </div>
+          </div>
 
-        {/* 5 Task Cards Grid */}
-        <div className="task-grid-container">
-          {TASK_GROUPS_DATA.map((item, index) => {
-            const IconComponent = iconMap[item.iconName] || HelpCircle;
-            const isWideOnDesktop = index >= 3;
+          {/* RIGHT: Editorial Rows */}
+          <div className="editorial-rows-list" role="list">
+            {TASK_GROUPS_DATA.map((item, index) => {
+              const stepFormatted = String(index + 1).padStart(2, '0');
+              return (
+                <div
+                  key={item.id}
+                  role="button"
+                  tabIndex={0}
+                  className="editorial-service-row"
+                  onClick={() => handleRowClick(item)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      handleRowClick(item);
+                    }
+                  }}
+                  aria-label={`${item.title}: ${item.headline} - Giá ${item.priceTag}`}
+                >
+                  <div className="row-step-num">{stepFormatted}</div>
 
-            return (
-              <div
-                key={item.id}
-                role="button"
-                tabIndex={0}
-                aria-label={`${item.title} - ${item.priceTag}`}
-                onClick={() => handleCardClick(item)}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    handleCardClick(item);
-                  }
-                }}
-                className={`task-card ${isWideOnDesktop ? 'task-card-span-3' : 'task-card-span-2'}`}
-              >
-                {/* Top Bar: Step Number, Badge & Price */}
-                <div className="task-card-top">
-                  <div className="task-badge-group">
-                    <span className="task-step-number">{item.stepNumber}</span>
-                    <span className="task-category-badge">{item.categoryBadge}</span>
-                  </div>
-                  <span className="task-price-pill">{item.priceTag}</span>
-                </div>
-
-                {/* Main Content */}
-                <div className="task-card-body">
-                  <div className="task-title-row">
-                    <div className="task-icon-box" aria-hidden="true">
-                      <IconComponent size={20} color="var(--color-primary)" />
+                  <div className="row-main-info">
+                    <div className="row-title-wrap">
+                      <h3 className="row-title">{item.title}</h3>
+                      <span className="row-badge">{item.categoryBadge}</span>
                     </div>
-                    <h3 className="task-title">{item.title}</h3>
+                    <p className="row-desc">{item.description}</p>
                   </div>
 
-                  <h4 className="task-headline">{item.headline}</h4>
-                  <p className="task-desc">{item.description}</p>
+                  <div className="row-pricing-wrap">
+                    <span className="row-price">{item.priceTag}</span>
+                    <span className="row-sla">{item.features[0]}</span>
+                  </div>
 
-                  {/* Bullet points */}
-                  <ul className="task-features-list">
-                    {item.features.map((feat, idx) => (
-                      <li key={idx} className="task-feature-item">
-                        <CheckCircle2 size={15} color="var(--color-primary)" className="task-check-icon" aria-hidden="true" />
-                        <span>{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Bottom Action Button */}
-                <div className="task-card-action">
-                  <span className="task-action-text">{item.ctaLabel}</span>
-                  <div className="task-arrow-circle" aria-hidden="true">
-                    <ArrowRight size={14} color="var(--color-primary)" />
+                  <div className="row-arrow-wrap" aria-hidden="true">
+                    <ArrowRight size={18} className="row-arrow-icon" />
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </Container>
 
       <style>{`
-        .task-grid-container {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 1.25rem;
+        .problem-discovery-section {
+          background-color: var(--color-bg);
+          border-bottom: 1px solid var(--color-border);
+        }
+
+        .editorial-heading {
+          font-size: var(--font-size-h2);
+          color: var(--ink);
+          font-weight: 800;
+          line-height: var(--line-height-h2);
+          margin-bottom: 1.25rem;
+          text-wrap: balance;
+        }
+
+        .editorial-sub {
+          font-size: var(--font-size-body);
+          color: var(--ink-soft);
+          line-height: var(--line-height-body);
+          margin-bottom: 2rem;
+          text-wrap: pretty;
+        }
+
+        .editorial-support-note {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          padding: 0.85rem 1.15rem;
+          background-color: var(--color-primary-soft);
+          border: 1px solid var(--color-primary-border);
+          border-radius: var(--radius-md);
+          font-size: var(--font-size-sm);
+          color: var(--color-primary-dark);
+          font-weight: 500;
+        }
+
+        .editorial-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background-color: var(--color-primary);
+          flex-shrink: 0;
+        }
+
+        .editorial-rows-list {
+          display: flex;
+          flex-direction: column;
+          gap: 0.875rem;
           width: 100%;
         }
 
-        @media (min-width: 640px) {
-          .task-grid-container {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.25rem;
-          }
-        }
-
-        @media (min-width: 1024px) {
-          .task-grid-container {
-            grid-template-columns: repeat(6, 1fr);
-            gap: 1.5rem;
-          }
-
-          .task-card-span-2 {
-            grid-column: span 2;
-          }
-
-          .task-card-span-3 {
-            grid-column: span 3;
-          }
-        }
-
-        .task-card {
-          background-color: #ffffff;
+        .editorial-service-row {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 0.875rem;
+          padding: clamp(1.25rem, 2vw, 1.6rem);
+          background-color: var(--color-surface);
           border: 1px solid var(--color-border);
-          border-radius: 16px;
-          padding: clamp(1.25rem, 2.5vw, 1.5rem);
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          gap: 1.25rem;
+          border-radius: var(--radius-lg);
+          transition: transform var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast);
           cursor: pointer;
-          transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-          position: relative;
-          box-sizing: border-box;
-          min-width: 0;
           outline: none;
         }
 
-        .task-card:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 10px 24px -4px rgba(0, 0, 0, 0.06);
-          border-color: #86efac;
+        .editorial-service-row:hover {
+          background-color: var(--color-surface-subtle);
+          border-color: var(--color-primary-border);
+          transform: translateX(4px);
         }
 
-        .task-card:focus-visible {
+        .editorial-service-row:focus-visible {
           border-color: var(--color-primary);
           box-shadow: 0 0 0 3px var(--color-primary-soft);
         }
 
-        .task-card-top {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 0.5rem;
-          flex-wrap: wrap;
+        @media (min-width: 768px) {
+          .editorial-service-row {
+            grid-template-columns: 36px 1.4fr 1fr auto;
+            align-items: center;
+            gap: 1.5rem;
+          }
         }
 
-        .task-badge-group {
-          display: flex;
-          align-items: center;
-          gap: 0.45rem;
-          flex-wrap: wrap;
-        }
-
-        .task-step-number {
-          font-size: 0.75rem;
+        .row-step-num {
+          font-size: 1.15rem;
           font-weight: 800;
-          color: var(--color-primary);
-          background-color: var(--color-primary-soft);
-          border: 1px solid var(--color-primary-border);
-          padding: 0.15rem 0.45rem;
-          border-radius: 6px;
-          line-height: 1.2;
+          color: var(--ink-muted);
+          font-variant-numeric: tabular-nums;
         }
 
-        .task-category-badge {
-          font-size: 0.75rem;
-          font-weight: 700;
-          color: #374151;
-          background-color: #f3f4f6;
-          padding: 0.2rem 0.55rem;
-          border-radius: 6px;
-          line-height: 1.2;
-        }
-
-        .task-price-pill {
-          font-size: 0.8rem;
-          font-weight: 800;
-          color: var(--color-orange-dark);
-          background-color: var(--color-orange-soft);
-          padding: 0.2rem 0.6rem;
-          border-radius: 999px;
-          white-space: nowrap;
-          border: 1px solid #ffd8be;
-          line-height: 1.2;
-        }
-
-        .task-card-body {
+        .row-main-info {
           display: flex;
           flex-direction: column;
-          gap: 0.6rem;
+          gap: 0.35rem;
         }
 
-        .task-title-row {
+        .row-title-wrap {
           display: flex;
           align-items: center;
           gap: 0.65rem;
+          flex-wrap: wrap;
         }
 
-        .task-icon-box {
-          width: 36px;
-          height: 36px;
-          border-radius: 10px;
-          background-color: var(--color-primary-soft);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-shrink: 0;
-        }
-
-        .task-title {
-          font-size: 1.1rem;
-          font-weight: 800;
-          color: var(--color-navy);
-          margin: 0;
-          line-height: 1.35;
-          text-wrap: pretty;
-          overflow-wrap: break-word;
-        }
-
-        .task-headline {
-          font-size: 0.925rem;
+        .row-title {
+          font-size: 1.15rem;
           font-weight: 700;
-          color: #1f2937;
-          margin: 0.2rem 0 0 0;
-          line-height: 1.45;
-          text-wrap: pretty;
-        }
-
-        .task-desc {
-          font-size: 0.85rem;
-          color: var(--color-text-muted);
-          line-height: 1.55;
+          color: var(--ink);
           margin: 0;
-          text-wrap: pretty;
         }
 
-        .task-features-list {
-          list-style: none;
-          padding: 0;
-          margin: 0.65rem 0 0 0;
+        .row-badge {
+          font-size: 0.75rem;
+          font-weight: 600;
+          color: var(--color-primary);
+          background-color: var(--color-primary-soft);
+          padding: 0.2rem 0.55rem;
+          border-radius: var(--radius-full);
+          white-space: nowrap;
+        }
+
+        .row-desc {
+          font-size: 0.9375rem;
+          color: var(--ink-soft);
+          margin: 0;
+          line-height: 1.5;
+        }
+
+        .row-pricing-wrap {
           display: flex;
           flex-direction: column;
-          gap: 0.45rem;
-          border-top: 1px dashed var(--color-border);
-          padding-top: 0.75rem;
+          gap: 0.25rem;
         }
 
-        .task-feature-item {
-          display: flex;
-          align-items: flex-start;
-          gap: 0.5rem;
-          font-size: 0.825rem;
-          color: #374151;
-          font-weight: 500;
-          line-height: 1.4;
-          text-wrap: pretty;
-        }
-
-        .task-check-icon {
-          flex-shrink: 0;
-          margin-top: 1px;
-        }
-
-        .task-card-action {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding-top: 0.85rem;
-          border-top: 1px solid #f3f4f6;
-          font-size: 0.85rem;
+        .row-price {
+          font-size: 1.0625rem;
           font-weight: 700;
-          color: var(--color-primary);
-          transition: color 0.2s ease;
+          color: var(--ink);
+          letter-spacing: -0.01em;
         }
 
-        .task-card:hover .task-card-action {
-          color: var(--color-primary-dark);
+        .row-sla {
+          font-size: 0.8125rem;
+          color: var(--ink-muted);
         }
 
-        .task-arrow-circle {
-          width: 28px;
-          height: 28px;
-          border-radius: 50%;
-          background-color: var(--color-primary-soft);
+        .row-arrow-wrap {
+          width: 38px;
+          height: 38px;
+          border-radius: var(--radius-full);
+          background-color: var(--color-surface-subtle);
+          border: 1px solid var(--color-border);
           display: flex;
           align-items: center;
           justify-content: center;
-          transition: transform 0.2s ease, background-color 0.2s ease;
+          color: var(--ink-soft);
+          transition: transform var(--transition-fast), background-color var(--transition-fast), color var(--transition-fast);
           flex-shrink: 0;
         }
 
-        .task-card:hover .task-arrow-circle {
+        .editorial-service-row:hover .row-arrow-wrap {
           transform: translateX(4px);
-          background-color: #bbf7d0;
+          background-color: var(--color-primary);
+          color: #ffffff;
+          border-color: var(--color-primary);
+        }
+
+        .editorial-service-row:hover .row-arrow-icon {
+          color: #ffffff;
         }
       `}</style>
     </section>

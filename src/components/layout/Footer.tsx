@@ -11,7 +11,7 @@ export const Footer: React.FC = () => {
         {/* Top Brand Logo Row */}
         <div className="misa-footer-top">
           <Link to="/" className="misa-brand-logo" title="LocalMate Việt Nam">
-            <img src="/logo.png" alt="LocalMate" className="misa-logo-img" />
+            <img src="/logo.png" alt="LocalMate" width="160" height="42" className="misa-logo-img" />
           </Link>
         </div>
 
@@ -207,10 +207,17 @@ export const Footer: React.FC = () => {
           margin-bottom: 2.5rem;
         }
 
-        @media (min-width: 768px) {
+        @media (min-width: 768px) and (max-width: 1023px) {
           .misa-footer-grid {
-            grid-template-columns: 1.5fr 1fr 1fr 1fr;
-            gap: 2rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem 2rem;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .misa-footer-grid {
+            grid-template-columns: 1.4fr 1fr 1fr 1fr;
+            gap: 2.5rem;
           }
         }
 

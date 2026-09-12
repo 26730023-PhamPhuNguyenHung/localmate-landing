@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Container } from '../ui/Container';
-import { Button } from '../ui/Button';
-import { CheckCircle2, ShieldCheck, Send, Loader2, Clock, Sparkles, Phone } from 'lucide-react';
+import { ShieldCheck, ArrowRight, Loader2, Sparkles, CheckCircle2, Phone } from 'lucide-react';
 import { submitLead } from '../../services/leadService';
 import { CONTACT_INFO } from '../../data/landingContent';
 
@@ -13,7 +12,7 @@ export const FinalCTASection: React.FC = () => {
   });
 
   const [errors, setErrors] = useState<{ fullName?: string; phone?: string }>({});
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
 
   const validate = () => {
     const errs: { fullName?: string; phone?: string } = {};
@@ -27,9 +26,9 @@ export const FinalCTASection: React.FC = () => {
     }
 
     if (!trimmedPhone) {
-      errs.phone = 'Vui lòng nhập số điện thoại hoặc Zalo liên hệ';
+      errs.phone = 'Vui lòng nhập số điện thoại hoặc Zalo';
     } else if (!/^(0|\+?84)(3|5|7|8|9|2[0-9])[0-9]{8}$/.test(trimmedPhone)) {
-      errs.phone = 'Số điện thoại không hợp lệ (Ví dụ: 0912345678)';
+      errs.phone = 'Số điện thoại chưa đúng định dạng';
     }
 
     setErrors(errs);
@@ -37,9 +36,9 @@ export const FinalCTASection: React.FC = () => {
   };
 
   const handleChange = (field: keyof typeof formData, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
     if (errors[field as keyof typeof errors]) {
-      setErrors(prev => ({ ...prev, [field]: undefined }));
+      setErrors((prev) => ({ ...prev, [field]: undefined }));
     }
   };
 
@@ -65,428 +64,360 @@ export const FinalCTASection: React.FC = () => {
   };
 
   return (
-    <section
-      id="gui-viec"
-      style={{
-        padding: 'clamp(3.5rem, 5vw, 5rem) 0',
-        backgroundColor: '#0f172a',
-        color: '#ffffff',
-        position: 'relative',
-        overflow: 'hidden',
-        borderTop: '1px solid #1e293b'
-      }}
-    >
-      <Container size="lg">
-        <div className="final-cta-grid">
-          {/* Left Text Information */}
+    <section className="final-dark-section" id="gui-viec" aria-label="Gửi yêu cầu triển khai">
+      <Container>
+        <div className="final-cta-split">
+          {/* LEFT: Information */}
           <div className="final-cta-left">
-            <div className="final-cta-badge">
-              <Sparkles size={14} /> DEMO 0Đ KHÔNG RÀNG BUỘC
-            </div>
+            <span className="final-cta-badge">
+              <Sparkles size={14} /> KHỞI ĐẦU DỄ DÀNG • DEMO 0Đ
+            </span>
 
             <h2 className="final-cta-title">
-              Bạn nói điều cần làm. LocalMate tìm cách hoàn thành.
+              Bạn nói việc cần làm. LocalMate giúp bạn triển khai.
             </h2>
 
             <p className="final-cta-desc">
-              Không cần hiểu sâu kỹ thuật. Hãy mô tả điều bạn muốn đạt được, chúng tôi đề xuất phương án và hỗ trợ triển khai.
+              Không cần hiểu sâu kỹ thuật. Hãy mô tả mục tiêu kinh doanh của tiệm, kỹ thuật viên LocalMate sẽ dựng bản web demo xem thử trực tiếp trên điện thoại trong vòng 24 giờ.
             </p>
 
-            {/* Direct Solid Trust Box — Absolutely NO Glassmorphism */}
-            <div className="final-cta-trust-card">
-              <div className="trust-card-header">
-                <ShieldCheck size={18} color="#86efac" />
-                <span>CAM KẾT MINH BẠCH CỦA LOCALMATE</span>
+            <div className="final-trust-bullets">
+              <div className="final-trust-bullet">
+                <CheckCircle2 size={18} className="trust-bullet-icon" />
+                <span>Dựng demo xem trước 0đ trên điện thoại</span>
               </div>
-              <p className="trust-card-body">
-                Dựng demo 0đ xem trước • Không ép mua phần mềm • Bàn giao 100% tài khoản chính chủ • Nghiệm thu mới thanh toán.
-              </p>
-            </div>
-
-            <div className="final-cta-points">
-              <div className="final-point-item">
-                <CheckCircle2 size={16} color="#4ade80" />
-                <span>Phản hồi và tư vấn phương án trong 30 phút làm việc</span>
+              <div className="final-trust-bullet">
+                <CheckCircle2 size={18} className="trust-bullet-icon" />
+                <span>Báo giá cố định bằng văn bản, không phát sinh</span>
               </div>
-              <div className="final-point-item">
-                <CheckCircle2 size={16} color="#4ade80" />
-                <span>Dựng bản website demo chạy thực tế hoàn toàn miễn phí</span>
-              </div>
-              <div className="final-point-item">
-                <CheckCircle2 size={16} color="#4ade80" />
-                <span>Bàn giao 100% tài khoản tên miền, hosting và mã nguồn</span>
-              </div>
-              <div className="final-point-item">
-                <CheckCircle2 size={16} color="#4ade80" />
-                <span>Đội ngũ kỹ thuật viên hỗ trợ trực tiếp tại địa phương</span>
+              <div className="final-trust-bullet">
+                <CheckCircle2 size={18} className="trust-bullet-icon" />
+                <span>Nghiệm thu hài lòng 100% mới thanh toán</span>
               </div>
             </div>
 
-            {/* Hotline Bar */}
-            <div className="final-hotline-wrap">
-              <a
-                href={`tel:${CONTACT_INFO.phoneRaw}`}
-                className="final-hotline-btn"
-                title="Gọi hotline trao đổi ngay"
-              >
-                <Phone size={15} color="#0f172a" />
-                <span>Tư vấn trực tiếp 24/7: {CONTACT_INFO.phone}</span>
-              </a>
+            <div className="final-hotline-callout">
+              <Phone size={18} className="hotline-icon" />
+              <span>Trao đổi trực tiếp qua Hotline / Zalo: <strong>{CONTACT_INFO.phoneDisplay}</strong></span>
             </div>
           </div>
 
-          {/* Right Lead Capture Form Card */}
+          {/* RIGHT: Clean Lead Form */}
           <div className="final-cta-form-card">
             {status === 'success' ? (
-              <div className="final-success-box">
+              <div className="form-success-state">
                 <div className="success-icon-wrap">
-                  <CheckCircle2 size={36} color="#059669" />
+                  <CheckCircle2 size={36} />
                 </div>
-                <h3 className="success-title">Tiếp nhận yêu cầu thành công!</h3>
+                <h3 className="success-title">Đã Nhận Yêu Cầu Của Bạn!</h3>
                 <p className="success-desc">
-                  Cảm ơn <strong>{formData.fullName}</strong> đã gửi yêu cầu! LocalMate sẽ liên hệ qua Số điện thoại / Zalo <strong>{formData.phone}</strong> trong 30 phút để gửi bản demo 0đ và trao đổi phương án triển khai.
+                  Kỹ thuật viên LocalMate sẽ liên hệ qua Zalo/SĐT trong 15–30 phút để gửi bạn bản demo xem trước 0đ.
                 </p>
-
-                <Button
-                  variant="primary"
-                  size="md"
-                  fullWidth
+                <button
+                  type="button"
+                  className="btn btn-secondary"
                   onClick={() => {
                     setStatus('idle');
                     setFormData({ fullName: '', phone: '', taskDescription: '' });
                   }}
-                  style={{ marginTop: '0.75rem' }}
                 >
                   Gửi yêu cầu khác
-                </Button>
+                </button>
               </div>
             ) : (
-              <>
-                <h3 className="form-card-title">Đăng ký nhận website demo 0đ</h3>
-                <p className="form-card-subtitle">
-                  Mô tả mong muốn của bạn. Chúng tôi gửi bản demo xem trước và báo giá trọn gói trong 24 giờ.
-                </p>
+              <form onSubmit={handleSubmit} className="final-lead-form" noValidate>
+                <h3 className="form-heading">Nhận Bản Web Demo 0đ</h3>
+                <p className="form-subheading">Điền thông tin để kỹ thuật gửi link xem thử qua Zalo.</p>
 
-                <form onSubmit={handleSubmit} className="final-intake-form" noValidate>
-                  {/* Field 1: Họ và tên */}
-                  <div>
-                    <label htmlFor="finalFullName" className="form-label">
-                      Họ và tên <span style={{ color: '#ef4444' }}>*</span>
-                    </label>
-                    <input
-                      id="finalFullName"
-                      type="text"
-                      placeholder="Ví dụ: Anh Nam, Chị Trang..."
-                      value={formData.fullName}
-                      onChange={(e) => handleChange('fullName', e.target.value)}
-                      className={`form-input ${errors.fullName ? 'form-input-error' : ''}`}
-                    />
-                    {errors.fullName && (
-                      <span className="error-text">⚠️ {errors.fullName}</span>
-                    )}
-                  </div>
+                <div className="form-group">
+                  <label htmlFor="final-name" className="form-label">
+                    Họ và tên của bạn <span className="req">*</span>
+                  </label>
+                  <input
+                    id="final-name"
+                    type="text"
+                    value={formData.fullName}
+                    onChange={(e) => handleChange('fullName', e.target.value)}
+                    placeholder="Ví dụ: Anh Tuấn / Chị Lan"
+                    className={`form-input ${errors.fullName ? 'has-error' : ''}`}
+                  />
+                  {errors.fullName && <span className="field-error">{errors.fullName}</span>}
+                </div>
 
-                  {/* Field 2: Số điện thoại / Zalo */}
-                  <div>
-                    <label htmlFor="finalPhone" className="form-label">
-                      Số điện thoại / Zalo <span style={{ color: '#ef4444' }}>*</span>
-                    </label>
-                    <input
-                      id="finalPhone"
-                      type="tel"
-                      placeholder="Ví dụ: 0912 345 678"
-                      value={formData.phone}
-                      onChange={(e) => handleChange('phone', e.target.value)}
-                      className={`form-input ${errors.phone ? 'form-input-error' : ''}`}
-                    />
-                    {errors.phone && (
-                      <span className="error-text">⚠️ {errors.phone}</span>
-                    )}
-                  </div>
+                <div className="form-group">
+                  <label htmlFor="final-phone" className="form-label">
+                    Số điện thoại / Zalo <span className="req">*</span>
+                  </label>
+                  <input
+                    id="final-phone"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(e) => handleChange('phone', e.target.value)}
+                    placeholder="Ví dụ: 0912 345 678"
+                    className={`form-input ${errors.phone ? 'has-error' : ''}`}
+                  />
+                  {errors.phone && <span className="field-error">{errors.phone}</span>}
+                </div>
 
-                  {/* Field 3: Nhu cầu cần làm (tùy chọn) */}
-                  <div>
-                    <label htmlFor="finalTaskDesc" className="form-label">
-                      Nhu cầu cần làm (tùy chọn)
-                    </label>
-                    <textarea
-                      id="finalTaskDesc"
-                      rows={3}
-                      placeholder="Ví dụ: Dựng web demo 0đ cho tiệm spa, đưa quán lên Google Maps, gom lead Zalo/FB về 1 chỗ..."
-                      value={formData.taskDescription}
-                      onChange={(e) => handleChange('taskDescription', e.target.value)}
-                      className="form-textarea"
-                    />
-                  </div>
+                <div className="form-group">
+                  <label htmlFor="final-task" className="form-label">
+                    Việc tiệm bạn đang cần giải quyết
+                  </label>
+                  <textarea
+                    id="final-task"
+                    rows={2}
+                    value={formData.taskDescription}
+                    onChange={(e) => handleChange('taskDescription', e.target.value)}
+                    placeholder="Ví dụ: Làm web bán hải sản, gắn cờ Google Maps..."
+                    className="form-textarea"
+                  />
+                </div>
 
-                  <Button
-                    type="submit"
-                    variant="primary"
-                    size="lg"
-                    fullWidth
-                    disabled={status === 'loading'}
-                    style={{ minHeight: 48, fontWeight: 800, marginTop: '0.25rem' }}
-                  >
-                    {status === 'loading' ? (
-                      <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                        <Loader2 size={18} className="animate-spin" /> Đang gửi yêu cầu...
-                      </span>
-                    ) : (
-                      <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                        <Send size={16} /> Gửi yêu cầu nhận demo 0đ
-                      </span>
-                    )}
-                  </Button>
+                <button
+                  type="submit"
+                  disabled={status === 'loading'}
+                  className="btn btn-primary submit-cta-btn"
+                >
+                  {status === 'loading' ? (
+                    <>
+                      <Loader2 size={18} className="spinner" /> Đang gửi...
+                    </>
+                  ) : (
+                    <>
+                      Nhận Web Demo 0đ Cho Tiệm <ArrowRight size={18} />
+                    </>
+                  )}
+                </button>
 
-                  <p className="form-footnote">
-                    🔒 Thông tin được bảo mật tuyệt đối. Cam kết 100% không mất phí nếu không duyệt demo.
-                  </p>
-                </form>
-              </>
+                <div className="form-footnote">
+                  <span>Chưa cần mua gì. Trao đổi phương án trước 0đ.</span>
+                </div>
+              </form>
             )}
           </div>
         </div>
       </Container>
 
       <style>{`
-        .final-cta-grid {
+        .final-dark-section {
+          background-color: #0f172a;
+          color: #ffffff;
+          padding: clamp(4.5rem, 6vw, 7rem) 0;
+          border-top: 1px solid #1e293b;
+        }
+
+        .final-cta-split {
           display: grid;
           grid-template-columns: 1fr;
           gap: 2.5rem;
-          align-items: start;
+          align-items: center;
         }
 
-        @media (min-width: 900px) {
-          .final-cta-grid {
-            grid-template-columns: 1.15fr 1fr;
-            gap: 3.5rem;
+        @media (min-width: 1024px) {
+          .final-cta-split {
+            grid-template-columns: 1.25fr 1fr;
+            gap: 4rem;
           }
-        }
-
-        .final-cta-left {
-          display: flex;
-          flex-direction: column;
-          gap: 1.25rem;
         }
 
         .final-cta-badge {
           display: inline-flex;
           align-items: center;
-          gap: 0.35rem;
-          font-size: 0.75rem;
-          font-weight: 800;
+          gap: 0.45rem;
+          background-color: #1e293b;
           color: #86efac;
-          background-color: #064e3b;
-          border: 1px solid #059669;
-          padding: 0.25rem 0.75rem;
-          border-radius: 999px;
-          letter-spacing: 0.05em;
-          width: fit-content;
+          font-size: 0.8125rem;
+          font-weight: 700;
+          padding: 0.35rem 0.85rem;
+          border-radius: var(--radius-full);
+          border: 1px solid #334155;
+          margin-bottom: 1.25rem;
         }
 
         .final-cta-title {
           font-size: var(--font-size-h2);
-          font-weight: 800;
-          line-height: 1.25;
-          letter-spacing: -0.02em;
           color: #ffffff;
-          margin: 0;
+          font-weight: 800;
+          line-height: var(--line-height-h2);
+          margin-bottom: 1.25rem;
           text-wrap: balance;
         }
 
         .final-cta-desc {
-          font-size: 0.975rem;
-          color: #cbd5e1;
-          line-height: 1.65;
-          margin: 0;
+          font-size: var(--font-size-body-lg);
+          color: #94a3b8;
+          line-height: 1.6;
+          margin-bottom: 2rem;
+          text-wrap: pretty;
         }
 
-        .final-cta-trust-card {
-          background-color: #1e293b;
-          border: 1px solid #334155;
-          border-radius: 14px;
-          padding: 1.15rem 1.35rem;
+        .final-trust-bullets {
           display: flex;
           flex-direction: column;
-          gap: 0.4rem;
+          gap: 0.85rem;
+          margin-bottom: 2.25rem;
         }
 
-        .trust-card-header {
+        .final-trust-bullet {
           display: flex;
           align-items: center;
-          gap: 0.45rem;
-          font-size: 0.775rem;
-          font-weight: 800;
-          color: #86efac;
-          letter-spacing: 0.04em;
-        }
-
-        .trust-card-body {
-          font-size: 0.85rem;
+          gap: 0.75rem;
+          font-size: 1rem;
           color: #e2e8f0;
-          margin: 0;
-          line-height: 1.5;
         }
 
-        .final-cta-points {
-          display: flex;
-          flex-direction: column;
-          gap: 0.65rem;
+        .trust-bullet-icon {
+          color: #22c55e;
+          flex-shrink: 0;
         }
 
-        .final-point-item {
+        .final-hotline-callout {
           display: flex;
           align-items: center;
-          gap: 0.55rem;
-          font-size: 0.875rem;
-          color: #f1f5f9;
+          gap: 0.75rem;
+          padding: 1rem 1.25rem;
+          background-color: #1e293b;
+          border-radius: var(--radius-md);
+          font-size: 0.9375rem;
+          color: #cbd5e1;
         }
 
-        .final-hotline-wrap {
-          margin-top: 0.5rem;
+        .final-hotline-callout strong {
+          color: #ffffff;
         }
 
-        .final-hotline-btn {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          gap: 0.5rem;
-          min-height: 44px;
-          background-color: #ffffff;
-          color: #0f172a;
-          font-size: 0.875rem;
-          font-weight: 800;
-          padding: 0.65rem 1.25rem;
-          border-radius: 12px;
-          text-decoration: none;
-          transition: background-color 0.2s ease, transform 0.2s ease;
+        .hotline-icon {
+          color: #22c55e;
+          flex-shrink: 0;
         }
 
-        .final-hotline-btn:hover {
-          background-color: #f1f5f9;
-          transform: translateY(-1px);
-        }
-
-        /* Right Form Card */
+        /* FORM CARD */
         .final-cta-form-card {
           background-color: #ffffff;
-          border-radius: 20px;
-          padding: 2rem 1.75rem;
-          border: 1px solid #e2e8f0;
-          box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.04);
-          color: #0f172a;
+          color: var(--ink);
+          border-radius: var(--radius-2xl);
+          padding: clamp(1.75rem, 3.5vw, 2.75rem);
+          box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
         }
 
-        .form-card-title {
-          font-size: 1.35rem;
+        .form-heading {
+          font-size: 1.45rem;
           font-weight: 800;
-          color: #0f172a;
+          color: var(--ink);
           margin: 0 0 0.35rem 0;
         }
 
-        .form-card-subtitle {
-          font-size: 0.85rem;
-          color: #64748b;
-          margin: 0 0 1.25rem 0;
-          line-height: 1.45;
+        .form-subheading {
+          font-size: 0.875rem;
+          color: var(--ink-soft);
+          margin: 0 0 1.5rem 0;
         }
 
-        .final-intake-form {
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
+        .form-group {
+          margin-bottom: 1.15rem;
         }
 
         .form-label {
           display: block;
-          font-size: 0.825rem;
+          font-size: 0.875rem;
           font-weight: 700;
-          color: #1e293b;
-          margin-bottom: 0.35rem;
+          color: var(--ink);
+          margin-bottom: 0.45rem;
+        }
+
+        .req {
+          color: #dc2626;
         }
 
         .form-input,
         .form-textarea {
           width: 100%;
-          box-sizing: border-box;
-          padding: 0.75rem 0.85rem;
-          border-radius: 10px;
-          border: 1px solid #cbd5e1;
-          font-size: 0.9rem;
+          padding: 0.85rem 1rem;
+          border: 1px solid var(--color-border);
+          border-radius: var(--radius-md);
           font-family: inherit;
-          color: #0f172a;
+          font-size: 1rem;
+          color: var(--ink);
           background-color: #ffffff;
+          box-sizing: border-box;
           outline: none;
-          transition: border-color 0.2s ease;
-        }
-
-        .form-input {
-          min-height: 44px;
+          transition: border-color var(--transition-fast);
         }
 
         .form-input:focus,
         .form-textarea:focus {
           border-color: var(--color-primary);
+          box-shadow: 0 0 0 3px var(--color-primary-soft);
         }
 
-        .form-input-error {
-          border-color: #ef4444;
-          background-color: #fef2f2;
+        .form-input.has-error {
+          border-color: #dc2626;
         }
 
-        .error-text {
-          font-size: 0.775rem;
-          color: #dc2626;
-          margin-top: 0.3rem;
+        .field-error {
           display: block;
-          font-weight: 600;
+          font-size: 0.8125rem;
+          color: #dc2626;
+          margin-top: 0.35rem;
+        }
+
+        .submit-cta-btn {
+          width: 100%;
+          min-height: 52px;
+          font-size: 1.0625rem;
+          font-weight: 700;
+          margin-top: 0.5rem;
         }
 
         .form-footnote {
-          font-size: 0.75rem;
-          color: #64748b;
+          margin-top: 1rem;
           text-align: center;
-          margin: 0;
-          line-height: 1.4;
+          font-size: 0.8125rem;
+          color: var(--ink-muted);
         }
 
-        /* Success Box */
-        .final-success-box {
-          background-color: #f0fdf4;
-          border: 1.5px solid #86efac;
-          border-radius: 16px;
-          padding: 2rem 1.5rem;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
+        .spinner {
+          animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+
+        .form-success-state {
           text-align: center;
-          gap: 0.75rem;
+          padding: 2rem 1rem;
         }
 
         .success-icon-wrap {
-          width: 54px;
-          height: 54px;
+          width: 64px;
+          height: 64px;
           border-radius: 50%;
-          background-color: #dcfce7;
+          background-color: var(--color-primary-soft);
+          color: var(--color-primary);
           display: flex;
           align-items: center;
           justify-content: center;
+          margin: 0 auto 1.5rem auto;
         }
 
         .success-title {
-          font-size: 1.25rem;
+          font-size: 1.5rem;
           font-weight: 800;
-          color: #166534;
-          margin: 0;
+          color: var(--ink);
+          margin-bottom: 0.5rem;
         }
 
         .success-desc {
-          font-size: 0.875rem;
-          color: #15803d;
-          line-height: 1.55;
-          margin: 0;
+          font-size: 0.9375rem;
+          color: var(--ink-soft);
+          line-height: 1.6;
+          margin-bottom: 1.5rem;
         }
       `}</style>
     </section>
   );
 };
+
+export default FinalCTASection;

@@ -1,9 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container } from '../ui/Container';
-import { SectionHeader } from '../ui/SectionHeader';
-import { Accordion } from '../ui/Accordion';
 import { OPERATION_FAQS_DATA } from '../../data/operationsData';
-import { MessageSquare, PhoneCall, HelpCircle, ArrowRight } from 'lucide-react';
+import { HelpCircle, ChevronDown, PhoneCall, Phone, Sparkles } from 'lucide-react';
 import { useRouter } from '../layout/Router';
 import { CONTACT_INFO } from '../../data/landingContent';
 
@@ -13,6 +11,11 @@ interface FAQSectionProps {
 
 export const FAQSection: React.FC<FAQSectionProps> = ({ onOpenDemoForm }) => {
   const { navigate } = useRouter();
+  const [openId, setOpenId] = useState<string | null>(OPERATION_FAQS_DATA[0]?.id || null);
+
+  const toggleFAQ = (id: string) => {
+    setOpenId(openId === id ? null : id);
+  };
 
   const handleAction = () => {
     if (onOpenDemoForm) {
@@ -22,150 +25,207 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ onOpenDemoForm }) => {
     }
   };
 
-  const accordionItems = OPERATION_FAQS_DATA.map(f => ({
-    id: f.id,
-    question: f.question,
-    answer: f.answer
-  }));
-
   return (
-    <section
-      id="faq"
-      style={{
-        padding: 'clamp(3.5rem, 5vw, 5rem) 0',
-        backgroundColor: '#f8fafc',
-        borderBottom: '1px solid var(--color-border)'
-      }}
-    >
-      <Container size="lg">
-        <SectionHeader
-          eyebrow="GIẢI ĐÁP THẮC MẮC THỰC TẾ"
-          title="Những câu hỏi chủ doanh nghiệp thường quan tâm nhất"
-          subtitle="Giải đáp minh bạch, thẳng thắn về quy trình làm web demo 0đ, quyền sở hữu tài khoản và chính sách hỗ trợ sau bàn giao."
-        />
-
-        <div style={{ maxWidth: '860px', margin: '0 auto' }}>
-          <Accordion items={accordionItems} />
+    <section className="section-component faq-premium-section" id="faq" aria-label="Giải đáp thắc mắc thực tế">
+      <div className="container-narrow">
+        <div className="section-header">
+          <span className="section-eyebrow">
+            <Sparkles size={14} /> GIẢI ĐÁP THẮC MẮC THỰC TẾ
+          </span>
+          <h2>Những Câu Hỏi Thường Gặp</h2>
+          <p className="subtitle">
+            Giải đáp minh bạch, thẳng thắn về quy trình làm web demo 0đ, quyền sở hữu tài khoản và chính sách đồng hành sau bàn giao.
+          </p>
         </div>
 
-        {/* Support callout box */}
-        <div className="faq-callout-box">
-          <div className="faq-callout-left">
-            <div className="faq-icon-circle">
-              <MessageSquare size={22} color="var(--color-primary)" />
-            </div>
-            <div>
-              <h4 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#0f172a', margin: '0 0 0.25rem 0' }}>
-                Bạn có câu hỏi riêng cho ngành nghề của mình?
-              </h4>
-              <p style={{ fontSize: '0.875rem', color: '#475569', margin: 0, lineHeight: 1.5 }}>
-                Đội ngũ LocalMate sẵn sàng giải đáp 1-1 trực tiếp và tư vấn phương án phù hợp nhất qua Zalo hoặc Hotline.
-              </p>
-            </div>
+        {/* Minimal Accordion List */}
+        <div className="faq-accordion-list" role="region" aria-label="Danh sách câu hỏi thường gặp">
+          {OPERATION_FAQS_DATA.map((faq) => {
+            const isOpen = openId === faq.id;
+            return (
+              <div key={faq.id} className={`faq-row-item ${isOpen ? 'open' : ''}`}>
+                <button
+                  type="button"
+                  className="faq-trigger-btn"
+                  onClick={() => toggleFAQ(faq.id)}
+                  aria-expanded={isOpen}
+                >
+                  <span className="faq-question-text">{faq.question}</span>
+                  <div className={`faq-arrow-circle ${isOpen ? 'rotated' : ''}`} aria-hidden="true">
+                    <ChevronDown size={18} />
+                  </div>
+                </button>
+
+                {isOpen && (
+                  <div className="faq-answer-panel">
+                    <p className="faq-answer-text">{faq.answer}</p>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Support 1-1 Callout Box */}
+        <div className="faq-callout-panel">
+          <div className="callout-left-content">
+            <h4 className="callout-title">Bạn có thắc mắc riêng cho mô hình tiệm của mình?</h4>
+            <p className="callout-sub">
+              Đội ngũ kỹ thuật viên LocalMate luôn sẵn sàng trao đổi trực tiếp qua Zalo hoặc Hotline mà không chèo kéo hay thu phụ phí.
+            </p>
           </div>
 
-          <div className="faq-callout-actions">
+          <div className="callout-actions-row">
             <button
               type="button"
               onClick={handleAction}
-              className="faq-action-btn"
+              className="btn btn-primary callout-cta-btn"
             >
-              <PhoneCall size={16} />
-              <span>Nhận tư vấn &amp; Demo 0đ</span>
+              <PhoneCall size={16} /> Nhận Tư Vấn Demo 0đ
             </button>
-            <a
-              href={`tel:${CONTACT_INFO.phoneRaw}`}
-              className="faq-hotline-link"
-              title="Gọi hotline trực tiếp"
-            >
-              Hotline: {CONTACT_INFO.phone}
+            <a href={`tel:${CONTACT_INFO.phoneRaw}`} className="callout-phone-link">
+              Hotline: {CONTACT_INFO.phoneDisplay}
             </a>
           </div>
         </div>
-      </Container>
+      </div>
 
       <style>{`
-        .faq-callout-box {
-          max-width: 860px;
-          margin: 2.5rem auto 0 auto;
-          padding: 1.5rem 1.75rem;
-          background-color: #ffffff;
-          border: 1px solid #bbf7d0;
-          border-radius: 16px;
+        .faq-premium-section {
+          background-color: var(--color-bg);
+          border-bottom: 1px solid var(--color-border);
+        }
+
+        .faq-accordion-list {
+          display: flex;
+          flex-direction: column;
+          border-top: 1px solid var(--color-border);
+          margin-bottom: 3rem;
+        }
+
+        .faq-row-item {
+          border-bottom: 1px solid var(--color-border);
+          transition: background-color var(--transition-fast);
+        }
+
+        .faq-trigger-btn {
+          width: 100%;
+          padding: 1.5rem 0.5rem;
+          background: none;
+          border: none;
           display: flex;
           align-items: center;
           justify-content: space-between;
-          gap: 1.5rem;
-          flex-wrap: wrap;
-          box-shadow: 0 4px 14px rgba(13, 118, 71, 0.06);
-        }
-
-        .faq-callout-left {
-          display: flex;
-          align-items: center;
-          gap: 1rem;
-          flex: 1;
-          min-width: 280px;
-        }
-
-        .faq-icon-circle {
-          width: 46px;
-          height: 46px;
-          border-radius: 50%;
-          background-color: var(--color-primary-soft);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-shrink: 0;
-        }
-
-        .faq-callout-actions {
-          display: flex;
-          align-items: center;
-          gap: 1rem;
-          flex-wrap: wrap;
-        }
-
-        .faq-action-btn {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          gap: 0.5rem;
-          min-height: 44px;
-          background-color: var(--color-primary);
-          color: #ffffff;
-          padding: 0.75rem 1.4rem;
-          border-radius: 12px;
-          font-weight: 800;
-          font-size: 0.9rem;
-          border: none;
+          gap: 1.25rem;
+          text-align: left;
           cursor: pointer;
-          transition: background-color 0.2s ease, transform 0.2s ease;
-          white-space: nowrap;
+          font-family: inherit;
         }
 
-        .faq-action-btn:hover {
-          background-color: var(--color-primary-hover);
-          transform: translateY(-1px);
-        }
-
-        .faq-hotline-link {
-          font-size: 0.875rem;
+        .faq-question-text {
+          font-size: 1.125rem;
           font-weight: 700;
-          color: #0f172a;
-          text-decoration: none;
-          padding: 0.5rem 0.75rem;
-          border-radius: 8px;
-          transition: color 0.2s ease;
-          white-space: nowrap;
+          color: var(--ink);
+          line-height: 1.35;
         }
 
-        .faq-hotline-link:hover {
+        .faq-row-item.open .faq-question-text {
+          color: var(--color-primary-dark);
+        }
+
+        .faq-arrow-circle {
+          width: 32px;
+          height: 32px;
+          border-radius: var(--radius-full);
+          background-color: var(--color-surface-subtle);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--ink-muted);
+          flex-shrink: 0;
+          transition: transform var(--transition-fast), background-color var(--transition-fast);
+        }
+
+        .faq-arrow-circle.rotated {
+          transform: rotate(180deg);
+          background-color: var(--color-primary-soft);
           color: var(--color-primary);
+        }
+
+        .faq-answer-panel {
+          padding: 0 0.5rem 1.5rem 0.5rem;
+        }
+
+        .faq-answer-text {
+          font-size: 1rem;
+          color: var(--ink-body);
+          line-height: 1.65;
+          margin: 0;
+        }
+
+        /* Callout Box */
+        .faq-callout-panel {
+          background-color: #ffffff;
+          border: 1px solid var(--color-border);
+          border-radius: var(--radius-xl);
+          padding: clamp(1.5rem, 3vw, 2rem);
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 1.75rem;
+          flex-wrap: wrap;
+          box-shadow: var(--shadow-sm);
+        }
+
+        .callout-left-content {
+          flex: 1 1 300px;
+          min-width: 0;
+        }
+
+        .callout-title {
+          font-size: 1.15rem;
+          font-weight: 700;
+          color: var(--ink);
+          margin: 0 0 0.35rem 0;
+        }
+
+        .callout-sub {
+          font-size: 0.9375rem;
+          color: var(--ink-soft);
+          line-height: 1.5;
+          margin: 0;
+        }
+
+        .callout-actions-row {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          flex-wrap: wrap;
+        }
+
+        .callout-cta-btn {
+          min-height: 48px;
+        }
+
+        .callout-phone-link {
+          font-size: 0.9375rem;
+          font-weight: 700;
+          color: var(--color-primary);
+          text-decoration: none;
+        }
+
+        .callout-phone-link:hover {
           text-decoration: underline;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .faq-arrow-circle {
+            transition: none;
+          }
         }
       `}</style>
     </section>
   );
 };
 
+export default FAQSection;

@@ -123,6 +123,8 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
               <img
                 src="/logo.png"
                 alt="LocalMate"
+                width="150"
+                height="38"
                 className="header-logo-img"
               />
             </Link>

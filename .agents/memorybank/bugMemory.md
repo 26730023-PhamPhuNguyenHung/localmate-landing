@@ -65,3 +65,18 @@
   - Đưa nút [Báo giá nhanh] compact ngay trên Header mobile cạnh nút Hamburger, giúp khách hàng di động có thể bấm chuyển đổi tức thì mà không cần mở menu.
   - Loại bỏ hoàn toàn accordion lồng nhau (nested accordions) bên trong Mobile Drawer vì gây khó bấm và làm giấu nội dung quan trọng. Thay bằng cấu trúc danh sách phẳng 2 tầng (Điều hướng chính + Dịch vụ triển khai nhanh).
   - Chuẩn hóa mọi interactive item trong Drawer đạt tap target `>= 44px` (Apple Human Interface Guidelines & Google Web Vitals), có nút Hotline và CTA kích thước lớn ghim ở chân menu.
+
+## 7. Bài học về Master Redesign & Premium Editorial UI/UX (Landing Page Redesign)
+- **Giải quyết dứt điểm "Bội thực Card" (Card Fatigue)**:
+  - Trước đây: Quá nhiều card nhỏ chữ nhật lặp đi lặp lại (`ProblemMapperSection` 5 card, `ServiceCardsSection` 4 card, `PricingMatrixSection` 4 card...).
+  - Giải pháp: Chuyển đổi sang **Editorial Rows (Split 35/65)** cho Discovery nhu cầu, **Asymmetric 3-Package Layout** cho Bảng giá (1 gói chính nổi bật + 2 gói phụ xếp chồng), và **Minimal Horizontal Trust Strip** (không card).
+  - Giảm hơn 40% số lượng visual cards, tạo nhịp điệu thị giác đĩnh đạc và sang trọng như một Digital Studio cao cấp.
+- **Giải quyết dứt điểm Mâu thuẫn Báo giá 490k vs 2.9tr**:
+  - Tách bạch rõ ràng: Gói Bán hàng 1 trang (490k / 24h) dành cho tiệm nhỏ/cá nhân, Gói Khởi tạo chuẩn (2.9tr / 3-5 ngày) bao gồm Web 3-5 trang + Google Maps chính chủ + Bộ mã QR Review 5 sao để bàn.
+  - Loại bỏ việc dump toàn bộ 41 dịch vụ lẻ ra mặt tiền trang chủ, đưa vào collapsible catalog drawer mở rộng theo yêu cầu (`.catalog-toggle-btn`).
+- **Nâng cấp Typography & 16px Root Base**:
+  - Cố định `html { font-size: 16px; }` thay vì bị hạ xuống 14.5px/14px.
+  - Sử dụng `clamp()` chuẩn cho H1, H2, H3, Body và Metadata tối thiểu 14px, tối ưu đọc thư thái trên Laptop 14" Scale 125%.
+- **Zero Horizontal Overflow & Zero CLS**:
+  - Kiểm thử thực tế bằng `agent-browser` trên toàn bộ 9 viewports (1536, 1440, 1366, 1228, 1024, 768, 430, 390, 375): `overflow = 0` trên 100% viewports.
+  - Khắc phục nguy cơ CLS trên Header và Footer bằng cách gán kích thước cố định `width`/`height` cho logo.

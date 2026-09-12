@@ -1,358 +1,178 @@
 import React from 'react';
 import { Container } from '../ui/Container';
-import {
-  ShieldCheck,
-  BadgePercent,
-  KeyRound,
-  PhoneCall,
-  HeartHandshake,
-  CheckCircle2,
-  Phone,
-  Sparkles,
-  LucideIcon
-} from 'lucide-react';
-import { PHILOSOPHY_PILLARS_DATA } from '../../data/operationsData';
+import { ShieldCheck, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { CONTACT_INFO } from '../../data/landingContent';
 
-const iconMap: Record<string, LucideIcon> = {
-  BadgePercent,
-  KeyRound,
-  PhoneCall,
-  HeartHandshake,
-  ShieldCheck
-};
-
 export const PhilosophySection: React.FC = () => {
+  const scenarios = [
+    {
+      label: 'Đã có tên miền hoặc hosting cũ?',
+      solution: 'Giữ lại tiếp tục sử dụng',
+      desc: 'LocalMate kiểm tra và tận dụng ngay máy chủ/tên miền bạn đang trả phí, không ép mua mới tốn kém.'
+    },
+    {
+      label: 'Đã có trang Fanpage hoặc Zalo?',
+      solution: 'Kết nối đón khách về một mối',
+      desc: 'Tích hợp nút nhắn tin Zalo và gọi điện trực tiếp lên website để khách mở lên là bấm gọi ngay.'
+    },
+    {
+      label: 'Website hiện tại chạy chậm hoặc lỗi?',
+      solution: 'Kiểm tra và sửa trước khi xây mới',
+      desc: 'Nếu cấu trúc cũ vẫn tốt, chúng tôi tư vấn sửa lỗi và tăng tốc tải trang, không cố tình vẽ việc xây mới.'
+    },
+    {
+      label: 'Sau khi làm xong, ai làm chủ tài khoản?',
+      solution: 'Bạn toàn quyền nắm giữ 100%',
+      desc: 'Tên miền, hosting và vị trí Google Maps đều được tạo hoặc chuyển giao quyền cao nhất vào Gmail/SĐT của bạn.'
+    }
+  ];
+
   return (
-    <section className="philosophy-section" id="triet-ly" aria-label="Triết lý phục vụ SME địa phương">
-      <Container size="lg">
-        <div className="philosophy-split-wrapper">
-          {/* Left Column: Editorial Manifesto (Sticky on Desktop) */}
-          <div className="philosophy-left-col">
-            <div className="philosophy-sticky-box">
-              <span className="section-eyebrow philosophy-eyebrow">
-                <ShieldCheck size={14} aria-hidden="true" />
-                TRIẾT LÝ PHỤC VỤ SME ĐỊA PHƯƠNG
-              </span>
+    <section className="section-component visual-break-section" id="triet-ly" aria-label="Triết lý tận dụng thứ đã có">
+      <Container>
+        <div className="editorial-split">
+          {/* Left Column: Manifesto */}
+          <div className="editorial-split-sticky">
+            <span className="section-eyebrow">
+              <ShieldCheck size={14} /> TRIẾT LÝ VẬN HÀNH THỰC TẾ
+            </span>
+            <h2 className="philosophy-title">
+              Không cần mua thêm phần mềm đắt đỏ rồi bỏ xó. LocalMate tận dụng thứ bạn đã có.
+            </h2>
+            <p className="philosophy-lead">
+              Doanh nghiệp nhỏ và hộ kinh doanh không cần những hệ sinh thái cồng kềnh hàng chục triệu đồng. Chúng tôi đứng về phía người làm nghề: tập trung tạo ra khách hàng thật và chi phí thấp nhất.
+            </p>
 
-              <h2 className="philosophy-main-title">
-                Không cố bán phần mềm thừa — Tận dụng tối đa những gì bạn đã có.
-              </h2>
-
-              <p className="philosophy-lead-desc">
-                Doanh nghiệp nhỏ và các hộ kinh doanh không cần mua thêm những phần mềm đắt đỏ, phức tạp rồi bỏ xó. Bạn chỉ cần tận dụng đúng công cụ, tập trung vào việc tạo ra khách hàng thật và có người kỹ thuật đồng hành tin cậy phía sau.
-              </p>
-
-              {/* Manifesto Card */}
-              <div className="manifesto-card">
-                <div className="manifesto-tag">
-                  <Sparkles size={14} className="manifesto-sparkle" aria-hidden="true" />
-                  <span>NGUYÊN TẮC THỰC CHIẾN</span>
-                </div>
-                <p className="manifesto-quote">
-                  “Bạn lo chăm sóc khách hàng &amp; bán sản phẩm. Localmate lo trọn gói phần kỹ thuật, kết nối công cụ và bảo đảm vận hành ổn định mỗi ngày.”
-                </p>
-                <div className="manifesto-meta">
-                  <CheckCircle2 size={16} className="manifesto-check" aria-hidden="true" />
-                  <span>Nghiệm thu hài lòng 100% mới thanh toán — Bàn giao tài khoản chính chủ</span>
-                </div>
-              </div>
-
-              {/* Direct Action Hotline Button */}
-              <div className="philosophy-cta-row">
-                <a
-                  href={`tel:${CONTACT_INFO.phoneRaw}`}
-                  className="philosophy-hotline-btn"
-                  title="Gọi trực tiếp cho kỹ thuật viên LocalMate"
-                >
-                  <Phone size={16} aria-hidden="true" />
-                  <span>Trao đổi trực tiếp: {CONTACT_INFO.phoneDisplay}</span>
-                </a>
-              </div>
+            <div className="philosophy-contact-box">
+              <span className="contact-box-label">Cần tư vấn trực tiếp với kỹ thuật viên địa phương?</span>
+              <a href={`tel:${CONTACT_INFO.phoneRaw}`} className="contact-box-link">
+                Gọi Hotline: {CONTACT_INFO.phoneDisplay}
+              </a>
             </div>
           </div>
 
-          {/* Right Column: 4 Core Values */}
-          <div className="philosophy-right-col">
-            <div className="philosophy-rows-container">
-              {PHILOSOPHY_PILLARS_DATA.map((item, index) => {
-                const IconComponent = iconMap[item.iconName] || (index === 3 ? HeartHandshake : ShieldCheck);
-                const num = `0${index + 1}`;
-
-                return (
-                  <article key={item.id} className="philosophy-row-item">
-                    <div className="row-item-header">
-                      <div className="row-item-num-wrap">
-                        <span className="row-num">{num}</span>
-                        <div className="row-icon-pill">
-                          <IconComponent size={19} color="var(--color-primary)" aria-hidden="true" />
-                        </div>
-                      </div>
-                      <div className="row-title-wrap">
-                        <h3 className="row-title">{item.title}</h3>
-                        <span className="row-summary">{item.summary}</span>
-                      </div>
-                    </div>
-
-                    <div className="row-item-body">
-                      <p className="row-detail">{item.detail}</p>
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
+          {/* Right Column: 4 Real Scenarios */}
+          <div className="philosophy-scenarios-list">
+            {scenarios.map((item, idx) => (
+              <div key={idx} className="scenario-card">
+                <div className="scenario-header">
+                  <span className="scenario-question">{item.label}</span>
+                  <div className="scenario-solution-tag">
+                    <CheckCircle2 size={15} className="solution-check-icon" />
+                    <span>{item.solution}</span>
+                  </div>
+                </div>
+                <p className="scenario-desc">{item.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </Container>
 
       <style>{`
-        .philosophy-section {
-          padding: clamp(3.5rem, 5.5vw, 5.5rem) 0;
+        .philosophy-title {
+          font-size: var(--font-size-h2);
+          color: var(--ink);
+          font-weight: 800;
+          line-height: var(--line-height-h2);
+          margin-bottom: 1.25rem;
+          text-wrap: balance;
+        }
+
+        .philosophy-lead {
+          font-size: var(--font-size-body);
+          color: var(--ink-soft);
+          line-height: var(--line-height-body);
+          margin-bottom: 2rem;
+          text-wrap: pretty;
+        }
+
+        .philosophy-contact-box {
+          padding: 1.25rem;
           background-color: #ffffff;
-          border-bottom: 1px solid #e5e7eb;
-          position: relative;
-        }
-
-        .philosophy-split-wrapper {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 2.5rem;
-          align-items: start;
-        }
-
-        @media (min-width: 992px) {
-          .philosophy-split-wrapper {
-            grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-            gap: 3.5rem;
-          }
-        }
-
-        /* Left Column */
-        .philosophy-left-col {
+          border: 1px solid var(--color-border);
+          border-radius: var(--radius-lg);
           display: flex;
           flex-direction: column;
+          gap: 0.35rem;
         }
 
-        @media (min-width: 992px) {
-          .philosophy-sticky-box {
-            position: sticky;
-            top: 96px;
-          }
+        .contact-box-label {
+          font-size: 0.8125rem;
+          color: var(--ink-muted);
         }
 
-        .philosophy-eyebrow {
+        .contact-box-link {
+          font-size: 1.0625rem;
+          font-weight: 700;
+          color: var(--color-primary);
+          text-decoration: none;
+        }
+
+        .contact-box-link:hover {
+          text-decoration: underline;
+        }
+
+        .philosophy-scenarios-list {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .scenario-card {
+          padding: clamp(1.25rem, 2vw, 1.75rem);
+          background-color: #ffffff;
+          border: 1px solid var(--color-border);
+          border-radius: var(--radius-lg);
+          transition: border-color var(--transition-fast);
+        }
+
+        .scenario-card:hover {
+          border-color: var(--color-primary-border);
+        }
+
+        .scenario-header {
+          display: flex;
+          align-items: flex-start;
+          justify-content: space-between;
+          gap: 1rem;
+          flex-wrap: wrap;
+          margin-bottom: 0.75rem;
+        }
+
+        .scenario-question {
+          font-size: 1.0625rem;
+          font-weight: 700;
+          color: var(--ink);
+        }
+
+        .scenario-solution-tag {
           display: inline-flex;
           align-items: center;
           gap: 0.4rem;
-          margin-bottom: 0.85rem;
-          color: var(--color-primary-dark);
-          font-weight: 800;
-          font-size: 0.775rem;
-          letter-spacing: 0.04em;
-        }
-
-        .philosophy-main-title {
-          font-size: clamp(1.75rem, 3.2vw, 2.35rem);
-          font-weight: 800;
-          color: var(--color-navy);
-          line-height: 1.25;
-          letter-spacing: -0.02em;
-          text-wrap: balance;
-          margin: 0 0 1.15rem 0;
-        }
-
-        .philosophy-lead-desc {
-          font-size: clamp(0.925rem, 1.1vw, 1.025rem);
-          color: var(--color-text-muted);
-          line-height: 1.65;
-          text-wrap: pretty;
-          margin: 0 0 1.5rem 0;
-        }
-
-        /* Manifesto Card */
-        .manifesto-card {
-          background-color: #f8faf9;
-          border: 1px solid #d1fae5;
-          border-left: 4px solid var(--color-primary);
-          border-radius: 12px;
-          padding: 1.25rem 1.35rem;
-          display: flex;
-          flex-direction: column;
-          gap: 0.65rem;
-          margin-bottom: 1.5rem;
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
-        }
-
-        .manifesto-tag {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.35rem;
-          font-size: 0.725rem;
-          font-weight: 800;
-          letter-spacing: 0.05em;
-          color: var(--color-primary-dark);
-        }
-
-        .manifesto-sparkle {
-          color: var(--color-primary);
-        }
-
-        .manifesto-quote {
-          font-size: 0.95rem;
+          font-size: 0.8125rem;
           font-weight: 700;
-          color: var(--color-navy);
-          line-height: 1.55;
-          margin: 0;
-          text-wrap: pretty;
-        }
-
-        .manifesto-meta {
-          display: flex;
-          align-items: center;
-          gap: 0.45rem;
-          font-size: 0.8rem;
-          font-weight: 600;
-          color: #334155;
-          margin-top: 0.25rem;
-          line-height: 1.4;
-          text-wrap: pretty;
-        }
-
-        .manifesto-check {
-          color: var(--color-primary);
-          flex-shrink: 0;
-        }
-
-        .philosophy-cta-row {
-          display: flex;
-          align-items: center;
-        }
-
-        .philosophy-hotline-btn {
-          min-height: 44px;
-          display: inline-flex;
-          align-items: center;
-          gap: 0.5rem;
-          background-color: var(--color-primary);
-          color: #ffffff;
-          font-size: 0.875rem;
-          font-weight: 700;
-          padding: 0.65rem 1.25rem;
-          border-radius: 10px;
-          text-decoration: none;
-          transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-          box-shadow: 0 2px 6px rgba(13, 118, 71, 0.18);
-        }
-
-        .philosophy-hotline-btn:hover {
-          background-color: var(--color-primary-hover);
-          transform: translateY(-1px);
-          box-shadow: 0 4px 10px rgba(13, 118, 71, 0.28);
-        }
-
-        /* Right Column Numbered Items */
-        .philosophy-rows-container {
-          display: flex;
-          flex-direction: column;
-          gap: 0;
-          border-top: 1px solid #e2e8f0;
-        }
-
-        .philosophy-row-item {
-          padding: 1.85rem 0;
-          border-bottom: 1px solid #e2e8f0;
-          display: flex;
-          flex-direction: column;
-          gap: 0.65rem;
-          transition: background-color 0.2s ease, padding-left 0.2s ease;
-        }
-
-        .philosophy-row-item:hover {
-          padding-left: 0.5rem;
-        }
-
-        .row-item-header {
-          display: flex;
-          flex-direction: column;
-          gap: 0.5rem;
-        }
-
-        @media (min-width: 640px) {
-          .row-item-header {
-            flex-direction: row;
-            align-items: flex-start;
-            gap: 1rem;
-          }
-        }
-
-        .row-item-num-wrap {
-          display: flex;
-          align-items: center;
-          gap: 0.75rem;
-          flex-shrink: 0;
-        }
-
-        .row-num {
-          font-size: 1.5rem;
-          font-weight: 900;
-          color: #94a3b8;
-          line-height: 1;
-          letter-spacing: -0.02em;
-          min-width: 2.25rem;
-        }
-
-        .row-icon-pill {
-          width: 38px;
-          height: 38px;
-          border-radius: 10px;
+          color: var(--color-primary-dark);
           background-color: var(--color-primary-soft);
-          border: 1px solid var(--color-primary-border);
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          padding: 0.3rem 0.65rem;
+          border-radius: var(--radius-full);
+          white-space: nowrap;
+        }
+
+        .solution-check-icon {
+          color: var(--color-primary);
           flex-shrink: 0;
         }
 
-        .row-title-wrap {
-          display: flex;
-          flex-direction: column;
-          gap: 0.25rem;
-        }
-
-        .row-title {
-          font-size: 1.15rem;
-          font-weight: 800;
-          color: var(--color-navy);
-          line-height: 1.3;
-          margin: 0;
-          letter-spacing: -0.01em;
-        }
-
-        .row-summary {
-          font-size: 0.85rem;
-          font-weight: 700;
-          color: var(--color-primary-dark);
-          line-height: 1.4;
-        }
-
-        .row-item-body {
-          padding-left: 0;
-        }
-
-        @media (min-width: 640px) {
-          .row-item-body {
-            padding-left: calc(2.25rem + 0.75rem + 38px + 1rem);
-          }
-        }
-
-        .row-detail {
-          font-size: 0.875rem;
-          color: var(--color-text-muted);
+        .scenario-desc {
+          font-size: 0.9375rem;
+          color: var(--ink-soft);
           line-height: 1.6;
-          text-wrap: pretty;
           margin: 0;
         }
       `}</style>
     </section>
   );
 };
+
+export default PhilosophySection;
