@@ -13,6 +13,31 @@
 
 ## 2. Recent Accomplishments & Updates
 
+### A0000000. Xây Dựng Trang Lộ Trình Phát Triển Số 5 Giai Đoạn Cho Doanh Nghiệp Địa Phương (`StrategyPhasesPage.tsx`):
+- **Tác giả:** Local Strategy 5 Phases Guide
+- **Vị trí tệp:** `src/pages/StrategyPhasesPage.tsx` (route chính: `/chien-luoc-5-giai-doan`, aliases: `/lo-trinh-5-giai-doan`, `/chien-luoc-seo-5-giai-doan`, `/lo-trinh-phat-trien-so`).
+- **Phạm vi hoàn tất:**
+  1. **Triết lý & Khung chiến lược**: Học hỏi trang Chiến lược SEO 5 giai đoạn từ FastMarketing, điều chỉnh 100% sát sườn với bối cảnh doanh nghiệp và cửa hàng địa phương tại Việt Nam (từ con số 0 đến tự vận hành sinh khách bền vững).
+  2. **Chi tiết 5 giai đoạn thực chiến**:
+     - *Giai đoạn 1: Chuẩn hóa Định Danh & Google Maps* (Khảo sát vị trí thực tế, xác minh chính chủ vào Gmail của chủ tiệm, dọn sạch Maps rác/trùng lặp, thiết kế & in bảng QR Code mica đón review 5 sao).
+     - *Giai đoạn 2: Xây Dựng Nền Tảng Sales Hub & Khung Dữ Liệu AI* (Website siêu tốc < 0.8s Cloudflare Edge, khai báo Schema JSON-LD LocalBusiness chuẩn W3C, tệp llms.txt & robots.txt cho bot AI).
+     - *Giai đoạn 3: Phủ Từ Khóa Nhu Cầu Địa Phương* (Chiếm lĩnh trang 1 Google và Top 3 Maps cho các cụm từ "gần đây", quận/huyện, khẩn cấp và hiển thị trong Google AI Overviews).
+     - *Giai đoạn 4: Thu Hút Khách & Kéo Chuyển Đổi Thực* (Quảng cáo Google Search/Meta chuẩn bán kính 3-7km, 0% kê giá, chặn 200+ từ khóa rác, đo lường từng cuộc gọi và tin nhắn Zalo).
+     - *Giai đoạn 5: Vận Hành Tự Động & Bảo Hành Hạ Tầng 5 Năm* (Webhook đồng bộ đơn về Google Sheets, chuông báo Telegram tức thì trong 3 giây, cam kết bảo hành kỹ thuật 5 năm bằng văn bản pháp nhân).
+  3. **Cấu trúc từng giai đoạn đầy đủ**:
+     - Mục tiêu cốt lõi (Core Goal)
+     - Công việc KTV làm (KTV Action Checklist 5 bước cụ thể)
+     - Sản phẩm bàn giao (Deliverables thật sờ thấy được)
+     - Thời gian dự kiến (3-5 ngày, 5-7 ngày, 15-30 ngày, 2-4 ngày, 5 năm)
+     - Lời khuyên thực chiến từ KTV Trưởng & Cầu nối giai đoạn kế tiếp
+  4. **Khối chức năng tương tác bổ trợ cao cấp**:
+     - *Bảng so sánh*: Cách làm manh mún cũ (tự phát, web lỗi, bị kê giá ads) vs Lộ trình 5 giai đoạn bài bản LocalMate.
+     - *Thanh điều hướng Tabs*: Chọn và xem chi tiết từng giai đoạn mượt mà, có chuyển tiếp Next/Prev.
+     - *Công cụ Tự Chẩn Đoán*: Đánh giá 30 giây giúp chủ tiệm biết ngay cơ sở mình nên xuất phát từ giai đoạn nào.
+     - *Ma trận 5 giai đoạn*: Bảng tổng hợp đối chiếu nhanh mục tiêu, thời gian, bàn giao và CTA.
+     - *Cam kết vàng & FAQ*: 4 cam kết bảo vệ quyền lợi khách hàng và 5 câu hỏi thường gặp.
+  5. **Chuẩn thiết kế**: 100% Light Mode sáng sủa, sắc nét, tương phản cao, chống hoàn toàn glassmorphism, breadcrumbs chuẩn SEO, CTA đặt lịch tư vấn 1-1 với KTV Trưởng, `npm run build` pass 100%.
+
 ### A000000. Xây Dựng Trang Quy Trình Triển Khai GEO & AI Search Cho Điểm Kinh Doanh Địa Phương (`GeoWorkflowPage.tsx`):
 - **Tác giả:** GEO & AI Search Workflow Deep-Dive Specialist
 - **Vị trí tệp:** `src/pages/GeoWorkflowPage.tsx` (route: `/quy-trinh-geo` và alias `/quy-trinh-trien-khai-geo`).

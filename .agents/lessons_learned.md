@@ -4,6 +4,38 @@ Tài liệu này ghi chép các bài học kinh nghiệm, lưu ý kỹ thuật v
 
 ---
 
+## 6. Lộ Trình Phát Triển Số 5 Giai Đoạn & Chiến Lược Chuyển Đổi Địa Phương (`StrategyPhasesPage.tsx`)
+- **Bối cảnh**: Doanh nghiệp địa phương thường làm chuyển đổi số theo kiểu chắp vá, manh mún (thuê làm web rẻ tiền xong bỏ hoang, tạo Google Maps không chính chủ bị đối thủ cướp, chạy quảng cáo bị kê giá và dính click ảo, khách nộp form bị quên không gọi lại).
+- **Học hỏi & Định vị**: Học hỏi cấu trúc đa giai đoạn có tính sư phạm cao từ trang Chiến lược SEO 5 giai đoạn của FastMarketing, nhưng chuyển hóa 100% sang bối cảnh vận hành thực chiến của cửa hàng và doanh nghiệp địa phương tại Việt Nam:
+  1. *Giai đoạn 1 - Nền tảng*: Chuẩn hóa định danh số (NAP) & Google Maps chính chủ, gắn bảng QR tích review 5 sao tại quầy.
+  2. *Giai đoạn 2 - Tài sản số*: Xây dựng Sales Hub siêu tốc < 0.8s trên Cloudflare Edge, khai báo Schema LocalBusiness và tệp `llms.txt` sẵn sàng cho AI Search.
+  3. *Giai đoạn 3 - Đón đầu nhu cầu*: Phủ từ khóa địa phương ("gần đây", quận/huyện, khẩn cấp) lên Top 3 Maps và Google AI Overviews.
+  4. *Giai đoạn 4 - Tăng tốc doanh thu*: Chạy quảng cáo Google/Meta chuẩn bán kính 3-7km, 0% kê giá, chặn 200+ từ khóa rác, đếm chuẩn từng cuộc gọi và Zalo.
+  5. *Giai đoạn 5 - Vận hành bền vững*: Đồng bộ lead vào Google Sheets, chuông báo Telegram tức thì trong 3 giây, cam kết bảo hành hạ tầng kỹ thuật 5 năm bằng văn bản pháp nhân.
+- **Tính năng chuyển đổi cao**:
+  - *Interactive Tabs & Deliverables Checklist*: Người dùng xem rõ công việc KTV làm và sản phẩm bàn giao thật của từng giai đoạn.
+  - *Bộ công cụ tự chẩn đoán 30 giây*: Giúp chủ tiệm xác định chính xác hiện trạng của mình để chọn giai đoạn bắt đầu phù hợp nhất mà không lãng phí ngân sách.
+  - *Bảng ma trận đối chiếu 5 giai đoạn*: Tổng hợp nhanh mục tiêu, thời gian, sản phẩm và nút xem chi tiết.
+- **Tiêu chuẩn UI/UX**: 100% Light Mode, typography phân tầng rõ nét, `text-wrap: pretty`, `scrollbar-gutter: stable`, touch target >= 44px, tuyệt đối không glassmorphism.
+
+---
+
+## 5. Router Integration, QA & Multi-Subagent Build Verification (`src/App.tsx`, Routing & Build Integrity)
+- **Bối cảnh**: Khi nhiều subagents làm việc song song (tạo mới `ProjectBriefPage`, `StrategyPhasesPage`, `GeoWorkflowPage`, `TechnicalAuditStandardsPage`, `CareWorkflowPage`), việc đồng bộ Router trung tâm (`src/App.tsx`) đóng vai trò then chốt để tránh xung đột đường dẫn (path collision) hoặc fallback tạm bợ gây 404/sai trang.
+- **Nguyên tắc định tuyến (Routing Best Practices)**:
+  1. *Normalized Path Check*: Luôn xử lý chuẩn hóa trailing slash (`const normalizedPath = currentPath.replace(/\/$/, '') || '/'`) trước khi matching để `/quy-trinh-geo` và `/quy-trinh-geo/` hoạt động đồng nhất.
+  2. *Hỗ trợ đầy đủ Aliases & Sub-paths*: Mỗi trang chuyên sâu cần định nghĩa các alias tiếng Việt thân thiện (ví dụ: `/brief`, `/brief-du-an` trỏ về `ProjectBriefPage`; `/lo-trinh-5-giai-doan`, `/chien-luoc-seo-5-giai-doan` trỏ về `StrategyPhasesPage`). Sử dụng cả toán tử so sánh tuyệt đối (`===`) và tiền tố (`startsWith`) để tránh bỏ sót các đường dẫn con.
+  3. *Prop Contract Consistency*: Các page components độc lập phải tuân thủ hợp đồng prop chung (như `onOpenConsultForm?: (serviceName?: string) => void`), cho phép mở form liên hệ tập trung (`LeadModal`) mà không phá vỡ tính đóng gói của component.
+  4. *Định tuyến Standalone Views*: Trang trình chiếu dạng deck (như `/ho-so-nang-luc` / `CredentialPage`) cần kiểm soát ẩn Header/Footer/FloatingCTA để nhường toàn bộ không gian cho Presentation Controls chuyên biệt, trong khi các trang Content/Workflow vẫn kế thừa đầy đủ layout tổng.
+- **Quy trình QA & Build Verification**:
+  - Luôn kiểm tra song song `tsc` (kiểm tra kiểu TypeScript, props, imports không tồn tại) và `vite build` (kiểm tra module resolution, chunking, asset bundling).
+  - Nghiệm thu thực tế: 1580 modules transformed, build 0 lỗi trong 12.57s.
+- **Tiêu chuẩn UI/UX**:
+  - Tất cả các trang mới tuân thủ nghiêm ngặt 100% Light Mode sáng sủa, độ tương phản cao chữ đậm (`#0f172a`) trên nền sáng (`#ffffff` / `#f8fafc`), viền sắc nét `#e2e8f0`.
+  - Tuyệt đối CẤM Glassmorphism (không backdrop-blur, không mờ ảo).
+
+---
+
 ## 4. Case Studies Matrix & Rich Storytelling (`caseStudiesData.ts`, `ProjectsPage.tsx`, `CaseStudyDetailPage.tsx`)
 - **Vị trí**: `src/data/caseStudiesData.ts`, `src/pages/ProjectsPage.tsx` (`/du-an`), `src/pages/CaseStudyDetailPage.tsx` (`/du-an/:slug`).
 - **Học hỏi & Nâng cấp từ FastMarketing**:
