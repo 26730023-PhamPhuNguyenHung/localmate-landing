@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Container } from '../ui/Container';
 import { Button } from '../ui/Button';
 import {
@@ -14,11 +14,60 @@ interface HeroSectionProps {
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDemoForm }) => {
   const { navigate } = useRouter();
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const setHalfSpeed = () => {
+      if (video) {
+        video.playbackRate = 0.5;
+      }
+    };
+
+    setHalfSpeed();
+    video.addEventListener('loadedmetadata', setHalfSpeed);
+    video.addEventListener('canplay', setHalfSpeed);
+    video.addEventListener('play', setHalfSpeed);
+
+    // Accessibility: check prefers-reduced-motion
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const handleReducedMotion = (e: MediaQueryListEvent | MediaQueryList) => {
+      if (e.matches) {
+        video.pause();
+      } else {
+        video.play().catch(() => {});
+        setHalfSpeed();
+      }
+    };
+
+    if (mediaQuery.matches) {
+      video.pause();
+    }
+
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener('change', handleReducedMotion);
+    } else {
+      mediaQuery.addListener(handleReducedMotion);
+    }
+
+    return () => {
+      video.removeEventListener('loadedmetadata', setHalfSpeed);
+      video.removeEventListener('canplay', setHalfSpeed);
+      video.removeEventListener('play', setHalfSpeed);
+      if (mediaQuery.removeEventListener) {
+        mediaQuery.removeEventListener('change', handleReducedMotion);
+      } else {
+        mediaQuery.removeListener(handleReducedMotion);
+      }
+    };
+  }, []);
 
   return (
     <section
       style={{
-        backgroundColor: 'var(--color-bg)',
+        backgroundColor: '#edf5f1',
         paddingTop: 'clamp(2.5rem, 5vw, 4.5rem)',
         paddingBottom: 'clamp(2.5rem, 5vw, 4rem)',
         borderBottom: '1px solid var(--color-border)',
@@ -30,11 +79,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDemoForm }) => {
       {/* Background Video Animation — Seamless Boomerang Loop */}
       <div className="hero-bg-video-wrapper" aria-hidden="true">
         <video
+          ref={videoRef}
           autoPlay
           loop
           muted
           playsInline
           preload="auto"
+          onLoadedMetadata={(e) => {
+            e.currentTarget.playbackRate = 0.5;
+          }}
           className="hero-bg-video"
         >
           <source src="/assets/videos/hero-wave-loop.webm" type="video/webm" />
@@ -43,8 +96,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDemoForm }) => {
         <div className="hero-bg-overlay" />
       </div>
 
-      <Container size="lg" style={{ paddingInline: 'clamp(16px, 4vw, 24px)', position: 'relative', zIndex: 1 }}>
+      <Container size="lg" style={{ paddingInline: 'clamp(16px, 4vw, 24px)', position: 'relative', zIndex: 2 }}>
         <div className="hero-centered-content">
+          <div className="hero-content-backdrop" aria-hidden="true" />
           {/* Compact Eyebrow */}
           <div className="hero-eyebrow-wrapper">
             <span className="hero-eyebrow-pill">
@@ -137,39 +191,58 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDemoForm }) => {
 
         .hero-bg-video {
           position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          min-width: 100%;
-          min-height: 100%;
+          inset: 0;
           width: 100%;
           height: 100%;
           object-fit: cover;
-          object-position: center bottom;
-          opacity: 0.85;
+          object-position: center;
+          transform: scale(1.02);
+          opacity: 1;
+          filter: saturate(1.05) contrast(1.02);
           display: block;
+          z-index: 0;
         }
 
         .hero-bg-overlay {
           position: absolute;
           inset: 0;
           background: linear-gradient(
-            to bottom,
-            rgba(251, 252, 251, 0.4) 0%,
-            rgba(251, 252, 251, 0.1) 35%,
-            rgba(251, 252, 251, 0.5) 75%,
-            rgba(251, 252, 251, 1) 100%
+            180deg,
+            rgba(255, 255, 255, 0.04) 0%,
+            rgba(255, 255, 255, 0.01) 45%,
+            rgba(255, 255, 255, 0.06) 100%
           );
           pointer-events: none;
+          z-index: 1;
         }
 
         .hero-centered-content {
+          position: relative;
           display: flex;
           flex-direction: column;
           align-items: center;
           text-align: center;
           max-width: 820px;
           margin: 0 auto;
+        }
+
+        .hero-content-backdrop {
+          position: absolute;
+          top: 45%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 125%;
+          height: 125%;
+          max-width: 850px;
+          background: radial-gradient(
+            ellipse at center,
+            rgba(255, 255, 255, 0.16) 0%,
+            rgba(255, 255, 255, 0.06) 35%,
+            transparent 70%
+          );
+          pointer-events: none;
+          z-index: -1;
+          border-radius: 50%;
         }
 
         .hero-eyebrow-wrapper {
@@ -206,6 +279,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDemoForm }) => {
           margin: 0 0 1rem 0;
           text-align: center;
           text-wrap: balance;
+          text-shadow: 0 1px 12px rgba(255, 255, 255, 0.2);
         }
 
         .headline-highlight {
@@ -310,6 +384,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDemoForm }) => {
             width: 1px;
             height: 14px;
             background-color: var(--color-border);
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .hero-bg-video {
+            transform: none;
           }
         }
       `}</style>

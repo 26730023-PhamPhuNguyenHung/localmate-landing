@@ -30,7 +30,13 @@
 - **Tối Ưu Dung Lượng & Tiết Kiệm Băng Thông Web**:
   - Luôn loại bỏ luồng âm thanh thừa (`-an`) cho video nền.
   - Xuất song song bản WebM (VP9, ~530 KB) và MP4 (H.264 High Profile, faststart, ~740 KB) để trình duyệt ưu tiên nạp WebM nhẹ hơn 30-40%.
-- **Quy Chuẩn UI Light Mode & Không Dùng Glassmorphism**:
-  - Background video phải có `pointer-events: none;` và `z-index: 0;` để không chặn click của người dùng.
-  - Sử dụng lớp phủ gradient sáng (`hero-bg-overlay`) hòa trộn từ màu nền `#fbfcfb` vào trong suốt rồi phủ lại ở đáy, giúp toàn bộ chữ đen `#0F172A`, nút bấm và card trắng đặc `#ffffff` nổi bật 100%, không bị chìm hay mờ ảo.
+- **Quy Chuẩn UI Light Mode & Giữ Màu Tự Nhiên Cho Background Video**:
+  - Tránh lớp gradient trắng dày phủ toàn màn hình: Phủ `rgba(255,255,255, 0.4 - 1.0)` toàn hero làm bạc màu (wash out), mất màu xanh nhận diện và mất chiều sâu sóng nước.
+  - Giải pháp đúng: Dùng `linear-gradient` siêu mỏng (0.04 - 0.06) phủ toàn khung + `radial-gradient` cục bộ (`.hero-content-backdrop`) chỉ nằm phía sau cụm văn bản trung tâm. Vừa giữ trọn 100% màu sắc và độ sâu chuyển động của video, vừa đảm bảo chữ đen `#0F172A` đọc cực rõ nét.
+  - Video giữ nguyên `opacity: 1`, tinh chỉnh nhẹ `saturate(1.05) contrast(1.02)` và cố định `transform: scale(1.02)` chống hở viền khi `object-fit: cover` (tuyệt đối không animate scale/translate).
+- **Kiểm Soát Tốc Độ Video PlaybackRate Bền Vững (Browser Reset Prevention)**:
+  - Khi set `video.playbackRate = 0.5`, một số trình duyệt (Safari, mobile Chrome) tự động reset về `1.0` sau khi load metadata hoặc sau khi video pause/play.
+  - Khắc phục: Lắng nghe đồng thời các sự kiện `loadedmetadata`, `canplay`, `play` qua React ref và đặt trực tiếp `onLoadedMetadata={(e) => { e.currentTarget.playbackRate = 0.5; }}`.
+  - Tích hợp `prefers-reduced-motion: reduce` qua `window.matchMedia` để tự động dừng video nếu người dùng nhạy cảm với chuyển động.
+
 

@@ -29,8 +29,14 @@
 ### D. Tích Hợp Background Video Seamless Boomerang Loop Cho Hero Section:
 - Cắt dựng video trừu tượng lượn sóng xanh (`Animating_abstract_green_wavy_ba._20260912095226.mp4`): kỹ thuật Boomerang loop 0s -> 3.5s rồi đảo ngược 3.5s -> 0s, loại bỏ frame trùng ở đỉnh và đáy để chuyển động trơn tru không khựng giật.
 - Tối ưu dung lượng chuẩn web: MP4 H.264 (~740 KB) và WebM VP9 (~530 KB) không audio.
-- Tích hợp vào `HeroSection.tsx` với overlay gradient mờ sáng tự nhiên, nền sáng chữ đậm, tương phản cao, tuyệt đối không glassmorphism, không cản trở click.
-- Đã kiểm thử trực quan đa viewport (Desktop 1440, Tablet 768, Mobile 390) bằng `agent-browser`.
+
+### E. Tối Ưu Hiển Thị Hero Background Video (Tự Nhiên, Sắc Nét & Êm Dịu):
+- **Tốc độ chuyển động chậm 50%**: Ghim `playbackRate = 0.5` qua React ref + event listeners (`loadedmetadata`, `canplay`, `play`) chống trình duyệt tự động reset.
+- **Loại bỏ triệt để lớp màng trắng phủ**: Xóa bỏ overlay gradient trắng dày (0.4 - 1.0) làm bạc màu, phục hồi 100% độ tươi màu xanh mint của video gốc.
+- **Overlay siêu mỏng & Backdrop cục bộ**: Kết hợp linear-gradient siêu nhẹ (0.04 - 0.06) phủ toàn khung và radial-gradient mềm mại chỉ nằm phía sau vùng nội dung trung tâm (`.hero-content-backdrop`), giúp chữ và nút bấm cực kỳ sắc nét mà không làm mờ video.
+- **Tách biệt lớp giao diện**: Video `z-index: 0` cố định với `scale(1.02)` chống hở viền; nội dung `z-index: 2` tương tác trơn tru.
+- **Accessibility & Motion Safety**: Tự động nhận diện `prefers-reduced-motion: reduce` để pause video, nền dự phòng `#edf5f1` đồng màu êm dịu.
+- **Kiểm thử đa màn hình**: Đã kiểm tra và chụp ảnh nghiệm thu qua `agent-browser` trên Mobile 390px, Tablet 768px và Desktop 1440px.
 
 ---
 
