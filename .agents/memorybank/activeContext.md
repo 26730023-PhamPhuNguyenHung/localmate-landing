@@ -13,6 +13,23 @@
 
 ## 2. Recent Accomplishments & Updates
 
+### A00000. Hoàn Tất Đội Ngũ Kỹ Thuật Viên Thực Chiến Tại Địa Phương & Cam Kết 3 KHÔNG (`LocalTeamSection.tsx`):
+- **Tác giả:** Team & In-House Technical Commitment Section Architect
+- **Triết lý chủ đạo:** *"Chúng tôi không có phòng ban sale gọi điện ép ký hợp đồng. Bạn làm việc trực tiếp với những kỹ thuật viên thật, phụ trách từng việc cụ thể."*
+- **4 Vị trí Kỹ thuật viên In-house thực chiến:**
+  1. **Kỹ thuật viên Trưởng Hạ Tầng & Mã Nguồn**: Phụ trách bảo mật Cloudflare, tốc độ tải trang < 0.8s và bảo hành mã nguồn 5 năm.
+  2. **Kỹ thuật viên Bản Đồ & Local SEO**: Phụ trách xác minh Google Maps, đồng bộ định vị GPS và tối ưu bán kính phủ sóng 5-15km.
+  3. **Chuyên viên Dữ Liệu AI Search & GEO**: Phụ trách cấu trúc Schema JSON-LD, file llms.txt và thử nghiệm trích dẫn trên ChatGPT/Gemini.
+  4. **Kỹ thuật viên Vận Hành & Hỗ Trợ 1-1**: Trực Zalo hỗ trợ giải quyết sự cố trong 15-30 phút, ghé tiệm khảo sát thực tế.
+- **Khối cam kết 3 KHÔNG bắt buộc (Bảo chứng đạo đức nghề nghiệp):**
+  - **KHÔNG giấu mặt đẩy việc cho cộng tác viên bên ngoài**: 100% in-house, trực tiếp chịu trách nhiệm từng dòng code.
+  - **KHÔNG thu tiền rồi biến mất**: Xem trước demo 0đ trên điện thoại, nghiệm thu hài lòng mới thanh toán, hợp đồng & VAT đầy đủ.
+  - **KHÔNG giam giữ tài khoản hay mật khẩu của khách hàng**: Bàn giao 100% quyền sở hữu chính chủ (Maps, domain, hosting, mã nguồn).
+- **Tích hợp:**
+  - `src/pages/AboutPage.tsx`: Tích hợp đầy đủ chi tiết với deliverables checklist và nút đặt lịch KTV khảo sát.
+  - `src/pages/HomePage.tsx`: Tích hợp khối tóm tắt (`isSummary={true}`) liền mạch sau Warranty5YearSection.
+  - Giao diện 100% Light Mode, không glassmorphism, tương phản cao, build pass 100% (`tsc && vite build`).
+
 ### A0000. Hoàn Tất Bộ Dữ Liệu 40 Slide Hồ Sơ Năng Lực LocalMate 2026 (`src/data/credentialDeckData.ts`):
 - **Tác giả:** Credential Data Specialist
 - **Định vị cốt lõi:** "LocalMate - Người đồng hành số cho doanh nghiệp địa phương (Đưa công việc lên môi trường số, tìm khách hàng, tự động hóa vận hành, bảo hành kỹ thuật 5 năm)".

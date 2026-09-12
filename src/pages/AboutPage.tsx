@@ -2,19 +2,24 @@ import React from 'react';
 import { Container } from '../components/ui/Container';
 import { Breadcrumbs } from '../components/ui/Breadcrumbs';
 import { SEOHead } from '../components/seo/SEOHead';
+import { LocalTeamSection } from '../components/sections/LocalTeamSection';
 import { TrustSection } from '../components/sections/TrustSection';
 import { ProcessSection } from '../components/sections/ProcessSection';
 import { Sparkles, ShieldCheck, Heart, Lock } from 'lucide-react';
 import { useRouter } from '../components/layout/Router';
 
-export const AboutPage: React.FC = () => {
+interface AboutPageProps {
+  onOpenConsultForm?: (serviceName?: string) => void;
+}
+
+export const AboutPage: React.FC<AboutPageProps> = ({ onOpenConsultForm }) => {
   const { navigate } = useRouter();
 
   return (
     <div style={{ backgroundColor: '#ffffff', padding: '2rem 0 5rem 0' }}>
       <SEOHead
-        title="Về LocalMate — Đồng Hành Cùng Doanh Nghiệp Nhỏ Việt Nam"
-        description="Tìm hiểu về đội ngũ LocalMate, pháp nhân CÔNG TY TNHH LOCALMATE và nguyên tắc làm việc minh bạch: Nghiệm thu hài lòng rồi mới thanh toán."
+        title="Về LocalMate — Đội Ngũ Kỹ Thuật Viên Thực Chiến & Đồng Hành Địa Phương"
+        description="Tìm hiểu về đội ngũ kỹ thuật viên in-house LocalMate và nguyên tắc làm việc minh bạch: Trực tiếp làm việc với kỹ thuật viên thật, cam kết 3 KHÔNG và nghiệm thu mới thanh toán."
         canonicalPath="/gioi-thieu"
         breadcrumbs={[
           { name: 'Giới thiệu', url: '/gioi-thieu' }
@@ -90,6 +95,9 @@ export const AboutPage: React.FC = () => {
         </div>
       </Container>
 
+      {/* Đội Ngũ Kỹ Thuật Viên Thực Chiến Tại Địa Phương & Cam Kết 3 KHÔNG */}
+      <LocalTeamSection onOpenConsultForm={onOpenConsultForm} />
+
       {/* Trust Section with Corporate Identity */}
       <TrustSection />
 
@@ -98,3 +106,4 @@ export const AboutPage: React.FC = () => {
     </div>
   );
 };
+

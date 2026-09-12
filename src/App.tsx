@@ -35,6 +35,9 @@ import { AcquisitionSolutionPage } from './pages/solutions/AcquisitionSolutionPa
 import { AutomationSolutionPage } from './pages/solutions/AutomationSolutionPage';
 import { CareSolutionPage } from './pages/CareSolutionPage';
 import { CredentialPage } from './pages/CredentialPage';
+import { ProjectBriefPage } from './pages/ProjectBriefPage';
+import { CareWorkflowPage } from './pages/CareWorkflowPage';
+import { StrategyPhasesPage } from './pages/StrategyPhasesPage';
 
 // Modals
 import { AdvisorModal } from './components/advisor/AdvisorModal';
@@ -83,6 +86,35 @@ const MainContent: React.FC = () => {
       normalizedPath.startsWith('/credential')
     ) {
       return <CredentialPage onOpenConsultForm={handleOpenLeadForm} />;
+    }
+
+    // 2.6 Interactive Project Brief & Survey Routes (/khao-sat-du-an, /brief)
+    if (
+      normalizedPath === '/khao-sat-du-an' ||
+      normalizedPath === '/brief' ||
+      normalizedPath === '/brief-geo-seo' ||
+      normalizedPath.startsWith('/khao-sat-du-an') ||
+      normalizedPath.startsWith('/brief')
+    ) {
+      return <ProjectBriefPage />;
+    }
+    if (
+      normalizedPath === '/chien-luoc-5-giai-doan' ||
+      normalizedPath === '/lo-trinh-5-giai-doan' ||
+      normalizedPath === '/chien-luoc-seo-5-giai-doan' ||
+      normalizedPath === '/lo-trinh-phat-trien-so' ||
+      normalizedPath.startsWith('/chien-luoc-5-giai-doan')
+    ) {
+      return <StrategyPhasesPage onOpenConsultForm={handleOpenLeadForm} />;
+    }
+    if (normalizedPath === '/quy-trinh-geo') {
+      return <GeoServicePage onOpenConsultForm={handleOpenLeadForm} />;
+    }
+    if (normalizedPath === '/tieu-chuan-audit') {
+      return <KnowledgePage />;
+    }
+    if (normalizedPath === '/quy-trinh-cham-soc') {
+      return <CareSolutionPage onOpenConsultForm={handleOpenLeadForm} />;
     }
 
     // 3. Admin & Advisor
@@ -136,6 +168,16 @@ const MainContent: React.FC = () => {
       normalizedPath === '/dich-vu/dong-hanh-duy-tri'
     ) {
       return <CareSolutionPage onOpenConsultForm={handleOpenLeadForm} />;
+    }
+
+    // Quy Trình Vận Hành & Chăm Sóc Số Định Kỳ
+    if (
+      normalizedPath === '/quy-trinh-cham-soc' ||
+      normalizedPath === '/quy-trinh-cham-soc-website' ||
+      normalizedPath === '/quy-trinh-van-hanh' ||
+      normalizedPath === '/cham-soc-website'
+    ) {
+      return <CareWorkflowPage onOpenConsultForm={handleOpenLeadForm} />;
     }
 
     // Solution Hub & Legacy Services Hub: /giai-phap and /dich-vu
@@ -241,7 +283,7 @@ const MainContent: React.FC = () => {
 
     // 8. Pricing
     if (normalizedPath.startsWith('/bang-gia')) {
-      return <PricingPage />;
+      return <PricingPage onOpenConsultForm={handleOpenLeadForm} />;
     }
 
     // 9. Industry & Pillar Solutions
@@ -269,7 +311,7 @@ const MainContent: React.FC = () => {
 
     // 9. About & Contact
     if (currentPath.startsWith('/gioi-thieu') || currentPath.startsWith('/ve-localmate')) {
-      return <AboutPage />;
+      return <AboutPage onOpenConsultForm={handleOpenLeadForm} />;
     }
     if (currentPath.startsWith('/lien-he')) {
       return <ContactPage />;

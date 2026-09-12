@@ -314,3 +314,22 @@
 - **Nghiệm Thu Thực Tế**:
   - Chạy `npm run build` sau mỗi lần refactor lớn để đảm bảo `tsc` và `vite build` kiểm tra toàn bộ 1566+ modules. Trạng thái: **BUILD PASS 100% (0 errors)**.
 
+## 19. Đội Ngũ Kỹ Thuật Viên Thực Chiến Tại Địa Phương & Khối Cam Kết 3 KHÔNG (`LocalTeamSection`)
+- **Triết lý nhân sự in-house đối lập phòng ban sale**:
+  - Đối chiếu với cách làm của các agency thường có đội ngũ telesale / sale bám đuổi, chốt hợp đồng rồi đẩy việc cho intern hoặc cộng tác viên bên ngoài.
+  - LocalMate định vị: *"Chúng tôi không có phòng ban sale gọi điện ép ký hợp đồng. Bạn làm việc trực tiếp với những kỹ thuật viên thật, phụ trách từng việc cụ thể."*
+  - Khách hàng nói chuyện trực tiếp với người trực tiếp viết code, cấu hình Cloudflare và kéo định vị Maps, giải tỏa triệt để băn khoăn về năng lực thực thi.
+- **4 Vị trí Kỹ thuật viên Thực chiến & Đầu việc cụ thể**:
+  1. *Kỹ thuật viên Trưởng Hạ Tầng & Mã Nguồn*: Phụ trách bảo mật Cloudflare, tốc độ tải trang < 0.8s và bảo hành mã nguồn 5 năm.
+  2. *Kỹ thuật viên Bản Đồ & Local SEO*: Phụ trách xác minh Google Maps, đồng bộ định vị GPS và tối ưu bán kính phủ sóng 5-15km.
+  3. *Chuyên viên Dữ Liệu AI Search & GEO*: Phụ trách cấu trúc Schema JSON-LD, file llms.txt và thử nghiệm trích dẫn trên ChatGPT/Gemini.
+  4. *Kỹ thuật viên Vận Hành & Hỗ Trợ 1-1*: Trực Zalo hỗ trợ giải quyết sự cố trong 15-30 phút, ghé tiệm khảo sát thực tế.
+- **Khối Cam Kết 3 KHÔNG Bảo Chứng Đạo Đức Nghề Nghiệp**:
+  - *KHÔNG giấu mặt đẩy việc cho cộng tác viên bên ngoài*: 100% in-house, trực tiếp chịu trách nhiệm từng dòng code.
+  - *KHÔNG thu tiền rồi biến mất*: Xem trước demo 0đ trên điện thoại, nghiệm thu hài lòng mới thanh toán, hợp đồng & VAT đầy đủ.
+  - *KHÔNG giam giữ tài khoản hay mật khẩu của khách hàng*: Bàn giao 100% quyền sở hữu chính chủ (Maps, domain, hosting, mã nguồn).
+- **Tái sử dụng linh hoạt qua prop `isSummary`**:
+  - Hỗ trợ render đầy đủ chi tiết với checklist deliverables trên `AboutPage.tsx`.
+  - Hỗ trợ render khối tóm tắt tinh gọn trên `HomePage.tsx` ngay sau `Warranty5YearSection` với nút "Xem chi tiết về LocalMate" và "Hẹn Kỹ Thuật Viên Khảo Sát".
+- **Kiểm thử nghiệm thu**: `npm run build` PASS 100% trong ~5.28s.
+

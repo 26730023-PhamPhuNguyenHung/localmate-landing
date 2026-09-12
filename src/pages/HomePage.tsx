@@ -11,6 +11,7 @@ import { DemoShowcaseSection } from '../components/sections/DemoShowcaseSection'
 import { PricingMatrixSection } from '../components/sections/PricingMatrixSection';
 import { MarketComparisonSection } from '../components/sections/MarketComparisonSection';
 import { Warranty5YearSection } from '../components/sections/Warranty5YearSection';
+import { LocalTeamSection } from '../components/sections/LocalTeamSection';
 import { FreeAuditSection } from '../components/sections/FreeAuditSection';
 import { KnowledgeHubSection } from '../components/sections/KnowledgeHubSection';
 import { FAQSection } from '../components/sections/FAQSection';
@@ -68,6 +69,14 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenConsultForm }) => {
 
       {/* 6.8. CHÍNH SÁCH BẢO HÀNH KỸ THUẬT 5 NĂM & ĐỒNG HÀNH ĐỊA PHƯƠNG */}
       <Warranty5YearSection onOpenConsultForm={onOpenConsultForm} />
+
+      {/* 6.9. ĐỘI NGŨ KỸ THUẬT VIÊN THỰC CHIẾN IN-HOUSE & CAM KẾT 3 KHÔNG (TÓM TẮT) */}
+      <LocalTeamSection
+        isSummary={true}
+        onOpenConsultForm={(srvName) =>
+          onOpenConsultForm && onOpenConsultForm(srvName || 'Trao đổi cùng Kỹ thuật viên In-house')
+        }
+      />
 
       {/* 7. INSTANT BUSINESS AUDIT DỰ PHÒNG */}
       <FreeAuditSection
