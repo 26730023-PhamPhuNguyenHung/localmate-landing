@@ -2,6 +2,22 @@
 
 Ghi nhận các mốc sự kiện, commit và trạng thái vận hành của dự án.
 
+## [2026-09-13] - Kết Nối Toàn Diện Router, Đồng Bộ 6 Tuyến Trang Mới & Nghiệm Thu Build Production (QA & Build Verifier)
+- **Mục tiêu**: Đăng ký đầy đủ các route và alias mới trong `src/App.tsx`, kiểm tra toàn diện imports, props, exports và nghiệm thu chất lượng biên dịch `npm run build` (TypeScript tsc && Vite build).
+- **Các tuyến đường hoàn tất ánh xạ chuẩn xác**:
+  1. `/khao-sat-du-an` (alias `/brief`, `/brief-du-an`, `/brief-geo-seo`) -> `ProjectBriefPage` (Khảo sát 4 bước & Nhận Demo 0đ).
+  2. `/chien-luoc-5-giai-doan` (alias `/lo-trinh-5-giai-doan`, `/chien-luoc-seo-5-giai-doan`, `/lo-trinh-phat-trien-so`) -> `StrategyPhasesPage` (Lộ trình phát triển số 5 giai đoạn cho doanh nghiệp địa phương).
+  3. `/quy-trinh-geo` (alias `/quy-trinh-trien-khai-geo`) -> `GeoWorkflowPage` (Quy trình 6 bước kỹ thuật triển khai GEO & AI Search).
+  4. `/tieu-chuan-audit` (alias `/tieu-chuan-audit-ky-thuat`, `/technical-audit-standards`, `/tieu-chuan-website-2026`) -> `TechnicalAuditStandardsPage` (Bộ 30 tiêu chuẩn kỹ thuật & checklist website 2026).
+  5. `/quy-trinh-cham-soc` (alias `/quy-trinh-van-hanh-cham-soc`) -> `CareWorkflowPage` (Quy trình vận hành & chăm sóc kỹ thuật định kỳ).
+  6. `/ho-so-nang-luc` (alias `/credential`) -> `CredentialPage` (Hồ sơ năng lực 40 slide chuyên sâu).
+- **Kết quả nghiệm thu kỹ thuật**:
+  - Toàn bộ props (`onOpenConsultForm`), exports và imports giữa các components được kết nối đồng nhất, không thiếu phụ thuộc hay type mismatch.
+  - `npm run build` PASS 100% (tsc không báo bất kỳ lỗi nào, Vite v5.4.21 transformed 1580 modules, build hoàn tất trong 12.57s).
+- **Tiêu chuẩn UI/UX**: 100% Light Mode sáng sủa, hoàn toàn không glassmorphism, tương phản cao, responsive đa màn hình.
+
+---
+
 ## [2026-09-13] - Xây Dựng Trang Quy Trình Triển Khai GEO & AI Search Cho Điểm Kinh Doanh Địa Phương (`GeoWorkflowPage.tsx`)
 - **Mục tiêu**: Xây dựng trang Quy Trình Triển Khai GEO & AI Search Cho Điểm Kinh Doanh Địa Phương (`src/pages/GeoWorkflowPage.tsx`) theo route `/quy-trinh-geo` (alias `/quy-trinh-trien-khai-geo`) học hỏi quy trình chuyên sâu từ FastMarketing (`/quy-trinh-trien-khai-geo`).
 - **Nội dung hoàn thành**:
