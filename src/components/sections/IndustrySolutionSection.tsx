@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Container } from '../ui/Container';
 import { INDUSTRY_SOLUTIONS } from '../../data/landingContent';
-import { ArrowRight, CheckCircle2, Building2, Utensils, GraduationCap, Sparkles, Store, Briefcase } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Building2, Utensils, GraduationCap, Sparkles, Store, Briefcase, ShieldCheck, Key } from 'lucide-react';
 import { useRouter } from '../layout/Router';
 
 const ICON_MAP: Record<string, React.ComponentType<any>> = {
@@ -214,6 +214,53 @@ export const IndustrySolutionSection: React.FC = () => {
               <span style={{ fontWeight: 700 }}>Triển khai 5-7 ngày</span>
             </div>
           </div>
+        </div>
+
+        {/* Cam kết chuẩn WebFX */}
+        <div
+          style={{
+            marginTop: '2rem',
+            padding: '1rem 1.5rem',
+            backgroundColor: '#ffffff',
+            border: '1px solid var(--color-border)',
+            borderRadius: 'var(--radius-lg)',
+            display: 'flex',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '1rem',
+            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)'
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+            <ShieldCheck size={20} color="var(--color-teal-dark)" />
+            <span style={{ fontSize: '0.9rem', color: 'var(--color-navy)', fontWeight: 700 }}>
+              Cam kết: Nghiệm thu đạt chuẩn 100% mới thanh toán
+            </span>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+            <Key size={20} color="var(--color-teal-dark)" />
+            <span style={{ fontSize: '0.9rem', color: 'var(--color-navy)', fontWeight: 700 }}>
+              Bàn giao tài khoản chính chủ 100% (CCCD &amp; Gmail)
+            </span>
+          </div>
+          <button
+            onClick={() => navigate('/bang-gia')}
+            style={{
+              background: 'none',
+              border: 'none',
+              color: 'var(--color-teal-dark)',
+              fontSize: '0.85rem',
+              fontWeight: 700,
+              cursor: 'pointer',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.25rem'
+            }}
+          >
+            <span>So sánh chi tiết quyền lợi</span>
+            <ArrowRight size={14} />
+          </button>
         </div>
       </Container>
     </section>

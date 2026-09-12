@@ -148,3 +148,16 @@
   - Cung cấp mức giá cố định, không phụ phí bất ngờ, khách nghiệm thu đạt chuẩn mới thanh toán.
   - 100% tài khoản chính chủ (Domain, Hosting, Gmail, Google Business Profile) bàn giao tận tay khách hàng.
 
+## 12. WebFX Deliverables & Service Tiers Matrix Standard
+- **Phân tách 3 cấp độ doanh nghiệp minh bạch (Starter, Growth, Enterprise)**:
+  - *Gói Khởi Động (Starter - 1.490.000đ)*: Dành cho hộ kinh doanh cá thể, tiệm ăn nhỏ, thợ dịch vụ. Triển khai 24-48h, 1 Landing Page chuẩn di động, Google Maps cơ bản, Hotline & Zalo 1 chạm.
+  - *Gói Tăng Trưởng (Growth - 2.900.000đ - ⭐ Best Seller)*: Dành cho cửa hàng, spa, phòng khám, nhà thầu. Web 3-5 trang chuẩn SEO tốc độ cao < 1.2s, Maps xác minh GPS chính chủ, QR review 5 sao, chuông báo Telegram/Zalo, video hướng dẫn 1-1.
+  - *Gói Doanh Nghiệp (Enterprise - 5.900.000đ)*: Dành cho chuỗi đa chi nhánh, SME quy mô. Web 7-10 trang độc bản, Multi-location Maps, đồng bộ Webhook/CRM, Full Server-side tracking GTM, SLA hỗ trợ < 2h.
+- **2 Cam kết vàng bảo vệ quyền lợi tối cao của khách hàng**:
+  - *Cam kết 1: Nghiệm thu đạt chuẩn 100% mới thanh toán*: Khách hàng trực tiếp test trên điện thoại thật, đạt chuẩn tốc độ, tính năng và bản đồ mới trả tiền (Zero Risk).
+  - *Cam kết 2: Bàn giao tài khoản chính chủ 100%*: Đăng ký bằng CCCD & Gmail của khách hàng. Bàn giao đầy đủ mã nguồn và hạ tầng, tuyệt đối không giữ con tin kỹ thuật hay thu phí duy trì ngầm.
+- **Ma trận đối chiếu quyền lợi bàn giao chi tiết (WebFX Deliverables Matrix)**:
+  - Bảng đối chiếu 5 trụ cột: Nền tảng Website, Google Maps & Local SEO, Chuyển đổi & Lead Gen, Bàn giao & Sở hữu, Cam kết & Bảo hành.
+  - Thiết kế Light Mode, `scrollbar-gutter: stable`, `text-wrap: pretty`, hoàn toàn không dùng glassmorphism, tương phản cao đạt chuẩn accessibility.
+
+
