@@ -13,6 +13,16 @@
 
 ## 2. Recent Accomplishments & Updates
 
+### A0000. Hoàn Tất Bộ Dữ Liệu 40 Slide Hồ Sơ Năng Lực LocalMate 2026 (`src/data/credentialDeckData.ts`):
+- **Tác giả:** Credential Data Specialist
+- **Định vị cốt lõi:** "LocalMate - Người đồng hành số cho doanh nghiệp địa phương (Đưa công việc lên môi trường số, tìm khách hàng, tự động hóa vận hành, bảo hành kỹ thuật 5 năm)".
+- **Cấu trúc hoàn chỉnh 4 phần và chuẩn 40 slide:**
+  - **Phần 1: Giới thiệu & Năng lực (Slide 01 - 07)**: Bìa, Thư ngỏ Founder & KTV Trưởng, Mục lục 4 phần, Số liệu năng lực thật (250+ điểm, demo 48h, 100% chính chủ, bảo hành 5 năm), Đội ngũ kỹ thuật in-house 1-1, Mạng lưới khách hàng địa phương, Hạ tầng Cloudflare Edge & Schema.org / OpenSearch.
+  - **Phần 2: Hệ thống Giải pháp 5 Trụ Cột (Slide 08 - 24)**: Khung 5 Trụ cột, Giải pháp GEO & Local AI Search, Bối cảnh thị trường, Nhóm ngành chịu tác động, Mô hình kinh doanh phù hợp, Năng lực mở rộng chuỗi, Công nghệ llms.txt & OpenSearch, Tối ưu Google AI Overviews & AEO, Bộ 5 dịch vụ nền tảng, Công cụ Instant Business Audit, Tín hiệu thuật toán AI, 6 chỉ số đo lường thực nhận, Báo cáo tiến độ tuần, CRM Mini Zalo/Telegram, Tốc độ tải trang < 0.8s Cloudflare Edge, Kênh kéo khách tức thì (Top 3 Maps & Google Ads bán kính), Checklist 35 đầu việc kỹ thuật.
+  - **Phần 3: Case Studies & Tình Huống Thực Tế (Slide 25 - 36)**: Khung Case studies, Case 1 Bán lẻ & Thiết bị âm thanh, Case 1 Đo lường AI Visibility, Case 2 Nha khoa chuyên khoa tăng 250% cuộc gọi, Case 2 Trích dẫn câu hỏi chuyên môn AI, Case 3 Nhà hàng & Quán Cafe tích review 5 sao bằng mã QR, Case 4 Gara ô tô & Cứu hộ 24/7, Case 5 Thợ sửa chữa tại nhà & Báo giá minh bạch, Case 6 Dogfooding LocalMate tăng trưởng 100% bằng chính giải pháp của mình, Khắc phục lỗi chính sách tài khoản Google/Meta, Bộ deliverables bàn giao trọn gói, Bảng đối chiếu cách cũ vs LocalMate.
+  - **Phần 4: Hợp tác & Cam kết (Slide 37 - 40)**: Nguyên tắc hợp tác & Cam kết 5 năm, 3 Tầng đầu tư linh hoạt (Foundation - Growth - Scale Pro), Quy trình 5 bước nghiệm thu hài lòng mới thanh toán, Thông tin liên hệ & Đặt lịch tư vấn 1-1 tại chỗ (Hotline 0834.422.439, 03 Trường Chinh, Đà Nẵng).
+- **TypeScript Type Safety:** 100% type-safe, đầy đủ `id`, `index` (1-40), `screen` ("01"-"40"), `label`, `title`, `partId`, `partTitle`, `isDivider`, `summary`, `bullets`, `metrics`, `tags`, `quote`, `notes`. Kiểm tra `npx tsc --noEmit` đạt 0 lỗi.
+
 ### A000. Hoàn Tất Tinh Chỉnh Trang Chủ Theo Kiến Trúc 5 Solution Pillars & Luồng 7 Bước Chuẩn:
 - **Tác giả:** Homepage Alignment & Problem Flow Architect
 - **Phạm vi hoàn tất:**
@@ -433,7 +443,31 @@
   - **Chuẩn hóa Breadcrumb hierarchy**: `Trang chủ -> Giải pháp -> Được khách hàng tìm thấy (hoặc giải pháp cha) -> [Tên module này]`.
   - **Hạ giọng văn & chuẩn hóa từ ngữ**:
     - Loại bỏ các từ ngữ hứa hẹn thái quá ("chắc chắn lên top 1 ChatGPT", "chém giá 50 triệu", "bẻ gãy thị trường", "thống trị", "chiếm lĩnh").
-    - Thay bằng thông điệp định vị thực tế: "Chuẩn bị dữ liệu để AI có căn cứ trích dẫn thương hiệu", "Chi phí hợp lý, làm từ gốc kỹ thuật", "Đề Xuất Hàng Đầu ⭐", "Tối ưu xuất hiện trên Google AI Overviews — Tiếp cận khách hàng tự nhiên".
-  - **Bổ sung route & giao diện Hub cho `/giai-phap/duoc-tim-thay` trong `SolutionsPage.tsx`**: Hiển thị đầy đủ 6 module năng lực chuyên sâu khi người dùng truy cập từ nút "Về giải pháp cha", khép kín luồng trải nghiệm 2 chiều.
-  - **Bảo toàn 100% URL gốc**: Giữ nguyên toàn bộ cấu trúc URL cho SEO hữu cơ, không làm gãy bất kỳ backlink hay bookmark cũ nào.
   - **Typecheck & Build**: Cả 6 trang và component mới compile sạch sẽ, 0 lỗi TypeScript.
+
+---
+
+## 16. Hoàn Thành Bộ Component Hiển Thị Trang Giải Pháp Tái Sử Dụng (Reusable Solution Template)
+- **Tác giả / Vai trò**: Frontend & Solution Component Builder
+- **Mục tiêu**: Xây dựng trọn bộ 11 component trang giải pháp có khả năng tái sử dụng độc lập tại `src/components/solutions/`, tương thích 100% với kiểu dữ liệu `Solution` trong `src/data/solutionsData.ts`.
+- **Danh mục 11 component chuyên dụng**:
+  1. `SolutionHero.tsx`: Tiêu đề theo ngôn ngữ nhu cầu, breadcrumb điều hướng, pain-point pill nổi bật, nút CTA "Trao đổi việc đang cần" + nút xem quy trình, chips đối tượng phù hợp và dải trust pills (demo 0đ, KTV 1-1, chính chủ 100%).
+  2. `SolutionProblems.tsx`: Khối 3-4 vấn đề thường gặp mà khách hàng đang đối mặt, hiển thị số thứ tự, icon cảnh báo, mô tả thực tế và box hệ quả thực tế tương phản cao.
+  3. `SolutionOutcomes.tsx`: Kết quả thực tế hướng tới (tăng hiện diện, đo lường được, giảm việc thủ công...) với metric số liệu to rõ, label, mô tả và highlight tag.
+  4. `SolutionWorkflow.tsx`: Phân định trách nhiệm 2 cột rõ ràng: "LocalMate chủ động làm gì (90% việc kỹ thuật)" vs "Khách hàng chỉ cần làm gì (duyệt và cung cấp nội dung)", kèm mốc thời gian và kết quả từng chặng.
+  5. `SolutionCapabilities.tsx`: Khối modules / capabilities kỹ thuật (Google Business Profile, Schema JSON-LD, Cloudflare Edge, Nút gọi 1 chạm...) với giải thích bằng "tiếng người" dễ hiểu và lợi ích thực tế thu về.
+  6. `SolutionDeliverables.tsx`: Những thứ khách hàng thực sự nhận được (bàn giao rõ ràng, tài liệu hướng dẫn, quyền sở hữu tài khoản chính chủ 100%, không bị giam giữ dữ liệu).
+  7. `SolutionProcess.tsx`: Quy trình 4-6 bước triển khai gọn gàng với visual stepper, mốc thời gian ước lượng và cam kết dựng demo xem trước 0đ.
+  8. `SolutionUseCases.tsx`: Kịch bản ứng dụng thực tế theo từng ngành nghề (quán ăn/F&B, phòng khám, dịch vụ sửa chữa/gara, xưởng xây dựng...) với bối cảnh, thiết lập cốt lõi và kết quả chuyển đổi.
+  9. `SolutionPricing.tsx`: Bảng các gói triển khai minh bạch, tách rõ chi phí khởi tạo (làm 1 lần) và chi phí duy trì định kỳ, nổi bật gói phổ biến và cam kết giá cố định.
+  10. `SolutionFAQ.tsx`: Accordion giải đáp thắc mắc thường gặp liên quan trực tiếp đến giải pháp, hỗ trợ đóng/mở mượt mà.
+  11. `SolutionPageTemplate.tsx`: Template tổng hợp ghép các component trên lại dựa theo dữ liệu từ `Solution` interface trong `src/data/solutionsData.ts`, tích hợp SEOHead, Breadcrumbs, Sticky quick-nav bar, form nhận demo 0đ tức thì và bottom CTA bar.
+- **Tiêu chuẩn thiết kế & kỹ thuật**:
+  - 100% Light Mode sáng sủa (`#fbfcfb` / `#ffffff`), chữ đậm (`#0f172a`), viền crisp nhạt (`#e2e8f0`).
+  - Tuyệt đối không xài glassmorphism, không backdrop-filter mờ ảo.
+  - Responsive mượt mà từ mobile 390px đến desktop 1440px, chống tràn ngang (`min-width: 0`, `box-sizing: border-box`).
+  - Đóng gói xuất khẩu tập trung qua `src/components/solutions/index.ts`.
+- **Nghiệm thu**:
+  - `npx tsc --noEmit` PASS 100% không lỗi.
+  - `npm run build` PASS 100% (1566 modules transformed, build hoàn tất trong 6.58s).
+

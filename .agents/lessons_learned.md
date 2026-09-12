@@ -1,5 +1,10 @@
 # Lessons Learned & Operational Insights (LocalMate)
 
+## 0. Cấu Trúc Dữ Liệu Hồ Sơ Năng Lực 40 Slide Chuẩn Quốc Tế (`credentialDeckData.ts`)
+- **Chuyển hóa từ Agency Enterprise sang Người đồng hành số Địa phương**: Thay vì áp dụng nguyên bản ngôn ngữ hàn lâm xa lạ của agency lớn, toàn bộ 40 slide đã được "bản địa hóa" 100% sang định vị mộc mạc, thực chiến của LocalMate: làm rõ từng đầu việc, không hứa hẹn viển vông, cam kết bảo hành kỹ thuật 5 năm và hỗ trợ 1-1 tại chỗ.
+- **Tính trọn vẹn của Data Schema**: Mỗi slide đều bắt buộc có đủ 14 trường dữ liệu (`id`, `index`, `screen`, `label`, `title`, `partId`, `partTitle`, `isDivider`, `summary`, `bullets`, `metrics`, `tags`, `quote`, `notes`), giúp các component hiển thị UI Slide (Carousel, Presentation mode, PDF generator hoặc Landing page) có thể render linh hoạt mà không lo thiếu dữ liệu (`undefined`).
+- **Tập trung vào giá trị chuyển đổi thật**: Các số liệu (metrics) và case study gắn liền trực tiếp với doanh thu cửa hàng (cuộc gọi hotline, lượt chỉ đường Google Maps, trích dẫn AI Search không tốn tiền ads, tỷ lệ chốt khách khi có Sales Hub rõ giá) thay vì các chỉ số tương tác ảo (like, share, view).
+
 ## 1. Content Strategy & Copywriting
 - **Chống sáo rỗng công nghệ**: Tránh tuyệt đối các từ khóa vô thưởng vô phạt như "Trong thời đại 4.0", "AI thay đổi thế giới", "Chuyển đổi số toàn diện". Doanh nghiệp SME/kinh doanh địa phương chỉ quan tâm họ bớt được bước tay chân nào và có mất khách không.
 - **Hook trực diện nỗi đau**: Đập thẳng vào nghịch lý vận hành (ví dụ: tuyển người chỉ để copy dữ liệu, mua quá nhiều app nhưng vẫn nhập tay).
@@ -281,6 +286,21 @@
 - **Kỷ Luật Type-Safety & Khắc Phục Lỗi TypeScript Ngầm**:
   - *Extending HTML Element Attributes*: Component bọc như `<Link>` hay `<Button>` luôn cần kế thừa `React.AnchorHTMLAttributes<HTMLAnchorElement>` hoặc `React.ButtonHTMLAttributes<HTMLButtonElement>` để không chặn các event handlers phổ biến như `onMouseEnter`, `onMouseLeave`, `title`, `aria-*`.
   - *Lucide Icon Dictionary Typing*: Khi tạo `ICON_MAP` ánh xạ chuỗi sang Lucide Icon component, sử dụng `Record<string, React.ComponentType<any>>` để tránh xung đột `WeakValidationMap` với `LucideProps` của thư viện.
+
+## 18. Thiết Kế Hệ Thống Component Giải Pháp Tái Sử Dụng (Reusable Solution Template Architecture)
+- **Tư duy Kiến Trúc Component Độc Lập & Khả Năng Tái Sử Dụng**:
+  - Tách biệt trọn bộ 11 component chuyên biệt tại `src/components/solutions/`: `SolutionHero`, `SolutionProblems`, `SolutionOutcomes`, `SolutionWorkflow`, `SolutionCapabilities`, `SolutionDeliverables`, `SolutionProcess`, `SolutionUseCases`, `SolutionPricing`, `SolutionFAQ`, `SolutionPageTemplate`.
+  - Mỗi component có thể nhận hoặc dữ liệu đầy đủ từ entity `Solution` hoặc các props rời rạc linh hoạt, cho phép tái sử dụng cho bất kỳ giải pháp hay landing page chuyên biệt nào sau này mà không cần code lại từ đầu.
+- **Tiêu chuẩn UI/UX Khắc Khổ & Chuyên Nghiệp**:
+  - 100% Light Mode sáng sủa, nền `#ffffff` / `#fbfcfb`, tương phản cao chữ đậm `#0f172a`, viền crisp `#e2e8f0`.
+  - Tuyệt đối không xài glassmorphism, không backdrop-filter làm mờ nhòe chữ.
+  - Sử dụng `min-width: 0` và `box-sizing: border-box` trên toàn bộ grid/flex items để triệt tiêu hoàn toàn lỗi vỡ layout hoặc tràn ngang (horizontal overflow) trên mobile 390px.
+- **Giải Thích Kỹ Thuật Bằng "Tiếng Người"**:
+  - Tại component `SolutionCapabilities`, mọi khái niệm công nghệ (Schema, Cloudflare CDN, SEO Local, Core Web Vitals) đều được gắn liền với khối "Nghĩa là gì cho cơ sở của bạn?", giúp chủ doanh nghiệp địa phương không rành CNTT vẫn hiểu ngay giá trị và tự tin ra quyết định.
+- **Minh Bạch Quyền Sở Hữu & Giá Cả**:
+  - `SolutionDeliverables` cam kết 100% tài khoản chính chủ, không giam giữ mã nguồn.
+  - `SolutionPricing` tách bạch rõ ràng giữa "Chi phí khởi tạo (1 lần)" và "Chi phí duy trì / bảo trì (nếu có)", triệt tiêu lo lắng về chi phí ẩn.
+
   - *Single Source Data Completeness*: Khi một trang (như `ServicesPage`) dựa vào dataset phụ (như `INDUSTRY_SCENARIOS_DATA` hay `COMPARISON_TABLE_DATA`), luôn xuất khẩu dữ liệu có kiểu rõ ràng và đầy đủ thuộc tính đồng bộ (`traditionalWay` song song với `traditionalAgency`), ngăn chặn lỗi `Parameter implicitly has an 'any' type` lan truyền khắp ứng dụng.
 - **Nghiệm Thu Thực Tế**:
   - Chạy `npm run build` sau mỗi lần refactor lớn để đảm bảo `tsc` và `vite build` kiểm tra toàn bộ 1566+ modules. Trạng thái: **BUILD PASS 100% (0 errors)**.

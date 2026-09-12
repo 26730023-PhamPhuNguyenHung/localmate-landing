@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'ghost' | 'white';
+  variant?: 'primary' | 'secondary' | 'ghost' | 'white' | 'outline';
   size?: 'sm' | 'md' | 'lg';
   fullWidth?: boolean;
   children: React.ReactNode;
@@ -31,6 +31,7 @@ export const Button: React.FC<ButtonProps> = ({
           fontWeight: 700
         };
       case 'secondary':
+      case 'outline':
         return {
           backgroundColor: 'var(--btn-secondary-bg)',
           color: 'var(--btn-secondary-text)',
