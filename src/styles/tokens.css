@@ -35,15 +35,38 @@
   --color-border-strong: #cbd5e1;
 
   /* Button Design System Tokens */
+  --btn-height-desktop: clamp(48px, 3.2vw, 52px); /* 48-52px desktop */
+  --btn-height-mobile: clamp(48px, 5vw, 54px);   /* 48-54px mobile */
+  --btn-min-height: 48px;
+  --btn-tap-target: 44px; /* WCAG touch target min >= 44px */
+  --btn-radius: 12px;     /* 10-14px standard */
+  --btn-radius-pill: 9999px;
+
+  /* Button Primary: Green #0d7647, Hover #095935, Text #ffffff */
   --btn-primary-bg: #0d7647;
   --btn-primary-bg-hover: #095935;
   --btn-primary-text: #ffffff;
+  --btn-primary-border: transparent;
   --btn-primary-shadow: 0 2px 8px rgba(13, 118, 71, 0.2);
   --btn-primary-shadow-hover: 0 4px 14px rgba(13, 118, 71, 0.3);
 
+  /* Button Secondary: bg #ffffff, border #e2e8f0, text #0f172a, hover bg #f4f7f5 */
   --btn-secondary-bg: #ffffff;
   --btn-secondary-border: #e2e8f0;
   --btn-secondary-text: #0f172a;
+  --btn-secondary-hover-bg: #f4f7f5;
+  --btn-secondary-hover-border: #cbd5e1;
+
+  /* Button Ghost / Text: bg transparent, text #0d7647, hover underline / bg #edf7f1 */
+  --btn-ghost-bg: transparent;
+  --btn-ghost-text: #0d7647;
+  --btn-ghost-hover-bg: #edf7f1;
+  --btn-ghost-hover-text: #095935;
+
+  /* Button Focus-visible standard (WCAG 2.1 AA) */
+  --btn-focus-ring-color: #0d7647;
+  --btn-focus-ring-offset: 2px;
+  --btn-focus-ring-width: 2px;
 
   /* Typography */
   --font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -55,25 +78,37 @@
   --font-weight-bold: 700;
   --font-weight-extrabold: 800;
 
+  /* Fluid Typography Scale (clamp SSOT) */
+  --font-size-h1: clamp(2.35rem, 3.8vw + 0.5rem, 3.75rem);
+  --font-size-h2: clamp(1.85rem, 2.5vw + 0.3rem, 2.65rem);
+  --font-size-h3: clamp(1.2rem, 1.5vw + 0.2rem, 1.55rem);
+  --font-size-h4: clamp(1.05rem, 0.8vw + 0.2rem, 1.25rem);
+  --font-size-body-lg: clamp(1.05rem, 0.4vw + 0.95rem, 1.15rem);
+  --font-size-body: clamp(0.9375rem, 0.2vw + 0.9rem, 1rem);
+  --font-size-sm: 0.875rem; /* 14px min */
+  --font-size-xs: 0.75rem;
+  --font-size-subtitle: clamp(1.05rem, 0.4vw + 0.95rem, 1.15rem);
+
   /* Line Heights */
-  --line-height-h1: 1.15;
-  --line-height-h2: 1.22;
-  --line-height-h3: 1.3;
+  --line-height-h1: 1.1;
+  --line-height-h2: 1.18;
+  --line-height-h3: 1.28;
   --line-height-h4: 1.35;
-  --line-height-body: 1.6;
+  --line-height-body-lg: 1.6;
+  --line-height-body: 1.62;
+  --line-height-sm: 1.5;
   --line-height-subtitle: 1.6;
 
-  /* Fluid Font Size Clamp Scale (Mobile 320px -> Desktop 1440px) */
-  --font-size-h1: clamp(2rem, 3.8vw + 0.5rem, 3.25rem);
-  --font-size-h2: clamp(1.45rem, 2.4vw + 0.3rem, 2.15rem);
-  --font-size-h3: clamp(1.15rem, 1.6vw + 0.2rem, 1.4rem);
-  --font-size-h4: clamp(0.95rem, 1.1vw + 0.2rem, 1.15rem);
-  --font-size-subtitle: clamp(0.95rem, 1vw + 0.2rem, 1.1rem);
-  --font-size-body: clamp(0.875rem, 0.4vw + 0.5rem, 0.975rem);
-  --font-size-sm: 0.825rem;
-  --font-size-xs: 0.75rem;
-  
-  /* Border Radius — Standardized (10-12px buttons, 16px cards, 20-24px panels) */
+  /* Letter Spacing */
+  --letter-spacing-h1: -0.03em;
+  --letter-spacing-h2: -0.02em;
+  --letter-spacing-h3: -0.01em;
+  --letter-spacing-normal: 0em;
+
+  /* Paragraph Measure (58-68ch optimal) */
+  --paragraph-max-width: 65ch;
+
+  /* Border Radius — Standardized (10-14px buttons, 16px cards, 20-24px panels) */
   --radius-xs: 4px;
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -89,11 +124,22 @@
   --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.04), 0 0 0 1px var(--color-border);
   --shadow-card-hover: 0 8px 20px rgba(13, 118, 71, 0.08), 0 0 0 1px var(--color-primary-border);
 
-  /* Container & Spacing SSOT */
-  --container-max: 1240px;
+  /* Container SSOT (1220px desktop max-width: optimal for 1180-1240px & 14" laptop 125% scale ~ 1228px effective) */
+  --container-max: 1220px;
   --container-wide: 1360px;
-  --space-container-px: clamp(1rem, 3vw, 1.75rem);
-  --space-section-py: clamp(3rem, 5vw, 5.5rem);
+  --container-narrow: 980px;
+
+  /* Horizontal Padding: Mobile default (16px-20px), Tablet (24px), Desktop (32px-40px) */
+  --space-container-px-mobile: clamp(1rem, 4vw, 1.25rem); /* 16px - 20px */
+  --space-container-px-tablet: 1.5rem; /* 24px */
+  --space-container-px-desktop: clamp(2rem, 2.5vw, 2.5rem); /* 32px - 40px */
+  --space-container-px: var(--space-container-px-mobile);
+
+  /* Section Spacing: Mobile clamp(3rem, 5vw, 4.5rem) (48-72px), Desktop clamp(4.5rem, 6vw, 6.5rem) (72-104px) */
+  --space-section-py-mobile: clamp(3rem, 5vw, 4.5rem); /* 48px - 72px */
+  --space-section-py-desktop: clamp(4.5rem, 6vw, 6.5rem); /* 72px - 104px */
+  --space-section-py: var(--space-section-py-mobile);
+
   --space-card-p: clamp(1.25rem, 2.5vw, 1.75rem);
   --space-gap: clamp(1rem, 2vw, 1.5rem);
 
@@ -115,4 +161,18 @@
   /* Transitions */
   --transition-fast: 150ms ease;
   --transition-base: 220ms ease;
+}
+
+/* Responsive Overrides for Root Tokens */
+@media (min-width: 768px) {
+  :root {
+    --space-container-px: var(--space-container-px-tablet); /* 24px */
+    --space-section-py: var(--space-section-py-desktop); /* 72px - 104px */
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --space-container-px: var(--space-container-px-desktop); /* 32px - 40px */
+  }
 }

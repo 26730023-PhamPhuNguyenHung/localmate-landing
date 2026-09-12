@@ -1,0 +1,1390 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e6]:
+      - link [ref=e7] [cursor=pointer]:
+        - /url: /
+        - img "LocalMate" [ref=e8]
+      - navigation "Điều hướng chính" [ref=e9]:
+        - link "Trang chủ" [ref=e10] [cursor=pointer]:
+          - /url: /
+        - button "Dịch vụ" [ref=e13] [cursor=pointer]
+        - link "Bảng giá" [ref=e17] [cursor=pointer]:
+          - /url: /bang-gia
+        - link "Dự án" [ref=e19] [cursor=pointer]:
+          - /url: /du-an
+        - button "Kiến thức" [ref=e22] [cursor=pointer]
+        - link "Giới thiệu" [ref=e26] [cursor=pointer]:
+          - /url: /gioi-thieu
+        - link "Liên hệ" [ref=e28] [cursor=pointer]:
+          - /url: /lien-he
+      - generic [ref=e30]:
+        - link "0834.422.439" [ref=e31] [cursor=pointer]:
+          - /url: tel:0834422439
+        - button "Báo giá nhanh" [ref=e35] [cursor=pointer]
+  - main [ref=e39]:
+    - generic [ref=e42]:
+      - generic [ref=e43]: NGƯỜI ĐỒNG HÀNH SỐ • ĐỘI TRIỂN KHAI PHÍA SAU
+      - heading "Bạn tập trung bán hàng. LocalMate lo phần công nghệ." [level=1] [ref=e48]
+      - paragraph [ref=e49]: Người đồng hành số tại địa phương — giải quyết website, tự động hóa quy trình, kết nối phần mềm và triển khai kỹ thuật cho doanh nghiệp, agency và đối tác công nghệ.
+      - generic [ref=e50]:
+        - button "Gửi việc cho LocalMate" [ref=e51] [cursor=pointer]
+        - button "Xem các gói triển khai & giá" [ref=e57] [cursor=pointer]
+      - generic [ref=e59]:
+        - generic [ref=e60]: Báo giá trước khi làm
+        - generic [ref=e65]: Tận dụng thứ đã có
+        - generic [ref=e70]: Đội ngũ KTV địa phương
+        - generic [ref=e75]: Bàn giao 100% tài khoản
+    - generic [ref=e80]:
+      - generic [ref=e81]:
+        - generic [ref=e82]: CHỌN THEO NHU CẦU THỰC TẾ
+        - heading "Bạn đang cần giải quyết công việc gì?" [level=2] [ref=e86]
+        - paragraph [ref=e87]: Không cần biết tên công nghệ hay từ ngữ lập trình phức tạp. Hãy chọn đúng tình trạng bạn đang cần giải quyết để nhận giải pháp và mức giá phù hợp.
+      - generic [ref=e88]:
+        - generic [ref=e89] [cursor=pointer]:
+          - generic [ref=e90]:
+            - generic [ref=e91]:
+              - generic [ref=e92]: "01"
+              - generic [ref=e93]: Khởi tạo số
+            - generic [ref=e94]: Từ 490.000đ
+          - generic [ref=e95]:
+            - heading "Bắt đầu hiện diện" [level=3] [ref=e101]
+            - heading "Để khách hàng tìm thấy & hiểu bạn trên Internet" [level=4] [ref=e102]
+            - paragraph [ref=e103]: "Thiết lập nền tảng cần thiết để bắt đầu hiện diện: website chạy trong 24 giờ, Google Maps có mã QR 5 sao, tên miền và kênh liên hệ chuẩn chỉ."
+            - list [ref=e104]:
+              - listitem [ref=e105]:
+                - generic [ref=e109]: Website hoạt động trong 24 giờ
+              - listitem [ref=e110]:
+                - generic [ref=e114]: Đưa tiệm lên Google Maps & QR 5 sao
+              - listitem [ref=e115]:
+                - generic [ref=e119]: Nút gọi Hotline & Zalo nổi bật
+              - listitem [ref=e120]:
+                - generic [ref=e124]: Bàn giao 100% tài khoản chính chủ
+          - generic [ref=e125]: Bắt đầu hiện diện số
+        - generic [ref=e130] [cursor=pointer]:
+          - generic [ref=e131]:
+            - generic [ref=e132]:
+              - generic [ref=e133]: "02"
+              - generic [ref=e134]: Quản lý Lead
+            - generic [ref=e135]: Từ 990.000đ
+          - generic [ref=e136]:
+            - heading "Có thêm khách hàng" [level=3] [ref=e144]
+            - heading "Biến sự hiện diện thành cuộc trò chuyện bán hàng" [level=4] [ref=e145]
+            - paragraph [ref=e146]: "Không để khách hàng rơi mất. Gom thông tin từ Website, Zalo, Facebook về 1 nơi theo quy trình: Khách mới → Trao đổi → Báo giá → Chốt."
+            - list [ref=e147]:
+              - listitem [ref=e148]:
+                - generic [ref=e152]: Gom lead từ Web, Fanpage, Zalo về 1 bảng
+              - listitem [ref=e153]:
+                - generic [ref=e157]: Không bao giờ quên lịch follow-up khách
+              - listitem [ref=e158]:
+                - generic [ref=e162]: Tìm kiếm khách tiềm năng định kỳ
+              - listitem [ref=e163]:
+                - generic [ref=e167]: Biết ngay khách nào cần xử lý tiếp theo
+          - generic [ref=e168]: Sắp xếp lại khách hàng
+        - generic [ref=e173] [cursor=pointer]:
+          - generic [ref=e174]:
+            - generic [ref=e175]:
+              - generic [ref=e176]: "03"
+              - generic [ref=e177]: Tự động hóa
+            - generic [ref=e178]: Từ 1.000.000đ
+          - generic [ref=e179]:
+            - heading "Bớt việc thủ công" [level=3] [ref=e184]
+            - heading "Việc lặp đi lặp lại, hãy để hệ thống làm thay" [level=4] [ref=e185]
+            - paragraph [ref=e186]: Không cần mua phần mềm mới đắt tiền. LocalMate ưu tiên kết nối những công cụ bạn đang dùng để dữ liệu tự chạy mà không phải nhập tay.
+            - list [ref=e187]:
+              - listitem [ref=e188]:
+                - generic [ref=e192]: Tự động hóa 1 quy trình tốn thời gian
+              - listitem [ref=e193]:
+                - generic [ref=e197]: Kết nối Web ↔ Sheet ↔ Zalo ↔ CRM
+              - listitem [ref=e198]:
+                - generic [ref=e202]: Có kỹ thuật viên xử lý khi hệ thống lỗi
+              - listitem [ref=e203]:
+                - generic [ref=e207]: Bạn làm việc quan trọng, máy làm việc lặp lại
+          - generic [ref=e208]: Gửi việc muốn tự động hóa
+        - generic [ref=e213] [cursor=pointer]:
+          - generic [ref=e214]:
+            - generic [ref=e215]:
+              - generic [ref=e216]: "04"
+              - generic [ref=e217]: Dành cho đối tác
+            - generic [ref=e218]: Từ 500k/job hoặc theo tháng
+          - generic [ref=e219]:
+            - heading "Bạn bán — LocalMate triển khai" [level=3] [ref=e225]
+            - heading "Đội kỹ thuật phía sau cho SaaS, Agency và Vendor" [level=4] [ref=e226]
+            - paragraph [ref=e227]: "Bạn tập trung vào sản phẩm và bán hàng. LocalMate nhận những phần việc triển khai chuẩn hóa: onboarding khách, cấu hình CRM, API hoặc KTV tại chỗ."
+            - list [ref=e228]:
+              - listitem [ref=e229]:
+                - generic [ref=e233]: Software Onboarding cho công ty SaaS
+              - listitem [ref=e234]:
+                - generic [ref=e238]: White-label Technical Team cho Agency
+              - listitem [ref=e239]:
+                - generic [ref=e243]: Mạng lưới kỹ thuật viên tại nhiều tỉnh thành
+              - listitem [ref=e244]:
+                - generic [ref=e248]: Báo cáo và bằng chứng nghiệm thu rõ ràng
+          - generic [ref=e249]: Hợp tác triển khai
+        - generic [ref=e254] [cursor=pointer]:
+          - generic [ref=e255]:
+            - generic [ref=e256]:
+              - generic [ref=e257]: "05"
+              - generic [ref=e258]: Tư vấn 1-1
+            - generic [ref=e259]: Tư vấn giải pháp 0đ
+          - generic [ref=e260]:
+            - heading "Chưa biết mình cần gì?" [level=3] [ref=e266]
+            - heading "Đừng chọn công nghệ. Hãy nói việc bạn muốn xong" [level=4] [ref=e267]
+            - paragraph [ref=e268]: "Bạn không cần biết mình cần CRM, API hay AI. Chỉ cần nói: \"Tôi muốn có thêm khách\", \"Tôi đang làm việc này thủ công\". LocalMate sẽ tìm cách đơn giản nhất."
+            - list [ref=e269]:
+              - listitem [ref=e270]:
+                - generic [ref=e274]: Không ép mua phần mềm không cần thiết
+              - listitem [ref=e275]:
+                - generic [ref=e279]: Đề xuất giải pháp đơn giản & tiết kiệm nhất
+              - listitem [ref=e280]:
+                - generic [ref=e284]: Báo trước chi phí và thời gian thực hiện
+              - listitem [ref=e285]:
+                - generic [ref=e289]: Triển khai trọn gói đến khi hoàn thành
+          - generic [ref=e290]: Nói việc bạn muốn làm
+    - generic [ref=e296]:
+      - generic [ref=e297]:
+        - generic [ref=e298]: DÀNH CHO DOANH NGHIỆP & ĐỐI TÁC CÔNG NGHỆ
+        - heading "5 Giải pháp triển khai & vận hành cốt lõi" [level=2] [ref=e303]
+        - paragraph [ref=e304]: Bạn bán sản phẩm và phát triển kinh doanh. LocalMate trở thành đội ngũ kỹ thuật và triển khai phía sau giúp khách hàng thực sự sử dụng được.
+      - generic [ref=e305]:
+        - generic [ref=e306]:
+          - generic [ref=e307]:
+            - generic [ref=e308]: TRIỂN KHAI TẠI CHỖ
+            - heading "Local Deployment" [level=3] [ref=e310]
+            - generic [ref=e311]: Nhà cung cấp POS, Camera, Thiết bị IoT, Mạng & Phần cứng
+            - paragraph [ref=e316]: Dành cho các công việc cần kỹ thuật viên trực tiếp đến địa điểm khách hàng để khảo sát, setup, cài đặt, test và bàn giao.
+          - generic [ref=e317]:
+            - generic [ref=e318]:
+              - generic [ref=e319]: Từ 500.000đ
+              - generic [ref=e320]: Remote từ 500k/job • Onsite từ 1.000k/job
+            - generic [ref=e321]: Phản hồi trong 2 giờ • Nghiệm thu có ảnh chụp
+          - generic [ref=e326]:
+            - generic [ref=e327]: "Quy trình thực thi:"
+            - list [ref=e328]:
+              - listitem [ref=e329]:
+                - generic [ref=e330]: "1"
+                - generic [ref=e331]: Đối tác tạo ticket yêu cầu
+              - listitem [ref=e332]:
+                - generic [ref=e333]: "2"
+                - generic [ref=e334]: LocalMate phân bổ KTV địa phương
+              - listitem [ref=e335]:
+                - generic [ref=e336]: "3"
+                - generic [ref=e337]: Khảo sát & Lắp đặt tại chỗ
+              - listitem [ref=e338]:
+                - generic [ref=e339]: "4"
+                - generic [ref=e340]: Kiểm thử & Upload bằng chứng hình ảnh
+              - listitem [ref=e341]:
+                - generic [ref=e342]: "5"
+                - generic [ref=e343]: Khách hàng nghiệm thu & Đóng ticket
+          - generic [ref=e344]:
+            - generic [ref=e345]: "Cam kết bàn giao:"
+            - list [ref=e346]:
+              - listitem [ref=e347]:
+                - generic [ref=e351]: Biên bản nghiệm thu & ảnh chụp thực địa
+              - listitem [ref=e352]:
+                - generic [ref=e356]: Hỗ trợ kỹ thuật trực tiếp cho người dùng
+              - listitem [ref=e357]:
+                - generic [ref=e361]: Cam kết thời gian phản hồi theo SLA
+          - button "Gửi job nhận báo giá" [ref=e363] [cursor=pointer]
+        - generic [ref=e367]:
+          - generic [ref=e368]:
+            - generic [ref=e369]:
+              - generic [ref=e370]: ONBOARDING SAAS
+              - generic [ref=e371]: Ưu tiên hợp tác
+            - heading "Software Onboarding" [level=3] [ref=e374]
+            - generic [ref=e375]: Công ty SaaS, Phần mềm CRM, ERP, Quản lý bán hàng & Kế toán
+            - paragraph [ref=e380]: "LocalMate thay đối tác onboarding khách hàng mới: import dữ liệu, cấu hình pipeline, tạo user, phân quyền và training nhân sự khách hàng."
+          - generic [ref=e381]:
+            - generic [ref=e382]:
+              - generic [ref=e383]: 1 – 3 triệu
+              - generic [ref=e384]: Tính theo từng khách hàng hoặc gói số lượng lớn
+            - generic [ref=e385]: Bàn giao & Nghiệm thu từ 2 – 5 ngày
+          - generic [ref=e390]:
+            - generic [ref=e391]: "Quy trình thực thi:"
+            - list [ref=e392]:
+              - listitem [ref=e393]:
+                - generic [ref=e394]: "1"
+                - generic [ref=e395]: Tiếp nhận thông tin khách hàng từ Sales
+              - listitem [ref=e396]:
+                - generic [ref=e397]: "2"
+                - generic [ref=e398]: Tạo tài khoản & Làm sạch, import dữ liệu
+              - listitem [ref=e399]:
+                - generic [ref=e400]: "3"
+                - generic [ref=e401]: Cấu hình quy trình, form & phân quyền
+              - listitem [ref=e402]:
+                - generic [ref=e403]: "4"
+                - generic [ref=e404]: Hướng dẫn 1-1 cho nhân sự khách hàng
+              - listitem [ref=e405]:
+                - generic [ref=e406]: "5"
+                - generic [ref=e407]: Nghiệm thu và bàn giao tài khoản hoàn tất
+          - generic [ref=e408]:
+            - generic [ref=e409]: "Cam kết bàn giao:"
+            - list [ref=e410]:
+              - listitem [ref=e411]:
+                - generic [ref=e415]: Dữ liệu khách hàng được làm sạch & import chuẩn
+              - listitem [ref=e416]:
+                - generic [ref=e420]: Tài liệu hướng dẫn sử dụng nhanh
+              - listitem [ref=e421]:
+                - generic [ref=e425]: Khách hàng thực sự sử dụng được phần mềm
+          - button "Thuê LocalMate onboarding khách" [ref=e427] [cursor=pointer]
+        - generic [ref=e431]:
+          - generic [ref=e432]:
+            - generic [ref=e433]: TỰ ĐỘNG HÓA HỆ THỐNG
+            - heading "Integration & Automation" [level=3] [ref=e435]
+            - generic [ref=e436]: Doanh nghiệp dùng nhiều phần mềm rời rạc & Đội ngũ kinh doanh
+            - paragraph [ref=e441]: "Xử lý phần kết nối giữa các hệ thống: Website → CRM → Zalo → Email → Google Sheets → Kế toán bằng n8n, Make hoặc API chuyên dụng."
+          - generic [ref=e442]:
+            - generic [ref=e443]:
+              - generic [ref=e444]: Từ 1.000.000đ
+              - generic [ref=e445]: "Quy trình đơn giản: 1tr • Tiêu chuẩn: 2–5tr"
+            - generic [ref=e446]: Hoàn thành từ 1 – 3 ngày làm việc
+          - generic [ref=e451]:
+            - generic [ref=e452]: "Quy trình thực thi:"
+            - list [ref=e453]:
+              - listitem [ref=e454]:
+                - generic [ref=e455]: "1"
+                - generic [ref=e456]: Khảo sát luồng công việc đang làm thủ công
+              - listitem [ref=e457]:
+                - generic [ref=e458]: "2"
+                - generic [ref=e459]: Lập sơ đồ kết nối dữ liệu giữa các công cụ
+              - listitem [ref=e460]:
+                - generic [ref=e461]: "3"
+                - generic [ref=e462]: Cấu hình Webhook, n8n/Make hoặc API
+              - listitem [ref=e463]:
+                - generic [ref=e464]: "4"
+                - generic [ref=e465]: Test chạy thử nghiệm luồng dữ liệu 48h
+              - listitem [ref=e466]:
+                - generic [ref=e467]: "5"
+                - generic [ref=e468]: Bàn giao và hướng dẫn vận hành
+          - generic [ref=e469]:
+            - generic [ref=e470]: "Cam kết bàn giao:"
+            - list [ref=e471]:
+              - listitem [ref=e472]:
+                - generic [ref=e476]: Dữ liệu tự động đồng bộ thời gian thực
+              - listitem [ref=e477]:
+                - generic [ref=e481]: Thông báo tức thì qua Zalo / Telegram
+              - listitem [ref=e482]:
+                - generic [ref=e486]: Không còn thao tác copy-paste thủ công
+          - button "Gửi quy trình muốn tự động hóa" [ref=e488] [cursor=pointer]
+        - generic [ref=e492]:
+          - generic [ref=e493]:
+            - generic [ref=e494]:
+              - generic [ref=e495]: ĐỘI DEV PHÍA SAU
+              - generic [ref=e496]: Ưu tiên hợp tác
+            - heading "White-label Technical Team" [level=3] [ref=e499]
+            - generic [ref=e500]: Marketing, Ads, Branding & SEO Agency
+            - paragraph [ref=e505]: LocalMate hoạt động như đội kỹ thuật phía sau agency. Khách cuối không cần biết LocalMate tồn tại. Bạn bán dịch vụ, LocalMate lo thực thi.
+          - generic [ref=e506]:
+            - generic [ref=e507]:
+              - generic [ref=e508]: 3 – 10 triệu/th
+              - generic [ref=e509]: Theo khối lượng công việc hoặc tính theo từng ticket
+            - generic [ref=e510]: Có mặt ngay khi có ticket • Hỗ trợ liên tục
+          - generic [ref=e515]:
+            - generic [ref=e516]: "Quy trình thực thi:"
+            - list [ref=e517]:
+              - listitem [ref=e518]:
+                - generic [ref=e519]: "1"
+                - generic [ref=e520]: Ký thỏa thuận bảo mật & White-label
+              - listitem [ref=e521]:
+                - generic [ref=e522]: "2"
+                - generic [ref=e523]: Agency giao việc (Landing page, CRM, Tracking...)
+              - listitem [ref=e524]:
+                - generic [ref=e525]: "3"
+                - generic [ref=e526]: LocalMate triển khai kỹ thuật chuẩn chỉnh
+              - listitem [ref=e527]:
+                - generic [ref=e528]: "4"
+                - generic [ref=e529]: QA kiểm thử kỹ lưỡng trước khi đưa khách
+              - listitem [ref=e530]:
+                - generic [ref=e531]: "5"
+                - generic [ref=e532]: Bảo trì và sửa lỗi xuyên suốt chiến dịch
+          - generic [ref=e533]:
+            - generic [ref=e534]: "Cam kết bàn giao:"
+            - list [ref=e535]:
+              - listitem [ref=e536]:
+                - generic [ref=e540]: Toàn quyền thương hiệu thuộc về Agency
+              - listitem [ref=e541]:
+                - generic [ref=e545]: Landing page, Tracking GA4/CAPI, Form, API
+              - listitem [ref=e546]:
+                - generic [ref=e550]: Không phải đau đầu tuyển dụng và quản lý dev
+          - button "Có đội kỹ thuật mà không cần tuyển dev" [ref=e552] [cursor=pointer]
+        - generic [ref=e556]:
+          - generic [ref=e557]:
+            - generic [ref=e558]: MẠNG LƯỚI TOÀN QUỐC
+            - heading "LocalMate Deployment Network" [level=3] [ref=e560]
+            - generic [ref=e561]: Tập đoàn công nghệ, Chuỗi bán lẻ & Đơn vị mở rộng toàn quốc
+            - paragraph [ref=e566]: Ký một hợp đồng duy nhất với LocalMate để gửi các job triển khai tại 63 tỉnh thành. LocalMate điều phối, giám sát SLA và nghiệm thu.
+          - generic [ref=e567]:
+            - generic [ref=e568]:
+              - generic [ref=e569]: Theo hợp đồng khung
+              - generic [ref=e570]: Retainer quản trị + Phí theo đầu việc thực tế
+            - generic [ref=e571]: Độ phủ toàn quốc • SLA cam kết bằng hợp đồng
+          - generic [ref=e576]:
+            - generic [ref=e577]: "Quy trình thực thi:"
+            - list [ref=e578]:
+              - listitem [ref=e579]:
+                - generic [ref=e580]: "1"
+                - generic [ref=e581]: Ký hợp đồng khung và quy chuẩn nghiệm thu
+              - listitem [ref=e582]:
+                - generic [ref=e583]: "2"
+                - generic [ref=e584]: Tích hợp hệ thống tiếp nhận ticket
+              - listitem [ref=e585]:
+                - generic [ref=e586]: "3"
+                - generic [ref=e587]: Điều phối kỹ thuật viên địa phương tiếp nhận
+              - listitem [ref=e588]:
+                - generic [ref=e589]: "4"
+                - generic [ref=e590]: Giám sát tiến độ & Kiểm soát chất lượng (QA)
+              - listitem [ref=e591]:
+                - generic [ref=e592]: "5"
+                - generic [ref=e593]: Tổng hợp báo cáo và đối soát định kỳ
+          - generic [ref=e594]:
+            - generic [ref=e595]: "Cam kết bàn giao:"
+            - list [ref=e596]:
+              - listitem [ref=e597]:
+                - generic [ref=e601]: Một đầu mối quản lý duy nhất cho toàn quốc
+              - listitem [ref=e602]:
+                - generic [ref=e606]: Tiết kiệm 60% chi phí so với tự mở chi nhánh
+              - listitem [ref=e607]:
+                - generic [ref=e611]: Chất lượng triển khai đồng bộ ở mọi tỉnh thành
+          - button "Hợp tác mạng lưới toàn quốc" [ref=e613] [cursor=pointer]
+      - generic [ref=e617]:
+        - generic [ref=e618]:
+          - generic [ref=e619]: Bạn cần bảng giá triển khai cho toàn bộ hệ thống hoặc theo hợp đồng khung?
+          - paragraph [ref=e624]: LocalMate cung cấp hợp đồng pháp nhân, xuất hóa đơn VAT và cam kết điều khoản bảo mật (NDA) nghiêm ngặt cho đối tác công nghệ.
+        - button "Yêu cầu bảng giá đối tác" [ref=e625] [cursor=pointer]
+    - generic [ref=e630]:
+      - generic [ref=e631]:
+        - generic [ref=e632]: TẠI SAO CHỌN LOCALMATE?
+        - heading "Không cố bán thêm phần mềm. Tập trung làm việc được hoàn thành." [level=2] [ref=e636]
+        - paragraph [ref=e637]: Một doanh nghiệp nhỏ không cần một phòng công nghệ cồng kềnh. Bạn chỉ cần đúng công cụ, đúng người hỗ trợ và đúng lúc.
+      - generic [ref=e638]:
+        - generic [ref=e639]:
+          - generic [ref=e640]: "01"
+          - heading "Bắt đầu từ công việc" [level=3] [ref=e646]
+          - heading "Không hỏi \"Bạn muốn mua công nghệ nào?\", bắt đầu từ \"Bạn đang cần làm gì?\"." [level=4] [ref=e647]
+          - paragraph [ref=e648]: Mục tiêu không phải là bán thêm một phần mềm đắt tiền. Mục tiêu là làm cho công việc thực tế của bạn được hoàn thành nhanh nhất với chi phí hợp lý.
+        - generic [ref=e649]:
+          - generic [ref=e650]: "02"
+          - heading "Tận dụng thứ đã có" [level=3] [ref=e657]
+          - heading "Nếu công cụ sẵn có giải quyết tốt, hãy dùng nó thay vì xây lại từ đầu." [level=4] [ref=e658]
+          - paragraph [ref=e659]: Thị trường đã có rất nhiều phần mềm tốt. Vấn đề là kết nối chúng lại với nhau. Chúng tôi ưu tiên cấu hình những gì bạn đang có để tiết kiệm tối đa ngân sách.
+        - generic [ref=e660]:
+          - generic [ref=e661]: "03"
+          - heading "Tự động hóa khi có ích" [level=3] [ref=e666]
+          - heading "AI và Automation để giảm bớt thao tác tay chân, không phải để làm màu." [level=4] [ref=e667]
+          - paragraph [ref=e668]: Chúng tôi chỉ tự động hóa những khâu lặp đi lặp lại thực sự tốn thời gian. Giải pháp công nghệ phải mang lại giá trị có thể đo lường được mỗi ngày.
+        - generic [ref=e669]:
+          - generic [ref=e670]: "04"
+          - heading "Con người ở chỗ cần con người" [level=3] [ref=e676]
+          - heading "Tư vấn, quyết định và triển khai tại địa phương luôn cần sự đồng hành có trách nhiệm." [level=4] [ref=e677]
+          - paragraph [ref=e678]: Công nghệ lo phần lặp lại, con người lo phần thấu hiểu và kiểm tra thực địa. Khi có lỗi phát sinh, bạn luôn có người thật chịu trách nhiệm xử lý đến cùng.
+      - generic [ref=e679]:
+        - generic [ref=e680]:
+          - generic [ref=e681]: CAM KẾT ĐỒNG HÀNH THỰC TẾ
+          - heading "“Bạn tập trung kinh doanh & chăm sóc khách hàng. LocalMate lo trọn gói phần kỹ thuật phía sau.”" [level=3] [ref=e686]
+          - paragraph [ref=e687]: Dù là một website nhỏ 24h, một workflow tự động gom lead hay triển khai giải pháp công nghệ trên nhiều tỉnh thành.
+        - 'link "Hotline 24/7: 0834.422.439" [ref=e689] [cursor=pointer]':
+          - /url: tel:0834422439
+    - generic [ref=e694]:
+      - generic [ref=e695]:
+        - generic [ref=e696]: QUY TRÌNH VẬN HÀNH 5 BƯỚC
+        - heading "Từ một yêu cầu đơn giản đến công việc được hoàn thành" [level=2] [ref=e697]
+        - paragraph [ref=e698]: Không cần viết bản mô tả kỹ thuật phức tạp. Bạn nói điều muốn đạt được, LocalMate tìm cách thực hiện phù hợp nhất.
+      - generic [ref=e699]:
+        - generic [ref=e700]:
+          - generic [ref=e701]:
+            - generic [ref=e702]: "01"
+            - heading "Nói điều bạn cần" [level=3] [ref=e707]
+            - heading "Không cần tài liệu kỹ thuật phức tạp" [level=4] [ref=e708]
+            - paragraph [ref=e709]: Bạn chỉ cần mô tả vấn đề đang gặp phải hoặc kết quả mong muốn bằng ngôn ngữ đời thường.
+          - generic [ref=e710]: Ghi nhận yêu cầu qua Zalo, gọi điện hoặc form trong 15 phút.
+        - generic [ref=e711]:
+          - generic [ref=e712]:
+            - generic [ref=e713]: "02"
+            - heading "Tìm cách phù hợp" [level=3] [ref=e719]
+            - heading "Tận dụng công cụ sẵn có & đơn giản hóa" [level=4] [ref=e720]
+            - paragraph [ref=e721]: LocalMate xác định việc cần làm, những gì có thể tái sử dụng và phương án triển khai tinh gọn nhất.
+          - generic [ref=e722]: "Đề xuất giải pháp rõ ràng: công cụ nào, kết nối ra sao, ai thực hiện."
+        - generic [ref=e723]:
+          - generic [ref=e724]:
+            - generic [ref=e725]: "03"
+            - heading "Biết trước phạm vi & giá" [level=3] [ref=e732]
+            - heading "Minh bạch 100% trước khi bắt đầu" [level=4] [ref=e733]
+            - paragraph [ref=e734]: Bạn biết chính xác những gì mình sẽ nhận được, thời gian hoàn thành dự kiến và mức chi phí trọn gói.
+          - generic [ref=e735]: Báo giá cố định theo checklist — Tuyệt đối không phát sinh chi phí ẩn.
+        - generic [ref=e736]:
+          - generic [ref=e737]:
+            - generic [ref=e738]: "04"
+            - heading "Triển khai công việc" [level=3] [ref=e744]
+            - heading "Đội ngũ chuyên trách thực thi chuẩn hóa" [level=4] [ref=e745]
+            - paragraph [ref=e746]: LocalMate sử dụng công cụ, quy trình tự động hóa và kỹ thuật viên phù hợp để hoàn thành công việc.
+          - generic [ref=e747]: Cập nhật tiến độ liên tục, kiểm thử kỹ lưỡng trước khi bàn giao.
+        - generic [ref=e748]:
+          - generic [ref=e749]:
+            - generic [ref=e750]: "05"
+            - heading "Nghiệm thu & bàn giao" [level=3] [ref=e756]
+            - heading "Khách hàng nắm quyền kiểm soát 100%" [level=4] [ref=e757]
+            - paragraph [ref=e758]: Khách hàng kiểm tra kết quả thực tế, bàn giao toàn bộ tài khoản chính chủ và hướng dẫn sử dụng tiếp tục.
+          - generic [ref=e759]: ✓ Bàn giao 100% tài khoản
+      - paragraph [ref=e764]:
+        - strong [ref=e765]: Báo giá rõ ràng & Checklist cụ thể
+        - text: — Biết trước phạm vi, chi phí và thời gian hoàn thành trước khi bắt đầu.
+    - generic [ref=e767]:
+      - generic [ref=e768]:
+        - generic [ref=e769]: BUILD & TEST CÔNG KHAI • NĂNG LỰC THỰC TẾ
+        - heading "Những gì LocalMate đã xây dựng & kiểm chứng thực tế" [level=2] [ref=e770]
+        - paragraph [ref=e771]: Không vẽ vời thành tích viển vông. Chúng tôi minh chứng năng lực bằng các website đang hoạt động thật và quy trình tự động hóa đã kiểm thử ổn định.
+      - generic [ref=e772]:
+        - button "Website đang hoạt động thật (3)" [ref=e773] [cursor=pointer]
+        - button "Workflow & Tự động hóa kiểm chứng (3)" [ref=e778] [cursor=pointer]
+      - generic [ref=e782]:
+        - generic [ref=e783]:
+          - generic [ref=e784]:
+            - generic [ref=e785]:
+              - generic [ref=e786]: Nhà hàng / Ẩm thực
+              - generic [ref=e787]: Đang hoạt động
+            - heading [level=3] [ref=e791]:
+              - link "Nhà Hàng Ẩm Thực XÈO" [ref=e792] [cursor=pointer]:
+                - /url: https://xeorestaurant.localmate.vn
+            - link "https://xeorestaurant.localmate.vn" [ref=e798] [cursor=pointer]:
+              - /url: https://xeorestaurant.localmate.vn
+            - list [ref=e803]:
+              - listitem [ref=e804]:
+                - generic [ref=e808]: Menu điện tử tải nhanh
+              - listitem [ref=e809]:
+                - generic [ref=e813]: Google Maps chỉ đường
+              - listitem [ref=e814]:
+                - generic [ref=e818]: Nút gọi đặt bàn
+          - link "Mở xem website trực tiếp" [ref=e819] [cursor=pointer]:
+            - /url: https://xeorestaurant.localmate.vn
+        - generic [ref=e825]:
+          - generic [ref=e826]:
+            - generic [ref=e827]:
+              - generic [ref=e828]: Xây dựng / Nội thất
+              - generic [ref=e829]: Đang hoạt động
+            - heading [level=3] [ref=e833]:
+              - link "Xây Dựng Nam Phát" [ref=e834] [cursor=pointer]:
+                - /url: https://namphatbuild.localmate.vn
+            - link "https://namphatbuild.localmate.vn" [ref=e840] [cursor=pointer]:
+              - /url: https://namphatbuild.localmate.vn
+            - list [ref=e845]:
+              - listitem [ref=e846]:
+                - generic [ref=e850]: Bộ ảnh công trình thật
+              - listitem [ref=e851]:
+                - generic [ref=e855]: Bảng giá dự toán
+              - listitem [ref=e856]:
+                - generic [ref=e860]: Form tư vấn nhanh
+          - link "Mở xem website trực tiếp" [ref=e861] [cursor=pointer]:
+            - /url: https://namphatbuild.localmate.vn
+        - generic [ref=e867]:
+          - generic [ref=e868]:
+            - generic [ref=e869]:
+              - generic [ref=e870]: Spa / Làm đẹp
+              - generic [ref=e871]: Đang hoạt động
+            - heading [level=3] [ref=e875]:
+              - link "Hương Sen Beauty & Spa" [ref=e876] [cursor=pointer]:
+                - /url: https://huongsenspa.localmate.vn
+            - link "https://huongsenspa.localmate.vn" [ref=e882] [cursor=pointer]:
+              - /url: https://huongsenspa.localmate.vn
+            - list [ref=e887]:
+              - listitem [ref=e888]:
+                - generic [ref=e892]: Đặt lịch trực tuyến
+              - listitem [ref=e893]:
+                - generic [ref=e897]: Bảng giá rõ ràng
+              - listitem [ref=e898]:
+                - generic [ref=e902]: Đánh giá 5 sao
+          - link "Mở xem website trực tiếp" [ref=e903] [cursor=pointer]:
+            - /url: https://huongsenspa.localmate.vn
+    - generic [ref=e910]:
+      - generic [ref=e911]:
+        - generic [ref=e912]: BẢNG GIÁ NIÊM YẾT MINH BẠCH
+        - heading "Bảng Giá Dịch Vụ Niêm Yết Công Khai" [level=2] [ref=e915]
+        - paragraph [ref=e916]:
+          - text: Không chi phí ẩn. Báo giá rõ ràng từng việc từ
+          - strong [ref=e917]: 99.000đ
+          - text: (sửa lỗi nhỏ),
+          - strong [ref=e918]: 299.000đ
+          - text: (Google Maps),
+          - strong [ref=e919]: 490.000đ
+          - text: (Website 1 trang) đến các gói trọn gói.
+      - generic [ref=e920]:
+        - 'textbox "Tìm nhanh dịch vụ (ví dụ: Google Maps, Sửa web, 99k, Zalo, Ads, BCT...)" [ref=e925]'
+        - generic [ref=e926]:
+          - button "⭐ Tất cả (45)" [ref=e927] [cursor=pointer]
+          - button "Website & Bán Hàng (8)" [ref=e929] [cursor=pointer]
+          - button "Sửa Nhanh Từ 99k (7)" [ref=e931] [cursor=pointer]
+          - button "Google Maps & Local SEO (7)" [ref=e933] [cursor=pointer]
+          - button "Quảng Cáo Google & Facebook (4)" [ref=e935] [cursor=pointer]
+          - button "Đo Lường & Cài Đặt Mã (5)" [ref=e937] [cursor=pointer]
+          - button "Tự Động Hóa & Báo Đơn (5)" [ref=e939] [cursor=pointer]
+          - button "Phần Mềm & Trợ Lý AI (3)" [ref=e941] [cursor=pointer]
+          - button "Pháp Lý Bộ Công Thương (5)" [ref=e943] [cursor=pointer]
+          - button "Chăm Sóc Hàng Tháng (1)" [ref=e945] [cursor=pointer]
+      - generic [ref=e947]:
+        - generic [ref=e948]:
+          - generic [ref=e954]:
+            - generic [ref=e955]: Website
+            - generic [ref=e956]: ⭐ Khuyên dùng
+          - generic [ref=e957]:
+            - heading "Website 1 Trang Bán Hàng (Gói Khởi Đầu)" [level=3] [ref=e958]
+            - paragraph [ref=e959]: "Gồm 4–5 phần chuẩn: Giới thiệu, bảng giá dịch vụ, hình ảnh, nút bấm gọi điện & chat Zalo ngay."
+            - generic [ref=e964]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e965]: 1–2 ngày
+          - generic [ref=e966]:
+            - generic [ref=e967]:
+              - generic [ref=e968]: 490.000đ
+              - generic [ref=e969]: Trọn gói
+            - button "Tư vấn ngay" [ref=e970] [cursor=pointer]
+        - generic [ref=e974]:
+          - generic [ref=e980]:
+            - generic [ref=e981]: Website
+            - generic [ref=e982]: ⭐ Khuyên dùng
+          - generic [ref=e983]:
+            - heading "Website Giới Thiệu Doanh Nghiệp & Dịch Vụ" [level=3] [ref=e984]
+            - paragraph [ref=e985]: "Gồm 6–8 phần đầy đủ: Giới thiệu, bảng giá chi tiết, form tư vấn, bản đồ chỉ đường Google Maps & chuẩn SEO."
+            - generic [ref=e990]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e991]: 2–3 ngày
+          - generic [ref=e992]:
+            - generic [ref=e993]:
+              - generic [ref=e994]: 790.000đ
+              - generic [ref=e995]: Trọn gói
+            - button "Tư vấn ngay" [ref=e996] [cursor=pointer]
+        - generic [ref=e1000]:
+          - generic [ref=e1006]:
+            - generic [ref=e1007]: Website
+            - generic [ref=e1008]: ⭐ Khuyên dùng
+          - generic [ref=e1009]:
+            - heading "Website Doanh Nghiệp Nhiều Trang (3–5 Trang)" [level=3] [ref=e1010]
+            - paragraph [ref=e1011]: Trang chủ, Giới thiệu, Từng trang dịch vụ riêng, Tin tức/Blog, Liên hệ. TẶNG KÈM bộ cài đặt SEO & đo lường 496k.
+            - generic [ref=e1016]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1017]: 4–6 ngày
+          - generic [ref=e1018]:
+            - generic [ref=e1019]:
+              - generic [ref=e1020]: 1.990.000đ
+              - generic [ref=e1021]: Trọn gói
+            - button "Tư vấn ngay" [ref=e1022] [cursor=pointer]
+        - generic [ref=e1026]:
+          - generic [ref=e1032]:
+            - generic [ref=e1033]: Website
+            - generic [ref=e1034]: ⭐ Khuyên dùng
+          - generic [ref=e1035]:
+            - heading "Gói Khởi Tạo Số Trọn Gói (Website + Maps + Ads)" [level=3] [ref=e1036]
+            - paragraph [ref=e1037]: "Trọn gói chìa khóa trao tay: Website Doanh nghiệp + Tạo Google Maps chuẩn + Bộ đo lường Ads + SEO cơ bản."
+            - generic [ref=e1042]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1043]: 5–7 ngày
+          - generic [ref=e1044]:
+            - generic [ref=e1045]:
+              - generic [ref=e1046]: 2.490.000đ
+              - generic [ref=e1047]: Trọn gói
+            - button "Tư vấn ngay" [ref=e1048] [cursor=pointer]
+        - generic [ref=e1052]:
+          - generic [ref=e1057]:
+            - generic [ref=e1058]: Sửa lỗi 99k
+            - generic [ref=e1059]: ⭐ Khuyên dùng
+          - generic [ref=e1060]:
+            - heading "Sửa Lỗi Giao Diện / Lỗi Nhỏ Website" [level=3] [ref=e1061]
+            - paragraph [ref=e1062]: Sửa nút bấm bị liệt, đổi giá/menu, thay banner, sửa lỗi hiển thị chữ, sửa form không gửi được tin.
+            - generic [ref=e1067]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1068]: 15–30 phút
+          - generic [ref=e1069]:
+            - generic [ref=e1070]:
+              - generic [ref=e1071]: 99.000đ
+              - generic [ref=e1072]: Trọn gói
+            - button "Tư vấn ngay" [ref=e1073] [cursor=pointer]
+        - generic [ref=e1077]:
+          - generic [ref=e1083]:
+            - generic [ref=e1084]: Google Maps
+            - generic [ref=e1085]: ⭐ Khuyên dùng
+          - generic [ref=e1086]:
+            - heading "Tạo Mới & Đưa Địa Điểm Lên Google Maps" [level=3] [ref=e1087]
+            - paragraph [ref=e1088]: Tạo trang doanh nghiệp trên Google Maps, điền đầy đủ số điện thoại, giờ mở cửa, địa chỉ chuẩn xác và đăng ảnh đại diện.
+            - generic [ref=e1093]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1094]: 1–2 giờ
+          - generic [ref=e1095]:
+            - generic [ref=e1096]:
+              - generic [ref=e1097]: 299.000đ
+              - generic [ref=e1098]: Trọn gói
+            - button "Tư vấn ngay" [ref=e1099] [cursor=pointer]
+        - generic [ref=e1103]:
+          - generic [ref=e1109]:
+            - generic [ref=e1110]: Google Maps
+            - generic [ref=e1111]: ⭐ Khuyên dùng
+          - generic [ref=e1112]:
+            - heading "Duy Trì Top Tìm Kiếm Google Maps Hàng Tháng" [level=3] [ref=e1113]
+            - paragraph [ref=e1114]: Đăng bài cập nhật, thêm ảnh sản phẩm định kỳ, tối ưu từ khóa và hỗ trợ phản hồi đánh giá để giữ vị trí top đầu khu vực.
+            - generic [ref=e1119]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1120]: Hàng tháng
+          - generic [ref=e1121]:
+            - generic [ref=e1122]:
+              - generic [ref=e1123]: 990.000đ
+              - generic [ref=e1124]: / tháng
+            - button "Tư vấn ngay" [ref=e1125] [cursor=pointer]
+        - generic [ref=e1129]:
+          - generic [ref=e1133]:
+            - generic [ref=e1134]: Đo lường
+            - generic [ref=e1135]: ⭐ Khuyên dùng
+          - generic [ref=e1136]:
+            - heading "Trọn Gói Cài Đặt Đo Lường Toàn Diện" [level=3] [ref=e1137]
+            - paragraph [ref=e1138]: "Combo hoàn chỉnh: Cài GA4 + GTM + Đo nút gọi Zalo + Gắn Pixel Facebook + Bảng theo dõi số lượng khách liên hệ."
+            - generic [ref=e1143]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1144]: 1–2 giờ
+          - generic [ref=e1145]:
+            - generic [ref=e1146]:
+              - generic [ref=e1147]: 390.000đ
+              - generic [ref=e1148]: Trọn gói
+            - button "Tư vấn ngay" [ref=e1149] [cursor=pointer]
+        - generic [ref=e1153]:
+          - generic [ref=e1159]:
+            - generic [ref=e1160]: Quảng cáo Ads
+            - generic [ref=e1161]: ⭐ Khuyên dùng
+          - generic [ref=e1162]:
+            - heading "Khởi Tạo Quảng Cáo Google Tìm Kiếm (Google Ads)" [level=3] [ref=e1163]
+            - paragraph [ref=e1164]: Tạo tài khoản chính chủ, chọn lọc từ khóa đúng người đang cần mua, viết mẫu quảng cáo hấp dẫn và cài đặt ngân sách phù hợp.
+            - generic [ref=e1169]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1170]: 1–2 ngày
+          - generic [ref=e1171]:
+            - generic [ref=e1172]:
+              - generic [ref=e1173]: 390.000đ
+              - generic [ref=e1174]: Trọn gói
+            - button "Tư vấn ngay" [ref=e1175] [cursor=pointer]
+        - generic [ref=e1179]:
+          - generic [ref=e1185]:
+            - generic [ref=e1186]: Tự động hóa
+            - generic [ref=e1187]: ⭐ Khuyên dùng
+          - generic [ref=e1188]:
+            - heading "Tự Động Đẩy Thông Tin Khách Về Google Sheets" [level=3] [ref=e1189]
+            - paragraph [ref=e1190]: Mỗi khi có khách điền form, toàn bộ tên, SĐT và nhu cầu tự động điền vào 1 bảng tính Google Sheets để bạn dễ gọi điện tư vấn.
+            - generic [ref=e1195]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1196]: 1–2 giờ
+          - generic [ref=e1197]:
+            - generic [ref=e1198]:
+              - generic [ref=e1199]: 490.000đ
+              - generic [ref=e1200]: Trọn gói
+            - button "Tư vấn ngay" [ref=e1201] [cursor=pointer]
+        - generic [ref=e1205]:
+          - generic [ref=e1212]:
+            - generic [ref=e1213]: Pháp lý BCT
+            - generic [ref=e1214]: ⭐ Khuyên dùng
+          - generic [ref=e1215]:
+            - heading "Bộ 4 Trang Chính Sách Pháp Lý Chuẩn Mực" [level=3] [ref=e1216]
+            - paragraph [ref=e1217]: "Tạo 4 trang chuẩn: Chính sách bảo mật dữ liệu, Điều khoản dịch vụ, Chính sách thanh toán và Chính sách bảo hành/đổi trả."
+            - generic [ref=e1222]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1223]: 1–2 giờ
+          - generic [ref=e1224]:
+            - generic [ref=e1225]:
+              - generic [ref=e1226]: 299.000đ
+              - generic [ref=e1227]: Trọn gói
+            - button "Tư vấn ngay" [ref=e1228] [cursor=pointer]
+        - generic [ref=e1232]:
+          - generic [ref=e1239]:
+            - generic [ref=e1240]: Pháp lý BCT
+            - generic [ref=e1241]: ⭐ Khuyên dùng
+          - generic [ref=e1242]:
+            - heading "Trọn Gói Website Compliance & BCT Pack" [level=3] [ref=e1243]
+            - paragraph [ref=e1244]: "Combo trọn gói: Audit BCT + Bộ 4 trang chính sách + Compliance Footer + Hỗ trợ khai báo BCT + Gắn logo/link xác nhận sau khi duyệt"
+            - generic [ref=e1249]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1250]: 2–3h
+          - generic [ref=e1251]:
+            - generic [ref=e1252]:
+              - generic [ref=e1253]: 590.000đ
+              - generic [ref=e1254]: Trọn gói
+            - button "Tư vấn ngay" [ref=e1255] [cursor=pointer]
+        - generic [ref=e1259]:
+          - generic [ref=e1265]:
+            - generic [ref=e1266]: Chăm sóc tháng
+            - generic [ref=e1267]: ⭐ Khuyên dùng
+          - generic [ref=e1268]:
+            - heading "LocalMate Digital Care" [level=3] [ref=e1269]
+            - paragraph [ref=e1270]: Gói chăm sóc & đồng hành số định kỳ hàng tháng (Modular Care 290k - 1.49m/tháng)
+            - generic [ref=e1275]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1276]: Hàng tháng
+          - generic [ref=e1277]:
+            - generic [ref=e1278]:
+              - generic [ref=e1279]: 290.000đ/tháng+
+              - generic [ref=e1280]: / tháng
+            - button "Tư vấn ngay" [ref=e1281] [cursor=pointer]
+        - generic [ref=e1285]:
+          - generic [ref=e1286]: Website
+          - generic [ref=e1293]:
+            - heading "Website Tối Ưu Tỷ Lệ Chuyển Đổi (CRO)" [level=3] [ref=e1294]
+            - paragraph [ref=e1295]: Trang bán hàng chuyên sâu + gắn mã theo dõi chuyển đổi + tối ưu nút bấm kêu gọi hành động để tăng khách gọi.
+            - generic [ref=e1300]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1301]: 2–3 ngày
+          - generic [ref=e1302]:
+            - generic [ref=e1303]:
+              - generic [ref=e1304]: 990.000đ
+              - generic [ref=e1305]: Trọn gói
+            - button "Tư vấn ngay" [ref=e1306] [cursor=pointer]
+        - generic [ref=e1310]:
+          - generic [ref=e1311]: Website
+          - generic [ref=e1318]:
+            - heading "Website Công Ty 1 Trang Hoàn Chỉnh" [level=3] [ref=e1319]
+            - paragraph [ref=e1320]: "Trang chủ công ty 8–10 phần: Giới thiệu năng lực, quy trình làm việc, dự án tiêu biểu, bảng giá & liên hệ."
+            - generic [ref=e1325]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1326]: 3–4 ngày
+          - generic [ref=e1327]:
+            - generic [ref=e1328]:
+              - generic [ref=e1329]: 1.290.000đ
+              - generic [ref=e1330]: Trọn gói
+            - button "Tư vấn ngay" [ref=e1331] [cursor=pointer]
+        - generic [ref=e1335]:
+          - generic [ref=e1336]: Website
+          - generic [ref=e1343]:
+            - heading "Website Quán Ăn, Nhà Hàng & Spa" [level=3] [ref=e1344]
+            - paragraph [ref=e1345]: Menu điện tử hình ảnh đẹp, form đặt bàn/đặt hẹn trực tuyến, chỉ đường Google Maps, hotline & góc ảnh không gian.
+            - generic [ref=e1350]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1351]: 3–5 ngày
+          - generic [ref=e1352]:
+            - generic [ref=e1353]:
+              - generic [ref=e1354]: 2.490.000đ
+              - generic [ref=e1355]: Trọn gói
+            - button "Tư vấn ngay" [ref=e1356] [cursor=pointer]
+        - generic [ref=e1360]:
+          - generic [ref=e1361]: Website
+          - generic [ref=e1368]:
+            - heading "Website Danh Mục & Bán Hàng Online" [level=3] [ref=e1369]
+            - paragraph [ref=e1370]: Trưng bày catalogue sản phẩm, bộ lọc danh mục, trang chi tiết sản phẩm, giỏ hàng & đặt hàng nhanh qua Zalo.
+            - generic [ref=e1375]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1376]: 5–7 ngày
+          - generic [ref=e1377]:
+            - generic [ref=e1378]:
+              - generic [ref=e1379]: 3.490.000đ
+              - generic [ref=e1380]: Trọn gói
+            - button "Tư vấn ngay" [ref=e1381] [cursor=pointer]
+        - generic [ref=e1385]:
+          - generic [ref=e1386]: Sửa lỗi 99k
+          - generic [ref=e1392]:
+            - heading "Sửa Lỗi Vỡ Giao Diện Trên Điện Thoại" [level=3] [ref=e1393]
+            - paragraph [ref=e1394]: Khắc phục lỗi trang web bị tràn mép, chữ quá nhỏ, nút bấm khó chạm trên iPhone / Android / iPad.
+            - generic [ref=e1399]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1400]: 30–60 phút
+          - generic [ref=e1401]:
+            - generic [ref=e1402]:
+              - generic [ref=e1403]: 149.000đ
+              - generic [ref=e1404]: Trọn gói
+            - button "Tư vấn ngay" [ref=e1405] [cursor=pointer]
+        - generic [ref=e1409]:
+          - generic [ref=e1410]: Sửa lỗi 99k
+          - generic [ref=e1416]:
+            - heading "Tăng Tốc Độ Tải Trang Web" [level=3] [ref=e1417]
+            - paragraph [ref=e1418]: Nén hình ảnh dung lượng nhẹ, dọn dẹp mã nguồn thừa, giúp website mở tức thì dưới 2 giây trên điện thoại.
+            - generic [ref=e1423]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1424]: 1–2 giờ
+          - generic [ref=e1425]:
+            - generic [ref=e1426]:
+              - generic [ref=e1427]: 299.000đ
+              - generic [ref=e1428]: Trọn gói
+            - button "Tư vấn ngay" [ref=e1429] [cursor=pointer]
+        - generic [ref=e1433]:
+          - generic [ref=e1434]: Sửa lỗi 99k
+          - generic [ref=e1440]:
+            - heading "Trỏ Tên Miền & Cài Đặt Khóa Bảo Mật SSL" [level=3] [ref=e1441]
+            - paragraph [ref=e1442]: Kết nối tên miền .vn/.com vào hosting/website, bật ổ khóa bảo mật HTTPS (SSL) miễn phí trọn đời.
+            - generic [ref=e1447]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1448]: 30–45 phút
+          - generic [ref=e1449]:
+            - generic [ref=e1450]:
+              - generic [ref=e1451]: 149.000đ
+              - generic [ref=e1452]: Trọn gói
+            - button "Tư vấn ngay" [ref=e1453] [cursor=pointer]
+        - generic [ref=e1457]:
+          - generic [ref=e1458]: Sửa lỗi 99k
+          - generic [ref=e1464]:
+            - heading "Cài Đặt Cloudflare Tăng Tốc & Chống Hack" [level=3] [ref=e1465]
+            - paragraph [ref=e1466]: Cấu hình Cloudflare DNS miễn phí, kích hoạt lớp tường lửa bảo vệ website và tăng tốc độ truy cập.
+            - generic [ref=e1471]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1472]: 30–60 phút
+          - generic [ref=e1473]:
+            - generic [ref=e1474]:
+              - generic [ref=e1475]: 199.000đ
+              - generic [ref=e1476]: Trọn gói
+            - button "Tư vấn ngay" [ref=e1477] [cursor=pointer]
+        - generic [ref=e1481]:
+          - generic [ref=e1482]: Sửa lỗi 99k
+          - generic [ref=e1488]:
+            - heading "Tích Hợp Form Đặt Bàn / Liên Hệ Tự Động" [level=3] [ref=e1489]
+            - paragraph [ref=e1490]: Tạo form để khách điền thông tin, dữ liệu tự động gửi ngay về Email, Google Sheets hoặc Telegram của bạn.
+            - generic [ref=e1495]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1496]: 30–60 phút
+          - generic [ref=e1497]:
+            - generic [ref=e1498]:
+              - generic [ref=e1499]: 199.000đ
+              - generic [ref=e1500]: Trọn gói
+            - button "Tư vấn ngay" [ref=e1501] [cursor=pointer]
+        - generic [ref=e1505]:
+          - generic [ref=e1506]: Sửa lỗi 99k
+          - generic [ref=e1512]:
+            - heading "Kiểm Tra & Đánh Giá Toàn Diện Website" [level=3] [ref=e1513]
+            - paragraph [ref=e1514]: Rà soát toàn bộ tốc độ, lỗi hiển thị mobile, nút gọi, tính năng đặt hàng và gửi báo cáo chi tiết kèm giải pháp.
+            - generic [ref=e1519]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1520]: 30–60 phút
+          - generic [ref=e1521]:
+            - generic [ref=e1522]:
+              - generic [ref=e1523]: Miễn phí
+              - generic [ref=e1524]: Trọn gói
+            - button "Tư vấn ngay" [ref=e1525] [cursor=pointer]
+        - generic [ref=e1529]:
+          - generic [ref=e1530]: Google Maps
+          - generic [ref=e1537]:
+            - heading "Cài Đặt SEO Kỹ Thuật Chuẩn Google" [level=3] [ref=e1538]
+            - paragraph [ref=e1539]: Tối ưu tiêu đề, mô tả tìm kiếm, tạo sitemap.xml, khai báo robots.txt giúp Google nhanh chóng tìm thấy web.
+            - generic [ref=e1544]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1545]: 1–2 giờ
+          - generic [ref=e1546]:
+            - generic [ref=e1547]:
+              - generic [ref=e1548]: 299.000đ
+              - generic [ref=e1549]: Trọn gói
+            - button "Tư vấn ngay" [ref=e1550] [cursor=pointer]
+        - generic [ref=e1554]:
+          - generic [ref=e1555]: Google Maps
+          - generic [ref=e1562]:
+            - heading "Khai Báo Dữ Liệu Doanh Nghiệp (Schema)" [level=3] [ref=e1563]
+            - paragraph [ref=e1564]: Khai báo mã dữ liệu chuẩn giúp Google hiển thị địa chỉ, giờ mở cửa, số điện thoại và đánh giá sao trên kết quả tìm kiếm.
+            - generic [ref=e1569]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1570]: 30–60 phút
+          - generic [ref=e1571]:
+            - generic [ref=e1572]:
+              - generic [ref=e1573]: 199.000đ
+              - generic [ref=e1574]: Trọn gói
+            - button "Tư vấn ngay" [ref=e1575] [cursor=pointer]
+        - generic [ref=e1579]:
+          - generic [ref=e1580]: Google Maps
+          - generic [ref=e1587]:
+            - heading "Xác Minh Website Trên Google Search Console" [level=3] [ref=e1588]
+            - paragraph [ref=e1589]: Khai báo quyền sở hữu website với Google, gửi sơ đồ trang web và yêu cầu Google lập chỉ mục các bài viết.
+            - generic [ref=e1594]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1595]: 30 phút
+          - generic [ref=e1596]:
+            - generic [ref=e1597]:
+              - generic [ref=e1598]: 99.000đ
+              - generic [ref=e1599]: Trọn gói
+            - button "Tư vấn ngay" [ref=e1600] [cursor=pointer]
+        - generic [ref=e1604]:
+          - generic [ref=e1605]: Google Maps
+          - generic [ref=e1612]:
+            - heading "Tối Ưu & Tăng Đánh Giá Google Maps" [level=3] [ref=e1613]
+            - paragraph [ref=e1614]: Tối ưu danh mục ngành nghề, gắn từ khóa tìm kiếm, đăng ảnh sản phẩm chuẩn vị trí và tạo link rút gọn xin đánh giá 5 sao.
+            - generic [ref=e1619]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1620]: 1–2 giờ
+          - generic [ref=e1621]:
+            - generic [ref=e1622]:
+              - generic [ref=e1623]: 390.000đ
+              - generic [ref=e1624]: Trọn gói
+            - button "Tư vấn ngay" [ref=e1625] [cursor=pointer]
+        - generic [ref=e1629]:
+          - generic [ref=e1630]: Google Maps
+          - generic [ref=e1637]:
+            - heading "Tối Ưu Hiển Thị Trên AI (ChatGPT / Gemini)" [level=3] [ref=e1638]
+            - paragraph [ref=e1639]: Cấu trúc thông tin thương hiệu để các công cụ AI (ChatGPT, Google AI, Gemini) nhận diện và gợi ý quán của bạn khi khách hỏi.
+            - generic [ref=e1644]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1645]: 1–3 giờ
+          - generic [ref=e1646]:
+            - generic [ref=e1647]:
+              - generic [ref=e1648]: 490.000đ
+              - generic [ref=e1649]: Trọn gói
+            - button "Tư vấn ngay" [ref=e1650] [cursor=pointer]
+        - generic [ref=e1654]:
+          - generic [ref=e1655]: Đo lường
+          - generic [ref=e1660]:
+            - heading "Cài Đặt Thống Kê Khách Vào Web (GA4)" [level=3] [ref=e1661]
+            - paragraph [ref=e1662]: Cài đặt Google Analytics 4 để xem mỗi ngày có bao nhiêu người vào web, họ ở tỉnh thành nào và xem trang nào nhiều nhất.
+            - generic [ref=e1667]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1668]: 30 phút
+          - generic [ref=e1669]:
+            - generic [ref=e1670]:
+              - generic [ref=e1671]: 99.000đ
+              - generic [ref=e1672]: Trọn gói
+            - button "Tư vấn ngay" [ref=e1673] [cursor=pointer]
+        - generic [ref=e1677]:
+          - generic [ref=e1678]: Đo lường
+          - generic [ref=e1683]:
+            - heading "Cài Trình Quản Lý Thẻ (Google Tag Manager)" [level=3] [ref=e1684]
+            - paragraph [ref=e1685]: Cài đặt Google Tag Manager giúp gắn các mã quảng cáo (Facebook, Google, TikTok) dễ dàng mà không cần sửa code web.
+            - generic [ref=e1690]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1691]: 30 phút
+          - generic [ref=e1692]:
+            - generic [ref=e1693]:
+              - generic [ref=e1694]: 99.000đ
+              - generic [ref=e1695]: Trọn gói
+            - button "Tư vấn ngay" [ref=e1696] [cursor=pointer]
+        - generic [ref=e1700]:
+          - generic [ref=e1701]: Đo lường
+          - generic [ref=e1706]:
+            - heading "Đo Lường Lượt Bấm Gọi & Nhắn Tin Zalo" [level=3] [ref=e1707]
+            - paragraph [ref=e1708]: Gắn mã theo dõi chính xác có bao nhiêu khách bấm nút Gọi, nút Zalo, điền form hoặc bấm xem bản đồ chỉ đường.
+            - generic [ref=e1713]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1714]: 30–60 phút
+          - generic [ref=e1715]:
+            - generic [ref=e1716]:
+              - generic [ref=e1717]: 199.000đ
+              - generic [ref=e1718]: Trọn gói
+            - button "Tư vấn ngay" [ref=e1719] [cursor=pointer]
+        - generic [ref=e1723]:
+          - generic [ref=e1724]: Đo lường
+          - generic [ref=e1729]:
+            - heading "Gắn Mã Theo Dõi Facebook (Meta Pixel)" [level=3] [ref=e1730]
+            - paragraph [ref=e1731]: Cài đặt mã Facebook Pixel trên web để lưu lại những người đã xem sản phẩm và phục vụ chạy quảng cáo bám đuổi (Remarketing).
+            - generic [ref=e1736]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1737]: 30–60 phút
+          - generic [ref=e1738]:
+            - generic [ref=e1739]:
+              - generic [ref=e1740]: 149.000đ
+              - generic [ref=e1741]: Trọn gói
+            - button "Tư vấn ngay" [ref=e1742] [cursor=pointer]
+        - generic [ref=e1746]:
+          - generic [ref=e1747]: Quảng cáo Ads
+          - generic [ref=e1754]:
+            - heading "Khởi Tạo Quảng Cáo Facebook Nhắn Tin" [level=3] [ref=e1755]
+            - paragraph [ref=e1756]: Thiết lập chiến dịch quảng cáo nhắn tin Fanpage, nhắm đúng khách hàng theo khu vực quận/huyện và độ tuổi mục tiêu.
+            - generic [ref=e1761]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1762]: 1–2 ngày
+          - generic [ref=e1763]:
+            - generic [ref=e1764]:
+              - generic [ref=e1765]: 390.000đ
+              - generic [ref=e1766]: Trọn gói
+            - button "Tư vấn ngay" [ref=e1767] [cursor=pointer]
+        - generic [ref=e1771]:
+          - generic [ref=e1772]: Quảng cáo Ads
+          - generic [ref=e1779]:
+            - heading "Chăm Sóc & Tối Ưu Quảng Cáo Hàng Tháng" [level=3] [ref=e1780]
+            - paragraph [ref=e1781]: Theo dõi chi tiêu hàng tuần, loại trừ các từ khóa tìm kiếm rác lãng phí tiền và tối ưu giá thầu để nhận nhiều cuộc gọi nhất.
+            - generic [ref=e1786]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1787]: Hàng tháng
+          - generic [ref=e1788]:
+            - generic [ref=e1789]:
+              - generic [ref=e1790]: 690.000đ
+              - generic [ref=e1791]: / tháng
+            - button "Tư vấn ngay" [ref=e1792] [cursor=pointer]
+        - generic [ref=e1796]:
+          - generic [ref=e1797]: Quảng cáo Ads
+          - generic [ref=e1804]:
+            - heading "Đánh Giá & Tối Ưu Nút Bấm Chuyển Đổi" [level=3] [ref=e1805]
+            - paragraph [ref=e1806]: Rà soát xem tại sao khách vào web mà không bấm gọi, sắp xếp lại vị trí bảng giá, số điện thoại để tăng số người liên hệ.
+            - generic [ref=e1811]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1812]: 1 giờ
+          - generic [ref=e1813]:
+            - generic [ref=e1814]:
+              - generic [ref=e1815]: 299.000đ
+              - generic [ref=e1816]: Trọn gói
+            - button "Tư vấn ngay" [ref=e1817] [cursor=pointer]
+        - generic [ref=e1821]:
+          - generic [ref=e1822]: Tự động hóa
+          - generic [ref=e1829]:
+            - heading "Hệ Thống Đặt Lịch Hẹn / Đặt Bàn Tự Động" [level=3] [ref=e1830]
+            - paragraph [ref=e1831]: Khách hàng tự chọn ngày, giờ và dịch vụ trực tiếp trên web, hệ thống tự động khóa lịch trùng và gửi thông báo cho chủ tiệm.
+            - generic [ref=e1836]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1837]: 1–2 ngày
+          - generic [ref=e1838]:
+            - generic [ref=e1839]:
+              - generic [ref=e1840]: 690.000đ
+              - generic [ref=e1841]: Trọn gói
+            - button "Tư vấn ngay" [ref=e1842] [cursor=pointer]
+        - generic [ref=e1846]:
+          - generic [ref=e1847]: Tự động hóa
+          - generic [ref=e1854]:
+            - heading "Báo Tin Nhắn Khách Đặt Hàng Về Telegram" [level=3] [ref=e1855]
+            - paragraph [ref=e1856]: Có khách gửi yêu cầu là điện thoại của bạn reng chuông Telegram báo ngay lập tức, không lo bị bỏ sót khách hàng.
+            - generic [ref=e1861]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1862]: 30–60 phút
+          - generic [ref=e1863]:
+            - generic [ref=e1864]:
+              - generic [ref=e1865]: 299.000đ
+              - generic [ref=e1866]: Trọn gói
+            - button "Tư vấn ngay" [ref=e1867] [cursor=pointer]
+        - generic [ref=e1871]:
+          - generic [ref=e1872]: Tự động hóa
+          - generic [ref=e1879]:
+            - heading "Tự Động Gửi Tin Nhắn / Email Xác Nhận" [level=3] [ref=e1880]
+            - paragraph [ref=e1881]: Tự động gửi tin nhắn cảm ơn hoặc email xác nhận lịch hẹn cho khách ngay sau khi khách bấm đăng ký trên website.
+            - generic [ref=e1886]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1887]: 1–2 ngày
+          - generic [ref=e1888]:
+            - generic [ref=e1889]:
+              - generic [ref=e1890]: 690.000đ
+              - generic [ref=e1891]: Trọn gói
+            - button "Tư vấn ngay" [ref=e1892] [cursor=pointer]
+        - generic [ref=e1896]:
+          - generic [ref=e1897]: Tự động hóa
+          - generic [ref=e1904]:
+            - heading "Bảng Điều Khiển Quản Lý Khách Hàng" [level=3] [ref=e1905]
+            - paragraph [ref=e1906]: Trang quản lý riêng giúp bạn xem danh sách khách, phân loại trạng thái đã gọi/chưa gọi và thống kê doanh thu trực quan.
+            - generic [ref=e1911]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1912]: 2–3 ngày
+          - generic [ref=e1913]:
+            - generic [ref=e1914]:
+              - generic [ref=e1915]: 1.490.000đ
+              - generic [ref=e1916]: Trọn gói
+            - button "Tư vấn ngay" [ref=e1917] [cursor=pointer]
+        - generic [ref=e1921]:
+          - generic [ref=e1922]: Phần mềm & AI
+          - generic [ref=e1929]:
+            - heading "Chatbot AI Tư Vấn & Lấy Số Điện Thoại 24/7" [level=3] [ref=e1930]
+            - paragraph [ref=e1931]: Trợ lý AI tự động trả lời giá cả, địa chỉ, giải đáp câu hỏi thường gặp của khách 24/7 và xin số điện thoại để bạn gọi lại.
+            - generic [ref=e1936]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1937]: 2–3 ngày
+          - generic [ref=e1938]:
+            - generic [ref=e1939]:
+              - generic [ref=e1940]: 990.000đ
+              - generic [ref=e1941]: Trọn gói
+            - button "Tư vấn ngay" [ref=e1942] [cursor=pointer]
+        - generic [ref=e1946]:
+          - generic [ref=e1947]: Phần mềm & AI
+          - generic [ref=e1954]:
+            - heading "Trợ Lý AI Tiếp Nhận & Sắp Xếp Lịch Hẹn" [level=3] [ref=e1955]
+            - paragraph [ref=e1956]: AI thông minh tự động hỏi giờ rảnh của khách, xác nhận dịch vụ cần làm và sắp xếp lịch vào hệ thống quản lý.
+            - generic [ref=e1961]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1962]: 3–5 ngày
+          - generic [ref=e1963]:
+            - generic [ref=e1964]:
+              - generic [ref=e1965]: 1.990.000đ
+              - generic [ref=e1966]: Trọn gói
+            - button "Tư vấn ngay" [ref=e1967] [cursor=pointer]
+        - generic [ref=e1971]:
+          - generic [ref=e1972]: Phần mềm & AI
+          - generic [ref=e1979]:
+            - heading "Lập Trình Phần Mềm / Web App Theo Yêu Cầu" [level=3] [ref=e1980]
+            - paragraph [ref=e1981]: Thiết kế và lập trình phần mềm quản lý nội bộ, tính năng tra cứu đặc thù hoặc ứng dụng web theo đúng quy trình riêng của bạn.
+            - generic [ref=e1986]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e1987]: Theo dự án
+          - generic [ref=e1988]:
+            - generic [ref=e1989]:
+              - generic [ref=e1990]: Từ 3.900.000đ
+              - generic [ref=e1991]: Trọn gói
+            - button "Tư vấn ngay" [ref=e1992] [cursor=pointer]
+        - generic [ref=e1996]:
+          - generic [ref=e1997]: Pháp lý BCT
+          - generic [ref=e2005]:
+            - heading "Kiểm Tra Tiêu Chuẩn Pháp Lý Website" [level=3] [ref=e2006]
+            - paragraph [ref=e2007]: Kiểm tra thông tin pháp nhân, mã số thuế và các quy định bắt buộc trước khi nộp hồ sơ lên Cổng thông tin Bộ Công Thương.
+            - generic [ref=e2012]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e2013]: 30 phút
+          - generic [ref=e2014]:
+            - generic [ref=e2015]:
+              - generic [ref=e2016]: Miễn phí
+              - generic [ref=e2017]: Trọn gói
+            - button "Tư vấn ngay" [ref=e2018] [cursor=pointer]
+        - generic [ref=e2022]:
+          - generic [ref=e2023]: Pháp lý BCT
+          - generic [ref=e2031]:
+            - heading "Chuẩn Hóa Thông Tin Pháp Lý Chân Trang (Footer)" [level=3] [ref=e2032]
+            - paragraph [ref=e2033]: "Cập nhật chân trang đúng quy định pháp luật: Tên công ty/hộ kinh doanh, mã số thuế, địa chỉ trụ sở, người đại diện & hotline."
+            - generic [ref=e2038]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e2039]: 30–60 phút
+          - generic [ref=e2040]:
+            - generic [ref=e2041]:
+              - generic [ref=e2042]: 149.000đ
+              - generic [ref=e2043]: Trọn gói
+            - button "Tư vấn ngay" [ref=e2044] [cursor=pointer]
+        - generic [ref=e2048]:
+          - generic [ref=e2049]: Pháp lý BCT
+          - generic [ref=e2057]:
+            - heading "Hỗ Trợ Thủ Tục Thông Báo Website Bộ Công Thương" [level=3] [ref=e2058]
+            - paragraph [ref=e2059]: Checklist hồ sơ, chuẩn hóa website, hướng dẫn thao tác khai báo online.gov.vn & kiểm tra trước khi gửi
+            - generic [ref=e2064]:
+              - text: "Thời gian bàn giao:"
+              - strong [ref=e2065]: 1–2h
+          - generic [ref=e2066]:
+            - generic [ref=e2067]:
+              - generic [ref=e2068]: 390.000đ
+              - generic [ref=e2069]: Trọn gói
+            - button "Tư vấn ngay" [ref=e2070] [cursor=pointer]
+      - generic [ref=e2078]:
+        - heading "Cam kết báo giá rõ ràng · Không phát sinh chi phí · Bàn giao 100% tài khoản" [level=4] [ref=e2079]
+        - paragraph [ref=e2080]: Khách hàng xem thử website demo trước khi thanh toán. Toàn bộ mã nguồn, tài khoản Google Maps và quyền sở hữu thuộc về bạn.
+    - generic [ref=e2082]:
+      - generic [ref=e2083]:
+        - generic [ref=e2084]: CAM KẾT & PHÁP NHÂN MINH BẠCH
+        - heading "Rõ ràng từ đầu, yên tâm khi bàn giao" [level=2] [ref=e2088]
+        - paragraph [ref=e2089]: Sự minh bạch, giá cả rõ ràng và sự tôn trọng khách hàng là nền tảng để LocalMate đồng hành lâu dài cùng doanh nghiệp bạn.
+      - generic [ref=e2090]:
+        - generic [ref=e2091]:
+          - generic [ref=e2092]: "01"
+          - generic [ref=e2098]:
+            - heading "Xem demo trước khi quyết định" [level=3] [ref=e2099]
+            - paragraph [ref=e2100]: LocalMate dựng sẵn bản mẫu website 0đ để bạn xem trên điện thoại trước khi chốt làm.
+        - generic [ref=e2101]:
+          - generic [ref=e2102]: "02"
+          - generic [ref=e2108]:
+            - heading "Giá được chốt trước khi làm" [level=3] [ref=e2109]
+            - paragraph [ref=e2110]: Báo giá rõ ràng từng hạng mục, nghiệm thu hài lòng mới thanh toán, không phát sinh chi phí ẩn.
+        - generic [ref=e2111]:
+          - generic [ref=e2112]: "03"
+          - generic [ref=e2117]:
+            - heading "Website tối ưu điện thoại" [level=3] [ref=e2118]
+            - paragraph [ref=e2119]: Bố cục chữ to rõ ràng, hình ảnh sắc nét, có nút bấm gọi điện và nhắn Zalo trực tiếp.
+        - generic [ref=e2120]:
+          - generic [ref=e2121]: "04"
+          - generic [ref=e2126]:
+            - heading "Hotline & Zalo hoạt động rõ ràng" [level=3] [ref=e2127]
+            - paragraph [ref=e2128]: Đội ngũ tư vấn trực tiếp, phản hồi nhanh chóng và có mặt khi bạn cần hỗ trợ.
+        - generic [ref=e2129]:
+          - generic [ref=e2130]: "05"
+          - generic [ref=e2137]:
+            - heading "Bạn sở hữu tài khoản & dữ liệu" [level=3] [ref=e2138]
+            - paragraph [ref=e2139]: Bàn giao 100% quyền quản trị tên miền, tài khoản Google Maps, Google Ads và Fanpage chính chủ.
+        - generic [ref=e2140]:
+          - generic [ref=e2141]: "06"
+          - generic [ref=e2146]:
+            - heading "Có người hỗ trợ sau bàn giao" [level=3] [ref=e2147]
+            - paragraph [ref=e2148]: Hướng dẫn sử dụng tận tình, hỗ trợ cập nhật nội dung và sửa lỗi kỹ thuật trọn đời dự án.
+      - generic [ref=e2149]:
+        - generic [ref=e2150]:
+          - generic [ref=e2151]:
+            - generic [ref=e2158]:
+              - text: PHÁP NHÂN DOANH NGHIỆP
+              - heading "CÔNG TY TNHH LOCALMATE" [level=3] [ref=e2159]
+            - generic [ref=e2160]:
+              - generic [ref=e2165]:
+                - strong [ref=e2166]: "Mã số thuế:"
+                - text: "4001337934"
+              - generic [ref=e2171]:
+                - strong [ref=e2172]: "Trụ sở:"
+                - text: 03 Trường Chinh, Phường Hội An Tây, TP. Đà Nẵng, Việt Nam
+              - generic [ref=e2177]:
+                - strong [ref=e2178]: "Email:"
+                - text: contact@localmate.vn
+              - generic [ref=e2182]:
+                - strong [ref=e2183]: "Hotline / Zalo:"
+                - text: 0834.422.439 / Zalo 24/7
+          - generic [ref=e2184]: Đồng hành cùng hộ kinh doanh và cửa hàng địa phương • Hợp đồng minh bạch & xuất hóa đơn VAT đầy đủ.
+        - generic [ref=e2185]:
+          - generic [ref=e2186]:
+            - text: TƯ VẤN & HỖ TRỢ TRỰC TIẾP
+            - heading "Bạn đang cần tư vấn theo ngành nghề?" [level=3] [ref=e2187]
+            - paragraph [ref=e2188]: Không cần phải tự mày mò hay lo lắng phát sinh chi phí. Đội ngũ LocalMate luôn sẵn sàng lắng nghe và gửi bạn xem trước bản demo website 0đ phù hợp nhất.
+          - generic [ref=e2189]:
+            - link "Nhắn tin Zalo tư vấn ngay" [ref=e2190] [cursor=pointer]:
+              - /url: https://zalo.me/0834422439
+            - 'link "Gọi Hotline: 0834.422.439 / Zalo 24/7" [ref=e2196] [cursor=pointer]':
+              - /url: tel:0834422439
+    - generic [ref=e2201]:
+      - generic [ref=e2202]:
+        - generic [ref=e2203]: GIẢI ĐÁP THẮC MẮC THỰC TẾ
+        - heading "Những câu hỏi thường gặp về mô hình vận hành" [level=2] [ref=e2204]
+        - paragraph [ref=e2205]: Giải đáp minh bạch về cách thức LocalMate triển khai công việc, hợp đồng pháp nhân và cơ chế bảo hành.
+      - region "Danh sách câu hỏi thường gặp" [ref=e2207]:
+        - generic [ref=e2208]:
+          - button "LocalMate là công ty phần mềm, agency hay là nền tảng kết nối?" [expanded] [ref=e2209] [cursor=pointer]
+          - region "LocalMate là công ty phần mềm, agency hay là nền tảng kết nối?" [ref=e2214]:
+            - generic [ref=e2215]: LocalMate là người đồng hành số tại địa phương và là đội ngũ kỹ thuật triển khai phía sau. Chúng tôi không cố bán thêm phần mềm mới, mà đứng ra tìm giải pháp phù hợp nhất (tận dụng tool sẵn có hoặc phát triển thêm), trực tiếp thi công hoặc điều phối nhân sự kỹ thuật để hoàn thành công việc cho bạn.
+        - generic [ref=e2217]:
+          - button "Tôi chỉ có một công việc rất nhỏ (sửa lỗi website, kết nối 1 form Zalo) LocalMate có nhận không?" [ref=e2218] [cursor=pointer]
+          - generic [ref=e2223]: Có. Chúng tôi bắt đầu từ đúng công việc bạn đang cần, dù là việc nhỏ từ 99.000đ hay 500.000đ. Bạn không cần phải ký hợp đồng lớn hay mua trọn gói dịch vụ nếu chưa thực sự cần thiết.
+        - generic [ref=e2224]:
+          - button "Khi làm việc với LocalMate thì ai là người chịu trách nhiệm chất lượng?" [ref=e2225] [cursor=pointer]
+          - generic [ref=e2230]: "CÔNG TY TNHH LOCALMATE (Mã số thuế: 4001337934) là pháp nhân duy nhất đứng ra chịu trách nhiệm toàn diện về hợp đồng, tiến độ, chất lượng và bảo mật thông tin. Mọi công việc đều có checklist nghiệm thu rõ ràng."
+        - generic [ref=e2231]:
+          - button "LocalMate hợp tác với các Agency và công ty SaaS theo hình thức nào?" [ref=e2232] [cursor=pointer]
+          - generic [ref=e2237]: Chúng tôi có thể làm việc dưới danh nghĩa LocalMate, đồng thương hiệu hoặc đóng vai trò White-label Technical Team (đội kỹ thuật ẩn danh phía sau). Khách hàng của bạn sẽ chỉ biết đến thương hiệu của bạn, còn phần thực thi kỹ thuật và triển khai do LocalMate đảm nhiệm.
+        - generic [ref=e2238]:
+          - button "Chi phí có bị phát sinh thêm trong quá trình làm không?" [ref=e2239] [cursor=pointer]
+          - generic [ref=e2244]: "Tuyệt đối không. Nguyên tắc của LocalMate là: Xác định phạm vi công việc → Báo giá trọn gói cố định trước khi bắt đầu. Chỉ khi bạn yêu cầu bổ sung tính năng mới ngoài phạm vi ban đầu thì hai bên mới thống nhất biểu phí mới trước khi làm."
+        - generic [ref=e2245]:
+          - button "Tôi ở các tỉnh thành khác ngoài Đà Nẵng, Hà Nội hay TP.HCM thì có triển khai được không?" [ref=e2246] [cursor=pointer]
+          - generic [ref=e2251]: Hoàn toàn được. Với các công việc phần mềm, website và tự động hóa, chúng tôi hỗ trợ remote trực tiếp qua UltraView/AnyDesk/Zalo. Với các công việc cần lắp đặt thiết bị tận nơi (POS, camera, IoT), LocalMate điều phối kỹ thuật viên trong mạng lưới địa phương đến trực tiếp địa chỉ của bạn.
+      - generic [ref=e2252]:
+        - generic [ref=e2257]:
+          - heading "Bạn có yêu cầu riêng hoặc trường hợp đặc thù?" [level=4] [ref=e2258]
+          - paragraph [ref=e2259]: Đội ngũ LocalMate sẵn sàng lắng nghe và tư vấn giải pháp 1-1 trực tiếp qua Zalo hoặc Hotline.
+        - button "Hỗ trợ trực tiếp ngay" [ref=e2260] [cursor=pointer]
+    - generic [ref=e2268]:
+      - generic [ref=e2269]:
+        - generic [ref=e2270]: BẮT ĐẦU TỪ MỘT VIỆC
+        - heading "Bạn nói điều cần làm. LocalMate tìm cách hoàn thành." [level=2] [ref=e2273]
+        - paragraph [ref=e2274]: Không cần viết tài liệu kỹ thuật dài dòng hay hiểu sâu về phần mềm. Hãy mô tả điều bạn muốn đạt được, LocalMate sẽ khảo sát, đề xuất phương án tinh gọn và trực tiếp triển khai đến khi có kết quả.
+        - generic [ref=e2275]:
+          - generic [ref=e2276]: NGUYÊN TẮC LÀM VIỆC CỦA LOCALMATE
+          - paragraph [ref=e2281]: Không cố bán thêm phần mềm • Báo giá trọn gói trước khi làm • Nghiệm thu thực tế mới thanh toán.
+        - generic [ref=e2282]:
+          - generic [ref=e2283]: Phản hồi và tư vấn phương án trong 30 phút làm việc
+          - generic [ref=e2288]: Bàn giao 100% tài khoản chính chủ cho khách hàng
+          - generic [ref=e2293]: Đội ngũ kỹ thuật viên hỗ trợ trực tiếp tại địa phương
+        - 'link "Tư vấn trực tiếp 24/7: 0834.422.439" [ref=e2299] [cursor=pointer]':
+          - /url: tel:0834422439
+      - generic [ref=e2303]:
+        - heading "Gửi việc cho LocalMate" [level=3] [ref=e2304]
+        - paragraph [ref=e2305]: Mô tả công việc bạn cần làm. Chúng tôi sẽ phản hồi phương án và báo giá nhanh.
+        - generic [ref=e2306]:
+          - generic [ref=e2307]:
+            - generic [ref=e2308]: Họ và tên của bạn *
+            - textbox "Họ và tên của bạn *" [ref=e2309]:
+              - /placeholder: "Ví dụ: Anh Nam, Chị Trang..."
+          - generic [ref=e2310]:
+            - generic [ref=e2311]: Số điện thoại / Zalo nhận báo giá *
+            - textbox "Số điện thoại / Zalo nhận báo giá *" [ref=e2312]:
+              - /placeholder: "Ví dụ: 0912 345 678"
+          - generic [ref=e2313]:
+            - generic [ref=e2314]: Công việc bạn muốn hoàn thành
+            - textbox "Công việc bạn muốn hoàn thành" [ref=e2315]:
+              - /placeholder: "Ví dụ: Làm website 24h, gom lead Zalo/FB về 1 chỗ, cài phần mềm POS, làm technical backend cho agency..."
+          - button "Gửi yêu cầu — Nhận báo giá nhanh" [ref=e2316] [cursor=pointer]
+          - paragraph [ref=e2321]: 🔒 Thông tin của bạn được bảo mật tuyệt đối. Báo giá trước khi thực hiện.
+  - contentinfo [ref=e2322]:
+    - generic [ref=e2323]:
+      - link [ref=e2325] [cursor=pointer]:
+        - /url: /
+        - img "LocalMate" [ref=e2326]
+      - generic [ref=e2327]:
+        - generic [ref=e2328]:
+          - heading "CÔNG TY TNHH LOCALMATE" [level=3] [ref=e2329]
+          - generic [ref=e2330]:
+            - generic [ref=e2335]:
+              - strong [ref=e2336]: "Trụ sở chính:"
+              - text: 03 Trường Chinh, Phường Hội An Tây, TP. Đà Nẵng, Việt Nam
+            - generic [ref=e2341]:
+              - strong [ref=e2342]: "Email:"
+              - link "contact@localmate.vn" [ref=e2343] [cursor=pointer]:
+                - /url: mailto:contact@localmate.vn
+            - generic [ref=e2347]:
+              - strong [ref=e2348]: "Tư vấn / Hotline:"
+              - link "0834 422 439" [ref=e2349] [cursor=pointer]:
+                - /url: tel:0834422439
+            - generic [ref=e2354]:
+              - strong [ref=e2355]: "Website:"
+              - link "https://localmate.vn" [ref=e2356] [cursor=pointer]:
+                - /url: https://localmate.vn
+            - generic [ref=e2357]:
+              - text: "Mã số thuế:"
+              - strong [ref=e2358]: "4001337934"
+              - text: "— Ngày hoạt động:"
+              - strong [ref=e2359]: 10/08/2026
+              - text: do Chi cục Thuế TP. Đà Nẵng quản lý.
+        - generic [ref=e2360]:
+          - heading "Dịch vụ" [level=4] [ref=e2361]
+          - list [ref=e2362]:
+            - listitem [ref=e2363]:
+              - link "Website 1 trang từ 490k" [ref=e2364] [cursor=pointer]:
+                - /url: /landing-490k
+            - listitem [ref=e2365]:
+              - link "Đưa tiệm lên Google Maps" [ref=e2366] [cursor=pointer]:
+                - /url: /dich-vu/google-maps
+            - listitem [ref=e2367]:
+              - link "Quảng cáo Google Ads" [ref=e2368] [cursor=pointer]:
+                - /url: /dich-vu/google-ads
+            - listitem [ref=e2369]:
+              - link "Chăm sóc Facebook 990k/tháng" [ref=e2370] [cursor=pointer]:
+                - /url: /dich-vu/content-marketing
+            - listitem [ref=e2371]:
+              - link "Website doanh nghiệp 3–5 trang" [ref=e2372] [cursor=pointer]:
+                - /url: /dich-vu/website-landing-page
+            - listitem [ref=e2373]:
+              - link "Xem bảng giá trọn gói →" [ref=e2374] [cursor=pointer]:
+                - /url: /bang-gia
+        - generic [ref=e2375]:
+          - heading "Kiến thức" [level=4] [ref=e2376]
+          - list [ref=e2377]:
+            - listitem [ref=e2378]:
+              - link "Cẩm nang làm Website" [ref=e2379] [cursor=pointer]:
+                - /url: /kien-thuc
+            - listitem [ref=e2380]:
+              - link "Tối ưu Google Maps Local" [ref=e2381] [cursor=pointer]:
+                - /url: /kien-thuc
+            - listitem [ref=e2382]:
+              - link "Kinh nghiệm chạy Google Ads" [ref=e2383] [cursor=pointer]:
+                - /url: /kien-thuc
+            - listitem [ref=e2384]:
+              - link "Mẫu bài viết Facebook" [ref=e2385] [cursor=pointer]:
+                - /url: /kien-thuc
+            - listitem [ref=e2386]:
+              - link "Dự án thực tế đã làm" [ref=e2387] [cursor=pointer]:
+                - /url: /du-an
+            - listitem [ref=e2388]:
+              - link "Tất cả bài hướng dẫn →" [ref=e2389] [cursor=pointer]:
+                - /url: /kien-thuc
+        - generic [ref=e2390]:
+          - heading "Về LocalMate" [level=4] [ref=e2391]
+          - list [ref=e2392]:
+            - listitem [ref=e2393]:
+              - link "Giới thiệu công ty" [ref=e2394] [cursor=pointer]:
+                - /url: /gioi-thieu
+            - listitem [ref=e2395]:
+              - link "Chính sách bảo mật" [ref=e2396] [cursor=pointer]:
+                - /url: /chinh-sach-bao-mat
+            - listitem [ref=e2397]:
+              - link "Điều khoản dịch vụ" [ref=e2398] [cursor=pointer]:
+                - /url: /dieu-khoan
+            - listitem [ref=e2399]:
+              - link "Hỗ trợ & Bảo hành" [ref=e2400] [cursor=pointer]:
+                - /url: /chinh-sach-dich-vu
+            - listitem [ref=e2401]:
+              - link "Sơ đồ website (Sitemap)" [ref=e2402] [cursor=pointer]:
+                - /url: /sitemap
+            - listitem [ref=e2403]:
+              - link "Liên hệ trực tiếp →" [ref=e2404] [cursor=pointer]:
+                - /url: /lien-he
+      - generic [ref=e2405]:
+        - generic [ref=e2406]:
+          - link "Facebook" [ref=e2407] [cursor=pointer]:
+            - /url: https://facebook.com
+            - generic [ref=e2408]: f
+          - link "YouTube" [ref=e2409] [cursor=pointer]:
+            - /url: https://youtube.com
+            - generic [ref=e2410]: ▶
+          - link "Zalo" [ref=e2411] [cursor=pointer]:
+            - /url: https://zalo.me/0834422439
+            - generic [ref=e2412]: Z
+          - link "Hotline" [ref=e2413] [cursor=pointer]:
+            - /url: tel:0834422439
+        - generic [ref=e2416]:
+          - generic [ref=e2417]: SSL 256-bit Secure
+          - generic [ref=e2422]: 100% Tài khoản chính chủ
+          - generic [ref=e2427]: Báo giá trước khi làm
+          - link [ref=e2432] [cursor=pointer]:
+            - /url: http://online.gov.vn
+            - img "Đã thông báo Bộ Công Thương - LocalMate" [ref=e2433]
+      - generic [ref=e2434]:
+        - generic [ref=e2435]:
+          - text: Copyright © 2026
+          - strong [ref=e2436]: CÔNG TY TNHH LOCALMATE
+          - text: . All rights reserved.
+        - generic [ref=e2437]:
+          - link "Chính sách bảo vệ dữ liệu cá nhân" [ref=e2438] [cursor=pointer]:
+            - /url: /chinh-sach-bao-mat
+          - generic [ref=e2439]: •
+          - link "Điều khoản sử dụng" [ref=e2440] [cursor=pointer]:
+            - /url: /dieu-khoan
+          - generic [ref=e2441]: •
+          - link "Hỗ trợ khách hàng" [ref=e2442] [cursor=pointer]:
+            - /url: /chinh-sach-dich-vu

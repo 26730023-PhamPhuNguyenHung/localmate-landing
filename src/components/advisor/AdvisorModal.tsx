@@ -53,9 +53,7 @@ export const AdvisorModal: React.FC<AdvisorModalProps> = ({ isOpen, onClose }) =
         style={{
           position: 'absolute',
           inset: 0,
-          backgroundColor: 'rgba(5, 47, 61, 0.65)',
-          backdropFilter: 'blur(4px)',
-          WebkitBackdropFilter: 'blur(4px)',
+          backgroundColor: 'rgba(15, 23, 42, 0.72)',
           zIndex: 199
         }}
       />

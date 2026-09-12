@@ -1,0 +1,82 @@
+﻿[
+    {
+        "name":  "Mobile Small (360x800)",
+        "width":  360,
+        "height":  800,
+        "docCheck":  "\"{\\\"scrollWidth\\\":345,\\\"innerWidth\\\":360,\\\"isOverflow\\\":false}\"",
+        "overflowElements":  "\"[{\\\"tag\\\":\\\"DIV\\\",\\\"id\\\":\\\"\\\",\\\"class\\\":\\\"hero-bg-video-wrapper\\\",\\\"scrollWidth\\\":348,\\\"clientWidth\\\":345},{\\\"tag\\\":\\\"DIV\\\",\\\"id\\\":\\\"\\\",\\\"class\\\":\\\"hero-grid\\\",\\\"scrollWidth\\\":333,\\\"clientWidth\\\":316},{\\\"tag\\\":\\\"SPAN\\\",\\\"id\\\":\\\"\\\",\\\"class\\\":\\\"url-domain\\\",\\\"scrollWidth\\\":125,\\\"clientWidth\\\":63},{\\\"tag\\\":\\\"DIV\\\",\\\"id\\\":\\\"\\\",\\\"class\\\":\\\"mockup-title-bar\\\",\\\"scrollWidth\\\":229,\\\"clientWidth\\\":214},{\\\"tag\\\":\\\"DIV\\\",\\\"id\\\":\\\"\\\",\\\"class\\\":\\\"mockup-title-bar\\\",\\\"scrollWidth\\\":229,\\\"clientWidth\\\":214}]\"",
+        "screenshot":  "artifacts/audit-screenshots/vp_360x800.png"
+    },
+    {
+        "name":  "iPhone Mini/SE (375x812)",
+        "width":  375,
+        "height":  812,
+        "docCheck":  "\"{\\\"scrollWidth\\\":360,\\\"innerWidth\\\":375,\\\"isOverflow\\\":false}\"",
+        "overflowElements":  "\"[{\\\"tag\\\":\\\"DIV\\\",\\\"id\\\":\\\"\\\",\\\"class\\\":\\\"hero-bg-video-wrapper\\\",\\\"scrollWidth\\\":364,\\\"clientWidth\\\":360},{\\\"tag\\\":\\\"DIV\\\",\\\"id\\\":\\\"\\\",\\\"class\\\":\\\"hero-grid\\\",\\\"scrollWidth\\\":340,\\\"clientWidth\\\":330},{\\\"tag\\\":\\\"SPAN\\\",\\\"id\\\":\\\"\\\",\\\"class\\\":\\\"url-domain\\\",\\\"scrollWidth\\\":125,\\\"clientWidth\\\":77},{\\\"tag\\\":\\\"DIV\\\",\\\"id\\\":\\\"\\\",\\\"class\\\":\\\"mockup-title-bar\\\",\\\"scrollWidth\\\":274,\\\"clientWidth\\\":228},{\\\"tag\\\":\\\"SPAN\\\",\\\"id\\\":\\\"\\\",\\\"class\\\":\\\"topic-col\\\",\\\"scrollWidth\\\":172,\\\"clientWidth\\\":145}]\"",
+        "screenshot":  "artifacts/audit-screenshots/vp_375x812.png"
+    },
+    {
+        "name":  "iPhone 12/13/14 (390x844)",
+        "width":  390,
+        "height":  844,
+        "docCheck":  "\"{\\\"scrollWidth\\\":375,\\\"innerWidth\\\":390,\\\"isOverflow\\\":false}\"",
+        "overflowElements":  "\"[{\\\"tag\\\":\\\"DIV\\\",\\\"id\\\":\\\"\\\",\\\"class\\\":\\\"hero-bg-video-wrapper\\\",\\\"scrollWidth\\\":379,\\\"clientWidth\\\":375},{\\\"tag\\\":\\\"SPAN\\\",\\\"id\\\":\\\"\\\",\\\"class\\\":\\\"url-domain\\\",\\\"scrollWidth\\\":125,\\\"clientWidth\\\":87},{\\\"tag\\\":\\\"DIV\\\",\\\"id\\\":\\\"\\\",\\\"class\\\":\\\"mockup-title-bar\\\",\\\"scrollWidth\\\":274,\\\"clientWidth\\\":242},{\\\"tag\\\":\\\"SPAN\\\",\\\"id\\\":\\\"\\\",\\\"class\\\":\\\"topic-col\\\",\\\"scrollWidth\\\":172,\\\"clientWidth\\\":159},{\\\"tag\\\":\\\"SPAN\\\",\\\"id\\\":\\\"\\\",\\\"class\\\":\\\"topic-col\\\",\\\"scrollWidth\\\":184,\\\"clientWidth\\\":159}]\"",
+        "screenshot":  "artifacts/audit-screenshots/vp_390x844.png"
+    },
+    {
+        "name":  "iPhone 14/15/16 Pro Max (430x932)",
+        "width":  430,
+        "height":  932,
+        "docCheck":  "\"{\\\"scrollWidth\\\":415,\\\"innerWidth\\\":430,\\\"isOverflow\\\":false}\"",
+        "overflowElements":  "\"[{\\\"tag\\\":\\\"DIV\\\",\\\"id\\\":\\\"\\\",\\\"class\\\":\\\"hero-bg-video-wrapper\\\",\\\"scrollWidth\\\":419,\\\"clientWidth\\\":415},{\\\"tag\\\":\\\"SPAN\\\",\\\"id\\\":\\\"\\\",\\\"class\\\":\\\"url-domain\\\",\\\"scrollWidth\\\":125,\\\"clientWidth\\\":87}]\"",
+        "screenshot":  "artifacts/audit-screenshots/vp_430x932.png"
+    },
+    {
+        "name":  "iPad / Tablet (768x1024)",
+        "width":  768,
+        "height":  1024,
+        "docCheck":  "\"{\\\"scrollWidth\\\":753,\\\"innerWidth\\\":768,\\\"isOverflow\\\":false}\"",
+        "overflowElements":  "\"[{\\\"tag\\\":\\\"DIV\\\",\\\"id\\\":\\\"\\\",\\\"class\\\":\\\"hero-bg-video-wrapper\\\",\\\"scrollWidth\\\":761,\\\"clientWidth\\\":753},{\\\"tag\\\":\\\"SPAN\\\",\\\"id\\\":\\\"\\\",\\\"class\\\":\\\"url-domain\\\",\\\"scrollWidth\\\":125,\\\"clientWidth\\\":87}]\"",
+        "screenshot":  "artifacts/audit-screenshots/vp_768x1024.png"
+    },
+    {
+        "name":  "Laptop 14in Windows 125% scale (~1228px effective)",
+        "width":  1228,
+        "height":  768,
+        "docCheck":  "\"{\\\"scrollWidth\\\":1213,\\\"innerWidth\\\":1228,\\\"isOverflow\\\":false}\"",
+        "overflowElements":  "\"[{\\\"tag\\\":\\\"DIV\\\",\\\"id\\\":\\\"\\\",\\\"class\\\":\\\"hero-bg-video-wrapper\\\",\\\"scrollWidth\\\":1225,\\\"clientWidth\\\":1213},{\\\"tag\\\":\\\"DIV\\\",\\\"id\\\":\\\"\\\",\\\"class\\\":\\\"hero-grid\\\",\\\"scrollWidth\\\":1160,\\\"clientWidth\\\":1152},{\\\"tag\\\":\\\"DIV\\\",\\\"id\\\":\\\"\\\",\\\"class\\\":\\\"hero-visual-column\\\",\\\"scrollWidth\\\":496,\\\"clientWidth\\\":488},{\\\"tag\\\":\\\"DIV\\\",\\\"id\\\":\\\"\\\",\\\"class\\\":\\\"hero-visual-stack\\\",\\\"scrollWidth\\\":496,\\\"clientWidth\\\":488}]\"",
+        "screenshot":  "artifacts/audit-screenshots/vp_1228x768.png"
+    },
+    {
+        "name":  "Laptop 14in 100% (1366x768)",
+        "width":  1366,
+        "height":  768,
+        "docCheck":  "\"{\\\"scrollWidth\\\":1351,\\\"innerWidth\\\":1366,\\\"isOverflow\\\":false}\"",
+        "overflowElements":  "\"[{\\\"tag\\\":\\\"DIV\\\",\\\"id\\\":\\\"\\\",\\\"class\\\":\\\"hero-bg-video-wrapper\\\",\\\"scrollWidth\\\":1365,\\\"clientWidth\\\":1351},{\\\"tag\\\":\\\"DIV\\\",\\\"id\\\":\\\"\\\",\\\"class\\\":\\\"hero-grid\\\",\\\"scrollWidth\\\":1160,\\\"clientWidth\\\":1152},{\\\"tag\\\":\\\"DIV\\\",\\\"id\\\":\\\"\\\",\\\"class\\\":\\\"hero-visual-column\\\",\\\"scrollWidth\\\":494,\\\"clientWidth\\\":486},{\\\"tag\\\":\\\"DIV\\\",\\\"id\\\":\\\"\\\",\\\"class\\\":\\\"hero-visual-stack\\\",\\\"scrollWidth\\\":494,\\\"clientWidth\\\":486}]\"",
+        "screenshot":  "artifacts/audit-screenshots/vp_1366x768.png"
+    },
+    {
+        "name":  "MacBook / Desktop 1440 (1440x900)",
+        "width":  1440,
+        "height":  900,
+        "docCheck":  "\"{\\\"scrollWidth\\\":1425,\\\"innerWidth\\\":1440,\\\"isOverflow\\\":false}\"",
+        "overflowElements":  "\"[{\\\"tag\\\":\\\"DIV\\\",\\\"id\\\":\\\"\\\",\\\"class\\\":\\\"hero-bg-video-wrapper\\\",\\\"scrollWidth\\\":1439,\\\"clientWidth\\\":1425},{\\\"tag\\\":\\\"DIV\\\",\\\"id\\\":\\\"\\\",\\\"class\\\":\\\"hero-grid\\\",\\\"scrollWidth\\\":1156,\\\"clientWidth\\\":1148},{\\\"tag\\\":\\\"DIV\\\",\\\"id\\\":\\\"\\\",\\\"class\\\":\\\"hero-visual-column\\\",\\\"scrollWidth\\\":491,\\\"clientWidth\\\":483},{\\\"tag\\\":\\\"DIV\\\",\\\"id\\\":\\\"\\\",\\\"class\\\":\\\"hero-visual-stack\\\",\\\"scrollWidth\\\":491,\\\"clientWidth\\\":483}]\"",
+        "screenshot":  "artifacts/audit-screenshots/vp_1440x900.png"
+    },
+    {
+        "name":  "FullHD 125% scale (1536x864)",
+        "width":  1536,
+        "height":  864,
+        "docCheck":  "\"{\\\"scrollWidth\\\":1521,\\\"innerWidth\\\":1536,\\\"isOverflow\\\":false}\"",
+        "overflowElements":  "\"[{\\\"tag\\\":\\\"DIV\\\",\\\"id\\\":\\\"\\\",\\\"class\\\":\\\"hero-bg-video-wrapper\\\",\\\"scrollWidth\\\":1536,\\\"clientWidth\\\":1521},{\\\"tag\\\":\\\"DIV\\\",\\\"id\\\":\\\"\\\",\\\"class\\\":\\\"hero-grid\\\",\\\"scrollWidth\\\":1153,\\\"clientWidth\\\":1145},{\\\"tag\\\":\\\"DIV\\\",\\\"id\\\":\\\"\\\",\\\"class\\\":\\\"hero-visual-column\\\",\\\"scrollWidth\\\":489,\\\"clientWidth\\\":481},{\\\"tag\\\":\\\"DIV\\\",\\\"id\\\":\\\"\\\",\\\"class\\\":\\\"hero-visual-stack\\\",\\\"scrollWidth\\\":489,\\\"clientWidth\\\":481}]\"",
+        "screenshot":  "artifacts/audit-screenshots/vp_1536x864.png"
+    },
+    {
+        "name":  "FullHD Desktop 100% (1920x1080)",
+        "width":  1920,
+        "height":  1080,
+        "docCheck":  "\"{\\\"scrollWidth\\\":1905,\\\"innerWidth\\\":1920,\\\"isOverflow\\\":false}\"",
+        "overflowElements":  "\"[{\\\"tag\\\":\\\"DIV\\\",\\\"id\\\":\\\"\\\",\\\"class\\\":\\\"hero-bg-video-wrapper\\\",\\\"scrollWidth\\\":1924,\\\"clientWidth\\\":1905},{\\\"tag\\\":\\\"DIV\\\",\\\"id\\\":\\\"\\\",\\\"class\\\":\\\"hero-grid\\\",\\\"scrollWidth\\\":1148,\\\"clientWidth\\\":1140},{\\\"tag\\\":\\\"DIV\\\",\\\"id\\\":\\\"\\\",\\\"class\\\":\\\"hero-visual-column\\\",\\\"scrollWidth\\\":485,\\\"clientWidth\\\":477},{\\\"tag\\\":\\\"DIV\\\",\\\"id\\\":\\\"\\\",\\\"class\\\":\\\"hero-visual-stack\\\",\\\"scrollWidth\\\":485,\\\"clientWidth\\\":477}]\"",
+        "screenshot":  "artifacts/audit-screenshots/vp_1920x1080.png"
+    }
+]

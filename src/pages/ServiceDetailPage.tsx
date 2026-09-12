@@ -102,7 +102,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slug, onOp
             borderRadius: 'var(--radius-2xl)',
             padding: 'clamp(2rem, 5vw, 3.5rem)',
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
             gap: '2.5rem',
             alignItems: 'center',
             marginBottom: '3.5rem'
@@ -214,7 +214,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slug, onOp
         </div>
 
         {/* 2. Problem / Symptoms & Who This Is For */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginBottom: '3.5rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '2rem', marginBottom: '3.5rem' }}>
           {/* Who This Is For */}
           <div
             style={{

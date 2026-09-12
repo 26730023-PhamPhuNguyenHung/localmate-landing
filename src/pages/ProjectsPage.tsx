@@ -97,7 +97,7 @@ export const ProjectsPage: React.FC = () => {
         </div>
 
         {/* Case Studies Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '2rem' }}>
           {filteredCaseStudies.map((cs) => (
             <div
               key={cs.id}

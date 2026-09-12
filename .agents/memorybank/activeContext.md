@@ -55,9 +55,10 @@
   - `HeroSection.tsx`: Tinh chỉnh copy "Bạn tập trung bán hàng - LocalMate lo phần công nghệ", giữ nguyên boomerang loop.
   - `ProblemMapperSection.tsx`: 5 nhóm nhu cầu thực tế (Hiện diện 24h, Gom lead CRM, Bớt việc thủ công, Bạn bán - LocalMate triển khai, Tư vấn 0đ).
   - `CoreOffersSection.tsx`: 5 gói giải pháp B2B & Đối tác (Local Deployment, Software Onboarding, Integration & Automation, White-label Dev Team, Deployment Network).
-  - `PhilosophySection.tsx`: 4 trụ cột triết lý "Không cố bán thêm phần mềm" + Hotline trực tiếp.
-  - `ProcessSection.tsx`: Quy trình 5 bước minh bạch (từ nói việc đến nghiệm thu 100% tài khoản).
+  - `PhilosophySection.tsx`: Cập nhật triết lý "Không cố bán phần mềm thừa — Tận dụng tối đa những gì bạn đã có" với 4 giá trị cốt lõi (Tiết kiệm chi phí, Minh bạch quyền sở hữu, Hỗ trợ trực tiếp, Đồng hành dài lâu), layout Split 2 cột có Sticky Editorial Manifesto và hotline trực tiếp.
+  - `ProcessSection.tsx`: Quy trình 5 bước minh bạch (1. Trao đổi nhu cầu -> 2. Web demo thực tế 0đ duyệt trước trên điện thoại -> 3. Báo giá trọn gói cố định -> 4. Hoàn thiện nghiệm thu tốc độ & tên miền -> 5. Bàn giao 100% tài khoản & KTV hỗ trợ). Layout horizontal timeline trên desktop và vertical stepper spine trên mobile.
   - `DemoShowcaseSection.tsx`: Nâng cấp toàn diện mục "Xem trước thứ bạn sẽ nhận" với 5 sản phẩm bàn giao thực tế, tab website thật và workflow kiểm chứng.
+- **Audit Responsive Playwright (Subagent 6)**: 5 viewports chuẩn (390px, 430px, 768px, 1366px, 1440px) pass 100%, không bị horizontal overflow (`hasOverflow: false`).
   - `FAQSection.tsx`: Bộ câu hỏi thường gặp về mô hình vận hành và pháp nhân.
   - `FinalCTASection.tsx`: Loại bỏ glassmorphism, form gửi việc 3 trường vàng nhanh gọn.
   - `HomePage.tsx`: Luồng 10 section mạch lạc, `npm run build` pass 100% không lỗi.
@@ -106,4 +107,21 @@
   - Tối ưu spacing, typography clamp (`clamp(...)`), `text-wrap: pretty`, chống vỡ dòng và chống co giật khung hình trên màn hình laptop 14" tỉ lệ zoom 125% (~1228px).
   - Nút mở rộng "Xem thêm toàn bộ bảng giá (41 dịch vụ)" mượt mà với icon xoay 180 độ, tự động bung đầy đủ khi tìm kiếm hoặc lọc danh mục.
 - **Verified**: `npx tsc --noEmit` pass 100%, `npm run build` pass 100% không warning/error.
+
+## 8. Homepage Integration & Layout Flow Assembly (Subagent 10 Complete)
+- **Chuẩn hóa Flow 11 bước hoàn chỉnh theo đúng SSOT**:
+  1. **HERO** (`HeroSection`): Tuyên ngôn giá trị, background video 0.5x không giật, 2 CTA chính trỏ về Lead Form và Bảng giá.
+  2. **TRUST BAR** (`TrustBar`): Dải 4 cam kết nhẹ (Báo giá trước, Tận dụng thứ đã có, Đội ngũ KTV địa phương, Bàn giao 100% tài khoản), Light mode sang trọng, responsive mượt mà.
+  3. **“BẠN ĐANG CẦN VIỆC GÌ?”** (`ProblemMapperSection`): Phân loại 5 nhóm việc thực tế, khách click mở LeadForm đúng nghiệp vụ.
+  4. **4 DỊCH VỤ CHÍNH** (`ServiceCardsSection`): 4 dịch vụ cốt lõi cho SME (Website, Maps, Ads, Facebook) với bảng giá và SLA thời gian hoàn thành rõ ràng trong 5 giây.
+  5. **CÁCH LOCALMATE LÀM VIỆC** (`ProcessSection` & `PhilosophySection`): Quy trình 5 bước minh bạch và triết lý "Không cố bán thêm phần mềm".
+  6. **"XEM TRƯỚC THỨ BẠN SẼ NHẬN"** (`DemoShowcaseSection`): 5 sản phẩm bàn giao thực tế, 3 website thật đang chạy và workflow tự động hóa kiểm chứng.
+  7. **BẢNG GIÁ DỊCH VỤ** (`PricingMatrixSection`): 4 thẻ gói khởi điểm phổ biến + 41 dịch vụ công khai với tìm kiếm thời gian thực.
+  8. **PHÁP NHÂN & CAM KẾT MINH BẠCH** (`TrustSection`): CÔNG TY TNHH LOCALMATE (MST: 4001337934) chịu trách nhiệm toàn diện.
+  9. **KIẾN THỨC & FAQ** (`KnowledgeHubSection` & `FAQSection`): Cẩm nang hướng dẫn thực tế + giải đáp thắc mắc chuyên sâu.
+  10. **CTA CUỐI TRANG** (`FinalCTASection`): Form gửi việc 3 trường vàng nhanh gọn, gửi trực tiếp về CRM/Google Sheets.
+  11. **FOOTER** (`Footer` từ `App.tsx`): Nền sáng chuẩn MISA/AMIS, MST 4001337934, Hotline 0834 422 439, địa chỉ Đà Nẵng, logo Bộ Công Thương và sitemap.
+- **Tách biệt sạch sẽ**: Tạo mới `src/components/sections/TrustBar.tsx`, cấu hình `showTrustStrip` linh hoạt trên `HeroSection.tsx` giúp tránh trùng lặp.
+- **Kiểm thử nghiệm thu**: `npm run build` pass 100% trong 11.58s (0 TypeScript error, 0 broken props/imports).
+
 

@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import { Container } from '../ui/Container';
 import { Button } from '../ui/Button';
-import { Badge } from '../ui/Badge';
-import { CheckCircle2, ShieldCheck, Send, Loader2, Clock, Sparkles } from 'lucide-react';
+import { CheckCircle2, ShieldCheck, Send, Loader2, Clock, Sparkles, Phone } from 'lucide-react';
 import { submitLead } from '../../services/leadService';
+import { CONTACT_INFO } from '../../data/landingContent';
 
 export const FinalCTASection: React.FC = () => {
   const [formData, setFormData] = useState({
     fullName: '',
     phone: '',
-    industry: '',
-    facebookUrl: ''
+    taskDescription: ''
   });
 
   const [errors, setErrors] = useState<{ fullName?: string; phone?: string }>({});
@@ -54,9 +53,8 @@ export const FinalCTASection: React.FC = () => {
       await submitLead({
         name: formData.fullName,
         phone: formData.phone,
-        businessName: formData.industry,
-        facebookUrl: formData.facebookUrl,
-        serviceInterest: 'Gói Khởi Tạo 2.900.000đ',
+        message: formData.taskDescription || 'Yêu cầu nhận website demo 0đ từ FinalCTA',
+        serviceInterest: 'Gửi yêu cầu nhận demo 0đ (Final CTA)',
         sourcePage: window.location.pathname
       });
       setStatus('success');
@@ -68,273 +66,156 @@ export const FinalCTASection: React.FC = () => {
 
   return (
     <section
-      id="register-form"
+      id="gui-viec"
       style={{
-        padding: '4.5rem 0',
-        backgroundColor: 'var(--color-navy)',
+        padding: 'clamp(3.5rem, 5vw, 5rem) 0',
+        backgroundColor: '#0f172a',
         color: '#ffffff',
         position: 'relative',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        borderTop: '1px solid #1e293b'
       }}
     >
       <Container size="lg">
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '3rem',
-            alignItems: 'start'
-          }}
-        >
+        <div className="final-cta-grid">
           {/* Left Text Information */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-            <div>
-              <Badge variant="teal" size="md">
-                🎁 MIỄN PHÍ TRẢI NGHIỆM DEMO
-              </Badge>
+          <div className="final-cta-left">
+            <div className="final-cta-badge">
+              <Sparkles size={14} /> DEMO 0Đ KHÔNG RÀNG BUỘC
             </div>
 
-            <h2
-              style={{
-                color: '#ffffff',
-                fontSize: 'clamp(1.85rem, 3.5vw, 2.75rem)',
-                fontWeight: 800,
-                lineHeight: 1.25,
-                margin: 0
-              }}
-            >
-              Đừng bắt đầu bằng một hệ thống đắt tiền.
+            <h2 className="final-cta-title">
+              Bạn nói điều cần làm. LocalMate tìm cách hoàn thành.
             </h2>
 
-            <p style={{ fontSize: '1.05rem', color: '#e3f0f4', lineHeight: 1.65, margin: 0 }}>
-              Hãy bắt đầu bằng một nơi để khách hàng nhìn thấy bạn, hiểu bạn đang làm gì và biết cách liên hệ.
+            <p className="final-cta-desc">
+              Không cần hiểu sâu kỹ thuật. Hãy mô tả điều bạn muốn đạt được, chúng tôi đề xuất phương án và hỗ trợ triển khai.
             </p>
 
-            <div style={{ backgroundColor: 'rgba(10, 70, 90, 0.75)', border: '1px solid rgba(15, 169, 154, 0.35)', borderRadius: 'var(--radius-lg)', padding: '1.25rem 1.35rem', backdropFilter: 'blur(8px)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', color: 'var(--color-teal-soft)', fontWeight: 700, marginBottom: '0.5rem' }}>
-                <ShieldCheck size={20} style={{ flexShrink: 0 }} />
-                <span>CAM KẾT AN TÂM 100%</span>
+            {/* Direct Solid Trust Box — Absolutely NO Glassmorphism */}
+            <div className="final-cta-trust-card">
+              <div className="trust-card-header">
+                <ShieldCheck size={18} color="#86efac" />
+                <span>CAM KẾT MINH BẠCH CỦA LOCALMATE</span>
               </div>
-              <p style={{ fontSize: '0.925rem', color: '#d4e5ea', margin: 0, lineHeight: 1.6 }}>
-                2.900.000đ · Nhận Demo trong 24h kể từ khi đủ thông tin · Bàn giao xong mới thanh toán (0đ rủi ro).
+              <p className="trust-card-body">
+                Dựng demo 0đ xem trước • Không ép mua phần mềm • Bàn giao 100% tài khoản chính chủ • Nghiệm thu mới thanh toán.
               </p>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', marginTop: '0.35rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', fontSize: '0.925rem', color: 'rgba(255, 255, 255, 0.95)', lineHeight: 1.5 }}>
-                <CheckCircle2 size={18} color="var(--color-teal-soft)" style={{ flexShrink: 0 }} />
-                <span>Miễn phí 100% việc tạo bản thảo Web Demo ban đầu</span>
+            <div className="final-cta-points">
+              <div className="final-point-item">
+                <CheckCircle2 size={16} color="#4ade80" />
+                <span>Phản hồi và tư vấn phương án trong 30 phút làm việc</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', fontSize: '0.925rem', color: 'rgba(255, 255, 255, 0.95)', lineHeight: 1.5 }}>
-                <Clock size={18} color="var(--color-teal-soft)" style={{ flexShrink: 0 }} />
-                <span>Phản hồi &amp; tư vấn giải pháp trong 24 giờ làm việc</span>
+              <div className="final-point-item">
+                <CheckCircle2 size={16} color="#4ade80" />
+                <span>Dựng bản website demo chạy thực tế hoàn toàn miễn phí</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', fontSize: '0.925rem', color: 'rgba(255, 255, 255, 0.95)', lineHeight: 1.5 }}>
-                <Sparkles size={18} color="var(--color-teal-soft)" style={{ flexShrink: 0 }} />
-                <span>Tối ưu hiển thị chuẩn trên mọi thiết bị di động &amp; máy tính</span>
+              <div className="final-point-item">
+                <CheckCircle2 size={16} color="#4ade80" />
+                <span>Bàn giao 100% tài khoản tên miền, hosting và mã nguồn</span>
               </div>
+              <div className="final-point-item">
+                <CheckCircle2 size={16} color="#4ade80" />
+                <span>Đội ngũ kỹ thuật viên hỗ trợ trực tiếp tại địa phương</span>
+              </div>
+            </div>
+
+            {/* Hotline Bar */}
+            <div className="final-hotline-wrap">
+              <a
+                href={`tel:${CONTACT_INFO.phoneRaw}`}
+                className="final-hotline-btn"
+                title="Gọi hotline trao đổi ngay"
+              >
+                <Phone size={15} color="#0f172a" />
+                <span>Tư vấn trực tiếp 24/7: {CONTACT_INFO.phone}</span>
+              </a>
             </div>
           </div>
 
           {/* Right Lead Capture Form Card */}
-          <div
-            style={{
-              backgroundColor: '#ffffff',
-              color: 'var(--color-text)',
-              borderRadius: 'var(--radius-xl)',
-              padding: '2rem 1.5rem',
-              boxShadow: 'var(--shadow-lg)',
-              boxSizing: 'border-box',
-              maxWidth: '100%'
-            }}
-          >
+          <div className="final-cta-form-card">
             {status === 'success' ? (
-              <div
-                style={{
-                  backgroundColor: '#ecfdf5',
-                  border: '1.5px solid #059669',
-                  borderRadius: 'var(--radius-lg)',
-                  padding: '2rem 1.25rem',
-                  textAlign: 'center',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  gap: '1rem'
-                }}
-              >
-                <div
-                  style={{
-                    width: '64px',
-                    height: '64px',
-                    borderRadius: '50%',
-                    backgroundColor: '#d1fae5',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                  }}
-                >
-                  <CheckCircle2 size={40} color="#059669" />
+              <div className="final-success-box">
+                <div className="success-icon-wrap">
+                  <CheckCircle2 size={36} color="#059669" />
                 </div>
-                <div>
-                  <h4 style={{ fontSize: '1.3rem', color: '#065f46', fontWeight: 800, margin: '0 0 0.5rem 0' }}>
-                    Gửi Yêu Cầu Thành Công!
-                  </h4>
-                  <p style={{ fontSize: '0.925rem', color: '#047857', lineHeight: 1.6, margin: 0 }}>
-                    Cảm ơn <strong>{formData.fullName}</strong> đã đăng ký! LocalMate sẽ liên hệ qua SĐT/Zalo <strong>{formData.phone}</strong> trong 24h làm việc để gửi bản demo.
-                  </p>
-                </div>
-
-                <div
-                  style={{
-                    backgroundColor: '#ffffff',
-                    border: '1px solid #a7f3d0',
-                    borderRadius: 'var(--radius-md)',
-                    padding: '0.875rem',
-                    width: '100%',
-                    textAlign: 'left',
-                    fontSize: '0.85rem',
-                    color: '#065f46'
-                  }}
-                >
-                  <strong>Các bước tiếp theo:</strong>
-                  <ol style={{ paddingLeft: '1.2rem', margin: '0.35rem 0 0 0', lineHeight: 1.5 }}>
-                    <li>Xác nhận thông tin ngành nghề & sản phẩm</li>
-                    <li>Gửi link demo trực quan qua Zalo</li>
-                    <li>Báo giá rõ ràng, bàn giao xong mới thanh toán</li>
-                  </ol>
-                </div>
+                <h3 className="success-title">Tiếp nhận yêu cầu thành công!</h3>
+                <p className="success-desc">
+                  Cảm ơn <strong>{formData.fullName}</strong> đã gửi yêu cầu! LocalMate sẽ liên hệ qua Số điện thoại / Zalo <strong>{formData.phone}</strong> trong 30 phút để gửi bản demo 0đ và trao đổi phương án triển khai.
+                </p>
 
                 <Button
-                  variant="secondary"
+                  variant="primary"
                   size="md"
+                  fullWidth
                   onClick={() => {
                     setStatus('idle');
-                    setFormData({ fullName: '', phone: '', industry: '', facebookUrl: '' });
+                    setFormData({ fullName: '', phone: '', taskDescription: '' });
                   }}
-                  style={{ marginTop: '0.5rem', width: '100%' }}
+                  style={{ marginTop: '0.75rem' }}
                 >
                   Gửi yêu cầu khác
                 </Button>
               </div>
             ) : (
               <>
-                <h3 style={{ fontSize: '1.35rem', color: 'var(--color-navy)', marginBottom: '0.35rem', fontWeight: 800, lineHeight: 1.3 }}>
-                  Đăng Ký Nhận Web Demo
-                </h3>
-                <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', marginBottom: '1.5rem', lineHeight: 1.5 }}>
-                  LocalMate sẽ dựng bản demo riêng cho ngành nghề của bạn trong 24h làm việc.
+                <h3 className="form-card-title">Đăng ký nhận website demo 0đ</h3>
+                <p className="form-card-subtitle">
+                  Mô tả mong muốn của bạn. Chúng tôi gửi bản demo xem trước và báo giá trọn gói trong 24 giờ.
                 </p>
 
-                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem' }} noValidate>
-                  {/* Field 1: Full Name */}
+                <form onSubmit={handleSubmit} className="final-intake-form" noValidate>
+                  {/* Field 1: Họ và tên */}
                   <div>
-                    <label htmlFor="fullName" style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, color: 'var(--color-navy)', marginBottom: '0.35rem' }}>
-                      Họ và tên <span style={{ color: 'var(--color-orange)' }}>*</span>
+                    <label htmlFor="finalFullName" className="form-label">
+                      Họ và tên <span style={{ color: '#ef4444' }}>*</span>
                     </label>
                     <input
-                      id="fullName"
+                      id="finalFullName"
                       type="text"
-                      placeholder="Ví dụ: Nguyễn Văn Hùng"
+                      placeholder="Ví dụ: Anh Nam, Chị Trang..."
                       value={formData.fullName}
                       onChange={(e) => handleChange('fullName', e.target.value)}
-                      style={{
-                        width: '100%',
-                        boxSizing: 'border-box',
-                        padding: '0.75rem 0.875rem',
-                        borderRadius: 'var(--radius-md)',
-                        border: errors.fullName ? '2px solid #ef4444' : '1px solid var(--color-border)',
-                        backgroundColor: errors.fullName ? '#fef2f2' : '#ffffff',
-                        outline: 'none',
-                        fontSize: '0.95rem',
-                        fontFamily: 'var(--font-family)',
-                        color: 'var(--color-text)'
-                      }}
+                      className={`form-input ${errors.fullName ? 'form-input-error' : ''}`}
                     />
                     {errors.fullName && (
-                      <span style={{ color: '#dc2626', fontSize: '0.8rem', marginTop: '0.35rem', display: 'block', fontWeight: 500 }}>
-                        ⚠️ {errors.fullName}
-                      </span>
+                      <span className="error-text">⚠️ {errors.fullName}</span>
                     )}
                   </div>
 
-                  {/* Field 2: Phone */}
+                  {/* Field 2: Số điện thoại / Zalo */}
                   <div>
-                    <label htmlFor="phone" style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, color: 'var(--color-navy)', marginBottom: '0.35rem' }}>
-                      Số điện thoại / Zalo <span style={{ color: 'var(--color-orange)' }}>*</span>
+                    <label htmlFor="finalPhone" className="form-label">
+                      Số điện thoại / Zalo <span style={{ color: '#ef4444' }}>*</span>
                     </label>
                     <input
-                      id="phone"
+                      id="finalPhone"
                       type="tel"
-                      placeholder="Ví dụ: 0912345678"
+                      placeholder="Ví dụ: 0912 345 678"
                       value={formData.phone}
                       onChange={(e) => handleChange('phone', e.target.value)}
-                      style={{
-                        width: '100%',
-                        boxSizing: 'border-box',
-                        padding: '0.75rem 0.875rem',
-                        borderRadius: 'var(--radius-md)',
-                        border: errors.phone ? '2px solid #ef4444' : '1px solid var(--color-border)',
-                        backgroundColor: errors.phone ? '#fef2f2' : '#ffffff',
-                        outline: 'none',
-                        fontSize: '0.95rem',
-                        fontFamily: 'var(--font-family)',
-                        color: 'var(--color-text)'
-                      }}
+                      className={`form-input ${errors.phone ? 'form-input-error' : ''}`}
                     />
                     {errors.phone && (
-                      <span style={{ color: '#dc2626', fontSize: '0.8rem', marginTop: '0.35rem', display: 'block', fontWeight: 500 }}>
-                        ⚠️ {errors.phone}
-                      </span>
+                      <span className="error-text">⚠️ {errors.phone}</span>
                     )}
                   </div>
 
-                  {/* Field 3: Industry */}
+                  {/* Field 3: Nhu cầu cần làm (tùy chọn) */}
                   <div>
-                    <label htmlFor="industry" style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, color: 'var(--color-navy)', marginBottom: '0.35rem' }}>
-                      Ngành nghề / Sản phẩm dịch vụ
+                    <label htmlFor="finalTaskDesc" className="form-label">
+                      Nhu cầu cần làm (tùy chọn)
                     </label>
-                    <input
-                      id="industry"
-                      type="text"
-                      placeholder="Ví dụ: Thầu sửa nhà, Quán ăn, Spa, Xưởng gỗ..."
-                      value={formData.industry}
-                      onChange={(e) => handleChange('industry', e.target.value)}
-                      style={{
-                        width: '100%',
-                        boxSizing: 'border-box',
-                        padding: '0.75rem 0.875rem',
-                        borderRadius: 'var(--radius-md)',
-                        border: '1px solid var(--color-border)',
-                        outline: 'none',
-                        fontSize: '0.95rem',
-                        fontFamily: 'var(--font-family)',
-                        color: 'var(--color-text)'
-                      }}
-                    />
-                  </div>
-
-                  {/* Field 4: Facebook / Fanpage */}
-                  <div>
-                    <label htmlFor="facebookUrl" style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, color: 'var(--color-navy)', marginBottom: '0.35rem' }}>
-                      Link Facebook / Fanpage (nếu có)
-                    </label>
-                    <input
-                      id="facebookUrl"
-                      type="text"
-                      placeholder="https://facebook.com/trang-cua-ban"
-                      value={formData.facebookUrl}
-                      onChange={(e) => handleChange('facebookUrl', e.target.value)}
-                      style={{
-                        width: '100%',
-                        boxSizing: 'border-box',
-                        padding: '0.75rem 0.875rem',
-                        borderRadius: 'var(--radius-md)',
-                        border: '1px solid var(--color-border)',
-                        outline: 'none',
-                        fontSize: '0.95rem',
-                        fontFamily: 'var(--font-family)',
-                        color: 'var(--color-text)'
-                      }}
+                    <textarea
+                      id="finalTaskDesc"
+                      rows={3}
+                      placeholder="Ví dụ: Dựng web demo 0đ cho tiệm spa, đưa quán lên Google Maps, gom lead Zalo/FB về 1 chỗ..."
+                      value={formData.taskDescription}
+                      onChange={(e) => handleChange('taskDescription', e.target.value)}
+                      className="form-textarea"
                     />
                   </div>
 
@@ -344,21 +225,21 @@ export const FinalCTASection: React.FC = () => {
                     size="lg"
                     fullWidth
                     disabled={status === 'loading'}
-                    style={{ marginTop: '0.5rem', cursor: status === 'loading' ? 'not-allowed' : 'pointer' }}
+                    style={{ minHeight: 48, fontWeight: 800, marginTop: '0.25rem' }}
                   >
                     {status === 'loading' ? (
-                      <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
-                        <Loader2 size={20} className="animate-spin" /> Đang xử lý...
+                      <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <Loader2 size={18} className="animate-spin" /> Đang gửi yêu cầu...
                       </span>
                     ) : (
-                      <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
-                        <Send size={18} /> Nhận web demo cho doanh nghiệp
+                      <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <Send size={16} /> Gửi yêu cầu nhận demo 0đ
                       </span>
                     )}
                   </Button>
 
-                  <p style={{ fontSize: '0.775rem', color: 'var(--color-text-muted)', textAlign: 'center', margin: 0, lineHeight: 1.4 }}>
-                    🔒 Thông tin của bạn được bảo mật tuyệt đối. Không Spam quảng cáo.
+                  <p className="form-footnote">
+                    🔒 Thông tin được bảo mật tuyệt đối. Cam kết 100% không mất phí nếu không duyệt demo.
                   </p>
                 </form>
               </>
@@ -366,7 +247,246 @@ export const FinalCTASection: React.FC = () => {
           </div>
         </div>
       </Container>
+
+      <style>{`
+        .final-cta-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 2.5rem;
+          align-items: start;
+        }
+
+        @media (min-width: 900px) {
+          .final-cta-grid {
+            grid-template-columns: 1.15fr 1fr;
+            gap: 3.5rem;
+          }
+        }
+
+        .final-cta-left {
+          display: flex;
+          flex-direction: column;
+          gap: 1.25rem;
+        }
+
+        .final-cta-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.35rem;
+          font-size: 0.75rem;
+          font-weight: 800;
+          color: #86efac;
+          background-color: #064e3b;
+          border: 1px solid #059669;
+          padding: 0.25rem 0.75rem;
+          border-radius: 999px;
+          letter-spacing: 0.05em;
+          width: fit-content;
+        }
+
+        .final-cta-title {
+          font-size: var(--font-size-h2);
+          font-weight: 800;
+          line-height: 1.25;
+          letter-spacing: -0.02em;
+          color: #ffffff;
+          margin: 0;
+          text-wrap: balance;
+        }
+
+        .final-cta-desc {
+          font-size: 0.975rem;
+          color: #cbd5e1;
+          line-height: 1.65;
+          margin: 0;
+        }
+
+        .final-cta-trust-card {
+          background-color: #1e293b;
+          border: 1px solid #334155;
+          border-radius: 14px;
+          padding: 1.15rem 1.35rem;
+          display: flex;
+          flex-direction: column;
+          gap: 0.4rem;
+        }
+
+        .trust-card-header {
+          display: flex;
+          align-items: center;
+          gap: 0.45rem;
+          font-size: 0.775rem;
+          font-weight: 800;
+          color: #86efac;
+          letter-spacing: 0.04em;
+        }
+
+        .trust-card-body {
+          font-size: 0.85rem;
+          color: #e2e8f0;
+          margin: 0;
+          line-height: 1.5;
+        }
+
+        .final-cta-points {
+          display: flex;
+          flex-direction: column;
+          gap: 0.65rem;
+        }
+
+        .final-point-item {
+          display: flex;
+          align-items: center;
+          gap: 0.55rem;
+          font-size: 0.875rem;
+          color: #f1f5f9;
+        }
+
+        .final-hotline-wrap {
+          margin-top: 0.5rem;
+        }
+
+        .final-hotline-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+          min-height: 44px;
+          background-color: #ffffff;
+          color: #0f172a;
+          font-size: 0.875rem;
+          font-weight: 800;
+          padding: 0.65rem 1.25rem;
+          border-radius: 12px;
+          text-decoration: none;
+          transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .final-hotline-btn:hover {
+          background-color: #f1f5f9;
+          transform: translateY(-1px);
+        }
+
+        /* Right Form Card */
+        .final-cta-form-card {
+          background-color: #ffffff;
+          border-radius: 20px;
+          padding: 2rem 1.75rem;
+          border: 1px solid #e2e8f0;
+          box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.04);
+          color: #0f172a;
+        }
+
+        .form-card-title {
+          font-size: 1.35rem;
+          font-weight: 800;
+          color: #0f172a;
+          margin: 0 0 0.35rem 0;
+        }
+
+        .form-card-subtitle {
+          font-size: 0.85rem;
+          color: #64748b;
+          margin: 0 0 1.25rem 0;
+          line-height: 1.45;
+        }
+
+        .final-intake-form {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .form-label {
+          display: block;
+          font-size: 0.825rem;
+          font-weight: 700;
+          color: #1e293b;
+          margin-bottom: 0.35rem;
+        }
+
+        .form-input,
+        .form-textarea {
+          width: 100%;
+          box-sizing: border-box;
+          padding: 0.75rem 0.85rem;
+          border-radius: 10px;
+          border: 1px solid #cbd5e1;
+          font-size: 0.9rem;
+          font-family: inherit;
+          color: #0f172a;
+          background-color: #ffffff;
+          outline: none;
+          transition: border-color 0.2s ease;
+        }
+
+        .form-input {
+          min-height: 44px;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+          border-color: var(--color-primary);
+        }
+
+        .form-input-error {
+          border-color: #ef4444;
+          background-color: #fef2f2;
+        }
+
+        .error-text {
+          font-size: 0.775rem;
+          color: #dc2626;
+          margin-top: 0.3rem;
+          display: block;
+          font-weight: 600;
+        }
+
+        .form-footnote {
+          font-size: 0.75rem;
+          color: #64748b;
+          text-align: center;
+          margin: 0;
+          line-height: 1.4;
+        }
+
+        /* Success Box */
+        .final-success-box {
+          background-color: #f0fdf4;
+          border: 1.5px solid #86efac;
+          border-radius: 16px;
+          padding: 2rem 1.5rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          gap: 0.75rem;
+        }
+
+        .success-icon-wrap {
+          width: 54px;
+          height: 54px;
+          border-radius: 50%;
+          background-color: #dcfce7;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .success-title {
+          font-size: 1.25rem;
+          font-weight: 800;
+          color: #166534;
+          margin: 0;
+        }
+
+        .success-desc {
+          font-size: 0.875rem;
+          color: #15803d;
+          line-height: 1.55;
+          margin: 0;
+        }
+      `}</style>
     </section>
   );
 };
-

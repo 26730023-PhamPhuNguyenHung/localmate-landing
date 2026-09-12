@@ -133,7 +133,7 @@ export const CaseStudyDetailPage: React.FC<CaseStudyDetailPageProps> = ({ slug, 
         </div>
 
         {/* 2-Column: Problem & Starting State vs Work Done */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem', marginBottom: '3.5rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '2.5rem', marginBottom: '3.5rem' }}>
           {/* Left: Problem & Starting State */}
           <div
             style={{

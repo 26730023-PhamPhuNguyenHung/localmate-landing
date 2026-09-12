@@ -1,20 +1,17 @@
 import React from 'react';
 import { SEOHead } from '../components/seo/SEOHead';
 import { HeroSection } from '../components/sections/HeroSection';
+import { TrustBar } from '../components/sections/TrustBar';
 import { ProblemMapperSection } from '../components/sections/ProblemMapperSection';
-import { ServiceHubSection } from '../components/sections/ServiceHubSection';
-import { SolutionJourneySection } from '../components/sections/SolutionJourneySection';
-import { PainPointsSection } from '../components/sections/PainPointsSection';
-import { StarterPackageSection } from '../components/sections/StarterPackageSection';
-import { ClientRequirementsSection } from '../components/sections/ClientRequirementsSection';
-import { ContentPackageSection } from '../components/sections/ContentPackageSection';
-import { DemoShowcaseSection } from '../components/sections/DemoShowcaseSection';
+import { ServiceCardsSection } from '../components/sections/ServiceCardsSection';
 import { ProcessSection } from '../components/sections/ProcessSection';
+import { PhilosophySection } from '../components/sections/PhilosophySection';
+import { DemoShowcaseSection } from '../components/sections/DemoShowcaseSection';
 import { PricingMatrixSection } from '../components/sections/PricingMatrixSection';
-import { DigitalCareSection } from '../components/sections/DigitalCareSection';
 import { TrustSection } from '../components/sections/TrustSection';
-import { FAQSection } from '../components/sections/FAQSection';
 import { KnowledgeHubSection } from '../components/sections/KnowledgeHubSection';
+import { FAQSection } from '../components/sections/FAQSection';
+import { FinalCTASection } from '../components/sections/FinalCTASection';
 
 interface HomePageProps {
   onOpenConsultForm?: (serviceName?: string) => void;
@@ -23,50 +20,48 @@ interface HomePageProps {
 export const HomePage: React.FC<HomePageProps> = ({ onOpenConsultForm }) => {
   return (
     <>
-      {/* 1. Dynamic SEO Meta for Homepage (Optimized for Customer Search Intent) */}
+      {/* 0. Dynamic SEO Meta for Homepage (Optimized for Customer Search Intent) */}
       <SEOHead
-        title="LocalMate | Thiết kế Website, Google Maps, Google Ads cho Doanh nghiệp nhỏ"
-        description="LocalMate làm website, tối ưu Google Maps, Google Ads và nội dung cho doanh nghiệp nhỏ. Giá rõ ràng, triển khai nhanh, hỗ trợ toàn quốc."
+        title="LocalMate | Người đồng hành số & Đội ngũ triển khai kỹ thuật tại địa phương"
+        description="LocalMate đồng hành số cùng doanh nghiệp, agency và đối tác SaaS: website 24h, tự động hóa quy trình, gom lead CRM và triển khai kỹ thuật tại địa phương. Báo giá minh bạch, nghiệm thu mới thanh toán."
         canonicalPath="/"
       />
 
-      {/* 1. Hero — Giúp doanh nghiệp nhỏ có website, lên Google và tìm thêm khách hàng */}
-      <HeroSection onOpenDemoForm={() => onOpenConsultForm && onOpenConsultForm('Tư vấn Web Demo 0đ')} />
+      {/* 1. HERO (HeroSection) — Bạn tập trung bán hàng. LocalMate lo phần công nghệ. */}
+      <HeroSection onOpenDemoForm={() => onOpenConsultForm && onOpenConsultForm('Tư vấn giải pháp LocalMate')} />
 
-      {/* 2. Khách đang cần việc gì? — Phân nhóm theo lời khách hàng nói (Section 18) */}
-      <ProblemMapperSection />
+      {/* 2. TRUST BAR (TrustBar 4 điểm nhẹ) — Minh bạch, thực tế, làm chủ tài khoản */}
+      <TrustBar />
 
-      {/* 3. Menu dịch vụ + Giá từ rõ ràng (Section 20) */}
-      <ServiceHubSection />
+      {/* 3. “BẠN ĐANG CẦN VIỆC GÌ?” (ProblemMapperSection) — Chọn theo nhu cầu thực tế */}
+      <ProblemMapperSection onSelectTask={(serviceName) => onOpenConsultForm && onOpenConsultForm(serviceName)} />
 
-      {/* 4. Vì sao LocalMate phù hợp doanh nghiệp nhỏ — Lộ trình & Thấu hiểu nỗi lo */}
-      <SolutionJourneySection />
-      <PainPointsSection />
+      {/* 4. 4 DỊCH VỤ CHÍNH (ServiceCardsSection) — 4 Dịch vụ trọng điểm cho SME & Doanh nghiệp */}
+      <ServiceCardsSection onOpenLeadForm={(serviceName) => onOpenConsultForm && onOpenConsultForm(serviceName)} />
 
-      {/* 5. Gói Khởi tạo & Dịch vụ hoạt động thế nào — Website, Google Maps, Nội dung */}
-      <StarterPackageSection onOpenDemoForm={() => onOpenConsultForm && onOpenConsultForm('Gói Khởi Tạo Đầy Đủ 2.900.000đ')} />
-      <ClientRequirementsSection />
-      <ContentPackageSection />
+      {/* 5. CÁCH LOCALMATE LÀM VIỆC (ProcessSection & PhilosophySection) — Quy trình 5 bước & Triết lý vận hành */}
+      <ProcessSection />
+      <PhilosophySection />
 
-      {/* 6. Dự án thật & Trải nghiệm thực tế */}
+      {/* 6. "XEM TRƯỚC THỨ BẠN SẼ NHẬN" (DemoShowcaseSection) — Build & Test công khai */}
       <DemoShowcaseSection />
 
-      {/* 7. Quy trình làm việc 5 bước đơn giản & minh bạch */}
-      <ProcessSection />
-
-      {/* 8. Bảng giá toàn bộ dịch vụ niêm yết */}
+      {/* 7. BẢNG GIÁ DỊCH VỤ (PricingMatrixSection) — Toàn bộ dịch vụ niêm yết công khai */}
       <PricingMatrixSection onOpenLeadForm={(srvName) => onOpenConsultForm && onOpenConsultForm(srvName || 'Tư vấn Bảng giá dịch vụ')} />
-      <DigitalCareSection />
 
-      {/* 10. Pháp nhân CÔNG TY TNHH LOCALMATE & Cam kết minh bạch */}
+      {/* 8. PHÁP NHÂN & CAM KẾT MINH BẠCH (TrustSection) — CÔNG TY TNHH LOCALMATE */}
       <TrustSection />
 
-      {/* 11. FAQ Giải đáp thắc mắc thường gặp */}
+      {/* 9. KIẾN THỨC & FAQ (KnowledgeHubSection & FAQSection) — Hướng dẫn thực tế & Giải đáp thắc mắc */}
+      <KnowledgeHubSection />
       <FAQSection onOpenDemoForm={() => onOpenConsultForm && onOpenConsultForm('Hỗ trợ trực tiếp 1-1')} />
 
-      {/* 12. Hướng dẫn tìm khách & Kiến thức Marketing thực chiến */}
-      <KnowledgeHubSection />
+      {/* 10. CTA CUỐI TRANG (FinalCTASection) — Gửi yêu cầu triển khai kỹ thuật */}
+      <FinalCTASection />
+
+      {/* 11. FOOTER (Footer được render từ App.tsx bao bọc toàn bộ trang) */}
     </>
   );
 };
 
+export default HomePage;

@@ -189,7 +189,7 @@ export const LocalMateAdvisor: React.FC<LocalMateAdvisorProps> = ({ onComplete, 
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: compact ? '1fr' : 'repeat(auto-fit, minmax(320px, 1fr))',
+          gridTemplateColumns: compact ? '1fr' : 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
           alignItems: 'stretch'
         }}
       >

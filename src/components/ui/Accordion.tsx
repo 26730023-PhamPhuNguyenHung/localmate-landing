@@ -84,7 +84,9 @@ export const Accordion: React.FC<AccordionProps> = ({
                 transition: 'background-color var(--transition-fast), color var(--transition-fast)'
               }}
             >
-              <span style={{ lineHeight: 1.4 }}>{item.question}</span>
+              <span style={{ lineHeight: 1.45, textWrap: 'balance', overflowWrap: 'break-word' }}>
+                {item.question}
+              </span>
               <div
                 style={{
                   width: '32px',

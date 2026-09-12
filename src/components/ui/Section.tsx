@@ -26,8 +26,8 @@ export const Section: React.FC<SectionProps> = ({
 
   const paddings = {
     compact: 'clamp(2rem, 3.5vw, 3.5rem) 0',
-    normal: 'clamp(2.75rem, 5vw, 4.5rem) 0',
-    spacious: 'clamp(3.5rem, 6vw, 6rem) 0'
+    normal: 'var(--space-section-py, clamp(3rem, 5vw, 4.5rem)) 0',
+    spacious: 'var(--space-section-py-desktop, clamp(4.5rem, 6vw, 6.5rem)) 0'
   };
 
   const isDark = variant === 'navy';

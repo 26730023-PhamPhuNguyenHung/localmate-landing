@@ -96,7 +96,7 @@ export const ArticleDetailPage: React.FC<ArticleDetailPageProps> = ({ slug, onOp
           ]}
         />
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3rem', alignItems: 'start' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '3rem', alignItems: 'start' }}>
           {/* Main Article Content Column */}
           <article style={{ maxWidth: '800px' }}>
             {/* Category & Metadata */}

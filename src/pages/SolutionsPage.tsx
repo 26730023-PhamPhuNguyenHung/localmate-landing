@@ -171,7 +171,7 @@ export const SolutionsPage: React.FC = () => {
             </div>
           </div>
         ) : (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '2rem' }}>
             {INDUSTRY_SOLUTIONS.map((ind) => {
               const Icon = ICON_MAP[ind.id] || Briefcase;
               return (

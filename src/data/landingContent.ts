@@ -503,33 +503,43 @@ export const PROCESS_STEPS = [
 
 export const KNOWLEDGE_ARTICLES = [
   {
-    id: 'post-1',
-    title: 'Cách kiểm tra khách đã tìm gì trước khi bấm quảng cáo Google',
-    category: 'Quảng Cáo Google',
-    date: '10 Tháng 8, 2026',
-    excerpt: 'Hướng dẫn đọc cụm từ tìm kiếm trong Google Ads và loại bỏ những từ khóa không mang lại khách hàng.',
-    desc: 'Hướng dẫn đọc cụm từ tìm kiếm trong Google Ads và loại bỏ những từ khóa không mang lại khách hàng.',
-    readTime: '6 phút đọc',
-    slug: 'cach-doc-search-terms-google-ads'
-  },
-  {
-    id: 'post-2',
-    title: 'Cách tối ưu Google Maps để khách địa phương dễ tìm thấy doanh nghiệp',
+    id: 'post-maps',
+    title: 'Cách tự kiểm tra và tối ưu Google Maps để khách quanh vùng tìm thấy ngay',
     category: 'Google Maps',
     date: '08 Tháng 8, 2026',
-    excerpt: 'Các bước điền thông tin chuẩn, tải ảnh thực tế và thu hút đánh giá 5 sao từ khách quen xung quanh.',
-    desc: 'Các bước điền thông tin chuẩn, tải ảnh thực tế và thu hút đánh giá 5 sao từ khách quen xung quanh.',
+    excerpt: 'Kiểm tra vị trí ghim chuẩn, cập nhật số điện thoại chính chủ và cách tạo mã QR nhận đánh giá 5 sao từ khách quen.',
+    desc: 'Kiểm tra vị trí ghim chuẩn, cập nhật số điện thoại chính chủ và cách tạo mã QR nhận đánh giá 5 sao từ khách quen.',
     readTime: '7 phút đọc',
     slug: 'huong-dan-toi-uu-google-business-profile'
   },
   {
-    id: 'post-3',
-    title: 'Website bán dịch vụ cần có gì để khách dễ gọi điện và nhắn tin?',
-    category: 'Thiết Kế Website',
+    id: 'post-web',
+    title: 'Checklist 7 điều bắt buộc phải có trước khi làm website bán dịch vụ',
+    category: 'Làm Website',
     date: '05 Tháng 8, 2026',
-    excerpt: '7 phần quan trọng trên một trang web giúp khách hiểu ngay bạn làm gì, giá bao nhiêu và bấm gọi ngay.',
-    desc: '7 phần quan trọng trên một trang web giúp khách hiểu ngay bạn làm gì, giá bao nhiêu và bấm gọi ngay.',
+    excerpt: 'Nêu đúng việc bạn làm, bảng giá minh bạch, nút gọi Zalo bấm một chạm và tốc độ tải trang dưới 2 giây để không phí tiền ads.',
+    desc: 'Nêu đúng việc bạn làm, bảng giá minh bạch, nút gọi Zalo bấm một chạm và tốc độ tải trang dưới 2 giây để không phí tiền ads.',
     readTime: '5 phút đọc',
     slug: 'cau-truc-landing-page-chuyen-doi-cao'
+  },
+  {
+    id: 'post-security',
+    title: 'Cách tránh bị giữ con tin tài khoản, mất tên miền và hosting khi thuê ngoài',
+    category: 'Bảo Mật Số',
+    date: '18 Tháng 8, 2026',
+    excerpt: 'Nhận biết các chiêu trò giữ quyền admin, quy trình nhận bàn giao 100% tài khoản chính chủ và bảo vệ thương hiệu số của bạn.',
+    desc: 'Nhận biết các chiêu trò giữ quyền admin, quy trình nhận bàn giao 100% tài khoản chính chủ và bảo vệ thương hiệu số của bạn.',
+    readTime: '6 phút đọc',
+    slug: 'cach-tranh-bi-mat-quyen-tai-khoan-ten-mien'
+  },
+  {
+    id: 'post-ads',
+    title: 'Cách kiểm tra khách đã tìm gì để không lãng phí ngân sách Google Ads',
+    category: 'Quảng Cáo Google',
+    date: '10 Tháng 8, 2026',
+    excerpt: 'Hướng dẫn đọc báo cáo Search Terms thực tế và cách chặn các từ khóa rác không mang lại doanh thu.',
+    desc: 'Hướng dẫn đọc báo cáo Search Terms thực tế và cách chặn các từ khóa rác không mang lại doanh thu.',
+    readTime: '6 phút đọc',
+    slug: 'cach-doc-search-terms-google-ads'
   }
 ];

@@ -32,9 +32,9 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
           style={{
             display: 'inline-block',
             fontSize: '0.775rem',
-            fontWeight: 800,
+            fontWeight: 700,
             textTransform: 'uppercase',
-            letterSpacing: '0.08em',
+            letterSpacing: '0.05em',
             color: dark ? 'var(--color-primary-soft)' : 'var(--color-primary-dark)',
             backgroundColor: dark ? 'rgba(13, 118, 71, 0.2)' : 'var(--color-primary-soft)',
             padding: '0.35rem 0.85rem',
@@ -53,7 +53,8 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
           fontSize: 'var(--font-size-h2)',
           lineHeight: 'var(--line-height-h2, 1.25)',
           letterSpacing: '-0.02em',
-          wordBreak: 'break-word'
+          overflowWrap: 'break-word',
+          textWrap: 'balance'
         }}
       >
         {title}
@@ -67,7 +68,8 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
             fontWeight: 400,
             maxWidth: '700px',
             margin: align === 'center' ? '0 auto' : '0',
-            wordBreak: 'break-word'
+            overflowWrap: 'break-word',
+            textWrap: 'pretty'
           }}
         >
           {subtitle}

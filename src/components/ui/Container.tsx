@@ -16,7 +16,7 @@ export const Container: React.FC<ContainerProps> = ({
   const maxWidths: Record<string, string> = {
     sm: '800px',
     md: '1020px',
-    lg: 'var(--container-max, 1240px)',
+    lg: 'var(--container-max, 1220px)',
     wide: 'var(--container-wide, 1360px)',
     full: '100%'
   };

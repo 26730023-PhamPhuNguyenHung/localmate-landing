@@ -124,7 +124,7 @@ export const KnowledgePage: React.FC = () => {
 
         {/* Articles Grid */}
         {filteredArticles.length > 0 ? (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '2rem' }}>
             {filteredArticles.map((art) => (
               <article
                 key={art.id}

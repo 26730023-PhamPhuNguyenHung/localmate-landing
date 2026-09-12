@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '../ui/Button';
-import { X, CheckCircle2, ShieldCheck, Phone, MessageSquare, Sparkles } from 'lucide-react';
+import { X, CheckCircle2, ShieldCheck, Phone, MessageSquare, Sparkles, Loader2 } from 'lucide-react';
 import { CONTACT_INFO } from '../../data/landingContent';
 import { trackFormStart } from '../../analytics/tracker';
 import { submitLead } from '../../services/leadService';
@@ -38,20 +38,35 @@ export const LeadModal: React.FC<LeadModalProps> = ({
     if (isOpen) {
       trackFormStart('Universal_Lead_Modal');
       document.body.style.overflow = 'hidden';
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
+          onClose();
+        }
+      };
+      window.addEventListener('keydown', handleKeyDown);
+      return () => {
+        document.body.style.overflow = 'auto';
+        window.removeEventListener('keydown', handleKeyDown);
+      };
     } else {
       document.body.style.overflow = 'auto';
     }
-    return () => {
-      document.body.style.overflow = 'auto';
-    };
-  }, [isOpen]);
+  }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name.trim() || !formData.phone.trim()) {
-      setErrorMsg('Vui lòng nhập họ tên và số điện thoại liên hệ.');
+    const trimmedName = formData.name.trim();
+    const cleanPhone = formData.phone.trim().replace(/[\s\-\.\(\)]/g, '');
+
+    if (!trimmedName || trimmedName.length < 2) {
+      setErrorMsg('Vui lòng nhập họ và tên của bạn (tối thiểu 2 ký tự).');
+      return;
+    }
+
+    if (!cleanPhone || !/^(0|\+?84)(3|5|7|8|9|2[0-9])[0-9]{8}$/.test(cleanPhone)) {
+      setErrorMsg('Số điện thoại không hợp lệ. Vui lòng nhập số di động (Ví dụ: 0912 345 678).');
       return;
     }
 
@@ -96,8 +111,7 @@ export const LeadModal: React.FC<LeadModalProps> = ({
         style={{
           position: 'fixed',
           inset: 0,
-          backgroundColor: 'rgba(5, 47, 61, 0.65)',
-          backdropFilter: 'blur(3px)',
+          backgroundColor: 'rgba(15, 23, 42, 0.72)',
           zIndex: 190
         }}
       />

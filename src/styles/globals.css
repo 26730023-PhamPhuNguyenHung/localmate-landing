@@ -16,6 +16,7 @@ html {
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
+  scrollbar-gutter: stable;
 }
 
 @media screen and (min-width: 1600px) {
@@ -39,6 +40,7 @@ html {
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
+  font-size: var(--font-size-body);
   line-height: var(--line-height-body);
   width: 100%;
   max-width: 100%;
@@ -56,6 +58,29 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+/* SSOT Container Rules (Desktop max-width: 1220px, responsive padding 16px -> 24px -> 32-40px) */
+.container,
+.container-box {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-container-px);
+  padding-right: var(--space-container-px);
+  box-sizing: border-box;
+}
+
+/* SSOT Section Spacing — Controlled Fluid Rhythm (No Dead Whitespace) */
+.section-component,
+section[data-section] {
+  padding-top: var(--space-section-py);
+  padding-bottom: var(--space-section-py);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  position: relative;
 }
 
 /* SSOT Responsive Grid Classes */
@@ -113,33 +138,32 @@ body {
   }
 }
 
-/* Typography Hierarchy with Balanced Wrapping */
+/* Typography Hierarchy with text-wrap: pretty & Fluid Clamp */
 h1, h2, h3, h4, h5, h6 {
   color: var(--color-navy);
-  line-height: var(--line-height-h2);
   font-weight: var(--font-weight-bold);
-  text-wrap: balance;
+  text-wrap: pretty;
 }
 
 h1 {
   font-size: var(--font-size-h1);
   line-height: var(--line-height-h1);
   font-weight: var(--font-weight-extrabold);
-  letter-spacing: -0.03em;
+  letter-spacing: var(--letter-spacing-h1);
 }
 
 h2 {
   font-size: var(--font-size-h2);
   line-height: var(--line-height-h2);
   font-weight: var(--font-weight-bold);
-  letter-spacing: -0.02em;
+  letter-spacing: var(--letter-spacing-h2);
 }
 
 h3 {
   font-size: var(--font-size-h3);
   line-height: var(--line-height-h3);
   font-weight: var(--font-weight-bold);
-  letter-spacing: -0.01em;
+  letter-spacing: var(--letter-spacing-h3);
 }
 
 h4 {
@@ -148,17 +172,32 @@ h4 {
   font-weight: var(--font-weight-semibold);
 }
 
-p, .subtitle, .lead-text {
+p, .body-text {
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  max-width: var(--paragraph-max-width);
   text-wrap: pretty;
+}
+
+.body-large, .lead-text {
+  font-size: var(--font-size-body-lg);
+  line-height: var(--line-height-body-lg);
+  text-wrap: pretty;
+}
+
+small, .text-small, .text-sm {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-sm);
 }
 
 .subtitle {
   font-size: var(--font-size-subtitle);
   color: var(--color-text-muted);
   line-height: var(--line-height-subtitle);
-  max-width: 680px;
+  max-width: var(--paragraph-max-width);
   margin-left: auto;
   margin-right: auto;
+  text-wrap: pretty;
 }
 
 /* Badge & Pill Primitives — Anti-Wrap */
@@ -172,7 +211,7 @@ p, .subtitle, .lead-text {
   line-height: 1.2;
 }
 
-/* Interactive Card System — Crisp 1px Border & Subtle Elevation */
+/* Interactive Card System — Crisp 1px Border & Elevation (Strictly Light, NO Glassmorphism) */
 .interactive-card {
   transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
   background-color: var(--color-surface);
@@ -189,7 +228,7 @@ p, .subtitle, .lead-text {
 /* Section Header Primitive */
 .section-header {
   text-align: center;
-  max-width: 720px;
+  max-width: 760px;
   margin: 0 auto clamp(2rem, 4vw, 3.5rem) auto;
 }
 
@@ -210,21 +249,72 @@ p, .subtitle, .lead-text {
   width: fit-content;
 }
 
-/* Button Reset & Custom Styling */
-.btn-custom {
+/* Button System Tokens & Base Styling */
+.btn-custom,
+button.btn,
+a.btn {
   font-family: inherit;
-  cursor: pointer;
-  outline: none;
-  text-decoration: none;
-  font-weight: 600;
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-semibold);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   white-space: nowrap;
   flex-shrink: 0;
-  border-radius: var(--radius-md);
-  transition: all var(--transition-fast);
+  border-radius: var(--btn-radius);
+  min-height: var(--btn-min-height);
+  padding: 0.75rem 1.4rem;
+  line-height: 1.2;
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast), color var(--transition-fast);
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Responsive Button Heights: Desktop 48-52px, Mobile 48-54px */
+@media (min-width: 768px) {
+  .btn-custom, button.btn, a.btn {
+    min-height: var(--btn-height-desktop);
+  }
+}
+
+@media (max-width: 767px) {
+  .btn-custom, button.btn, a.btn {
+    min-height: var(--btn-height-mobile);
+  }
+}
+
+/* WCAG 2.1 AA Accessible Focus-Visible Ring */
+.btn-custom:focus-visible,
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: var(--btn-focus-ring-width) solid var(--btn-focus-ring-color) !important;
+  outline-offset: var(--btn-focus-ring-offset) !important;
+}
+
+/* Interactive Touch Target (WCAG min >= 44px) */
+button,
+a,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  min-height: var(--btn-tap-target);
+}
+
+/* Primary Button: Green #0d7647, hover #095935, text #ffffff */
+.btn-primary {
+  background-color: var(--btn-primary-bg) !important;
+  color: var(--btn-primary-text) !important;
+  border: 1px solid var(--btn-primary-border) !important;
+  box-shadow: var(--btn-primary-shadow);
+  border-radius: var(--btn-radius);
 }
 
 .btn-primary:hover {
@@ -233,14 +323,54 @@ p, .subtitle, .lead-text {
   transform: translateY(-1px);
 }
 
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Secondary Button: bg #ffffff, border #e2e8f0, text #0f172a, hover bg #f4f7f5 */
+.btn-secondary {
+  background-color: var(--btn-secondary-bg) !important;
+  border: 1px solid var(--btn-secondary-border) !important;
+  color: var(--btn-secondary-text) !important;
+  border-radius: var(--btn-radius);
+}
+
 .btn-secondary:hover {
-  background-color: var(--color-primary-soft) !important;
-  border-color: var(--color-primary) !important;
+  background-color: var(--btn-secondary-hover-bg) !important;
+  border-color: var(--btn-secondary-hover-border) !important;
+  color: var(--btn-secondary-text) !important;
   transform: translateY(-1px);
 }
 
+.btn-secondary:active {
+  transform: translateY(0);
+}
+
+/* Ghost / Text Button: bg transparent, text #0d7647, hover underline/bg #edf7f1 */
+.btn-ghost,
+.btn-text {
+  background-color: var(--btn-ghost-bg) !important;
+  color: var(--btn-ghost-text) !important;
+  border: 1px solid transparent !important;
+  border-radius: var(--btn-radius);
+}
+
+.btn-ghost:hover,
+.btn-text:hover {
+  background-color: var(--btn-ghost-hover-bg) !important;
+  color: var(--btn-ghost-hover-text) !important;
+  text-decoration: underline;
+}
+
+.btn-white {
+  background-color: #ffffff !important;
+  color: var(--color-text) !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: var(--btn-radius);
+}
+
 .btn-white:hover {
-  background-color: var(--color-border-light) !important;
+  background-color: var(--btn-secondary-hover-bg) !important;
   border-color: var(--color-border-strong) !important;
   transform: translateY(-1px);
 }

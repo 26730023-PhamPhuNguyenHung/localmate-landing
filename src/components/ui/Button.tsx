@@ -32,10 +32,10 @@ export const Button: React.FC<ButtonProps> = ({
         };
       case 'secondary':
         return {
-          backgroundColor: 'var(--color-primary-soft)',
-          color: 'var(--color-primary-dark)',
-          border: '1px solid var(--color-primary-border)',
-          fontWeight: 700
+          backgroundColor: 'var(--btn-secondary-bg)',
+          color: 'var(--btn-secondary-text)',
+          border: '1px solid var(--btn-secondary-border)',
+          fontWeight: 600
         };
       case 'white':
         return {
@@ -47,9 +47,9 @@ export const Button: React.FC<ButtonProps> = ({
         };
       case 'ghost':
         return {
-          backgroundColor: 'transparent',
-          color: 'var(--color-text)',
-          border: 'none',
+          backgroundColor: 'var(--btn-ghost-bg)',
+          color: 'var(--btn-ghost-text)',
+          border: '1px solid transparent',
           fontWeight: 600
         };
     }
@@ -59,22 +59,22 @@ export const Button: React.FC<ButtonProps> = ({
     switch (size) {
       case 'sm':
         return {
-          padding: '0.45rem 0.9rem',
-          fontSize: '0.825rem',
-          minHeight: '36px'
+          padding: '0.45rem 1rem',
+          fontSize: 'var(--font-size-sm, 0.875rem)',
+          minHeight: 'var(--btn-tap-target, 44px)'
         };
       case 'lg':
         return {
-          padding: '0.85rem 1.6rem',
-          fontSize: 'clamp(0.925rem, 1vw, 1.025rem)',
-          minHeight: '48px'
+          padding: '0.85rem 1.65rem',
+          fontSize: 'var(--font-size-body-lg, 1.05rem)',
+          minHeight: 'var(--btn-height-desktop, 52px)'
         };
       case 'md':
       default:
         return {
-          padding: '0.65rem 1.25rem',
-          fontSize: '0.875rem',
-          minHeight: '42px'
+          padding: '0.65rem 1.35rem',
+          fontSize: 'var(--font-size-body, 0.9375rem)',
+          minHeight: 'var(--btn-min-height, 48px)'
         };
     }
   };
@@ -84,7 +84,7 @@ export const Button: React.FC<ButtonProps> = ({
     alignItems: 'center',
     justifyContent: 'center',
     gap: '0.5rem',
-    borderRadius: pill ? 'var(--radius-full)' : 'var(--radius-md)',
+    borderRadius: pill ? 'var(--radius-full)' : 'var(--btn-radius, 12px)',
     cursor: 'pointer',
     transition: 'all var(--transition-fast)',
     textDecoration: 'none',

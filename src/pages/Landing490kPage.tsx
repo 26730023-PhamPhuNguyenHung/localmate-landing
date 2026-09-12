@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Container } from '../components/ui/Container';
 import { SectionHeader } from '../components/ui/SectionHeader';
 import { Button } from '../components/ui/Button';
+import { Breadcrumbs } from '../components/ui/Breadcrumbs';
 import { 
   Rocket, 
   CheckCircle2, 
@@ -205,6 +206,7 @@ export const Landing490kPage: React.FC = () => {
       {/* SECTION 1: HERO */}
       <section style={{ padding: 'clamp(2.5rem, 5vw, 4.5rem) 0', borderBottom: '1px solid var(--color-border)' }}>
         <Container size="lg">
+          <Breadcrumbs items={[{ name: 'Landing Page 490k', url: '/landing-490k' }]} />
           <div
             style={{
               display: 'grid',

@@ -387,6 +387,89 @@ export const ARTICLES: ArticleEntity[] = [
       buttonText: 'Xem Gói Chăm Sóc 990k',
       targetServiceSlug: 'content-marketing'
     }
+  },
+  {
+    id: 'art-05',
+    slug: 'cach-tranh-bi-mat-quyen-tai-khoan-ten-mien',
+    title: 'Cách tránh bị giữ con tin tài khoản, mất tên miền và hosting khi thuê làm website',
+    pillar: 'Bảo Mật Tài Khoản & Sở Hữu Số',
+    pillarKey: 'website',
+    category: 'Bảo Mật Số',
+    primaryIntent: 'MISTAKES',
+    funnelStage: 'MOFU',
+    primaryKeyword: 'tránh bị giữ tài khoản khi làm website',
+    summary: 'Cảnh báo 4 chiêu trò giữ con tin tài khoản phổ biến và checklist kiểm tra bàn giao 100% tài khoản chính chủ để không bị phụ thuộc đơn vị kỹ thuật.',
+    author: {
+      name: 'Nguyễn Văn Hùng',
+      role: 'Chuyên viên kỹ thuật tại LocalMate'
+    },
+    publishedAt: '2026-08-18',
+    updatedAt: '2026-08-25',
+    readTime: '6 phút đọc',
+    heroImage: '/assets/illustrations/mascot-hero.png',
+    tableOfContents: [
+      { id: 'noi-dau-con-tin-so', title: '1. "Con tin số" — Nỗi sợ có thật của các chủ tiệm' },
+      { id: '3-chieu-tro-thuong-gap', title: '2. 3 chiêu trò giữ tài khoản phổ biến nhất' },
+      { id: 'checklist-ban-giao', title: '3. Checklist 4 tài sản số bắt buộc phải đứng tên bạn' },
+      { id: 'nguyen-tac-localmate', title: '4. Cam kết bàn giao 100% tài khoản chính chủ tại LocalMate' }
+    ],
+    contentSections: [
+      {
+        headingId: 'noi-dau-con-tin-so',
+        heading: '1. "Con tin số" — Nỗi sợ có thật của các chủ tiệm',
+        paragraphs: [
+          'Rất nhiều chủ doanh nghiệp nhỏ từng gặp phải tình cảnh cay đắng: Sau khi thuê đơn vị ngoài dựng website hoặc chạy quảng cáo với giá rẻ vài trăm ngàn, đến năm thứ 2 bị đòi phí gia hạn hàng chục triệu đồng. Nếu không trả, bên dịch vụ lập tức khóa web hoặc chiếm luôn tên miền thương hiệu.',
+          'Khi chủ tiệm muốn đổi sang đơn vị khác làm, họ mới vỡ lẽ ra là tên miền không đứng tên mình, hosting không có mật khẩu root, và mã nguồn bị mã hóa không thể mang đi.'
+        ],
+        callout: {
+          type: 'warning',
+          title: 'Cảnh báo rủi ro thương hiệu',
+          text: 'Tên miền là tài sản số vô giá gắn liền với uy tín kinh doanh. Nếu để người khác đứng tên trên tài khoản đăng ký, bạn hoàn toàn có thể bị mất trắng thương hiệu vào tay đối thủ!'
+        }
+      },
+      {
+        headingId: '3-chieu-tro-thuong-gap',
+        heading: '2. 3 chiêu trò giữ tài khoản phổ biến nhất',
+        paragraphs: [
+          '1. Dùng email của dịch vụ để mua tên miền: Khách hàng chỉ được cấp tài khoản phụ (sub-account) hoặc thậm chí không có tài khoản quản trị DNS.',
+          '2. Không bàn giao quyền Chủ sở hữu chính trên Google Maps: Bên làm dịch vụ giữ quyền Primary Owner, có thể đổi số điện thoại hoặc chuyển địa điểm bất cứ lúc nào.',
+          '3. Khóa mã nguồn trên hosting riêng của agency: Khi muốn chuyển đổi hoặc nâng cấp tính năng, khách hàng bắt buộc phải trả thêm tiền cho cùng bên đó.'
+        ]
+      },
+      {
+        headingId: 'checklist-ban-giao',
+        heading: '3. Checklist 4 tài sản số bắt buộc phải đứng tên bạn',
+        paragraphs: [
+          'Trước khi thanh toán đợt cuối, hãy yêu cầu bên dịch vụ cung cấp đủ các quyền sau:',
+          '• Tên miền: Đăng ký bằng đúng CCCD/MST và Email chính chủ của bạn tại nhà đăng ký uy tín (PA Việt Nam, Mắt Bão, Cloudflare, Namecheap...).',
+          '• Hosting / Cloud: Có quyền truy cập vào tài khoản chứa code hoặc file nén toàn bộ mã nguồn website.',
+          '• Google Business Profile: Tài khoản Gmail của bạn phải là "Chủ sở hữu chính" (Primary Owner).',
+          '• Fanpage / Kênh mạng xã hội: Tài khoản cá nhân của bạn phải giữ vai trò Quản trị viên cao nhất (Admin).'
+        ]
+      },
+      {
+        headingId: 'nguyen-tac-localmate',
+        heading: '4. Cam kết bàn giao 100% tài khoản chính chủ tại LocalMate',
+        paragraphs: [
+          'Tại LocalMate, nguyên tắc bất di bất dịch là: Khách hàng nắm toàn quyền kiểm soát 100%.',
+          'Chúng tôi tạo tài khoản trên chính email của khách hàng, bàn giao toàn bộ mật khẩu, mã nguồn và tài liệu hướng dẫn. Sau khi bàn giao, bạn có thể tự do tự quản lý hoặc mang sang bất kỳ bên thứ ba nào mà không hề bị cản trở.'
+        ]
+      }
+    ],
+    faqs: [
+      {
+        question: 'Nếu tôi không rành tạo tài khoản thì LocalMate có tạo hộ được không?',
+        answer: 'Có. LocalMate sẽ tạo trực tiếp bằng địa chỉ Email của bạn, xác minh số điện thoại chính chủ và gửi lại toàn bộ thông tin đăng nhập kèm hướng dẫn đổi mật khẩu để bạn an tâm tuyệt đối.'
+      }
+    ],
+    relatedServiceSlugs: ['website-landing-page', 'google-maps', 'google-ads'],
+    relatedArticleSlugs: ['cau-truc-landing-page-chuyen-doi-cao', 'huong-dan-toi-uu-google-business-profile'],
+    cta: {
+      title: 'Cần Làm Website Minh Bạch & Bàn Giao 100% Chính Chủ?',
+      subtitle: 'LocalMate hỗ trợ dựng demo xem trước 0đ, cam kết bàn giao toàn quyền tên miền, hosting và mã nguồn.',
+      buttonText: 'Nhận Tư Vấn 0đ Ngay',
+      targetServiceSlug: 'website-landing-page'
+    }
   }
 ];
 

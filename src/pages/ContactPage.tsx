@@ -94,7 +94,7 @@ export const ContactPage: React.FC = () => {
         </div>
 
         {/* 2-Column Grid: Quick Contact Info & Interactive Form */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem', alignItems: 'start' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '2.5rem', alignItems: 'start' }}>
           {/* Left Column: Direct Contacts */}
           <div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', marginBottom: '2rem' }}>
