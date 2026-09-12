@@ -30,8 +30,10 @@ export const COMPANY_INFO = {
   legalName: 'CÔNG TY TNHH LOCALMATE',
   taxCode: '4001337934',
   taxAddress: '03 Trường Chinh, Phường Hội An Tây, TP. Đà Nẵng, Việt Nam',
+  officeAddress: 'Hóc Môn, TP. Hồ Chí Minh (Tư vấn trực tiếp 1-1 tận nơi & phục vụ toàn quốc)',
   establishedDate: '10/08/2026',
   status: 'Đang hoạt động',
+  workingHours: '8:00 - 20:00 cả tuần (Thứ Hai – Chủ Nhật)',
   phoneDisplay: '0834.422.439 (Hotline / Zalo 24/7)',
   phoneRaw: '0834422439',
   email: 'contact@localmate.vn',
@@ -46,7 +48,9 @@ export const CONTACT_INFO = {
   zaloUrl: 'https://zalo.me/0834422439',
   mailtoUrl: 'mailto:contact@localmate.vn',
   email: 'contact@localmate.vn',
-  address: '03 Trường Chinh, P. Hội An Tây, TP. Đà Nẵng'
+  officeAddress: 'Hóc Môn, TP. Hồ Chí Minh (Tư vấn trực tiếp 1-1 tận nơi)',
+  address: 'Hóc Môn, TP. Hồ Chí Minh & 03 Trường Chinh, TP. Đà Nẵng',
+  workingHours: '8:00 - 20:00 cả tuần (Thứ Hai – Chủ Nhật)'
 };
 
 export const NAV_LINKS = [
