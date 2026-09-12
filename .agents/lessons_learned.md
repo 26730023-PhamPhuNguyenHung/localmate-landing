@@ -135,3 +135,16 @@
   - Tất cả nút đạt chiều cao `46px` (vượt ngưỡng WCAG 44px), bo tròn mềm mại 12px, kèm phản hồi xúc giác `:active { transform: scale(0.97); }` tạo cảm giác bấm đầm tay, nhạy bén như app native.
   - Trên màn hình siêu nhỏ (360px), các nút co giãn tự động không rớt chữ nhờ `white-space: nowrap` và `text-overflow: ellipsis`.
 
+## 11. WebFX Benchmark: Revenue-Driven Framework & Service Delivery Model
+- **Định vị kết quả kinh doanh thực tế thay cho thuật ngữ kỹ thuật (Revenue Impact vs Tech Vanity)**:
+  - WebFX không bán "SEO" hay "Code website" chung chung, họ định vị giải pháp: *Digital Marketing That Drives Measurable Revenue*.
+  - Đối với LocalMate: Đóng gói dịch vụ gắn liền với kết quả kinh doanh thực tế của chủ cơ sở, tiệm quán: Số cuộc gọi từ Google Maps, khách nhắn tin Zalo, đơn hàng và độ nhận diện tại địa phương (bán kính 3-10km).
+- **Mô hình Bánh đà Tăng trưởng 4 giai đoạn khép kín (The Local Growth Flywheel)**:
+  1. *Giai đoạn 1 - Thu hút (Acquisition / Stay Visible)*: Google Maps chuẩn SEO, Web lên top tìm kiếm địa phương, chạy Ads định vị chính xác khu vực.
+  2. *Giai đoạn 2 - Chuyển đổi (Pipeline / Convert Leads)*: Tốc độ web < 1s, nút Gọi/Zalo/Chỉ đường một chạm, Form đăng ký tư vấn 3 trường siêu gọn.
+  3. *Giai đoạn 3 - Vận hành & Chăm sóc (RevOps & Care)*: Chăm sóc Fanpage định kỳ, quy trình lấy đánh giá 5 sao Google Maps, sao lưu & bảo mật dữ liệu.
+  4. *Giai đoạn 4 - Đo lường & Tăng trưởng (Measurement & Growth)*: Báo cáo minh bạch số cuộc gọi, lượt chỉ đường, tin nhắn khách hàng mới mỗi tuần/tháng.
+- **Minh bạch chi phí tuyệt đối (Pricing Transparency) & Quyền sở hữu tài sản độc lập**:
+  - Cung cấp mức giá cố định, không phụ phí bất ngờ, khách nghiệm thu đạt chuẩn mới thanh toán.
+  - 100% tài khoản chính chủ (Domain, Hosting, Gmail, Google Business Profile) bàn giao tận tay khách hàng.
+
