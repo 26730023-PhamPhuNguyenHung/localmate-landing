@@ -14,7 +14,10 @@ import {
   Users,
   FileText,
   Sparkles,
-  BookOpen
+  BookOpen,
+  ClipboardCheck,
+  Compass,
+  CheckSquare
 } from 'lucide-react';
 import { CONTACT_INFO, COMPANY_INFO } from '../../data/landingContent';
 import { Link } from './Router';
@@ -172,6 +175,10 @@ export const Footer: React.FC = () => {
                     GEO AI Search
                   </Link>
                   <span className="sublink-divider">•</span>
+                  <Link to="/quy-trinh-geo" className="pillar-sub-link">
+                    Quy trình GEO
+                  </Link>
+                  <span className="sublink-divider">•</span>
                   <Link to="/dich-vu/aeo" className="pillar-sub-link">
                     AEO Trích dẫn
                   </Link>
@@ -215,8 +222,12 @@ export const Footer: React.FC = () => {
                   <span className="pillar-link-title">Chăm sóc đồng hành</span>
                 </Link>
                 <div className="pillar-sublinks-row">
+                  <Link to="/quy-trinh-cham-soc" className="pillar-sub-link">
+                    Quy trình chăm sóc định kỳ
+                  </Link>
+                  <span className="sublink-divider">•</span>
                   <Link to="/dich-vu/cham-soc-website" className="pillar-sub-link">
-                    Chăm sóc web bảo hành 5 năm
+                    Bảo hành 5 năm
                   </Link>
                   <span className="sublink-divider">•</span>
                   <Link to="/dich-vu/chay-khach-cham-soc" className="pillar-sub-link">
@@ -235,7 +246,60 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* CỘT 3: CHÍNH SÁCH & MINH BẠCH */}
+          {/* CỘT 3: TÀI NGUYÊN & QUY TRÌNH (CHUYÊN BIỆT BỔ SUNG) */}
+          <div className="footer-col col-resources">
+            <h4 className="footer-col-title">Tài Nguyên &amp; Quy Trình</h4>
+            <ul className="footer-nav-list">
+              <li>
+                <Link to="/khao-sat-du-an" className="nav-item-link highlight-survey-link">
+                  <ClipboardCheck size={14} className="nav-arrow nav-survey-icon" />
+                  <span className="survey-link-label">Khảo sát dự án 0đ</span>
+                  <span className="footer-pill-mini">0đ</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/chien-luoc-5-giai-doan" className="nav-item-link">
+                  <Compass size={14} className="nav-arrow" />
+                  <span>Lộ trình 5 giai đoạn</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/quy-trinh-geo" className="nav-item-link">
+                  <MapPin size={14} className="nav-arrow" />
+                  <span>Quy trình GEO &amp; AI</span>
+                  <span className="footer-pill-mini hot">2026</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/tieu-chuan-audit" className="nav-item-link">
+                  <CheckSquare size={14} className="nav-arrow" />
+                  <span>Tiêu chuẩn Audit 2026</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/quy-trinh-cham-soc" className="nav-item-link">
+                  <ShieldCheck size={14} className="nav-arrow" />
+                  <span>Quy trình chăm sóc số</span>
+                  <span className="footer-pill-mini teal">5 năm</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/ho-so-nang-luc" className="nav-item-link">
+                  <FileText size={14} className="nav-arrow" />
+                  <span style={{ fontWeight: 650 }}>Hồ sơ năng lực 2026</span>
+                  <span className="footer-pill-mini">40 Slide</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/kien-thuc" className="nav-item-link">
+                  <BookOpen size={14} className="nav-arrow" />
+                  <span>Trung tâm kiến thức</span>
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* CỘT 4: CHÍNH SÁCH & MINH BẠCH */}
           <div className="footer-col col-policies">
             <h4 className="footer-col-title">Chính Sách &amp; Minh Bạch</h4>
             <ul className="footer-nav-list">
@@ -243,18 +307,6 @@ export const Footer: React.FC = () => {
                 <Link to="/bang-gia" className="nav-item-link">
                   <FileText size={13} className="nav-arrow" />
                   <span>Bảng giá &amp; Dự toán rõ ràng</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/kien-thuc" className="nav-item-link">
-                  <BookOpen size={13} className="nav-arrow" />
-                  <span>Kiến thức &amp; Hướng dẫn</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/ho-so-nang-luc" className="nav-item-link">
-                  <Sparkles size={13} className="nav-arrow" />
-                  <span style={{ fontWeight: 700, color: '#0d7647' }}>Hồ sơ năng lực 2026 (40 Slide)</span>
                 </Link>
               </li>
               <li>
@@ -296,7 +348,7 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* CỘT 4: ĐẶC QUYỀN ĐỊA PHƯƠNG & KẾT NỐI TRỰC TIẾP */}
+          {/* CỘT 5: ĐẶC QUYỀN ĐỊA PHƯƠNG & KẾT NỐI TRỰC TIẾP */}
           <div className="footer-col col-local-support">
             <h4 className="footer-col-title">Đặc Quyền Địa Phương</h4>
 
@@ -564,7 +616,7 @@ export const Footer: React.FC = () => {
           transform: translateY(-1px);
         }
 
-        /* 2. Main Content Grid (4 Columns) */
+        /* 2. Main Content Grid (5 Columns on Desktop) */
         .footer-main-grid {
           display: grid;
           grid-template-columns: 1fr;
@@ -579,10 +631,20 @@ export const Footer: React.FC = () => {
           }
         }
 
-        @media (min-width: 1024px) {
+        @media (min-width: 1024px) and (max-width: 1279px) {
           .footer-main-grid {
-            grid-template-columns: 1.25fr 1.15fr 0.75fr 0.95fr;
-            gap: 2.25rem;
+            grid-template-columns: 1.25fr 1.15fr 1fr 1fr;
+            gap: 1.75rem;
+          }
+          .col-local-support {
+            grid-column: span 2;
+          }
+        }
+
+        @media (min-width: 1280px) {
+          .footer-main-grid {
+            grid-template-columns: 1.3fr 1.1fr 1fr 0.9fr 1.1fr;
+            gap: 1.75rem;
           }
         }
 

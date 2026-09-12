@@ -38,6 +38,8 @@ import { CredentialPage } from './pages/CredentialPage';
 import { ProjectBriefPage } from './pages/ProjectBriefPage';
 import { CareWorkflowPage } from './pages/CareWorkflowPage';
 import { StrategyPhasesPage } from './pages/StrategyPhasesPage';
+import { GeoWorkflowPage } from './pages/GeoWorkflowPage';
+import { TechnicalAuditStandardsPage } from './pages/TechnicalAuditStandardsPage';
 
 // Modals
 import { AdvisorModal } from './components/advisor/AdvisorModal';
@@ -88,10 +90,11 @@ const MainContent: React.FC = () => {
       return <CredentialPage onOpenConsultForm={handleOpenLeadForm} />;
     }
 
-    // 2.6 Interactive Project Brief & Survey Routes (/khao-sat-du-an, /brief)
+    // 2.6 Interactive Project Brief & Survey Routes (/khao-sat-du-an, /brief, /brief-du-an)
     if (
       normalizedPath === '/khao-sat-du-an' ||
       normalizedPath === '/brief' ||
+      normalizedPath === '/brief-du-an' ||
       normalizedPath === '/brief-geo-seo' ||
       normalizedPath.startsWith('/khao-sat-du-an') ||
       normalizedPath.startsWith('/brief')
@@ -107,14 +110,28 @@ const MainContent: React.FC = () => {
     ) {
       return <StrategyPhasesPage onOpenConsultForm={handleOpenLeadForm} />;
     }
-    if (normalizedPath === '/quy-trinh-geo') {
-      return <GeoServicePage onOpenConsultForm={handleOpenLeadForm} />;
+    if (
+      normalizedPath === '/quy-trinh-geo' ||
+      normalizedPath === '/quy-trinh-trien-khai-geo' ||
+      normalizedPath.startsWith('/quy-trinh-geo')
+    ) {
+      return <GeoWorkflowPage onOpenConsultForm={handleOpenLeadForm} />;
     }
-    if (normalizedPath === '/tieu-chuan-audit') {
-      return <KnowledgePage />;
+    if (
+      normalizedPath === '/tieu-chuan-audit' ||
+      normalizedPath === '/tieu-chuan-audit-ky-thuat' ||
+      normalizedPath === '/technical-audit-standards' ||
+      normalizedPath === '/tieu-chuan-website-2026' ||
+      normalizedPath.startsWith('/tieu-chuan-audit')
+    ) {
+      return <TechnicalAuditStandardsPage onOpenConsultForm={handleOpenLeadForm} />;
     }
-    if (normalizedPath === '/quy-trinh-cham-soc') {
-      return <CareSolutionPage onOpenConsultForm={handleOpenLeadForm} />;
+    if (
+      normalizedPath === '/quy-trinh-cham-soc' ||
+      normalizedPath === '/quy-trinh-van-hanh-cham-soc' ||
+      normalizedPath.startsWith('/quy-trinh-cham-soc')
+    ) {
+      return <CareWorkflowPage onOpenConsultForm={handleOpenLeadForm} />;
     }
 
     // 3. Admin & Advisor

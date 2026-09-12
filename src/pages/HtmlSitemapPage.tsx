@@ -54,6 +54,9 @@ export const HtmlSitemapPage: React.FC = () => {
               <li><Link to="/du-an" style={{ color: 'var(--color-text)', textDecoration: 'none', fontWeight: 600 }}>• Dự án thực tế (/du-an)</Link></li>
               <li><Link to="/kien-thuc" style={{ color: 'var(--color-text)', textDecoration: 'none', fontWeight: 600 }}>• Hướng dẫn &amp; Kiến thức (/kien-thuc)</Link></li>
               <li><Link to="/landing-490k" style={{ color: 'var(--color-text)', textDecoration: 'none', fontWeight: 600 }}>• Gói Website 1 trang 490k (/landing-490k)</Link></li>
+              <li><Link to="/tieu-chuan-audit" style={{ color: 'var(--color-primary-dark)', textDecoration: 'none', fontWeight: 700 }}>• Tiêu chuẩn Audit Kỹ thuật 2026 (/tieu-chuan-audit)</Link></li>
+              <li><Link to="/quy-trinh-cham-soc" style={{ color: 'var(--color-primary-dark)', textDecoration: 'none', fontWeight: 700 }}>• Quy trình vận hành &amp; Chăm sóc định kỳ (/quy-trinh-cham-soc)</Link></li>
+              <li><Link to="/khao-sat-du-an" style={{ color: 'var(--color-primary-dark)', textDecoration: 'none', fontWeight: 700 }}>• Khảo sát dự án &amp; Demo 0đ (/khao-sat-du-an)</Link></li>
               <li><Link to="/lien-he" style={{ color: 'var(--color-text)', textDecoration: 'none', fontWeight: 600 }}>• Liên hệ tư vấn (/lien-he)</Link></li>
             </ul>
           </div>
