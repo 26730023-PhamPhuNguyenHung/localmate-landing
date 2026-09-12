@@ -792,7 +792,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           top: 70px;
           left: 0;
           right: 0;
-          width: 100vw;
+          width: 100%;
           background-color: transparent;
           pointer-events: none;
           display: flex;
@@ -1060,6 +1060,52 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           font-weight: 800;
           color: var(--color-navy);
           line-height: 1.2;
+        }
+
+        /* Responsive Optimization for Mega Menu on Laptop 14" & 125% Zoom (1025px - 1240px) */
+        @media (min-width: 1025px) and (max-width: 1240px) {
+          .mega-menu-overlay {
+            padding: 0.5rem 1rem 1.5rem 1rem;
+          }
+          .mega-menu-container {
+            padding: 1.15rem 1.25rem;
+            gap: 1.15rem;
+            grid-template-columns: 1fr 240px;
+          }
+          .mega-menu-main {
+            gap: 0.85rem;
+          }
+          .mega-card {
+            padding: 0.4rem 0.5rem;
+            gap: 0.5rem;
+          }
+          .mega-card-icon {
+            width: 30px;
+            height: 30px;
+          }
+          .mega-card-title {
+            font-size: 0.8rem;
+          }
+          .mega-card-desc {
+            font-size: 0.675rem;
+            line-height: 1.25;
+          }
+          .mega-promo-rail {
+            padding-left: 1rem;
+            gap: 0.5rem;
+          }
+          .mega-promo-box {
+            padding: 0.85rem 1rem;
+          }
+          .promo-title {
+            font-size: 0.9rem;
+          }
+          .promo-desc {
+            font-size: 0.7rem;
+          }
+          .mega-hotline-card {
+            padding: 0.45rem 0.65rem;
+          }
         }
 
         /* Simple Dropdown for Knowledge */

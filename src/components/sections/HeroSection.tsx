@@ -68,8 +68,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDemoForm }) => {
     <section
       style={{
         backgroundColor: '#edf5f1',
-        paddingTop: 'clamp(2.5rem, 5vw, 4.5rem)',
-        paddingBottom: 'clamp(2.5rem, 5vw, 4rem)',
+        paddingTop: 'clamp(2rem, 3.8vw, 3.75rem)',
+        paddingBottom: 'clamp(2rem, 3.8vw, 3.5rem)',
         borderBottom: '1px solid var(--color-border)',
         overflow: 'hidden',
         position: 'relative'
@@ -103,18 +103,18 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDemoForm }) => {
           <div className="hero-eyebrow-wrapper">
             <span className="hero-eyebrow-pill">
               <Sparkles size={13} color="var(--color-primary)" className="sparkle-icon" />
-              <span>WEBSITE • GOOGLE • QUẢNG CÁO • NỘI DUNG</span>
+              <span>NGƯỜI ĐỒNG HÀNH SỐ • ĐỘI TRIỂN KHAI PHÍA SAU</span>
             </span>
           </div>
 
           {/* Main Headline — Balanced typography for all viewports */}
           <h1 className="hero-headline">
-            Giúp doanh nghiệp nhỏ có website, lên Google <span className="headline-highlight">và tìm thêm khách.</span>
+            Bạn tập trung bán hàng. <span className="headline-highlight">LocalMate lo phần công nghệ.</span>
           </h1>
 
           {/* Subtitle */}
           <p className="hero-subtitle">
-            Chọn đúng việc bạn cần: làm website bán hàng, lên Google Maps, chạy Google Ads hoặc viết bài Facebook mỗi tháng.
+            Người đồng hành số tại địa phương — giải quyết website, tự động hóa quy trình, kết nối phần mềm và triển khai kỹ thuật cho doanh nghiệp, agency và đối tác công nghệ.
           </p>
 
           {/* Primary & Secondary Action Buttons */}
@@ -132,7 +132,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDemoForm }) => {
               className="hero-btn-action hero-btn-primary"
             >
               <Sparkles size={17} />
-              <span>Nhận website demo 0đ</span>
+              <span>Gửi việc cho LocalMate</span>
               <ArrowRight size={17} />
             </Button>
 
@@ -140,7 +140,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDemoForm }) => {
               variant="white"
               size="lg"
               onClick={() => {
-                const el = document.getElementById('can-lam-gi') || document.getElementById('bang-gia');
+                const el = document.getElementById('can-lam-gi') || document.getElementById('cac-goi-trien-khai') || document.getElementById('bang-gia');
                 if (el) {
                   el.scrollIntoView({ behavior: 'smooth' });
                 } else {
@@ -149,7 +149,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDemoForm }) => {
               }}
               className="hero-btn-action hero-btn-secondary"
             >
-              <span>Xem dịch vụ &amp; giá</span>
+              <span>Xem các gói triển khai &amp; giá</span>
             </Button>
           </div>
 
@@ -162,17 +162,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDemoForm }) => {
             <div className="trust-divider" />
             <div className="trust-strip-item">
               <Check size={15} color="var(--color-primary)" className="trust-icon" strokeWidth={2.5} />
-              <span>Xem thử demo 0đ</span>
+              <span>Tận dụng thứ đã có</span>
             </div>
             <div className="trust-divider" />
             <div className="trust-strip-item">
               <Check size={15} color="var(--color-primary)" className="trust-icon" strokeWidth={2.5} />
-              <span>Bàn giao tài khoản</span>
+              <span>Đội ngũ KTV địa phương</span>
             </div>
             <div className="trust-divider" />
             <div className="trust-strip-item">
               <Check size={15} color="var(--color-primary)" className="trust-icon" strokeWidth={2.5} />
-              <span>Hỗ trợ sau bàn giao</span>
+              <span>Bàn giao 100% tài khoản</span>
             </div>
           </div>
         </div>
@@ -231,9 +231,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDemoForm }) => {
           top: 45%;
           left: 50%;
           transform: translate(-50%, -50%);
-          width: 125%;
-          height: 125%;
-          max-width: 850px;
+          width: 100%;
+          height: 100%;
+          max-width: 100%;
           background: radial-gradient(
             ellipse at center,
             rgba(255, 255, 255, 0.16) 0%,
@@ -354,9 +354,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDemoForm }) => {
           align-items: center;
           gap: 0.4rem;
           justify-content: flex-start;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
+          line-height: 1.35;
+          text-wrap: pretty;
         }
 
         .trust-icon {
