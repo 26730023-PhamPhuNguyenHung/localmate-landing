@@ -8,6 +8,7 @@ import { AiSearchClusterNav } from '../components/services/AiSearchClusterNav';
 import { AiSearchPricingTable } from '../components/services/AiSearchPricingTable';
 import { AiPromptSimulator } from '../components/services/AiPromptSimulator';
 import { Warranty5YearSection } from '../components/sections/Warranty5YearSection';
+import { CapabilityContextBox } from '../components/ui/CapabilityContextBox';
 import {
   HelpCircle,
   Sparkles,
@@ -110,7 +111,7 @@ export const AeoServicePage: React.FC<AeoServicePageProps> = ({ onOpenConsultFor
       badge: 'Chuẩn Máy Đọc 100%',
       icon: <Layers className="w-6 h-6 text-[#0d7647]" />,
       desc: 'Triển khai toàn diện bộ Schema.org chuyên dụng cho Answer Engine: FAQPage, HowTo, TechArticle, DefinedTerm và LocalBusiness. Từng câu hỏi và câu trả lời được gắn nhãn ngữ nghĩa chính xác, giúp bot thu thập dữ liệu hiểu lập tức đây là nguồn thông tin chính thức có bản quyền.',
-      actionPoint: 'Tăng 300% tỷ lệ được bot AI công nhận là nguồn tham chiếu số 1.'
+      actionPoint: 'Gia tăng độ tin cậy để bot AI công nhận là nguồn tham chiếu chuẩn xác.'
     },
     {
       step: '03',
@@ -154,9 +155,15 @@ export const AeoServicePage: React.FC<AeoServicePageProps> = ({ onOpenConsultFor
         <Container size="lg">
           <Breadcrumbs
             items={[
-              { name: 'Dịch vụ', url: '/dich-vu' },
+              { name: 'Giải pháp', url: '/giai-phap' },
+              { name: 'Được khách hàng tìm thấy', url: '/giai-phap/duoc-tim-thay' },
               { name: 'Tối ưu Trích dẫn AI (AEO)', url: '/dich-vu/aeo' }
             ]}
+          />
+
+          <CapabilityContextBox
+            solutionName="Được khách hàng tìm thấy trên Google & AI"
+            solutionUrl="/giai-phap/duoc-tim-thay"
           />
 
           <div style={{ maxWidth: '850px', margin: '2rem auto 0 auto', textAlign: 'center' }}>
@@ -189,7 +196,7 @@ export const AeoServicePage: React.FC<AeoServicePageProps> = ({ onOpenConsultFor
                 textWrap: 'pretty'
               }}
             >
-              Đưa website trở thành <span style={{ color: '#0d7647' }}>nguồn trích dẫn tin cậy số 1</span> của AI
+              Đưa website trở thành <span style={{ color: '#0d7647' }}>nguồn trích dẫn tin cậy hàng đầu</span> của AI
             </h1>
 
             <p

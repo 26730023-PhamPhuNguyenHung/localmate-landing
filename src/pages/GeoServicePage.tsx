@@ -40,6 +40,7 @@ import {
 } from 'lucide-react';
 
 import { AiSearchClusterNav } from '../components/services/AiSearchClusterNav';
+import { CapabilityContextBox } from '../components/ui/CapabilityContextBox';
 
 interface GeoServicePageProps {
   onOpenConsultForm?: (serviceName?: string) => void;
@@ -113,8 +114,9 @@ export const GeoServicePage: React.FC<GeoServicePageProps> = ({ onOpenConsultFor
   };
 
   const breadcrumbs = [
-    { name: 'Dịch vụ', url: '/dich-vu' },
-    { name: 'Dịch vụ GEO Địa Phương 2026', url: '/dich-vu/geo' }
+    { name: 'Giải pháp', url: '/giai-phap' },
+    { name: 'Được khách hàng tìm thấy', url: '/giai-phap/duoc-tim-thay' },
+    { name: 'Dịch vụ GEO Địa Phương', url: '/dich-vu/geo' }
   ];
 
   // 5 Trụ Cột Triển Khai GEO
@@ -125,7 +127,7 @@ export const GeoServicePage: React.FC<GeoServicePageProps> = ({ onOpenConsultFor
       badge: 'Cốt Lõi Nhận Diện AI',
       icon: <Building2 className="w-6 h-6 text-[#0d7647]" />,
       desc: 'Xây dựng mạng lưới liên kết thực thể (Knowledge Graph), chuẩn hóa bộ 3 dữ liệu NAP (Tên quán - Địa chỉ - Số điện thoại). Cấy cấu trúc dữ liệu JSON-LD Schema đa tầng (@type: LocalBusiness, GeoCoordinates, openingHours, hasOfferCatalog, sameAs) nhúng sâu vào mã nguồn giúp crawler AI hiểu tường tận vị trí địa lý, ngành nghề và năng lực phục vụ.',
-      actionPoint: 'AI biết chắc chắn bạn là ai, ở đâu, chuyên làm món gì / dịch vụ gì để tự tin đề xuất.'
+      actionPoint: 'AI hiểu chính xác bạn là ai, ở đâu, chuyên làm món gì / dịch vụ gì để tự tin đề xuất.'
     },
     {
       step: '02',
@@ -193,15 +195,15 @@ export const GeoServicePage: React.FC<GeoServicePageProps> = ({ onOpenConsultFor
   const faqs = [
     {
       q: 'GEO (Generative Engine Optimization) là gì? Khác gì so với SEO Google truyền thống?',
-      a: 'SEO truyền thống giúp website của bạn tranh chấp vị trí trong danh sách 10 đường link xanh trên Google. Nhưng năm 2026, người dùng không còn thời gian bấm vào từng link nữa mà hỏi thẳng AI (ChatGPT, Google Gemini) và nghe AI tóm tắt câu trả lời ngay lập tức. GEO là kỹ thuật tối ưu dữ liệu thực thể, đánh giá và nguồn trích dẫn để AI trực tiếp gọi tên thương hiệu của bạn là lựa chọn số 1 khi khách hàng đặt câu hỏi.'
+      a: 'SEO truyền thống giúp website của bạn tranh chấp vị trí trong danh sách 10 đường link xanh trên Google. Nhưng năm 2026, người dùng không còn thời gian bấm vào từng link nữa mà hỏi thẳng AI (ChatGPT, Google Gemini) và nghe AI tóm tắt câu trả lời ngay lập tức. GEO là kỹ thuật tối ưu dữ liệu thực thể, đánh giá và nguồn trích dẫn để AI trực tiếp gọi tên thương hiệu của bạn là lựa chọn tin cậy hàng đầu khi khách hàng đặt câu hỏi.'
     },
     {
       q: 'Tôi là quán ăn, tiệm spa, tiệm tóc hay phòng khám nhỏ thì có cần làm GEO không?',
       a: 'CỰC KỲ CẦN THIẾT! Đây chính là nhóm hưởng lợi lớn nhất từ GEO. Khi một vị khách mới đến khu vực của bạn và hỏi điện thoại: "Gợi ý quán lẩu ngon, sạch sẽ gần đây có chỗ đậu xe", AI sẽ quét dữ liệu bán kính xung quanh. Nếu đối thủ làm GEO trước bạn, AI sẽ chỉ dẫn khách sang quán đối thủ mỗi ngày. Ngược lại, chi phí GEO địa phương tại LocalMate chỉ 2.900.000đ/tháng, chỉ cần kéo thêm 3-5 khách hàng là đã hòa vốn.'
     },
     {
-      q: 'Tại sao các agency lớn báo giá GEO từ 20 đến 50 triệu/tháng, trong khi LocalMate chỉ từ 2.900.000đ?',
-      a: 'Các agency lớn áp dụng mức phí Enterprise cho tập đoàn đa quốc gia với bộ máy quản lý cồng kềnh và chi phí văn phòng đắt đỏ. LocalMate là đơn vị triển khai kỹ thuật tại địa phương, chúng tôi tự động hóa quy trình quét Prompt Bank, chuẩn hóa dữ liệu Schema và tối ưu thực thể trực tiếp cho từng quận/huyện. Mục tiêu của LocalMate là bình dân hóa công nghệ để 100% hộ kinh doanh Việt Nam đều có thể tiếp cận được.'
+      q: 'Tại sao chi phí dịch vụ GEO tại LocalMate lại hợp lý chỉ từ 2.900.000đ/tháng?',
+      a: 'LocalMate tập trung triển khai từ gốc kỹ thuật tại địa phương, tự động hóa quy trình cấy Schema, chuẩn hóa Entity và Prompt Bank cho từng khu vực, loại bỏ chi phí trung gian cồng kềnh để mang lại mức giá hợp lý nhất cho hộ kinh doanh và doanh nghiệp vừa & nhỏ.'
     },
     {
       q: 'Bao lâu thì AI bắt đầu đề xuất thương hiệu của tôi?',
@@ -221,8 +223,8 @@ export const GeoServicePage: React.FC<GeoServicePageProps> = ({ onOpenConsultFor
     <div style={{ backgroundColor: '#f8fafc', color: '#0f172a', minHeight: '100vh', scrollbarGutter: 'stable' }}>
       {/* Dynamic SEO Meta */}
       <SEOHead
-        title="Dịch Vụ GEO Địa Phương 2026 — Thống Lĩnh Đề Xuất Trên ChatGPT, Gemini & Google AI | LocalMate"
-        description="Giải pháp GEO (Generative Engine Optimization) bình dân thực tế chỉ từ 2.900.000đ/tháng cho quán ăn, tiệm spa, phòng khám & cửa hàng địa phương. Đưa thương hiệu thành ĐỀ XUẤT SỐ 1 khi khách hàng hỏi AI."
+        title="Dịch Vụ GEO Địa Phương 2026 — Chuẩn Bị Dữ Liệu Để AI Trích Dẫn & Đề Xuất | LocalMate"
+        description="Giải pháp GEO (Generative Engine Optimization) thực tế chỉ từ 2.900.000đ/tháng cho quán ăn, tiệm spa, phòng khám & cửa hàng địa phương. Chuẩn bị dữ liệu để AI có căn cứ trích dẫn thương hiệu."
         canonicalPath="/dich-vu/geo"
         breadcrumbs={breadcrumbs}
         schemaType="Service"
@@ -251,6 +253,10 @@ export const GeoServicePage: React.FC<GeoServicePageProps> = ({ onOpenConsultFor
       <div style={{ backgroundColor: '#ffffff', borderBottom: '1px solid #e2e8f0', padding: '0.75rem 0' }}>
         <Container size="lg">
           <Breadcrumbs items={breadcrumbs} />
+          <CapabilityContextBox
+            solutionName="Được khách hàng tìm thấy trên Google & AI"
+            solutionUrl="/giai-phap/duoc-tim-thay"
+          />
         </Container>
       </div>
 
@@ -279,7 +285,7 @@ export const GeoServicePage: React.FC<GeoServicePageProps> = ({ onOpenConsultFor
                 }}
               >
                 <Sparkles size={16} color="#16a34a" />
-                <span>KỶ NGUYÊN TÌM KIẾM 2026 — CHUẨN GEO BÌNH DÂN CHO HỘ KINH DOANH</span>
+                <span>KỶ NGUYÊN TÌM KIẾM 2026 — CHUẨN GEO CHO HỘ KINH DOANH & SME</span>
               </div>
 
               {/* Main H1 */}
@@ -293,7 +299,7 @@ export const GeoServicePage: React.FC<GeoServicePageProps> = ({ onOpenConsultFor
                   textWrap: 'pretty'
                 }}
               >
-                Dịch Vụ GEO Địa Phương 2026 — Thống Lĩnh Đề Xuất Trên <span style={{ color: '#0d7647' }}>ChatGPT, Gemini</span> &amp; Google AI
+                Dịch Vụ GEO Địa Phương 2026 — Tối Ưu Hiện Diện Trên <span style={{ color: '#0d7647' }}>ChatGPT, Gemini</span> &amp; Google AI
               </h1>
 
               {/* Subheading */}
@@ -306,7 +312,7 @@ export const GeoServicePage: React.FC<GeoServicePageProps> = ({ onOpenConsultFor
                   textWrap: 'pretty'
                 }}
               >
-                Đưa quán ăn, tiệm spa, nha khoa, salon và cửa hàng của bạn thành <strong style={{ color: '#0f172a' }}>ĐỀ XUẤT SỐ 1</strong> khi khách hàng mở điện thoại hỏi AI. Phá tan mức giá &quot;chém&quot; hàng chục triệu của các agency lớn — LocalMate định vị giải pháp thực tế, đo lường được bằng số liệu, <strong style={{ color: '#0d7647' }}>chỉ từ 2.900.000đ/tháng</strong>.
+                Chuẩn bị dữ liệu chuẩn xác để AI có căn cứ trích dẫn thương hiệu của bạn khi khách hàng mở điện thoại tìm kiếm. Chi phí hợp lý, làm từ gốc kỹ thuật, đo lường bằng số liệu minh bạch, <strong style={{ color: '#0d7647' }}>chỉ từ 2.900.000đ/tháng</strong>.
               </p>
 
               {/* Value Highlights */}
@@ -485,7 +491,7 @@ export const GeoServicePage: React.FC<GeoServicePageProps> = ({ onOpenConsultFor
                       {activeAiTab === 'chatgpt' ? 'ChatGPT-4o Search trả lời' : activeAiTab === 'gemini' ? 'Google Gemini AI Overview' : 'Perplexity Verified Response'}
                     </span>
                     <span style={{ fontSize: '0.7rem', fontWeight: 800, backgroundColor: '#dcfce7', color: '#0d7647', padding: '0.2rem 0.5rem', borderRadius: '9999px' }}>
-                      Đề Xuất Số 1 ⭐
+                      Đề Xuất Hàng Đầu ⭐
                     </span>
                   </div>
 
@@ -854,7 +860,7 @@ export const GeoServicePage: React.FC<GeoServicePageProps> = ({ onOpenConsultFor
               Bảng Giá Dịch Vụ GEO Địa Phương — Chỉ Từ 2.900.000đ/Tháng
             </h2>
             <p style={{ fontSize: '1rem', color: '#475569', lineHeight: 1.6, textWrap: 'pretty' }}>
-              Phá tan mức giá chém 20 – 50 triệu của các agency lớn. Không phụ phí ẩn, không ép ký hợp đồng năm, nghiệm thu bằng báo cáo đo lường thực tế.
+              Chi phí hợp lý, làm từ gốc kỹ thuật thay vì các gói báo giá cồng kềnh. Không phụ phí ẩn, không ép ký hợp đồng năm, nghiệm thu bằng báo cáo đo lường thực tế.
             </p>
           </div>
 

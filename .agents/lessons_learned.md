@@ -5,6 +5,8 @@
 - **Hook trực diện nỗi đau**: Đập thẳng vào nghịch lý vận hành (ví dụ: tuyển người chỉ để copy dữ liệu, mua quá nhiều app nhưng vẫn nhập tay).
 - **Nguyên tắc không bịa**: Tuyệt đối không bịa số liệu "tiết kiệm 80% thời gian" hay case study ảo khi chưa có dữ liệu kiểm chứng. Dùng phân tích quy trình thật, demo và góc nhìn founder để tạo uy tín bền vững.
 - **Content Memory SSOT**: Quản lý lịch sử nội dung qua file cấu trúc `contentMemory.json` để kiểm soát tỷ trọng pillar và chống lặp góc nhìn, format.
+- **Data Model & Solution Taxonomy SSOT (`solutionsData.ts` & `capabilitiesData.ts`)**: Tách biệt rõ ràng giữa Business Outcomes, Technical Capabilities, Deliverables, Process, Use Cases và Pricing Packages. Thiết kế dữ liệu đa tầng giúp các trang giải pháp dễ dàng render động, đảm bảo tính nhất quán giữa landing page, trang chuyên sâu và tài liệu tư vấn thực tế.
+
 
 ## 2. Frontend Redesign & Mobile-First Responsive Polish (LocalMate Redesign Sprint)
 - **Fluid Typography (clamp SSOT)**: Sử dụng clamp() cho H1, H2, H3, paragraph measure 58-68ch với `text-wrap: pretty` chống triệt để rớt chữ mồ côi (widows/orphans).
@@ -244,4 +246,42 @@
   - `BreadcrumbItem` định nghĩa là `{ name: string, url: string }`, không dùng `{ label, href }`.
   - `SEOHeadProps` không có thuộc tính `keywords`, bắt buộc có `canonicalPath`.
 - **Kết quả nghiệm thu**: `npm run build` PASS 100% không lỗi.
+## 16. Tái Kiến Trúc Toàn Bộ Hệ Thống Dịch Vụ Theo 5 Trụ Cột Giải Pháp (SSOT Docs Architecture)
+- **Thiết lập chuẩn mực tài liệu SSOT tại `docs/services/` gồm 7 tài liệu nền tảng**:
+  - `information-architecture.md`: Chuẩn hóa 5 tầng thông tin từ Jobs to be done -> Business Outcomes -> 5 Solution Pillars -> Capabilities/Techniques -> Deliverables. Xóa bỏ hoàn toàn mô hình catalog vụn vặt 15-40 dịch vụ kỹ thuật phẳng.
+  - `service-taxonomy.md`: Định nghĩa 5 Trụ cột (01. Nền tảng số, 02. Được tìm thấy, 03. Thu hút khách, 04. Vận hành tự động, 05. Chăm sóc đồng hành), 25+ capabilities kỹ thuật và ma trận use cases liên ngành (Phòng khám, Gara, F&B, Dịch vụ tại nhà, B2B).
+  - `messaging-guide.md`: Ban hành giọng điệu điềm tĩnh, thực tế, hiểu bài toán SME. Loại bỏ triệt để từ ngữ công kích đối thủ ("chém giá", "bẻ gãy thị trường", "giam tài khoản", "sale đẩy intern") và cam kết ảo ("100%", "24/7 vĩnh viễn", "cam kết Top 1").
+  - `solution-template.md`: Chuẩn thiết kế trang giải pháp 12 section thống nhất (Hero -> Vấn đề -> Kết quả -> Localmate sẽ làm gì -> Capabilities -> Deliverables -> Process -> Pricing -> Use cases -> Why Localmate -> FAQ -> CTA).
+  - `pricing-model.md`: Mô hình tính phí 3 cột minh bạch: Tách biệt chi phí Setup 1 lần, Phí duy trì tùy chọn (Care) và Ngân sách quảng cáo/bên thứ ba trả thẳng cho nền tảng.
+  - `url-mapping.md`: Bảng đối chiếu URL cũ sang mới, phân định rõ Trang Trụ Cột (Pillar) vs Trang Vệ Tinh SEO bổ trợ (/dich-vu/geo, /dich-vu/aeo...).
+  - `migration-log.md`: Nhật ký chuyển đổi và lộ trình 5 giai đoạn tái kiến trúc hệ thống dịch vụ.
+- **Bài học cốt lõi**:
+  - Khách hàng không thức dậy và tìm kiếm AEO hay Schema JSON-LD; họ tìm kiếm giải pháp để có thêm cuộc gọi và khách ghé tiệm. Kỹ thuật chỉ xuất hiện ở tầng Capability giải thích "Làm như thế nào (How)".
+  - Ngành nghề không phải là nhánh kiến trúc thông tin (không tạo nhánh riêng cho Gara hay Phòng khám làm duplicate service), mà là Use Case Scenarios minh họa bên trong từng trang giải pháp.
+
+## 17. Chuẩn Hóa Cụm Trang Năng Lực Chuyên Sâu (Capability Pages) & Liên Kết Ngữ Cảnh 2 Chiều (Hub & Spoke Model)
+- **Vấn đề đặt ra**: Trước đây các trang dịch vụ ngách kỹ thuật (`/dich-vu/geo`, `/dich-vu/aeo`, `/dich-vu/seo-ai`, `/dich-vu/seo-chatgpt`, `/dich-vu/local-search`, `/dich-vu/chay-khach-cham-soc`) đứng độc lập, thiếu sự liên kết ngữ cảnh với hệ thống giải pháp tổng thể, đồng thời một số trang mang giọng văn hứa hẹn thái quá ("chém giá 50 triệu", "thống trị Google", "chiếm lĩnh số 0").
+- **Giải pháp chuyển đổi**:
+  1. *Giữ nguyên URL cho SEO hữu cơ*: Tuyệt đối không đổi hay xóa URL để bảo toàn toàn bộ sức mạnh backlink, bookmark cũ và index của Googlebot.
+  2. *Component Contextual Box chuẩn mực (`CapabilityContextBox.tsx`)*: Đặt ngay đầu trang dưới thanh Breadcrumb, nêu rõ đây là năng lực chuyên sâu trực thuộc Giải pháp cha (`/giai-phap/duoc-tim-thay`), có nút bấm "Về giải pháp cha" để người dùng không bị lạc trong ngách kỹ thuật.
+  3. *Breadcrumb chuẩn phân cấp*: `Trang chủ -> Giải pháp -> Được khách hàng tìm thấy (hoặc giải pháp cha) -> [Tên module này]`.
+  4. *Hạ giọng văn & định vị chuyên gia thực chất*:
+     - Thay "Thống trị", "Chiếm lĩnh số 0", "Top 1 chắc chắn" bằng: "Chuẩn bị dữ liệu để AI có căn cứ trích dẫn thương hiệu", "Hiện diện vị trí tổng quan AI đầu Google", "Chi phí hợp lý, làm từ gốc kỹ thuật".
+     - Chuyển trọng tâm từ "hứa hẹn kết quả thần thánh" sang "quy trình kỹ thuật chuẩn xác, minh bạch số liệu".
+  5. *Đồng bộ 2 chiều tại Hub giải pháp (`SolutionsPage.tsx`)*: Tuyến đường `/giai-phap/duoc-tim-thay` hiển thị danh sách 6 module năng lực chuyên sâu, tạo trải nghiệm duyệt web mạch lạc, khép kín từ tổng quan tới chi tiết và ngược lại.
+
+
+## 17. Tích Hợp Routing, Route Aliasing & Kỷ Luật TypeScript QA Pass (Router & QA Agent)
+- **Chuẩn Hóa URL & Xử Lý Trailing Slash Tự Động**:
+  - Khi triển khai routing trên Single Page Application (SPA), khách hàng hoặc bot tìm kiếm có thể truy cập `/dich-vu` hoặc `/dich-vu/`. Nếu so khớp cứng nhắc chuỗi, một trong hai URL sẽ rơi vào 404 hoặc fallback homepage.
+  - Giải pháp: Chuẩn hóa `normalizedPath = currentPath.replace(/\/$/, '') || '/'` ngay đầu hàm `renderPage()`. Mọi so khớp route tiếp theo đều sạch sẽ, không trùng lặp code và chống gãy trang 100%.
+- **Chiến Lược Route Alias Bảo Toàn SEO & Thói Quen Người Dùng**:
+  - Không phá vỡ các liên kết cũ `/dich-vu` và các route chuyên sâu `/dich-vu/geo`, `/dich-vu/local-search`...
+  - Cung cấp đồng thời cả URL ngữ nghĩa mới (`/giai-phap/xay-nen-tang-so`) và URL alias ngắn gọn theo thói quen (`/dich-vu/xay-nen-tang-so`). Cả hai đều trỏ về cùng một Single Source of Truth component giúp người dùng truy cập từ bất kỳ nguồn nào cũng mượt mà.
+- **Kỷ Luật Type-Safety & Khắc Phục Lỗi TypeScript Ngầm**:
+  - *Extending HTML Element Attributes*: Component bọc như `<Link>` hay `<Button>` luôn cần kế thừa `React.AnchorHTMLAttributes<HTMLAnchorElement>` hoặc `React.ButtonHTMLAttributes<HTMLButtonElement>` để không chặn các event handlers phổ biến như `onMouseEnter`, `onMouseLeave`, `title`, `aria-*`.
+  - *Lucide Icon Dictionary Typing*: Khi tạo `ICON_MAP` ánh xạ chuỗi sang Lucide Icon component, sử dụng `Record<string, React.ComponentType<any>>` để tránh xung đột `WeakValidationMap` với `LucideProps` của thư viện.
+  - *Single Source Data Completeness*: Khi một trang (như `ServicesPage`) dựa vào dataset phụ (như `INDUSTRY_SCENARIOS_DATA` hay `COMPARISON_TABLE_DATA`), luôn xuất khẩu dữ liệu có kiểu rõ ràng và đầy đủ thuộc tính đồng bộ (`traditionalWay` song song với `traditionalAgency`), ngăn chặn lỗi `Parameter implicitly has an 'any' type` lan truyền khắp ứng dụng.
+- **Nghiệm Thu Thực Tế**:
+  - Chạy `npm run build` sau mỗi lần refactor lớn để đảm bảo `tsc` và `vite build` kiểm tra toàn bộ 1566+ modules. Trạng thái: **BUILD PASS 100% (0 errors)**.
 

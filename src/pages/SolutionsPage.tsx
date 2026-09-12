@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container } from '../components/ui/Container';
 import { INDUSTRY_SOLUTIONS } from '../data/landingContent';
-import { CheckCircle2, ArrowRight, Sparkles, Building2, Utensils, GraduationCap, Store, Briefcase } from 'lucide-react';
+import { CheckCircle2, ArrowRight, Sparkles, Building2, Utensils, GraduationCap, Store, Briefcase, MapPin, Globe, Search, Bot, Layers } from 'lucide-react';
 import { useRouter } from '../components/layout/Router';
 import { SolutionJourneySection } from '../components/sections/SolutionJourneySection';
 import { GrowthFlywheelSection } from '../components/sections/GrowthFlywheelSection';
@@ -16,6 +16,51 @@ const ICON_MAP: Record<string, React.ComponentType<any>> = {
   'doanh-nghiep-nho': Briefcase
 };
 
+const CAPABILITY_MODULES = [
+  {
+    title: 'Local Search & Google Maps & Technical',
+    desc: 'Xác minh Google Maps GPS chính chủ, chống cướp Maps, SEO bán kính 3–10km và cam kết PageSpeed 90+ trên Cloudflare.',
+    slug: '/dich-vu/local-search',
+    badge: 'Bảo Hành 5 Năm',
+    icon: MapPin
+  },
+  {
+    title: 'Dịch Vụ GEO Địa Phương 2026',
+    desc: 'Chuẩn bị dữ liệu thực thể, cấy Schema LocalBusiness và xây dựng Prompt Bank để AI chủ động trích dẫn thương hiệu.',
+    slug: '/dich-vu/geo',
+    badge: 'Đón Đầu Kỷ Nguyên AI',
+    icon: Sparkles
+  },
+  {
+    title: 'Tối Ưu Trích Dẫn AI (AEO)',
+    desc: 'Đưa website thành nguồn trích dẫn uy tín (Primary Citation) trên Perplexity, ChatGPT Search và Google Snippets.',
+    slug: '/dich-vu/aeo',
+    badge: 'Zero-Click Search',
+    icon: Globe
+  },
+  {
+    title: 'Tối Ưu Xuất Hiện Trên Google AI Overviews',
+    desc: 'Tối ưu Information Gain độc quyền, cấu trúc dữ liệu máy đọc để hiện diện vị trí tổng quan AI đầu Google.',
+    slug: '/dich-vu/seo-ai',
+    badge: 'Vị Trí Tổng Quan AI',
+    icon: Search
+  },
+  {
+    title: 'Tối Ưu Đề Xuất ChatGPT & SearchGPT',
+    desc: 'Cấu hình tệp chuẩn llms.txt, đồng bộ Open Data để xuất hiện tự nhiên trong các cuộc hội thoại mua sắm.',
+    slug: '/dich-vu/seo-chatgpt',
+    badge: '600M+ Người Dùng',
+    icon: Bot
+  },
+  {
+    title: 'Chạy Khách Quanh Tiệm & Chăm Sóc Vận Hành',
+    desc: 'Google Ads 0% phí kê giá, Facebook Ads bán kính 5km, gỡ lỗi chính sách nhạy cảm và chăm sóc web trọn gói.',
+    slug: '/dich-vu/chay-khach-cham-soc',
+    badge: 'Minh Bạch 100%',
+    icon: Layers
+  }
+];
+
 interface SolutionsPageProps {
   onOpenConsultForm?: (serviceName?: string) => void;
 }
@@ -23,7 +68,9 @@ interface SolutionsPageProps {
 export const SolutionsPage: React.FC<SolutionsPageProps> = ({ onOpenConsultForm }) => {
   const { currentPath, navigate } = useRouter();
 
-  const activeSubSlug = currentPath.replace('/giai-phap/', '');
+  const cleanPath = currentPath.replace(/\/$/, '');
+  const activeSubSlug = cleanPath.replace(/^\/giai-phap\/?/, '');
+  const isFoundSolution = activeSubSlug === 'duoc-tim-thay';
   const activeSolution = INDUSTRY_SOLUTIONS.find((s) => s.id === activeSubSlug) || null;
 
   return (
@@ -47,13 +94,19 @@ export const SolutionsPage: React.FC<SolutionsPageProps> = ({ onOpenConsultForm 
               marginBottom: '1rem'
             }}
           >
-            <Sparkles size={15} color="var(--color-teal)" /> LOCALMATE VERTICAL HUB
+            <Sparkles size={15} color="var(--color-teal)" /> {isFoundSolution ? 'GIẢI PHÁP TỔNG THỂ' : 'LOCALMATE VERTICAL HUB'}
           </span>
           <h1 style={{ fontSize: 'var(--font-size-h1)', color: 'var(--color-navy)', fontWeight: 800 }}>
-            {activeSolution ? `Giải Pháp Website & Marketing: ${activeSolution.title}` : 'Giải Pháp Theo Ngành Nghề Kinh Doanh'}
+            {isFoundSolution
+              ? 'Giải Pháp: Được Khách Hàng Tìm Thấy Trên Google & AI'
+              : activeSolution
+              ? `Giải Pháp Website & Marketing: ${activeSolution.title}`
+              : 'Giải Pháp Theo Ngành Nghề Kinh Doanh'}
           </h1>
           <p className="subtitle" style={{ marginTop: '0.75rem' }}>
-            {activeSolution
+            {isFoundSolution
+              ? 'Mô hình phủ sóng toàn diện: chuẩn bị dữ liệu gốc để khách hàng và các công cụ tìm kiếm AI (Google Maps, AI Overviews, ChatGPT, Perplexity) dễ dàng tìm thấy cơ sở của bạn.'
+              : activeSolution
               ? activeSolution.description
               : 'Mô hình chuẩn hóa giao diện, từ khóa SEO và kịch bản tìm kiếm khách hàng cho từng lĩnh vực kinh doanh cụ thể.'}
           </p>
@@ -108,7 +161,80 @@ export const SolutionsPage: React.FC<SolutionsPageProps> = ({ onOpenConsultForm 
         </div>
 
         {/* Display Grid or Detail */}
-        {activeSolution ? (
+        {isFoundSolution ? (
+          <div>
+            <div style={{ marginBottom: '2rem', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, color: 'var(--color-navy)', marginBottom: '0.75rem' }}>
+                6 Năng Lực Kỹ Thuật Chuyên Sâu Trực Thuộc
+              </h2>
+              <p style={{ color: 'var(--color-text-muted)', maxWidth: '720px', margin: '0 auto', fontSize: '0.95rem', lineHeight: 1.6 }}>
+                Tùy theo hiện trạng thực tế và mục tiêu tăng trưởng, bạn có thể triển khai từng module riêng lẻ hoặc kết hợp thành gói giải pháp toàn diện.
+              </p>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: '1.5rem', marginBottom: '3.5rem' }}>
+              {CAPABILITY_MODULES.map((mod, idx) => {
+                const IconComp = mod.icon;
+                return (
+                  <div
+                    key={idx}
+                    style={{
+                      backgroundColor: '#ffffff',
+                      border: '1px solid var(--color-border)',
+                      borderRadius: 'var(--radius-xl)',
+                      padding: '1.75rem',
+                      boxShadow: 'var(--shadow-sm)',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'space-between',
+                      gap: '1.25rem'
+                    }}
+                  >
+                    <div>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+                        <div style={{ width: 44, height: 44, borderRadius: 'var(--radius-md)', backgroundColor: '#ecfdf5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          <IconComp size={22} color="#0d7647" />
+                        </div>
+                        <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#0d7647', backgroundColor: '#e8f5ed', padding: '0.25rem 0.65rem', borderRadius: 'var(--radius-full)' }}>
+                          {mod.badge}
+                        </span>
+                      </div>
+
+                      <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--color-navy)', marginBottom: '0.5rem' }}>
+                        {mod.title}
+                      </h3>
+                      <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.6 }}>
+                        {mod.desc}
+                      </p>
+                    </div>
+
+                    <button
+                      onClick={() => navigate(mod.slug)}
+                      style={{
+                        padding: '0.7rem 1rem',
+                        backgroundColor: '#f8fafc',
+                        color: 'var(--color-navy)',
+                        borderRadius: 'var(--radius-md)',
+                        border: '1px solid var(--color-border)',
+                        fontWeight: 700,
+                        fontSize: '0.825rem',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '0.4rem',
+                        transition: 'all 0.15s ease'
+                      }}
+                    >
+                      <span>Xem chi tiết năng lực</span>
+                      <ArrowRight size={14} />
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ) : activeSolution ? (
           <div
             style={{
               backgroundColor: '#ffffff',

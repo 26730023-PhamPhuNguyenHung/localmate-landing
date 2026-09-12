@@ -13,6 +13,40 @@
 
 ## 2. Recent Accomplishments & Updates
 
+### A000. Hoàn Tất Tinh Chỉnh Trang Chủ Theo Kiến Trúc 5 Solution Pillars & Luồng 7 Bước Chuẩn:
+- **Tác giả:** Homepage Alignment & Problem Flow Architect
+- **Phạm vi hoàn tất:**
+  1. **Hero Section (`HeroSection.tsx`)**: Chuẩn hóa thông điệp hướng vấn đề: Subbadge *"Bạn cần giải quyết việc gì? • Người đồng hành số địa phương"*, Headline *"Giúp doanh nghiệp địa phương đưa công việc lên môi trường số, tìm khách hàng và vận hành dễ dàng."*
+  2. **Instant Business Audit Hook**: Tích hợp quét nhanh sức khỏe số tức thì (`InstantAuditHook` trong Hero và `FreeAuditSection.tsx`).
+  3. **Khối 5 Nhóm Giải Pháp Trọng Tâm (`SolutionPillarsSection.tsx`)**: Tạo mới section hiển thị 5 Solution Pillars kết nối trực tiếp đến `/giai-phap/{slug}` (`nen-tang-so`, `duoc-tim-thay`, `thu-hut-khach-hang`, `van-hanh-tu-dong-hoa`, `dong-hanh-duy-tri`).
+  4. **Local Growth Flywheel (`GrowthFlywheelSection.tsx`)**: Bổ sung liên kết trực tiếp giữa 4 giai đoạn bánh đà tăng trưởng và các giải pháp trụ cột tương ứng.
+  5. **Why LocalMate (`PhilosophySection.tsx`)**: Tinh chỉnh 4 cam kết trung thực, tôn trọng (Tài khoản thuộc về bạn 100%, Báo giá cố định trước khi làm, Nghiệm thu mới thanh toán, Đồng hành kỹ thuật lâu dài 5 năm).
+  6. **Deliverables & Minh Chứng Thật**: Quy trình minh bạch 4 bước (`ProcessSection.tsx`), đối chiếu Trước/Sau (`BeforeAfterSection.tsx`) và Demo Showcase thực tế (`DemoShowcaseSection.tsx`).
+  7. **FAQ & Final CTA (`FinalCTASection.tsx`)**: Tiêu đề hành động chuẩn xác: *"Nói cho LocalMate biết việc bạn đang cần giải quyết."*
+  8. **Kiểm tra kỹ thuật**: 100% Light Mode, không glassmorphism, tương phản cao, `tsc && vite build` pass 100%.
+
+### A00. Hoàn Tất Data Model & Solution Taxonomy Engine Cho 5 Trụ Cột Giải Pháp (`solutionsData.ts` & `capabilitiesData.ts`):
+- **Tác giả:** Data Model & Solution Taxonomy Engine
+- **File tạo mới & cập nhật:**
+  - `src/data/solutionsData.ts`: Single Source of Truth cho 5 Solution Pillars (`xay-nen-tang-so`, `duoc-tim-thay`, `thu-hut-khach-hang`, `van-hanh-tu-dong-hoa`, `dong-hanh-cham-soc`).
+  - `src/data/capabilitiesData.ts`: Taxonomy năng lực kỹ thuật và bản đồ liên kết 41 dịch vụ trong Catalog.
+- **Cấu trúc TypeScript Interfaces:**
+  - `SolutionOutcome`, `SolutionCapability`, `SolutionDeliverable`, `SolutionProcessStep`, `SolutionUseCase`, `SolutionOffer` (alias `SolutionPricingPackage`), `SolutionFAQ`, `SolutionWorkflowStep`, `SolutionProblemItem`, `Solution`.
+- **Nội dung 100% tiếng Việt thực tế**: Tập trung giải quyết nỗi đau vận hành, không công kích đối thủ, không dùng thuật ngữ hoa mỹ, tương thích giao diện Light Mode không glassmorphism.
+- **TypeScript Build:** Kiểm tra `npx tsc --noEmit` và `npm run build` đạt **0 lỗi, build pass 100%**.
+
+### A0. Ban Hành Hệ Thống 7 Tài Liệu SSOT Tái Kiến Trúc Dịch Vụ (`docs/services/`):
+- **Tác giả:** Docs SSOT Architect
+- **Vị trí lưu trữ:** `docs/services/`
+- **7 Tài liệu chuẩn mực:**
+  1. `information-architecture.md`: Chuỗi giá trị 5 tầng (Jobs to be done -> Outcomes -> 5 Solution Pillars -> Capabilities -> Deliverables), đối chiếu Old vs New Architecture.
+  2. `service-taxonomy.md`: Định nghĩa 5 Solution Pillars, 25+ capabilities kỹ thuật và ma trận use cases liên ngành (Phòng khám, Gara, F&B, Dịch vụ tại nhà, B2B).
+  3. `messaging-guide.md`: Chuẩn giọng điệu điềm tĩnh, thực tế; loại bỏ từ ngữ công kích đối thủ và cam kết ảo.
+  4. `solution-template.md`: Blueprint 12 sections chuẩn mực cho mọi trang giải pháp.
+  5. `pricing-model.md`: Mô hình 3 dòng tiền minh bạch: Setup fee + Monthly Care fee + Ad spend/3rd party.
+  6. `url-mapping.md`: Bảng đối chiếu URL cũ sang mới, xác định vai trò Trang Trụ Cột vs Trang Vệ Tinh SEO bổ trợ.
+  7. `migration-log.md`: Nhật ký chuyển đổi và lộ trình 5 giai đoạn triển khai.
+
 ### A. Xóa Nút CMS Quản Trị Khỏi Giao Diện Công Khai:
 - Gỡ bỏ hoàn toàn nút `Mở CMS Quản Trị Bảng Giá` khỏi `PricingPage.tsx`.
 - Đảm bảo an toàn bảo mật, khách hàng chỉ nhìn thấy bảng giá niêm yết công khai và nút liên hệ tư vấn.
@@ -354,3 +388,52 @@
   - Footer Cột 2 liên kết trực tiếp tới các dịch vụ trọng điểm.
 - **Nghiệm thu**:
   - `npm run build` PASS 100% không lỗi (build xong trong ~3.9s).
+
+## 15. Tích Hợp Hệ Thống Routing, 5 Trụ Cột Giải Pháp (Solution Pillars) & QA Build Pass
+- **Tác giả / Vai trò**: Router & QA Integration Agent
+- **Mục tiêu**: Tích hợp toàn bộ hệ thống routing, alias thuận tiện và kiểm thử chất lượng tổng thể toàn dự án theo chuẩn SSOT.
+- **Khai báo 5 Trụ Cột Giải Pháp (Solution Pillars) trong `src/App.tsx`**:
+  1. `/giai-phap/xay-nen-tang-so` (alias `/giai-phap/nen-tang-so`, `/dich-vu/xay-nen-tang-so`, `/dich-vu/nen-tang-so`) -> `PresenceSolutionPage`: Xây dựng nền tảng số, website chuẩn di động < 1s, định vị Google Maps GPS, kết nối nút gọi/Zalo 1 chạm, bàn giao 100% tài khoản chính chủ và cam kết bảo hành kỹ thuật 5 năm.
+  2. `/giai-phap/duoc-tim-thay` (alias `/dich-vu/duoc-tim-thay`) -> `SearchSolutionPage`: Đưa cơ sở lên top Google Maps Local Pack, tối ưu đề xuất AI (GEO - ChatGPT & Gemini), chuẩn hóa NAP và bộ mã QR thu thập đánh giá 5 sao.
+  3. `/giai-phap/thu-hut-khach-hang` (alias `/dich-vu/thu-hut-khach-hang`) -> `AcquisitionSolutionPage`: Kéo khách gọi điện và ghé tiệm quanh bán kính 3-10km, quảng cáo Google Ads & Meta Ads 0% kê giá (trừ tiền thẻ chính chủ), xử lý kháng lỗi ngành nhạy cảm.
+  4. `/giai-phap/van-hanh-tu-dong-hoa` (alias `/dich-vu/van-hanh-tu-dong-hoa`) -> `AutomationSolutionPage`: Vận hành tự động hóa, chuông báo đơn tức thì qua Telegram sau 3 giây, đặt lịch hẹn online 24/7 và đồng bộ Google Sheets CRM không tốn phí bản quyền.
+  5. `/giai-phap/dong-hanh-cham-soc` (alias `/giai-phap/dong-hanh-duy-tri`, `/dich-vu/dong-hanh-cham-soc`, `/dich-vu/dong-hanh-duy-tri`) -> `CareSolutionPage`: Phòng kỹ thuật số ngoài túc trực 24/7, xử lý sự cố trong 2 giờ, hỗ trợ đăng bài/đổi giá qua Zalo và hoàn thiện hồ sơ thông báo Bộ Công Thương.
+- **Hệ Thống Route Aliases & Hub**:
+  - `/giai-phap`: Trỏ tới `ServicesPage` (Hub giải pháp chuyển đổi số toàn diện).
+  - `/dich-vu`: Tiếp tục hoạt động trỏ tới `ServicesPage` (Bảo toàn 100% liên kết và SEO cũ).
+  - Bảo toàn nguyên vẹn các route chuyên sâu: `/dich-vu/geo`, `/dich-vu/aeo`, `/dich-vu/seo-ai`, `/dich-vu/seo-chatgpt`, `/dich-vu/local-search`, `/dich-vu/chay-khach-cham-soc`.
+  - Chuẩn hóa xử lý trailing slash tự động bằng `normalizedPath = currentPath.replace(/\/$/, '') || '/'`.
+- **Tạo Mới 5 Component Trang Trụ Cột Độc Lập**:
+  - `src/pages/PresenceSolutionPage.tsx`
+  - `src/pages/SearchSolutionPage.tsx`
+  - `src/pages/AcquisitionSolutionPage.tsx`
+  - `src/pages/AutomationSolutionPage.tsx`
+  - `src/pages/CareSolutionPage.tsx`
+  - Mỗi trang được thiết kế 100% Light Mode chuẩn nhận diện thương hiệu (`#0d7647`, `#0f172a`, `#f8fbfa`), typography rõ ràng, không glassmorphism, tích hợp đầy đủ SEOHead, Breadcrumbs, Deliverables, Quy trình 4 bước, FAQs và Lead Modal trigger.
+- **Sửa Lỗi & Tinh Chỉnh Chất Lượng Toàn Dự Án (QA Bug Fixes)**:
+  - `src/components/ui/Button.tsx`: Bổ sung variant `'outline'` tương thích với secondary/ghost.
+  - `src/components/layout/Router.tsx`: Mở rộng `LinkProps` kế thừa `React.AnchorHTMLAttributes<HTMLAnchorElement>` để hỗ trợ các sự kiện chuột (`onMouseEnter`, `onMouseLeave`...).
+  - `src/components/solutions/SolutionUseCases.tsx`: Chuẩn hóa kiểu `ICON_MAP: Record<string, React.ComponentType<any>>` tránh lỗi incompatible validation type của LucideIcon.
+  - `src/data/solutionPillarsData.ts`: Khai báo và export đầy đủ `SOLUTION_PILLARS_DATA`, `SolutionPillarItem`, `INDUSTRY_SCENARIOS_DATA` và `COMPARISON_TABLE_DATA` kèm `traditionalWay` phục vụ hiển thị trên `ServicesPage` và `SolutionsPage`.
+- **Kết Quả Build**:
+  - `npm run build`: **SUCCESS 100% (Exit code 0)** — 1566 modules transformed, không có bất kỳ lỗi cú pháp hay TypeScript nào.
+
+
+## 15. Chuẩn Hóa Cụm 6 Trang Năng Lực Chuyên Sâu (SEO Capability Pages Aligner)
+- **Mục tiêu**: Tái định vị các trang dịch vụ ngách kỹ thuật thành các trang năng lực chuyên sâu (Capability Pages), củng cố cấu trúc Hub & Spoke với trang giải pháp cha `/giai-phap/duoc-tim-thay`, đảm bảo không làm gãy URL/backlink cũ và hạ giọng văn về chuẩn chuyên nghiệp, kỹ thuật thực chất.
+- **6 Trang chuẩn hóa**:
+  1. `src/pages/GeoServicePage.tsx` (`/dich-vu/geo`)
+  2. `src/pages/AeoServicePage.tsx` (`/dich-vu/aeo`)
+  3. `src/pages/SeoAiServicePage.tsx` (`/dich-vu/seo-ai`)
+  4. `src/pages/SeoChatGptServicePage.tsx` (`/dich-vu/seo-chatgpt`)
+  5. `src/pages/LocalSearchClusterPage.tsx` (`/dich-vu/local-search`)
+  6. `src/pages/OperationalCareClusterPage.tsx` (`/dich-vu/chay-khach-cham-soc`)
+- **Các cải tiến đã thực hiện**:
+  - **Tạo mới component `CapabilityContextBox.tsx`**: Nền sáng xanh dịu (`#f0fdf4`), viền `#bbf7d0`, text `#166534`, chứa thông điệp ngữ cảnh chuẩn và nút CTA "Về giải pháp cha" (`/giai-phap/duoc-tim-thay`).
+  - **Chuẩn hóa Breadcrumb hierarchy**: `Trang chủ -> Giải pháp -> Được khách hàng tìm thấy (hoặc giải pháp cha) -> [Tên module này]`.
+  - **Hạ giọng văn & chuẩn hóa từ ngữ**:
+    - Loại bỏ các từ ngữ hứa hẹn thái quá ("chắc chắn lên top 1 ChatGPT", "chém giá 50 triệu", "bẻ gãy thị trường", "thống trị", "chiếm lĩnh").
+    - Thay bằng thông điệp định vị thực tế: "Chuẩn bị dữ liệu để AI có căn cứ trích dẫn thương hiệu", "Chi phí hợp lý, làm từ gốc kỹ thuật", "Đề Xuất Hàng Đầu ⭐", "Tối ưu xuất hiện trên Google AI Overviews — Tiếp cận khách hàng tự nhiên".
+  - **Bổ sung route & giao diện Hub cho `/giai-phap/duoc-tim-thay` trong `SolutionsPage.tsx`**: Hiển thị đầy đủ 6 module năng lực chuyên sâu khi người dùng truy cập từ nút "Về giải pháp cha", khép kín luồng trải nghiệm 2 chiều.
+  - **Bảo toàn 100% URL gốc**: Giữ nguyên toàn bộ cấu trúc URL cho SEO hữu cơ, không làm gãy bất kỳ backlink hay bookmark cũ nào.
+  - **Typecheck & Build**: Cả 6 trang và component mới compile sạch sẽ, 0 lỗi TypeScript.

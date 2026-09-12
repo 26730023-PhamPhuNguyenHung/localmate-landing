@@ -8,6 +8,7 @@ import { AiSearchClusterNav } from '../components/services/AiSearchClusterNav';
 import { AiSearchPricingTable } from '../components/services/AiSearchPricingTable';
 import { AiPromptSimulator } from '../components/services/AiPromptSimulator';
 import { Warranty5YearSection } from '../components/sections/Warranty5YearSection';
+import { CapabilityContextBox } from '../components/ui/CapabilityContextBox';
 import {
   Bot,
   Sparkles,
@@ -138,8 +139,8 @@ export const SeoChatGptServicePage: React.FC<SeoChatGptServicePageProps> = ({ on
   return (
     <div style={{ backgroundColor: '#ffffff', minHeight: '100vh' }}>
       <SEOHead
-        title="Dịch Vụ SEO ChatGPT — Đưa Thương Hiệu Vào Hội Thoại AI | LocalMate"
-        description="Dịch vụ SEO ChatGPT chuyên sâu: Tối ưu tệp llms.txt, Entity Open Data, đưa thương hiệu vào đề xuất của 600M người dùng ChatGPT. Giá chỉ từ 2.900.000đ/tháng, bảo hành 5 năm, KTV 1-1 tận nơi."
+        title="Dịch Vụ SEO ChatGPT — Chuẩn Bị Dữ Liệu Đề Xuất & Trích Dẫn | LocalMate"
+        description="Dịch vụ SEO ChatGPT chuyên sâu: Tối ưu tệp llms.txt, Entity Open Data, chuẩn bị dữ liệu để AI có căn cứ trích dẫn thương hiệu. Chi phí hợp lý chỉ từ 2.900.000đ/tháng."
         canonicalPath="/dich-vu/seo-chatgpt"
       />
 
@@ -151,10 +152,15 @@ export const SeoChatGptServicePage: React.FC<SeoChatGptServicePageProps> = ({ on
         <Container size="lg">
           <Breadcrumbs
             items={[
-              { name: 'Trang chủ', url: '/' },
-              { name: 'Dịch vụ', url: '/dich-vu' },
+              { name: 'Giải pháp', url: '/giai-phap' },
+              { name: 'Được khách hàng tìm thấy', url: '/giai-phap/duoc-tim-thay' },
               { name: 'Tối ưu đề xuất ChatGPT', url: '/dich-vu/seo-chatgpt' }
             ]}
+          />
+
+          <CapabilityContextBox
+            solutionName="Được khách hàng tìm thấy trên Google & AI"
+            solutionUrl="/giai-phap/duoc-tim-thay"
           />
 
           <div style={{ maxWidth: '850px', margin: '2rem auto 0 auto', textAlign: 'center' }}>

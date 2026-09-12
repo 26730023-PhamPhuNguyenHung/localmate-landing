@@ -5,6 +5,7 @@ import { Breadcrumbs } from '../components/ui/Breadcrumbs';
 import { SEOHead } from '../components/seo/SEOHead';
 import { useRouter, Link } from '../components/layout/Router';
 import { CONTACT_INFO } from '../data/landingContent';
+import { CapabilityContextBox } from '../components/ui/CapabilityContextBox';
 import {
   Sparkles,
   CheckCircle2,
@@ -46,9 +47,9 @@ export const OperationalCareClusterPage: React.FC<OperationalCareClusterPageProp
   };
 
   const breadcrumbs = [
-    { name: 'Trang chủ', url: '/' },
-    { name: 'Dịch vụ', url: '/dich-vu' },
-    { name: 'Chạy Khách & Chăm Sóc Vận Hành', url: '/dich-vu/chay-khach-cham-soc' }
+    { name: 'Giải pháp', url: '/giai-phap' },
+    { name: 'Chạy khách & Chăm sóc vận hành', url: '/giai-phap/duoc-tim-thay' },
+    { name: 'Chạy khách & Chăm sóc vận hành', url: '/dich-vu/chay-khach-cham-soc' }
   ];
 
   const servicesList = [
@@ -217,6 +218,12 @@ export const OperationalCareClusterPage: React.FC<OperationalCareClusterPageProp
       <Container size="lg">
         <Breadcrumbs items={breadcrumbs} />
 
+        <CapabilityContextBox
+          solutionName="Chạy khách & Chăm sóc vận hành"
+          solutionUrl="/giai-phap/duoc-tim-thay"
+          customMessage="Đây là cụm năng lực chuyên sâu trực thuộc Giải pháp: [Chạy khách & Chăm sóc vận hành] của Localmate. Phù hợp khi bạn muốn tối ưu quảng cáo địa phương và duy trì hệ thống bền vững."
+        />
+
         {/* HERO SECTION - 100% Light Mode, Clean & Crisp */}
         <section
           style={{
@@ -232,7 +239,7 @@ export const OperationalCareClusterPage: React.FC<OperationalCareClusterPageProp
           {/* Eyebrow Pill */}
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.4rem 1rem', borderRadius: '9999px', backgroundColor: '#e0f2fe', color: '#0369a1', fontSize: '0.825rem', fontWeight: 700, letterSpacing: '0.04em', textTransform: 'uppercase', marginBottom: '1.25rem' }}>
             <Sparkles size={15} color="#0284c7" />
-            <span>Học Hỏi Từ FastMarketing • Chuẩn Hóa Thực Chiến Cho LocalMate</span>
+            <span>CHI PHÍ HỢP LÝ • LÀM TỪ GỐC KỸ THUẬT CHO HỘ KINH DOANH</span>
           </div>
 
           <h1

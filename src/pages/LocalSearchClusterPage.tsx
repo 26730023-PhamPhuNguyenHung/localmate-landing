@@ -6,6 +6,7 @@ import { SEOHead } from '../components/seo/SEOHead';
 import { CONTACT_INFO } from '../data/landingContent';
 import { useRouter, Link } from '../components/layout/Router';
 import { submitLead } from '../services/leadService';
+import { CapabilityContextBox } from '../components/ui/CapabilityContextBox';
 import {
   MapPin,
   Search,
@@ -64,8 +65,8 @@ export const LocalSearchClusterPage: React.FC<LocalSearchClusterPageProps> = ({ 
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   const breadcrumbs = [
-    { name: 'Trang chủ', url: '/' },
-    { name: 'Dịch vụ', url: '/dich-vu' },
+    { name: 'Giải pháp', url: '/giai-phap' },
+    { name: 'Được khách hàng tìm thấy', url: '/giai-phap/duoc-tim-thay' },
     { name: 'Local Search & Google Maps & Technical', url: '/dich-vu/local-search' }
   ];
 
@@ -140,6 +141,10 @@ export const LocalSearchClusterPage: React.FC<LocalSearchClusterPageProps> = ({ 
       <div style={{ backgroundColor: '#f8fafc', borderBottom: '1px solid #e2e8f0', padding: '0.75rem 0' }}>
         <Container size="lg">
           <Breadcrumbs items={breadcrumbs} />
+          <CapabilityContextBox
+            solutionName="Được khách hàng tìm thấy trên Google & AI"
+            solutionUrl="/giai-phap/duoc-tim-thay"
+          />
         </Container>
       </div>
 
@@ -177,7 +182,7 @@ export const LocalSearchClusterPage: React.FC<LocalSearchClusterPageProps> = ({ 
                 textWrap: 'pretty'
               }}
             >
-              Chiếm Lĩnh Bản Đồ Địa Phương, Đứng Top Tìm Kiếm &amp; Mở Trang Dưới 1 Giây
+              Tối Ưu Bản Đồ Địa Phương, Hiện Diện Top Tìm Kiếm &amp; Mở Trang Dưới 1 Giây
             </h1>
 
             <p

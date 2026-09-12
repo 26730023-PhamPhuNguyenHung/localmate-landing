@@ -8,24 +8,28 @@ import { AiSearchClusterNav } from '../components/services/AiSearchClusterNav';
 import { AiSearchPricingTable } from '../components/services/AiSearchPricingTable';
 import { AiPromptSimulator } from '../components/services/AiPromptSimulator';
 import { Warranty5YearSection } from '../components/sections/Warranty5YearSection';
+import { CapabilityContextBox } from '../components/ui/CapabilityContextBox';
 import {
-  Search,
   Sparkles,
-  Zap,
+  Search,
   CheckCircle2,
   ArrowRight,
   ShieldCheck,
+  Zap,
   Globe,
   FileText,
   Layers,
   BarChart3,
   PhoneCall,
+  Check,
   ChevronDown,
-  HelpCircle,
-  Eye,
-  TrendingUp,
+  Building2,
+  Share2,
+  Award,
+  BookOpen,
   Cpu,
-  Award
+  Target,
+  HelpCircle
 } from 'lucide-react';
 import { CONTACT_INFO } from '../data/landingContent';
 import { submitLead } from '../services/leadService';
@@ -42,7 +46,7 @@ export const SeoAiServicePage: React.FC<SeoAiServicePageProps> = ({ onOpenConsul
     phone: '',
     businessName: '',
     websiteUrl: '',
-    packageChoice: 'SEO AI Khởi Động Địa Phương (2.900.000đ/tháng)',
+    packageChoice: 'SEO AI Khởi Động (2.900.000đ/tháng)',
     notes: ''
   });
   const [toastMessage, setToastMessage] = useState<string | null>(null);
@@ -65,17 +69,17 @@ export const SeoAiServicePage: React.FC<SeoAiServicePageProps> = ({ onOpenConsul
         name: formData.name,
         phone: formData.phone,
         businessName: `${formData.businessName} (Web: ${formData.websiteUrl || 'Chưa có'})`,
-        serviceInterest: `Dịch vụ SEO AI Google Overviews - ${formData.packageChoice}`,
+        serviceInterest: `Dịch vụ SEO Google AI Overviews - ${formData.packageChoice}`,
         message: `Website: ${formData.websiteUrl} | Ghi chú: ${formData.notes}`,
         sourcePage: '/dich-vu/seo-ai'
       });
-      setToastMessage('Đăng ký thành công! Kỹ thuật viên LocalMate sẽ quét sự hiện diện của bạn trong Google AI Overviews và gửi báo cáo qua Zalo trong 24h.');
+      setToastMessage('Đăng ký thành công! Kỹ thuật viên LocalMate sẽ quét khả năng xuất hiện trong Google AI của website bạn và gửi báo cáo qua Zalo trong 24h.');
       setFormData({
         name: '',
         phone: '',
         businessName: '',
         websiteUrl: '',
-        packageChoice: 'SEO AI Khởi Động Địa Phương (2.900.000đ/tháng)',
+        packageChoice: 'SEO AI Khởi Động (2.900.000đ/tháng)',
         notes: ''
       });
     } catch {
@@ -87,60 +91,61 @@ export const SeoAiServicePage: React.FC<SeoAiServicePageProps> = ({ onOpenConsul
 
   const handleCTA = () => {
     if (onOpenConsultForm) {
-      onOpenConsultForm('Dịch vụ SEO AI Google Overviews - 2.900.000đ/tháng');
+      onOpenConsultForm('Dịch vụ SEO Google AI Overviews - 2.900.000đ/tháng');
     } else {
       window.location.href = `tel:${CONTACT_INFO.phoneRaw}`;
     }
   };
 
+  // 5 Trụ cột kỹ thuật SEO Google AI
   const seoAiSteps = [
     {
       step: '01',
-      title: 'Quét hiện trạng Google AI Overviews khu vực',
-      badge: 'Bản Đồ Từ Khóa AI',
-      icon: <Search className="w-6 h-6 text-[#0d7647]" />,
-      desc: 'Quét toàn bộ tập từ khóa mua sắm trong ngành của bạn để xác định những truy vấn nào Google đã kích hoạt khung tóm tắt AI Overviews, phân tích các website đối thủ đang được chọn làm nguồn tham khảo.',
-      actionPoint: 'Xác định chính xác vị trí trống để đưa website của bạn lọt vào khung snapshot AI.'
+      title: 'Tối Ưu Chỉ Số Giá Trị Thông Tin Mới (Information Gain)',
+      badge: 'Độc Quyền & Dữ Liệu Thật',
+      icon: <FileText className="w-6 h-6 text-[#0d7647]" />,
+      desc: 'Google AI Overviews ghét nội dung xào nấu lặp lại. Thuật toán ưu tiên các trang có thông tin bổ sung độc nhất (Unique Information Gain): bảng giá dịch vụ thực tế, hình ảnh dự án chính chủ, số liệu khảo sát tại địa phương hoặc phản hồi của khách hàng thật.',
+      actionPoint: 'Nội dung có giá trị khác biệt, được thuật toán AI chọn đưa vào phần trích dẫn.'
     },
     {
       step: '02',
-      title: 'Tối ưu Information Gain (Thông tin độc quyền)',
-      badge: 'Chống AI Bịa Đặt',
-      icon: <Award className="w-6 h-6 text-[#0d7647]" />,
-      desc: 'Google Gemini ưu tiên các trang bổ sung giá trị mới lạ mà internet chưa có. LocalMate hỗ trợ chủ cơ sở bổ sung hình ảnh chụp thực tế tại xưởng/tiệm, thông số kỹ thuật thật, trải nghiệm xử lý thực tế và bảng giá niêm yết chính xác.',
-      actionPoint: 'Đạt điểm chất lượng thông tin cao nhất theo Helpful Content System 2026.'
+      title: 'Nhúng Schema Trích Dẫn & Phân Đoạn Ngữ Nghĩa (Passage Indexing)',
+      badge: 'Cấu Trúc Rõ Ràng',
+      icon: <Layers className="w-6 h-6 text-[#0d7647]" />,
+      desc: 'Phân đoạn nội dung thành từng khối độc lập (Modular Content Blocks) kết hợp Schema FAQPage và HowTo. Cung cấp câu trả lời cô đọng 50 từ ngay dưới thẻ tiêu đề H2/H3 để Google AI bốc trọn đoạn văn đưa vào khung tóm tắt đầu trang.',
+      actionPoint: 'Xuất hiện trong khung tóm tắt AI nổi bật nhất trên màn hình điện thoại người dùng.'
     },
     {
       step: '03',
-      title: 'Cấu trúc bài viết chuẩn AI Snapshot (Takeaways)',
-      badge: 'Định Dạng Ăn Liền',
-      icon: <FileText className="w-6 h-6 text-[#0d7647]" />,
-      desc: 'Biên tập lại các bài viết trọng điểm: Tạo khối "Điểm mấu chốt (Quick Takeaway)" 40 từ ở đầu bài, tạo bảng so sánh ưu nhược điểm, kẻ checklist các bước thực hiện. Giúp thuật toán Google trích xuất đưa thẳng vào khung tóm tắt.',
-      actionPoint: 'Chiếm lĩnh vị trí số 0 nổi bật nhất trên màn hình điện thoại người dùng.'
+      title: 'Tối Ưu Thực Thể Địa Phương (Local Entity Knowledge Graph)',
+      badge: 'Xác Thực Doanh Nghiệp',
+      icon: <Building2 className="w-6 h-6 text-[#0d7647]" />,
+      desc: 'Liên kết thực thể website với Google Knowledge Graph và Google Business Profile. Khi người dùng tìm kiếm câu hỏi có yếu tố vị trí hoặc dịch vụ tại địa bàn, AI Overviews sẽ trích dẫn hồ sơ kèm bản đồ chỉ đường và số điện thoại liên hệ.',
+      actionPoint: 'Kéo khách hàng có nhu cầu thực tế ghé tiệm hoặc gọi điện trực tiếp.'
     },
     {
       step: '04',
-      title: 'Tối ưu Core Web Vitals & Tốc độ tải dưới 1.2s',
-      badge: 'Hạ Tầng Siêu Tốc',
-      icon: <Zap className="w-6 h-6 text-[#0d7647]" />,
-      desc: 'Googlebot quét dữ liệu cho AI Overviews đòi hỏi website phản hồi tức thì. Chúng tôi dọn dẹp mã nguồn rác, chuyển đổi font sang chuẩn WOFF2 nén cục bộ, nén ảnh WebP/AVIF và cấu hình CDN Cloudflare để trang tải chớp mắt.',
-      actionPoint: 'Điểm Google PageSpeed đạt 95+ trên di động, lập chỉ mục nội dung mới sau vài giờ.'
+      title: 'Tối Ưu Tốc Độ Tải Dưới 1s & Trải Nghiệm Tương Tác Cực Nhanh',
+      badge: 'Kỹ Thuật Thuần Túy',
+      icon: <Cpu className="w-6 h-6 text-[#0d7647]" />,
+      desc: 'Google AI ưu tiên trích dẫn các trang có độ trễ thấp và điểm Core Web Vitals xanh mượt. LocalMate tinh giản mã nguồn bằng kiến trúc hiện đại, nén ảnh thế hệ mới và CDN Cloudflare để bot AI cào dữ liệu nhanh gấp 3 lần website thông thường.',
+      actionPoint: 'Đảm bảo bot Google quét và cập nhật nội dung mới tức thì trong vài giờ.'
     },
     {
       step: '05',
-      title: 'Giám sát hiển thị & Bảo hành kỹ thuật 5 năm',
-      badge: 'Đồng Hành Dài Hạn',
-      icon: <ShieldCheck className="w-6 h-6 text-[#0d7647]" />,
-      desc: 'Kỹ thuật viên địa phương định kỳ theo dõi tỷ lệ hiển thị của bạn trong Google AI Overviews, kịp thời điều chỉnh cấu trúc khi Google tung ra các bản cập nhật thuật toán Core Update. Bảo hành kỹ thuật xuyên suốt 5 năm.',
-      actionPoint: 'Giữ vững nguồn khách hàng tìm kiếm ổn định mà không lo bị tụt thứ hạng.'
+      title: 'Theo Dõi Độ Phủ SGE Định Kỳ (AI Overviews Presence Tracker)',
+      badge: 'Đo Lường Minh Bạch',
+      icon: <BarChart3 className="w-6 h-6 text-[#0d7647]" />,
+      desc: 'Quét tự động bộ từ khóa ngành hàng trên Google Search xem trang của bạn có xuất hiện trong khung tóm tắt AI hay không. Xuất báo cáo tỷ lệ hiển thị và lượt click thực tế từ Google Search Console.',
+      actionPoint: 'Minh bạch 100% kết quả — Bạn nhìn thấy tận mắt hình ảnh hiển thị trên Google.'
     }
   ];
 
   return (
     <div style={{ backgroundColor: '#ffffff', minHeight: '100vh' }}>
       <SEOHead
-        title="Dịch Vụ SEO AI Google Overviews — Chiếm Lĩnh Vị Trí Số 0 | LocalMate"
-        description="Dịch vụ tối ưu xuất hiện trong khung Google AI Overviews (SGE): Giữ vững 60% click tìm kiếm, tối ưu Information Gain, tốc độ tải dưới 1s. Giá chỉ từ 2.900.000đ/tháng, bảo hành kỹ thuật 5 năm."
+        title="Dịch Vụ SEO AI Google Overviews — Tối Ưu Hiện Diện Vị Trí AI | LocalMate"
+        description="Dịch vụ tối ưu xuất hiện trong khung Google AI Overviews (SGE): Tiếp cận khách hàng tự nhiên, tối ưu Information Gain, tốc độ tải dưới 1s. Giá chỉ từ 2.900.000đ/tháng, bảo hành kỹ thuật 5 năm."
         canonicalPath="/dich-vu/seo-ai"
       />
 
@@ -152,9 +157,15 @@ export const SeoAiServicePage: React.FC<SeoAiServicePageProps> = ({ onOpenConsul
         <Container size="lg">
           <Breadcrumbs
             items={[
-              { name: 'Dịch vụ', url: '/dich-vu' },
-              { name: 'Thống trị Google AI Overviews', url: '/dich-vu/seo-ai' }
+              { name: 'Giải pháp', url: '/giai-phap' },
+              { name: 'Được khách hàng tìm thấy', url: '/giai-phap/duoc-tim-thay' },
+              { name: 'Tối ưu Google AI Overviews', url: '/dich-vu/seo-ai' }
             ]}
+          />
+
+          <CapabilityContextBox
+            solutionName="Được khách hàng tìm thấy trên Google & AI"
+            solutionUrl="/giai-phap/duoc-tim-thay"
           />
 
           <div style={{ maxWidth: '850px', margin: '2rem auto 0 auto', textAlign: 'center' }}>
@@ -174,7 +185,7 @@ export const SeoAiServicePage: React.FC<SeoAiServicePageProps> = ({ onOpenConsul
               }}
             >
               <Search size={16} />
-              <span>GOOGLE AI OVERVIEWS (SGE) • CHIẾM LĨNH VỊ TRÍ SỐ 0 ĐẦU TRANG</span>
+              <span>GOOGLE AI OVERVIEWS (SGE) • TỐI ƯU HIỆN DIỆN VỊ TRÍ TỔNG QUAN AI</span>
             </div>
 
             <h1
@@ -187,7 +198,7 @@ export const SeoAiServicePage: React.FC<SeoAiServicePageProps> = ({ onOpenConsul
                 textWrap: 'pretty'
               }}
             >
-              Thống trị <span style={{ color: '#0d7647' }}>Google AI Overviews</span> — Giữ vững 60% lượng khách tìm kiếm
+              Tối ưu xuất hiện trên <span style={{ color: '#0d7647' }}>Google AI Overviews</span> — Tiếp cận khách hàng tự nhiên
             </h1>
 
             <p
@@ -287,7 +298,7 @@ export const SeoAiServicePage: React.FC<SeoAiServicePageProps> = ({ onOpenConsul
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                 <CheckCircle2 size={16} color="#059669" />
-                <span>Chiếm lĩnh vị trí số 0 đầu Google</span>
+                <span>Hiện diện vị trí tổng quan AI đầu Google</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                 <CheckCircle2 size={16} color="#059669" />
@@ -653,7 +664,7 @@ export const SeoAiServicePage: React.FC<SeoAiServicePageProps> = ({ onOpenConsul
       <section style={{ padding: '4.5rem 0', backgroundColor: '#0d7647', color: '#ffffff', textAlign: 'center' }}>
         <Container size="md">
           <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, marginBottom: '1rem', color: '#ffffff' }}>
-            Chiếm lĩnh vị trí số 0 trước khi đối thủ nhận ra
+            Đón đầu xu hướng tìm kiếm AI trước khi đối thủ nhận ra
           </h2>
           <p style={{ fontSize: '1.1rem', color: '#dcfce7', maxWidth: '650px', margin: '0 auto 2rem auto', lineHeight: 1.6, textWrap: 'pretty' }}>
             Làn sóng Google AI Overviews đang thay đổi toàn diện bản đồ tìm kiếm. Hãy để LocalMate giúp bạn đón đầu xu thế với chi phí bình dân nhất.
