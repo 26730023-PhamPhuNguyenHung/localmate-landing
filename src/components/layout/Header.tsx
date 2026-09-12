@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Container } from '../ui/Container';
-import { Button } from '../ui/Button';
 import {
   Menu,
   X,
-  ArrowRight,
   ChevronDown,
   Sparkles,
   MapPin,
@@ -14,7 +12,8 @@ import {
   Layout,
   TrendingUp,
   Briefcase,
-  CheckCircle2
+  CheckCircle2,
+  ArrowRight
 } from 'lucide-react';
 import { useRouter, Link } from './Router';
 import { CONTACT_INFO } from '../../data/landingContent';
@@ -27,16 +26,15 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<'services' | 'knowledge' | null>(null);
-  const [mobileServicesOpen, setMobileServicesOpen] = useState(true);
-  const [mobileKnowledgeOpen, setMobileKnowledgeOpen] = useState(false);
 
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
+  const dropdownTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { currentPath, navigate } = useRouter();
 
   // Scroll effect
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 15);
+      setScrolled(window.scrollY > 12);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -45,7 +43,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
   // Close dropdown on click outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (headerRef.current && !headerRef.current.contains(event.target as Node)) {
         setActiveDropdown(null);
       }
     };
@@ -63,21 +61,34 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
     };
   }, [mobileMenuOpen]);
 
-  // Close drawer on ESC key
+  // Close drawer & dropdown on ESC key
   useEffect(() => {
-    if (!mobileMenuOpen) return;
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setMobileMenuOpen(false);
+        setActiveDropdown(null);
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [mobileMenuOpen]);
+  }, []);
+
+  const handleMouseEnterDropdown = (type: 'services' | 'knowledge') => {
+    if (dropdownTimeoutRef.current) {
+      clearTimeout(dropdownTimeoutRef.current);
+      dropdownTimeoutRef.current = null;
+    }
+    setActiveDropdown(type);
+  };
+
+  const handleMouseLeaveDropdown = () => {
+    dropdownTimeoutRef.current = setTimeout(() => {
+      setActiveDropdown(null);
+    }, 150);
+  };
 
   const handleActionClick = () => {
-    setMobileMenuOpen(false);
-    setActiveDropdown(null);
+    closeMenus();
     if (onOpenDemoForm) {
       onOpenDemoForm();
     } else {
@@ -86,6 +97,10 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
   };
 
   const closeMenus = () => {
+    if (dropdownTimeoutRef.current) {
+      clearTimeout(dropdownTimeoutRef.current);
+      dropdownTimeoutRef.current = null;
+    }
     setActiveDropdown(null);
     setMobileMenuOpen(false);
   };
@@ -93,17 +108,17 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
   return (
     <>
       <header
-        className={`main-site-header ${scrolled ? 'header-scrolled' : ''}`}
-        ref={dropdownRef}
+        ref={headerRef}
+        className={`site-header ${scrolled ? 'header-scrolled' : ''}`}
       >
         <Container size="lg">
           <div className="header-inner">
-            {/* Logo */}
+            {/* 1. Logo */}
             <Link
               to="/"
               className="header-logo-wrap"
               onClick={closeMenus}
-              title="LocalMate - Website, Google Maps & Quảng cáo Doanh nghiệp nhỏ"
+              title="LocalMate - Người đồng hành số tại địa phương"
             >
               <img
                 src="/logo.png"
@@ -112,26 +127,18 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
               />
             </Link>
 
-            {/* Desktop Navigation Links — Mona-style with Icons & Mega Menu */}
-            <nav className="header-nav-desktop" aria-label="Điều hướng chính">
-              {/* 1. Trang chủ */}
-              <Link
-                to="/"
-                onClick={closeMenus}
-                className={`nav-item-link ${currentPath === '/' ? 'active' : ''}`}
-              >
-                <span>Trang chủ</span>
-              </Link>
-
-              {/* 2. Dịch vụ (Mona Mega Menu 4-Column Dropdown) */}
+            {/* 2. Desktop Navigation: [Dịch vụ] [Bảng giá] [Dự án] [Kiến thức] [Giới thiệu] */}
+            <nav className="header-desktop-nav" aria-label="Điều hướng chính">
+              {/* Dịch vụ Dropdown */}
               <div
-                className="nav-dropdown-parent"
-                onMouseEnter={() => setActiveDropdown('services')}
+                className="nav-dropdown-wrapper"
+                onMouseEnter={() => handleMouseEnterDropdown('services')}
+                onMouseLeave={handleMouseLeaveDropdown}
               >
                 <button
                   type="button"
                   onClick={() => setActiveDropdown(activeDropdown === 'services' ? null : 'services')}
-                  className={`nav-item-link nav-item-btn ${currentPath.startsWith('/dich-vu') ? 'active' : ''}`}
+                  className={`nav-link-btn ${currentPath.startsWith('/dich-vu') || currentPath.startsWith('/landing-490k') ? 'active' : ''}`}
                   aria-expanded={activeDropdown === 'services'}
                 >
                   <span>Dịch vụ</span>
@@ -141,231 +148,192 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
                   />
                 </button>
 
-                {/* Mona-style Full-Width Mega Menu Panel */}
+                {/* Dịch vụ Mega Menu Panel */}
                 {activeDropdown === 'services' && (
                   <div
-                    className="mega-menu-overlay"
-                    onMouseLeave={() => setActiveDropdown(null)}
+                    className="mega-menu-wrapper"
+                    onMouseEnter={() => handleMouseEnterDropdown('services')}
+                    onMouseLeave={handleMouseLeaveDropdown}
                   >
-                    <div className="mega-menu-container">
-                      {/* Left 3 Columns: Categorized Services */}
-                      <div className="mega-menu-main">
-                        {/* Col 1: Website & Landing Page */}
+                    <div className="mega-menu-card">
+                      {/* 3 Columns Categorized Services */}
+                      <div className="mega-columns-grid">
+                        {/* Col 1: Website & Bán hàng */}
                         <div className="mega-col">
-                          <div className="mega-col-header">
+                          <div className="mega-col-heading">
                             <Globe size={15} color="var(--color-primary)" />
                             <span>Website &amp; Bán Hàng</span>
                           </div>
-                          <div className="mega-items-list">
-                            <Link
-                              to="/landing-490k"
-                              onClick={closeMenus}
-                              className="mega-card"
-                            >
-                              <div className="mega-card-icon icon-green">
+                          <div className="mega-link-list">
+                            <Link to="/landing-490k" onClick={closeMenus} className="mega-item">
+                              <div className="mega-item-icon icon-emerald">
                                 <Layout size={16} />
                               </div>
-                              <div className="mega-card-content">
-                                <div className="mega-card-title">
+                              <div className="mega-item-body">
+                                <div className="mega-item-title">
                                   <span>Website 1 Trang</span>
-                                  <span className="mega-tag tag-hot">490k</span>
+                                  <span className="mega-badge badge-red">490k</span>
                                 </div>
-                                <p className="mega-card-desc">Gọn gàng, rõ giá, có nút gọi/Zalo ngay.</p>
+                                <p className="mega-item-desc">Gọn gàng, rõ giá, có nút gọi / Zalo ngay.</p>
                               </div>
                             </Link>
 
-                            <Link
-                              to="/dich-vu/website-landing-page"
-                              onClick={closeMenus}
-                              className="mega-card"
-                            >
-                              <div className="mega-card-icon icon-blue">
+                            <Link to="/dich-vu/website-landing-page" onClick={closeMenus} className="mega-item">
+                              <div className="mega-item-icon icon-blue">
                                 <Globe size={16} />
                               </div>
-                              <div className="mega-card-content">
-                                <div className="mega-card-title">
+                              <div className="mega-item-body">
+                                <div className="mega-item-title">
                                   <span>Web Doanh Nghiệp</span>
-                                  <span className="mega-tag tag-standard">3–5 trang</span>
+                                  <span className="mega-badge badge-neutral">3–5 trang</span>
                                 </div>
-                                <p className="mega-card-desc">Đầy đủ giới thiệu, dịch vụ và dự án.</p>
+                                <p className="mega-item-desc">Đầy đủ giới thiệu, dịch vụ và dự án.</p>
                               </div>
                             </Link>
 
-                            <Link
-                              to="/dich-vu/website-landing-page"
-                              onClick={closeMenus}
-                              className="mega-card"
-                            >
-                              <div className="mega-card-icon icon-purple">
+                            <Link to="/dich-vu/website-landing-page" onClick={closeMenus} className="mega-item">
+                              <div className="mega-item-icon icon-purple">
                                 <Sparkles size={16} />
                               </div>
-                              <div className="mega-card-content">
-                                <div className="mega-card-title">
+                              <div className="mega-item-body">
+                                <div className="mega-item-title">
                                   <span>Chỉnh Sửa &amp; Nâng Cấp Web</span>
                                 </div>
-                                <p className="mega-card-desc">Sửa lỗi, thêm banner, cập nhật giá nhanh.</p>
+                                <p className="mega-item-desc">Sửa lỗi, đổi banner, cập nhật bảng giá nhanh.</p>
                               </div>
                             </Link>
                           </div>
                         </div>
 
-                        {/* Col 2: Google Presence & Maps */}
+                        {/* Col 2: Google Maps & Tìm kiếm */}
                         <div className="mega-col">
-                          <div className="mega-col-header">
+                          <div className="mega-col-heading">
                             <MapPin size={15} color="var(--color-primary)" />
                             <span>Google Maps &amp; Tìm Kiếm</span>
                           </div>
-                          <div className="mega-items-list">
-                            <Link
-                              to="/dich-vu/google-maps"
-                              onClick={closeMenus}
-                              className="mega-card"
-                            >
-                              <div className="mega-card-icon icon-orange">
+                          <div className="mega-link-list">
+                            <Link to="/dich-vu/google-maps" onClick={closeMenus} className="mega-item">
+                              <div className="mega-item-icon icon-amber">
                                 <MapPin size={16} />
                               </div>
-                              <div className="mega-card-content">
-                                <div className="mega-card-title">
+                              <div className="mega-item-body">
+                                <div className="mega-item-title">
                                   <span>Đưa Tiệm Lên Maps</span>
-                                  <span className="mega-tag tag-save">Từ 299k</span>
+                                  <span className="mega-badge badge-green">Từ 299k</span>
                                 </div>
-                                <p className="mega-card-desc">Khách tìm quanh khu vực thấy tiệm ngay.</p>
+                                <p className="mega-item-desc">Khách tìm quanh khu vực thấy tiệm ngay.</p>
                               </div>
                             </Link>
 
-                            <Link
-                              to="/dich-vu/google-maps"
-                              onClick={closeMenus}
-                              className="mega-card"
-                            >
-                              <div className="mega-card-icon icon-green">
+                            <Link to="/dich-vu/google-maps" onClick={closeMenus} className="mega-item">
+                              <div className="mega-item-icon icon-emerald">
                                 <TrendingUp size={16} />
                               </div>
-                              <div className="mega-card-content">
-                                <div className="mega-card-title">
+                              <div className="mega-item-body">
+                                <div className="mega-item-title">
                                   <span>Tối Ưu &amp; SEO Local Maps</span>
                                 </div>
-                                <p className="mega-card-desc">Tăng thứ hạng hiển thị top tìm kiếm gần.</p>
+                                <p className="mega-item-desc">Tăng thứ hạng hiển thị top tìm kiếm gần.</p>
                               </div>
                             </Link>
 
-                            <Link
-                              to="/dich-vu/google-maps"
-                              onClick={closeMenus}
-                              className="mega-card"
-                            >
-                              <div className="mega-card-icon icon-blue">
+                            <Link to="/dich-vu/google-maps" onClick={closeMenus} className="mega-item">
+                              <div className="mega-item-icon icon-blue">
                                 <Sparkles size={16} />
                               </div>
-                              <div className="mega-card-content">
-                                <div className="mega-card-title">
+                              <div className="mega-item-body">
+                                <div className="mega-item-title">
                                   <span>Mã QR Đánh Giá 5 Sao</span>
                                 </div>
-                                <p className="mega-card-desc">In để bàn giúp khách quét đánh giá dễ dàng.</p>
+                                <p className="mega-item-desc">In để bàn giúp khách quét đánh giá dễ dàng.</p>
                               </div>
                             </Link>
                           </div>
                         </div>
 
-                        {/* Col 3: Quảng Cáo & Bài Viết */}
+                        {/* Col 3: Quảng cáo & Bài viết */}
                         <div className="mega-col">
-                          <div className="mega-col-header">
+                          <div className="mega-col-heading">
                             <Sparkles size={15} color="var(--color-primary)" />
                             <span>Quảng Cáo &amp; Bài Viết</span>
                           </div>
-                          <div className="mega-items-list">
-                            <Link
-                              to="/dich-vu/google-ads"
-                              onClick={closeMenus}
-                              className="mega-card"
-                            >
-                              <div className="mega-card-icon icon-orange">
+                          <div className="mega-link-list">
+                            <Link to="/dich-vu/google-ads" onClick={closeMenus} className="mega-item">
+                              <div className="mega-item-icon icon-amber">
                                 <Sparkles size={16} />
                               </div>
-                              <div className="mega-card-content">
-                                <div className="mega-card-title">
+                              <div className="mega-item-body">
+                                <div className="mega-item-title">
                                   <span>Quảng Cáo Google Ads</span>
-                                  <span className="mega-tag tag-hot">Từ 390k</span>
+                                  <span className="mega-badge badge-red">Từ 390k</span>
                                 </div>
-                                <p className="mega-card-desc">Nhắm đúng người đang cần mua, gọi ngay.</p>
+                                <p className="mega-item-desc">Nhắm đúng người đang cần mua, gọi ngay.</p>
                               </div>
                             </Link>
 
-                            <Link
-                              to="/dich-vu/content-marketing"
-                              onClick={closeMenus}
-                              className="mega-card"
-                            >
-                              <div className="mega-card-icon icon-pink">
+                            <Link to="/dich-vu/content-marketing" onClick={closeMenus} className="mega-item">
+                              <div className="mega-item-icon icon-pink">
                                 <FileText size={16} />
                               </div>
-                              <div className="mega-card-content">
-                                <div className="mega-card-title">
-                                  <span>Chăm Sóc Facebook</span>
-                                  <span className="mega-tag tag-save">990k/th</span>
+                              <div className="mega-item-body">
+                                <div className="mega-item-title">
+                                  <span>Chăm Sóc Fanpage FB</span>
+                                  <span className="mega-badge badge-green">990k/th</span>
                                 </div>
-                                <p className="mega-card-desc">15 bài viết + thiết kế ảnh đẹp mắt.</p>
+                                <p className="mega-item-desc">15 bài viết + thiết kế ảnh đẹp mắt.</p>
                               </div>
                             </Link>
 
-                            <Link
-                              to="/dich-vu/content-marketing"
-                              onClick={closeMenus}
-                              className="mega-card"
-                            >
-                              <div className="mega-card-icon icon-purple">
+                            <Link to="/dich-vu/content-marketing" onClick={closeMenus} className="mega-item">
+                              <div className="mega-item-icon icon-purple">
                                 <Briefcase size={16} />
                               </div>
-                              <div className="mega-card-content">
-                                <div className="mega-card-title">
+                              <div className="mega-item-body">
+                                <div className="mega-item-title">
                                   <span>Thiết Kế Banner &amp; Ảnh Lẻ</span>
                                 </div>
-                                <p className="mega-card-desc">Ảnh menu, banner khuyến mãi từ 99k/ảnh.</p>
+                                <p className="mega-item-desc">Ảnh menu, banner khuyến mãi từ 99k/ảnh.</p>
                               </div>
                             </Link>
                           </div>
                         </div>
                       </div>
 
-                      {/* Right Promo Rail: Clean & Perfectly Contained Inside Card */}
-                      <div className="mega-promo-rail">
-                        <div className="mega-promo-box">
-                          <span className="promo-badge">GÓI NỔI BẬT KHUYÊN DÙNG</span>
-                          <h4 className="promo-title">Gói Khởi Tạo 490.000đ</h4>
-                          <p className="promo-desc">
-                            Website 1 trang chuẩn + Google Maps + Nút gọi Zalo.
+                      {/* Right Promo Rail */}
+                      <div className="mega-promo-column">
+                        <div className="mega-highlight-card">
+                          <span className="highlight-tag">GÓI KHỞI TẠO NỔI BẬT</span>
+                          <h4 className="highlight-title">Website 1 Trang 490.000đ</h4>
+                          <p className="highlight-desc">
+                            Website chuẩn di động + Google Maps + Nút gọi Zalo trực tiếp.
                           </p>
-                          <div className="promo-points">
-                            <div className="promo-point-item">
+                          <div className="highlight-checklist">
+                            <div className="checklist-item">
                               <CheckCircle2 size={13} color="var(--color-primary-light)" />
-                              <span>Báo giá rõ, không phụ phí</span>
+                              <span>Báo giá trọn gói, không phụ phí</span>
                             </div>
-                            <div className="promo-point-item">
+                            <div className="checklist-item">
                               <CheckCircle2 size={13} color="var(--color-primary-light)" />
-                              <span>Bàn giao 100% tài khoản</span>
+                              <span>Bàn giao 100% tài khoản chính chủ</span>
                             </div>
                           </div>
-                          <Link
-                            to="/landing-490k"
-                            onClick={closeMenus}
-                            className="promo-btn"
-                          >
+                          <Link to="/landing-490k" onClick={closeMenus} className="highlight-action-btn">
                             Xem chi tiết gói 490k →
                           </Link>
                         </div>
 
-                        {/* Compact Hotline Card */}
+                        {/* Direct Hotline strip inside mega menu */}
                         <a
                           href={`tel:${CONTACT_INFO.phoneRaw}`}
-                          className="mega-hotline-card"
+                          className="mega-hotline-strip"
                           title="Gọi hotline tư vấn"
                         >
-                          <div className="hotline-icon-box">
-                            <Phone size={15} color="#ffffff" />
+                          <div className="hotline-strip-icon">
+                            <Phone size={14} color="#ffffff" />
                           </div>
-                          <div className="hotline-meta">
-                            <span className="hotline-label">Tư vấn trực tiếp 24/7</span>
-                            <span className="hotline-num">0834.422.439</span>
+                          <div className="hotline-strip-text">
+                            <span className="hotline-strip-label">Tư vấn trực tiếp 24/7</span>
+                            <span className="hotline-strip-phone">0834 422 439</span>
                           </div>
                         </a>
                       </div>
@@ -374,33 +342,34 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
                 )}
               </div>
 
-              {/* 3. Bảng Giá */}
+              {/* Bảng giá */}
               <Link
                 to="/bang-gia"
                 onClick={closeMenus}
-                className={`nav-item-link ${currentPath.startsWith('/bang-gia') ? 'active' : ''}`}
+                className={`nav-link ${currentPath.startsWith('/bang-gia') ? 'active' : ''}`}
               >
                 <span>Bảng giá</span>
               </Link>
 
-              {/* 4. Dự án đã làm */}
+              {/* Dự án */}
               <Link
                 to="/du-an"
                 onClick={closeMenus}
-                className={`nav-item-link ${currentPath.startsWith('/du-an') ? 'active' : ''}`}
+                className={`nav-link ${currentPath.startsWith('/du-an') ? 'active' : ''}`}
               >
                 <span>Dự án</span>
               </Link>
 
-              {/* 5. Kiến Thức Dropdown */}
+              {/* Kiến thức Dropdown */}
               <div
-                className="nav-dropdown-parent"
-                onMouseEnter={() => setActiveDropdown('knowledge')}
+                className="nav-dropdown-wrapper"
+                onMouseEnter={() => handleMouseEnterDropdown('knowledge')}
+                onMouseLeave={handleMouseLeaveDropdown}
               >
                 <button
                   type="button"
                   onClick={() => setActiveDropdown(activeDropdown === 'knowledge' ? null : 'knowledge')}
-                  className={`nav-item-link nav-item-btn ${currentPath.startsWith('/kien-thuc') ? 'active' : ''}`}
+                  className={`nav-link-btn ${currentPath.startsWith('/kien-thuc') ? 'active' : ''}`}
                   aria-expanded={activeDropdown === 'knowledge'}
                 >
                   <span>Kiến thức</span>
@@ -412,307 +381,315 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
 
                 {activeDropdown === 'knowledge' && (
                   <div
-                    className="dropdown-menu-simple"
-                    onMouseLeave={() => setActiveDropdown(null)}
+                    className="knowledge-dropdown-panel"
+                    onMouseEnter={() => handleMouseEnterDropdown('knowledge')}
+                    onMouseLeave={handleMouseLeaveDropdown}
                   >
-                    <Link
-                      to="/kien-thuc"
-                      onClick={closeMenus}
-                      className="simple-dropdown-item"
-                    >
-                      <Globe size={16} color="var(--color-primary)" />
+                    <Link to="/kien-thuc" onClick={closeMenus} className="knowledge-item">
+                      <div className="knowledge-item-icon icon-emerald">
+                        <Globe size={15} />
+                      </div>
                       <div>
-                        <div className="item-main-text">Kinh Nghiệm Làm Website</div>
-                        <div className="item-sub-text">Cấu trúc trang web chuyển đổi cao</div>
+                        <div className="knowledge-title">Kinh Nghiệm Làm Website</div>
+                        <div className="knowledge-desc">Cấu trúc trang web chuyển đổi cao</div>
                       </div>
                     </Link>
 
-                    <Link
-                      to="/kien-thuc"
-                      onClick={closeMenus}
-                      className="simple-dropdown-item"
-                    >
-                      <MapPin size={16} color="var(--color-orange)" />
+                    <Link to="/kien-thuc" onClick={closeMenus} className="knowledge-item">
+                      <div className="knowledge-item-icon icon-amber">
+                        <MapPin size={15} />
+                      </div>
                       <div>
-                        <div className="item-main-text">Tối Ưu Google Maps &amp; SEO</div>
-                        <div className="item-sub-text">Cách tăng đánh giá 5 sao và khách gần</div>
+                        <div className="knowledge-title">Tối Ưu Google Maps &amp; SEO</div>
+                        <div className="knowledge-desc">Cách tăng đánh giá 5 sao &amp; khách gần</div>
                       </div>
                     </Link>
 
-                    <Link
-                      to="/kien-thuc"
-                      onClick={closeMenus}
-                      className="simple-dropdown-item"
-                    >
-                      <Sparkles size={16} color="#2563eb" />
+                    <Link to="/kien-thuc" onClick={closeMenus} className="knowledge-item">
+                      <div className="knowledge-item-icon icon-blue">
+                        <Sparkles size={15} />
+                      </div>
                       <div>
-                        <div className="item-main-text">Chạy Quảng Cáo Google Ads</div>
-                        <div className="item-sub-text">Cách lọc từ khóa tránh lãng phí tiền</div>
+                        <div className="knowledge-title">Quảng Cáo Google Ads Thực Chiến</div>
+                        <div className="knowledge-desc">Lọc từ khóa tránh lãng phí ngân sách</div>
                       </div>
                     </Link>
 
-                    <Link
-                      to="/kien-thuc"
-                      onClick={closeMenus}
-                      className="simple-dropdown-item"
-                    >
-                      <FileText size={16} color="#db2777" />
+                    <Link to="/kien-thuc" onClick={closeMenus} className="knowledge-item">
+                      <div className="knowledge-item-icon icon-pink">
+                        <FileText size={15} />
+                      </div>
                       <div>
-                        <div className="item-main-text">Viết Bài &amp; Nội Dung Kênh</div>
-                        <div className="item-sub-text">Mẫu bài đăng Facebook thu hút khách</div>
+                        <div className="knowledge-title">Nội Dung &amp; Bài Viết Fanpage</div>
+                        <div className="knowledge-desc">Mẫu bài đăng thu hút khách hàng</div>
                       </div>
                     </Link>
 
-                    <div className="dropdown-divider-line">
-                      <Link
-                        to="/kien-thuc"
-                        onClick={closeMenus}
-                        className="dropdown-view-all"
-                      >
-                        <span>Xem tất cả bài hướng dẫn →</span>
+                    <div className="knowledge-footer-link">
+                      <Link to="/kien-thuc" onClick={closeMenus} className="knowledge-all-btn">
+                        <span>Xem tất cả bài hướng dẫn</span>
+                        <ArrowRight size={13} />
                       </Link>
                     </div>
                   </div>
                 )}
               </div>
 
-              {/* 6. Giới Thiệu */}
+              {/* Giới thiệu */}
               <Link
                 to="/gioi-thieu"
                 onClick={closeMenus}
-                className={`nav-item-link ${currentPath.startsWith('/gioi-thieu') ? 'active' : ''}`}
+                className={`nav-link ${currentPath.startsWith('/gioi-thieu') ? 'active' : ''}`}
               >
                 <span>Giới thiệu</span>
               </Link>
-
-              {/* 7. Liên Hệ */}
-              <Link
-                to="/lien-he"
-                onClick={closeMenus}
-                className={`nav-item-link ${currentPath.startsWith('/lien-he') ? 'active' : ''}`}
-              >
-                <span>Liên hệ</span>
-              </Link>
             </nav>
 
-            {/* Desktop Action & Hotline */}
-            <div className="header-actions-desktop">
-              {/* Hotline Link */}
+            {/* 3. Desktop Actions: [Hotline: 0834 422 439] [Báo giá nhanh] */}
+            <div className="header-desktop-actions">
               <a
                 href={`tel:${CONTACT_INFO.phoneRaw}`}
-                className="header-quick-hotline"
-                title="Gọi điện tư vấn trực tiếp"
+                className="header-hotline-link"
+                title="Gọi hotline 0834 422 439"
               >
-                <Phone size={14} color="var(--color-orange-dark)" />
-                <span>0834.422.439</span>
+                <Phone size={15} className="header-hotline-icon" />
+                <span className="header-hotline-text">
+                  Hotline: <strong className="header-hotline-num">0834 422 439</strong>
+                </span>
               </a>
 
-              {/* Primary Action Button */}
-              <Button
-                variant="primary"
-                size="md"
+              <button
+                type="button"
                 onClick={handleActionClick}
-                className="header-cta-btn"
+                className="header-cta-button"
               >
                 <Sparkles size={15} />
                 <span>Báo giá nhanh</span>
-              </Button>
+              </button>
             </div>
 
-            {/* Mobile Hamburger Button */}
-            <button
-              type="button"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Mở menu điều hướng"
-              aria-expanded={mobileMenuOpen}
-              className="mobile-menu-toggle-btn"
-            >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            {/* 4. Mobile Actions: [Báo giá nhanh] [Nút Menu Hamburger] */}
+            <div className="header-mobile-actions">
+              <button
+                type="button"
+                onClick={handleActionClick}
+                className="header-mobile-cta"
+              >
+                <Sparkles size={13} />
+                <span>Báo giá nhanh</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label={mobileMenuOpen ? 'Đóng menu' : 'Mở menu điều hướng'}
+                aria-expanded={mobileMenuOpen}
+                className="mobile-hamburger-btn"
+              >
+                {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+              </button>
+            </div>
           </div>
         </Container>
       </header>
 
-      {/* Mobile Drawer (Accordion Style) */}
+      {/* Mobile Drawer (Smooth Slide-In, Clear Flat Structure, Tap Target >= 44px) */}
       {mobileMenuOpen && (
         <div className="mobile-drawer-overlay">
-          <div className="mobile-drawer-body">
-            <div className="mobile-nav-links">
-              <Link
-                to="/"
-                onClick={closeMenus}
-                className={`mobile-nav-item ${currentPath === '/' ? 'active' : ''}`}
-              >
-                Trang chủ
-              </Link>
-
-              {/* Mobile Dịch Vụ Accordion */}
-              <div className="mobile-accordion">
-                <button
-                  type="button"
-                  onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                  className="mobile-accordion-toggle"
-                >
-                  <span style={{ fontWeight: 800 }}>Dịch vụ chính</span>
-                  <ChevronDown
-                    size={16}
-                    style={{ transform: mobileServicesOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}
-                  />
-                </button>
-
-                {mobileServicesOpen && (
-                  <div className="mobile-accordion-content">
-                    <Link
-                      to="/landing-490k"
-                      onClick={closeMenus}
-                      className="mobile-sub-link"
-                    >
-                      <Layout size={15} color="var(--color-primary)" />
-                      <span>Website 1 Trang (490k)</span>
-                    </Link>
-                    <Link
-                      to="/dich-vu/google-maps"
-                      onClick={closeMenus}
-                      className="mobile-sub-link"
-                    >
-                      <MapPin size={15} color="var(--color-orange-dark)" />
-                      <span>Đưa Tiệm Lên Google Maps (Từ 299k)</span>
-                    </Link>
-                    <Link
-                      to="/dich-vu/google-ads"
-                      onClick={closeMenus}
-                      className="mobile-sub-link"
-                    >
-                      <Sparkles size={15} color="#2563eb" />
-                      <span>Quảng Cáo Google Ads (Từ 390k)</span>
-                    </Link>
-                    <Link
-                      to="/dich-vu/content-marketing"
-                      onClick={closeMenus}
-                      className="mobile-sub-link"
-                    >
-                      <FileText size={15} color="#db2777" />
-                      <span>Chăm Sóc Facebook (990k/tháng)</span>
-                    </Link>
-                    <Link
-                      to="/dich-vu/website-landing-page"
-                      onClick={closeMenus}
-                      className="mobile-sub-link"
-                    >
-                      <Globe size={15} color="var(--color-primary-dark)" />
-                      <span>Website Doanh Nghiệp 3–5 Trang</span>
-                    </Link>
-                  </div>
-                )}
+          <div className="mobile-drawer-backdrop" onClick={closeMenus} />
+          <div className="mobile-drawer-panel" role="dialog" aria-modal="true" aria-label="Menu điều hướng">
+            {/* Drawer Header */}
+            <div className="drawer-header">
+              <div className="drawer-brand">
+                <img src="/logo.png" alt="LocalMate" className="drawer-logo-img" />
               </div>
-
-              <Link
-                to="/bang-gia"
+              <button
+                type="button"
                 onClick={closeMenus}
-                className={`mobile-nav-item ${currentPath.startsWith('/bang-gia') ? 'active' : ''}`}
+                aria-label="Đóng menu"
+                className="drawer-close-btn"
               >
-                Bảng giá niêm yết
-              </Link>
-
-              <Link
-                to="/du-an"
-                onClick={closeMenus}
-                className={`mobile-nav-item ${currentPath.startsWith('/du-an') ? 'active' : ''}`}
-              >
-                Dự án đã làm
-              </Link>
-
-              {/* Mobile Kiến Thức Accordion */}
-              <div className="mobile-accordion">
-                <button
-                  type="button"
-                  onClick={() => setMobileKnowledgeOpen(!mobileKnowledgeOpen)}
-                  className="mobile-accordion-toggle"
-                >
-                  <span style={{ fontWeight: 800 }}>Kiến thức &amp; Hướng dẫn</span>
-                  <ChevronDown
-                    size={16}
-                    style={{ transform: mobileKnowledgeOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}
-                  />
-                </button>
-
-                {mobileKnowledgeOpen && (
-                  <div className="mobile-accordion-content">
-                    <Link to="/kien-thuc" onClick={closeMenus} className="mobile-sub-link">
-                      → Hướng dẫn làm Website
-                    </Link>
-                    <Link to="/kien-thuc" onClick={closeMenus} className="mobile-sub-link">
-                      → Tối ưu Google Maps Local
-                    </Link>
-                    <Link to="/kien-thuc" onClick={closeMenus} className="mobile-sub-link">
-                      → Kinh nghiệm chạy Google Ads
-                    </Link>
-                    <Link to="/kien-thuc" onClick={closeMenus} className="mobile-sub-link">
-                      → Mẫu bài viết Facebook
-                    </Link>
-                  </div>
-                )}
-              </div>
-
-              <Link
-                to="/gioi-thieu"
-                onClick={closeMenus}
-                className={`mobile-nav-item ${currentPath.startsWith('/gioi-thieu') ? 'active' : ''}`}
-              >
-                Giới thiệu LocalMate
-              </Link>
-
-              <Link
-                to="/lien-he"
-                onClick={closeMenus}
-                className={`mobile-nav-item ${currentPath.startsWith('/lien-he') ? 'active' : ''}`}
-              >
-                Liên hệ
-              </Link>
+                <X size={20} />
+              </button>
             </div>
 
-            {/* Mobile Footer CTAs */}
-            <div className="mobile-drawer-footer">
-              <Button
-                variant="primary"
-                size="lg"
+            {/* Drawer Body — Flat Clear List, No Nested Confusing Dropdowns */}
+            <div className="drawer-scroll-body">
+              {/* Primary Navigation Links */}
+              <div className="drawer-section">
+                <div className="drawer-section-label">ĐIỀU HƯỚNG CHÍNH</div>
+                <div className="drawer-nav-list">
+                  <Link
+                    to="/"
+                    onClick={closeMenus}
+                    className={`drawer-link ${currentPath === '/' ? 'active' : ''}`}
+                  >
+                    <span>Trang chủ</span>
+                  </Link>
+                  <Link
+                    to="/bang-gia"
+                    onClick={closeMenus}
+                    className={`drawer-link ${currentPath.startsWith('/bang-gia') ? 'active' : ''}`}
+                  >
+                    <span>Bảng giá niêm yết</span>
+                    <span className="drawer-badge-pill">Minh bạch</span>
+                  </Link>
+                  <Link
+                    to="/du-an"
+                    onClick={closeMenus}
+                    className={`drawer-link ${currentPath.startsWith('/du-an') ? 'active' : ''}`}
+                  >
+                    <span>Dự án thực tế</span>
+                  </Link>
+                  <Link
+                    to="/kien-thuc"
+                    onClick={closeMenus}
+                    className={`drawer-link ${currentPath.startsWith('/kien-thuc') ? 'active' : ''}`}
+                  >
+                    <span>Kiến thức &amp; Hướng dẫn</span>
+                  </Link>
+                  <Link
+                    to="/gioi-thieu"
+                    onClick={closeMenus}
+                    className={`drawer-link ${currentPath.startsWith('/gioi-thieu') ? 'active' : ''}`}
+                  >
+                    <span>Giới thiệu LocalMate</span>
+                  </Link>
+                  <Link
+                    to="/lien-he"
+                    onClick={closeMenus}
+                    className={`drawer-link ${currentPath.startsWith('/lien-he') ? 'active' : ''}`}
+                  >
+                    <span>Liên hệ tư vấn</span>
+                  </Link>
+                </div>
+              </div>
+
+              {/* Highlighted Services — Directly Accessible, Tap Target >= 44px */}
+              <div className="drawer-section">
+                <div className="drawer-section-label">DỊCH VỤ TRIỂN KHAI NHANH</div>
+                <div className="drawer-services-list">
+                  <Link
+                    to="/landing-490k"
+                    onClick={closeMenus}
+                    className="drawer-service-link"
+                  >
+                    <div className="drawer-service-icon icon-emerald">
+                      <Layout size={15} />
+                    </div>
+                    <span className="drawer-service-name">Website 1 Trang Bán Hàng</span>
+                    <span className="drawer-price-badge badge-red">490k</span>
+                  </Link>
+
+                  <Link
+                    to="/dich-vu/google-maps"
+                    onClick={closeMenus}
+                    className="drawer-service-link"
+                  >
+                    <div className="drawer-service-icon icon-amber">
+                      <MapPin size={15} />
+                    </div>
+                    <span className="drawer-service-name">Đưa Tiệm Lên Google Maps</span>
+                    <span className="drawer-price-badge badge-green">Từ 299k</span>
+                  </Link>
+
+                  <Link
+                    to="/dich-vu/google-ads"
+                    onClick={closeMenus}
+                    className="drawer-service-link"
+                  >
+                    <div className="drawer-service-icon icon-blue">
+                      <Sparkles size={15} />
+                    </div>
+                    <span className="drawer-service-name">Quảng Cáo Google Ads</span>
+                    <span className="drawer-price-badge badge-red">Từ 390k</span>
+                  </Link>
+
+                  <Link
+                    to="/dich-vu/content-marketing"
+                    onClick={closeMenus}
+                    className="drawer-service-link"
+                  >
+                    <div className="drawer-service-icon icon-pink">
+                      <FileText size={15} />
+                    </div>
+                    <span className="drawer-service-name">Chăm Sóc Fanpage FB</span>
+                    <span className="drawer-price-badge badge-green">990k/th</span>
+                  </Link>
+
+                  <Link
+                    to="/dich-vu/website-landing-page"
+                    onClick={closeMenus}
+                    className="drawer-service-link"
+                  >
+                    <div className="drawer-service-icon icon-purple">
+                      <Globe size={15} />
+                    </div>
+                    <span className="drawer-service-name">Web Doanh Nghiệp 3–5 Trang</span>
+                  </Link>
+
+                  <Link
+                    to="/dich-vu"
+                    onClick={closeMenus}
+                    className="drawer-all-services-link"
+                  >
+                    <span>Xem tất cả dịch vụ &amp; bảng giá</span>
+                    <ArrowRight size={14} />
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Drawer Footer Actions: Big CTA & Direct Hotline */}
+            <div className="drawer-footer">
+              <button
+                type="button"
                 onClick={handleActionClick}
-                fullWidth
-                style={{ fontWeight: 700, minHeight: 46 }}
+                className="drawer-primary-cta"
               >
-                <Sparkles size={16} /> Báo giá &amp; Tư vấn nhanh
-              </Button>
+                <Sparkles size={16} />
+                <span>Báo giá nhanh &amp; Nhận demo 0đ</span>
+              </button>
+
               <a
                 href={`tel:${CONTACT_INFO.phoneRaw}`}
-                className="mobile-drawer-hotline"
+                className="drawer-hotline-card"
+                title="Gọi hotline tư vấn"
               >
-                <Phone size={16} color="var(--color-orange-dark)" />
-                <span>Hotline: 0834.422.439</span>
+                <Phone size={16} color="var(--color-primary)" />
+                <span>Hotline: <strong>0834 422 439</strong></span>
               </a>
+
+              <p className="drawer-footer-note">
+                Tư vấn nhanh qua Zalo &amp; Điện thoại (8:00 - 21:00)
+              </p>
             </div>
           </div>
         </div>
       )}
 
       <style>{`
-        /* Header Base */
-        .main-site-header {
+        /* Base Header */
+        .site-header {
           position: sticky;
           top: 0;
           left: 0;
           right: 0;
-          z-index: 100;
+          z-index: 1000;
           height: 70px;
           background-color: #ffffff;
-          border-bottom: 1px solid var(--color-border);
-          transition: all 0.2s ease;
+          border-bottom: 1px solid transparent;
+          box-shadow: none;
+          transition: border-color 0.2s ease, box-shadow 0.2s ease;
           display: flex;
           align-items: center;
+          width: 100%;
+          box-sizing: border-box;
         }
 
-        .header-scrolled {
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-          height: 64px;
+        .site-header.header-scrolled {
+          border-bottom: 1px solid #e2e8f0;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
         }
 
         .header-inner {
@@ -722,6 +699,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           width: 100%;
         }
 
+        /* Logo */
         .header-logo-wrap {
           display: flex;
           align-items: center;
@@ -730,112 +708,101 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
         }
 
         .header-logo-img {
-          height: 42px;
+          height: 38px;
+          max-height: 40px;
           width: auto;
           object-fit: contain;
-          transition: height 0.2s;
-        }
-
-        .header-scrolled .header-logo-img {
-          height: 38px;
+          display: block;
         }
 
         /* Desktop Nav */
-        .header-nav-desktop {
+        .header-desktop-nav {
           display: flex;
           align-items: center;
-          gap: 1.35rem;
+          gap: 4px;
         }
 
-        .nav-item-link {
-          font-size: 0.9rem;
-          font-weight: 700;
-          color: var(--color-navy);
+        .nav-link,
+        .nav-link-btn {
+          font-size: 0.925rem;
+          font-weight: 550;
+          color: #334155;
           text-decoration: none;
-          padding: 0.5rem 0.2rem;
-          transition: color var(--transition-fast);
+          padding: 8px 12px;
+          border-radius: 8px;
+          transition: color 0.15s ease, background-color 0.15s ease;
           display: inline-flex;
           align-items: center;
-          gap: 0.3rem;
-          position: relative;
-        }
-
-        .nav-item-link:hover,
-        .nav-item-link.active {
-          color: var(--color-primary) !important;
-        }
-
-        .nav-item-btn {
+          gap: 4px;
           background: none;
           border: none;
           cursor: pointer;
           font-family: inherit;
+          white-space: nowrap;
+          box-sizing: border-box;
+        }
+
+        .nav-link:hover,
+        .nav-link-btn:hover {
+          color: #0d7647;
+          background-color: #f0fdf4;
+        }
+
+        .nav-link.active,
+        .nav-link-btn.active {
+          color: #0d7647;
+          font-weight: 600;
+        }
+
+        .nav-dropdown-wrapper {
+          position: relative;
         }
 
         .dropdown-caret {
-          transition: transform 0.2s ease;
-          color: var(--color-text-muted);
+          color: #64748b;
+          transition: transform 0.2s ease, color 0.15s ease;
         }
 
         .dropdown-caret.open {
           transform: rotate(180deg);
-          color: var(--color-primary);
+          color: #0d7647;
         }
 
-        .nav-dropdown-parent {
-          position: relative;
+        /* Desktop Mega Menu for Services */
+        .mega-menu-wrapper {
+          position: absolute;
+          top: calc(100% + 8px);
+          left: 50%;
+          transform: translateX(-50%);
+          width: min(1200px, 94vw);
+          z-index: 1050;
+          animation: headerFadeIn 0.16s ease-out;
         }
 
-        /* Mona-style Full-Width Mega Menu Dropdown */
-        .mega-menu-overlay {
-          position: fixed;
-          top: 70px;
-          left: 0;
-          right: 0;
-          width: 100%;
-          background-color: transparent;
-          pointer-events: none;
-          display: flex;
-          justify-content: center;
-          z-index: 120;
-          padding: 0.5rem 1.5rem 1.5rem 1.5rem;
-          box-sizing: border-box;
-        }
-
-        .header-scrolled .mega-menu-overlay {
-          top: 64px;
-        }
-
-        @keyframes megaFadeIn {
+        @keyframes headerFadeIn {
           from {
             opacity: 0;
-            transform: translateY(6px);
+            transform: translate(-50%, 6px);
           }
           to {
             opacity: 1;
-            transform: translateY(0);
+            transform: translate(-50%, 0);
           }
         }
 
-        .mega-menu-container {
-          pointer-events: auto;
-          width: 100%;
-          max-width: 1240px;
+        .mega-menu-card {
           background-color: #ffffff;
-          border: 1px solid var(--color-border);
-          border-radius: 20px;
-          box-shadow: 0 20px 50px rgba(0, 0, 0, 0.13);
-          padding: 1.5rem 1.75rem;
+          border: 1px solid #e2e8f0;
+          border-radius: 16px;
+          box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+          padding: 1.5rem 1.65rem;
           display: grid;
           grid-template-columns: 1fr 280px;
           gap: 1.75rem;
-          align-items: stretch;
           box-sizing: border-box;
-          overflow: hidden;
-          animation: megaFadeIn 0.18s ease-out;
         }
 
-        .mega-menu-main {
+        .mega-columns-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           gap: 1.5rem;
@@ -844,49 +811,49 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
         .mega-col {
           display: flex;
           flex-direction: column;
-          gap: 0.55rem;
+          gap: 0.5rem;
         }
 
-        .mega-col-header {
+        .mega-col-heading {
           display: flex;
           align-items: center;
           gap: 0.45rem;
-          font-size: 0.8rem;
-          font-weight: 800;
-          color: var(--color-primary-dark);
+          font-size: 0.775rem;
+          font-weight: 700;
+          color: #0d7647;
           text-transform: uppercase;
           letter-spacing: 0.05em;
           padding-bottom: 0.4rem;
-          border-bottom: 1px solid var(--color-border);
+          border-bottom: 1px solid #e2e8f0;
           margin-bottom: 0.15rem;
         }
 
-        .mega-items-list {
+        .mega-link-list {
           display: flex;
           flex-direction: column;
           gap: 0.35rem;
         }
 
-        .mega-card {
+        .mega-item {
           display: flex;
           align-items: flex-start;
-          gap: 0.75rem;
-          padding: 0.55rem 0.7rem;
+          gap: 0.7rem;
+          padding: 0.5rem 0.65rem;
           border-radius: 10px;
           text-decoration: none;
           border: 1px solid transparent;
           transition: all 0.15s ease;
         }
 
-        .mega-card:hover {
-          background-color: var(--color-primary-soft, #f4fbf7);
-          border-color: var(--color-primary-border, #dcefe4);
+        .mega-item:hover {
+          background-color: #f0fdf4;
+          border-color: #c6ebd4;
           transform: translateY(-1px);
         }
 
-        .mega-card-icon {
-          width: 34px;
-          height: 34px;
+        .mega-item-icon {
+          width: 32px;
+          height: 32px;
           border-radius: 8px;
           display: flex;
           align-items: center;
@@ -895,23 +862,23 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           margin-top: 2px;
         }
 
-        .icon-green { background-color: var(--color-primary-soft); color: var(--color-primary); }
-        .icon-orange { background-color: #fff4eb; color: var(--color-orange); }
+        .icon-emerald { background-color: #edf7f1; color: #0d7647; }
+        .icon-amber { background-color: #fef3c7; color: #d97706; }
         .icon-blue { background-color: #eff6ff; color: #2563eb; }
         .icon-purple { background-color: #f5f3ff; color: #7c3aed; }
         .icon-pink { background-color: #fdf2f8; color: #db2777; }
 
-        .mega-card-content {
+        .mega-item-body {
           display: flex;
           flex-direction: column;
           gap: 0.15rem;
           min-width: 0;
         }
 
-        .mega-card-title {
+        .mega-item-title {
           font-size: 0.875rem;
-          font-weight: 800;
-          color: var(--color-navy);
+          font-weight: 600;
+          color: #0f172a;
           display: flex;
           align-items: center;
           gap: 0.4rem;
@@ -919,72 +886,72 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           line-height: 1.3;
         }
 
-        .mega-card-desc {
+        .mega-item-desc {
           font-size: 0.725rem;
-          color: var(--color-text-muted);
+          color: #64748b;
           line-height: 1.35;
           margin: 0;
         }
 
-        .mega-tag {
+        .mega-badge {
           font-size: 0.65rem;
-          font-weight: 800;
-          padding: 0.1rem 0.4rem;
+          font-weight: 700;
+          padding: 0.12rem 0.45rem;
           border-radius: 999px;
           line-height: 1;
           white-space: nowrap;
         }
 
-        .tag-hot { background-color: #fee2e2; color: #dc2626; }
-        .tag-save { background-color: var(--color-primary-soft); color: var(--color-primary-dark); }
-        .tag-standard { background-color: #f3f4f6; color: #4b5563; }
+        .badge-red { background-color: #fee2e2; color: #dc2626; }
+        .badge-green { background-color: #dcfce7; color: #15803d; }
+        .badge-neutral { background-color: #f1f5f9; color: #475569; }
 
-        /* Right Promo Rail — Perfectly Fitted Inside Container */
-        .mega-promo-rail {
+        /* Right Promo Column */
+        .mega-promo-column {
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          gap: 0.65rem;
-          border-left: 1px solid var(--color-border);
+          gap: 0.75rem;
+          border-left: 1px solid #e2e8f0;
           padding-left: 1.5rem;
         }
 
-        .mega-promo-box {
+        .mega-highlight-card {
           background: linear-gradient(145deg, #072e3b, #0d7647);
           border-radius: 14px;
-          padding: 1rem 1.15rem;
+          padding: 1.1rem;
           color: #ffffff;
           display: flex;
           flex-direction: column;
-          gap: 0.45rem;
+          gap: 0.5rem;
           flex: 1;
           justify-content: space-between;
         }
 
-        .promo-badge {
+        .highlight-tag {
           font-size: 0.65rem;
           font-weight: 800;
-          color: var(--color-primary-light);
+          color: #86efac;
           letter-spacing: 0.05em;
           text-transform: uppercase;
         }
 
-        .promo-title {
-          font-size: 1rem;
-          font-weight: 800;
+        .highlight-title {
+          font-size: 0.95rem;
+          font-weight: 700;
           color: #ffffff;
           margin: 0;
-          line-height: 1.25;
+          line-height: 1.3;
         }
 
-        .promo-desc {
+        .highlight-desc {
           font-size: 0.75rem;
           color: rgba(255, 255, 255, 0.9);
           line-height: 1.4;
           margin: 0;
         }
 
-        .promo-points {
+        .highlight-checklist {
           display: flex;
           flex-direction: column;
           gap: 0.3rem;
@@ -992,344 +959,598 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           color: rgba(255, 255, 255, 0.95);
         }
 
-        .promo-point-item {
+        .checklist-item {
           display: flex;
           align-items: center;
-          gap: 0.35rem;
+          gap: 0.4rem;
         }
 
-        .promo-btn {
+        .highlight-action-btn {
           margin-top: 0.25rem;
           background-color: #ffffff;
-          color: var(--color-navy);
+          color: #0f172a;
           font-size: 0.775rem;
-          font-weight: 800;
+          font-weight: 700;
           text-align: center;
-          padding: 0.45rem 0.75rem;
-          border-radius: var(--radius-sm);
+          padding: 0.5rem 0.75rem;
+          border-radius: 8px;
           text-decoration: none;
-          transition: background-color var(--transition-fast);
+          transition: background-color 0.15s ease;
         }
 
-        .promo-btn:hover {
-          background-color: var(--color-primary-light);
+        .highlight-action-btn:hover {
+          background-color: #dcfce7;
+          color: #0d7647;
         }
 
-        .mega-hotline-card {
-          background-color: #fafbfa;
-          border: 1px solid var(--color-border);
+        .mega-hotline-strip {
+          background-color: #f8fafc;
+          border: 1px solid #e2e8f0;
           border-radius: 12px;
-          padding: 0.6rem 0.85rem;
+          padding: 0.65rem 0.85rem;
           display: flex;
           align-items: center;
           gap: 0.65rem;
           text-decoration: none;
-          transition: all var(--transition-fast);
+          transition: all 0.15s ease;
         }
 
-        .mega-hotline-card:hover {
-          border-color: var(--color-orange);
-          background-color: #fff9f5;
+        .mega-hotline-strip:hover {
+          border-color: #0d7647;
+          background-color: #f0fdf4;
         }
 
-        .hotline-icon-box {
-          width: 32px;
-          height: 32px;
+        .hotline-strip-icon {
+          width: 30px;
+          height: 30px;
           border-radius: 50%;
-          background-color: var(--color-orange);
+          background-color: #0d7647;
           display: flex;
           align-items: center;
           justify-content: center;
           flex-shrink: 0;
         }
 
-        .hotline-meta {
+        .hotline-strip-text {
           display: flex;
           flex-direction: column;
         }
 
-        .hotline-label {
-          font-size: 0.675rem;
-          color: var(--color-text-muted);
-          font-weight: 600;
+        .hotline-strip-label {
+          font-size: 0.65rem;
+          color: #64748b;
+          font-weight: 500;
           line-height: 1.2;
         }
 
-        .hotline-num {
-          font-size: 0.95rem;
-          font-weight: 800;
-          color: var(--color-navy);
+        .hotline-strip-phone {
+          font-size: 0.925rem;
+          font-weight: 700;
+          color: #0f172a;
           line-height: 1.2;
         }
 
-        /* Responsive Optimization for Mega Menu on Laptop 14" & 125% Zoom (1025px - 1240px) */
+        /* Responsive Laptop 14" Zoom 125% (1025px - 1240px) for Mega Menu */
         @media (min-width: 1025px) and (max-width: 1240px) {
-          .mega-menu-overlay {
-            padding: 0.5rem 1rem 1.5rem 1rem;
-          }
-          .mega-menu-container {
+          .mega-menu-card {
             padding: 1.15rem 1.25rem;
             gap: 1.15rem;
             grid-template-columns: 1fr 240px;
           }
-          .mega-menu-main {
-            gap: 0.85rem;
+          .mega-columns-grid {
+            gap: 0.9rem;
           }
-          .mega-card {
+          .mega-item {
             padding: 0.4rem 0.5rem;
             gap: 0.5rem;
           }
-          .mega-card-icon {
-            width: 30px;
-            height: 30px;
+          .mega-item-icon {
+            width: 28px;
+            height: 28px;
           }
-          .mega-card-title {
-            font-size: 0.8rem;
+          .mega-item-title {
+            font-size: 0.8125rem;
           }
-          .mega-card-desc {
+          .mega-item-desc {
             font-size: 0.675rem;
-            line-height: 1.25;
           }
-          .mega-promo-rail {
+          .mega-promo-column {
             padding-left: 1rem;
-            gap: 0.5rem;
-          }
-          .mega-promo-box {
-            padding: 0.85rem 1rem;
-          }
-          .promo-title {
-            font-size: 0.9rem;
-          }
-          .promo-desc {
-            font-size: 0.7rem;
-          }
-          .mega-hotline-card {
-            padding: 0.45rem 0.65rem;
           }
         }
 
-        /* Simple Dropdown for Knowledge */
-        .dropdown-menu-simple {
+        /* Knowledge Dropdown Panel */
+        .knowledge-dropdown-panel {
           position: absolute;
-          top: 100%;
-          left: -30px;
+          top: calc(100% + 8px);
+          left: 0;
           width: 310px;
           background-color: #ffffff;
-          border: 1px solid var(--color-border);
+          border: 1px solid #e2e8f0;
           border-radius: 14px;
-          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
           padding: 0.65rem;
-          z-index: 120;
-          margin-top: 0.5rem;
+          z-index: 1050;
           display: flex;
           flex-direction: column;
           gap: 0.25rem;
-          animation: megaFadeIn 0.18s ease-out;
+          animation: headerFadeIn 0.16s ease-out;
         }
 
-        .simple-dropdown-item {
+        .knowledge-item {
           display: flex;
           align-items: flex-start;
           gap: 0.65rem;
           padding: 0.55rem 0.65rem;
           border-radius: 8px;
           text-decoration: none;
-          transition: background-color var(--transition-fast);
+          transition: background-color 0.15s ease;
         }
 
-        .simple-dropdown-item:hover {
-          background-color: var(--color-primary-soft);
+        .knowledge-item:hover {
+          background-color: #f0fdf4;
         }
 
-        .item-main-text {
+        .knowledge-item-icon {
+          width: 28px;
+          height: 28px;
+          border-radius: 6px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          margin-top: 1px;
+        }
+
+        .knowledge-title {
           font-size: 0.85rem;
-          font-weight: 700;
-          color: var(--color-navy);
+          font-weight: 600;
+          color: #0f172a;
           line-height: 1.25;
         }
 
-        .item-sub-text {
+        .knowledge-desc {
           font-size: 0.725rem;
-          color: var(--color-text-muted);
+          color: #64748b;
           line-height: 1.35;
           margin-top: 2px;
         }
 
-        .dropdown-divider-line {
-          border-top: 1px solid var(--color-border);
-          padding-top: 0.35rem;
+        .knowledge-footer-link {
+          border-top: 1px solid #e2e8f0;
+          padding-top: 0.4rem;
           margin-top: 0.25rem;
         }
 
-        .dropdown-view-all {
-          display: block;
-          font-size: 0.775rem;
-          font-weight: 800;
-          color: var(--color-primary);
-          text-decoration: none;
-          padding: 0.35rem 0.65rem;
-        }
-
-        /* Desktop Actions */
-        .header-actions-desktop {
+        .knowledge-all-btn {
           display: flex;
           align-items: center;
-          gap: 0.85rem;
+          justify-content: space-between;
+          font-size: 0.775rem;
+          font-weight: 600;
+          color: #0d7647;
+          text-decoration: none;
+          padding: 0.4rem 0.65rem;
+          border-radius: 6px;
+          transition: background-color 0.15s ease;
         }
 
-        .header-quick-hotline {
+        .knowledge-all-btn:hover {
+          background-color: #edf7f1;
+        }
+
+        /* Desktop Actions: Hotline & CTA */
+        .header-desktop-actions {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+
+        .header-hotline-link {
           display: inline-flex;
           align-items: center;
-          gap: 0.35rem;
-          font-size: 0.85rem;
-          font-weight: 800;
-          color: var(--color-navy);
-          text-decoration: none;
-          padding: 0.45rem 0.75rem;
-          border-radius: var(--radius-full);
-          background-color: #fafbfa;
-          border: 1px solid var(--color-border);
-          transition: all var(--transition-fast);
-        }
-
-        .header-quick-hotline:hover {
-          border-color: var(--color-orange);
-          color: var(--color-orange-dark);
-        }
-
-        .header-cta-btn {
-          font-size: 0.875rem !important;
-          padding: 0.55rem 1.1rem !important;
-          font-weight: 800 !important;
-        }
-
-        /* Mobile Controls */
-        .mobile-menu-toggle-btn {
-          display: none;
-          background: none;
-          border: none;
-          padding: 0.4rem;
-          color: var(--color-navy);
-          cursor: pointer;
-        }
-
-        @media (max-width: 1024px) {
-          .header-nav-desktop,
-          .header-actions-desktop {
-            display: none !important;
-          }
-          .mobile-menu-toggle-btn {
-            display: block !important;
-          }
-        }
-
-        /* Mobile Drawer */
-        .mobile-drawer-overlay {
-          position: fixed;
-          top: 70px;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background-color: #ffffff;
-          z-index: 99;
-          overflow-y: auto;
-          box-sizing: border-box;
-        }
-
-        .mobile-drawer-body {
-          padding: 1.25rem;
-          display: flex;
-          flex-direction: column;
-          min-height: calc(100vh - 70px);
-          justify-content: space-between;
-          box-sizing: border-box;
-        }
-
-        .mobile-nav-links {
-          display: flex;
-          flex-direction: column;
-          gap: 0.35rem;
-        }
-
-        .mobile-nav-item {
-          padding: 0.75rem 0.85rem;
-          font-size: 1rem;
-          font-weight: 800;
-          color: var(--color-navy);
-          text-decoration: none;
-          border-radius: 8px;
-        }
-
-        .mobile-nav-item.active {
-          background-color: var(--color-primary-soft);
-          color: var(--color-primary-dark);
-        }
-
-        .mobile-accordion {
-          border-radius: 8px;
-          background-color: #f8faf8;
-          border: 1px solid var(--color-border);
-          overflow: hidden;
-          margin: 0.25rem 0;
-        }
-
-        .mobile-accordion-toggle {
-          width: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 0.75rem 0.85rem;
-          background: none;
-          border: none;
-          font-size: 0.95rem;
-          color: var(--color-navy);
-          cursor: pointer;
-        }
-
-        .mobile-accordion-content {
-          display: flex;
-          flex-direction: column;
-          gap: 0.3rem;
-          padding: 0.4rem 0.85rem 0.75rem;
-          border-top: 1px solid var(--color-border);
-          background-color: #ffffff;
-        }
-
-        .mobile-sub-link {
-          display: flex;
-          align-items: center;
-          gap: 0.45rem;
+          gap: 6px;
           font-size: 0.875rem;
-          font-weight: 700;
-          color: var(--color-navy);
+          font-weight: 500;
+          color: #475569;
           text-decoration: none;
-          padding: 0.45rem 0;
+          padding: 8px 10px;
+          border-radius: 8px;
+          transition: color 0.15s ease, background-color 0.15s ease;
+          white-space: nowrap;
         }
 
-        .mobile-drawer-footer {
-          display: flex;
-          flex-direction: column;
-          gap: 0.65rem;
-          margin-top: 1.5rem;
-          padding-top: 1.25rem;
-          border-top: 1px solid var(--color-border);
+        .header-hotline-link:hover {
+          color: #0d7647;
+          background-color: #f8fafc;
         }
 
-        .mobile-drawer-hotline {
+        .header-hotline-icon {
+          color: #475569;
+          transition: color 0.15s ease;
+        }
+
+        .header-hotline-link:hover .header-hotline-icon {
+          color: #0d7647;
+        }
+
+        .header-hotline-num {
+          font-weight: 600;
+          color: #334155;
+        }
+
+        .header-hotline-link:hover .header-hotline-num {
+          color: #0d7647;
+        }
+
+        .header-cta-button {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
+          background-color: #0d7647;
+          color: #ffffff;
+          font-size: 0.875rem;
+          font-weight: 600;
+          padding: 10px 18px;
+          border-radius: 10px;
+          border: none;
+          cursor: pointer;
+          box-shadow: 0 2px 8px rgba(13, 118, 71, 0.2);
+          transition: all 0.15s ease;
+          white-space: nowrap;
+          font-family: inherit;
+        }
+
+        .header-cta-button:hover {
+          background-color: #095935;
+          box-shadow: 0 4px 14px rgba(13, 118, 71, 0.3);
+          transform: translateY(-1px);
+        }
+
+        /* Mobile Actions inside Header */
+        .header-mobile-actions {
+          display: none;
+          align-items: center;
+          gap: 8px;
+        }
+
+        .header-mobile-cta {
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          background-color: #0d7647;
+          color: #ffffff;
+          font-size: 0.8125rem;
+          font-weight: 600;
+          padding: 7px 12px;
+          border-radius: 8px;
+          border: none;
+          cursor: pointer;
+          min-height: 36px;
+          white-space: nowrap;
+          font-family: inherit;
+        }
+
+        .mobile-hamburger-btn {
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: 0.45rem;
-          padding: 0.75rem;
-          background-color: #fafbfa;
-          border: 1px solid var(--color-border);
-          border-radius: var(--radius-md);
-          color: var(--color-navy);
-          font-weight: 800;
-          font-size: 0.875rem;
+          min-width: 44px;
+          min-height: 44px;
+          padding: 8px;
+          background: transparent;
+          border: none;
+          border-radius: 8px;
+          color: #0f172a;
+          cursor: pointer;
+          transition: background-color 0.15s ease;
+        }
+
+        .mobile-hamburger-btn:hover {
+          background-color: #f1f5f9;
+        }
+
+        /* Breakpoint 1024px: Switch to Mobile */
+        @media (max-width: 1024px) {
+          .header-desktop-nav,
+          .header-desktop-actions,
+          .mega-menu-wrapper,
+          .knowledge-dropdown-panel {
+            display: none !important;
+          }
+          .header-mobile-actions {
+            display: flex !important;
+          }
+        }
+
+        /* Mobile Drawer Styles */
+        .mobile-drawer-overlay {
+          position: fixed;
+          inset: 0;
+          z-index: 1100;
+          display: flex;
+          justify-content: flex-end;
+        }
+
+        .mobile-drawer-backdrop {
+          position: absolute;
+          inset: 0;
+          background-color: rgba(15, 23, 42, 0.45);
+          animation: drawerBackdropFade 0.2s ease-out;
+        }
+
+        @keyframes drawerBackdropFade {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+
+        .mobile-drawer-panel {
+          position: relative;
+          width: min(380px, 90vw);
+          height: 100%;
+          background-color: #ffffff;
+          box-shadow: -4px 0 24px rgba(0, 0, 0, 0.12);
+          display: flex;
+          flex-direction: column;
+          z-index: 1110;
+          animation: drawerSlideIn 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+          box-sizing: border-box;
+        }
+
+        @keyframes drawerSlideIn {
+          from {
+            transform: translateX(100%);
+          }
+          to {
+            transform: translateX(0);
+          }
+        }
+
+        .drawer-header {
+          height: 64px;
+          padding: 0 16px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          border-bottom: 1px solid #f1f5f9;
+          flex-shrink: 0;
+        }
+
+        .drawer-brand {
+          display: flex;
+          align-items: center;
+        }
+
+        .drawer-logo-img {
+          height: 32px;
+          width: auto;
+          object-fit: contain;
+        }
+
+        .drawer-close-btn {
+          width: 44px;
+          height: 44px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: none;
+          background: #f8fafc;
+          border-radius: 8px;
+          color: #334155;
+          cursor: pointer;
+          transition: background-color 0.15s ease, color 0.15s ease;
+        }
+
+        .drawer-close-btn:hover {
+          background-color: #fee2e2;
+          color: #dc2626;
+        }
+
+        .drawer-scroll-body {
+          flex: 1;
+          overflow-y: auto;
+          padding: 16px;
+          scrollbar-gutter: stable;
+          display: flex;
+          flex-direction: column;
+          gap: 18px;
+          box-sizing: border-box;
+        }
+
+        .drawer-section {
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+        }
+
+        .drawer-section-label {
+          font-size: 0.6875rem;
+          font-weight: 700;
+          color: #64748b;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          padding-left: 6px;
+          margin-bottom: 2px;
+        }
+
+        .drawer-nav-list {
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+        }
+
+        .drawer-link {
+          min-height: 44px;
+          padding: 10px 14px;
+          font-size: 0.9375rem;
+          font-weight: 600;
+          color: #0f172a;
           text-decoration: none;
+          border-radius: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          transition: background-color 0.15s ease, color 0.15s ease;
+        }
+
+        .drawer-link:hover {
+          background-color: #f8fafc;
+          color: #0d7647;
+        }
+
+        .drawer-link.active {
+          background-color: #edf7f1;
+          color: #0d7647;
+        }
+
+        .drawer-badge-pill {
+          font-size: 0.65rem;
+          font-weight: 600;
+          background-color: #dcfce7;
+          color: #15803d;
+          padding: 0.15rem 0.5rem;
+          border-radius: 999px;
+        }
+
+        .drawer-services-list {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+        }
+
+        .drawer-service-link {
+          min-height: 44px;
+          padding: 8px 12px;
+          font-size: 0.875rem;
+          font-weight: 600;
+          color: #1e293b;
+          text-decoration: none;
+          border-radius: 8px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          transition: background-color 0.15s ease;
+        }
+
+        .drawer-service-link:hover {
+          background-color: #f0fdf4;
+        }
+
+        .drawer-service-icon {
+          width: 30px;
+          height: 30px;
+          border-radius: 7px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+
+        .drawer-service-name {
+          flex: 1;
+          font-size: 0.875rem;
+          color: #0f172a;
+        }
+
+        .drawer-price-badge {
+          font-size: 0.65rem;
+          font-weight: 700;
+          padding: 0.12rem 0.45rem;
+          border-radius: 999px;
+          white-space: nowrap;
+        }
+
+        .drawer-all-services-link {
+          min-height: 44px;
+          padding: 10px 12px;
+          font-size: 0.8125rem;
+          font-weight: 600;
+          color: #0d7647;
+          text-decoration: none;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          border-radius: 8px;
+          margin-top: 4px;
+          background-color: #f0fdf4;
+          transition: background-color 0.15s ease;
+        }
+
+        .drawer-all-services-link:hover {
+          background-color: #dcfce7;
+        }
+
+        .drawer-footer {
+          padding: 16px;
+          border-top: 1px solid #e2e8f0;
+          background-color: #ffffff;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          flex-shrink: 0;
+        }
+
+        .drawer-primary-cta {
+          min-height: 48px;
+          width: 100%;
+          background-color: #0d7647;
+          color: #ffffff;
+          font-size: 0.9375rem;
+          font-weight: 600;
+          border: none;
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          cursor: pointer;
+          box-shadow: 0 2px 8px rgba(13, 118, 71, 0.25);
+          font-family: inherit;
+          transition: background-color 0.15s ease;
+        }
+
+        .drawer-primary-cta:hover {
+          background-color: #095935;
+        }
+
+        .drawer-hotline-card {
+          min-height: 44px;
+          width: 100%;
+          background-color: #f0fdf4;
+          border: 1px solid #c6ebd4;
+          border-radius: 10px;
+          color: #063d24;
+          font-size: 0.875rem;
+          font-weight: 500;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          text-decoration: none;
+          box-sizing: border-box;
+          transition: all 0.15s ease;
+        }
+
+        .drawer-hotline-card:hover {
+          background-color: #dcfce7;
+          border-color: #0d7647;
+        }
+
+        .drawer-hotline-card strong {
+          font-weight: 700;
+          color: #0d7647;
+        }
+
+        .drawer-footer-note {
+          font-size: 0.725rem;
+          color: #64748b;
+          text-align: center;
+          margin: 0;
+          line-height: 1.35;
         }
       `}</style>
     </>
   );
 };
+export default Header;

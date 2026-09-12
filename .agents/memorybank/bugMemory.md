@@ -56,5 +56,12 @@
   - Hero trên laptop 14" zoom 125% có chiều cao hiển thị chỉ 614px. Padding quá dày làm section kế tiếp chỉ nhô lên 29px (dễ bị che nếu có thanh bookmark/taskbar dày).
   - Tinh chỉnh `clamp(2rem, 3.8vw, 3.75rem)` giúp chiều cao Hero giảm còn ~502px, độ nhô lên (peek) của `#can-lam-gi` tăng lên 42px - 55px rõ rệt, thúc đẩy người dùng cuộn chuột tự nhiên.
 
-
-
+## 6. Bài học về Header & Navigation UX (Subagent 2)
+- **Tối ưu Desktop Nav Density & Tránh Cạnh Tranh Thị Giác (Visual Hierarchy)**:
+  - Bỏ "Trang chủ" khỏi desktop nav vì logo đã là điểm neo mặc định trỏ về `/`, giúp tiết kiệm 80px chiều ngang.
+  - Hotline trực tiếp (`tel:0834422439`) dùng màu slate nhã nhặn (`#475569`, hover `#0d7647`) đóng vai trò thông tin hỗ trợ, nhường trọn thị giác thu hút cho nút CTA chính [Báo giá nhanh] màu xanh `#0d7647`.
+  - Tổng chiều rộng các phần tử nav + action trên desktop ~900px, đảm bảo an toàn tuyệt đối không bị wrap hay đè lên nhau trên màn hình laptop 14" zoom 125% (~1228px).
+- **Mobile Header Conversion & Drawer Flat UX**:
+  - Đưa nút [Báo giá nhanh] compact ngay trên Header mobile cạnh nút Hamburger, giúp khách hàng di động có thể bấm chuyển đổi tức thì mà không cần mở menu.
+  - Loại bỏ hoàn toàn accordion lồng nhau (nested accordions) bên trong Mobile Drawer vì gây khó bấm và làm giấu nội dung quan trọng. Thay bằng cấu trúc danh sách phẳng 2 tầng (Điều hướng chính + Dịch vụ triển khai nhanh).
+  - Chuẩn hóa mọi interactive item trong Drawer đạt tap target `>= 44px` (Apple Human Interface Guidelines & Google Web Vitals), có nút Hotline và CTA kích thước lớn ghim ở chân menu.
