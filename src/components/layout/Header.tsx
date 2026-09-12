@@ -13,7 +13,12 @@ import {
   ArrowRight,
   Cpu,
   CheckCircle2,
-  LucideIcon
+  LucideIcon,
+  ClipboardCheck,
+  BookOpen,
+  FileText,
+  CheckSquare,
+  Compass
 } from 'lucide-react';
 import { useRouter, Link } from './Router';
 import { CONTACT_INFO } from '../../data/landingContent';
@@ -96,9 +101,11 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [solutionsDropdownOpen, setSolutionsDropdownOpen] = useState(false);
+  const [resourcesDropdownOpen, setResourcesDropdownOpen] = useState(false);
 
   const headerRef = useRef<HTMLElement>(null);
   const dropdownTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const resourcesTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { currentPath, navigate } = useRouter();
 
   // Scroll effect
@@ -115,6 +122,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
     const handleClickOutside = (event: MouseEvent) => {
       if (headerRef.current && !headerRef.current.contains(event.target as Node)) {
         setSolutionsDropdownOpen(false);
+        setResourcesDropdownOpen(false);
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
@@ -137,6 +145,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
       if (e.key === 'Escape') {
         setMobileMenuOpen(false);
         setSolutionsDropdownOpen(false);
+        setResourcesDropdownOpen(false);
       }
     };
     window.addEventListener('keydown', handleKeyDown);
@@ -148,6 +157,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
       clearTimeout(dropdownTimeoutRef.current);
       dropdownTimeoutRef.current = null;
     }
+    setResourcesDropdownOpen(false);
     setSolutionsDropdownOpen(true);
   };
 
@@ -157,12 +167,32 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
     }, 160);
   };
 
+  const handleMouseEnterResources = () => {
+    if (resourcesTimeoutRef.current) {
+      clearTimeout(resourcesTimeoutRef.current);
+      resourcesTimeoutRef.current = null;
+    }
+    setSolutionsDropdownOpen(false);
+    setResourcesDropdownOpen(true);
+  };
+
+  const handleMouseLeaveResources = () => {
+    resourcesTimeoutRef.current = setTimeout(() => {
+      setResourcesDropdownOpen(false);
+    }, 160);
+  };
+
   const closeMenus = () => {
     if (dropdownTimeoutRef.current) {
       clearTimeout(dropdownTimeoutRef.current);
       dropdownTimeoutRef.current = null;
     }
+    if (resourcesTimeoutRef.current) {
+      clearTimeout(resourcesTimeoutRef.current);
+      resourcesTimeoutRef.current = null;
+    }
     setSolutionsDropdownOpen(false);
+    setResourcesDropdownOpen(false);
     setMobileMenuOpen(false);
   };
 
@@ -179,6 +209,15 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
     currentPath.startsWith('/giai-phap') ||
     currentPath.startsWith('/dich-vu') ||
     currentPath.startsWith('/landing-490k');
+
+  const isResourcesActive =
+    currentPath.startsWith('/kien-thuc') ||
+    currentPath.startsWith('/chien-luoc-5-giai-doan') ||
+    currentPath.startsWith('/quy-trinh-geo') ||
+    currentPath.startsWith('/tieu-chuan-audit') ||
+    currentPath.startsWith('/quy-trinh-cham-soc') ||
+    currentPath.startsWith('/ho-so-nang-luc') ||
+    currentPath.startsWith('/khao-sat-du-an');
 
   const isAboutActive =
     currentPath.startsWith('/ve-localmate') ||
@@ -337,14 +376,182 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
                 <span>Bảng giá</span>
               </Link>
 
-              {/* Kiến thức */}
-              <Link
-                to="/kien-thuc"
-                onClick={closeMenus}
-                className={`nav-link ${currentPath.startsWith('/kien-thuc') ? 'active' : ''}`}
+              {/* Dropdown Kiến thức & Tài nguyên */}
+              <div
+                className="nav-dropdown-wrapper"
+                onMouseEnter={handleMouseEnterResources}
+                onMouseLeave={handleMouseLeaveResources}
               >
-                <span>Kiến thức</span>
-              </Link>
+                <button
+                  type="button"
+                  onClick={() => setResourcesDropdownOpen(!resourcesDropdownOpen)}
+                  className={`nav-link-btn ${isResourcesActive ? 'active' : ''}`}
+                  aria-expanded={resourcesDropdownOpen}
+                  aria-haspopup="true"
+                >
+                  <span>Kiến thức &amp; Tài nguyên</span>
+                  <ChevronDown
+                    size={14}
+                    className={`dropdown-caret ${resourcesDropdownOpen ? 'open' : ''}`}
+                  />
+                </button>
+
+                {resourcesDropdownOpen && (
+                  <div
+                    className="resources-dropdown-wrapper"
+                    onMouseEnter={handleMouseEnterResources}
+                    onMouseLeave={handleMouseLeaveResources}
+                  >
+                    <div className="resources-dropdown-card">
+                      {/* Dropdown Header */}
+                      <div className="resources-dropdown-header">
+                        <span className="resources-dropdown-kicker">CẨM NANG &amp; TÀI NGUYÊN THỰC CHIẾN</span>
+                        <h4 className="resources-dropdown-title">Quy Trình Chuẩn &amp; Công Cụ Số Hóa</h4>
+                      </div>
+
+                      {/* Resources Links Grid / List */}
+                      <div className="resources-dropdown-grid">
+                        <Link
+                          to="/chien-luoc-5-giai-doan"
+                          onClick={closeMenus}
+                          className="resource-item-card"
+                        >
+                          <div className="resource-item-icon-box">
+                            <Compass size={18} />
+                          </div>
+                          <div className="resource-item-content">
+                            <div className="resource-item-heading">
+                              <span className="resource-item-name">Lộ trình 5 giai đoạn</span>
+                              <span className="resource-badge">Tăng trưởng</span>
+                            </div>
+                            <p className="resource-item-desc">
+                              Bản đồ tăng trưởng số tinh gọn từ hiện diện đến tự động hóa
+                            </p>
+                          </div>
+                        </Link>
+
+                        <Link
+                          to="/quy-trinh-geo"
+                          onClick={closeMenus}
+                          className="resource-item-card"
+                        >
+                          <div className="resource-item-icon-box geo-box">
+                            <MapPin size={18} />
+                          </div>
+                          <div className="resource-item-content">
+                            <div className="resource-item-heading">
+                              <span className="resource-item-name">Quy trình GEO &amp; AI</span>
+                              <span className="resource-badge badge-hot">Chuẩn 2026</span>
+                            </div>
+                            <p className="resource-item-desc">
+                              Tối ưu Google Maps &amp; xuất hiện đầu tiên khi khách hỏi AI
+                            </p>
+                          </div>
+                        </Link>
+
+                        <Link
+                          to="/tieu-chuan-audit"
+                          onClick={closeMenus}
+                          className="resource-item-card"
+                        >
+                          <div className="resource-item-icon-box">
+                            <CheckSquare size={18} />
+                          </div>
+                          <div className="resource-item-content">
+                            <div className="resource-item-heading">
+                              <span className="resource-item-name">Tiêu chuẩn Audit 2026</span>
+                              <span className="resource-badge">Kỹ thuật</span>
+                            </div>
+                            <p className="resource-item-desc">
+                              Bộ 5 tiêu chuẩn khắt khe về tốc độ, SEO &amp; an toàn dữ liệu
+                            </p>
+                          </div>
+                        </Link>
+
+                        <Link
+                          to="/quy-trinh-cham-soc"
+                          onClick={closeMenus}
+                          className="resource-item-card"
+                        >
+                          <div className="resource-item-icon-box care-box">
+                            <ShieldCheck size={18} />
+                          </div>
+                          <div className="resource-item-content">
+                            <div className="resource-item-heading">
+                              <span className="resource-item-name">Quy trình chăm sóc số</span>
+                              <span className="resource-badge badge-teal">Bảo hành 5 năm</span>
+                            </div>
+                            <p className="resource-item-desc">
+                              Hỗ trợ kỹ thuật 1-1 qua Zalo, sao lưu định kỳ &amp; phòng vệ số
+                            </p>
+                          </div>
+                        </Link>
+
+                        <Link
+                          to="/ho-so-nang-luc"
+                          onClick={closeMenus}
+                          className="resource-item-card"
+                        >
+                          <div className="resource-item-icon-box">
+                            <FileText size={18} />
+                          </div>
+                          <div className="resource-item-content">
+                            <div className="resource-item-heading">
+                              <span className="resource-item-name">Hồ sơ năng lực 2026</span>
+                              <span className="resource-badge badge-primary">40 Slide</span>
+                            </div>
+                            <p className="resource-item-desc">
+                              Toàn cảnh năng lực triển khai, hệ thống công nghệ &amp; case study
+                            </p>
+                          </div>
+                        </Link>
+
+                        <Link
+                          to="/kien-thuc"
+                          onClick={closeMenus}
+                          className="resource-item-card"
+                        >
+                          <div className="resource-item-icon-box">
+                            <BookOpen size={18} />
+                          </div>
+                          <div className="resource-item-content">
+                            <div className="resource-item-heading">
+                              <span className="resource-item-name">Trung tâm Kiến thức</span>
+                              <span className="resource-badge">Cẩm nang</span>
+                            </div>
+                            <p className="resource-item-desc">
+                              Kho bài viết, hướng dẫn thực chiến cho cửa hàng &amp; SME
+                            </p>
+                          </div>
+                        </Link>
+                      </div>
+
+                      {/* Dropdown Bottom Survey Callout */}
+                      <div className="resources-dropdown-bottom">
+                        <Link
+                          to="/khao-sat-du-an"
+                          onClick={closeMenus}
+                          className="resources-survey-callout"
+                        >
+                          <div className="survey-callout-content">
+                            <div className="survey-callout-badge">
+                              <ClipboardCheck size={14} />
+                              <span>Khảo sát dự án 0đ</span>
+                            </div>
+                            <span className="survey-callout-text">
+                              Bạn chưa biết bắt đầu từ đâu? Làm khảo sát 2 phút để nhận bản dự toán &amp; giải pháp phù hợp nhất.
+                            </span>
+                          </div>
+                          <span className="survey-callout-action">
+                            <span>Khảo sát ngay</span>
+                            <ArrowRight size={13} />
+                          </span>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
 
               {/* Về Localmate */}
               <Link
@@ -353,17 +560,6 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
                 className={`nav-link ${isAboutActive ? 'active' : ''}`}
               >
                 <span>Về Localmate</span>
-              </Link>
-
-              {/* Hồ sơ năng lực 2026 */}
-              <Link
-                to="/ho-so-nang-luc"
-                onClick={closeMenus}
-                className={`nav-link ${currentPath.startsWith('/ho-so-nang-luc') || currentPath.startsWith('/credential') ? 'active' : ''}`}
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}
-              >
-                <span>Hồ sơ năng lực</span>
-                <span style={{ fontSize: '10px', backgroundColor: '#edf7f1', color: '#0d7647', padding: '1px 5px', borderRadius: '4px', fontWeight: 700 }}>2026</span>
               </Link>
 
               {/* Liên hệ */}
@@ -376,7 +572,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
               </Link>
             </nav>
 
-            {/* 3. Desktop Actions: [Hotline Gọi tư vấn] [CTA Đăng ký tư vấn] */}
+            {/* 3. Desktop Actions: [Hotline] [Khảo sát dự án 0đ] [CTA Đăng ký tư vấn] */}
             <div className="header-desktop-actions">
               <a
                 href={`tel:${CONTACT_INFO.phoneRaw}`}
@@ -391,6 +587,17 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
                   <span className="hotline-num">0834 422 439</span>
                 </div>
               </a>
+
+              {/* Nút Khảo sát dự án 0đ nổi bật */}
+              <Link
+                to="/khao-sat-du-an"
+                onClick={closeMenus}
+                className="header-survey-btn"
+                title="Làm khảo sát nhu cầu & nhận dự toán 0đ"
+              >
+                <ClipboardCheck size={15} />
+                <span>Khảo sát dự án 0đ</span>
+              </Link>
 
               <button
                 type="button"
@@ -507,7 +714,102 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
                 </div>
               </div>
 
-              {/* Section 2: Điều hướng chính */}
+              {/* Section 2: Tài nguyên & Quy trình (Chuẩn FastMarketing) */}
+              <div className="drawer-section">
+                <div className="drawer-section-header">
+                  <span className="drawer-section-label">TÀI NGUYÊN &amp; QUY TRÌNH</span>
+                  <span className="drawer-section-sub">Công cụ &amp; Chuẩn mực</span>
+                </div>
+
+                {/* Card Nổi bật: Khảo sát dự án 0đ */}
+                <Link
+                  to="/khao-sat-du-an"
+                  onClick={closeMenus}
+                  className="drawer-survey-card"
+                >
+                  <div className="drawer-survey-icon-wrap">
+                    <ClipboardCheck size={20} />
+                  </div>
+                  <div className="drawer-survey-info">
+                    <div className="drawer-survey-headline">
+                      <span className="drawer-survey-name">Khảo sát dự án 0đ</span>
+                      <span className="drawer-survey-tag">0đ</span>
+                    </div>
+                    <span className="drawer-survey-sub">Đánh giá hiện trạng &amp; nhận dự toán</span>
+                  </div>
+                  <ArrowRight size={15} className="drawer-survey-arrow" />
+                </Link>
+
+                <div className="drawer-nav-list">
+                  <Link
+                    to="/chien-luoc-5-giai-doan"
+                    onClick={closeMenus}
+                    className={`drawer-nav-link ${currentPath.startsWith('/chien-luoc-5-giai-doan') ? 'active' : ''}`}
+                  >
+                    <div className="drawer-link-with-icon">
+                      <Compass size={16} className="drawer-item-icon" />
+                      <span>Lộ trình 5 giai đoạn</span>
+                    </div>
+                    <span className="drawer-nav-badge">Tăng trưởng</span>
+                  </Link>
+                  <Link
+                    to="/quy-trinh-geo"
+                    onClick={closeMenus}
+                    className={`drawer-nav-link ${currentPath.startsWith('/quy-trinh-geo') ? 'active' : ''}`}
+                  >
+                    <div className="drawer-link-with-icon">
+                      <MapPin size={16} className="drawer-item-icon" />
+                      <span>Quy trình GEO &amp; AI</span>
+                    </div>
+                    <span className="drawer-nav-badge" style={{ backgroundColor: '#fef3c7', color: '#b45309' }}>2026</span>
+                  </Link>
+                  <Link
+                    to="/tieu-chuan-audit"
+                    onClick={closeMenus}
+                    className={`drawer-nav-link ${currentPath.startsWith('/tieu-chuan-audit') ? 'active' : ''}`}
+                  >
+                    <div className="drawer-link-with-icon">
+                      <CheckSquare size={16} className="drawer-item-icon" />
+                      <span>Tiêu chuẩn Audit 2026</span>
+                    </div>
+                    <span className="drawer-nav-badge">Kỹ thuật</span>
+                  </Link>
+                  <Link
+                    to="/quy-trinh-cham-soc"
+                    onClick={closeMenus}
+                    className={`drawer-nav-link ${currentPath.startsWith('/quy-trinh-cham-soc') ? 'active' : ''}`}
+                  >
+                    <div className="drawer-link-with-icon">
+                      <ShieldCheck size={16} className="drawer-item-icon" />
+                      <span>Quy trình chăm sóc số</span>
+                    </div>
+                    <span className="drawer-nav-badge" style={{ backgroundColor: '#ccfbf1', color: '#0f766e' }}>5 năm</span>
+                  </Link>
+                  <Link
+                    to="/ho-so-nang-luc"
+                    onClick={closeMenus}
+                    className={`drawer-nav-link ${currentPath.startsWith('/ho-so-nang-luc') || currentPath.startsWith('/credential') ? 'active' : ''}`}
+                  >
+                    <div className="drawer-link-with-icon">
+                      <FileText size={16} className="drawer-item-icon" />
+                      <span>Hồ sơ năng lực 2026</span>
+                    </div>
+                    <span className="drawer-nav-badge" style={{ backgroundColor: '#edf7f1', color: '#0d7647' }}>40 Slide</span>
+                  </Link>
+                  <Link
+                    to="/kien-thuc"
+                    onClick={closeMenus}
+                    className={`drawer-nav-link ${currentPath.startsWith('/kien-thuc') ? 'active' : ''}`}
+                  >
+                    <div className="drawer-link-with-icon">
+                      <BookOpen size={16} className="drawer-item-icon" />
+                      <span>Trung tâm kiến thức</span>
+                    </div>
+                  </Link>
+                </div>
+              </div>
+
+              {/* Section 3: Điều hướng chính */}
               <div className="drawer-section">
                 <div className="drawer-section-header">
                   <span className="drawer-section-label">ĐIỀU HƯỚNG CHÍNH</span>
@@ -530,26 +832,11 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
                     <span className="drawer-nav-badge">Minh bạch</span>
                   </Link>
                   <Link
-                    to="/kien-thuc"
-                    onClick={closeMenus}
-                    className={`drawer-nav-link ${currentPath.startsWith('/kien-thuc') ? 'active' : ''}`}
-                  >
-                    <span>Kiến thức</span>
-                  </Link>
-                  <Link
                     to="/ve-localmate"
                     onClick={closeMenus}
                     className={`drawer-nav-link ${isAboutActive ? 'active' : ''}`}
                   >
                     <span>Về Localmate</span>
-                  </Link>
-                  <Link
-                    to="/ho-so-nang-luc"
-                    onClick={closeMenus}
-                    className={`drawer-nav-link ${currentPath.startsWith('/ho-so-nang-luc') || currentPath.startsWith('/credential') ? 'active' : ''}`}
-                  >
-                    <span>Hồ sơ năng lực</span>
-                    <span className="drawer-nav-badge" style={{ backgroundColor: '#edf7f1', color: '#0d7647' }}>40 Slide</span>
                   </Link>
                   <Link
                     to="/lien-he"
@@ -1046,11 +1333,247 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           color: #ffffff;
         }
 
-        /* 3. Desktop Actions: Hotline & CTA */
+        /* ==========================================================================
+           RESOURCES & KNOWLEDGE DROPDOWN PANEL
+           ========================================================================== */
+        .resources-dropdown-wrapper {
+          position: absolute;
+          top: calc(100% + 8px);
+          left: 50%;
+          transform: translateX(-50%);
+          width: min(580px, 94vw);
+          z-index: 1050;
+          animation: headerFadeIn 0.18s ease-out;
+        }
+
+        .resources-dropdown-card {
+          background-color: #ffffff;
+          border: 1px solid #e2e8f0;
+          border-radius: 16px;
+          box-shadow: 0 16px 40px rgba(15, 23, 42, 0.09);
+          padding: 1.25rem;
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+          box-sizing: border-box;
+        }
+
+        .resources-dropdown-header {
+          display: flex;
+          flex-direction: column;
+          gap: 0.2rem;
+          border-bottom: 1px solid #f1f5f9;
+          padding-bottom: 0.65rem;
+        }
+
+        .resources-dropdown-kicker {
+          font-size: 0.6875rem;
+          font-weight: 750;
+          color: #0d7647;
+          letter-spacing: 0.05em;
+          text-transform: uppercase;
+        }
+
+        .resources-dropdown-title {
+          font-size: 0.95rem;
+          font-weight: 700;
+          color: #0f172a;
+          margin: 0;
+          line-height: 1.3;
+        }
+
+        .resources-dropdown-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 0.65rem;
+        }
+
+        .resource-item-card {
+          display: flex;
+          align-items: flex-start;
+          gap: 10px;
+          padding: 0.65rem 0.75rem;
+          border-radius: 10px;
+          background-color: #f8fafc;
+          border: 1px solid #e2e8f0;
+          text-decoration: none;
+          transition: all 0.15s ease;
+          box-sizing: border-box;
+        }
+
+        .resource-item-card:hover {
+          background-color: #f0fdf4;
+          border-color: #a7f3d0;
+          transform: translateY(-1px);
+        }
+
+        .resource-item-icon-box {
+          width: 32px;
+          height: 32px;
+          border-radius: 8px;
+          background-color: #ffffff;
+          border: 1px solid #e2e8f0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #0d7647;
+          flex-shrink: 0;
+          margin-top: 1px;
+        }
+
+        .resource-item-icon-box.geo-box {
+          color: #d97706;
+          background-color: #fffbeb;
+          border-color: #fde68a;
+        }
+
+        .resource-item-icon-box.care-box {
+          color: #0f766e;
+          background-color: #f0fdfa;
+          border-color: #99f6e4;
+        }
+
+        .resource-item-content {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+          min-width: 0;
+        }
+
+        .resource-item-heading {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
+
+        .resource-item-name {
+          font-size: 0.8125rem;
+          font-weight: 700;
+          color: #0f172a;
+          line-height: 1.25;
+        }
+
+        .resource-badge {
+          font-size: 0.5875rem;
+          font-weight: 700;
+          color: #475569;
+          background-color: #e2e8f0;
+          padding: 0.1rem 0.4rem;
+          border-radius: 999px;
+          white-space: nowrap;
+        }
+
+        .resource-badge.badge-hot {
+          color: #b45309;
+          background-color: #fef3c7;
+        }
+
+        .resource-badge.badge-teal {
+          color: #0f766e;
+          background-color: #ccfbf1;
+        }
+
+        .resource-badge.badge-primary {
+          color: #0d7647;
+          background-color: #edf7f1;
+        }
+
+        .resource-item-desc {
+          font-size: 0.7rem;
+          color: #64748b;
+          line-height: 1.35;
+          margin: 0;
+          text-wrap: pretty;
+        }
+
+        .resources-dropdown-bottom {
+          border-top: 1px solid #f1f5f9;
+          padding-top: 0.75rem;
+        }
+
+        .resources-survey-callout {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 12px;
+          padding: 0.65rem 0.85rem;
+          border-radius: 10px;
+          background-color: #f0fdf4;
+          border: 1px solid #bbf7d0;
+          text-decoration: none;
+          transition: all 0.15s ease;
+        }
+
+        .resources-survey-callout:hover {
+          background-color: #dcfce7;
+          border-color: #86efac;
+        }
+
+        .survey-callout-content {
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+        }
+
+        .survey-callout-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          font-size: 0.775rem;
+          font-weight: 750;
+          color: #0d7647;
+        }
+
+        .survey-callout-text {
+          font-size: 0.725rem;
+          color: #334155;
+          line-height: 1.3;
+        }
+
+        .survey-callout-action {
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
+          font-size: 0.775rem;
+          font-weight: 700;
+          color: #0d7647;
+          white-space: nowrap;
+          flex-shrink: 0;
+        }
+
+        /* 3. Desktop Actions: Hotline, Survey & CTA */
         .header-desktop-actions {
           display: flex;
           align-items: center;
-          gap: 14px;
+          gap: 12px;
+        }
+
+        .header-survey-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
+          background-color: #f0fdf4;
+          color: #0d7647;
+          border: 1.5px solid #86efac;
+          font-size: 0.84rem;
+          font-weight: 700;
+          height: 40px;
+          padding: 0 16px;
+          border-radius: 9999px;
+          text-decoration: none;
+          transition: all 0.15s ease;
+          white-space: nowrap;
+          font-family: inherit;
+        }
+
+        .header-survey-btn:hover {
+          background-color: #dcfce7;
+          border-color: #16a34a;
+          color: #065f46;
+          box-shadow: 0 2px 8px rgba(13, 118, 71, 0.15);
+          transform: translateY(-1px);
         }
 
         .header-hotline-link {
@@ -1058,7 +1581,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           align-items: center;
           gap: 8px;
           text-decoration: none;
-          padding: 4px 10px 4px 6px;
+          padding: 4px 8px 4px 6px;
           border-radius: 10px;
           transition: all 0.15s ease;
         }
@@ -1128,8 +1651,8 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           color: #ffffff;
           font-size: 0.875rem;
           font-weight: 600;
-          height: 42px;
-          padding: 0 20px;
+          height: 40px;
+          padding: 0 18px;
           border-radius: 9999px;
           border: none;
           cursor: pointer;
@@ -1232,7 +1755,8 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
         @media (max-width: 1024px) {
           .header-desktop-nav,
           .header-desktop-actions,
-          .mega-menu-wrapper {
+          .mega-menu-wrapper,
+          .resources-dropdown-wrapper {
             display: none !important;
           }
           .header-mobile-actions {
@@ -1240,27 +1764,53 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           }
         }
 
-        /* Laptop Zoom 125% adjustment (1025px - 1240px) */
-        @media (min-width: 1025px) and (max-width: 1240px) {
-          .mega-pillars-grid {
-            gap: 0.6rem;
-          }
-          .mega-pillar-card {
-            padding: 0.85rem 0.75rem;
-            min-height: 185px;
-          }
-          .pillar-title {
-            font-size: 0.8125rem;
-          }
-          .pillar-subtitle {
-            font-size: 0.6875rem;
-          }
-          .pillar-desc {
-            font-size: 0.6875rem;
+        /* Laptop Zoom 125% adjustment (1025px - 1280px) */
+        @media (min-width: 1025px) and (max-width: 1280px) {
+          .header-desktop-nav {
+            gap: 2px;
           }
           .nav-link, .nav-link-btn {
-            padding: 8px 10px;
-            font-size: 0.875rem;
+            padding: 6px 8px;
+            font-size: 0.8125rem;
+          }
+          .header-desktop-actions {
+            gap: 8px;
+          }
+          .header-survey-btn {
+            padding: 0 11px;
+            font-size: 0.775rem;
+            height: 38px;
+          }
+          .header-cta-button {
+            padding: 0 13px;
+            font-size: 0.8rem;
+            height: 38px;
+          }
+          .hotline-label {
+            display: none;
+          }
+          .hotline-num {
+            font-size: 0.85rem;
+          }
+          .hotline-icon-wrap {
+            width: 32px;
+            height: 32px;
+          }
+          .mega-pillars-grid {
+            gap: 0.55rem;
+          }
+          .mega-pillar-card {
+            padding: 0.8rem 0.65rem;
+            min-height: 180px;
+          }
+          .pillar-title {
+            font-size: 0.8rem;
+          }
+          .pillar-subtitle {
+            font-size: 0.675rem;
+          }
+          .pillar-desc {
+            font-size: 0.675rem;
           }
         }
 
@@ -1498,6 +2048,92 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
 
         .drawer-all-solutions-link:hover {
           background-color: #dcfce7;
+        }
+
+        /* Drawer Survey Card 0d */
+        .drawer-survey-card {
+          min-height: 54px;
+          padding: 10px 12px;
+          border-radius: 12px;
+          background-color: #f0fdf4;
+          border: 1.5px solid #86efac;
+          text-decoration: none;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          transition: all 0.15s ease;
+          box-sizing: border-box;
+          margin-bottom: 4px;
+        }
+
+        .drawer-survey-card:hover {
+          background-color: #dcfce7;
+          border-color: #16a34a;
+        }
+
+        .drawer-survey-icon-wrap {
+          width: 36px;
+          height: 36px;
+          border-radius: 10px;
+          background-color: #0d7647;
+          color: #ffffff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+
+        .drawer-survey-info {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+          min-width: 0;
+        }
+
+        .drawer-survey-headline {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
+
+        .drawer-survey-name {
+          font-size: 0.875rem;
+          font-weight: 750;
+          color: #064e3b;
+        }
+
+        .drawer-survey-tag {
+          font-size: 0.625rem;
+          font-weight: 800;
+          color: #ffffff;
+          background-color: #0d7647;
+          padding: 0.1rem 0.45rem;
+          border-radius: 999px;
+        }
+
+        .drawer-survey-sub {
+          font-size: 0.725rem;
+          color: #047857;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .drawer-survey-arrow {
+          color: #0d7647;
+          flex-shrink: 0;
+        }
+
+        .drawer-link-with-icon {
+          display: inline-flex;
+          align-items: center;
+          gap: 9px;
+        }
+
+        .drawer-item-icon {
+          color: #0d7647;
+          flex-shrink: 0;
         }
 
         /* Drawer Nav List */

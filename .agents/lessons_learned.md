@@ -2,6 +2,38 @@
 
 Tài liệu này ghi chép các bài học kinh nghiệm, lưu ý kỹ thuật và giải pháp kiến trúc trong quá trình phát triển LocalMate.
 
+## 8. Navigation, Mega Menu & Footer Enrichment: Hệ Thống Tài Nguyên Số & Chuẩn Hóa Touch Target Di Động (`Header.tsx`, `Footer.tsx`)
+- **Bối cảnh & Nhiệm vụ**: Khi hệ thống bổ sung hàng loạt công cụ và trang quy trình chuyên sâu từ FastMarketing (`/khao-sat-du-an`, `/chien-luoc-5-giai-doan`, `/quy-trinh-geo`, `/tieu-chuan-audit`, `/quy-trinh-cham-soc`, `/ho-so-nang-luc`), cấu trúc Header và Footer cũ (chỉ có link đơn giản "Kiến thức") không còn đáp ứng được việc dẫn dắt luồng người dùng tiếp cận kho tài nguyên giá trị này.
+- **Giải pháp Kiến Trúc & UI/UX**:
+  1. *Desktop Header Navigation*:
+     - Bổ sung nút bấm nổi bật **"Khảo sát dự án 0đ"** (`/khao-sat-du-an`) tại khu vực `header-desktop-actions` với phong cách pill sáng màu MISA (`#f0fdf4`, viền `#86efac`, chữ xanh đậm `#0d7647`, hover nhấc nhẹ 1px), kích thước 40px cân đối hoàn hảo.
+     - Nâng cấp mục "Kiến thức" thành Mega Dropdown **"Kiến thức & Tài nguyên"** với 6 thẻ điều hướng trực quan: Lộ trình 5 giai đoạn (Tăng trưởng), Quy trình GEO & AI (Chuẩn 2026), Tiêu chuẩn Audit 2026 (Kỹ thuật), Quy trình chăm sóc số (Bảo hành 5 năm), Hồ sơ năng lực 2026 (40 Slide), và Trung tâm kiến thức; kèm banner chân dropdown mời làm khảo sát 0đ.
+  2. *Mobile Drawer Menu (Chuẩn Touch Target >= 44px)*:
+     - Bổ sung Section chuyên biệt **"TÀI NGUYÊN & QUY TRÌNH"** với card nổi bật "Khảo sát dự án 0đ" (cao 66px, badge "0đ").
+     - Tối ưu toàn bộ liên kết và icon với `min-height: 46px - 48px`, padding 10px-12px, đảm bảo 100% phần tử tương tác đạt chuẩn touch target >= 44px của Google Web Vitals & Apple HIG.
+  3. *5-Column Rich Footer & Logo Bộ Công Thương To Rõ*:
+     - Tái cấu trúc Footer từ 4 cột sang **5 cột chuyên nghiệp trên Desktop**: Hồ sơ pháp nhân (MST, Trụ sở, VP Hóc Môn) -> 5 Trụ Cột Giải Pháp -> Tài Nguyên & Quy Trình (MỚI) -> Chính Sách & Minh Bạch -> Đặc Quyền Địa Phương (Tư vấn 1-1 tận nơi & Kênh kết nối).
+     - Logo **Bộ Công Thương** được phóng to rõ nét với chiều cao `48px` (kích thước render thực tế 155x48px), có `drop-shadow` nhẹ nhàng, tạo độ tin cậy pháp lý tuyệt đối cho khách hàng doanh nghiệp địa phương.
+  4. *Độ Tương Thích Responsive Đa Màn Hình (Matrix Audit)*:
+     - Đã kiểm thử tự động với `agent-browser` trên màn hình Laptop 14" scale 125% (`1152 x 720`): `hasHorizontalOverflow: false`, header height 70px vừa vặn không co giật.
+     - Kiểm thử trên di động (`390 x 844`): Drawer mở mượt mà, `allLinksPassTouchTarget: true`.
+  5. *Nguyên tắc UI*: 100% Light Mode sáng màu, độ tương phản cao, nền sáng chữ đậm (`#0f172a`), tuyệt đối CẤM Glassmorphism.
+
+---
+- **Bối cảnh**: Doanh nghiệp địa phương thường rơi vào tình cảnh "đem con bỏ chợ": Thuê đơn vị làm website xong nhưng khi cần đổi giá, treo banner khuyến mãi cuối tuần thì gọi không được; website bị sập cả ngày không ai hay; dữ liệu không sao lưu nên khi host lỗi là mất trắng; sau 1 năm bị ép nộp phí duy trì vô lý hoặc bị giữ mã nguồn.
+- **Học hỏi & Định vị**: Học hỏi triết lý dịch vụ chăm sóc website bài bản từ FastMarketing (`/quy-trinh-cham-soc-website`), nâng cấp toàn diện thành **Hệ Thống Vận Hành Chăm Sóc Số 5 Chu Kỳ Khép Kín** thiết kế riêng cho các cơ sở kinh doanh địa phương:
+  1. *Hàng ngày (Daily Real-time 24/7)*: Hệ thống ping tự động mỗi 60s từ 3 node máy chủ, tự động gửi Webhook cảnh báo vào Telegram/Zalo nếu có sự cố quá tải hoặc link hỏng 404/500, kiểm tra chuông thông báo đơn hàng/đặt bàn/hotline tức thì trong 3 giây.
+  2. *Hàng tuần (Weekly SLA 15-30 phút)*: Chụp bản sao lưu Full Snapshot lên Cloudflare R2 Object Storage đa vùng (khôi phục 1-click trong 5 phút); cập nhật bản vá bảo mật và bộ lọc Cloudflare WAF; hỗ trợ đổi bảng giá, menu, banner khuyến mãi theo yêu cầu của chủ tiệm chỉ trong 15 - 30 phút qua nhóm Zalo VIP 1-1.
+  3. *Hàng tháng (Monthly Growth Analytics & Local SEO/AI)*: Báo cáo chỉ số kinh doanh thực tế định kỳ ngày 01-03 hàng tháng (số cuộc gọi hotline, số lượt chỉ đường Maps, số khách nhắn Zalo, lượng xem web); rà soát từ khóa Google Maps theo bán kính 3-5km; kiểm tra tình trạng trích dẫn thương hiệu trên các công cụ AI (ChatGPT, Perplexity, Google AI Overviews).
+  4. *Hàng quý (Quarterly Deep Optimization & Campaign Boost)*: Kiểm tra chuyên sâu bộ chỉ số Core Web Vitals (LCP < 1.2s, CLS = 0, INP < 200ms) trên 4G/5G di động, nén ảnh thế hệ mới AVIF/WebP, đề xuất các chiến dịch khuyến mãi kéo khách theo mùa vụ (Tết, Hè, Khai trường) và trao đổi 30 phút cùng chủ tiệm định hướng quý tới.
+  5. *Cam kết bảo hành hạ tầng 5 năm (5-Year Infrastructure Warranty)*: Cam kết bằng văn bản: Bàn giao 100% mã nguồn sạch và tài khoản tên miền DNS Cloudflare chính chủ cho khách hàng; miễn phí khôi phục hạ tầng khi có sự cố; không thu phí duy trì ép buộc; sẵn sàng hỗ trợ mở rộng chi nhánh mới.
+- **Tính năng UI/UX nổi bật**:
+  - *Interactive Tabs & Timeline Flow*: Bộ lọc chuyển đổi giữa các chu kỳ trực quan, kèm thông tin chi tiết từng đầu việc kỹ thuật, kết quả bàn giao và bộ công cụ chuyên dụng.
+  - *Bảng so sánh đối trọng 2 cột*: Phân định rành mạch giữa "Tự quản lý / Thuê Freelancer tự do (mất thời gian, hay lỗi, bỏ rơi)" vs "Có Kỹ Thuật Viên LocalMate Chăm Sóc (an tâm kinh doanh, SLA 15-30 phút, bảo hành 5 năm)".
+  - *Quy trình tiếp nhận 4 bước (SLA 15-30 phút)*: Nhắn Zalo -> KTV tiếp nhận 5 phút -> Sửa & test di động 10-20 phút -> Nghiệm thu hoàn tất 15-30 phút.
+  - *FAQ Accordion 6 câu hỏi thực tế*: Giải tỏa triệt để thắc mắc về sao lưu Cloudflare R2, hỗ trợ gấp tối thứ Bảy, quyền sở hữu mã nguồn và cứu hộ web WordPress cũ.
+  - *Tuân thủ chuẩn UI/UX*: 100% Light Mode sáng màu, độ tương phản cao chữ đậm (`#0f172a`) trên nền sáng, cấm glassmorphism, responsive mượt mà trên di động, `npm run build` pass 100%.
+
 ---
 
 ## 6. Lộ Trình Phát Triển Số 5 Giai Đoạn & Chiến Lược Chuyển Đổi Địa Phương (`StrategyPhasesPage.tsx`)

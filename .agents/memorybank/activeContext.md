@@ -13,6 +13,26 @@
 
 ## 2. Recent Accomplishments & Updates
 
+### A00000000. Xây Dựng Trang Quy Trình Vận Hành & Chăm Sóc Số Định Kỳ (`CareWorkflowPage.tsx`):
+- **Tác giả:** Local Care & Operations Workflow Specialist
+- **Vị trí tệp:** `src/pages/CareWorkflowPage.tsx` (route chính: `/quy-trinh-cham-soc`, aliases: `/quy-trinh-cham-soc-website`, `/quy-trinh-van-hanh`, `/cham-soc-website`).
+- **Phạm vi hoàn tất:**
+  1. **5 Chu Kỳ Vận Hành & Chăm Sóc Số Chi Tiết**:
+     - *Hàng ngày (Daily Real-time 24/7)*: Giám sát Uptime 99.9% qua ping 60s từ 3 node máy chủ khu vực, tự động gửi Webhook cảnh báo vào Telegram/Zalo khi web quá tải hoặc link hỏng 404/500, kiểm tra chuông thông báo đơn hàng/đặt bàn/hotline đổ về trong 3 giây.
+     - *Hàng tuần (Weekly SLA 15-30 phút)*: Sao lưu dữ liệu toàn diện (Full Snapshot) lên Cloudflare R2 Object Storage đa vùng, cập nhật bản vá bảo mật và Cloudflare WAF, hỗ trợ đổi bảng giá/banner khuyến mãi cuối tuần theo yêu cầu của chủ tiệm chỉ trong 15-30 phút qua nhóm Zalo VIP 1-1.
+     - *Hàng tháng (Monthly Growth Analytics & Local SEO/AI)*: Gửi báo cáo định kỳ ngày 01-03 hàng tháng về số cuộc gọi hotline, lượt chỉ đường Google Maps, lượng truy cập web; rà soát từ khóa Google Maps theo bán kính 3-5km; kiểm tra tình trạng trích dẫn thương hiệu trên các công cụ AI (ChatGPT Search, Perplexity, Google AI Overviews).
+     - *Hàng quý (Quarterly Deep Optimization & Campaign Boost)*: Kiểm tra toàn diện bộ chỉ số Core Web Vitals (LCP < 1.2s, CLS = 0, INP < 200ms) trên 4G/5G di động, nén ảnh AVIF/WebP, đề xuất ý tưởng khuyến mãi kéo khách mùa vụ (Lễ Tết, Hè, Khai trường) và trao đổi 30 phút cùng chủ tiệm định hướng quý tới.
+     - *Cam kết bảo hành hạ tầng 5 năm (5-Year Infrastructure Warranty)*: Văn bản cam kết đồng hành kỹ thuật dài hạn, bàn giao 100% mã nguồn và tài khoản tên miền DNS Cloudflare chính chủ cho khách hàng, miễn phí khôi phục hạ tầng khi có sự cố, không thu phí duy trì ép buộc hay bỏ rơi khách hàng.
+  2. **Bảng So Sánh Đối Trọng 2 Cột**:
+     - Tự quản lý / Thuê Freelancer tự do (quên sao lưu, web sập không hay, đổi giá đợi cả tuần, mất liên lạc sau 6 tháng) vs Có KTV LocalMate Chăm Sóc (backup R2 tự động, bot cảnh báo 60s, sửa nhanh 15-30 phút, báo cáo minh bạch hàng tháng, bảo hành 5 năm).
+  3. **Quy Trình 4 Bước Tiếp Nhận Nhanh (SLA 15-30 Phút)**:
+     - Nhắn yêu cầu qua Zalo -> KTV tiếp nhận trong 5 phút -> Cập nhật & test mobile trong 10-20 phút -> Nghiệm thu link live hoàn tất trong 15-30 phút.
+  4. **Cam Kết Vàng, FAQ Accordion & Lead Capture**:
+     - Accordion 6 câu hỏi thường gặp về sao lưu R2, sửa gấp cuối tuần, quyền sở hữu mã nguồn, cứu hộ web cũ; kết nối modal tư vấn 0đ.
+  5. **Tiêu chuẩn UI/UX & Tích hợp**:
+     - 100% Light Mode sáng sủa, chuẩn màu thương hiệu (`#0d7647`, `#0f172a`), không glassmorphism, tương phản cao, responsive mượt mà.
+     - Liên kết chuẩn trong Footer, HtmlSitemapPage, Router App.tsx và vượt qua `npm run build` 100%.
+
 ### A0000000. Xây Dựng Trang Lộ Trình Phát Triển Số 5 Giai Đoạn Cho Doanh Nghiệp Địa Phương (`StrategyPhasesPage.tsx`):
 - **Tác giả:** Local Strategy 5 Phases Guide
 - **Vị trí tệp:** `src/pages/StrategyPhasesPage.tsx` (route chính: `/chien-luoc-5-giai-doan`, aliases: `/lo-trinh-5-giai-doan`, `/chien-luoc-seo-5-giai-doan`, `/lo-trinh-phat-trien-so`).
