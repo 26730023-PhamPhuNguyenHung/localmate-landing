@@ -51,14 +51,16 @@ export const RouterProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   );
 };
 
-export const Link: React.FC<{
+export interface LinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   to: string;
   className?: string;
   style?: React.CSSProperties;
   children: React.ReactNode;
   onClick?: () => void;
   title?: string;
-}> = ({ to, className, style, children, onClick, title }) => {
+}
+
+export const Link: React.FC<LinkProps> = ({ to, className, style, children, onClick, title, ...props }) => {
   const { navigate } = useRouter();
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -68,7 +70,7 @@ export const Link: React.FC<{
   };
 
   return (
-    <a href={to} onClick={handleClick} className={className} style={style} title={title}>
+    <a href={to} onClick={handleClick} className={className} style={style} title={title} {...props}>
       {children}
     </a>
   );

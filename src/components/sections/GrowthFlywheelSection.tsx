@@ -20,6 +20,7 @@ import {
   HelpCircle,
   Clock
 } from 'lucide-react';
+import { useRouter } from '../layout/Router';
 
 export interface GrowthFlywheelSectionProps {
   onOpenConsultForm?: (serviceName?: string) => void;
@@ -31,6 +32,8 @@ interface FlywheelStage {
   title: string;
   englishTitle: string;
   tagline: string;
+  solutionSlug: string;
+  solutionTitle: string;
   color: {
     primary: string;
     bgSoft: string;
@@ -58,6 +61,8 @@ const FLYWHEEL_STAGES: FlywheelStage[] = [
     stageNumber: '01',
     title: 'Thu Hút Khách Địa Phương',
     englishTitle: 'Stay Visible',
+    solutionSlug: '/giai-phap/duoc-tim-thay',
+    solutionTitle: 'Trụ Cột 02: Được Khách Hàng Tìm Thấy (Maps & AI)',
     tagline: 'Xuất hiện nổi bật trên Google Maps & Google Search trong bán kính 3-10km khi khách hàng tìm kiếm dịch vụ.',
     color: {
       primary: '#0d7647',
@@ -99,6 +104,8 @@ const FLYWHEEL_STAGES: FlywheelStage[] = [
     stageNumber: '02',
     title: 'Chuyển Đổi Một Chạm',
     englishTitle: 'Capture Leads',
+    solutionSlug: '/giai-phap/nen-tang-so',
+    solutionTitle: 'Trụ Cột 01: Xây Dựng Nền Tảng Số (Web < 1.5s)',
     tagline: 'Website tải siêu tốc < 1s, bộ nút Gọi/Zalo/Chỉ đường trực quan giúp khách ghé thăm lập tức liên hệ mà không rời đi.',
     color: {
       primary: '#0284c7',
@@ -140,6 +147,8 @@ const FLYWHEEL_STAGES: FlywheelStage[] = [
     stageNumber: '03',
     title: 'Chăm Sóc & Vận Hành',
     englishTitle: 'Care & RevOps',
+    solutionSlug: '/giai-phap/dong-hanh-duy-tri',
+    solutionTitle: 'Trụ Cột 05: Chăm Sóc & Đồng Hành Kỹ Thuật',
     tagline: 'Chăm sóc Fanpage định kỳ 990k/tháng, quy trình tích lũy review Google Maps 5 sao và bảo mật hạ tầng số ổn định 24/7.',
     color: {
       primary: '#d97706',
@@ -181,6 +190,8 @@ const FLYWHEEL_STAGES: FlywheelStage[] = [
     stageNumber: '04',
     title: 'Đo Lường & Tăng Trưởng',
     englishTitle: 'Measure & Predict',
+    solutionSlug: '/giai-phap/thu-hut-khach-hang',
+    solutionTitle: 'Trụ Cột 03: Thu Hút Khách Hàng & Chuyển Đổi',
     tagline: 'Báo cáo hàng tuần số cuộc gọi thật, lượt khách tìm đường và tin nhắn Zalo để ra quyết định kinh doanh chuẩn xác.',
     color: {
       primary: '#7c3aed',
@@ -220,6 +231,7 @@ const FLYWHEEL_STAGES: FlywheelStage[] = [
 ];
 
 export const GrowthFlywheelSection: React.FC<GrowthFlywheelSectionProps> = ({ onOpenConsultForm }) => {
+  const { navigate } = useRouter();
   const [activeStageId, setActiveStageId] = useState<number>(1);
   const [isAutoPlaying, setIsAutoPlaying] = useState<boolean>(true);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -801,17 +813,41 @@ export const GrowthFlywheelSection: React.FC<GrowthFlywheelSectionProps> = ({ on
                 </button>
 
                 <button
+                  type="button"
+                  onClick={() => navigate(activeStage.solutionSlug)}
+                  style={{
+                    backgroundColor: '#ffffff',
+                    color: activeStage.color.primary,
+                    border: `1.5px solid ${activeStage.color.border}`,
+                    borderRadius: 'var(--radius-md)',
+                    padding: '0.85rem 1.4rem',
+                    fontSize: '0.875rem',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.45rem',
+                    transition: 'all 0.2s ease'
+                  }}
+                  title={`Khám phá chi tiết ${activeStage.solutionTitle}`}
+                >
+                  <span>Xem giải pháp tương ứng</span>
+                  <ArrowRight size={15} />
+                </button>
+
+                <button
+                  type="button"
                   onClick={() => {
                     const nextId = (activeStageId % 4) + 1;
                     handleSelectStage(nextId);
                   }}
                   style={{
-                    backgroundColor: '#ffffff',
-                    color: '#334155',
+                    backgroundColor: '#f8fafc',
+                    color: '#64748b',
                     border: '1px solid var(--color-border)',
                     borderRadius: 'var(--radius-md)',
-                    padding: '0.85rem 1.25rem',
-                    fontSize: '0.875rem',
+                    padding: '0.85rem 1.15rem',
+                    fontSize: '0.85rem',
                     fontWeight: 600,
                     cursor: 'pointer',
                     display: 'inline-flex',
@@ -819,8 +855,8 @@ export const GrowthFlywheelSection: React.FC<GrowthFlywheelSectionProps> = ({ on
                     gap: '0.4rem'
                   }}
                 >
-                  <span>Xem giai đoạn tiếp theo</span>
-                  <ArrowRight size={15} color="#64748b" />
+                  <span>Chuyển giai đoạn ({((activeStageId % 4) + 1).toString().padStart(2, '0')})</span>
+                  <ArrowRight size={14} color="#64748b" />
                 </button>
               </div>
             </div>

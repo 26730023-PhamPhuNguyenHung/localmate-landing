@@ -670,20 +670,20 @@ export interface FAQItem {
 export const OPERATION_FAQS_DATA: FAQItem[] = [
   {
     id: 'faq-cost',
-    question: 'Chi phí báo giá đã là trọn gói chưa, có phát sinh chi phí gì không?',
-    answer: 'Báo giá của LocalMate là trọn gói cố định 100%, cam kết không có bất kỳ chi phí ẩn nào. Giá đã bao gồm thiết kế hoàn chỉnh, tên miền, hosting tốc độ cao, chứng chỉ bảo mật SSL và bảo hành kỹ thuật. Tuyệt đối không phát sinh chi phí ngoài thỏa thuận.',
+    question: 'Chi phí báo giá đã là trọn gói chưa, có phát sinh chi phí duy trì gì không?',
+    answer: 'Phạm vi công việc và chi phí rõ ràng trước khi làm, cam kết không có chi phí ẩn. Báo giá đã bao gồm thiết kế hoàn chỉnh, tên miền, hạ tầng lưu trữ tốc độ cao và bảo hành kỹ thuật. Về chi phí duy trì hàng năm, cơ sở chỉ cần gia hạn tên miền và hạ tầng lưu trữ theo đúng biểu giá gốc của nhà cung cấp, hoặc LocalMate hỗ trợ gia hạn hộ 0đ công bảo trì.',
     category: 'chi-phi'
   },
   {
     id: 'faq-tech-skill',
     question: 'Tôi không biết code hay kỹ thuật công nghệ thì có tự dùng được không?',
-    answer: 'Bạn hoàn toàn không cần biết code hay công nghệ. Trang quản trị 100% tiếng Việt tối giản như dùng mạng xã hội, có kèm video 2 phút hướng dẫn riêng cho bạn. Cần đổi giá, sửa số điện thoại hay thêm ảnh chỉ mất 3 phút thao tác trên điện thoại.',
+    answer: 'Bạn hoàn toàn không cần am hiểu code hay công nghệ phức tạp. Trang quản trị 100% tiếng Việt tối giản, có kèm video ngắn hướng dẫn trực quan theo cơ sở của bạn. Khi cần đổi giá, sửa số điện thoại hay cập nhật hình ảnh, bạn có thể tự thao tác trong 3 phút trên điện thoại hoặc nhắn KTV hỗ trợ qua Zalo.',
     category: 'mo-hinh'
   },
   {
     id: 'faq-support',
     question: 'Ai sẽ hỗ trợ khi website gặp sự cố hoặc khi tôi cần đổi nội dung?',
-    answer: 'Kỹ thuật viên LocalMate hỗ trợ trực tiếp 1-1 qua Hotline và Zalo, không qua chatbot hay tạo ticket chờ đợi. Khi gặp sự cố kỹ thuật, chúng tôi xử lý trong vòng 1-2 giờ. Khi bạn bận rộn, chỉ cần gửi qua Zalo là kỹ thuật viên hỗ trợ cập nhật thay bạn.',
+    answer: 'Kỹ thuật viên đồng hành trực tiếp, trao đổi minh bạch qua Hotline và nhóm Zalo riêng, không qua chatbot hay tạo ticket chờ đợi. Khi gặp sự cố kỹ thuật hạ tầng, chúng tôi tiếp nhận và can thiệp trong vòng 1-2 giờ. Khi bạn bận rộn, chỉ cần gửi thông tin qua Zalo là kỹ thuật viên hỗ trợ cập nhật thay bạn.',
     category: 'bao-hanh'
   },
   {
@@ -694,20 +694,20 @@ export const OPERATION_FAQS_DATA: FAQItem[] = [
   },
   {
     id: 'faq-demo',
-    question: 'Làm web demo 0đ xem thử trước có bị ràng buộc hay ép ký hợp đồng không?',
-    answer: 'Hoàn toàn không. LocalMate dựng website demo chạy thực tế 0 đồng để bạn duyệt trực tiếp trên điện thoại. Bạn ưng ý giao diện và tốc độ tải trang thì mới quyết định hợp tác. Nếu không hài lòng, bạn không phải trả bất kỳ chi phí nào.',
+    question: 'Bàn giao demo xem trước 0đ có bị ràng buộc hay ép ký hợp đồng không?',
+    answer: 'Hoàn toàn không ràng buộc. LocalMate bàn giao bản demo xem trước 0đ trên điện thoại để bạn duyệt trực quan giao diện và tính năng. Chỉ khi nghiệm thu hài lòng, thấy đúng nhu cầu thì bạn mới tiến hành thanh toán và triển khai chính thức.',
     category: 'mo-hinh'
   },
   {
     id: 'faq-ownership',
     question: 'Sau khi bàn giao, ai là người đứng tên sở hữu tài khoản và dữ liệu?',
-    answer: '100% tài khoản chính chủ thuộc về bạn. Khi bàn giao, LocalMate chuyển giao toàn bộ quyền quản trị cao nhất: tên miền, hosting, mã nguồn, Google Maps và fanpage. Dữ liệu kinh doanh là tài sản riêng của bạn, không bị phụ thuộc kỹ thuật vào LocalMate.',
+    answer: 'Tài khoản quảng cáo & dữ liệu thuộc 100% về bạn. Khi bàn giao, LocalMate chuyển giao toàn bộ quyền quản trị cao nhất: tên miền, hạ tầng hosting, mã nguồn, Google Business Profile và Fanpage trực tiếp vào Gmail/CCCD chính chủ của bạn. Bạn nắm giữ toàn bộ quyền tự quyết, không bị ràng buộc hay phụ thuộc kỹ thuật.',
     category: 'bao-hanh'
   },
   {
     id: 'faq-warranty-5years',
-    question: 'Cam kết đồng hành kỹ thuật 5 năm của LocalMate hoạt động như thế nào?',
-    answer: 'LocalMate không làm theo kiểu "bàn giao xong phủi tay". Trong suốt 5 năm, chúng tôi cam kết túc trực hỗ trợ 1-1 qua nhóm Zalo: bảo trì kỹ thuật định kỳ, sao lưu dữ liệu chống thất lạc, bảo vệ tài khoản Google Maps & Website an toàn trước các đợt cập nhật thuật toán. Khi bạn cần cập nhật giá hoặc đổi số điện thoại, kỹ thuật viên hỗ trợ ngay trong 15-30 phút.',
+    question: 'Chính sách bảo hành kỹ thuật và hỗ trợ sau bàn giao hoạt động như thế nào?',
+    answer: 'Bảo hành mã nguồn, cấu hình DNS/Cloudflare và hỗ trợ xử lý lỗi kỹ thuật phát sinh trong suốt vòng đời vận hành. Kỹ thuật viên đồng hành trực tiếp qua nhóm Zalo riêng: định kỳ kiểm tra hạ tầng, sao lưu dữ liệu, hỗ trợ cập nhật thông tin cơ bản (hotline, địa chỉ, bảng giá) và hỗ trợ xử lý nhanh chóng khi phát sinh sự cố.',
     category: 'bao-hanh'
   },
   {
@@ -718,8 +718,8 @@ export const OPERATION_FAQS_DATA: FAQItem[] = [
   },
   {
     id: 'faq-root-pricing',
-    question: 'Vì sao mức giá tại LocalMate lại rẻ từ gốc chỉ từ 490k đến 2.9tr/tháng?',
-    answer: 'LocalMate cắt bỏ hoàn toàn các tầng trung gian cồng kềnh, không vẽ vời những tính năng phần mềm thừa thãi mà người dùng không bao giờ động tới. Chúng tôi chuẩn hóa quy trình triển khai công nghệ tinh gọn (Website < 1s trên Cloudflare, Entity NAP, Schema JSON-LD, Prompt Bank) và làm việc trực tiếp với kỹ thuật viên tại địa phương, mang lại mức giá gốc thực tế cho bà con kinh doanh.',
+    question: 'Vì sao mức giá tại LocalMate tối ưu được chỉ từ 490k đến 2.9tr?',
+    answer: 'Ưu tiên giải pháp vừa đủ, tránh lãng phí công cụ không cần thiết. Chúng tôi loại bỏ các tầng trung gian và các tính năng phần mềm cồng kềnh, chuẩn hóa quy trình triển khai công nghệ tinh gọn (Website tĩnh trên Cloudflare Edge, Schema JSON-LD, SEO Local) và làm việc trực tiếp với kỹ thuật viên tại địa phương, mang lại giải pháp chất lượng với mức chi phí tối ưu nhất.',
     category: 'chi-phi'
   }
 ];

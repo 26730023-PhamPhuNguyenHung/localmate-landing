@@ -25,18 +25,18 @@ export const Warranty5YearSection: React.FC<Warranty5YearSectionProps> = ({ onOp
   const pillars = [
     {
       id: '01',
-      title: 'Bảo hành mã nguồn & vận hành vĩnh viễn',
-      subtitle: 'Website luôn chạy 24/7 trên Cloudflare toàn cầu, không bao giờ sập',
-      desc: 'Mã nguồn được tối ưu siêu nhẹ, chạy trực tiếp trên hạ tầng Edge Cloudflare với chứng chỉ bảo mật SSL tự động. Không lo lỗi database, không sợ hết băng thông, đảm bảo khách truy cập luôn mượt mà dưới 1 giây.',
+      title: 'Bảo hành mã nguồn & hỗ trợ hạ tầng kỹ thuật',
+      subtitle: 'Hạ tầng Cloudflare Edge toàn cầu, tối ưu độ sẵn sàng cao và ổn định',
+      desc: 'Mã nguồn tối ưu hiệu năng cao, vận hành trên mạng lưới Cloudflare Edge với chứng chỉ bảo mật SSL tự động. Kiến trúc tĩnh giảm thiểu tối đa sự cố máy chủ, đảm bảo khách truy cập mượt mà và ổn định.',
       icon: Server,
       badge: 'Trụ cột 01 • Hạ tầng Cloudflare',
-      tags: ['Uptime 99.99%', 'SSL Miễn phí vĩnh viễn', 'Không lỗi máy chủ']
+      tags: ['Uptime 99.99%', 'Chứng chỉ SSL tự động', 'Hạ tầng Cloudflare Edge']
     },
     {
       id: '02',
       title: 'Hỗ trợ sự cố kỹ thuật khẩn cấp trong 2 giờ',
-      subtitle: 'Phản hồi Zalo 1-1 ngay lập tức hoặc KTV ghé tận nơi tại địa phương',
-      desc: 'Khi có bất kỳ trục trặc nào về kết nối, lỗi hiển thị hay khách hàng phản ánh không gọi được hotline, kỹ thuật viên phụ trách khu vực sẽ can thiệp trong vòng 2 giờ. Nếu cần thiết, nhân sự LocalMate có mặt tận cửa hàng để hỗ trợ.',
+      subtitle: 'Phản hồi Zalo 1-1 nhanh chóng hoặc KTV ghé tận nơi tại địa phương',
+      desc: 'Khi có bất kỳ trục trặc nào về kết nối, hiển thị hoặc tiếp nhận cuộc gọi, kỹ thuật viên phụ trách khu vực sẽ tiếp nhận xử lý trong vòng 2 giờ. Nếu cần thiết, nhân sự LocalMate có mặt tận cơ sở để hỗ trợ trực tiếp.',
       icon: Clock,
       badge: 'Trụ cột 02 • Phản ứng khẩn cấp',
       tags: ['KTV địa phương', 'Zalo nhóm riêng 1-1', 'Xử lý trong 2h']
@@ -45,41 +45,41 @@ export const Warranty5YearSection: React.FC<Warranty5YearSectionProps> = ({ onOp
       id: '03',
       title: 'Cập nhật thông tin cơ bản định kỳ miễn phí',
       subtitle: 'Đổi số hotline, cập nhật địa chỉ mới, thay menu món & hình ảnh',
-      desc: 'Cơ sở của bạn đổi đầu số, đổi địa chỉ chi nhánh, điều chỉnh bảng giá hay ra mắt món mới? Đừng lo mất thêm tiền dịch vụ lẻ. Chỉ cần gửi hình qua Zalo, LocalMate chỉnh sửa và đẩy lên web/Maps hoàn toàn 0đ.',
+      desc: 'Cơ sở của bạn đổi đầu số, đổi địa chỉ chi nhánh, điều chỉnh bảng giá hay ra mắt món mới? Đừng lo phát sinh chi phí lặt vặt. Chỉ cần gửi thông tin qua Zalo, LocalMate chỉnh sửa và cập nhật lên web/Maps nhanh chóng.',
       icon: RefreshCw,
       badge: 'Trụ cột 03 • Chăm sóc định kỳ',
-      tags: ['Đổi hotline & địa chỉ 0đ', 'Thay ảnh menu & giá', 'Không phí ẩn']
+      tags: ['Đổi hotline & địa chỉ 0đ', 'Thay ảnh menu & giá', 'Không chi phí ẩn']
     },
     {
       id: '04',
-      title: 'Bảo vệ tài sản số trọn đời',
-      subtitle: 'Chống hack, chống đối thủ cướp Maps, sao lưu dữ liệu tự động',
-      desc: 'Bảo vệ hồ sơ Google Maps trước nguy cơ bị đối thủ chơi xấu đổi thông tin, cắm cờ báo đóng cửa. Hệ thống tự động sao lưu dữ liệu website định kỳ hàng tuần, sẵn sàng khôi phục ngay lập tức nếu có sự cố.',
+      title: 'Bảo vệ an toàn tài sản số và dữ liệu',
+      subtitle: 'Hỗ trợ bảo vệ Google Maps, sao lưu mã nguồn và thiết lập bảo mật',
+      desc: 'Hỗ trợ giám sát hồ sơ Google Maps trước các đề xuất chỉnh sửa thông tin bất thường. Thiết lập cơ chế sao lưu dữ liệu định kỳ, sẵn sàng khôi phục nhanh chóng khi có sự cố kỹ thuật.',
       icon: Lock,
       badge: 'Trụ cột 04 • An toàn số',
-      tags: ['Giữ vững Google Maps', 'Backup tự động', 'Chính chủ 100%']
+      tags: ['Giám sát hồ sơ Maps', 'Backup định kỳ', 'Chính chủ 100%']
     }
   ];
 
   const comparisonRows = [
     {
       criteria: 'Trách nhiệm sau khi bàn giao',
-      others: 'Bàn giao xong là phủi tay, gọi điện khó liên lạc hoặc thoái thác trách nhiệm',
-      localmate: 'Đồng hành tối thiểu 5 năm, kỹ thuật viên Zalo 1-1 túc trực hỗ trợ thực tế'
+      others: 'Kết thúc hợp đồng là dừng hỗ trợ, khó liên hệ khi phát sinh lỗi kỹ thuật',
+      localmate: 'Đồng hành kỹ thuật lên đến 5 năm, kỹ thuật viên hỗ trợ trực tiếp 1-1'
     },
     {
       criteria: 'Phí sửa lỗi & cập nhật nhỏ',
-      others: 'Đổi cái số điện thoại, thay 1 tấm ảnh cũng báo giá phát sinh 300k - 500k/lần',
-      localmate: 'Miễn phí cập nhật thông tin định kỳ (hotline, địa chỉ, menu, banner khuyến mãi)'
+      others: 'Mỗi chỉnh sửa nhỏ như đổi số điện thoại hay cập nhật ảnh thường phát sinh phụ phí',
+      localmate: 'Hỗ trợ cập nhật thông tin cơ bản định kỳ (hotline, địa chỉ, menu, ưu đãi)'
     },
     {
       criteria: 'Tốc độ xử lý sự cố',
-      others: 'Gửi ticket chờ 24 - 48 giờ mới phản hồi, web sập cả ngày mất hết khách',
-      localmate: 'Cam kết phản hồi sự cố khẩn cấp trong 2 giờ, có mặt tận nơi khi cần'
+      others: 'Quy trình xử lý qua ticket 24 - 48 giờ, chậm trễ khi hệ thống gặp gián đoạn',
+      localmate: 'Cam kết tiếp nhận và hỗ trợ sự cố khẩn cấp trong 2 giờ, có mặt tận nơi khi cần'
     },
     {
       criteria: 'Quyền sở hữu tài sản số',
-      others: 'Nắm đằng chuôi tài khoản hosting/domain, đòi phí chuộc hàng năm rất cao',
+      others: 'Đơn vị dịch vụ nắm quyền quản trị, thủ tục chuyển giao phức tạp và tốn kém',
       localmate: 'Bàn giao 100% tài khoản chính chủ bằng CCCD/SĐT khách hàng, minh bạch tuyệt đối'
     }
   ];
@@ -152,7 +152,7 @@ export const Warranty5YearSection: React.FC<Warranty5YearSectionProps> = ({ onOp
               textWrap: 'pretty'
             }}
           >
-            <strong style={{ color: '#0d7647' }}>Không phải lấy tiền xong phủi trách nhiệm</strong> mà chúng tôi gắn bó cùng sự phát triển của cơ sở kinh doanh, bảo vệ từng đồng vốn đầu tư số của bạn.
+            <strong style={{ color: '#0d7647' }}>Đồng hành kỹ thuật dài hạn cùng sự phát triển của cơ sở kinh doanh</strong>: bảo hành mã nguồn, cấu hình DNS/Cloudflare và hỗ trợ xử lý lỗi kỹ thuật phát sinh trong suốt vòng đời vận hành.
           </p>
         </div>
 
@@ -337,7 +337,7 @@ export const Warranty5YearSection: React.FC<Warranty5YearSectionProps> = ({ onOp
               <thead>
                 <tr style={{ borderBottom: '2px solid #e2e8f0' }}>
                   <th style={{ padding: '0.85rem 1rem', fontSize: '0.9rem', fontWeight: 700, color: '#64748b', width: '25%' }}>Tiêu chí</th>
-                  <th style={{ padding: '0.85rem 1rem', fontSize: '0.9rem', fontWeight: 700, color: '#ef4444', width: '37.5%' }}>Đơn vị thông thường trên mạng</th>
+                  <th style={{ padding: '0.85rem 1rem', fontSize: '0.9rem', fontWeight: 700, color: '#ef4444', width: '37.5%' }}>Mô hình triển khai thông thường</th>
                   <th style={{ padding: '0.85rem 1rem', fontSize: '0.95rem', fontWeight: 800, color: '#0d7647', width: '37.5%', backgroundColor: '#f0fdf4', borderRadius: '8px 8px 0 0' }}>LocalMate (Bảo hành 5 năm)</th>
                 </tr>
               </thead>

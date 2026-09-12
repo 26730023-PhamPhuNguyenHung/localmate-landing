@@ -95,27 +95,27 @@ export const FinalCTASection: React.FC = () => {
             </div>
 
             <h2 className="final-cta-title">
-              Bạn nói việc cần làm.<br />
-              LocalMate giúp bạn triển khai.
+              Nói cho LocalMate biết<br />
+              việc bạn đang cần giải quyết.
             </h2>
 
             <p className="final-cta-desc">
-              Không cần am hiểu kỹ thuật. Chỉ cần mô tả mô hình kinh doanh, kỹ thuật viên LocalMate sẽ dựng bản web demo xem thử trực tiếp trên điện thoại trong vòng 24 giờ.
+              Không cần am hiểu kỹ thuật. Hãy chia sẻ bài toán kinh doanh hoặc dịch vụ cần số hóa, kỹ thuật viên LocalMate sẽ tư vấn giải pháp tinh gọn, báo giá cố định và dựng bản web demo xem trước hoàn toàn 0 đồng trong 24 giờ.
             </p>
 
             {/* Value Props & Guarantees */}
             <div className="final-value-list">
               <div className="final-value-item">
                 <CheckCircle2 size={18} className="val-icon" />
-                <span>Dựng demo xem trước 0đ trực tiếp trên điện thoại</span>
+                <span>Bàn giao demo xem trước 0đ trực tiếp trên điện thoại</span>
               </div>
               <div className="final-value-item">
                 <CheckCircle2 size={18} className="val-icon" />
-                <span>Báo giá trọn gói bằng văn bản, không phát sinh chi phí</span>
+                <span>Báo giá cố định trước khi làm, không phát sinh chi phí</span>
               </div>
               <div className="final-value-item">
                 <CheckCircle2 size={18} className="val-icon" />
-                <span>Nghiệm thu hài lòng 100% mới tiến hành thanh toán</span>
+                <span>Nghiệm thu mới thanh toán</span>
               </div>
             </div>
 
@@ -260,7 +260,7 @@ export const FinalCTASection: React.FC = () => {
                       </>
                     ) : (
                       <>
-                        Nhận Web Demo 0đ Cho Tiệm <ArrowRight size={19} />
+                        Nói cho Localmate biết việc bạn đang cần giải quyết <ArrowRight size={19} />
                       </>
                     )}
                   </button>

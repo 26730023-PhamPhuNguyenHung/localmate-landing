@@ -49,7 +49,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({ onOpenDemoForm }) => {
             Những Băn Khoăn Của Chủ Kinh Doanh
           </h2>
           <p className="subtitle mx-auto">
-            Không dùng thuật ngữ kỹ thuật phức tạp. Trả lời trực diện, dứt khoát về chi phí phát sinh, tiến độ thực hiện và quyền làm chủ tài khoản sau bàn giao.
+            Không dùng thuật ngữ kỹ thuật phức tạp. Trả lời trực diện, minh bạch về quyền sở hữu tài khoản, chi phí duy trì và quy trình bàn giao thực tế.
           </p>
         </div>
 

@@ -50,22 +50,22 @@ export const MarketComparisonSection: React.FC<MarketComparisonSectionProps> = (
       subtitle: 'Ngân sách thực tế & Phí duy trì định kỳ',
       icon: DollarSign,
       agency: {
-        tag: 'Chi phí đắt đỏ • Hợp đồng trói buộc',
+        tag: 'Định mức chi phí cao • Hợp đồng dài hạn',
         headline: '15.000.000đ – 50.000.000đ / tháng',
         details: [
-          'Bắt buộc ký hợp đồng Retainer dài hạn 6 – 12 tháng.',
+          'Bắt buộc ký hợp đồng Retainer định kỳ 6 – 12 tháng.',
           'Chưa tính ngân sách chạy quảng cáo (phải nạp thêm hàng chục triệu).',
           'Phát sinh phụ phí cho từng module nhỏ: bảo trì, chỉnh sửa ảnh, viết bài.'
         ],
-        riskPoint: 'Nặng gánh chi phí cố định hàng tháng dù chưa biết hiệu quả ra sao.'
+        riskPoint: 'Nặng gánh chi phí cố định hàng tháng dù chưa đánh giá được hiệu quả thực tế.'
       },
       localmate: {
-        tag: 'Giá từ gốc • Tiết kiệm đến 85%',
+        tag: 'Phạm vi rõ ràng • Tối ưu ngân sách',
         headline: 'Chỉ từ 490k – 2.900.000đ trọn gói',
         details: [
-          'Báo giá niêm yết minh bạch, chi trả một lần theo đúng nhu cầu.',
-          'Cam kết 0đ chi phí ẩn, 0đ phụ phí duy trì vô lý.',
-          'Tối ưu từng đồng ngân sách cho chủ tiệm & hộ kinh doanh địa phương.'
+          'Phạm vi công việc và chi phí rõ ràng trước khi làm, không chi phí ẩn.',
+          'Ưu tiên giải pháp vừa đủ, tránh lãng phí công cụ không cần thiết.',
+          'Báo giá niêm yết minh bạch, chi trả theo đúng nhu cầu thực tế của tiệm.'
         ],
         winPoint: 'Chi phí linh hoạt từ gốc, phù hợp ngân sách mọi mô hình quán xá & SMB.'
       }
@@ -76,17 +76,17 @@ export const MarketComparisonSection: React.FC<MarketComparisonSectionProps> = (
       subtitle: 'Ai là người trực tiếp chịu trách nhiệm cho bạn?',
       icon: UserCheck,
       agency: {
-        tag: 'Sale chốt xong đẩy qua intern/fresher',
+        tag: 'Quy trình qua nhiều khâu trung gian',
         headline: 'Giao tiếp gián tiếp qua Ticket & Email',
         details: [
-          'Chuyên gia cấp cao chỉ xuất hiện ở buổi pitching chốt hợp đồng.',
-          'Sau khi ký, giao việc lại cho thực tập sinh / nhân sự mới làm thử nghiệm.',
-          'Cần hỗ trợ phải tạo ticket, xếp hàng chờ đợi cả tuần không ai xử lý ngay.'
+          'Giai đoạn tư vấn ban đầu tách biệt với đội ngũ trực tiếp thực thi.',
+          'Dự án thường chuyển giao qua nhân sự mới, dễ thay đổi người phụ trách.',
+          'Cần hỗ trợ kỹ thuật phải gửi ticket và chờ đợi theo quy trình nhiều cấp.'
         ],
-        riskPoint: 'Người trực tiếp làm không hiểu thực tế kinh doanh tại địa phương.'
+        riskPoint: 'Người trực tiếp thực thi khó nắm sát đặc thù kinh doanh tại địa phương.'
       },
       localmate: {
-        tag: 'Kỹ thuật viên địa phương 1-1',
+        tag: 'Kỹ thuật viên đồng hành trực tiếp, trao đổi minh bạch',
         headline: 'Có mặt tại chỗ • Lắng nghe & Hỗ trợ tận quán',
         details: [
           'Kỹ thuật viên tại khu vực trực tiếp ghé quán khảo sát và trao đổi.',
@@ -102,24 +102,24 @@ export const MarketComparisonSection: React.FC<MarketComparisonSectionProps> = (
       subtitle: 'Chính sách chăm sóc & Bảo hành kỹ thuật dài lâu',
       icon: ShieldCheck,
       agency: {
-        tag: 'Hết hợp đồng là phủi tay',
+        tag: 'Hạn chế sau khi kết thúc hợp đồng',
         headline: 'Dừng hợp đồng = Dừng mọi hỗ trợ',
         details: [
-          'Muốn sửa đổi số hotline, cập nhật menu hay đổi ảnh cũng bị tính phí sửa chữa.',
-          'Nếu không gia hạn gói dịch vụ hàng tháng, website bị bỏ xó không ai trông nom.',
-          'Gặp sự cố website sập hay Maps bị chơi xấu thì tự chịu trách nhiệm.'
+          'Mỗi chỉnh sửa nhỏ như đổi số hotline hay cập nhật menu thường tính thêm phụ phí.',
+          'Nếu không gia hạn gói dịch vụ hàng tháng, hệ thống thiếu người giám sát kỹ thuật.',
+          'Khi phát sinh sự cố sau bàn giao, khách hàng phải tự tìm cách xử lý.'
         ],
-        riskPoint: 'Khách hàng bị bỏ rơi khi ngừng trả tiền hàng tháng cho agency.'
+        riskPoint: 'Khó khăn trong duy trì vận hành nếu không tiếp tục ký gói hỗ trợ kỹ thuật.'
       },
       localmate: {
-        tag: 'Cam kết bảo hành lên đến 5 NĂM',
+        tag: 'Đồng hành kỹ thuật lên đến 5 NĂM',
         headline: 'Người đồng hành số địa phương bền vững',
         details: [
-          'Bảo hành vận hành kỹ thuật hệ thống website & Google Maps lên đến 5 NĂM.',
+          'Bảo hành mã nguồn, cấu hình DNS/Cloudflare và hỗ trợ xử lý lỗi kỹ thuật phát sinh.',
           'Hỗ trợ cập nhật số điện thoại, bảng giá, địa chỉ bất kỳ lúc nào cần.',
-          'Đồng hành theo dõi, bảo vệ điểm Maps chống bị đối thủ phá hoại hay cướp quyền.'
+          'Đồng hành theo dõi, hỗ trợ bảo vệ tài khoản Maps và bảo mật hạ tầng.'
         ],
-        winPoint: 'Cam kết bảo hành 5 năm độc nhất, đồng hành an tâm dài lâu.'
+        winPoint: 'Chính sách đồng hành kỹ thuật 5 năm, an tâm vận hành dài lâu.'
       }
     },
     {
@@ -128,22 +128,22 @@ export const MarketComparisonSection: React.FC<MarketComparisonSectionProps> = (
       subtitle: 'Tên miền, Hosting, Tài khoản Maps & Dữ liệu khách',
       icon: KeyRound,
       agency: {
-        tag: 'Giam lỏng con tin kỹ thuật',
-        headline: 'Agency đứng tên toàn bộ tài khoản',
+        tag: 'Quyền quản trị bị phụ thuộc',
+        headline: 'Đơn vị dịch vụ đứng tên các tài khoản chính',
         details: [
-          'Tên miền, hosting và trang quản trị đăng ký dưới tên công ty agency.',
-          'Khách hàng muốn chuyển đi hoặc đổi nhà cung cấp bị làm khó dễ hoặc đòi phí chuộc.',
-          'Rủi ro mất trắng dữ liệu khách hàng nếu agency ngừng hoạt động.'
+          'Tên miền, hosting và trang quản trị đăng ký dưới tên công ty dịch vụ.',
+          'Khách hàng gặp khó khăn hoặc phát sinh thủ tục phức tạp khi muốn chuyển đơn vị quản lý.',
+          'Nguy cơ gián đoạn hoặc mất dữ liệu nếu đơn vị dịch vụ thay đổi chính sách hoạt động.'
         ],
-        riskPoint: 'Chủ quán hoàn toàn bị lệ thuộc, không có quyền tự quyết tài sản số của mình.'
+        riskPoint: 'Doanh nghiệp thiếu quyền chủ động kiểm soát tài sản số của mình.'
       },
       localmate: {
-        tag: 'Chính chủ 100% bằng CCCD & Gmail',
+        tag: 'Tài khoản quảng cáo & dữ liệu thuộc 100% về bạn',
         headline: 'Bàn giao trọn vẹn • Khách làm chủ 100%',
         details: [
           'Đăng ký trực tiếp bằng CCCD, số điện thoại và Gmail chính chủ của khách.',
           'Bàn giao 100% tài khoản quản trị domain, hosting, mã nguồn và Google Maps.',
-          'Bạn nắm giữ toàn bộ chìa khóa gốc, toàn quyền chuyển nhượng hoặc quản lý vĩnh viễn.'
+          'Bạn nắm giữ toàn bộ quyền quản trị gốc, toàn quyền điều phối và quản lý tài sản số.'
         ],
         winPoint: 'Tài sản số của bạn thuộc về bạn 100%, an toàn và minh bạch tuyệt đối.'
       }
@@ -155,19 +155,19 @@ export const MarketComparisonSection: React.FC<MarketComparisonSectionProps> = (
       icon: MessageSquareText,
       agency: {
         tag: 'Thuật ngữ công nghệ phức tạp',
-        headline: 'Báo cáo biểu đồ ảo: Impression, CTR, GEO, AEO',
+        headline: 'Báo cáo nặng chỉ số kỹ thuật: Impression, CTR, Reach',
         details: [
-          'Dùng các thuật ngữ hoa mỹ (AEO, Search Generative, Funnel, Attribution, Entity AI...).',
-          'Gửi báo cáo dày đặc số liệu ảo (lượt xem, tương tác) nhưng quán vẫn vắng khách.',
-          'Né tránh câu hỏi thực tế: Tháng này tiệm có thêm bao nhiêu người gọi và ghé mua?'
+          'Tập trung giải thích các thuật ngữ chuyên sâu thay vì bài toán kinh doanh thực tế.',
+          'Báo cáo nhiều số liệu hiển thị, tương tác nhưng chưa gắn liền lượt khách ghé tiệm.',
+          'Khó đo lường trực diện: Cơ sở có thêm bao nhiêu cuộc gọi và khách hàng mới thực tế.'
         ],
-        riskPoint: 'Làm chủ tiệm hoang mang, mất tiền vào những chỉ số vô thưởng vô phạt.'
+        riskPoint: 'Doanh nghiệp khó đánh giá hiệu quả đầu tư thực tế đối với doanh thu.'
       },
       localmate: {
-        tag: 'Nói tiếng bình dân • Đo bằng khách thật',
-        headline: 'Chỉ rõ khách gọi từ đâu • Tăng đơn thực tế',
+        tag: 'Trao đổi thực tế • Đo lường hiệu quả rõ ràng',
+        headline: 'Đo lường cuộc gọi & khách ghé tiệm thực tế',
         details: [
-          'Nói chuyện bằng ngôn ngữ đời thường, giải thích cặn kẽ, không giấu nghề.',
+          'Trao đổi bằng ngôn ngữ dễ hiểu, minh bạch cách làm và hướng dẫn chi tiết.',
           'Tối ưu nút gọi điện nhanh, nút nhắn tin Zalo, nút chỉ đường Maps tới tiệm.',
           'Đo lường trực diện: Có bao nhiêu khách bấm gọi? Bao nhiêu khách ghé ăn/mua hàng?'
         ],
@@ -180,24 +180,24 @@ export const MarketComparisonSection: React.FC<MarketComparisonSectionProps> = (
       subtitle: 'Chính sách đặt cọc & Điều kiện nghiệm thu',
       icon: CheckCircle2,
       agency: {
-        tag: 'Bắt cọc 50% – 100% mới làm',
-        headline: 'Chưa thấy sản phẩm đã phải xuống tiền',
+        tag: 'Yêu cầu thanh toán trước 50% – 100%',
+        headline: 'Thanh toán trước khi nghiệm thu thực tế',
         details: [
-          'Bắt buộc đặt cọc trước từ 50% đến 100% hợp đồng mới bắt đầu thiết kế.',
-          'Nếu sản phẩm làm ra không vừa ý hoặc xấu xí, khách vẫn mất cọc.',
-          'Rủi ro tài chính khách hàng phải tự gánh vác hoàn toàn.'
+          'Thường yêu cầu tạm ứng trước từ 50% đến 100% giá trị hợp đồng mới bắt đầu thiết kế.',
+          'Khách hàng khó hình dung trước sản phẩm cuối cùng trước khi chi trả chi phí.',
+          'Rủi ro phát sinh nếu sản phẩm hoàn thiện chưa đúng kỳ vọng ban đầu.'
         ],
-        riskPoint: 'Chi tiền triệu trước mà không hề biết trước kết quả sẽ ra sao.'
+        riskPoint: 'Phải giải ngân ngân sách lớn khi chưa được xem trước sản phẩm mẫu.'
       },
       localmate: {
-        tag: 'Dựng Demo xem thử 0đ • Rủi ro bằng 0',
-        headline: 'Nghiệm thu ưng ý 100% mới thanh toán',
+        tag: 'Bàn giao demo xem trước 0đ • An tâm nghiệm thu',
+        headline: 'Nghiệm thu hài lòng mới thanh toán',
         details: [
           'Kỹ thuật viên dựng sẵn bản web mẫu ngay trên hình ảnh và thông tin của quán.',
           'Chủ tiệm bấm thử, trải nghiệm thực tế trên điện thoại hoàn toàn miễn phí.',
           'Chỉ khi khách hàng kiểm tra, nghiệm thu và thực sự hài lòng mới tiến hành thanh toán.'
         ],
-        winPoint: 'Xem trước demo 0đ không rủi ro, chỉ trả tiền khi đã tận mắt thấy ưng ý.'
+        winPoint: 'Xem trước demo 0đ không rủi ro, chỉ thanh toán khi đã tận mắt kiểm tra ưng ý.'
       }
     }
   ];
@@ -258,7 +258,7 @@ export const MarketComparisonSection: React.FC<MarketComparisonSectionProps> = (
               letterSpacing: '-0.02em'
             }}
           >
-            Agency Lớn Xa Vời Hay <span style={{ color: '#0d7647' }}>Người Đồng Hành Số Địa Phương?</span>
+            Mô Hình Triển Khai Truyền Thống Hay <span style={{ color: '#0d7647' }}>Người Đồng Hành Số Địa Phương?</span>
           </h2>
 
           <p
@@ -270,7 +270,7 @@ export const MarketComparisonSection: React.FC<MarketComparisonSectionProps> = (
               margin: '0 auto'
             }}
           >
-            Đừng để những thuật ngữ công nghệ hoa mỹ che lấp bài toán kinh doanh cốt lõi. Xem bảng so sánh minh bạch 6 khía cạnh sống còn giữa mô hình Agency đắt đỏ và LocalMate dành riêng cho chủ tiệm & hộ kinh doanh SMB.
+            Xem bảng đối chiếu minh bạch 6 khía cạnh giữa mô hình triển khai truyền thống và giải pháp LocalMate được thiết kế tối ưu cho chủ tiệm & hộ kinh doanh địa phương.
           </p>
         </div>
 
@@ -350,7 +350,7 @@ export const MarketComparisonSection: React.FC<MarketComparisonSectionProps> = (
                 Kỹ thuật viên tại chỗ 1-1
               </div>
               <div style={{ fontSize: '0.78rem', color: '#0d7647', fontWeight: 600, marginTop: '0.2rem' }}>
-                Đến tận quán, không đùn đẩy ticket
+                Đến tận quán, hỗ trợ trực tiếp 1-1
               </div>
             </div>
           </div>
@@ -386,7 +386,7 @@ export const MarketComparisonSection: React.FC<MarketComparisonSectionProps> = (
                 Bảo hành kỹ thuật 5 NĂM
               </div>
               <div style={{ fontSize: '0.78rem', color: '#0d7647', fontWeight: 600, marginTop: '0.2rem' }}>
-                Hết hợp đồng vẫn chăm sóc như người nhà
+                Đồng hành hỗ trợ kỹ thuật lâu dài trong suốt vòng đời vận hành
               </div>
             </div>
           </div>
@@ -504,9 +504,9 @@ export const MarketComparisonSection: React.FC<MarketComparisonSectionProps> = (
               }}
             />
             <span style={{ fontWeight: 800, fontSize: '0.95rem', color: '#334155' }}>
-              Agency Lớn / Truyền Thống
+              Mô Hình Triển Khai Truyền Thống
             </span>
-            <span style={{ fontSize: '0.75rem', color: '#64748b', fontWeight: 500 }}>(Mô hình tập đoàn, giá cao)</span>
+            <span style={{ fontSize: '0.75rem', color: '#64748b', fontWeight: 500 }}>(Quy trình nhiều cấp, chi phí cố định)</span>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <span
@@ -599,7 +599,7 @@ export const MarketComparisonSection: React.FC<MarketComparisonSectionProps> = (
                       fontWeight: 600
                     }}
                   >
-                    Mục tiêu sống còn: Giúp chủ tiệm kiểm soát toàn bộ chất lượng & ngân sách.
+                    Mục tiêu cốt lõi: Giúp chủ tiệm kiểm soát toàn bộ chất lượng & ngân sách.
                   </div>
                 </div>
 

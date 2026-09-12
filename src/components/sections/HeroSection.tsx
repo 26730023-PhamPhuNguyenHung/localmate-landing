@@ -104,28 +104,28 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
   const trustMetrics = [
     {
-      icon: Users,
-      value: '250+',
-      label: 'Khách hàng địa phương',
-      desc: 'Hộ kinh doanh & SMB tin chọn'
-    },
-    {
       icon: Clock,
       value: '48 Giờ',
       label: 'Bàn giao demo xem trước',
       desc: 'Trải nghiệm 0đ trước khi làm'
     },
     {
-      icon: Headphones,
-      value: '1 - 1',
-      label: 'Hỗ trợ kỹ thuật tại chỗ',
-      desc: 'KTV địa phương đồng hành'
-    },
-    {
       icon: ShieldCheck,
       value: '100%',
-      label: 'Chính chủ tài khoản',
-      desc: 'Báo giá cố định, không phí ẩn'
+      label: 'Báo giá cố định trước khi làm',
+      desc: 'Phạm vi rõ ràng, không chi phí ẩn'
+    },
+    {
+      icon: Check,
+      value: '0 Đồng',
+      label: 'Nghiệm thu mới thanh toán',
+      desc: 'Hài lòng chất lượng mới thanh toán'
+    },
+    {
+      icon: Headphones,
+      value: '1 - 1',
+      label: 'Kỹ thuật viên đồng hành',
+      desc: 'Hỗ trợ trực tiếp tại địa phương'
     }
   ];
 
@@ -170,20 +170,20 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             <div className="hero-subbadge-wrapper">
               <span className="hero-subbadge">
                 <Sparkles size={13} className="subbadge-icon" />
-                <span>Đồng hành số địa phương • Bàn giao demo trong 48h</span>
+                <span>Bạn cần giải quyết việc gì? • Người đồng hành số địa phương</span>
               </span>
             </div>
 
             {/* H1 lớn, tinh gọn, nhắm trúng insight khách hàng địa phương & SMB */}
             <h1 className="hero-headline">
               Giúp doanh nghiệp địa phương<br className="hero-desktop-br" />
-              {' '}có website chuẩn, lên Google<br className="hero-desktop-br" />
-              {' '}và <span className="hero-highlight">thu hút thêm khách.</span>
+              {' '}đưa công việc lên môi trường số,<br className="hero-desktop-br" />
+              {' '}<span className="hero-highlight">tìm khách hàng và vận hành dễ dàng.</span>
             </h1>
 
             {/* Body text: Ngắn gọn, giải quyết trực tiếp nhu cầu */}
             <p className="hero-body">
-              Giải pháp số thực tế cho hộ kinh doanh và doanh nghiệp vừa &amp; nhỏ: từ website bán hàng tải siêu tốc, định vị Google Maps đến quảng cáo đa kênh. Dựng demo xem trước 0đ, báo giá cố định, nghiệm thu hài lòng mới thanh toán.
+              Giải pháp số thực tế cho hộ kinh doanh và doanh nghiệp địa phương: từ website bán hàng tải siêu tốc, định vị Google Maps, tự động hóa gom lead đến quảng cáo đa kênh. Dựng demo xem trước 0đ, báo giá cố định trước khi làm, nghiệm thu hài lòng mới thanh toán.
             </p>
 
             {/* INSTANT AUDIT HOOK (WebFX Style) — Cho phép nhập tên tiệm/link web và nhận phân tích + Demo 0đ tức thì */}
@@ -415,17 +415,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <div className="hero-trust-strip">
             <div className="trust-strip-item">
               <Check size={15} color="var(--color-primary)" className="trust-icon" strokeWidth={2.5} />
-              <span>Báo giá trước khi làm</span>
+              <span>Bàn giao demo xem trước</span>
             </div>
             <div className="trust-divider" />
             <div className="trust-strip-item">
               <Check size={15} color="var(--color-primary)" className="trust-icon" strokeWidth={2.5} />
-              <span>Tận dụng thứ đã có</span>
+              <span>Báo giá cố định trước khi làm</span>
             </div>
             <div className="trust-divider" />
             <div className="trust-strip-item">
               <Check size={15} color="var(--color-primary)" className="trust-icon" strokeWidth={2.5} />
-              <span>Đội ngũ KTV địa phương</span>
+              <span>Nghiệm thu mới thanh toán</span>
             </div>
             <div className="trust-divider" />
             <div className="trust-strip-item">

@@ -2,19 +2,18 @@ import React from 'react';
 import { SEOHead } from '../components/seo/SEOHead';
 import { HeroSection } from '../components/sections/HeroSection';
 import { TrustBar } from '../components/sections/TrustBar';
-import { ProblemMapperSection } from '../components/sections/ProblemMapperSection';
-import { ProcessSection } from '../components/sections/ProcessSection';
-import { PhilosophySection } from '../components/sections/PhilosophySection';
-import { BeforeAfterSection } from '../components/sections/BeforeAfterSection';
+import { SolutionPillarsSection } from '../components/sections/SolutionPillarsSection';
 import { GrowthFlywheelSection } from '../components/sections/GrowthFlywheelSection';
-import { PricingMatrixSection } from '../components/sections/PricingMatrixSection';
+import { PhilosophySection } from '../components/sections/PhilosophySection';
+import { ProcessSection } from '../components/sections/ProcessSection';
+import { BeforeAfterSection } from '../components/sections/BeforeAfterSection';
 import { DemoShowcaseSection } from '../components/sections/DemoShowcaseSection';
-import { TrustSection } from '../components/sections/TrustSection';
+import { PricingMatrixSection } from '../components/sections/PricingMatrixSection';
+import { MarketComparisonSection } from '../components/sections/MarketComparisonSection';
+import { Warranty5YearSection } from '../components/sections/Warranty5YearSection';
+import { FreeAuditSection } from '../components/sections/FreeAuditSection';
 import { KnowledgeHubSection } from '../components/sections/KnowledgeHubSection';
 import { FAQSection } from '../components/sections/FAQSection';
-import { Warranty5YearSection } from '../components/sections/Warranty5YearSection';
-import { MarketComparisonSection } from '../components/sections/MarketComparisonSection';
-import { FreeAuditSection } from '../components/sections/FreeAuditSection';
 import { FinalCTASection } from '../components/sections/FinalCTASection';
 
 interface HomePageProps {
@@ -27,51 +26,65 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenConsultForm }) => {
       {/* 0. Dynamic SEO Meta for Homepage */}
       <SEOHead
         title="LocalMate | Người đồng hành số & Đội ngũ triển khai kỹ thuật tại địa phương"
-        description="LocalMate đồng hành số cùng doanh nghiệp và hộ kinh doanh: website bán hàng, định vị Google Maps và hỗ trợ kỹ thuật tại địa phương. Báo giá cố định, dựng demo xem thử 0đ, nghiệm thu mới thanh toán."
+        description="LocalMate đồng hành số cùng doanh nghiệp địa phương: xây dựng nền tảng số, định vị Google Maps, tối ưu AI Search, tự động hóa gom lead và kỹ thuật viên túc trực hỗ trợ 5 năm. Dựng demo 0đ, báo giá cố định, nghiệm thu mới thanh toán."
         canonicalPath="/"
       />
 
-      {/* 1. HERO — Giúp doanh nghiệp nhỏ có website, lên Google và tìm thêm khách */}
-      <HeroSection onOpenDemoForm={(storeInput) => onOpenConsultForm && onOpenConsultForm('Tư vấn giải pháp LocalMate', storeInput)} />
+      {/* 1. HERO — Hướng vấn đề + 2. Instant Business Audit Hook (Tích hợp trong Hero) */}
+      <HeroSection
+        onOpenDemoForm={(storeInput) =>
+          onOpenConsultForm && onOpenConsultForm('Tư vấn giải pháp LocalMate', storeInput)
+        }
+      />
 
-      {/* 2. TRUST STRIP — 4 Cam kết cốt lõi tối giản, không card */}
+      {/* 2. TRUST STRIP — 4 Cam kết cốt lõi tối giản */}
       <TrustBar />
 
-      {/* 3. DỊCH VỤ THEO NHU CẦU — Service Discovery Editorial Split 35/65 */}
-      <ProblemMapperSection onSelectTask={(serviceName) => onOpenConsultForm && onOpenConsultForm(serviceName)} />
+      {/* 3. SOLUTION PILLARS SECTION — 5 Nhóm Giải Pháp Trọng Tâm kết nối trực tiếp đến /giai-phap/{slug} */}
+      <SolutionPillarsSection
+        onOpenConsultForm={(serviceName) =>
+          onOpenConsultForm && onOpenConsultForm(serviceName)
+        }
+      />
 
-      {/* 4. CÁCH LOCALMATE LÀM VIỆC — Quy trình 4 bước kể chuyện minh bạch */}
-      <ProcessSection />
-
-      {/* 5. VISUAL BREAK — Không cần mua thêm phần mềm đắt đỏ, tận dụng thứ đã có */}
-      <PhilosophySection />
-
-      {/* 5.5. ĐỐI CHIẾU THỰC TẾ & MINH CHỨNG — Cách làm cũ vs Giải pháp LocalMate */}
-      <BeforeAfterSection onOpenConsultForm={onOpenConsultForm} />
-
-      {/* 5.8. BÁNH ĐÀ TĂNG TRƯỞNG DOANH THU ĐỊA PHƯƠNG — 4 Giai đoạn tự động sinh khách */}
+      {/* 4. LOCAL GROWTH FLYWHEEL — Vòng tròn bánh đà tăng trưởng 4 giai đoạn liên kết trực tiếp giải pháp */}
       <GrowthFlywheelSection onOpenConsultForm={onOpenConsultForm} />
 
-      {/* 5.9. SO SÁNH MINH BẠCH THỊ TRƯỜNG — Agency lớn (FastMarketing...) vs LocalMate */}
-      <MarketComparisonSection onOpenConsultForm={onOpenConsultForm} />
+      {/* 5. WHY LOCALMATE — Bốn cam kết trung thực, tôn trọng (Tài khoản của bạn, Báo giá cố định, Nghiệm thu mới trả tiền, Đồng hành 5 năm) */}
+      <PhilosophySection />
 
-      {/* 6. BẢNG GIÁ NIÊM YẾT — Asymmetric 3-Package Layout + Drawer tra cứu 41 dịch vụ */}
-      <PricingMatrixSection onOpenLeadForm={(srvName) => onOpenConsultForm && onOpenConsultForm(srvName || 'Tư vấn Bảng giá dịch vụ')} />
-
-      {/* 7. XEM TRƯỚC BÀN GIAO — Demo Showcase kiểm chứng thực tế */}
+      {/* 6. DELIVERABLES & MINH CHỨNG THẬT — Quy trình 4 bước minh bạch + Đối chiếu thực tế Trước/Sau + Demo Showcase */}
+      <ProcessSection />
+      <BeforeAfterSection onOpenConsultForm={onOpenConsultForm} />
       <DemoShowcaseSection />
 
-      {/* 7.5. CHÍNH SÁCH BẢO HÀNH KỸ THUẬT 5 NĂM & ĐỒNG HÀNH ĐỊA PHƯƠNG */}
+      {/* 6.5. BẢNG GIÁ NIÊM YẾT & SO SÁNH THỊ TRƯỜNG */}
+      <PricingMatrixSection
+        onOpenLeadForm={(srvName) =>
+          onOpenConsultForm && onOpenConsultForm(srvName || 'Tư vấn Bảng giá dịch vụ')
+        }
+      />
+      <MarketComparisonSection onOpenConsultForm={onOpenConsultForm} />
+
+      {/* 6.8. CHÍNH SÁCH BẢO HÀNH KỸ THUẬT 5 NĂM & ĐỒNG HÀNH ĐỊA PHƯƠNG */}
       <Warranty5YearSection onOpenConsultForm={onOpenConsultForm} />
 
-      {/* 8.5. CHẨN ĐOÁN MIỄN PHÍ — Instant Business & Website Audit Hook (3 tiêu chí sống còn) */}
-      <FreeAuditSection onOpenDemoForm={(storeInput) => onOpenConsultForm && onOpenConsultForm('Chẩn đoán sức khỏe website & Demo 0đ', storeInput)} />
+      {/* 7. INSTANT BUSINESS AUDIT DỰ PHÒNG */}
+      <FreeAuditSection
+        onOpenDemoForm={(storeInput) =>
+          onOpenConsultForm && onOpenConsultForm('Chẩn đoán sức khỏe website & Demo 0đ', storeInput)
+        }
+      />
 
-      {/* 9. CẨM NANG & FAQ — Bố cục Tạp chí Editorial & Accordion tối giản */}
+      {/* 8. KNOWLEDGE HUB & FAQ — Bộ câu hỏi thường gặp thực tế */}
       <KnowledgeHubSection />
-      <FAQSection onOpenDemoForm={() => onOpenConsultForm && onOpenConsultForm('Hỗ trợ trực tiếp 1-1')} />
+      <FAQSection
+        onOpenDemoForm={() =>
+          onOpenConsultForm && onOpenConsultForm('Hỗ trợ trực tiếp 1-1')
+        }
+      />
 
-      {/* 10. FINAL CTA — Nền Dark Slate Navy & Form tinh gọn 3 trường */}
+      {/* 9. FINAL CTA — Nói cho Localmate biết việc bạn đang cần giải quyết */}
       <FinalCTASection />
     </>
   );
