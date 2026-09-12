@@ -43,6 +43,38 @@
         "hook dạng: Nhiều chủ xưởng nghĩ...",
         "format Breakdown 3 bước"
       ]
+    },
+    {
+      "id": "post_002",
+      "title": "Đừng đưa AI vào khi quy trình cơ bản còn đang hở",
+      "pillar": "Quan điểm",
+      "topic": "Khi nào doanh nghiệp nhỏ thực sự cần AI",
+      "angle": "Bịt lỗ hổng quy trình cơ bản trước khi chi tiền cho AI hay công nghệ phức tạp",
+      "hook_type": "Một câu hỏi trúng vấn đề / Sai lầm phổ biến",
+      "format": "Tôi sẽ không làm X trước, tôi sẽ làm Y / Quan điểm ngắn",
+      "audience": "Chủ cơ sở dịch vụ, phòng khám, studio, xưởng thi công, cá nhân kinh doanh đang tò mò về AI",
+      "funnel_stage": "Consideration",
+      "CTA": "Gợi ý người đọc chia sẻ điểm rơi rụng khách để hướng dẫn cách bịt đơn giản nhất",
+      "keywords": [
+        "AI doanh nghiệp nhỏ",
+        "rò rỉ khách hàng",
+        "tự động hóa cơ bản",
+        "phản hồi khách",
+        "tối ưu vận hành"
+      ],
+      "published_at": "2026-09-12T14:37:00+07:00",
+      "engagement_score": null,
+      "comments": 0,
+      "saves": 0,
+      "shares": 0,
+      "leads_generated": 0,
+      "avoid_next": [
+        "chủ đề chatbot AI",
+        "góc nhìn AI vs Quy trình cơ bản",
+        "format: Tôi sẽ không làm X trước, tôi sẽ làm Y",
+        "pillar Quan điểm",
+        "hook dạng: Nhiều người hỏi tôi..."
+      ]
     }
   ]
 }
