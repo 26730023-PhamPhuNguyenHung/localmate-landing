@@ -5,6 +5,9 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  /* Strict Anti-Glassmorphism: pure clean light mode, no fuzzy blurry backdrops */
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
 html {
@@ -17,6 +20,7 @@ html {
   max-width: 100%;
   overflow-x: hidden;
   scrollbar-gutter: stable;
+  text-rendering: optimizeLegibility;
 }
 
 body {
@@ -29,6 +33,7 @@ body {
   overflow-x: hidden;
   position: relative;
   font-weight: 400;
+  text-wrap: pretty;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -416,8 +421,51 @@ input[type="reset"] {
 }
 
 /* Mobile Floating CTA Safe-area */
-@media (max-width: 767px) {
+@media (max-width: 768px) {
+  body,
   body.has-mobile-cta {
-    padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px)) !important;
+    padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px)) !important;
   }
 }
+
+/* Surface & Card Standards (Light Mode Pure: #ffffff surface, crisp #e2e8f0 border-slate-200) */
+.card-standard,
+.card-white,
+.card-surface,
+.ui-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.card-standard:hover,
+.card-white:hover,
+.card-surface:hover,
+.ui-card:hover {
+  border-color: var(--color-primary-border);
+  box-shadow: var(--shadow-md);
+}
+
+/* Common Utility Helpers for High Contrast & Border */
+.bg-surface {
+  background-color: var(--color-surface) !important;
+}
+
+.border-slate-200 {
+  border-color: #e2e8f0 !important;
+}
+
+.text-navy {
+  color: var(--color-navy) !important;
+}
+
+.text-body {
+  color: var(--color-text) !important;
+}
+
+.text-muted {
+  color: var(--color-text-muted) !important;
+}
+

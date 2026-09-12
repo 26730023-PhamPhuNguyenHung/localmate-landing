@@ -34,95 +34,133 @@ export interface TaskGroupItem {
   iconName: 'Globe' | 'MapPin' | 'TrendingUp' | 'FileText' | 'HelpCircle' | 'Users' | 'Zap' | 'Briefcase';
 }
 
+export interface TaskGroupItem {
+  id: string;
+  stepNumber: string;
+  title: string;
+  categoryBadge: string;
+  problemType: 'no-web' | 'has-web-no-leads' | 'growth-ads' | 'maintenance' | 'consultation';
+  problemLabel: string;
+  painPoint: string;
+  headline: string;
+  description: string;
+  priceTag: string;
+  serviceNameForLead: string;
+  features: string[];
+  slaTime: string;
+  ctaLabel: string;
+  iconName: 'Globe' | 'MapPin' | 'TrendingUp' | 'FileText' | 'HelpCircle' | 'Users' | 'Zap' | 'Briefcase';
+}
+
 export const TASK_GROUPS_DATA: TaskGroupItem[] = [
   {
     id: 'need-website',
     stepNumber: '01',
-    title: 'Muốn có website giới thiệu / bán hàng ngay',
-    categoryBadge: 'Website 24h',
-    headline: 'Có trang web chuyên nghiệp, hoạt động trong 24 giờ',
-    description: 'Dành cho tiệm, doanh nghiệp cần trang web bán hàng hoặc giới thiệu chuẩn di động. Tích hợp sẵn nút gọi hotline, chat Zalo và bàn giao 100% tài khoản chính chủ.',
+    title: 'Chưa có website & Chưa có mặt trên Google Maps',
+    categoryBadge: 'Khởi tạo hiện diện số',
+    problemType: 'no-web',
+    problemLabel: 'Chưa có web',
+    painPoint: 'Khách tìm kiếm trên Google/Zalo không thấy tiệm, chưa có bảng giá uy tín để gửi khách xem nhanh.',
+    headline: 'Website chuẩn di động hoạt động ngay trong 24 giờ',
+    description: 'Dành cho cơ sở kinh doanh cần trang web giới thiệu dịch vụ hoặc bán hàng ngay. Bàn giao 100% tài khoản chính chủ, ghim Google Maps và gắn sẵn nút gọi Hotline, Zalo 1 chạm.',
     priceTag: 'Từ 490.000đ',
-    serviceNameForLead: 'Thiết kế Website giới thiệu & Bán hàng nhanh',
+    serviceNameForLead: 'Làm website mới & Định vị Google Maps 24h',
     features: [
       'Website chạy thật ngay trong 24 giờ',
-      'Chuẩn di động, tốc độ tải trang nhanh mượt',
-      'Tích hợp sẵn nút gọi Hotline & chat Zalo',
-      'Bàn giao toàn bộ mã nguồn & tài khoản quản trị'
+      'Xác minh điểm Google Maps chính chủ',
+      'Nút gọi Hotline & chat Zalo 1 chạm',
+      'Bàn giao 100% mã nguồn & tài khoản'
     ],
-    ctaLabel: 'Tạo website ngay',
+    slaTime: 'Bàn giao trong 24 giờ',
+    ctaLabel: 'Nhận web demo 0đ',
     iconName: 'Globe'
   },
   {
-    id: 'need-maps',
+    id: 'has-web-no-leads',
     stepNumber: '02',
-    title: 'Muốn đưa tiệm lên Google Maps & tìm kiếm địa phương',
-    categoryBadge: 'Google Maps & SEO Local',
-    headline: 'Khách tìm quanh đây thấy tiệm ngay trên bản đồ',
-    description: 'Xác minh điểm Maps chính chủ, tối ưu danh mục chuẩn SEO Local và tặng bộ mã QR đánh giá 5 sao tại quầy để tiệm nổi bật hơn đối thủ cùng khu vực.',
-    priceTag: 'Từ 490.000đ',
-    serviceNameForLead: 'Xác minh & Tối ưu Google Maps địa phương',
+    title: 'Đã có website nhưng tải chậm, không ra khách',
+    categoryBadge: 'Cải tổ & Tối ưu chuyển đổi',
+    problemType: 'has-web-no-leads',
+    problemLabel: 'Có web chưa ra khách',
+    painPoint: 'Web cũ mở chậm trên 3 giây, vỡ khung trên điện thoại, khách vào rồi thoát ra mà không gọi điện hay nhắn tin.',
+    headline: 'Thiết kế lại giao diện tối ưu chuyển đổi, tốc độ mở trang < 1s',
+    description: 'Cải tạo toàn diện web cũ: tăng tốc độ tải trang đạt 95+ điểm Google PageSpeed, sắp xếp lại menu dịch vụ rõ ràng và cài đặt đo lường chính xác từng cuộc gọi của khách.',
+    priceTag: 'Từ 990.000đ',
+    serviceNameForLead: 'Tối ưu website cũ & Tăng tỉ lệ chuyển đổi ra khách',
     features: [
-      'Xác minh điểm Google Maps chính chủ thành công',
-      'Tối ưu từ khóa & danh mục tìm kiếm địa phương',
-      'Tặng file in mã QR Review 5 sao để bàn tại quầy',
-      'Hỗ trợ kháng nghị và xử lý khi Maps gặp sự cố'
+      'Tốc độ mở trang dưới 1 giây (PageSpeed 95+)',
+      'Giao diện chuẩn di động tối ưu nút liên hệ',
+      'Đo lường số cuộc gọi & tin nhắn phát sinh',
+      'Khôi phục và bàn giao lại toàn quyền quản trị'
     ],
-    ctaLabel: 'Đưa tiệm lên Maps',
-    iconName: 'MapPin'
+    slaTime: 'Hoàn thiện trong 48 giờ',
+    ctaLabel: 'Audit web miễn phí',
+    iconName: 'Zap'
   },
   {
-    id: 'need-ads',
+    id: 'growth-ads-seo',
     stepNumber: '03',
-    title: 'Muốn chạy quảng cáo Google/Facebook để lấy khách',
-    categoryBadge: 'Quảng cáo & Ra Khách',
-    headline: 'Kéo khách tiềm năng quanh khu vực gọi điện & nhắn tin',
-    description: 'Thiết lập chiến dịch quảng cáo nhắm đúng bán kính khách hàng quanh điểm bán. Đo lường chính xác từng cuộc gọi và tin nhắn, không đốt tiền lãng phí.',
+    title: 'Muốn chạy quảng cáo & SEO Local để kéo khách ngay',
+    categoryBadge: 'Quảng cáo & Kéo khách',
+    problemType: 'growth-ads',
+    problemLabel: 'Quảng cáo & SEO',
+    painPoint: 'Cần kéo khách mới quanh bán kính 3-10km gọi điện ghé tiệm, nhưng sợ bị đơn vị ngoài kê giá hoặc đốt tiền không ra khách.',
+    headline: 'Chiến dịch Google & Facebook nhắm đúng khách quanh điểm bán',
+    description: 'Thiết lập quảng cáo trực tiếp trên tài khoản của chính bạn, tiền quảng cáo trừ thẳng thẻ ngân hàng (0% kê giá). Đo lường minh bạch từng cuộc gọi và tin nhắn với chi phí tối ưu.',
     priceTag: 'Từ 990.000đ',
-    serviceNameForLead: 'Quảng cáo Google / Facebook kéo khách',
+    serviceNameForLead: 'Quảng cáo Google / Facebook kéo khách địa phương',
     features: [
-      'Setup chiến dịch nhắm đúng tệp khách quanh khu vực',
-      'Viết bài quảng cáo thu hút & thiết kế banner chỉn chu',
-      'Đo lường minh bạch: đếm số cuộc gọi & tin nhắn phát sinh',
-      'Báo cáo ngân sách chi tiết, tối ưu chi phí mỗi khách'
+      'Quảng cáo trên chính tài khoản của bạn (0% kê giá)',
+      'Nhắm đúng bán kính khách hàng quanh tiệm',
+      'Báo cáo minh bạch chi phí trên từng cuộc gọi',
+      'Tối ưu nội dung bài viết và banner hình ảnh'
     ],
+    slaTime: 'Lên chiến dịch trong 24 giờ',
     ctaLabel: 'Tư vấn chạy quảng cáo',
     iconName: 'TrendingUp'
   },
   {
-    id: 'need-content',
+    id: 'need-maintenance',
     stepNumber: '04',
-    title: 'Muốn chăm sóc bài viết Fanpage & Website định kỳ',
-    categoryBadge: 'Chăm sóc nội dung',
-    headline: 'Giữ trang luôn sống động, uy tín dù bạn bận rộn',
-    description: 'Không để Fanpage hay Website bị bỏ hoang tạo cảm giác ngừng hoạt động. Đội ngũ LocalMate lên bài đều đặn, thiết kế hình ảnh nhận diện và duy trì tương tác.',
+    title: 'Cần đội kỹ thuật túc trực & Chăm sóc nội dung định kỳ',
+    categoryBadge: 'Đội kỹ thuật đồng hành',
+    problemType: 'maintenance',
+    problemLabel: 'Kỹ thuật & Chăm sóc',
+    painPoint: 'Bận bán hàng không có thời gian viết bài cập nhật web/fanpage; khi web gặp trục trặc không có ai xử lý ngay.',
+    headline: 'Phòng kỹ thuật số ngoài: Có mặt xử lý trong 2 giờ',
+    description: 'LocalMate túc trực như đội IT riêng: cập nhật bài viết và chương trình khuyến mãi định kỳ, bảo trì hệ thống an toàn và xử lý sự cố tức thì qua Zalo/Hotline.',
     priceTag: 'Từ 1.200.000đ/tháng',
-    serviceNameForLead: 'Chăm sóc nội dung Fanpage & Website định kỳ',
+    serviceNameForLead: 'Thuê phòng kỹ thuật số & Chăm sóc nội dung định kỳ',
     features: [
-      'Lên lịch đăng bài định kỳ theo tuần / tháng',
-      'Thiết kế hình ảnh đồng bộ chuẩn nhận diện',
-      'Nội dung thực tế, giải đáp thắc mắc người mua',
-      'Duy trì uy tín vững chắc khi khách vào tìm hiểu'
+      'Xử lý sự cố kỹ thuật trong vòng 2 giờ',
+      'Đăng bài viết & banner ưu đãi đều đặn hàng tuần',
+      'Sao lưu dữ liệu định kỳ chống mất mát',
+      'Kỹ thuật viên túc trực hỗ trợ 1-1 qua Zalo'
     ],
-    ctaLabel: 'Chăm sóc kênh ngay',
+    slaTime: 'Phản hồi trong 15 phút',
+    ctaLabel: 'Đăng ký đồng hành',
     iconName: 'FileText'
   },
   {
     id: 'need-consultation',
     stepNumber: '05',
-    title: 'Cần tư vấn từ đầu chưa biết bắt đầu từ đâu',
-    categoryBadge: 'Khảo sát 0đ',
-    headline: 'Chưa rõ nên làm gì trước? Hãy để LocalMate khảo sát giúp',
-    description: 'Bạn không cần am hiểu công nghệ. Hãy chia sẻ tình trạng hiện tại, LocalMate sẽ kiểm tra, phân tích đối thủ và tư vấn lộ trình đơn giản, tiết kiệm nhất.',
-    priceTag: 'Khảo sát & Tư vấn 0đ',
-    serviceNameForLead: 'Tư vấn giải pháp từ đầu chưa biết bắt đầu từ đâu',
+    title: 'Chưa biết bắt đầu từ đâu, cần khảo sát giải pháp 0đ',
+    categoryBadge: 'Khảo sát giải pháp 0đ',
+    problemType: 'consultation',
+    problemLabel: 'Tư vấn từ đầu',
+    painPoint: 'Không rành về công nghệ, sợ mua phải phần mềm cồng kềnh tốn kém mà không dùng đến.',
+    headline: 'Khảo sát hiện trạng & Lập phương án tiết kiệm nhất',
+    description: 'Bạn chỉ cần chia sẻ loại hình kinh doanh và ngân sách dự kiến. Kỹ thuật viên LocalMate sẽ khảo sát, gợi ý giải pháp đơn giản nhất và dựng bản demo xem trước hoàn toàn 0 đồng.',
+    priceTag: 'Khảo sát 0đ',
+    serviceNameForLead: 'Khảo sát hiện trạng & Tư vấn giải pháp 0đ',
     features: [
       'Khảo sát hiện trạng số hóa miễn phí 100%',
-      'Tư vấn đúng thứ thực sự cần, không ép mua thừa',
-      'Báo trước chi phí minh bạch trước khi bắt đầu',
-      'Kỹ thuật viên đồng hành hỗ trợ trực tiếp 1-1'
+      'Chỉ tư vấn đúng thứ bạn cần, không ép mua thừa',
+      'Báo giá cố định minh bạch trước khi bắt đầu',
+      'Dựng bản web demo xem thử không ràng buộc'
     ],
-    ctaLabel: 'Nhận tư vấn miễn phí',
+    slaTime: 'Phản hồi trong 15 phút',
+    ctaLabel: 'Nhận tư vấn 0đ',
     iconName: 'HelpCircle'
   }
 ];
@@ -572,39 +610,39 @@ export interface FAQItem {
 
 export const OPERATION_FAQS_DATA: FAQItem[] = [
   {
-    id: 'faq-1',
-    question: 'Tôi chưa có website và không rành công nghệ thì bắt đầu thế nào?',
-    answer: 'Bạn hoàn toàn không cần hiểu kỹ thuật hay chuẩn bị tài liệu phức tạp. Bạn chỉ cần nói cho LocalMate biết: bạn đang kinh doanh dịch vụ gì, địa chỉ ở đâu, số hotline/Zalo nhận khách và bảng giá cơ bản. Đội ngũ LocalMate sẽ thay bạn làm toàn bộ: từ gợi ý bố cục, viết nội dung dễ hiểu, chọn hình ảnh phù hợp đến dựng bản web chạy thử để bạn duyệt trực tiếp.',
-    category: 'mo-hinh'
-  },
-  {
-    id: 'faq-2',
-    question: 'Dựng web demo 0đ trước có bị mất phí hay ép ký hợp đồng không?',
-    answer: 'Hoàn toàn KHÔNG. LocalMate dựng website demo xem trước hoàn toàn 0 đồng. Bạn được bấm thử giao diện hoạt động thực tế trên cả máy tính và điện thoại. Nếu bạn hài lòng và thấy ưng ý thì mới tiến hành ký hợp đồng triển khai chính thức. Nếu không thích, bạn hoàn toàn không phải trả bất kỳ chi phí nào và không có bất kỳ ràng buộc nào.',
-    category: 'mo-hinh'
-  },
-  {
-    id: 'faq-3',
-    question: 'Sau khi làm xong, tôi có được giữ toàn quyền tài khoản không?',
-    answer: '100% tài khoản chính chủ thuộc về bạn. Khi bàn giao, LocalMate chuyển giao toàn bộ quyền quản trị cao nhất: tên miền (Domain), hosting, tài khoản Google Maps Business, fanpage và mã nguồn website. Bạn là chủ sở hữu hợp pháp duy nhất và có thể tự do chuyển đổi, nâng cấp hoặc mang đi nơi khác bất cứ lúc nào mà không bao giờ bị phụ thuộc kỹ thuật vào LocalMate.',
-    category: 'bao-hanh'
-  },
-  {
-    id: 'faq-4',
-    question: 'Giá báo đã là trọn gói chưa, có phát sinh chi phí gì khác không?',
-    answer: 'Giá báo của LocalMate là giá TRỌN GÓI NIÊM YẾT MINH BẠCH, tuyệt đối không có chi phí ẩn. Báo giá đã bao gồm toàn bộ: thiết kế giao diện, cấu hình tên miền, chứng chỉ bảo mật SSL, tối ưu hiển thị di động và bảo hành kỹ thuật. Chỉ khi bạn chủ động yêu cầu mở rộng thêm tính năng mới ngoài phạm vi ban đầu, hai bên mới trao đổi báo giá rõ ràng trước khi làm.',
+    id: 'faq-cost',
+    question: 'Chi phí báo giá đã là trọn gói chưa, có phát sinh chi phí gì không?',
+    answer: 'Báo giá của LocalMate là trọn gói cố định 100%, cam kết không có bất kỳ chi phí ẩn nào. Giá đã bao gồm thiết kế hoàn chỉnh, tên miền, hosting tốc độ cao, chứng chỉ bảo mật SSL và bảo hành kỹ thuật. Tuyệt đối không phát sinh chi phí ngoài thỏa thuận.',
     category: 'chi-phi'
   },
   {
-    id: 'faq-5',
-    question: 'Nếu cần chỉnh sửa nội dung sau khi bàn giao thì sao?',
-    answer: 'Website được thiết kế với cấu trúc tinh gọn, dễ quản lý. LocalMate sẽ gửi video hướng dẫn ngắn (2–3 phút) chỉ bạn cách thay đổi số điện thoại, đổi giá dịch vụ, thêm hình ảnh mới. Ngoài ra, tất cả các gói dịch vụ luôn bao gồm hỗ trợ kỹ thuật trực tiếp qua Zalo/Hotline. Khi bạn bận rộn, chỉ cần nhắn tin yêu cầu, đội ngũ kỹ thuật LocalMate sẽ hỗ trợ cập nhật nhanh cho bạn.',
+    id: 'faq-tech-skill',
+    question: 'Tôi không biết code hay kỹ thuật công nghệ thì có tự dùng được không?',
+    answer: 'Bạn hoàn toàn không cần biết code hay công nghệ. Trang quản trị 100% tiếng Việt tối giản như dùng mạng xã hội, có kèm video 2 phút hướng dẫn riêng cho bạn. Cần đổi giá, sửa số điện thoại hay thêm ảnh chỉ mất 3 phút thao tác trên điện thoại.',
+    category: 'mo-hinh'
+  },
+  {
+    id: 'faq-support',
+    question: 'Ai sẽ hỗ trợ khi website gặp sự cố hoặc khi tôi cần đổi nội dung?',
+    answer: 'Kỹ thuật viên LocalMate hỗ trợ trực tiếp 1-1 qua Hotline và Zalo, không qua chatbot hay tạo ticket chờ đợi. Khi gặp sự cố kỹ thuật, chúng tôi xử lý trong vòng 1-2 giờ. Khi bạn bận rộn, chỉ cần gửi qua Zalo là kỹ thuật viên hỗ trợ cập nhật thay bạn.',
     category: 'bao-hanh'
   },
   {
-    id: 'faq-6',
-    question: 'Thời gian hoàn thành một website thường mất bao lâu?',
-    answer: 'Với gói hiện diện số và website bán dịch vụ chuẩn, LocalMate hoàn thiện và bàn giao chạy thực tế chỉ trong vòng 24 đến 48 giờ kể từ khi nhận đủ thông tin cơ bản. Với các dự án có thêm tính năng tự động hóa quy trình hoặc kết nối phần mềm quản lý (CRM), thời gian triển khai từ 3 đến 5 ngày làm việc. Mọi mốc thời gian đều được cam kết rõ ràng bằng văn bản.',
+    id: 'faq-timeline',
+    question: 'Mất bao lâu để hoàn thành một website và đưa vào hoạt động?',
+    answer: 'Chỉ từ 24 đến 48 giờ đối với website bán hàng và giới thiệu dịch vụ chuẩn di động. Với các hệ thống có tính năng tự động hóa quy trình hoặc kết nối phần mềm CRM, thời gian hoàn tất từ 3 đến 5 ngày. Mọi mốc thời gian đều cam kết rõ ràng trước khi làm.',
     category: 'mo-hinh'
+  },
+  {
+    id: 'faq-demo',
+    question: 'Làm web demo 0đ xem thử trước có bị ràng buộc hay ép ký hợp đồng không?',
+    answer: 'Hoàn toàn không. LocalMate dựng website demo chạy thực tế 0 đồng để bạn duyệt trực tiếp trên điện thoại. Bạn ưng ý giao diện và tốc độ tải trang thì mới quyết định hợp tác. Nếu không hài lòng, bạn không phải trả bất kỳ chi phí nào.',
+    category: 'mo-hinh'
+  },
+  {
+    id: 'faq-ownership',
+    question: 'Sau khi bàn giao, ai là người đứng tên sở hữu tài khoản và dữ liệu?',
+    answer: '100% tài khoản chính chủ thuộc về bạn. Khi bàn giao, LocalMate chuyển giao toàn bộ quyền quản trị cao nhất: tên miền, hosting, mã nguồn, Google Maps và fanpage. Dữ liệu kinh doanh là tài sản riêng của bạn, không bị phụ thuộc kỹ thuật vào LocalMate.',
+    category: 'bao-hanh'
   }
 ];

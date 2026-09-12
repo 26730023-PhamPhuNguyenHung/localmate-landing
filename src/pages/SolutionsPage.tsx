@@ -3,6 +3,7 @@ import { Container } from '../components/ui/Container';
 import { INDUSTRY_SOLUTIONS } from '../data/landingContent';
 import { CheckCircle2, ArrowRight, Sparkles, Building2, Utensils, GraduationCap, Store, Briefcase } from 'lucide-react';
 import { useRouter } from '../components/layout/Router';
+import { SolutionJourneySection } from '../components/sections/SolutionJourneySection';
 
 const ICON_MAP: Record<string, React.ComponentType<any>> = {
   'nha-hang': Utensils,
@@ -242,6 +243,9 @@ export const SolutionsPage: React.FC = () => {
           </div>
         )}
       </Container>
+
+      {/* Lộ trình đầu tư thông minh 3 bước */}
+      <SolutionJourneySection />
     </div>
   );
 };

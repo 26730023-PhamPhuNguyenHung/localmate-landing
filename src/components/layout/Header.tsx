@@ -447,38 +447,53 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
               </Link>
             </nav>
 
-            {/* 3. Desktop Actions: [Hotline: 0834 422 439] [Báo giá nhanh] */}
+            {/* 3. Desktop Actions: [Hotline Gọi tư vấn] [CTA Đăng ký tư vấn] */}
             <div className="header-desktop-actions">
               <a
                 href={`tel:${CONTACT_INFO.phoneRaw}`}
                 className="header-hotline-link"
-                title="Gọi hotline 0834 422 439"
+                title="Gọi tư vấn 0834 422 439"
               >
-                <Phone size={15} className="header-hotline-icon" />
-                <span className="header-hotline-text">
-                  Hotline: <strong className="header-hotline-num">0834 422 439</strong>
-                </span>
+                <div className="hotline-icon-wrap">
+                  <Phone size={16} className="header-hotline-icon" />
+                </div>
+                <div className="hotline-content">
+                  <span className="hotline-label">Gọi tư vấn</span>
+                  <span className="hotline-num">0834 422 439</span>
+                </div>
               </a>
 
               <button
                 type="button"
                 onClick={handleActionClick}
                 className="header-cta-button"
+                title="Đăng ký tư vấn & Nhận Demo Web"
               >
-                <Sparkles size={15} />
-                <span>Báo giá nhanh</span>
+                <Sparkles size={16} />
+                <span>Đăng ký tư vấn</span>
               </button>
             </div>
 
-            {/* 4. Mobile Actions: [Báo giá nhanh] [Nút Menu Hamburger] */}
+            {/* 4. Mobile Actions: [Hotline gọi nhanh] [CTA Nhận demo] [Menu Hamburger] */}
             <div className="header-mobile-actions">
+              <a
+                href={`tel:${CONTACT_INFO.phoneRaw}`}
+                className="header-mobile-call-btn"
+                title="Gọi hotline 0834 422 439"
+                aria-label="Gọi hotline tư vấn"
+              >
+                <Phone size={15} />
+                <span className="mobile-call-text">Gọi ngay</span>
+              </a>
+
               <button
                 type="button"
                 onClick={handleActionClick}
                 className="header-mobile-cta"
+                title="Đăng ký tư vấn"
               >
                 <Sparkles size={13} />
-                <span>Báo giá nhanh</span>
+                <span>Tư vấn</span>
               </button>
 
               <button
@@ -649,21 +664,26 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
                 onClick={handleActionClick}
                 className="drawer-primary-cta"
               >
-                <Sparkles size={16} />
-                <span>Báo giá nhanh &amp; Nhận demo 0đ</span>
+                <Sparkles size={17} />
+                <span>Đăng ký tư vấn / Nhận Demo Web</span>
               </button>
 
               <a
                 href={`tel:${CONTACT_INFO.phoneRaw}`}
                 className="drawer-hotline-card"
-                title="Gọi hotline tư vấn"
+                title="Gọi hotline tư vấn 0834 422 439"
               >
-                <Phone size={16} color="var(--color-primary)" />
-                <span>Hotline: <strong>0834 422 439</strong></span>
+                <div className="drawer-hotline-icon">
+                  <Phone size={17} />
+                </div>
+                <div className="drawer-hotline-content">
+                  <span className="drawer-hotline-sub">Gọi tư vấn trực tiếp 24/7</span>
+                  <span className="drawer-hotline-num">0834 422 439</span>
+                </div>
               </a>
 
               <p className="drawer-footer-note">
-                Tư vấn nhanh qua Zalo &amp; Điện thoại (8:00 - 21:00)
+                Tư vấn &amp; trải nghiệm demo miễn phí (8:00 - 21:00)
               </p>
             </div>
           </div>
@@ -680,7 +700,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           z-index: 1000;
           height: 70px;
           background-color: #ffffff;
-          border-bottom: 1px solid transparent;
+          border-bottom: 1px solid #e2e8f0;
           box-shadow: none;
           transition: border-color 0.2s ease, box-shadow 0.2s ease;
           display: flex;
@@ -721,16 +741,16 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
         .header-desktop-nav {
           display: flex;
           align-items: center;
-          gap: 4px;
+          gap: 6px;
         }
 
         .nav-link,
         .nav-link-btn {
-          font-size: 0.925rem;
+          font-size: 0.9375rem;
           font-weight: 550;
           color: #334155;
           text-decoration: none;
-          padding: 8px 12px;
+          padding: 8px 14px;
           border-radius: 8px;
           transition: color 0.15s ease, background-color 0.15s ease;
           display: inline-flex;
@@ -754,6 +774,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
         .nav-link-btn.active {
           color: #0d7647;
           font-weight: 600;
+          background-color: #edf7f1;
         }
 
         .nav-dropdown-wrapper {
@@ -1145,43 +1166,72 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
         .header-desktop-actions {
           display: flex;
           align-items: center;
-          gap: 12px;
+          gap: 16px;
         }
 
         .header-hotline-link {
           display: inline-flex;
           align-items: center;
-          gap: 6px;
-          font-size: 0.875rem;
-          font-weight: 500;
-          color: #475569;
+          gap: 10px;
           text-decoration: none;
-          padding: 8px 10px;
-          border-radius: 8px;
-          transition: color 0.15s ease, background-color 0.15s ease;
-          white-space: nowrap;
+          padding: 4px 10px 4px 6px;
+          border-radius: 10px;
+          transition: all 0.15s ease;
         }
 
         .header-hotline-link:hover {
-          color: #0d7647;
           background-color: #f8fafc;
         }
 
-        .header-hotline-icon {
-          color: #475569;
-          transition: color 0.15s ease;
+        .hotline-icon-wrap {
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+          background-color: #edf7f1;
+          border: 1px solid #c6ebd4;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #0d7647;
+          flex-shrink: 0;
+          transition: all 0.18s ease;
         }
 
-        .header-hotline-link:hover .header-hotline-icon {
+        .header-hotline-link:hover .hotline-icon-wrap {
+          background-color: #dcfce7;
+          border-color: #0d7647;
+          transform: scale(1.06);
+        }
+
+        .header-hotline-icon {
           color: #0d7647;
         }
 
-        .header-hotline-num {
-          font-weight: 600;
-          color: #334155;
+        .hotline-content {
+          display: flex;
+          flex-direction: column;
+          text-align: left;
         }
 
-        .header-hotline-link:hover .header-hotline-num {
+        .hotline-label {
+          font-size: 0.6875rem;
+          font-weight: 600;
+          color: #64748b;
+          text-transform: uppercase;
+          letter-spacing: 0.04em;
+          line-height: 1.15;
+        }
+
+        .hotline-num {
+          font-size: 0.95rem;
+          font-weight: 700;
+          color: #0f172a;
+          line-height: 1.25;
+          font-variant-numeric: tabular-nums;
+          transition: color 0.15s ease;
+        }
+
+        .header-hotline-link:hover .hotline-num {
           color: #0d7647;
         }
 
@@ -1189,16 +1239,17 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          gap: 6px;
+          gap: 7px;
           background-color: #0d7647;
           color: #ffffff;
           font-size: 0.875rem;
           font-weight: 600;
-          padding: 10px 18px;
-          border-radius: 10px;
+          height: 42px;
+          padding: 0 22px;
+          border-radius: 9999px;
           border: none;
           cursor: pointer;
-          box-shadow: 0 2px 8px rgba(13, 118, 71, 0.2);
+          box-shadow: 0 2px 8px rgba(13, 118, 71, 0.22);
           transition: all 0.15s ease;
           white-space: nowrap;
           font-family: inherit;
@@ -1206,7 +1257,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
 
         .header-cta-button:hover {
           background-color: #095935;
-          box-shadow: 0 4px 14px rgba(13, 118, 71, 0.3);
+          box-shadow: 0 4px 14px rgba(13, 118, 71, 0.32);
           transform: translateY(-1px);
         }
 
@@ -1217,6 +1268,27 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           gap: 8px;
         }
 
+        .header-mobile-call-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          min-height: 40px;
+          padding: 0 12px;
+          background-color: #edf7f1;
+          border: 1px solid #c6ebd4;
+          border-radius: 9999px;
+          color: #0d7647;
+          font-size: 0.8125rem;
+          font-weight: 600;
+          text-decoration: none;
+          transition: all 0.15s ease;
+        }
+
+        .header-mobile-call-btn:hover {
+          background-color: #dcfce7;
+          border-color: #0d7647;
+        }
+
         .header-mobile-cta {
           display: inline-flex;
           align-items: center;
@@ -1225,13 +1297,19 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           color: #ffffff;
           font-size: 0.8125rem;
           font-weight: 600;
-          padding: 7px 12px;
-          border-radius: 8px;
+          padding: 0 14px;
+          border-radius: 9999px;
           border: none;
           cursor: pointer;
-          min-height: 36px;
+          min-height: 40px;
           white-space: nowrap;
           font-family: inherit;
+          box-shadow: 0 2px 6px rgba(13, 118, 71, 0.2);
+          transition: all 0.15s ease;
+        }
+
+        .header-mobile-cta:hover {
+          background-color: #095935;
         }
 
         .mobile-hamburger-btn {
@@ -1242,7 +1320,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           min-height: 44px;
           padding: 8px;
           background: transparent;
-          border: none;
+          border: 1px solid #e2e8f0;
           border-radius: 8px;
           color: #0f172a;
           cursor: pointer;
@@ -1251,6 +1329,19 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
 
         .mobile-hamburger-btn:hover {
           background-color: #f1f5f9;
+        }
+
+        @media (max-width: 400px) {
+          .mobile-call-text {
+            display: none;
+          }
+          .header-mobile-call-btn {
+            width: 40px;
+            height: 40px;
+            padding: 0;
+            justify-content: center;
+            border-radius: 50%;
+          }
         }
 
         /* Breakpoint 1024px: Switch to Mobile */
@@ -1501,7 +1592,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           font-size: 0.9375rem;
           font-weight: 600;
           border: none;
-          border-radius: 10px;
+          border-radius: 9999px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -1509,26 +1600,24 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           cursor: pointer;
           box-shadow: 0 2px 8px rgba(13, 118, 71, 0.25);
           font-family: inherit;
-          transition: background-color 0.15s ease;
+          transition: background-color 0.15s ease, transform 0.15s ease;
         }
 
         .drawer-primary-cta:hover {
           background-color: #095935;
+          transform: translateY(-1px);
         }
 
         .drawer-hotline-card {
-          min-height: 44px;
+          min-height: 50px;
           width: 100%;
           background-color: #f0fdf4;
           border: 1px solid #c6ebd4;
-          border-radius: 10px;
-          color: #063d24;
-          font-size: 0.875rem;
-          font-weight: 500;
+          border-radius: 12px;
+          padding: 8px 14px;
           display: flex;
           align-items: center;
-          justify-content: center;
-          gap: 8px;
+          gap: 12px;
           text-decoration: none;
           box-sizing: border-box;
           transition: all 0.15s ease;
@@ -1539,9 +1628,39 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           border-color: #0d7647;
         }
 
-        .drawer-hotline-card strong {
+        .drawer-hotline-icon {
+          width: 34px;
+          height: 34px;
+          border-radius: 50%;
+          background-color: #0d7647;
+          color: #ffffff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+
+        .drawer-hotline-content {
+          display: flex;
+          flex-direction: column;
+          text-align: left;
+        }
+
+        .drawer-hotline-sub {
+          font-size: 0.6875rem;
+          font-weight: 600;
+          color: #065f46;
+          text-transform: uppercase;
+          letter-spacing: 0.04em;
+          line-height: 1.15;
+        }
+
+        .drawer-hotline-num {
+          font-size: 0.975rem;
           font-weight: 700;
-          color: #0d7647;
+          color: #063d24;
+          line-height: 1.25;
+          font-variant-numeric: tabular-nums;
         }
 
         .drawer-footer-note {

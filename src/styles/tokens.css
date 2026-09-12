@@ -1,6 +1,6 @@
 /* LocalMate Design Tokens — Premium Modern Vietnamese Local Brand (SSOT) */
 :root {
-  /* Brand Palette — Calibrated Deep Emerald & Clean Accent */
+  /* Brand Palette — Calibrated Deep Emerald & Clean Accent (#0d7647, #16a34a) */
   --color-primary: #0d7647;
   --color-primary-hover: #095935;
   --color-primary-dark: #063d24;
@@ -8,13 +8,28 @@
   --color-primary-soft: #edf7f1;
   --color-primary-border: #c6ebd4;
 
-  /* Deep Slate & Navy for High Contrast Readability (No pure harsh blacks) */
+  /* Backward Compatibility Aliases for Teal components -> Brand Green */
+  --color-teal: #0d7647;
+  --color-teal-hover: #095935;
+  --color-teal-dark: #095935;
+  --color-teal-light: #16a34a;
+  --color-teal-soft: #edf7f1;
+  --color-teal-border: #c6ebd4;
+
+  /* Deep Slate & Navy for High Contrast Readability (Chữ #0f172a / #1e293b trên nền sáng) */
   --color-navy: #0f172a;
   --color-navy-deep: #020617;
   --ink: #0f172a;
   --ink-body: #1e293b;
   --ink-soft: #334155;
   --ink-muted: #64748b;
+
+  /* Text Custom Properties (SSOT) */
+  --color-text: #1e293b;
+  --color-text-main: #0f172a;
+  --color-text-body: #1e293b;
+  --color-text-muted: #64748b;
+  --color-text-subtle: #94a3b8;
   
   /* Accent Warm Amber/Orange (Reserved for key CTA highlights) */
   --color-orange: #d97706;
@@ -22,18 +37,18 @@
   --color-orange-soft: #fef3c7;
   --color-orange-border: #fde68a;
 
-  /* Surfaces & Clean Backgrounds (Strictly Light Theme, NO glassmorphism, NO backdrop-blur) */
-  --color-bg: #fbfcfb;
+  /* Surfaces & Clean Backgrounds (Pure Light Mode, NO glassmorphism, NO backdrop-blur) */
+  --color-bg: #f8fafc;
   --color-surface: #ffffff;
-  --color-surface-subtle: #f4f7f5;
-  --color-surface-break: #eff4f1;
+  --color-surface-subtle: #f1f5f9;
+  --color-surface-break: #f8fafc;
   --color-surface-dark: #0f172a;
   --color-surface-dark-soft: #1e293b;
   
-  /* Borders — 1px crisp subtle definition */
+  /* Borders — Clean Crisp Slate-200 (#e2e8f0) definition */
   --color-border: #e2e8f0;
-  --color-border-subtle: #ebf0ec;
-  --color-border-light: #f1f5f9;
+  --color-border-subtle: #f1f5f9;
+  --color-border-light: #f8fafc;
   --color-border-strong: #cbd5e1;
 
   /* Button Design System Tokens (WCAG 2.1 AA Compliant) */

@@ -27,8 +27,8 @@ export const CoreOffersSection: React.FC<CoreOffersSectionProps> = ({ onOpenLead
     <section
       style={{
         padding: 'clamp(3.5rem, 5vw, 5rem) 0',
-        backgroundColor: '#f8faf9',
-        borderBottom: '1px solid var(--color-border)'
+        backgroundColor: '#fafbfa',
+        borderBottom: '1px solid #e5e7eb'
       }}
       id="cac-goi-trien-khai"
     >
@@ -60,13 +60,13 @@ export const CoreOffersSection: React.FC<CoreOffersSectionProps> = ({ onOpenLead
                     <span className="offer-type-badge">{offer.badge}</span>
                     {offer.highlighted && (
                       <span className="offer-hot-pill">
-                        <Sparkles size={12} /> Ưu tiên hợp tác
+                        <Sparkles size={11} /> Ưu tiên hợp tác
                       </span>
                     )}
                   </div>
                   <h3 className="offer-title">{offer.name}</h3>
                   <div className="offer-target-box">
-                    <Briefcase size={14} color="var(--color-primary)" className="offer-target-icon" />
+                    <Briefcase size={14} color="#0d7647" className="offer-target-icon" />
                     <span>{offer.targetAudience}</span>
                   </div>
                   <p className="offer-description">{offer.description}</p>
@@ -75,11 +75,12 @@ export const CoreOffersSection: React.FC<CoreOffersSectionProps> = ({ onOpenLead
                 {/* Pricing & SLA Block */}
                 <div className="offer-pricing-box">
                   <div className="offer-price-main">
+                    <span className="offer-price-label">Định mức chi phí:</span>
                     <span className="offer-price-val">{offer.pricingDisplay}</span>
                     <span className="offer-price-sub">{offer.priceNote}</span>
                   </div>
                   <div className="offer-sla-row">
-                    <Clock size={13} color="var(--color-primary-dark)" />
+                    <Clock size={13} color="#0d7647" />
                     <span>{offer.slaTime}</span>
                   </div>
                 </div>
@@ -103,7 +104,7 @@ export const CoreOffersSection: React.FC<CoreOffersSectionProps> = ({ onOpenLead
                   <ul className="offer-deliv-list">
                     {offer.deliverables.map((deliv, idx) => (
                       <li key={idx} className="offer-deliv-item">
-                        <CheckCircle2 size={14} color="var(--color-primary)" className="offer-check-icon" />
+                        <CheckCircle2 size={15} color="#0d7647" className="offer-check-icon" />
                         <span>{deliv}</span>
                       </li>
                     ))}
@@ -193,28 +194,33 @@ export const CoreOffersSection: React.FC<CoreOffersSectionProps> = ({ onOpenLead
 
         .offer-card {
           background-color: #ffffff;
-          border: 1px solid var(--color-border);
+          border: 1px solid #e5e7eb;
           border-radius: 16px;
           padding: 1.6rem;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
           gap: 1.25rem;
-          box-shadow: var(--shadow-sm);
-          transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+          box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+          transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
           position: relative;
         }
 
         .offer-card:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
-          border-color: var(--color-primary-light);
+          transform: translateY(-4px);
+          box-shadow: 0 12px 24px -6px rgba(15, 23, 42, 0.07), 0 4px 10px -2px rgba(15, 23, 42, 0.03);
+          border-color: #cbd5e1;
         }
 
         .offer-card-highlighted {
-          border-color: #86efac;
-          background: linear-gradient(180deg, #f7fdf9 0%, #ffffff 100%);
-          box-shadow: 0 4px 16px rgba(13, 118, 71, 0.08);
+          border-color: #a7f3d0;
+          background: #ffffff;
+          box-shadow: 0 2px 10px 0 rgba(13, 118, 71, 0.06);
+        }
+
+        .offer-card-highlighted:hover {
+          border-color: #6ee7b7;
+          box-shadow: 0 12px 24px -6px rgba(13, 118, 71, 0.1), 0 4px 10px -2px rgba(15, 23, 42, 0.03);
         }
 
         .offer-badge-row {
@@ -227,13 +233,13 @@ export const CoreOffersSection: React.FC<CoreOffersSectionProps> = ({ onOpenLead
 
         .offer-type-badge {
           font-size: 0.725rem;
-          font-weight: 800;
+          font-weight: 700;
           letter-spacing: 0.04em;
-          color: var(--color-primary-dark);
-          background-color: var(--color-primary-soft);
-          border: 1px solid var(--color-primary-border);
-          padding: 0.2rem 0.55rem;
-          border-radius: 6px;
+          color: #0d7647;
+          background-color: #ecfdf5;
+          border: 1px solid #d1fae5;
+          padding: 0.25rem 0.65rem;
+          border-radius: 999px;
           text-transform: uppercase;
         }
 
@@ -242,17 +248,18 @@ export const CoreOffersSection: React.FC<CoreOffersSectionProps> = ({ onOpenLead
           align-items: center;
           gap: 0.25rem;
           font-size: 0.725rem;
-          font-weight: 800;
+          font-weight: 700;
           color: #b45309;
           background-color: #fef3c7;
-          padding: 0.2rem 0.55rem;
+          border: 1px solid #fde68a;
+          padding: 0.25rem 0.65rem;
           border-radius: 999px;
         }
 
         .offer-title {
-          font-size: 1.25rem;
+          font-size: 1.22rem;
           font-weight: 800;
-          color: var(--color-navy);
+          color: #0f172a;
           margin: 0 0 0.5rem 0;
           line-height: 1.3;
         }
@@ -262,14 +269,14 @@ export const CoreOffersSection: React.FC<CoreOffersSectionProps> = ({ onOpenLead
           align-items: flex-start;
           gap: 0.45rem;
           font-size: 0.8rem;
-          font-weight: 700;
-          color: #374151;
-          background-color: #f9fafb;
-          border: 1px solid #f3f4f6;
-          padding: 0.4rem 0.65rem;
+          font-weight: 600;
+          color: #334155;
+          background-color: #f8fafc;
+          border: 1px solid #e2e8f0;
+          padding: 0.45rem 0.75rem;
           border-radius: 8px;
           margin-bottom: 0.75rem;
-          line-height: 1.4;
+          line-height: 1.45;
         }
 
         .offer-target-icon {
@@ -279,14 +286,14 @@ export const CoreOffersSection: React.FC<CoreOffersSectionProps> = ({ onOpenLead
 
         .offer-description {
           font-size: 0.85rem;
-          color: var(--color-text-muted);
+          color: #64748b;
           line-height: 1.55;
           margin: 0;
         }
 
         .offer-pricing-box {
-          background-color: #f9fafb;
-          border: 1px dashed var(--color-border);
+          background-color: #f8fafc;
+          border: 1px solid #e2e8f0;
           border-radius: 12px;
           padding: 0.85rem 1rem;
           display: flex;
@@ -301,16 +308,24 @@ export const CoreOffersSection: React.FC<CoreOffersSectionProps> = ({ onOpenLead
           gap: 0.45rem;
         }
 
+        .offer-price-label {
+          font-size: 0.725rem;
+          font-weight: 700;
+          color: #64748b;
+          text-transform: uppercase;
+          letter-spacing: 0.03em;
+        }
+
         .offer-price-val {
           font-size: 1.35rem;
           font-weight: 900;
-          color: var(--color-primary);
+          color: #0f172a;
         }
 
         .offer-price-sub {
           font-size: 0.775rem;
           font-weight: 600;
-          color: #6b7280;
+          color: #64748b;
         }
 
         .offer-sla-row {
@@ -319,7 +334,7 @@ export const CoreOffersSection: React.FC<CoreOffersSectionProps> = ({ onOpenLead
           gap: 0.35rem;
           font-size: 0.75rem;
           font-weight: 700;
-          color: var(--color-primary-dark);
+          color: #0d7647;
         }
 
         .offer-steps-block {
@@ -330,8 +345,8 @@ export const CoreOffersSection: React.FC<CoreOffersSectionProps> = ({ onOpenLead
 
         .offer-steps-title,
         .offer-deliverables-title {
-          font-size: 0.8rem;
-          font-weight: 800;
+          font-size: 0.775rem;
+          font-weight: 700;
           color: #1f2937;
           text-transform: uppercase;
           letter-spacing: 0.03em;
@@ -350,19 +365,20 @@ export const CoreOffersSection: React.FC<CoreOffersSectionProps> = ({ onOpenLead
           display: flex;
           align-items: flex-start;
           gap: 0.45rem;
-          font-size: 0.8rem;
-          color: #4b5563;
-          line-height: 1.4;
+          font-size: 0.825rem;
+          color: #475569;
+          line-height: 1.45;
         }
 
         .offer-step-num {
-          width: 17px;
-          height: 17px;
+          width: 18px;
+          height: 18px;
           border-radius: 50%;
-          background-color: #e5e7eb;
+          background-color: #ecfdf5;
+          border: 1px solid #d1fae5;
           font-size: 0.65rem;
           font-weight: 800;
-          color: #374151;
+          color: #0d7647;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -371,7 +387,7 @@ export const CoreOffersSection: React.FC<CoreOffersSectionProps> = ({ onOpenLead
         }
 
         .offer-deliverables-block {
-          border-top: 1px dashed var(--color-border);
+          border-top: 1px solid #e2e8f0;
           padding-top: 0.85rem;
           display: flex;
           flex-direction: column;
@@ -391,10 +407,10 @@ export const CoreOffersSection: React.FC<CoreOffersSectionProps> = ({ onOpenLead
           display: flex;
           align-items: flex-start;
           gap: 0.45rem;
-          font-size: 0.8rem;
-          color: #374151;
+          font-size: 0.825rem;
+          color: #334155;
           font-weight: 600;
-          line-height: 1.4;
+          line-height: 1.45;
         }
 
         .offer-check-icon {
@@ -409,14 +425,14 @@ export const CoreOffersSection: React.FC<CoreOffersSectionProps> = ({ onOpenLead
         /* Bottom Banner */
         .offers-footer-banner {
           background-color: #ffffff;
-          border: 1px solid var(--color-border);
+          border: 1px solid #e5e7eb;
           border-radius: 16px;
           padding: 1.25rem 1.5rem;
           display: flex;
           flex-direction: column;
           gap: 1rem;
           align-items: flex-start;
-          box-shadow: var(--shadow-sm);
+          box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
         }
 
         @media (min-width: 768px) {
@@ -440,12 +456,12 @@ export const CoreOffersSection: React.FC<CoreOffersSectionProps> = ({ onOpenLead
           gap: 0.45rem;
           font-size: 0.95rem;
           font-weight: 800;
-          color: var(--color-navy);
+          color: #0f172a;
         }
 
         .banner-desc {
           font-size: 0.825rem;
-          color: var(--color-text-muted);
+          color: #64748b;
           margin: 0;
           line-height: 1.5;
         }

@@ -5,6 +5,7 @@ import { TrustBar } from '../components/sections/TrustBar';
 import { ProblemMapperSection } from '../components/sections/ProblemMapperSection';
 import { ProcessSection } from '../components/sections/ProcessSection';
 import { PhilosophySection } from '../components/sections/PhilosophySection';
+import { BeforeAfterSection } from '../components/sections/BeforeAfterSection';
 import { PricingMatrixSection } from '../components/sections/PricingMatrixSection';
 import { DemoShowcaseSection } from '../components/sections/DemoShowcaseSection';
 import { TrustSection } from '../components/sections/TrustSection';
@@ -40,6 +41,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenConsultForm }) => {
 
       {/* 5. VISUAL BREAK — Không cần mua thêm phần mềm đắt đỏ, tận dụng thứ đã có */}
       <PhilosophySection />
+
+      {/* 5.5. ĐỐI CHIẾU THỰC TẾ & MINH CHỨNG — Cách làm cũ vs Giải pháp LocalMate */}
+      <BeforeAfterSection onOpenConsultForm={onOpenConsultForm} />
 
       {/* 6. BẢNG GIÁ NIÊM YẾT — Asymmetric 3-Package Layout + Drawer tra cứu 41 dịch vụ */}
       <PricingMatrixSection onOpenLeadForm={(srvName) => onOpenConsultForm && onOpenConsultForm(srvName || 'Tư vấn Bảng giá dịch vụ')} />

@@ -25,6 +25,8 @@ export interface ServiceCardItem {
   description: string;
   price: string;
   pricePeriod?: string;
+  starterPriceLabel?: string;
+  advancedPrice?: string;
   priceNote: string;
   duration: string;
   ctaText: string;
@@ -35,21 +37,23 @@ export interface ServiceCardItem {
 export const CORE_SERVICES_CARDS: ServiceCardItem[] = [
   {
     id: 'website-business-sales',
-    title: 'Website cho doanh nghiệp & Bán hàng',
+    title: 'Website Doanh nghiệp & Bán hàng',
     slug: '/dich-vu/website-landing-page',
     badge: 'Phổ biến nhất',
     badgeType: 'hot',
     icon: 'Globe',
-    description: 'Website responsive, chuẩn SEO Google, tải dưới 1.5s và sẵn sàng nhận khách.',
-    price: 'Từ 2.900.000đ',
-    priceNote: 'Thanh toán sau khi nghiệm thu',
-    duration: 'Bàn giao sau 3–5 ngày (Có demo trước 0đ)',
-    ctaText: 'Xem chi tiết website →',
+    description: 'Website chuẩn di động, tốc độ tải dưới 1.5s, chuẩn SEO Google và sẵn sàng nhận khách.',
+    price: '2.900.000đ',
+    starterPriceLabel: 'Gói khởi điểm: 2.900.000đ (Landing/Giới thiệu)',
+    advancedPrice: 'Gói nâng cao: Từ 5.900.000đ (Bán hàng & CRM)',
+    priceNote: 'Nghiệm thu đạt chuẩn mới thanh toán',
+    duration: 'Bàn giao 3–5 ngày (Có demo 0đ trước)',
+    ctaText: 'Xem chi tiết & Đăng ký',
     serviceNameForLead: 'Thiết kế Website Doanh nghiệp & Bán hàng',
     highlights: [
-      'Giao diện chuẩn di động, tốc độ tải < 1.5s',
+      'Tốc độ tải < 1.5s, chuẩn di động 100%',
       'Chuẩn SEO Google & tối ưu AI Search',
-      'Tích hợp nút gọi, Zalo & form nhận báo giá',
+      'Tích hợp nút gọi, Zalo & form báo giá',
       'Tặng demo xem trước 0đ chưa cần cọc'
     ]
   },
@@ -60,17 +64,19 @@ export const CORE_SERVICES_CARDS: ServiceCardItem[] = [
     badge: 'Tăng uy tín',
     badgeType: 'trusted',
     icon: 'MapPin',
-    description: 'Xác minh Google Business Profile, định vị tiệm trên bản đồ, tối ưu lên top tìm kiếm gần đây.',
-    price: 'Từ 2.000.000đ',
+    description: 'Xác minh Google Business Profile chính chủ, đưa tiệm lên top tìm kiếm gần đây.',
+    price: '2.000.000đ',
+    starterPriceLabel: 'Gói khởi điểm: 2.000.000đ (1 điểm chính chủ)',
+    advancedPrice: 'Gói nâng cao: Từ 3.900.000đ (Chuỗi / Đa chi nhánh)',
     priceNote: 'Trọn gói 1 lần — Sở hữu vĩnh viễn',
     duration: 'Hoàn thành sau 3–7 ngày',
-    ctaText: 'Xem gói Google Maps →',
+    ctaText: 'Xem gói Google Maps',
     serviceNameForLead: 'Xác minh & Tối ưu Google Maps',
     highlights: [
       'Xác minh tích xanh Google Business Profile',
       'Tối ưu SEO bản đồ lên top tìm kiếm gần đây',
-      'Bộ mã QR in sẵn đặt tại quầy nhận review 5 sao',
-      'Bảo vệ vị trí, chống đối thủ cắm cờ phá hoại'
+      'Tặng bộ mã QR in sẵn đặt tại quầy nhận review',
+      'Bảo vệ vị trí, chống cắm cờ phá hoại'
     ]
   },
   {
@@ -80,17 +86,19 @@ export const CORE_SERVICES_CARDS: ServiceCardItem[] = [
     badge: 'Ra khách ngay',
     badgeType: 'popular',
     icon: 'TrendingUp',
-    description: 'Thiết lập chiến dịch tìm kiếm đúng từ khóa khách mua, báo cáo minh bạch 100% ngân sách.',
-    price: 'Từ 2.500.000đ',
+    description: 'Chiến dịch tìm kiếm đúng từ khóa khách mua, báo cáo minh bạch 100% tài khoản.',
+    price: '2.500.000đ',
     pricePeriod: '/ tháng',
-    priceNote: 'Chạy trực tiếp trên tài khoản của bạn',
-    duration: 'Khởi tạo trong 48 giờ',
-    ctaText: 'Tư vấn quảng cáo →',
+    starterPriceLabel: 'Gói khởi điểm: 2.500.000đ/tháng (Setup & Tối ưu)',
+    advancedPrice: 'Gói nâng cao: Từ 4.900.000đ/tháng (Phễu đa kênh)',
+    priceNote: 'Chạy trực tiếp trên tài khoản chính chủ của bạn',
+    duration: 'Khởi tạo chạy ngay trong 48 giờ',
+    ctaText: 'Tư vấn chiến dịch Ads',
     serviceNameForLead: 'Quảng cáo Google Ads & Meta Ads',
     highlights: [
       'Nhắm đúng từ khóa khách đang cần mua ngay',
-      'Minh bạch 100% tài khoản, không ăn chênh lệch',
-      'Tối ưu từng đồng chi phí theo cuộc gọi & tin nhắn',
+      'Minh bạch 100% ngân sách, không chênh lệch',
+      'Tối ưu chi phí theo từng cuộc gọi & tin nhắn',
       'Báo cáo rõ ràng: bao nhiêu cuộc gọi, bao nhiêu lead'
     ]
   },
@@ -102,11 +110,13 @@ export const CORE_SERVICES_CARDS: ServiceCardItem[] = [
     badgeType: 'efficient',
     icon: 'FileText',
     description: 'Viết bài chuẩn SEO, chăm sóc bài đăng Facebook, sao lưu và bảo trì kỹ thuật hàng tháng.',
-    price: 'Từ 990.000đ',
+    price: '990.000đ',
     pricePeriod: '/ tháng',
-    priceNote: 'Không ràng buộc hợp đồng dài hạn',
-    duration: 'Đồng hành hàng tháng',
-    ctaText: 'Xem gói quản trị →',
+    starterPriceLabel: 'Gói khởi điểm: 990.000đ/tháng (Bảo trì & kỹ thuật)',
+    advancedPrice: 'Gói nâng cao: 2.490.000đ/tháng (Bài SEO & Fanpage)',
+    priceNote: 'Linh hoạt theo tháng, không ràng buộc dài hạn',
+    duration: 'Đồng hành hỗ trợ liên tục hàng tháng',
+    ctaText: 'Xem gói quản trị định kỳ',
     serviceNameForLead: 'Nội dung & Quản trị định kỳ hàng tháng',
     highlights: [
       'Viết bài chuẩn SEO & chăm sóc Fanpage đều đặn',
@@ -172,7 +182,7 @@ export const ServiceCardsSection: React.FC<ServiceCardsSectionProps> = ({
       style={{
         padding: 'clamp(3.5rem, 5vw, 5rem) 0',
         backgroundColor: '#ffffff',
-        borderBottom: '1px solid var(--color-border)',
+        borderBottom: '1px solid #e5e7eb',
         position: 'relative'
       }}
     >
@@ -212,10 +222,10 @@ export const ServiceCardsSection: React.FC<ServiceCardsSectionProps> = ({
                 {/* Card Top: Icon & Badge */}
                 <div className="service-card-top">
                   <div className="service-card-icon-wrap">
-                    <IconComponent size={24} className="service-card-icon" />
+                    <IconComponent size={22} className="service-card-icon" />
                   </div>
                   <span className={`service-card-badge badge-${card.badgeType}`}>
-                    {card.badgeType === 'hot' && <Sparkles size={12} className="badge-sparkle" />}
+                    {card.badgeType === 'hot' && <Sparkles size={11} className="badge-sparkle" />}
                     {card.badge}
                   </span>
                 </div>
@@ -226,18 +236,28 @@ export const ServiceCardsSection: React.FC<ServiceCardsSectionProps> = ({
                   <p className="service-card-desc">{card.description}</p>
                 </div>
 
-                {/* Pricing & Time Commitment Block */}
+                {/* Pricing Tiers & Transparent Commitment */}
                 <div className="service-card-meta-block">
                   <div className="service-card-price-row">
+                    <span className="price-lead-tag">Khởi điểm từ</span>
                     <span className="service-card-price">{card.price}</span>
                     {card.pricePeriod && (
                       <span className="service-card-period">{card.pricePeriod}</span>
                     )}
                   </div>
+
+                  {/* Dual Tier Guidance */}
+                  {card.advancedPrice && (
+                    <div className="service-card-tiers-hint">
+                      <span className="tier-dot" />
+                      <span>{card.advancedPrice}</span>
+                    </div>
+                  )}
+
                   <div className="service-card-price-note">{card.priceNote}</div>
 
                   <div className="service-card-duration-pill">
-                    <Clock size={13} className="duration-icon" />
+                    <Clock size={12} className="duration-icon" />
                     <span>{card.duration}</span>
                   </div>
                 </div>
@@ -260,6 +280,7 @@ export const ServiceCardsSection: React.FC<ServiceCardsSectionProps> = ({
                     onClick={(e) => handleCtaClick(e, card)}
                   >
                     <span>{card.ctaText}</span>
+                    <ArrowRight size={14} className="cta-arrow-icon" />
                   </button>
                 </div>
               </div>
@@ -365,15 +386,15 @@ export const ServiceCardsSection: React.FC<ServiceCardsSectionProps> = ({
         /* Card Container */
         .service-card {
           background-color: #ffffff;
-          border: 1px solid var(--color-border);
+          border: 1px solid #e5e7eb;
           border-radius: 16px;
           padding: clamp(1.25rem, 2.5vw, 1.5rem);
           display: flex;
           flex-direction: column;
           justify-content: space-between;
           gap: 1.15rem;
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-          transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+          box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+          transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
           position: relative;
           cursor: pointer;
           user-select: none;
@@ -383,21 +404,25 @@ export const ServiceCardsSection: React.FC<ServiceCardsSectionProps> = ({
         }
 
         .service-card:focus-visible {
-          border-color: var(--color-primary);
-          box-shadow: 0 0 0 3px rgba(13, 118, 71, 0.2);
+          border-color: #0d7647;
+          box-shadow: 0 0 0 3px rgba(13, 118, 71, 0.15);
         }
 
         @media (hover: hover) and (pointer: fine) {
           .service-card:hover {
-            transform: translateY(-3px);
-            border-color: #86efac;
-            box-shadow: 0 12px 24px -4px rgba(13, 118, 71, 0.08), 0 4px 12px -2px rgba(0, 0, 0, 0.04);
+            transform: translateY(-4px);
+            border-color: #cbd5e1;
+            box-shadow: 0 12px 24px -6px rgba(15, 23, 42, 0.07), 0 4px 10px -2px rgba(15, 23, 42, 0.03);
           }
 
           .service-card:hover .service-card-cta-btn {
-            background-color: var(--color-primary);
+            background-color: #0d7647;
             color: #ffffff;
-            border-color: var(--color-primary);
+            border-color: #0d7647;
+          }
+
+          .service-card:hover .cta-arrow-icon {
+            transform: translateX(3px);
           }
         }
 
@@ -410,16 +435,17 @@ export const ServiceCardsSection: React.FC<ServiceCardsSectionProps> = ({
         }
 
         .service-card-icon-wrap {
-          width: 46px;
-          height: 46px;
+          width: 44px;
+          height: 44px;
           border-radius: 12px;
-          background-color: #f0fdf4;
-          border: 1px solid #bbf7d0;
+          background-color: #ecfdf5;
+          border: 1px solid #d1fae5;
           display: flex;
           align-items: center;
           justify-content: center;
-          color: var(--color-primary);
+          color: #0d7647;
           flex-shrink: 0;
+          transition: background-color 0.2s ease;
         }
 
         .service-card-icon {
@@ -428,12 +454,12 @@ export const ServiceCardsSection: React.FC<ServiceCardsSectionProps> = ({
 
         .service-card-badge {
           font-size: 0.725rem;
-          font-weight: 800;
-          padding: 0.25rem 0.6rem;
+          font-weight: 700;
+          padding: 0.25rem 0.65rem;
           border-radius: 999px;
           display: inline-flex;
           align-items: center;
-          gap: 0.25rem;
+          gap: 0.3rem;
           letter-spacing: 0.02em;
           white-space: nowrap;
         }
@@ -441,25 +467,25 @@ export const ServiceCardsSection: React.FC<ServiceCardsSectionProps> = ({
         .badge-hot {
           background-color: #fef2f2;
           color: #b91c1c;
-          border: 1px solid #fecaca;
+          border: 1px solid #fee2e2;
         }
 
         .badge-trusted {
           background-color: #eff6ff;
           color: #1d4ed8;
-          border: 1px solid #bfdbfe;
+          border: 1px solid #dbeafe;
         }
 
         .badge-popular {
           background-color: #fefce8;
-          color: #a16207;
+          color: #854d0e;
           border: 1px solid #fef08a;
         }
 
         .badge-efficient {
-          background-color: #f0fdf4;
-          color: #15803d;
-          border: 1px solid #bbf7d0;
+          background-color: #ecfdf5;
+          color: #047857;
+          border: 1px solid #d1fae5;
         }
 
         .badge-sparkle {
@@ -474,9 +500,9 @@ export const ServiceCardsSection: React.FC<ServiceCardsSectionProps> = ({
         }
 
         .service-card-title {
-          font-size: 1.18rem;
+          font-size: 1.15rem;
           font-weight: 800;
-          color: var(--color-navy);
+          color: #0f172a;
           line-height: 1.35;
           margin: 0;
           text-wrap: pretty;
@@ -484,7 +510,7 @@ export const ServiceCardsSection: React.FC<ServiceCardsSectionProps> = ({
 
         .service-card-desc {
           font-size: 0.85rem;
-          color: var(--color-text-muted);
+          color: #64748b;
           line-height: 1.55;
           margin: 0;
           text-wrap: pretty;
@@ -492,8 +518,8 @@ export const ServiceCardsSection: React.FC<ServiceCardsSectionProps> = ({
 
         /* Pricing & SLA Block */
         .service-card-meta-block {
-          background-color: #f9fafb;
-          border: 1px dashed var(--color-border);
+          background-color: #f8fafc;
+          border: 1px solid #e2e8f0;
           border-radius: 12px;
           padding: 0.85rem 1rem;
           display: flex;
@@ -504,14 +530,22 @@ export const ServiceCardsSection: React.FC<ServiceCardsSectionProps> = ({
         .service-card-price-row {
           display: flex;
           align-items: baseline;
-          gap: 0.3rem;
+          gap: 0.35rem;
           flex-wrap: wrap;
         }
 
+        .price-lead-tag {
+          font-size: 0.75rem;
+          font-weight: 700;
+          color: #64748b;
+          text-transform: uppercase;
+          letter-spacing: 0.03em;
+        }
+
         .service-card-price {
-          font-size: 1.4rem;
+          font-size: 1.35rem;
           font-weight: 900;
-          color: var(--color-primary);
+          color: #0f172a;
           line-height: 1.1;
           letter-spacing: -0.02em;
         }
@@ -519,27 +553,45 @@ export const ServiceCardsSection: React.FC<ServiceCardsSectionProps> = ({
         .service-card-period {
           font-size: 0.8rem;
           font-weight: 600;
-          color: #6b7280;
+          color: #64748b;
+        }
+
+        .service-card-tiers-hint {
+          display: flex;
+          align-items: center;
+          gap: 0.35rem;
+          font-size: 0.75rem;
+          font-weight: 600;
+          color: #0d7647;
+          line-height: 1.3;
+        }
+
+        .tier-dot {
+          width: 5px;
+          height: 5px;
+          border-radius: 50%;
+          background-color: #10b981;
+          flex-shrink: 0;
         }
 
         .service-card-price-note {
-          font-size: 0.725rem;
+          font-size: 0.75rem;
           font-weight: 600;
           color: #64748b;
           line-height: 1.3;
         }
 
         .service-card-duration-pill {
-          margin-top: 0.35rem;
+          margin-top: 0.3rem;
           display: inline-flex;
           align-items: center;
           gap: 0.35rem;
-          font-size: 0.75rem;
+          font-size: 0.725rem;
           font-weight: 700;
-          color: var(--color-primary-dark);
+          color: #0d7647;
           background-color: #ecfdf5;
           border: 1px solid #d1fae5;
-          padding: 0.3rem 0.55rem;
+          padding: 0.25rem 0.55rem;
           border-radius: 6px;
           width: fit-content;
           line-height: 1.3;
@@ -563,13 +615,13 @@ export const ServiceCardsSection: React.FC<ServiceCardsSectionProps> = ({
           display: flex;
           align-items: flex-start;
           gap: 0.45rem;
-          font-size: 0.8rem;
-          color: #374151;
+          font-size: 0.825rem;
+          color: #334155;
           line-height: 1.45;
         }
 
         .check-icon {
-          color: var(--color-primary);
+          color: #0d7647;
           flex-shrink: 0;
           margin-top: 2px;
         }
@@ -583,10 +635,10 @@ export const ServiceCardsSection: React.FC<ServiceCardsSectionProps> = ({
           width: 100%;
           min-height: 44px;
           padding: 0.65rem 1rem;
-          background-color: #f8fafc;
-          border: 1px solid #cbd5e1;
-          border-radius: var(--radius-md);
-          color: var(--color-navy);
+          background-color: #ffffff;
+          border: 1px solid #d1d5db;
+          border-radius: 10px;
+          color: #0f172a;
           font-weight: 700;
           font-size: 0.875rem;
           cursor: pointer;
@@ -594,8 +646,12 @@ export const ServiceCardsSection: React.FC<ServiceCardsSectionProps> = ({
           align-items: center;
           justify-content: center;
           gap: 0.45rem;
-          transition: all var(--transition-fast);
+          transition: all 0.2s ease;
           text-align: center;
+        }
+
+        .cta-arrow-icon {
+          transition: transform 0.2s ease;
         }
 
         .service-card-cta-btn:active {
