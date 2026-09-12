@@ -61,6 +61,15 @@
     3. Hỗ trợ trực tiếp: Có người nghe máy và hỗ trợ khi phát sinh vấn đề.
     4. Đồng hành dài lâu: Bàn giao xong vẫn có kỹ thuật viên túc trực.
   - Layout dạng Split 2 cột: Cột trái Sticky Editorial Manifesto + Nút gọi Hotline trực tiếp 44px; Cột phải 4 Numbered Architectural Rows đánh số `01` - `04` với icon pill tinh gọn.
-  - Zero glassmorphism: Bề mặt `#ffffff` sạch sẽ, border `#e5e7eb` và `#d1fae5`, độ tương phản cao chữ `#0f172a` trên nền sáng.
-  - Responsive audit: Đã kiểm thử Playwright trên toàn bộ ma trận (390px, 430px, 768px, 1366px, 1440px), không có horizontal overflow (`docScrollWidth <= innerWidth`).
+## 7. Footer & Local Identity Specialist (Subagent 9)
+- **Tham chiếu chuẩn mực từ saosangedu.com**:
+  - Footer được chia thành 4 khối chức năng rõ ràng, không dồn cục hay để thông tin mơ hồ.
+  - Cấu trúc:
+    1. *Khối định danh & Liên hệ chuẩn mực*: Pháp nhân đầy đủ (`CÔNG TY TNHH LOCALMATE` - MST `4001337934`), địa chỉ văn phòng tư vấn tại Hóc Môn, TP.HCM & trụ sở chính, hotline/Zalo `0834 422 439`, email và giờ làm việc cố định: **8:00 – 20:00 cả tuần (Thứ Hai – Chủ Nhật)**.
+    2. *Khối Dịch vụ cốt lõi*: Đầy đủ liên kết đến các gói giải pháp quan trọng (Web 490k, Google Maps, Google Ads, Chăm sóc Fanpage, Web doanh nghiệp SME, Bảng giá niêm yết).
+    3. *Khối Chính sách & Pháp lý minh bạch*: Bảng giá, Chính sách bảo mật, Điều khoản dịch vụ, Quy định bảo hành, Sơ đồ trang web (Sitemap), Giới thiệu công ty.
+    4. *Khối Đặc quyền địa phương (Local Identity)*: Thẻ nổi bật "Tư vấn 1-1 tận nơi" khẳng định chuyên viên sẵn sàng đến tận quán/tiệm tại khu vực Hóc Môn, Quận 12 và TP.HCM để khảo sát và lên demo miễn phí; kết hợp triển khai online cho khách toàn quốc.
+  - *Dải bảo chứng uy tín (Trust Strip)*: Huy hiệu Đã thông báo Bộ Công Thương (`online.gov.vn`), SSL 256-bit, Cam kết 100% tài khoản chính chủ, Báo giá trước - không phát sinh, Giờ làm việc 8h-20h cả tuần.
+  - *Thanh đáy (Bottom Bar)*: Bản quyền chính thức và Tuyên ngôn sứ mệnh trang trọng: *"Đồng hành cùng hộ kinh doanh và doanh nghiệp SME địa phương xây dựng hiện diện số uy tín, tinh gọn, chi phí hợp lý và ra đơn thực tế."*
+  - *Tuân thủ Design Guidelines*: 100% Light mode, nền sáng chữ đậm, tuyệt đối không dùng glassmorphism, scrollbar-gutter stable, text-wrap pretty, responsive hoàn hảo trên mọi kích thước màn hình.
 
