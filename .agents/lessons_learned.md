@@ -4,6 +4,24 @@ Tài liệu này ghi chép các bài học kinh nghiệm, lưu ý kỹ thuật v
 
 ---
 
+## 4. Case Studies Matrix & Rich Storytelling (`caseStudiesData.ts`, `ProjectsPage.tsx`, `CaseStudyDetailPage.tsx`)
+- **Vị trí**: `src/data/caseStudiesData.ts`, `src/pages/ProjectsPage.tsx` (`/du-an`), `src/pages/CaseStudyDetailPage.tsx` (`/du-an/:slug`).
+- **Học hỏi & Nâng cấp từ FastMarketing**:
+  - Trình bày Case Study không phải chỉ là một bài viết blog chung chung, mà là **một cỗ máy chứng minh năng lực (Proof Engine)** với cấu trúc chuẩn 4 chặng:
+    1. *Bối cảnh & Xuất phát điểm (Context & Baseline)*: Quy mô cơ sở, khu vực địa lý, rào cản mặt bằng/vị trí.
+    2. *Điểm nghẽn cốt lõi (Bottlenecks)*: Phân tích 3 rào cản kỹ thuật nghiêm trọng (mất hút trên Google Maps, tài khoản ads bị khóa do chính sách hạn chế, nỗi sợ chặt chém giá điện lạnh, thiếu review thật...).
+    3. *Giải pháp kỹ thuật chuyên sâu (Technical Solutions)*: Trình bày từng bước có gắn thẻ tag kỹ thuật (`Google Maps SEO`, `Medical Schema`, `Smart QR Review`, `Emergency UI`, `Policy Clearance`, `Sales Hub Pricing`).
+    4. *Kết quả đo lường Before / After thật*: Bảng so sánh 4 chỉ số có cột Trước (đỏ/xám) vs Sau (xanh đậm) vs Tác động kinh doanh (Impact). Kèm theo khối **Visual Proof Card** (Local Falcon Maps audit, Hồ sơ 480+ review 5 sao, Tỷ lệ bấm gọi khẩn cấp 28.4%, Báo cáo Google Shopping ROAS 7.2x, Module Sales Hub tra cứu giá).
+- **Trải nghiệm người dùng & Giao diện**:
+  - 100% Light Mode sáng sủa, độ tương phản cao, nền sáng (`#ffffff` / `#f8fafc`) kết hợp chữ đậm (`#0f172a`), viền sắc nét `#e2e8f0`.
+  - Tuyệt đối KHÔNG dùng Glassmorphism.
+  - Thẻ số liệu to rõ (typography 32px-40px, bold 900) với mã màu phân định rõ ràng.
+  - Bảng ma trận đối chiếu nhanh 5 cơ sở (SSOT Matrix Table) trên `ProjectsPage.tsx` giúp chủ tiệm nắm bắt tức thì kết quả đo lường.
+  - Khối CTA Khảo sát tiệm tận nơi 0đ với cam kết không phát sinh chi phí, liên kết trực tiếp `onOpenConsultForm`.
+- **Tính tương thích ngược**: Thiết kế trường `legacySlugs` trong `CaseStudyEntity` và mở rộng hàm `getCaseStudyBySlug()` để các liên kết cũ (từ `ServiceDetailPage` hay sitemap) tự động ánh xạ mượt mà không bao giờ bị lỗi 404.
+
+---
+
 ## 3. Project Brief & Survey Builder — Khảo Sát Nhu Cầu & Nhận Demo 0đ (`ProjectBriefPage.tsx`)
 - **Vị trí**: `src/pages/ProjectBriefPage.tsx`, route `/khao-sat-du-an`, alias `/brief`, `/brief-geo-seo`.
 - **Học hỏi & Tinh chỉnh từ FastMarketing (`/brief-geo-seo`)**:

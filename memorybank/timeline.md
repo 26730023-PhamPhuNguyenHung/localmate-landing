@@ -2,6 +2,38 @@
 
 Ghi nhận các mốc sự kiện, commit và trạng thái vận hành của dự án.
 
+## [2026-09-13] - Xây Dựng Trang Quy Trình Triển Khai GEO & AI Search Cho Điểm Kinh Doanh Địa Phương (`GeoWorkflowPage.tsx`)
+- **Mục tiêu**: Xây dựng trang Quy Trình Triển Khai GEO & AI Search Cho Điểm Kinh Doanh Địa Phương (`src/pages/GeoWorkflowPage.tsx`) theo route `/quy-trinh-geo` (alias `/quy-trinh-trien-khai-geo`) học hỏi quy trình chuyên sâu từ FastMarketing (`/quy-trinh-trien-khai-geo`).
+- **Nội dung hoàn thành**:
+  1. *Bản chất*: Diễn giải cơ chế tối ưu dữ liệu để ChatGPT, Gemini, Copilot và Google AI Overviews có căn cứ trích dẫn thương hiệu khi khách hàng hỏi quanh vùng. Sơ đồ 3 chặng AI: Entity Ingestion -> NAP Cross-Verification -> Citation Generation.
+  2. *Quy trình 6 bước kỹ thuật*:
+     - Bước 1: Khảo sát tín hiệu số hiện tại & Phân tích cơ hội trích dẫn địa phương (Baseline AI Audit, phát hiện AI Hallucination).
+     - Bước 2: Thiết lập Schema JSON-LD đa tầng (LocalBusiness, GeoCoordinates, OpeningHours, AggregateRating, sameAs) kèm code block mẫu copy 1-click.
+     - Bước 3: Xuất bản và cấu hình tệp `llms.txt` chuẩn OpenSearch cho bot AI thu thập (kèm template Markdown và nút sao chép).
+     - Bước 4: Xây dựng Prompt Bank thực tế (50–80 câu hỏi mua sắm người địa phương thường dùng phân theo 4 nhóm Intent).
+     - Bước 5: Đồng bộ NAP (Tên - Địa chỉ - Điện thoại) & 30+ nguồn citation tin cậy.
+     - Bước 6: Giám sát đo lường AI Visibility (AI Mention Rate) & Bàn giao 100% tài nguyên + Bảo hành 5 năm.
+  3. *Bảng so sánh trực quan Trước & Sau (Live AI Simulation)*: 2 tình huống thực tế (Nha khoa Hóc Môn & Gara sửa xe An Sương).
+  4. *Bộ sản phẩm bàn giao & FAQ*: 6 hộp deliverables minh bạch + 6 câu hỏi - giải đáp chuyên sâu cho chủ tiệm.
+  5. *Lead Capture*: Form nhận bản khảo sát AI Visibility 0đ kết nối `submitLead()`.
+- **UI/UX**: 100% Light Mode sáng sủa, hoàn toàn không glassmorphism, tương phản cao, responsive. Build Vite thành công.
+
+---
+
+## [2026-09-13] - Nâng Cấp Hệ Thống Case Studies Matrix & Storytelling Chuẩn FastMarketing
+- **Mục tiêu**: Nâng cấp toàn diện hệ thống Case Studies của LocalMate tại `src/data/caseStudiesData.ts`, `src/pages/ProjectsPage.tsx` và `src/pages/CaseStudyDetailPage.tsx` học hỏi cách FastMarketing trình bày case studies chi tiết với ảnh chụp, số liệu và câu chuyện giải quyết vấn đề.
+- **5 Câu chuyện khách hàng địa phương tiêu biểu**:
+  1. *Phòng khám Nha Khoa Tâm Đức*: Cơ sở mới vắng khách -> Tối ưu Google Maps + Schema Y tế (@type: Dentist) -> Đạt Top 1 tìm kiếm bán kính 5km, tăng +250% cuộc gọi đặt lịch hàng tuần.
+  2. *Tiệm Cà Phê Mộc & Nhà Hàng Hội An*: Tối ưu bộ mã QR thông minh để bàn xin đánh giá 5 sao thật -> Đạt 480+ lượt review tích cực thật, Google Maps tự động đề xuất khách du lịch, tiết kiệm 100% ngân sách ads (0 đồng).
+  3. *Gara Ô Tô Đại Nam (Cứu hộ 24/7)*: Tối ưu trang đích có nút gọi cứu hộ nổi bật + Google Search Ads cụm từ khóa khẩn cấp -> Tiếp nhận 5-8 cuộc gọi kéo xe/tuần, hoàn vốn sau 3 ngày.
+  4. *Cửa hàng Thiết bị Âm thanh & Điện tử Hoàng Long*: Khắc phục lỗi tài khoản quảng cáo bị khóa chính sách -> Kháng sạch vi phạm, mở rộng kênh Google Shopping & Maps kéo 35-42 khách đến phòng nghe thử/tuần.
+  5. *Dịch vụ Sửa chữa Điện lạnh tại nhà Bách Khoa Fix*: Xây dựng Sales Hub bảng giá minh bạch 100% + Tem bảo hành QR -> Xóa nỗi sợ chặt chém giá, tăng tỷ lệ chốt đơn từ 30% lên 75%.
+- **Cấu trúc chuẩn 4 chặng**: Bối cảnh -> Điểm nghẽn -> Giải pháp kỹ thuật LocalMate -> Kết quả đo lường Before/After thật.
+- **UI/UX chuẩn FastMarketing**: 100% Light Mode sáng sủa, hoàn toàn không glassmorphism, thẻ số liệu to rõ, bảng ma trận đối chiếu nhanh 5 cơ sở, CTA khảo sát cơ sở 0đ tận nơi.
+- **Tương thích ngược**: Hỗ trợ `legacySlugs` bảo toàn toàn bộ URL cũ không bị lỗi 404.
+
+---
+
 ## [2026-09-13] - Xây dựng Trang Khảo Sát Nhu Cầu Dự Án & Nhận Demo 0đ Thông Minh (`ProjectBriefPage.tsx`)
 - **Mục tiêu**: Xây dựng trang Khảo sát Nhu cầu Dự án & Nhận Website Demo 0đ (`src/pages/ProjectBriefPage.tsx`) theo route `/khao-sat-du-an` (alias `/brief`, `/brief-geo-seo`).
 - **Quy trình tương tác trực quan 4 bước**:

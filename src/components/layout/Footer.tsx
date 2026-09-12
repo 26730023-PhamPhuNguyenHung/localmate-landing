@@ -937,6 +937,56 @@ export const Footer: React.FC = () => {
           color: #0d7647;
         }
 
+        .highlight-survey-link {
+          background-color: #f0fdf4;
+          border: 1px solid #bbf7d0;
+          padding: 0.35rem 0.65rem;
+          border-radius: 6px;
+          margin-bottom: 0.15rem;
+          display: flex;
+          align-items: center;
+          gap: 0.45rem;
+          text-decoration: none;
+        }
+
+        .highlight-survey-link:hover {
+          background-color: #dcfce7;
+          border-color: #86efac;
+          text-decoration: none;
+          transform: translateX(2px);
+        }
+
+        .survey-link-label {
+          font-weight: 750;
+          color: #0d7647;
+          font-size: 0.85rem;
+        }
+
+        .nav-survey-icon {
+          color: #0d7647 !important;
+        }
+
+        .footer-pill-mini {
+          font-size: 0.625rem;
+          font-weight: 700;
+          padding: 0.1rem 0.45rem;
+          border-radius: 999px;
+          background-color: #edf7f1;
+          color: #0d7647;
+          margin-left: auto;
+          white-space: nowrap;
+        }
+
+        .footer-pill-mini.hot {
+          background-color: #fef3c7;
+          color: #b45309;
+        }
+
+        .footer-pill-mini.teal {
+          background-color: #ccfbf1;
+          color: #0f766e;
+        }
+
         /* Column 4: Local Support Card & Social */
         .local-support-card {
           background-color: #f8fafc;
@@ -1108,10 +1158,12 @@ export const Footer: React.FC = () => {
         }
 
         .bct-badge-img {
-          height: 38px;
+          height: 48px;
           width: auto;
+          max-width: 175px;
           object-fit: contain;
           display: block;
+          filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.06));
         }
 
         /* 4. Bottom Bar */

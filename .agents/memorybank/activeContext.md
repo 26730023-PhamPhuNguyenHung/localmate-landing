@@ -13,6 +13,26 @@
 
 ## 2. Recent Accomplishments & Updates
 
+### A000000. Xây Dựng Trang Quy Trình Triển Khai GEO & AI Search Cho Điểm Kinh Doanh Địa Phương (`GeoWorkflowPage.tsx`):
+- **Tác giả:** GEO & AI Search Workflow Deep-Dive Specialist
+- **Vị trí tệp:** `src/pages/GeoWorkflowPage.tsx` (route: `/quy-trinh-geo` và alias `/quy-trinh-trien-khai-geo`).
+- **Phạm vi hoàn tất:**
+  1. **Bản chất vận hành**: Tối ưu dữ liệu có cấu trúc để ChatGPT, Gemini, Copilot và Google AI Overviews có căn cứ trích dẫn thương hiệu của bạn khi khách hàng hỏi tìm kiếm quanh vùng. Minh họa sơ đồ 3 chặng AI: Thu thập Entity Ingestion -> Xác thực độ tin cậy E-E-A-T & NAP -> Sinh câu trả lời & gắn thẻ trích dẫn (Citation Generation).
+  2. **Quy trình 6 bước kỹ thuật sâu sắc**:
+     - *Bước 1: Khảo sát tín hiệu số hiện tại & Phân tích cơ hội trích dẫn địa phương* (Baseline AI Audit 30 câu hỏi, phát hiện AI Hallucination).
+     - *Bước 2: Thiết lập Schema JSON-LD đa tầng* (LocalBusiness / Dentist / AutoRepair, GeoCoordinates 6 số thập phân, OpeningHoursSpecification, AggregateRating, sameAs).
+     - *Bước 3: Xuất bản và cấu hình tệp llms.txt chuẩn OpenSearch* (Cấu trúc Markdown tinh gọn, Content-Type text/plain, mở robots.txt cho AI crawler).
+     - *Bước 4: Xây dựng Prompt Bank thực tế* (50–80 câu hỏi mua sắm người địa phương phân theo 4 nhóm Intent: Cấp bách, So sánh đạo đức, Báo giá, Kỹ thuật ngách).
+     - *Bước 5: Đồng bộ NAP (Tên - Địa chỉ - Điện thoại) & Citation tin cậy* (30+ liên kết số đồng nhất 100%, gắn thẻ Geotag).
+     - *Bước 6: Giám sát đo lường AI Visibility & Bàn giao tài liệu 5 năm* (Mục tiêu 60–85%+ AI Mention Rate, bàn giao 100% tài khoản chính chủ, bảo hành 5 năm).
+  3. **Bảng so sánh trực quan Trước & Sau (Live AI Simulation)**:
+     - 2 Kịch bản thực tế: Phòng khám nha khoa Hóc Môn & Gara sửa xe máy gần ngã tư An Sương.
+     - So sánh phản hồi mô phỏng ChatGPT / Gemini: Trước (AI nói chung chung, gợi ý chuỗi ở xa hoặc sai lệch) vs. Sau (AI trích dẫn dứt khoát tên tiệm, địa chỉ, hotline và thế mạnh).
+  4. **Deliverables Checklist**: 6 hộp bàn giao cụ thể, trực quan.
+  5. **Chuyên mục FAQ**: 6 câu hỏi - giải đáp chuyên sâu về thời gian, chi phí, tệp llms.txt, chính sách đồng hành.
+  6. **Lead Capture & Hotline**: Form đăng ký nhận bản phân tích AI Visibility 0đ kết nối `submitLead()`.
+  7. **Tiêu chuẩn UI/UX**: 100% Light Mode sáng sủa, không glassmorphism, tương phản cao, responsive mượt mà.
+
 ### A00000. Hoàn Tất Đội Ngũ Kỹ Thuật Viên Thực Chiến Tại Địa Phương & Cam Kết 3 KHÔNG (`LocalTeamSection.tsx`):
 - **Tác giả:** Team & In-House Technical Commitment Section Architect
 - **Triết lý chủ đạo:** *"Chúng tôi không có phòng ban sale gọi điện ép ký hợp đồng. Bạn làm việc trực tiếp với những kỹ thuật viên thật, phụ trách từng việc cụ thể."*
@@ -499,4 +519,22 @@
 - **Nghiệm thu**:
   - `npx tsc --noEmit` PASS 100% không lỗi.
   - `npm run build` PASS 100% (1566 modules transformed, build hoàn tất trong 6.58s).
+
+---
+
+## 17. Hoàn Thành Xây Dựng Trang Bộ Tiêu Chuẩn Kỹ Thuật Số Điểm Kinh Doanh Địa Phương 2026
+- **Tác giả / Vai trò**: Technical Audit Checklist Page & Standards
+- **Tệp mới**:
+  - `src/data/technicalAuditStandardsData.ts`: Danh mục 30 tiêu chí kỹ thuật chuẩn mực phân bổ thành 5 nhóm trụ cột (mỗi nhóm 6 tiêu chí), 14 Bắt buộc, 10 Quan trọng, 6 Nâng cao. Kèm benchmark, giải thích đơn giản cho chủ tiệm, tác động kinh doanh và giải pháp LocalMate.
+  - `src/pages/TechnicalAuditStandardsPage.tsx`: Trang kiểm chuẩn toàn diện với:
+    - 5 Tab nhóm chuyên môn + Bộ lọc theo mức độ ưu tiên + Ô tìm kiếm từ khóa trực quan.
+    - Bộ công cụ tương tác "Tự chấm điểm website": Tích chọn từng tiêu chí, tính % đạt chuẩn, hiển thị chẩn đoán tự động.
+    - Bảng so sánh "Website tự phát/cũ kỹ vs Chuẩn mực LocalMate 2026".
+    - Form tiếp nhận kiểm tra website 0đ tích hợp `submitLead`.
+    - Hỗ trợ in ấn và xuất file PDF với `@media print` được tối ưu chuyên nghiệp.
+    - Khối hỏi đáp FAQ và Bottom CTA cam kết bảo hành 5 năm.
+- **Routing**:
+  - Cập nhật `src/App.tsx`: Liên kết route chính `/tieu-chuan-audit` cùng các alias `/tieu-chuan-audit-ky-thuat`, `/technical-audit-standards`, `/tieu-chuan-website-2026`.
+  - Cập nhật `src/pages/HtmlSitemapPage.tsx`: Thêm liên kết vào sơ đồ website HTML.
+- **Kiểm thử**: `npm run build` thành công 100% (1580 modules transformed, 0 lỗi TypeScript).
 
