@@ -55,15 +55,15 @@ export const MobileFloatingCTA: React.FC<MobileFloatingCTAProps> = ({ onOpenCons
         <span className="floating-btn-text">Nhắn Zalo</span>
       </a>
 
-      {/* 3. Nút Đăng ký tư vấn (Primary CTA nổi bật) */}
+      {/* 3. Nút Kể việc cần làm (Primary CTA tự nhiên, không ép buộc) */}
       <button
         type="button"
         onClick={handleConsultClick}
         className="floating-btn floating-btn-primary"
-        aria-label="Đăng ký tư vấn demo miễn phí"
+        aria-label="Kể việc bạn đang cần để nhận tư vấn 0đ từ kỹ thuật viên"
       >
         <Sparkles size={16} className="floating-btn-icon" />
-        <span className="floating-btn-text">Đăng ký tư vấn</span>
+        <span className="floating-btn-text">Kể việc cần làm</span>
       </button>
 
       <style>{`

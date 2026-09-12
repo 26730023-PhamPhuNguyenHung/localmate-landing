@@ -2,6 +2,96 @@
 
 Ghi nhận các mốc sự kiện, commit và trạng thái vận hành của dự án.
 
+## [2026-09-13] - Subagent 4: Service Architecture & Taxonomy Refiner (Chuẩn Hóa Kiến Trúc Dịch Vụ & Ngôn Ngữ Gần Gũi)
+- **Mục tiêu**: Rà soát cấu trúc dịch vụ trong `src/data/solutionsData.ts`, `src/data/solutionPillarsData.ts`, các components và các trang dịch vụ; bảo đảm luồng Problem-First -> Solution -> Capability; đưa kỹ thuật (GEO, AEO, Schema, JSON-LD, Cloudflare Edge...) về đúng vị trí module hỗ trợ bên trong; loại bỏ từ cấm ("trọn đời", "vĩnh viễn", "cam kết Top 1").
+- **Các hạng mục hoàn tất**:
+  1. *Cấu trúc Problem-First & Taxonomy*:
+     - Toàn bộ 5 trụ cột giải pháp (`xay-nen-tang-so`, `duoc-tim-thay`, `thu-hut-khach-hang`, `van-hanh-tu-dong-hoa`, `dong-hanh-cham-soc`) đi từ vấn đề thực tế của chủ tiệm/hộ kinh doanh đến giải pháp và năng lực hỗ trợ.
+     - Các khái niệm kỹ thuật sâu (Schema, JSON-LD, GEO, AEO, Cloudflare Edge CDN, Core Web Vitals) được chuyển hóa thành tên gọi và diễn giải gần gũi: "Đồng bộ thông tin xác thực doanh nghiệp", "Tối ưu để trợ lý AI đề xuất (ChatGPT, Gemini)", "Tối ưu mở trang cực nhanh dưới 1.2s", "Đo lường chi phí từng cuộc gọi & tin nhắn Zalo".
+  2. *Làm sạch Wording & Cam kết quá đà*:
+     - Thay thế toàn bộ "bảo hành trọn đời", "sở hữu vĩnh viễn" bằng "đồng hành hỗ trợ kỹ thuật lâu dài", "bàn giao 100% tài khoản chính chủ".
+     - Loại bỏ các claim "Top 1 - 3" hoặc "Top 1" chuyển thành "Hiện diện nổi bật trên Google Maps", "Top 3 Google Maps khu vực", "danh sách gợi ý hàng đầu của trợ lý AI".
+  3. *Làm sạch đồng bộ trên các components và trang liên quan*:
+     - `src/data/solutionsData.ts` & `src/data/solutionPillarsData.ts`.
+     - `SolutionDeliverables.tsx`, `SolutionHero.tsx`, `PricingMatrixSection.tsx`, `ProcessSection.tsx`, `ServiceCardsSection.tsx`, `TrustBar.tsx`, `InteractiveCostEstimator.tsx`, `BeforeAfterSection.tsx`, `AiPromptSimulator.tsx`, `ConversionJourneySection.tsx`, `GeoTaskChecklistSection.tsx`.
+     - `LocalSearchClusterPage.tsx`, `OperationalCareClusterPage.tsx`, `GeoServicePage.tsx`, `SeoChatGptServicePage.tsx`, `ServicesPage.tsx`, `StrategyPhasesPage.tsx`.
+  4. *Nghiệm thu kỹ thuật*:
+     - `npx tsc --noEmit` đạt 0 lỗi.
+     - Hệ thống đồng bộ hoàn toàn với ngôn ngữ gần gũi của Localmate v2.
+
+## [2026-09-13] - Subagent 7: Navigation & Discovery Architect (Tách Bạch Core Nav & Resource Navigation)
+- **Mục tiêu**: Rà soát và tái cấu trúc hệ thống điều hướng tại `src/components/layout/Header.tsx` và `src/components/layout/Footer.tsx`. Tách bạch triệt để giữa Core Navigation dành cho người dùng phổ thông và Resource Navigation chuyên sâu để không tạo ấn tượng sai lệch Localmate là công ty SEO.
+- **Các hạng mục đã hoàn thành**:
+  1. *Core Navigation (Menu chính trên Desktop & Mobile)*:
+     - **Giải pháp**: Phân loại trực quan theo 5 nhu cầu thực tế: (1) Hiện diện số & Website, (2) Tìm khách hàng, (3) Quản lý & Chăm sóc khách, (4) Bớt việc thủ công, (5) Ứng dụng AI.
+     - **Cách làm việc** (`/#cach-lam-viec` & `/cach-lam-viec`): Dẫn tới quy trình 4 bước minh bạch, hỗ trợ neo cuộn mượt mà cross-page qua `Router.tsx`.
+     - **Ví dụ & Demo** (`/du-an`): Minh chứng và case study ngành thực tế.
+     - **Bảng giá** (`/bang-gia`): Niêm yết công khai, minh bạch.
+     - **Về Localmate** (`/ve-localmate`): Định vị "Người đồng hành số tại địa phương" & cam kết 3 không.
+     - **Nút CTA chính**: "Kể việc bạn đang cần" -> Khảo sát 0đ (kèm badge 0đ).
+  2. *Resource Navigation (Tài nguyên chuyên sâu)*:
+     - Chuyển toàn bộ 5 trang/quy trình kỹ thuật chuyên sâu (`/chien-luoc-5-giai-doan`, `/quy-trinh-geo`, `/tieu-chuan-audit`, `/quy-trinh-cham-soc`, `/ho-so-nang-luc`) vào cột "Tài Nguyên Chuyên Sâu" ở **Footer**, loại bỏ hoàn toàn dropdown kỹ thuật khỏi Header để không làm rối khách hàng phổ thông.
+  3. *Tối ưu Mobile Drawer*:
+     - Bố cục danh mục phẳng, rõ ràng, gọn gàng. Card mở đầu: "Kể việc bạn đang cần (Khảo sát 0đ)".
+     - Đảm bảo 100% touch target >= 44px (thực tế 46px - 54px).
+     - Đảm bảo `overflow-x: hidden`, không tràn viền ngang, Light Mode chuẩn contrast, TUYỆT ĐỐI KHÔNG GLASSMORPHISM.
+  4. *Nghiệm thu kỹ thuật*:
+     - `npx tsc --noEmit` đạt 0 lỗi.
+     - `npm run build` (tsc && vite build) PASS 100% (1582 modules, 7.15s).
+
+
+## [2026-09-13] - Subagent 5: Trust & Claims Auditor (Kiểm Toán Niềm Tin & Chuyển Đổi Kịch Bản Ngành)
+- **Mục tiêu**: Rà soát toàn bộ codebase tìm kiếm và loại bỏ các con số ảo không có bằng chứng ("Top 1 Google", "tăng 300% doanh thu", "doanh thu tăng 185 triệu/tháng", "98.5% khách hài lòng", "hoàn vốn sau 3 ngày", testimonial mạo danh danh tính bác sĩ / chủ gara / chủ quán).
+- **Các hạng mục hoàn tất**:
+  1. *Chuyển đổi toàn diện `src/data/caseStudiesData.ts`*:
+     - Tái cấu trúc 5 case study thành: "Tình huống giả định thường gặp" + "Workflow minh họa" + "Ví dụ cách LocalMate xử lý".
+     - Loại bỏ các claim Top 1 và doanh thu ảo, chuyển thành các mục tiêu kỹ thuật có thể đo lường: Local Pack, Tốc độ < 1.0s, Nút gọi một chạm, Schema Y tế 100%, Sales Hub công khai biểu phí, Tem bảo hành QR.
+     - Thay thế toàn bộ quote mạo danh bằng "Mục Tiêu Trải Nghiệm Khách Hàng (Customer Expectation Benchmark)".
+     - Gắn nhãn minh bạch 100% `transparencyNote` trên từng kịch bản.
+  2. *Cập nhật giao diện `src/pages/ProjectsPage.tsx` & `src/pages/CaseStudyDetailPage.tsx`*:
+     - Đổi tiêu đề: "Thư Viện Kịch Bản Giả Định & Workflow Triển Khai Thực Chiến".
+     - Chèn hộp thông báo cam kết minh bạch 100% ngay dưới phần giới thiệu.
+     - Thẻ thống kê: Đổi `Top 1 & +250%` thành `Quy Trình Chuẩn`, đổi `100% Đo Thật` thành `Minh Bạch 100%`.
+     - Bảng ma trận: Đổi cột kết quả thành "Giá Trị Bàn Giao Mục Tiêu".
+  3. *Chuẩn hóa các trang vệ tinh & tài liệu*:
+     - `ServiceDetailPage.tsx`: Đổi badge thành `KỊCH BẢN GIẢ ĐỊNH & WORKFLOW MINH HỌA`.
+     - `credentialData.ts`: Bỏ claim 150+ doanh nghiệp và 98.5% hài lòng, chuyển 3 case study sang kịch bản minh họa theo ngành.
+     - `StrategyPhasesPage.tsx`: Hạ claim "tăng 300%" thành "gia tăng đáng kể tỷ lệ khách hàng tin tưởng bấm gọi điện".
+  4. *Lập báo cáo kiểm toán niềm tin*:
+     - Soạn thảo và lưu trữ báo cáo chi tiết tại `docs/trust-claims-audit.md`.
+  5. *Nghiệm thu biên dịch*:
+     - `npm run build` PASS 100% (1582 modules transformed, 0 lỗi TypeScript).
+
+---
+
+## [2026-09-13] - Subagent 10: Integration Director & Final QA (Toàn Diện Hệ Thống & Nghiệm Thu Production)
+- **Mục tiêu**: Điều phối và tích hợp toàn diện thành quả của 9 subagents, giải quyết xung đột mã nguồn (`Header.tsx` duplicate variable declaration), lắp ráp và hoàn thiện file `src/pages/HomePage.tsx` với các components chuẩn mực từ Subagent 6 (`ProblemMapperSection`) và Subagent 3 (`ServiceCardsSection`, `TrustSection`), đồng bộ 100% giữa HomePage, Header, Footer, solutionsData, caseStudiesData và App.tsx routing, kiểm thử và biên dịch production `npm run build` thành công 100%.
+- **Các hạng mục hoàn tất**:
+  1. *Giải quyết xung đột code*: Khắc phục triệt để lỗi khai báo trùng lặp `isResourcesActive` (TS2451) trong `src/components/layout/Header.tsx`, đảm bảo menu điều hướng nhận diện chính xác các route tài nguyên và quy trình.
+  2. *Lắp ráp & Hoàn thiện `src/pages/HomePage.tsx`*:
+     - Bổ sung `ProblemMapperSection` (Subagent 6): Khối "Bạn đang cần làm gì?" phân loại 5 nhóm bài toán thực tế của chủ tiệm & hộ kinh doanh với bộ lọc tab trực quan.
+     - Bổ sung `ServiceCardsSection` (Subagent 3): 4 Dịch vụ chính cho SME (Web, Maps, Ads, Chăm sóc) với mức giá và thời gian hoàn thành minh bạch.
+     - Bổ sung `TrustSection`: Khối bảo chứng minh bạch & pháp nhân (5 tài sản bàn giao chính chủ + CÔNG TY TNHH LOCALMATE MST 4001337934).
+     - Luồng trải nghiệm 18 blocks mượt mà, định vị chuẩn xác "Người đồng hành số tại địa phương", nói không với hứa ảo và biệt ngữ phức tạp.
+  3. *Đồng bộ liên kết & Định tuyến*: Kiểm tra chéo toàn diện Header Mega Menu, Footer 5 cột, 5 Trụ cột giải pháp (`solutionsData.ts`), Thư viện kịch bản giải định (`caseStudiesData.ts`) và bộ định tuyến chuẩn hóa (`App.tsx`). Không có broken links, không 404.
+  4. *Nghiệm thu biên dịch*: `npx tsc --noEmit` đạt 0 lỗi; `npm run build` (tsc && vite build) PASS 100% (1582 modules transformed, hoàn tất trong 10.48s).
+  5. *Quy chuẩn UI/UX*: 100% Light Mode sáng sủa, độ tương phản cao, TUYỆT ĐỐI KHÔNG GLASSMORPHISM, chuẩn touch target >= 44px, không horizontal overflow.
+
+---
+
+## [2026-09-13] - Subagent 1: Kiểm Toán Định Vị Thương Hiệu & Ban Hành Brand Voice SSOT v2 (`docs/localmate-brand-voice-v2.md`)
+- **Mục tiêu**: Rà soát toàn bộ source code hiện tại (Homepage, AboutPage, ServicesPage, PricingPage, ProjectsPage, AI & SEO cluster pages), chỉ ra các điểm lệch khỏi định vị cốt lõi, loại bỏ tư duy Agency/quảng cáo phóng đại/công kích đối thủ, ban hành Brand Voice SSOT v2.
+- **Báo cáo kiểm toán**:
+  - Phát hiện 5 biểu hiện biến tướng: (1) AI Research Lab / SEO Agency với biệt ngữ AEO, GEO, Atomic Q&A, llms.txt, Schema đa tầng; (2) Ngôn từ đao to búa lớn (chiếm lĩnh, thống trị, đột phá, vũ khí); (3) Giọng điệu hung hăng công kích thị trường ("cắt cổ", "chém giá", "con tin", gọi đích danh FastMarketing); (4) Biến tướng sang B2B White-label outsourcing ("LocalMate làm đội kỹ thuật giấu mặt cho Agency"); (5) Phức tạp hóa 40+ dịch vụ vụn vặt và bảng tính ROI kinh tế lượng.
+- **Kết quả bàn giao**:
+  - Ban hành tài liệu chuẩn `docs/localmate-brand-voice-v2.md`.
+  - Khẳng định Core Positioning: *"Localmate — Người đồng hành số tại địa phương. Công nghệ không cần phức tạp. Quan trọng là công việc được hoàn thành."*
+  - Xác lập 4 Trụ cột giọng điệu: Gần gũi, Dễ hiểu, Có chuyên môn nhưng không khoe kỹ thuật, Không nói quá & Không công kích.
+  - Lập Bảng tra cứu 30 cụm từ cấm kỵ và cụm từ thay thế chuẩn mực.
+  - Cung cấp Transformation Playbook cho từng trang chính và Quy trình QA 5 bước.
+
+---
+
 ## [2026-09-13] - Kết Nối Toàn Diện Router, Đồng Bộ 6 Tuyến Trang Mới & Nghiệm Thu Build Production (QA & Build Verifier)
 - **Mục tiêu**: Đăng ký đầy đủ các route và alias mới trong `src/App.tsx`, kiểm tra toàn diện imports, props, exports và nghiệm thu chất lượng biên dịch `npm run build` (TypeScript tsc && Vite build).
 - **Các tuyến đường hoàn tất ánh xạ chuẩn xác**:
@@ -95,7 +185,19 @@ Ghi nhận các mốc sự kiện, commit và trạng thái vận hành của d�
 
 ---
 
-## [2026-09-12] - Chuẩn hóa Cụm 6 Trang Năng lực Kỹ thuật (Capability Pages) & Component Giải pháp Tái sử dụng
-- Tạo mới trọn bộ 11 component tại `src/components/solutions/`.
-- Chuẩn hóa 6 trang vệ tinh kỹ thuật (`/dich-vu/geo`, `/dich-vu/aeo`, `/dich-vu/seo-ai`, `/dich-vu/seo-chatgpt`, `/dich-vu/local-search`, `/dich-vu/chay-khach-cham-soc`) với `CapabilityContextBox.tsx`.
-- Đồng bộ Router, bảo toàn liên kết cũ và xử lý trailing slash.
+---
+
+## [2026-09-13] - Subagent 2: Kiến Trúc Thông Tin Trang Chủ V2 (Homepage IA V2)
+- **Mục tiêu**: Tái định hình toàn bộ luồng trải nghiệm trang chủ từ 16 section cũ thành chuỗi 10 section mới chuẩn hóa theo tư duy Problem-First & SME Empathy:
+  1. Hero V2: Hiểu trong 5 giây ("Bạn lo việc kinh doanh. Chuyện công nghệ để Localmate cùng bạn xử lý").
+  2. Nỗi đau thật: 6 Pain Points của chủ cơ sở địa phương (tìm không thấy, web bỏ xó, sổ sách rối, mất công lặp lại, sợ đắt, cô độc kỹ thuật).
+  3. Giải pháp dễ hiểu: 4 nhóm việc (Có mặt tốt hơn, Tìm & chăm sóc khách, Bớt việc thủ công, Xây thứ riêng).
+  4. Triết lý Vấn đề trước: Không bắt đầu bằng công nghệ.
+  5. Bắt đầu rất nhỏ: Micro-projects (Landing page, form đặt lịch, hồ sơ Maps, bảng tính giá), hiệu quả mới làm tiếp.
+  6. Cách làm việc 4 bước: Kể vấn đề -> Cùng bóc tách -> Bản đầu tiên -> Dùng thật rồi cải thiện.
+  7. Workflow minh họa: 4 nhóm ngành (Quán ăn, Trung tâm, Dịch vụ/Thợ, Đội ngũ sales).
+  8. AI thực chất: Không AI-washing, ưu tiên rule đơn giản bền bỉ.
+  9. Tại sao là Localmate: 5 điểm tựa bền vững.
+  10. Final CTA: Kể vấn đề & nhận tư vấn nhẹ nhàng 0đ.
+- **Tài liệu SSOT**: `docs/homepage-ia-v2.md` đã được biên soạn chi tiết gồm ma trận KEEP/MOVE/REMOVE/MERGE, Code Skeleton cho `HomePage.tsx`, Data Schema và Design Guardrails.
+

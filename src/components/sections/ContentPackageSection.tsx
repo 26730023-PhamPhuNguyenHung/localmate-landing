@@ -79,7 +79,7 @@ export const ContentPackageSection: React.FC = () => {
                   onClick={() => navigate('/dich-vu/content-marketing')}
                   style={{ fontWeight: 700 }}
                 >
-                  <span>Xem mẫu bài viết &amp; đăng ký gói</span>
+                  <span>Xem mẫu bài viết &amp; nhận tư vấn</span>
                   <ArrowRight size={17} />
                 </Button>
 

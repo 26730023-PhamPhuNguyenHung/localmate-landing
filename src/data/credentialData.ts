@@ -1218,20 +1218,20 @@ export const CREDENTIAL_SLIDES: CredentialSlide[] = [
   {
     id: 31,
     sectionId: 4,
-    sectionTitle: 'Phần 4: Dự Án Tiêu Biểu, Bằng Chứng & Kết Nối Hợp Tác',
-    slideTag: 'TỔNG QUAN KẾT QUẢ',
-    title: 'Bằng Chứng Thực Tế Từ 150+ Doanh Nghiệp Đồng Hành',
-    subtitle: 'Những con số thực tế chứng minh hiệu quả vượt bậc của mô hình tăng trưởng số LocalMate',
+    sectionTitle: 'Phần 4: Kịch Bản Minh Họa, Giải Pháp Kỹ Thuật & Quy Trình Bàn Giao',
+    slideTag: 'MÔ HÌNH TĂNG TRƯỞNG SỐ',
+    title: 'Mô Hình Tăng Trưởng Số Chuẩn Hóa Cho Doanh Nghiệp Địa Phương',
+    subtitle: 'Các chỉ số mục tiêu và quy trình công nghệ giải quyết bài toán tiếp cận khách hàng địa phương',
     layout: 'metrics',
     metricsData: {
-      headline: 'Hiệu quả đo lường trực tiếp qua doanh thu và số lượng khách hàng mới mỗi tháng',
+      headline: 'Tập trung vào giá trị kỹ thuật thực tế và khả năng tiếp cận khách hàng tự nhiên',
       leftColumn: {
-        title: 'Chỉ Số Tăng Trưởng Trung Bình',
+        title: 'Mục Tiêu Chuẩn Hóa Hạ Tầng',
         metrics: [
-          { value: '+240%', label: 'Tăng Trưởng Khách Hàng Gọi Đến', description: 'Sau 3 tháng tối ưu đồng bộ Web & Google Maps', highlight: true },
-          { value: '45 Ngày', label: 'Thời Gian Lên Top 3 Google Maps', description: 'Áp dụng cho các từ khóa dịch vụ có tính cạnh tranh cao' },
-          { value: '-42%', label: 'Tiết Kiệm Chi Phí Thu Hút 1 Khách', description: 'Nhờ tối ưu trang đích và loại trừ click ảo', highlight: true },
-          { value: '98.5%', label: 'Khách Hàng Hài Lòng & Tái Ký', description: 'Tiếp tục gia hạn gói đồng hành Digital Care hàng năm' }
+          { value: 'Đồng Bộ', label: 'Tối Ưu Đa Kênh Địa Phương', description: 'Đồng bộ Google Maps, Web di động và Schema dữ liệu', highlight: true },
+          { value: 'Local Pack', label: 'Mục Tiêu Hiển Thị Bản Đồ', description: 'Tối ưu bán kính phục vụ trọng điểm quanh cơ sở' },
+          { value: '< 1.0s', label: 'Tốc Độ Tải Trang Di Động', description: 'Tối ưu Core Web Vitals, không làm khách thoát trang', highlight: true },
+          { value: '100%', label: 'Nghiệm Thu Mới Thanh Toán', description: 'Xem demo và kiểm tra đạt chuẩn trước khi thanh toán' }
         ]
       },
       rightColumn: {
@@ -1241,7 +1241,7 @@ export const CREDENTIAL_SLIDES: CredentialSlide[] = [
           'Y tế, Phòng Khám Chuyên Khoa, Nha Khoa Thẩm Mỹ',
           'Xây Dựng, Thiết Kế Thi Công Nội Thất, Cửa Nhôm Kính',
           'Khách Sạn, Homestay, Nhà Hàng, Quán Cà Phê Chuỗi',
-          'Dịch Vụ Sửa Chữa Tại Nhà, Vận Chuyển, Thông Tắc Cống',
+          'Dịch Vụ Sửa Chữa Tại Nhà, Vận Chuyển, Cứu Hộ',
           'Công Ty Luật, Kế Toán Thuế, Đại Lý Bảo Hiểm'
         ]
       }
@@ -1250,67 +1250,67 @@ export const CREDENTIAL_SLIDES: CredentialSlide[] = [
   {
     id: 32,
     sectionId: 4,
-    sectionTitle: 'Phần 4: Dự Án Tiêu Biểu, Bằng Chứng & Kết Nối Hợp Tác',
-    slideTag: 'CASE STUDY 1 - NHA KHOA',
-    title: 'Case Study 1: Chuỗi Nha Khoa Địa Phương Tăng Trưởng 340%',
-    subtitle: 'Cách chuỗi nha khoa thẩm mỹ phủ kín tìm kiếm khu vực và kín lịch hẹn khám mỗi ngày',
+    sectionTitle: 'Phần 4: Kịch Bản Minh Họa, Giải Pháp Kỹ Thuật & Quy Trình Bàn Giao',
+    slideTag: 'KỊCH BẢN MINH HỌA 1 - NHA KHOA',
+    title: 'Kịch Bản Minh Họa 1: Phòng Khám Nha Khoa Cơ Sở Mới',
+    subtitle: 'Mô phỏng cách cơ sở y tế chuẩn hóa hiển thị địa phương và tối ưu trang đặt lịch',
     layout: 'casestudy',
     caseStudyData: {
-      client: 'Nha Khoa Thẩm Mỹ SmileCare',
-      industry: 'Y Tế & Dịch Vụ Nha Khoa Thẩm Mỹ',
-      location: 'Quận Hải Châu, TP. Đà Nẵng',
-      challenge: 'Website cũ chạy WordPress tải mất 6.5s, không có nút đặt hẹn nhanh, Google Maps bị rớt xuống trang 2, mỗi tháng chỉ có 12 - 15 lượt khách gọi điện từ internet.',
-      solution: 'Xây lại Website Light Mode tải 0.9s với bảng giá dịch vụ rõ ràng, tối ưu lại hồ sơ Google Maps với 120 đánh giá 5 sao chuẩn, tích hợp form đặt hẹn bắn tin về Zalo Lễ tân.',
+      client: 'Kịch bản giả định: Phòng khám Nha khoa Địa phương',
+      industry: 'Y Tế & Dịch Vụ Nha Khoa',
+      location: 'Khu vực đô thị (Ví dụ minh họa: Quận Hải Châu, Đà Nẵng)',
+      challenge: 'Website cũ chạy chậm, không có nút đặt hẹn nhanh trên di động, Google Maps chưa được xác minh chính chủ, người dân tìm kiếm nha khoa gần đây khó thấy phòng khám.',
+      solution: 'Xây lại Website Light Mode tải < 1.0s với bảng giá dịch vụ rõ ràng, chuẩn hóa hồ sơ Google Maps chính chủ, tích hợp nút gọi hotline và form đặt hẹn chuyển thẳng về Zalo lễ tân.',
       metrics: [
-        { label: 'Cuộc gọi đặt hẹn', value: '78 cuộc/tháng', diff: '+340%' },
-        { label: 'Vị trí Google Maps', value: 'Top 1 khu vực', diff: 'Từ trang 2 lên Top 1' },
-        { label: 'Tốc độ tải trang', value: '0.9 giây', diff: 'Nhanh hơn 7.2 lần' }
+        { label: 'Kênh tiếp nhận hẹn', value: 'Hotline + Zalo', diff: 'Bấm gọi tức thì' },
+        { label: 'Hiển thị Google Maps', value: 'Local 3-Pack', diff: 'Chuẩn hóa danh mục' },
+        { label: 'Tốc độ tải trang', value: '< 1.0 giây', diff: 'Chuẩn Core Web Vitals' }
       ],
-      quote: '"Trước đây chúng tôi tốn 15 triệu/tháng chạy ads mà khách lác đác. Từ khi LocalMate làm lại web và đẩy Maps lên Top 1, khách vãng lai gọi đến đều đặn mỗi ngày mà không cần đốt tiền ads nữa."'
+      quote: '"Kịch bản giải pháp: Khi phòng khám cung cấp bảng giá niêm yết rõ ràng và nút gọi hotline tiện lợi trên điện thoại, bệnh nhân quanh khu vực sẽ tin tưởng và chủ động liên hệ khám răng."'
     }
   },
   {
     id: 33,
     sectionId: 4,
-    sectionTitle: 'Phần 4: Dự Án Tiêu Biểu, Bằng Chứng & Kết Nối Hợp Tác',
-    slideTag: 'CASE STUDY 2 - NỘI THẤT',
-    title: 'Case Study 2: Doanh Nghiệp Nội Thất & Cửa Nhôm Kính',
-    subtitle: 'Tối ưu trang đích chuyên sâu giúp chi phí mỗi khách hàng tiềm năng giảm 45%',
+    sectionTitle: 'Phần 4: Kịch Bản Minh Họa, Giải Pháp Kỹ Thuật & Quy Trình Bàn Giao',
+    slideTag: 'KỊCH BẢN MINH HỌA 2 - NỘI THẤT',
+    title: 'Kịch Bản Minh Họa 2: Doanh Nghiệp Xưởng Nhôm Kính & Nội Thất',
+    subtitle: 'Tối ưu trang đích chuyên sâu kết hợp chặn click ảo để bảo vệ ngân sách',
     layout: 'casestudy',
     caseStudyData: {
-      client: 'Xưởng Nhôm Kính & Nội Thất Đại Phát',
-      industry: 'Cơ Khí, Xây Dựng & Trang Trí Nội Thất',
-      location: 'Thanh Khê, Đà Nẵng & Hội An',
-      challenge: 'Chạy quảng cáo Google Ads tốn 20 triệu/tháng nhưng toàn bị click ảo từ đối thủ, khách vào xem trang rồi thoát ra ngay, không để lại số điện thoại.',
-      solution: 'Thiết kế Landing Page riêng biệt cho dịch vụ "Cửa Nhôm Xingfa" và "Tủ Bếp Hợp Kim" kèm hình ảnh công trình thực tế, cài hệ thống chặn IP click tặc và form nhận báo giá tự động.',
+      client: 'Kịch bản giả định: Xưởng Gia Công Nhôm Kính & Nội Thất',
+      industry: 'Cơ Khí, Xây Dựng & Nội Thất',
+      location: 'Khu vực công nghiệp / ngoại thành (Ví dụ minh họa: Thanh Khê, Đà Nẵng)',
+      challenge: 'Chạy quảng cáo tìm kiếm tốn kém vì click ảo từ đối thủ, khách vào xem trang rồi thoát ra ngay do trang đích không có hình ảnh công trình thực tế.',
+      solution: 'Thiết kế Landing Page riêng biệt cho từng dịch vụ chủ lực kèm album công trình đã bàn giao, cài đặt bộ lọc từ khóa phủ định và biểu mẫu dự toán chi phí tự động.',
       metrics: [
-        { label: 'Chi phí trên 1 Lead', value: '68.000 VNĐ', diff: 'Giảm 45% (từ 125.000đ)' },
-        { label: 'Tỷ lệ chốt hợp đồng', value: '28%', diff: 'Tăng 1.8 lần' },
-        { label: 'Doanh thu tháng', value: '450 Triệu', diff: 'Tăng trưởng 210%' }
+        { label: 'Chất lượng trang đích', value: 'Mobile-First', diff: 'Tải nhanh trên di động' },
+        { label: 'Bộ lọc từ khóa', value: 'Lọc Click Rác', diff: 'Tiết kiệm ngân sách' },
+        { label: 'Báo giá sơ bộ', value: 'Minh Bạch', diff: 'Dễ dàng ước tính' }
       ],
-      quote: '"Khách gọi đến khen xem web trên điện thoại rất rõ ràng, xem được đúng mẫu nhà thực tế xưởng đã làm nên tin tưởng ngay. Cảm ơn đội ngũ LocalMate đã hỗ trợ rất nhiệt tình."'
+      quote: '"Kịch bản giải pháp: Khách hàng xem hình ảnh công trình thực tế với bảng vật liệu rõ ràng sẽ nhanh chóng đưa ra quyết định liên hệ để được đo đạc và tư vấn trực tiếp."'
     }
   },
   {
     id: 34,
     sectionId: 4,
-    sectionTitle: 'Phần 4: Dự Án Tiêu Biểu, Bằng Chứng & Kết Nối Hợp Tác',
-    slideTag: 'CASE STUDY 3 - F&B',
-    title: 'Case Study 3: Nhà Hàng Đặc Sản & Dịch Vụ Ăn Uống',
-    subtitle: 'Thống lĩnh tìm kiếm ẩm thực địa phương, đón đầu lượng khách du lịch vãng lai',
+    sectionTitle: 'Phần 4: Kịch Bản Minh Họa, Giải Pháp Kỹ Thuật & Quy Trình Bàn Giao',
+    slideTag: 'KỊCH BẢN MINH HỌA 3 - F&B',
+    title: 'Kịch Bản Minh Họa 3: Nhà Hàng Đặc Sản & Dịch Vụ Ăn Uống',
+    subtitle: 'Chuẩn hóa hồ sơ bản đồ và menu số đón đầu lượng khách du lịch',
     layout: 'casestudy',
     caseStudyData: {
-      client: 'Nhà Hàng Cơm Niêu & Hải Sản Phố Biển',
-      industry: 'F&B, Nhà Hàng & Ẩm Thực Du Lịch',
-      location: 'Sơn Trà, TP. Đà Nẵng',
-      challenge: 'Phụ thuộc vào cò dẫn tour chia hoa hồng cao 30%, khách du lịch tự tìm kiếm trên Google Maps không thấy quán, thông tin menu trên mạng bị sai lệch.',
-      solution: 'Chuẩn hóa hồ sơ Google Business Profile, đồng bộ menu hình ảnh món ăn sắc nét lên website và Maps, định vị từ khóa "cơm niêu ngon gần đây" và "hải sản tươi sống Sơn Trà".',
+      client: 'Kịch bản giả định: Nhà Hàng Ẩm Thực Du Lịch',
+      industry: 'F&B, Nhà Hàng & Ẩm Thực',
+      location: 'Điểm du lịch (Ví dụ minh họa: Sơn Trà, TP. Đà Nẵng)',
+      challenge: 'Phụ thuộc vào môi giới tour, du khách tự tìm kiếm trên Google Maps không thấy quán hoặc thông tin menu trên mạng bị sai lệch, thiếu hình ảnh món ăn thực tế.',
+      solution: 'Chuẩn hóa hồ sơ Google Maps chính chủ, đồng bộ menu số hiển thị song ngữ Anh - Việt kèm giá niêm yết rõ ràng và triển khai mã QR tại bàn xin đánh giá văn minh.',
       metrics: [
-        { label: 'Lượt chỉ đường Maps', value: '1.450 lượt/tháng', diff: '+280%' },
-        { label: 'Lượng khách tự đến', value: '45 bàn/ngày', diff: 'Không mất tiền hoa hồng' },
-        { label: 'Doanh thu tăng thêm', value: '180 Triệu/tháng', diff: 'Tối ưu biên lợi nhuận' }
+        { label: 'Menu hiển thị', value: 'Digital Menu', diff: 'Song ngữ Anh - Việt' },
+        { label: 'Thu thập đánh giá', value: 'QR Code Để Bàn', diff: 'Khách tự nguyện review' },
+        { label: 'Kênh tiếp cận', value: 'Google Maps', diff: 'Tự chủ không qua trung gian' }
       ],
-      quote: '"Giờ đây khách du lịch cứ mở Google Maps lên tìm là thấy quán đầu tiên với hàng trăm đánh giá khen ngon. Quán đông kín bàn vào cuối tuần mà hoàn toàn tự chủ không bị ép giá hoa hồng."'
+      quote: '"Kịch bản giải pháp: Du khách mở Google Maps thấy địa điểm có hình ảnh món ăn thực tế, menu song ngữ và giá niêm yết minh bạch sẽ tự tin ghé quán thưởng thức."'
     }
   },
   {

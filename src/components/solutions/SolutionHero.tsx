@@ -291,7 +291,7 @@ export const SolutionHero: React.FC<SolutionHeroProps> = ({
             </span>
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', fontWeight: 600, color: 'var(--color-text)' }}>
               <CheckCircle2 size={15} style={{ color: 'var(--color-primary)' }} />
-              100% tài khoản chính chủ vĩnh viễn
+              Bàn giao 100% tài khoản chính chủ
             </span>
           </div>
         </div>

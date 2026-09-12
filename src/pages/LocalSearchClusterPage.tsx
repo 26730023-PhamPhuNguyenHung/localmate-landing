@@ -658,7 +658,7 @@ export const LocalSearchClusterPage: React.FC<LocalSearchClusterPageProps> = ({ 
                     'Tốc độ mở trang phản hồi dưới 1 giây trên hạ tầng Cloudflare Edge CDN',
                     'Nén toàn bộ hình ảnh sang chuẩn WebP/AVIF lossless (nhẹ hơn 70%, ảnh vẫn nét)',
                     'Triệt tiêu hoàn toàn co giật khung hình (Zero CLS = 0.000), đạt chuẩn Core Web Vitals',
-                    'Cài đặt chứng chỉ bảo mật SSL/TLS 1.3 miễn phí trọn đời và cam kết bảo hành 5 năm'
+                    'Cài đặt chứng chỉ bảo mật SSL/TLS 1.3 duy trì an toàn và đồng hành hỗ trợ kỹ thuật 5 năm'
                   ].map((item, idx) => (
                     <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
                       <CheckCircle2 size={18} color="#0d7647" style={{ flexShrink: 0, marginTop: '2px' }} />

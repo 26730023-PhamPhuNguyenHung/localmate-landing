@@ -55,7 +55,7 @@ export const BeforeAfterSection: React.FC<BeforeAfterSectionProps> = ({ onOpenCo
       },
       after: {
         headline: 'Chính chủ 100% – Toàn quyền làm chủ',
-        desc: 'Đăng ký bằng CCCD và Gmail chính chủ của bạn. Bạn nắm giữ chìa khóa gốc, tự do toàn quyền quản lý vĩnh viễn.'
+        desc: 'Đăng ký bằng CCCD và Gmail chính chủ của bạn. Bạn nắm giữ chìa khóa gốc, tự do toàn quyền quản lý 100% lâu dài.'
       }
     },
     {
@@ -227,9 +227,9 @@ export const BeforeAfterSection: React.FC<BeforeAfterSectionProps> = ({ onOpenCo
           <button 
             type="button"
             className="btn btn-primary action-bar-btn"
-            onClick={() => onOpenConsultForm && onOpenConsultForm('Đăng ký xem Demo 0đ')}
+            onClick={() => onOpenConsultForm && onOpenConsultForm('Nhận tư vấn 0đ từ kỹ thuật viên')}
           >
-            Đăng ký xem Demo miễn phí <ArrowRight size={18} />
+            Nhận tư vấn 0đ từ kỹ thuật viên <ArrowRight size={18} />
           </button>
         </div>
       </Container>

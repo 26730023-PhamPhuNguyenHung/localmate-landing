@@ -1462,7 +1462,7 @@ export const CredentialSlideCard: React.FC<CredentialSlideCardProps> = ({
               </div>
 
               <button
-                onClick={() => onOpenConsultForm && onOpenConsultForm('Đăng ký Web Demo 0đ từ Slide 39')}
+                onClick={() => onOpenConsultForm && onOpenConsultForm('Kể việc bạn đang cần từ Slide 39')}
                 style={{
                   backgroundColor: '#0d7647',
                   color: '#ffffff',
@@ -1479,7 +1479,7 @@ export const CredentialSlideCard: React.FC<CredentialSlideCardProps> = ({
                   boxShadow: '0 4px 12px rgba(13, 118, 71, 0.25)'
                 }}
               >
-                <span>Mở Form Đăng Ký Tư Vấn 1:1</span>
+                <span>Kể việc bạn đang cần • Nhận tư vấn 1:1</span>
                 <ArrowRight size={18} />
               </button>
             </div>

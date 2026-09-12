@@ -2,7 +2,10 @@ import React from 'react';
 import { SEOHead } from '../components/seo/SEOHead';
 import { HeroSection } from '../components/sections/HeroSection';
 import { TrustBar } from '../components/sections/TrustBar';
+import { ProblemMapperSection } from '../components/sections/ProblemMapperSection';
+import { ConversionJourneySection } from '../components/sections/ConversionJourneySection';
 import { SolutionPillarsSection } from '../components/sections/SolutionPillarsSection';
+import { ServiceCardsSection } from '../components/sections/ServiceCardsSection';
 import { GrowthFlywheelSection } from '../components/sections/GrowthFlywheelSection';
 import { PhilosophySection } from '../components/sections/PhilosophySection';
 import { ProcessSection } from '../components/sections/ProcessSection';
@@ -12,6 +15,7 @@ import { PricingMatrixSection } from '../components/sections/PricingMatrixSectio
 import { MarketComparisonSection } from '../components/sections/MarketComparisonSection';
 import { Warranty5YearSection } from '../components/sections/Warranty5YearSection';
 import { LocalTeamSection } from '../components/sections/LocalTeamSection';
+import { TrustSection } from '../components/sections/TrustSection';
 import { FreeAuditSection } from '../components/sections/FreeAuditSection';
 import { KnowledgeHubSection } from '../components/sections/KnowledgeHubSection';
 import { FAQSection } from '../components/sections/FAQSection';
@@ -41,9 +45,23 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenConsultForm }) => {
       {/* 2. TRUST STRIP — 4 Cam kết cốt lõi tối giản */}
       <TrustBar />
 
+      {/* 2.5. CONVERSION JOURNEY — Hành trình chuyển đổi 4 bước thông suốt: Pain Point -> Gợi ý giải pháp -> Workflow ví dụ -> Kể việc đang cần */}
+      <ConversionJourneySection
+        onOpenConsultForm={(serviceName, defaultNote) =>
+          onOpenConsultForm && onOpenConsultForm(serviceName, defaultNote)
+        }
+      />
+
       {/* 3. SOLUTION PILLARS SECTION — 5 Nhóm Giải Pháp Trọng Tâm kết nối trực tiếp đến /giai-phap/{slug} */}
       <SolutionPillarsSection
         onOpenConsultForm={(serviceName) =>
+          onOpenConsultForm && onOpenConsultForm(serviceName)
+        }
+      />
+
+      {/* 3.5. 4 DỊCH VỤ CỐT LÕI CHO DOANH NGHIỆP ĐỊA PHƯƠNG (Subagent 3) */}
+      <ServiceCardsSection
+        onOpenLeadForm={(serviceName: string) =>
           onOpenConsultForm && onOpenConsultForm(serviceName)
         }
       />
@@ -77,6 +95,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenConsultForm }) => {
           onOpenConsultForm && onOpenConsultForm(srvName || 'Trao đổi cùng Kỹ thuật viên In-house')
         }
       />
+
+      {/* 6.95. BẢO CHỨNG MINH BẠCH & PHÁP NHÂN (5 Tài sản bàn giao cầm tay + CÔNG TY TNHH LOCALMATE MST 4001337934) */}
+      <TrustSection />
 
       {/* 7. INSTANT BUSINESS AUDIT DỰ PHÒNG */}
       <FreeAuditSection

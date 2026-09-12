@@ -138,16 +138,16 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* CỘT 2: GIẢI PHÁP THEO 5 TRỤ CỘT CHÍNH */}
+          {/* CỘT 2: GIẢI PHÁP THEO NHU CẦU */}
           <div className="footer-col col-solutions">
-            <h4 className="footer-col-title">5 Trụ Cột Giải Pháp</h4>
+            <h4 className="footer-col-title">Giải Pháp Theo Nhu Cầu</h4>
             
             <div className="footer-pillars-list">
-              {/* 01. Xây nền tảng số */}
+              {/* 01. Hiện diện số & Website */}
               <div className="footer-pillar-block">
                 <Link to="/giai-phap/xay-nen-tang-so" className="pillar-link-primary">
                   <span className="pillar-num-badge">01</span>
-                  <span className="pillar-link-title">Xây nền tảng số</span>
+                  <span className="pillar-link-title">Hiện diện số &amp; Website</span>
                 </Link>
                 <div className="pillar-sublinks-row">
                   <Link to="/landing-490k" className="pillar-sub-link">
@@ -160,78 +160,64 @@ export const Footer: React.FC = () => {
                 </div>
               </div>
 
-              {/* 02. Được tìm thấy */}
-              <div className="footer-pillar-block">
-                <Link to="/giai-phap/duoc-tim-thay" className="pillar-link-primary">
-                  <span className="pillar-num-badge">02</span>
-                  <span className="pillar-link-title">Được tìm thấy</span>
-                </Link>
-                <div className="pillar-sublinks-row">
-                  <Link to="/dich-vu/local-search" className="pillar-sub-link">
-                    Google Maps SEO
-                  </Link>
-                  <span className="sublink-divider">•</span>
-                  <Link to="/dich-vu/geo" className="pillar-sub-link">
-                    GEO AI Search
-                  </Link>
-                  <span className="sublink-divider">•</span>
-                  <Link to="/quy-trinh-geo" className="pillar-sub-link">
-                    Quy trình GEO
-                  </Link>
-                  <span className="sublink-divider">•</span>
-                  <Link to="/dich-vu/aeo" className="pillar-sub-link">
-                    AEO Trích dẫn
-                  </Link>
-                </div>
-              </div>
-
-              {/* 03. Thu hút khách */}
+              {/* 02. Tìm khách hàng */}
               <div className="footer-pillar-block">
                 <Link to="/giai-phap/thu-hut-khach-hang" className="pillar-link-primary">
-                  <span className="pillar-num-badge">03</span>
-                  <span className="pillar-link-title">Thu hút khách hàng</span>
+                  <span className="pillar-num-badge">02</span>
+                  <span className="pillar-link-title">Tìm khách hàng</span>
                 </Link>
                 <div className="pillar-sublinks-row">
                   <Link to="/dich-vu/google-ads" className="pillar-sub-link">
                     Google Ads 0% kê giá
                   </Link>
                   <span className="sublink-divider">•</span>
-                  <Link to="/dich-vu/seo-ai" className="pillar-sub-link">
-                    SEO AI Overviews
+                  <Link to="/dich-vu/local-search" className="pillar-sub-link">
+                    Khách gần quanh tiệm
                   </Link>
                 </div>
               </div>
 
-              {/* 04. Vận hành hiệu quả */}
-              <div className="footer-pillar-block">
-                <Link to="/giai-phap/van-hanh-tu-dong-hoa" className="pillar-link-primary">
-                  <span className="pillar-num-badge">04</span>
-                  <span className="pillar-link-title">Vận hành hiệu quả</span>
-                </Link>
-                <div className="pillar-sublinks-row">
-                  <span className="pillar-sub-text">
-                    CRM tinh gọn, Mini App Zalo &amp; Tự động hóa
-                  </span>
-                </div>
-              </div>
-
-              {/* 05. Chăm sóc đồng hành */}
+              {/* 03. Quản lý & Chăm sóc khách */}
               <div className="footer-pillar-block">
                 <Link to="/giai-phap/dong-hanh-cham-soc" className="pillar-link-primary">
-                  <span className="pillar-num-badge">05</span>
-                  <span className="pillar-link-title">Chăm sóc đồng hành</span>
+                  <span className="pillar-num-badge">03</span>
+                  <span className="pillar-link-title">Quản lý &amp; Chăm sóc khách</span>
                 </Link>
                 <div className="pillar-sublinks-row">
-                  <Link to="/quy-trinh-cham-soc" className="pillar-sub-link">
-                    Quy trình chăm sóc định kỳ
-                  </Link>
-                  <span className="sublink-divider">•</span>
                   <Link to="/dich-vu/cham-soc-website" className="pillar-sub-link">
                     Bảo hành 5 năm
                   </Link>
                   <span className="sublink-divider">•</span>
-                  <Link to="/dich-vu/chay-khach-cham-soc" className="pillar-sub-link">
-                    Vận hành 1-1
+                  <span className="pillar-sub-text">Hỗ trợ 1-1 qua Zalo</span>
+                </div>
+              </div>
+
+              {/* 04. Bớt việc thủ công */}
+              <div className="footer-pillar-block">
+                <Link to="/giai-phap/van-hanh-tu-dong-hoa" className="pillar-link-primary">
+                  <span className="pillar-num-badge">04</span>
+                  <span className="pillar-link-title">Bớt việc thủ công</span>
+                </Link>
+                <div className="pillar-sublinks-row">
+                  <span className="pillar-sub-text">
+                    CRM tinh gọn, Mini App Zalo &amp; Tự động gom đơn
+                  </span>
+                </div>
+              </div>
+
+              {/* 05. Ứng dụng AI */}
+              <div className="footer-pillar-block">
+                <Link to="/giai-phap/duoc-tim-thay" className="pillar-link-primary">
+                  <span className="pillar-num-badge">05</span>
+                  <span className="pillar-link-title">Ứng dụng AI</span>
+                </Link>
+                <div className="pillar-sublinks-row">
+                  <Link to="/dich-vu/local-search" className="pillar-sub-link">
+                    Google Maps chính chủ
+                  </Link>
+                  <span className="sublink-divider">•</span>
+                  <Link to="/dich-vu/geo" className="pillar-sub-link">
+                    GEO &amp; AI Search
                   </Link>
                 </div>
               </div>
@@ -246,9 +232,9 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* CỘT 3: TÀI NGUYÊN & QUY TRÌNH (CHUYÊN BIỆT BỔ SUNG) */}
+          {/* CỘT 3: TÀI NGUYÊN CHUYÊN SÂU (RESOURCE NAVIGATION) */}
           <div className="footer-col col-resources">
-            <h4 className="footer-col-title">Tài Nguyên &amp; Quy Trình</h4>
+            <h4 className="footer-col-title">Tài Nguyên Chuyên Sâu</h4>
             <ul className="footer-nav-list">
               <li>
                 <Link to="/khao-sat-du-an" className="nav-item-link highlight-survey-link">
@@ -261,6 +247,7 @@ export const Footer: React.FC = () => {
                 <Link to="/chien-luoc-5-giai-doan" className="nav-item-link">
                   <Compass size={14} className="nav-arrow" />
                   <span>Lộ trình 5 giai đoạn</span>
+                  <span className="footer-pill-mini">Lộ trình</span>
                 </Link>
               </li>
               <li>
@@ -274,6 +261,7 @@ export const Footer: React.FC = () => {
                 <Link to="/tieu-chuan-audit" className="nav-item-link">
                   <CheckSquare size={14} className="nav-arrow" />
                   <span>Tiêu chuẩn Audit 2026</span>
+                  <span className="footer-pill-mini">Kỹ thuật</span>
                 </Link>
               </li>
               <li>
@@ -299,14 +287,26 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* CỘT 4: CHÍNH SÁCH & MINH BẠCH */}
+          {/* CỘT 4: ĐIỀU HƯỚNG & MINH BẠCH */}
           <div className="footer-col col-policies">
-            <h4 className="footer-col-title">Chính Sách &amp; Minh Bạch</h4>
+            <h4 className="footer-col-title">Điều Hướng &amp; Minh Bạch</h4>
             <ul className="footer-nav-list">
+              <li>
+                <Link to="/#cach-lam-viec" className="nav-item-link">
+                  <CheckCircle2 size={13} className="nav-arrow" />
+                  <span>Cách làm việc 4 bước</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/du-an" className="nav-item-link">
+                  <FileText size={13} className="nav-arrow" />
+                  <span>Ví dụ &amp; Demo thực tế</span>
+                </Link>
+              </li>
               <li>
                 <Link to="/bang-gia" className="nav-item-link">
                   <FileText size={13} className="nav-arrow" />
-                  <span>Bảng giá &amp; Dự toán rõ ràng</span>
+                  <span>Bảng giá niêm yết rõ ràng</span>
                 </Link>
               </li>
               <li>
@@ -330,7 +330,7 @@ export const Footer: React.FC = () => {
               <li>
                 <Link to="/chinh-sach-dich-vu" className="nav-item-link">
                   <Lock size={13} className="nav-arrow" />
-                  <span>Quy định hỗ trợ &amp; Bảo hành</span>
+                  <span>Quy định hỗ trợ &amp; Bảo hành 5 năm</span>
                 </Link>
               </li>
               <li>

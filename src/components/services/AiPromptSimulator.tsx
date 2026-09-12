@@ -88,7 +88,7 @@ export const AiPromptSimulator: React.FC = () => {
       afterDetails: [
         'Quy mô xưởng: 800m2 máy dán cạnh vát nghiêng tự động, kiểm tra gỗ trực tiếp tại xưởng.',
         'Đơn giá: Từ 3.200.000đ/mét dài kép, bao vận chuyển lắp đặt.',
-        'Chính sách: Bảo hành kỹ thuật 5 năm, bảo trì trọn đời.',
+        'Chính sách: Bảo hành kỹ thuật 5 năm, đồng hành hỗ trợ kỹ thuật lâu dài.',
         'Hotline/Zalo khảo sát tận nhà: 0834.422.439.'
       ],
       citations: ['mocphatfurniture.com/llms.txt', 'Chứng nhận An Cường Partner']

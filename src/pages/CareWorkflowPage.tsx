@@ -443,7 +443,7 @@ export const CareWorkflowPage: React.FC<CareWorkflowPageProps> = ({ onOpenConsul
               <Button
                 variant="primary"
                 size="lg"
-                onClick={() => handleCTA('Đăng ký tư vấn chăm sóc website & hạ tầng')}
+                onClick={() => handleCTA('Kể việc bạn đang cần • Nhận tư vấn chăm sóc website & hạ tầng')}
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
@@ -452,7 +452,7 @@ export const CareWorkflowPage: React.FC<CareWorkflowPageProps> = ({ onOpenConsul
                   boxShadow: '0 4px 14px rgba(13, 118, 71, 0.25)'
                 }}
               >
-                <span>Đăng ký tư vấn chăm sóc 0đ</span>
+                <span>Nhận tư vấn 0đ từ kỹ thuật viên</span>
                 <ArrowRight size={18} />
               </Button>
               <a

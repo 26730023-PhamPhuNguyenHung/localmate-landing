@@ -529,6 +529,25 @@ ${formData.currentLinkOrNote ? `-> Link/Hiện trạng cụ thể: ${formData.cu
               <strong>{formData.locationArea}</strong>.
             </p>
 
+            <div
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                backgroundColor: '#f0fdf4',
+                border: '1px solid #bbf7d0',
+                color: '#166534',
+                padding: '0.5rem 1rem',
+                borderRadius: '8px',
+                fontSize: '0.85rem',
+                fontWeight: 600,
+                marginBottom: '1.75rem'
+              }}
+            >
+              <ShieldCheck size={16} />
+              <span>Cam kết phản hồi chân thành từ kỹ thuật viên • Tuyệt đối không spam cuộc gọi bán hàng</span>
+            </div>
+
             {/* Next Steps Card */}
             <div
               style={{
@@ -1532,22 +1551,22 @@ ${formData.currentLinkOrNote ? `-> Link/Hiện trạng cụ thể: ${formData.cu
                   </div>
                 </div>
 
-                {/* Additional Note */}
+                {/* Mô tả tự do khó khăn hoặc mong muốn cụ thể */}
                 <div style={{ marginBottom: '1.5rem' }}>
                   <label
                     style={{
                       display: 'block',
                       fontSize: '0.85rem',
-                      fontWeight: 600,
+                      fontWeight: 700,
                       color: '#0f172a',
                       marginBottom: '0.35rem'
                     }}
                   >
-                    Ghi chú riêng hoặc mong muốn đặc biệt (Không bắt buộc):
+                    Bạn đang gặp khó khăn gì trong công việc hiện tại? (Hoặc việc cần làm gấp):
                   </label>
                   <textarea
                     rows={3}
-                    placeholder="Ví dụ: Cần làm tông màu xanh lá, muốn có form đặt lịch khám, cần hoàn thành trước ngày 20..."
+                    placeholder="Ví dụ: Quán mới mở chưa ai thấy trên Google Maps, web cũ mở trên điện thoại bị vỡ/chậm, đối thủ cùng phố đang áp đảo, cần làm gấp trước ngày 20..."
                     value={formData.additionalNote}
                     onChange={(e) => setFormData({ ...formData, additionalNote: e.target.value })}
                     style={{
@@ -1562,9 +1581,12 @@ ${formData.currentLinkOrNote ? `-> Link/Hiện trạng cụ thể: ${formData.cu
                       resize: 'vertical'
                     }}
                   />
+                  <span style={{ fontSize: '0.725rem', color: '#64748b', display: 'block', marginTop: '0.25rem' }}>
+                    Kỹ thuật viên sẽ đọc kỹ phần này để lên phương án giải quyết sát sườn nhất cho bạn.
+                  </span>
                 </div>
 
-                {/* Cam kết tin cậy */}
+                {/* Cam kết chân thành không spam */}
                 <div
                   style={{
                     backgroundColor: '#ecfdf5',
@@ -1572,7 +1594,7 @@ ${formData.currentLinkOrNote ? `-> Link/Hiện trạng cụ thể: ${formData.cu
                     borderRadius: '8px',
                     padding: '0.85rem 1rem',
                     marginBottom: '1.5rem',
-                    fontSize: '0.8rem',
+                    fontSize: '0.825rem',
                     color: '#065f46',
                     display: 'flex',
                     alignItems: 'center',
@@ -1581,8 +1603,7 @@ ${formData.currentLinkOrNote ? `-> Link/Hiện trạng cụ thể: ${formData.cu
                 >
                   <ShieldCheck size={18} style={{ flexShrink: 0 }} color="#0d7647" />
                   <span>
-                    <strong>Cam kết 100% không phát sinh chi phí:</strong> Bản website demo và file khảo sát đối thủ được gửi
-                    miễn phí để bạn đánh giá trực quan trước khi đưa ra bất kỳ quyết định nào.
+                    <strong>Cam kết phản hồi chân thành từ kỹ thuật viên:</strong> Không spam cuộc gọi bán hàng, không chèo kéo mua gói dịch vụ đắt tiền. Bản xem trước demo 0đ và khảo sát đối thủ được gửi trực tiếp qua Zalo để bạn đánh giá trước khi đưa ra quyết định.
                   </span>
                 </div>
 
@@ -1620,10 +1641,10 @@ ${formData.currentLinkOrNote ? `-> Link/Hiện trạng cụ thể: ${formData.cu
                     }}
                   >
                     {isSubmitting ? (
-                      <>Đang gửi khảo sát...</>
+                      <>Đang gửi thông tin...</>
                     ) : (
                       <>
-                        Gửi Khảo Sát &amp; Nhận Demo 0đ Trong 24H <ArrowRight size={18} />
+                        Kể việc bạn đang cần • Nhận tư vấn 0đ <ArrowRight size={18} />
                       </>
                     )}
                   </Button>

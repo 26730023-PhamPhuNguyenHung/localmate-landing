@@ -279,7 +279,7 @@ const COMPARISON_TABLE_HUB: ComparisonRowHubItem[] = [
   {
     criterion: 'Quyền Sở Hữu Tài Khoản & Dữ Liệu',
     highlight: 'Chính chủ 100%',
-    localmateAdvantage: 'Khách hàng làm chủ 100% email, tên miền, tài khoản Google Maps và tài khoản quảng cáo. Toàn quyền nắm giữ vĩnh viễn.',
+    localmateAdvantage: 'Khách hàng làm chủ 100% email, tên miền, tài khoản Google Maps và tài khoản quảng cáo. Toàn quyền nắm giữ 100% chính chủ lâu dài.',
     traditionalWay: 'Đại lý giữ tài khoản quản trị; khi dừng hợp tác khách hàng bị mất tài khoản hoặc phải trả phí chuộc lại.'
   },
   {
@@ -1626,7 +1626,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenConsultForm })
                   transition: 'all 0.2s ease'
                 }}
               >
-                <span>Đăng ký tư vấn 0đ cùng Kỹ thuật viên</span>
+                <span>Nhận tư vấn 0đ từ kỹ thuật viên</span>
                 <ArrowRight size={18} />
               </button>
 

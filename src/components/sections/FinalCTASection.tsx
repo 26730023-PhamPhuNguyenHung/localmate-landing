@@ -189,10 +189,43 @@ export const FinalCTASection: React.FC = () => {
               ) : (
                 <form onSubmit={handleSubmit} className="quick-lead-form" noValidate>
                   <div className="form-header">
-                    <h3 className="form-title">Đăng Ký Tư Vấn &amp; Nhận Demo 0đ</h3>
+                    <h3 className="form-title">Kể việc bạn đang cần giải quyết</h3>
                     <p className="form-subtitle">
-                      Chỉ cần Tên và Số điện thoại — Kỹ thuật viên gửi link xem trước qua Zalo.
+                      Mô tả bài toán thực tế của bạn — Kỹ thuật viên phản hồi phương án qua Zalo trong 15 phút.
                     </p>
+                  </div>
+
+                  {/* Input: Mô tả tự do khó khăn */}
+                  <div className="form-row">
+                    <label htmlFor="final-note" className="field-label">
+                      Bạn đang gặp khó khăn gì trong công việc hiện tại?
+                    </label>
+                    <textarea
+                      id="final-note"
+                      rows={2}
+                      value={formData.note}
+                      onChange={(e) => handleChange('note', e.target.value)}
+                      placeholder="Ví dụ: Quán mới mở chưa ai thấy trên Maps, web cũ mở chậm không ai gọi..."
+                      className="field-input"
+                      style={{ resize: 'vertical', minHeight: '60px' }}
+                    />
+                  </div>
+
+                  {/* Input: Số điện thoại / Zalo */}
+                  <div className="form-row">
+                    <label htmlFor="final-phone" className="field-label">
+                      Số điện thoại hoặc Zalo của bạn <span className="req-star">*</span>
+                    </label>
+                    <input
+                      id="final-phone"
+                      type="tel"
+                      value={formData.phone}
+                      onChange={(e) => handleChange('phone', e.target.value)}
+                      placeholder="Ví dụ: 0912 345 678"
+                      className={`field-input ${errors.phone ? 'has-error' : ''}`}
+                      autoComplete="tel"
+                    />
+                    {errors.phone && <span className="error-text">{errors.phone}</span>}
                   </div>
 
                   {/* Input: Họ và tên */}
@@ -212,27 +245,10 @@ export const FinalCTASection: React.FC = () => {
                     {errors.fullName && <span className="error-text">{errors.fullName}</span>}
                   </div>
 
-                  {/* Input: Số điện thoại / Zalo */}
-                  <div className="form-row">
-                    <label htmlFor="final-phone" className="field-label">
-                      Số điện thoại / Zalo <span className="req-star">*</span>
-                    </label>
-                    <input
-                      id="final-phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={(e) => handleChange('phone', e.target.value)}
-                      placeholder="Ví dụ: 0912 345 678"
-                      className={`field-input ${errors.phone ? 'has-error' : ''}`}
-                      autoComplete="tel"
-                    />
-                    {errors.phone && <span className="error-text">{errors.phone}</span>}
-                  </div>
-
                   {/* Select: Nhu cầu quan tâm */}
                   <div className="form-row">
                     <label htmlFor="final-service" className="field-label">
-                      Dịch vụ bạn đang quan tâm
+                      Nhu cầu quan tâm chính
                     </label>
                     <select
                       id="final-service"
@@ -260,26 +276,31 @@ export const FinalCTASection: React.FC = () => {
                       </>
                     ) : (
                       <>
-                        Nói cho Localmate biết việc bạn đang cần giải quyết <ArrowRight size={19} />
+                        Kể việc bạn đang cần • Nhận tư vấn 0đ <ArrowRight size={19} />
                       </>
                     )}
                   </button>
 
-                  {/* CAM KẾT UY TÍN NGAY CẠNH / DƯỚI FORM */}
-                  <div className="form-trust-guarantee">
-                    <div className="trust-pill">
-                      <Lock size={14} className="pill-icon" />
-                      <span>Bảo mật thông tin</span>
+                  {/* CAM KẾT CHÂN THÀNH KHÔNG SPAM */}
+                  <div className="form-trust-guarantee" style={{ flexDirection: 'column', gap: '0.35rem', alignItems: 'center' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#047857', fontSize: '0.785rem', fontWeight: 600, textAlign: 'center' }}>
+                      <ShieldCheck size={14} color="#0d7647" style={{ flexShrink: 0 }} />
+                      <span>Cam kết phản hồi chân thành từ kỹ thuật viên, không spam cuộc gọi bán hàng</span>
                     </div>
-                    <div className="trust-divider">•</div>
-                    <div className="trust-pill">
-                      <Clock size={14} className="pill-icon" />
-                      <span>Phản hồi 15 phút</span>
-                    </div>
-                    <div className="trust-divider">•</div>
-                    <div className="trust-pill">
-                      <ShieldCheck size={14} className="pill-icon" />
-                      <span>Hoàn toàn miễn phí</span>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#64748b', fontSize: '0.75rem' }}>
+                      <div className="trust-pill">
+                        <Lock size={12} className="pill-icon" />
+                        <span>Bảo mật dữ liệu</span>
+                      </div>
+                      <div className="trust-divider">•</div>
+                      <div className="trust-pill">
+                        <Clock size={12} className="pill-icon" />
+                        <span>Phản hồi 15 phút</span>
+                      </div>
+                      <div className="trust-divider">•</div>
+                      <div className="trust-pill">
+                        <span>Hoàn toàn miễn phí</span>
+                      </div>
                     </div>
                   </div>
 

@@ -179,7 +179,7 @@ export const SOLUTIONS: Solution[] = [
         id: 'out-1-ownership',
         metric: '100%',
         title: 'Sở hữu tài nguyên chính chủ',
-        label: 'Sở hữu tài nguyên số vĩnh viễn',
+        label: 'Bàn giao 100% tài khoản chính chủ',
         description: 'Bàn giao đầy đủ tên miền riêng .vn/.com, hosting và tài khoản quản trị cho chính bạn nắm giữ.',
         highlight: 'Không bị khóa chân bởi bên thứ 3'
       },
@@ -219,7 +219,7 @@ export const SOLUTIONS: Solution[] = [
       'Thiết kế trang bán hàng (Sales Hub) tập trung chuyển đổi, tối ưu riêng cho màn hình điện thoại của khách hàng.',
       'Chuẩn hóa bảng giá dịch vụ, bộ ảnh sản phẩm/công trình thực tế và hồ sơ năng lực thành các khối rõ ràng, dễ hiểu.',
       'Tích hợp sẵn các nút hành động cốt lõi: Nút Gọi Hotline nổi bật, Chat Zalo 1 chạm, và Form yêu cầu báo giá.',
-      'Cài đặt tên miền riêng (.vn/.com), kích hoạt chứng chỉ bảo mật HTTPS (SSL) và kết nối máy chủ Cloudflare tăng tốc toàn diện.'
+      'Cài đặt tên miền riêng (.vn/.com), kích hoạt chứng chỉ bảo mật HTTPS và tối ưu máy chủ tốc độ cao mở tức thì.'
     ],
     workflow: [
       {
@@ -234,7 +234,7 @@ export const SOLUTIONS: Solution[] = [
         step: '02',
         title: 'Thiết kế giao diện & Lập trình chuẩn di động',
         duration: '1 - 2 ngày',
-        localmateDoes: 'Xây dựng website trên nền tảng Cloudflare Edge siêu tốc, tối ưu nút Gọi và Chat Zalo dính chân trang.',
+        localmateDoes: 'Xây dựng website trên nền tảng máy chủ tốc độ cao, tối ưu nút Gọi và Chat Zalo dính chân trang.',
         clientDoes: 'Thảnh thơi làm việc chuyên môn, chờ nhận link xem thử nghiệm trên điện thoại.',
         outcome: 'Bản xem trước website trực tiếp mở được ngay trên điện thoại cá nhân'
       },
@@ -276,13 +276,13 @@ export const SOLUTIONS: Solution[] = [
       },
       {
         id: 'domain-ssl-security',
-        name: 'Tên Miền Riêng & Khóa Bảo Mật SSL Miễn Phí',
-        techName: 'Custom DNS & Free Lifetime SSL',
+        name: 'Tên Miền Riêng & Bảo Mật Khóa Xanh HTTPS',
+        techName: 'Custom Domain & Managed SSL Security',
         tag: 'Bảo Mật',
         badge: 'Chính Chủ',
         iconName: 'ShieldCheck',
-        shortDescription: 'Kết nối tên miền thương hiệu và bảo mật ổ khóa xanh HTTPS.',
-        description: 'Cài đặt tên miền .vn hoặc .com do bạn đứng tên chính chủ 100%, kích hoạt chứng chỉ bảo mật HTTPS (SSL) miễn phí trọn đời.',
+        shortDescription: 'Kết nối tên miền thương hiệu và bảo mật ổ khóa xanh HTTPS an toàn.',
+        description: 'Cài đặt tên miền .vn hoặc .com do bạn đứng tên chính chủ 100%, kích hoạt chứng chỉ bảo mật HTTPS (SSL) duy trì an toàn và miễn phí lâu dài.',
         plainLanguageMeaning: 'Website mang tên thương hiệu của bạn, có biểu tượng ổ khóa an toàn không bị trình duyệt cảnh báo nguy hiểm.',
         practicalBenefit: 'Xây dựng uy tín bền vững, khách hàng an tâm tuyệt đối khi bấm vào link.',
         mappedCatalogServiceIds: ['12', '13']
@@ -302,15 +302,15 @@ export const SOLUTIONS: Solution[] = [
       },
       {
         id: 'speed-pagespeed-90',
-        name: 'Tối Ưu Tốc Độ Tải Trang Core Web Vitals (90+)',
-        techName: 'Edge CDN & WebP/AVIF Image Compression',
-        tag: 'Hiệu Năng',
+        name: 'Tối Ưu Mở Trang Cực Nhanh Dưới 1.2 Giây',
+        techName: 'PageSpeed & Image Compression Engine',
+        tag: 'Tốc Độ',
         badge: 'Hiệu Năng',
         iconName: 'Zap',
         shortDescription: 'Mở trang dưới 1.2 giây trên mạng 3G/4G di động.',
-        description: 'Mã nguồn siêu nhẹ, nén ảnh hiện đại WebP/AVIF không vỡ hạt, loại bỏ hiệu ứng giật lag đạt chuẩn Google PageSpeed từ 90 đến 100 điểm.',
+        description: 'Mã nguồn siêu nhẹ, nén ảnh tự động rõ nét không vỡ hạt và phân phối dữ liệu qua máy chủ tăng tốc, đạt điểm tốc độ cao trên mọi dòng điện thoại.',
         plainLanguageMeaning: 'Trang web mở ra gần như ngay lập tức sau cú chạm tay, mượt mà kể cả khi mạng điện thoại chập chờn.',
-        practicalBenefit: 'Khách hàng không mất kiên nhẫn tắt trang và được Google đánh giá cao.',
+        practicalBenefit: 'Khách hàng không mất kiên nhẫn tắt trang, tăng tỷ lệ gọi điện chốt đơn.',
         mappedCatalogServiceIds: ['11', '13']
       }
     ],
@@ -537,7 +537,7 @@ export const SOLUTIONS: Solution[] = [
       {
         question: 'Chi phí trên đã bao gồm tiền mua tên miền và máy chủ lưu trữ (hosting) chưa?',
         answer:
-          'Chi phí trên là phí dịch vụ thiết kế và hoàn thiện kỹ thuật trọn gói. Bạn chỉ cần trả thêm tiền mua tên miền (khoảng 200k - 400k/năm tùy đuôi .vn hay .com) và tên miền đó đứng tên chính chủ cá nhân bạn nắm giữ vĩnh viễn.'
+          'Chi phí trên là phí dịch vụ thiết kế và hoàn thiện kỹ thuật trọn gói. Bạn chỉ cần trả thêm tiền mua tên miền (khoảng 200k - 400k/năm tùy đuôi .vn hay .com) và tên miền đó đứng tên chính chủ cá nhân bạn nắm giữ 100% lâu dài.'
       },
       {
         question: 'Làm xong bao lâu thì có trang web hoàn chỉnh để sử dụng?',
@@ -556,7 +556,7 @@ export const SOLUTIONS: Solution[] = [
     slug: '/giai-phap/duoc-tim-thay',
     title: 'Được khách hàng tìm thấy',
     demandTitle: 'Muốn khách quanh vùng tìm thấy cơ sở trên Google Maps & Google Search',
-    subtitle: 'Đưa vị trí cửa hàng lên Google Maps, SEO từ khóa địa phương và tối ưu đề xuất AI Search',
+    subtitle: 'Đưa vị trí cửa hàng lên Google Maps, xuất hiện khi khách tìm quanh vùng và được trợ lý AI gợi ý',
     badge: 'Trụ Cột 02 • Khám Phá & Hiện Diện',
     painPointPill: 'Tìm Maps không ra, tìm từ khóa Google toàn ra đối thủ',
     iconName: 'MapPin',
@@ -566,7 +566,7 @@ export const SOLUTIONS: Solution[] = [
     summary:
       'LocalMate phủ sóng sự hiện diện của cơ sở bạn trên mọi công cụ tìm kiếm: xác minh Google Maps định vị GPS chính chủ, tối ưu SEO từ khóa theo quận huyện và cấu hình dữ liệu để ChatGPT, Gemini đề xuất tiệm của bạn.',
     heroDescription:
-      'Giải pháp tối ưu hiện diện địa phương đa kênh: Google Maps chính chủ 100%, Local SEO bán kính 3-10km và cấu hình đề xuất AI (GEO/AEO). Giúp khách có nhu cầu thấy bạn đầu tiên.',
+      'Giải pháp tối ưu hiện diện địa phương đa kênh: Google Maps chính chủ 100%, xuất hiện khi khách tìm kiếm quanh vùng (3-10km) và cấu hình sẵn sàng để trợ lý AI (ChatGPT, Gemini) gợi ý tiệm của bạn.',
     targetAudience: 'Cửa hàng, tiệm sửa chữa, phòng khám, nha khoa, spa và dịch vụ phục vụ tận nơi',
     breadcrumbs: [
       { label: 'Trang chủ', href: '/' },
@@ -575,14 +575,14 @@ export const SOLUTIONS: Solution[] = [
     ],
     meta: {
       title: 'Giải Pháp Được Khách Hàng Tìm Thấy: Google Maps & SEO Địa Phương | LocalMate',
-      description: 'Hiện diện đúng lúc khách hàng tìm kiếm trên Google Maps, Google Search và AI Search (ChatGPT, Gemini). Xác minh Maps chính chủ, bảo hành 5 năm.'
+      description: 'Hiện diện đúng lúc khách hàng tìm kiếm trên Google Maps, Google Search và trợ lý AI (ChatGPT, Gemini). Xác minh Maps chính chủ, đồng hành hỗ trợ kỹ thuật lâu dài.'
     },
     outcomes: [
       {
         id: 'out-2-maps',
-        metric: 'Top 1 - 3',
+        metric: 'Top 3',
         title: 'Xuất hiện trên Google Maps khu vực',
-        label: 'Vào Top 3 Google Maps bán kính 3 - 10km',
+        label: 'Hiện diện Top 3 Google Maps bán kính 3 - 10km',
         description: 'Khách hàng quanh bán kính 3 - 10km tìm dịch vụ là thấy ngay vị trí cửa hàng cùng nút bấm gọi và chỉ đường.',
         highlight: 'Khách tìm là thấy ngay'
       },
@@ -592,14 +592,14 @@ export const SOLUTIONS: Solution[] = [
         title: 'Chính chủ xác minh bằng Gmail bạn',
         label: 'Chính chủ Gmail của bạn 100%',
         description: 'Xác minh quyền sở hữu chính chủ 100%, chống đối thủ cướp maps hoặc bị đổi số hotline lén lút.',
-        highlight: 'Bảo vệ quyền sở hữu vĩnh viễn'
+        highlight: 'Bàn giao 100% tài khoản chính chủ'
       },
       {
         id: 'out-2-ai',
         metric: 'Đón Đầu',
         title: 'Được AI đề xuất khi khách hỏi trợ lý ảo',
         label: 'Được ChatGPT & Gemini đề xuất cơ sở',
-        description: 'Khai báo cấu trúc dữ liệu Schema và Entity để ChatGPT và Google AI Overviews giới thiệu cơ sở của bạn.',
+        description: 'Khai báo thông tin xác thực chuẩn xác để các công cụ tìm kiếm và trợ lý AI (ChatGPT, Google AI) tự tin giới thiệu cơ sở của bạn.',
         highlight: 'Đón đầu xu hướng tìm kiếm AI'
       }
     ],
@@ -616,7 +616,7 @@ export const SOLUTIONS: Solution[] = [
       },
       {
         problem: 'Khách hỏi ChatGPT/Gemini nhưng AI toàn gợi ý đối thủ',
-        detail: 'Website chưa có dữ liệu có cấu trúc Schema khiến các mô hình AI không nhận diện được bạn là ai trong khu vực.',
+        detail: 'Website chưa có cấu trúc dữ liệu xác thực khiến các trợ lý AI không nhận diện được địa chỉ, dịch vụ và độ uy tín của tiệm trong khu vực.',
         iconName: 'Bot'
       }
     ],
@@ -629,9 +629,9 @@ export const SOLUTIONS: Solution[] = [
     whatWeDo: [
       'Đăng ký, xác minh chính chủ và tối ưu hóa hồ sơ Google Business Profile (Google Maps) chuẩn vị trí địa chỉ thật.',
       'Cung cấp bộ mã QR Review 5 sao để bàn giúp xin đánh giá từ khách hàng hài lòng nhanh chóng trong 5 giây.',
-      'Tối ưu hóa SEO On-page địa phương: cài đặt sitemap, robots.txt, tiêu đề dịch vụ và từ khóa có dấu / không dấu bám sát vị trí quận huyện.',
-      'Khai báo dữ liệu cấu trúc Schema LocalBusiness (NAP+V, giờ mở cửa, danh mục dịch vụ) và tối ưu hóa đề xuất AI (GEO/AEO).',
-      'Tăng tốc độ tải trang đạt chuẩn Core Web Vitals của Google (PageSpeed 90+) để được Google ưu tiên xếp hạng cao.'
+      'Tối ưu hóa nội dung tìm kiếm địa phương: cài đặt sitemap, robots.txt, tiêu đề dịch vụ và từ khóa có dấu / không dấu bám sát vị trí quận huyện.',
+      'Khai báo thông tin xác thực cơ sở (địa chỉ, số hotline, giờ mở cửa, dịch vụ) và cấu hình sẵn sàng để trợ lý AI dễ dàng đọc hiểu và gợi ý.',
+      'Tăng tốc độ tải trang đạt chuẩn tối ưu để được Google ưu tiên xếp hạng cao.'
     ],
     workflow: [
       {
@@ -652,9 +652,9 @@ export const SOLUTIONS: Solution[] = [
       },
       {
         step: '03',
-        title: 'Khai báo Schema Entity & Tối ưu AI Search',
+        title: 'Khai báo dữ liệu xác thực & Tối ưu AI Search',
         duration: '1 ngày',
-        localmateDoes: 'Chèn mã JSON-LD LocalBusiness vào web, tạo tệp llms.txt và cấu hình Answer Capsule cho AI.',
+        localmateDoes: 'Cài đặt mã dữ liệu xác thực cơ sở vào web, tạo tệp dữ liệu máy học và cấu hình thông tin tóm tắt cho AI.',
         clientDoes: 'Đặt bộ bảng mica mã QR Review 5 sao tại quầy để bắt đầu xin đánh giá từ khách quen.',
         outcome: 'Hệ sinh thái tìm kiếm đa kênh Google + Maps + AI hoạt động đồng bộ'
       }
@@ -676,7 +676,7 @@ export const SOLUTIONS: Solution[] = [
       },
       {
         id: 'seo-google-local',
-        name: 'SEO Google Tìm Kiếm Địa Phương (Local Search)',
+        name: 'Hiện Diện Trên Google Khi Khách Tìm Quanh Vùng (Local Search)',
         techName: 'On-Page Local SEO & Citations',
         tag: 'Tìm Kiếm',
         badge: 'Bền Vững',
@@ -690,40 +690,40 @@ export const SOLUTIONS: Solution[] = [
       },
       {
         id: 'schema-entity-nap',
-        name: 'Khai Báo Schema & Thực Thể Số (Entity NAP)',
-        techName: 'Schema.org JSON-LD LocalBusiness Entity',
+        name: 'Đồng Bộ Thông Tin Xác Thực Doanh Nghiệp (Cấu Trúc Dữ Liệu)',
+        techName: 'LocalBusiness Entity & Schema Module',
         tag: 'Cấu Trúc',
         badge: 'Kỹ Thuật',
         iconName: 'Code',
-        shortDescription: 'Đồng bộ hóa tên, địa chỉ, số điện thoại cho máy đọc hiểu.',
-        description: 'Cài đặt mã JSON-LD chuẩn Schema LocalBusiness giúp Google hiểu chính xác doanh nghiệp của bạn là ai, hoạt động ở đâu và cung cấp dịch vụ gì.',
-        plainLanguageMeaning: 'Khai báo thông tin cơ sở bằng ngôn ngữ đặc biệt cho Google hiểu bạn là một doanh nghiệp uy tín có thật.',
+        shortDescription: 'Đồng bộ tên tiệm, địa chỉ, số hotline chuẩn xác để máy tìm kiếm nhận diện.',
+        description: 'Khai báo thông tin cơ sở thành cấu trúc dữ liệu chuẩn giúp Google hiểu chính xác doanh nghiệp của bạn là ai, hoạt động ở đâu và cung cấp những dịch vụ gì.',
+        plainLanguageMeaning: 'Khai báo thông tin cơ sở thành dữ liệu chuẩn để Google và các hệ thống tìm kiếm hiểu rõ bạn là tiệm uy tín có thật tại địa phương.',
         practicalBenefit: 'Giúp Google xếp hạng vị trí Maps và website của bạn cao hơn đối thủ.',
         mappedCatalogServiceIds: ['17']
       },
       {
         id: 'ai-search-geo-aeo',
-        name: 'Tối Ưu Tìm Kiếm AI (GEO / AEO / ChatGPT)',
-        techName: 'Generative Engine Optimization (GEO/AEO)',
+        name: 'Tối Ưu Để Trợ Lý AI Đề Xuất (ChatGPT & Gemini)',
+        techName: 'AI Engine Optimization Module (GEO/AEO)',
         tag: 'Trí Tuệ Nhân Tạo',
         badge: 'Xu Hướng Mới',
         iconName: 'Bot',
         shortDescription: 'Xuất hiện trong câu trả lời gợi ý của ChatGPT, Gemini, Perplexity.',
-        description: 'Tối ưu nội dung theo định dạng Answer Capsule và cấu hình llms.txt để các mô hình AI tự tin trích dẫn và gợi ý cơ sở của bạn cho khách hàng.',
-        plainLanguageMeaning: 'Khi người dùng hỏi ChatGPT hoặc Gemini tìm địa chỉ uy tín trong khu vực, AI sẽ biết đến và giới thiệu tiệm của bạn.',
+        description: 'Cấu hình thông tin tóm tắt và tệp dữ liệu máy học (llms.txt) để các trợ lý AI đọc hiểu chính xác bảng giá, dịch vụ và tự tin gợi ý cơ sở của bạn khi có người hỏi.',
+        plainLanguageMeaning: 'Khi người dùng hỏi ChatGPT hoặc Gemini tìm địa chỉ uy tín trong khu vực, AI sẽ có đủ dữ liệu để đọc và giới thiệu tiệm của bạn.',
         practicalBenefit: 'Đón đầu nhóm khách hàng công nghệ trẻ tuổi hay hỏi AI trước khi mua hàng.',
         mappedCatalogServiceIds: ['21', '40'],
         detailSlug: '/dich-vu/geo'
       },
       {
         id: 'pagespeed-technical-seo',
-        name: 'PageSpeed & Kỹ Thuật SEO Technical',
-        techName: 'Core Web Vitals & Technical Crawlability',
+        name: 'Tối Ưu Kỹ Thuật Hạ Tầng & Tốc Độ Chuẩn Google',
+        techName: 'Technical SEO & PageSpeed Engine',
         tag: 'Tốc Độ',
         badge: 'Hạ Tầng',
         iconName: 'Zap',
-        shortDescription: 'Tốc độ tải trang chuẩn xanh Google Core Web Vitals.',
-        description: 'Tối ưu mã nguồn siêu gọn, nén ảnh thế hệ mới, tối ưu hóa CSS/JS và phân phối qua mạng biên Cloudflare để đạt điểm PageSpeed 90+.',
+        shortDescription: 'Tốc độ mở trang cực nhanh và dọn sạch lỗi kỹ thuật.',
+        description: 'Tối ưu mã nguồn siêu gọn, nén ảnh thế hệ mới và dọn dẹp lỗi kỹ thuật để website đạt điểm tốc độ cao, giúp Google ưu tiên hiển thị.',
         plainLanguageMeaning: 'Website sạch lỗi kỹ thuật, chạy êm ru và được Google bot ghé thăm lập chỉ mục thường xuyên.',
         practicalBenefit: 'Được Google ưu tiên giữ vững thứ hạng tìm kiếm lâu dài.',
         mappedCatalogServiceIds: ['11', '13', '16']
@@ -747,10 +747,10 @@ export const SOLUTIONS: Solution[] = [
         title: 'Hạ tầng kỹ thuật SEO & Đề xuất AI',
         description: 'Website được cấu hình toàn diện để Google và AI lập chỉ mục.',
         items: [
-          'Cấu hình Schema.org JSON-LD (LocalBusiness, Service, Review)',
-          'Xác minh Google Search Console & gửi sitemap.xml',
-          'Tệp cấu hình máy học llms.txt phục vụ tìm kiếm AI (GEO)',
-          'Báo cáo kiểm tra tốc độ PageSpeed xanh đạt từ 90 điểm trở lên'
+          'Đồng bộ dữ liệu xác thực chuẩn (thông tin tiệm, bảng giá, đánh giá)',
+          'Khai báo sơ đồ trang web và kết nối Google Search Console',
+          'Cấu hình tệp dữ liệu máy học (llms.txt) phục vụ tìm kiếm AI',
+          'Báo cáo kiểm tra tốc độ mở trang đạt chuẩn tối ưu'
         ],
         ownershipTag: 'Bàn giao mã nguồn & Báo cáo'
       }
@@ -835,11 +835,11 @@ export const SOLUTIONS: Solution[] = [
         keySetup: [
           'Ghim vị trí phủ các quận huyện phục vụ',
           'Nút gọi Hotline khẩn cấp hiển thị ngay trên kết quả tìm kiếm',
-          'Tối ưu tệp llms.txt để ChatGPT trích xuất bảng giá sửa chữa',
-          'Cam kết bảo hành tay nghề minh bạch'
+          'Tối ưu dữ liệu tóm tắt để trợ lý AI trích xuất bảng giá sửa chữa',
+          'Bảo hành tay nghề và báo giá minh bạch'
         ],
         result:
-          'Nhờ cấu hình Schema LocalBusiness và tối ưu GEO AI, tiệm luôn xuất hiện ở kết quả đầu kèm số điện thoại hotline, khách bấm gọi ngay trong lúc cấp bách.',
+          'Nhờ đồng bộ dữ liệu xác thực và tối ưu đề xuất AI, tiệm luôn xuất hiện ở các vị trí đầu kèm số điện thoại hotline, khách bấm gọi ngay trong lúc cấp bách.',
         resultHighlight: 'Khách gọi đến đều đặn ngay khi gặp sự cố mà không mất phí quảng cáo'
       }
     ],
@@ -855,7 +855,7 @@ export const SOLUTIONS: Solution[] = [
           'Xác minh vị trí chính chủ bằng Gmail cá nhân',
           'Ghim đúng tọa độ GPS, chống thất lạc vị trí',
           'Tặng bộ thiết kế mã QR Code để bàn xin review 5 sao',
-          'Bảo hành hỗ trợ chống cướp Maps trong 5 năm'
+          'Đồng hành hỗ trợ chống cướp Maps trong 5 năm'
         ],
         ctaText: 'Đăng Ký Làm Maps 299k'
       },
@@ -871,9 +871,9 @@ export const SOLUTIONS: Solution[] = [
         highlights: [
           'Toàn bộ quyền lợi gói Google Maps chính chủ',
           'Tối ưu từ khóa tìm kiếm địa phương có dấu & không dấu',
-          'Khai báo mã Schema LocalBusiness chuẩn JSON-LD',
-          'Xác minh Google Search Console & tối ưu PageSpeed 90+',
-          'Tặng kèm tệp cấu hình tìm kiếm AI llms.txt'
+          'Đồng bộ thông tin xác thực doanh nghiệp chuẩn xác',
+          'Xác minh Google Search Console & tối ưu mở trang cực nhanh',
+          'Cấu hình dữ liệu đề xuất cho trợ lý AI (ChatGPT, Gemini)'
         ],
         ctaText: 'Chọn Gói SEO Địa Phương'
       },
@@ -905,7 +905,7 @@ export const SOLUTIONS: Solution[] = [
           'Xác minh vị trí chính chủ bằng Gmail cá nhân',
           'Ghim đúng tọa độ GPS, chống thất lạc vị trí',
           'Tặng bộ thiết kế mã QR Code để bàn xin review 5 sao',
-          'Bảo hành hỗ trợ chống cướp Maps trong 5 năm'
+          'Đồng hành hỗ trợ chống cướp Maps trong 5 năm'
         ],
         ctaText: 'Đăng Ký Làm Maps 299k'
       },
@@ -921,9 +921,9 @@ export const SOLUTIONS: Solution[] = [
         highlights: [
           'Toàn bộ quyền lợi gói Google Maps chính chủ',
           'Tối ưu từ khóa tìm kiếm địa phương có dấu & không dấu',
-          'Khai báo mã Schema LocalBusiness chuẩn JSON-LD',
-          'Xác minh Google Search Console & tối ưu PageSpeed 90+',
-          'Tặng kèm tệp cấu hình tìm kiếm AI llms.txt'
+          'Đồng bộ thông tin xác thực doanh nghiệp chuẩn xác',
+          'Xác minh Google Search Console & tối ưu mở trang cực nhanh',
+          'Cấu hình dữ liệu đề xuất cho trợ lý AI (ChatGPT, Gemini)'
         ],
         ctaText: 'Chọn Gói SEO Địa Phương'
       },
@@ -955,9 +955,9 @@ export const SOLUTIONS: Solution[] = [
           'LocalMate sử dụng chính tài khoản Gmail của bạn để xác minh. Bạn là Chủ sở hữu chính (Primary Owner), có toàn quyền thêm bớt người quản lý và không ai có thể lấy đi nếu bạn không cho phép.'
       },
       {
-        question: 'Tối ưu AI Search (GEO) là làm gì và mang lại lợi ích gì?',
+        question: 'Tối ưu để trợ lý AI (ChatGPT, Gemini) gợi ý là làm gì và mang lại lợi ích gì?',
         answer:
-          'Ngày nay nhiều người hỏi trực tiếp ChatGPT hoặc Gemini thay vì lướt Google. GEO là việc cấu trúc thông tin cơ sở của bạn bằng các mã máy đọc hiểu (Schema, llms.txt) để khi người dùng hỏi trợ lý AI về dịch vụ quanh khu vực, AI sẽ đọc được và tự tin gợi ý tên cơ sở của bạn.'
+          'Ngày nay nhiều khách hàng hỏi trực tiếp ChatGPT hoặc Gemini: "Tìm quán ăn ngon gần đây" hoặc "Thợ sửa khóa uy tín quanh khu vực này". LocalMate cấu trúc lại toàn bộ thông tin cơ sở (bảng giá, địa chỉ, số điện thoại) thành định dạng chuẩn để các trợ lý AI đọc hiểu chính xác và tự tin giới thiệu tên cơ sở của bạn khi có người hỏi.'
       }
     ],
     relatedSolutionSlugs: ['/giai-phap/xay-nen-tang-so', '/giai-phap/thu-hut-khach-hang']
@@ -1103,14 +1103,14 @@ export const SOLUTIONS: Solution[] = [
       },
       {
         id: 'conversion-tracking-setup',
-        name: 'Cài Đặt Mã Đo Lường Chuyển Đổi (GA4 & Meta Pixel)',
-        techName: 'GA4, GTM & Meta Pixel Event Tracking',
+        name: 'Đo Lường Chi Phí Từng Cuộc Gọi & Tin Nhắn Zalo',
+        techName: 'Call & Message Conversion Tracking Engine',
         tag: 'Đo Lường',
         badge: 'Đo Lường',
         iconName: 'BarChart2',
-        shortDescription: 'Đo chính xác từng lượt bấm gọi điện thoại và nhắn tin Zalo.',
-        description: 'Thiết lập Google Tag Manager, Google Analytics 4 và Meta Pixel ghi nhận sự kiện chuyển đổi khi khách hàng thực hiện hành động liên hệ.',
-        plainLanguageMeaning: 'Hệ thống đếm tự động mỗi ngày có bao nhiêu người bấm nút Gọi và bấm nhắn Zalo từ nguồn quảng cáo nào.',
+        shortDescription: 'Biết chính xác mỗi cuộc gọi, tin nhắn tốn bao nhiêu tiền quảng cáo.',
+        description: 'Thiết lập bộ đo lường tự động ghi nhận chính xác mỗi khi khách hàng bấm Gọi Hotline, nhắn tin Zalo hoặc gửi yêu cầu báo giá.',
+        plainLanguageMeaning: 'Hệ thống tự động đếm mỗi ngày có bao nhiêu người bấm Gọi và nhắn Zalo từ quảng cáo, giúp bạn biết rõ chi phí trên từng khách.',
         practicalBenefit: 'Biết chính xác chi phí thực tế bỏ ra để có được 1 cuộc gọi của khách.',
         mappedCatalogServiceIds: ['23', '24', '25', '26', '27']
       },
@@ -1536,7 +1536,7 @@ export const SOLUTIONS: Solution[] = [
           'Form tiếp nhận thông tin tùy biến theo đặc thù ngành nghề',
           'Tự động gửi email hoặc tin nhắn xác nhận cho khách hàng'
         ],
-        ownershipTag: 'Miễn phí duy trì trọn đời'
+        ownershipTag: 'Không mất phí duy trì hàng tháng'
       },
       {
         id: 'del-4-ai',

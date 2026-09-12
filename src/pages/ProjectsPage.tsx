@@ -44,22 +44,22 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onOpenConsultForm })
   return (
     <div style={{ backgroundColor: '#fcfdfd', padding: '2rem 0 6rem 0' }}>
       <SEOHead
-        title="Hồ Sơ Dự Án Thực Tế & Số Liệu Đo Lường | LocalMate"
-        description="Khám phá 5 câu chuyện khách hàng thực tế của LocalMate: Từ cơ sở mới vắng khách vươn lên Top 1 Google Maps, tiết kiệm 100% chi phí ads, hoàn vốn sau 3 ngày và tăng tỷ lệ chốt đơn từ 30% lên 75%."
+        title="Thư Viện Kịch Bản Giả Định & Workflow Triển Khai | LocalMate"
+        description="Khám phá 5 tình huống giả định & workflow minh họa cách LocalMate xử lý các bài toán kinh doanh địa phương phổ biến: từ định danh Google Maps, hệ thống QR review văn minh đến sales hub minh bạch biểu phí."
         canonicalPath="/du-an"
         breadcrumbs={[
-          { name: 'Dự án thực tế', url: '/du-an' }
+          { name: 'Kịch bản & Dự án', url: '/du-an' }
         ]}
       />
 
       <Container size="lg">
         <Breadcrumbs
           items={[
-            { name: 'Dự án thực tế', url: '/du-an' }
+            { name: 'Kịch bản & Dự án', url: '/du-an' }
           ]}
         />
 
-        {/* Hero Section - FastMarketing Style */}
+        {/* Hero Section - Minh Bạch & Thực Chiến */}
         <div style={{ textAlign: 'center', maxWidth: '880px', margin: '1rem auto 3rem auto' }}>
           <div
             style={{
@@ -78,7 +78,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onOpenConsultForm })
               border: '1px solid #c7eed9'
             }}
           >
-            <Sparkles size={16} color="#0d7647" /> HỒ SƠ DỰ ÁN ĐO LƯỜNG THỰC TẾ (CASE STUDIES MATRIX)
+            <Sparkles size={16} color="#0d7647" /> THƯ VIỆN KỊCH BẢN GIẢ ĐỊNH & WORKFLOW KỸ THUẬT (PRACTICE BLUEPRINTS)
           </div>
 
           <h1
@@ -91,7 +91,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onOpenConsultForm })
               letterSpacing: '-0.02em'
             }}
           >
-            Nói Thực, Làm Kỹ, Số Liệu Đo Lường Minh Bạch
+            Tình Huống Giả Định Thường Gặp &amp; Cách LocalMate Xử Lý
           </h1>
 
           <p
@@ -99,12 +99,35 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onOpenConsultForm })
               fontSize: '1.1rem',
               color: '#475569',
               lineHeight: 1.7,
-              maxWidth: '750px',
-              margin: '0 auto 2.5rem auto'
+              maxWidth: '780px',
+              margin: '0 auto 1.75rem auto'
             }}
           >
-            Mỗi cơ sở kinh doanh địa phương là một bài toán riêng biệt. Không lý thuyết suông, LocalMate đồng hành giải quyết tận gốc điểm nghẽn bằng giải pháp công nghệ thực chiến, giúp chủ tiệm kéo khách thật và gia tăng doanh số.
+            Mỗi cơ sở kinh doanh địa phương đều có bài toán riêng biệt. LocalMate tôn trọng sự thật: Các trường hợp dưới đây là <strong>tình huống giả định thường gặp</strong> được mô phỏng dựa trên các vấn đề kinh doanh phổ biến nhất, nhằm minh họa trực quan quy trình công nghệ và cách chúng tôi tháo gỡ điểm nghẽn mà không đưa ra các lời hứa ảo vô căn cứ.
           </p>
+
+          {/* Transparency Disclaimer Notice */}
+          <div
+            style={{
+              backgroundColor: '#f8fafc',
+              border: '1px solid #cbd5e1',
+              borderRadius: '12px',
+              padding: '0.85rem 1.25rem',
+              maxWidth: '750px',
+              margin: '0 auto 2.5rem auto',
+              fontSize: '0.85rem',
+              color: '#334155',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.75rem',
+              textAlign: 'left'
+            }}
+          >
+            <ShieldCheck size={20} color="#0d7647" style={{ flexShrink: 0 }} />
+            <span>
+              <strong>Cam kết minh bạch 100%:</strong> LocalMate từ chối sử dụng số liệu ảo, testimonial bịa đặt hay hứa hẹn thứ hạng Top 1/doanh thu cố định. Toàn bộ kịch bản tập trung vào giá trị kỹ thuật và quy trình thực chiến.
+            </span>
+          </div>
 
           {/* Highlight Stats Bar */}
           <div
@@ -122,21 +145,21 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onOpenConsultForm })
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
               <div style={{ width: 44, height: 44, borderRadius: 10, backgroundColor: '#e6f7ef', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0d7647', flexShrink: 0 }}>
-                <Award size={22} />
+                <Layers size={22} />
               </div>
               <div>
-                <div style={{ fontSize: '1.35rem', fontWeight: 900, color: '#0f172a', lineHeight: 1.1 }}>5 Cơ Sở</div>
-                <div style={{ fontSize: '0.8rem', color: '#64748b', fontWeight: 600 }}>Dự án tiêu biểu có số liệu thật</div>
+                <div style={{ fontSize: '1.35rem', fontWeight: 900, color: '#0f172a', lineHeight: 1.1 }}>5 Kịch Bản</div>
+                <div style={{ fontSize: '0.8rem', color: '#64748b', fontWeight: 600 }}>Mô phỏng bài toán theo ngành</div>
               </div>
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
               <div style={{ width: 44, height: 44, borderRadius: 10, backgroundColor: '#fef3c7', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#d97706', flexShrink: 0 }}>
-                <TrendingUp size={22} />
+                <CheckCircle2 size={22} />
               </div>
               <div>
-                <div style={{ fontSize: '1.35rem', fontWeight: 900, color: '#d97706', lineHeight: 1.1 }}>Top 1 &amp; +250%</div>
-                <div style={{ fontSize: '0.8rem', color: '#64748b', fontWeight: 600 }}>Tăng trưởng cuộc gọi &amp; khách tới</div>
+                <div style={{ fontSize: '1.35rem', fontWeight: 900, color: '#d97706', lineHeight: 1.1 }}>Quy Trình Chuẩn</div>
+                <div style={{ fontSize: '0.8rem', color: '#64748b', fontWeight: 600 }}>Workflow kỹ thuật giải quyết gốc</div>
               </div>
             </div>
 
@@ -146,7 +169,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onOpenConsultForm })
               </div>
               <div>
                 <div style={{ fontSize: '1.35rem', fontWeight: 900, color: '#0284c7', lineHeight: 1.1 }}>4 - 7 Ngày</div>
-                <div style={{ fontSize: '0.8rem', color: '#64748b', fontWeight: 600 }}>Thời gian triển khai thần tốc</div>
+                <div style={{ fontSize: '0.8rem', color: '#64748b', fontWeight: 600 }}>Thời gian triển khai hạ tầng mẫu</div>
               </div>
             </div>
 
@@ -155,8 +178,8 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onOpenConsultForm })
                 <ShieldCheck size={22} />
               </div>
               <div>
-                <div style={{ fontSize: '1.35rem', fontWeight: 900, color: '#7e22ce', lineHeight: 1.1 }}>100% Đo Thật</div>
-                <div style={{ fontSize: '0.8rem', color: '#64748b', fontWeight: 600 }}>Có đối chiếu Before/After rõ ràng</div>
+                <div style={{ fontSize: '1.35rem', fontWeight: 900, color: '#7e22ce', lineHeight: 1.1 }}>Minh Bạch 100%</div>
+                <div style={{ fontSize: '0.8rem', color: '#64748b', fontWeight: 600 }}>Kịch bản giả định, không hứa ảo</div>
               </div>
             </div>
           </div>
@@ -340,14 +363,14 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onOpenConsultForm })
                   color: '#0d7647'
                 }}
               >
-                <span>Xem chi tiết câu chuyện &amp; số liệu</span>
+                <span>Xem chi tiết kịch bản &amp; workflow</span>
                 <ArrowRight size={16} />
               </div>
             </div>
           ))}
         </div>
 
-        {/* CASE STUDIES MATRIX TABLE - FastMarketing Reference */}
+        {/* CASE STUDIES MATRIX TABLE - Practice Blueprints SSOT */}
         <div
           style={{
             backgroundColor: '#ffffff',
@@ -370,13 +393,13 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onOpenConsultForm })
                 border: '1px solid #c7eed9'
               }}
             >
-              ĐỐI CHIẾU NHANH
+              ĐỐI CHIẾU QUY TRÌNH KỸ THUẬT
             </span>
             <h2 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#0f172a', marginTop: '0.75rem', marginBottom: '0.5rem' }}>
-              Bảng Ma Trận 5 Dự Án Khách Hàng Tiêu Biểu (SSOT Matrix)
+              Bảng Ma Trận 5 Kịch Bản Ngành Thường Gặp &amp; Giải Pháp Xử Lý
             </h2>
             <p style={{ fontSize: '0.95rem', color: '#64748b' }}>
-              Đối chiếu trực quan bài toán kinh doanh, giải pháp công nghệ đã thực hiện và kết quả đo lường Before / After thật của từng cơ sở.
+              Đối chiếu trực quan bài toán kinh doanh phổ biến, quy trình công nghệ giải quyết và giá trị bàn giao kỹ thuật minh họa của từng mô hình.
             </p>
           </div>
 
@@ -384,10 +407,10 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onOpenConsultForm })
             <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', minWidth: '760px' }}>
               <thead>
                 <tr style={{ backgroundColor: '#f8fafc', borderBottom: '2px solid #e2e8f0' }}>
-                  <th style={{ padding: '1rem', fontSize: '0.85rem', fontWeight: 800, color: '#0f172a', width: '22%' }}>CƠ SỞ &amp; NGÀNH</th>
-                  <th style={{ padding: '1rem', fontSize: '0.85rem', fontWeight: 800, color: '#c62828', width: '24%' }}>ĐIỂM NGHẼN TRƯỚC ĐÓ</th>
-                  <th style={{ padding: '1rem', fontSize: '0.85rem', fontWeight: 800, color: '#0d7647', width: '26%' }}>GIẢI PHÁP KỸ THUẬT</th>
-                  <th style={{ padding: '1rem', fontSize: '0.85rem', fontWeight: 800, color: '#0284c7', width: '18%' }}>KẾT QUẢ ĐỘT PHÁ</th>
+                  <th style={{ padding: '1rem', fontSize: '0.85rem', fontWeight: 800, color: '#0f172a', width: '22%' }}>KỊCH BẢN &amp; NGÀNH</th>
+                  <th style={{ padding: '1rem', fontSize: '0.85rem', fontWeight: 800, color: '#c62828', width: '24%' }}>ĐIỂM NGHẼN PHỔ BIẾN</th>
+                  <th style={{ padding: '1rem', fontSize: '0.85rem', fontWeight: 800, color: '#0d7647', width: '26%' }}>WORKFLOW LOCALMATE XỬ LÝ</th>
+                  <th style={{ padding: '1rem', fontSize: '0.85rem', fontWeight: 800, color: '#0284c7', width: '18%' }}>GIÁ TRỊ BÀN GIAO MỤC TIÊU</th>
                   <th style={{ padding: '1rem', fontSize: '0.85rem', fontWeight: 800, color: '#334155', width: '10%', textAlign: 'center' }}>XEM</th>
                 </tr>
               </thead>
@@ -521,7 +544,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onOpenConsultForm })
               lineHeight: 1.3
             }}
           >
-            Bạn Muốn Cơ Sở Của Mình Cũng Đạt Kết Quả Đột Phá Như Thế Này?
+            Bạn Muốn Lên Phương Án Kỹ Thuật Phù Hợp Với Tiệm Của Mình?
           </h2>
 
           <p
@@ -533,7 +556,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onOpenConsultForm })
               lineHeight: 1.7
             }}
           >
-            Chuyên gia của LocalMate sẽ đến tận tiệm hoặc khảo sát trực tuyến: kiểm tra vị trí Google Maps, rà soát đối thủ cạnh tranh bán kính 5km và lên phương án kỹ thuật miễn phí trước khi bạn quyết định triển khai.
+            Chuyên gia của LocalMate sẽ kiểm tra thực trạng hiện diện số của tiệm: rà soát vị trí Google Maps, đánh giá đối thủ cạnh tranh bán kính 3-5km và tư vấn quy trình công nghệ giải quyết vấn đề hoàn toàn miễn phí.
           </p>
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center' }}>
@@ -549,7 +572,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ onOpenConsultForm })
                 boxShadow: '0 4px 14px rgba(13, 118, 71, 0.25)'
               }}
             >
-              Đăng ký khảo sát cơ sở 0đ ngay →
+              Nhận khảo sát cơ sở 0đ từ kỹ thuật viên →
             </Button>
             <Button
               variant="secondary"

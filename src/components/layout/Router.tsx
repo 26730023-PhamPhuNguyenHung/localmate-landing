@@ -37,6 +37,27 @@ export const RouterProvider: React.FC<{ children: React.ReactNode }> = ({ childr
       return;
     }
 
+    if (to.includes('#')) {
+      const [pathPart, hashPart] = to.split('#');
+      const targetPath = pathPart || '/';
+      const isDifferentPath = window.location.pathname !== targetPath;
+
+      window.history.pushState({}, '', to);
+      if (isDifferentPath) {
+        setCurrentPath(targetPath);
+      }
+
+      setTimeout(() => {
+        const el = document.getElementById(hashPart) || document.querySelector(`[name="${hashPart}"]`);
+        if (el) {
+          const headerHeight = 84;
+          const targetPos = el.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+          window.scrollTo({ top: targetPos, behavior: 'smooth' });
+        }
+      }, isDifferentPath ? 150 : 20);
+      return;
+    }
+
     if (to !== window.location.pathname) {
       window.history.pushState({}, '', to);
       setCurrentPath(to);

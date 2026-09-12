@@ -210,7 +210,7 @@ export const GEO_TASK_GROUPS: GeoTaskGroup[] = [
     name: 'Thiết Lập Bộ 50–80 Prompt Kiểm Thử & Tối Ưu Câu Trả Lời AI',
     shortName: '4. Bộ 50-80 Prompt',
     description: 'Xây dựng kịch bản truy vấn sát thực tế hành vi khách hàng địa phương và tối ưu nội dung để AI trích dẫn thương hiệu.',
-    objective: 'Đảm bảo khi khách hàng hỏi bất kỳ câu hỏi nào trong ngách của bạn, AI đều tự nhiên đưa bạn vào Top 1–3 gợi ý.',
+    objective: 'Đảm bảo khi khách hàng hỏi các câu hỏi liên quan trong ngách của bạn, AI đều tự nhiên đưa cơ sở của bạn vào danh sách gợi ý nổi bật.',
     icon: Bot,
     accentColor: '#7c3aed',
     tasks: [
@@ -940,7 +940,7 @@ export const GeoTaskChecklistSection: React.FC<GeoTaskChecklistSectionProps> = (
               onClick={handleCTA}
             >
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
-                Đăng ký khảo sát AI 0đ
+                Nhận khảo sát hiện diện AI 0đ
                 <ArrowRight size={18} />
               </span>
             </Button>

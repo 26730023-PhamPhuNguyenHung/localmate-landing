@@ -284,7 +284,7 @@ const WEBFX_DELIVERABLES_MATRIX: DeliverableGroup[] = [
         hint: 'Hỗ trợ khắc phục lỗi phát sinh',
         starter: '6 tháng kỹ thuật',
         growth: '12 tháng + Backup tự động định kỳ',
-        enterprise: 'Trọn đời dự án + SLA phản hồi < 2h'
+        enterprise: 'Đồng hành kỹ thuật lâu dài + SLA phản hồi < 2h'
       }
     ]
   }
@@ -374,7 +374,7 @@ export const PricingMatrixSection: React.FC<PricingMatrixSectionProps> = ({ onOp
               <Key size={26} className="guarantee-icon" />
             </div>
             <div className="guarantee-content">
-              <div className="guarantee-badge">CAM KẾT 02 • SỞ HỮU TRỌN ĐỜI</div>
+              <div className="guarantee-badge">CAM KẾT 02 • BÀN GIAO CHÍNH CHỦ 100%</div>
               <h3 className="guarantee-title">Bàn giao tài khoản chính chủ 100%</h3>
               <p className="guarantee-desc">
                 Toàn bộ tên miền, Cloudflare, Google Maps được đăng ký trực tiếp bằng CCCD &amp; Gmail của bạn. Bàn giao đầy đủ mã nguồn và quyền quản trị cao nhất, tuyệt đối không giữ con tin kỹ thuật.

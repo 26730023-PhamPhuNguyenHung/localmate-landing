@@ -57,6 +57,16 @@ const MainContent: React.FC = () => {
   useEffect(() => {
     initAttribution();
     trackPageView(currentPath);
+    if (currentPath === '/cach-lam-viec' || currentPath.startsWith('/cach-lam-viec') || currentPath === '/quy-trinh') {
+      setTimeout(() => {
+        const el = document.getElementById('cach-lam-viec');
+        if (el) {
+          const headerHeight = 84;
+          const targetPos = el.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+          window.scrollTo({ top: targetPos, behavior: 'smooth' });
+        }
+      }, 100);
+    }
   }, [currentPath]);
 
   const handleOpenLeadForm = (serviceName?: string, businessInput?: string) => {
@@ -70,8 +80,8 @@ const MainContent: React.FC = () => {
   const renderPage = () => {
     const normalizedPath = currentPath.replace(/\/$/, '') || '/';
 
-    // 1. Root Homepage
-    if (normalizedPath === '/') {
+    // 1. Root Homepage & Cách làm việc
+    if (normalizedPath === '/' || normalizedPath === '/cach-lam-viec' || normalizedPath === '/quy-trinh') {
       return <HomePage onOpenConsultForm={handleOpenLeadForm} />;
     }
 

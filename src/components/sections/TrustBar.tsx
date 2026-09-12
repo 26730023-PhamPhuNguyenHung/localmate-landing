@@ -25,7 +25,7 @@ export const TrustBar: React.FC = () => {
       icon: KeyRound,
       badge: 'Cam kết 04',
       title: 'Bàn giao 100% tài khoản',
-      subtitle: 'Khách hàng toàn quyền làm chủ vĩnh viễn'
+      subtitle: 'Khách hàng toàn quyền làm chủ 100% chính chủ'
     }
   ];
 

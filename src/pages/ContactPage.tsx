@@ -242,7 +242,7 @@ export const ContactPage: React.FC = () => {
             ) : (
               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
                 <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: 'var(--color-text)', margin: 0 }}>
-                  Đăng Ký Nhận Website Demo 0đ
+                  Kể việc bạn đang cần • Nhận tư vấn 0đ
                 </h3>
 
                 {errorMessage && (
@@ -253,12 +253,34 @@ export const ContactPage: React.FC = () => {
 
                 <div>
                   <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text)', marginBottom: '0.35rem' }}>
-                    Họ và tên của bạn <span style={{ color: '#c62828' }}>*</span>
+                    Bạn đang gặp khó khăn gì trong công việc hiện tại?
+                  </label>
+                  <textarea
+                    rows={3}
+                    placeholder="Mô tả tự do bài toán thực tế của quán hoặc dịch vụ bạn cần hỗ trợ..."
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    style={{
+                      width: '100%',
+                      padding: '0.75rem 1rem',
+                      border: '1px solid var(--color-border)',
+                      borderRadius: 'var(--radius-md)',
+                      fontSize: '0.925rem',
+                      outline: 'none',
+                      resize: 'vertical',
+                      boxSizing: 'border-box'
+                    }}
+                  />
+                </div>
+
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text)', marginBottom: '0.35rem' }}>
+                    Họ và tên của bạn <span style={{ color: 'var(--color-danger)' }}>*</span>
                   </label>
                   <input
                     type="text"
                     required
-                    placeholder="Ví dụ: Nguyễn Văn Hùng"
+                    placeholder="Ví dụ: Anh Nam, Chị Lan..."
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     style={{
@@ -275,12 +297,12 @@ export const ContactPage: React.FC = () => {
 
                 <div>
                   <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text)', marginBottom: '0.35rem' }}>
-                    Số điện thoại / Zalo <span style={{ color: '#c62828' }}>*</span>
+                    Số điện thoại / Zalo <span style={{ color: 'var(--color-danger)' }}>*</span>
                   </label>
                   <input
                     type="tel"
                     required
-                    placeholder="Ví dụ: 0988 358 xxx"
+                    placeholder="Ví dụ: 0912 345 678"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     style={{
@@ -297,28 +319,7 @@ export const ContactPage: React.FC = () => {
 
                 <div>
                   <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text)', marginBottom: '0.35rem' }}>
-                    Tên tiệm / Ngành nghề kinh doanh
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Ví dụ: Quán ăn Nam Bộ, Nha khoa, Cơ sở nhôm kính..."
-                    value={formData.businessName}
-                    onChange={(e) => setFormData({ ...formData, businessName: e.target.value })}
-                    style={{
-                      width: '100%',
-                      padding: '0.75rem 1rem',
-                      border: '1px solid var(--color-border)',
-                      borderRadius: 'var(--radius-md)',
-                      fontSize: '0.925rem',
-                      outline: 'none',
-                      boxSizing: 'border-box'
-                    }}
-                  />
-                </div>
-
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text)', marginBottom: '0.35rem' }}>
-                    Dịch vụ bạn đang quan tâm
+                    Dịch vụ bạn đang quan tâm (tùy chọn)
                   </label>
                   <select
                     value={formData.serviceInterest}
@@ -343,28 +344,6 @@ export const ContactPage: React.FC = () => {
                   </select>
                 </div>
 
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: 'var(--color-text)', marginBottom: '0.35rem' }}>
-                    Ghi chú thêm (không bắt buộc)
-                  </label>
-                  <textarea
-                    rows={3}
-                    placeholder="Mô tả mong muốn hoặc gửi link Facebook/Website cũ của bạn..."
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    style={{
-                      width: '100%',
-                      padding: '0.75rem 1rem',
-                      border: '1px solid var(--color-border)',
-                      borderRadius: 'var(--radius-md)',
-                      fontSize: '0.925rem',
-                      outline: 'none',
-                      resize: 'vertical',
-                      boxSizing: 'border-box'
-                    }}
-                  />
-                </div>
-
                 <Button
                   variant="primary"
                   size="lg"
@@ -372,11 +351,11 @@ export const ContactPage: React.FC = () => {
                   disabled={isSubmitting}
                   style={{ fontWeight: 700 }}
                 >
-                  {isSubmitting ? 'Đang gửi...' : 'Gửi Yêu Cầu Nhận Website Demo 0đ'}
+                  {isSubmitting ? 'Đang gửi...' : 'Kể việc bạn đang cần • Nhận tư vấn 0đ'}
                 </Button>
 
-                <p style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', textAlign: 'center', margin: 0 }}>
-                  ✓ Nghiệm thu hài lòng rồi mới thanh toán • Bảo mật thông tin 100%
+                <p style={{ fontSize: '0.75rem', color: '#047857', textAlign: 'center', margin: 0, fontWeight: 600 }}>
+                  ✓ Cam kết phản hồi chân thành từ KTV, không spam cuộc gọi bán hàng • Bảo mật thông tin
                 </p>
               </form>
             )}

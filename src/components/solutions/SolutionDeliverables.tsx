@@ -17,7 +17,7 @@ export interface SolutionDeliverablesProps {
 export const SolutionDeliverables: React.FC<SolutionDeliverablesProps> = ({
   deliverables,
   heading = 'Những Gì Bạn Thực Sự Nhận Được Khi Bàn Giao',
-  subheading = 'Minh bạch 100% về tài sản số. Toàn bộ tài khoản, dữ liệu và công cụ đều thuộc về quyền sở hữu vĩnh viễn của bạn.'
+  subheading = 'Minh bạch 100% về tài sản số. Toàn bộ tài khoản, dữ liệu và công cụ đều thuộc về quyền làm chủ 100% tài khoản chính chủ của bạn.'
 }) => {
   if (!deliverables || deliverables.length === 0) return null;
 

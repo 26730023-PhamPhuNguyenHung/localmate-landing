@@ -105,7 +105,7 @@ const AVAILABLE_SERVICES: ServiceItem[] = [
     shortDesc: 'Chuẩn tốc độ < 1s, chuẩn SEO Google, tối ưu nút gọi & chat Zalo chuyển đổi cao',
     basePrice: 1990000,
     priceDisplay: 'Từ 490.000đ - 1.990.000đ',
-    priceNote: 'Trả 1 lần, sở hữu vĩnh viễn',
+    priceNote: 'Trả 1 lần, bàn giao 100% tài khoản chính chủ',
     estLeadsMin: 25,
     estLeadsMax: 60,
     isPopular: true,

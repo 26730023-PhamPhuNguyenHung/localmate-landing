@@ -151,7 +151,7 @@ export const OperationalCareClusterPage: React.FC<OperationalCareClusterPageProp
     {
       criteria: 'Quyền sở hữu tài khoản Ads',
       traditional: 'Agency nắm quyền sở hữu, giấu tài khoản, khi chấm dứt hợp đồng là mất trắng toàn bộ dữ liệu & điểm chất lượng.',
-      localmate: '100% tài khoản chính chủ của bạn (bạn giữ quyền Admin cao nhất). Dữ liệu khách hàng và lịch sử thuộc về bạn trọn đời.'
+      localmate: '100% tài khoản chính chủ của bạn (bạn giữ quyền Admin cao nhất). Dữ liệu khách hàng và lịch sử thuộc về bạn 100% chính chủ.'
     },
     {
       criteria: 'Minh bạch chi phí ngân sách',
@@ -160,7 +160,7 @@ export const OperationalCareClusterPage: React.FC<OperationalCareClusterPageProp
     },
     {
       criteria: 'Xử lý lỗi ngành nhạy cảm (Sửa chữa)',
-      traditional: 'Dùng thủ thuật bẩn (bọc link, cloaking, lách luật), chạy được 2–3 ngày lại chết tài khoản, có nguy cơ bị khóa vĩnh viễn tên miền.',
+      traditional: 'Dùng thủ thuật bẩn (bọc link, cloaking, lách luật), chạy được 2–3 ngày lại chết tài khoản, có nguy cơ bị khóa tên miền lâu dài.',
       localmate: 'Xử lý chuẩn chính sách (Disclaimer độc lập, gỡ nhãn hiệu vi phạm, bổ sung ĐKKD), nộp hồ sơ kháng nghị chính ngạch & xây tài khoản whitelist an toàn.'
     },
     {

@@ -96,8 +96,8 @@ export const SOLUTION_PILLARS: SolutionPillar[] = [
         description: 'Đầy đủ Trang chủ, Giới thiệu, Dịch vụ/Sản phẩm, Bảng giá, Liên hệ & Bản đồ chỉ đường.'
       },
       {
-        title: 'Tên Miền & Hạ Tầng Cloudflare Tốc Độ Cao',
-        description: 'Cấu hình DNS an toàn, chứng chỉ SSL miễn phí trọn đời, tải nhanh trên mọi nhà mạng.'
+        title: 'Tên Miền Riêng & Máy Chủ Tốc Độ Cao',
+        description: 'Cấu hình tên miền chính chủ, chứng chỉ SSL bảo mật an toàn, duy trì lâu dài và tải nhanh trên mọi nhà mạng.'
       },
       {
         title: 'Đo Lường Chuyển Đổi Cơ Bản',
@@ -130,7 +130,7 @@ export const SOLUTION_PILLARS: SolutionPillar[] = [
     title: 'Được Khách Hàng Tìm Thấy',
     englishTitle: 'Presence & Discovery',
     badge: 'Google Maps & AI Search',
-    tagline: 'Chiếm lĩnh Top Google Maps, Local SEO & Đề xuất AI (ChatGPT, Gemini)',
+    tagline: 'Hiện diện nổi bật trên Google Maps, tìm kiếm địa phương & Trợ lý AI',
     question: 'Có website rồi nhưng không ai tìm ra; người ta tìm dịch vụ ở gần mà toàn ra đối thủ.',
     brandPromise: 'Đưa thông tin cơ sở kinh doanh xuất hiện chuẩn xác và nổi bật tại nơi khách hàng đang tìm kiếm: từ Google Tìm kiếm, Google Maps bản đồ đến các công cụ AI thế hệ mới (ChatGPT, Gemini, Perplexity).',
     capabilities: [
@@ -143,18 +143,18 @@ export const SOLUTION_PILLARS: SolutionPillar[] = [
         description: 'Tối ưu từ khóa ngách có nhu cầu mua cao trong bán kính 3–10km quanh cơ sở.'
       },
       {
-        title: 'Cấu Trúc Dữ Liệu Schema LocalBusiness',
-        description: 'Nhúng mã dữ liệu có cấu trúc giúp Google và AI Bot hiểu rõ vị trí, giờ mở cửa và dịch vụ.'
+        title: 'Đồng Bộ Thông Tin Xác Thực Doanh Nghiệp',
+        description: 'Khai báo cấu trúc dữ liệu chuẩn giúp Google và các trợ lý AI hiểu rõ vị trí, giờ mở cửa và dịch vụ.'
       },
       {
-        title: 'Tối Ưu Đề Xuất AI Search (GEO & AEO)',
-        description: 'Cung cấp tệp llms.txt, bộ FAQ ngữ nghĩa chuẩn để trợ lý AI ưu tiên gợi ý tiệm của bạn.'
+        title: 'Tối Ưu Để Trợ Lý AI Gợi Ý Cơ Sở',
+        description: 'Cung cấp dữ liệu chuẩn và bộ câu hỏi thường gặp để ChatGPT, Gemini ưu tiên gợi ý tiệm của bạn.'
       }
     ],
     deliverables: [
       'Toàn quyền sở hữu tài khoản Google Maps chính chủ',
       'Mã QR in để bàn nhận đánh giá 5 sao thật từ khách',
-      'Bộ Schema JSON-LD hợp lệ 100% trên Google Rich Results Test',
+      'Thông tin dữ liệu xác thực chuẩn 100% trên công cụ kiểm tra của Google',
       'Báo cáo số lượt gọi điện và bấm chỉ đường trên Maps'
     ],
     startingPrice: 'Từ 299.000đ',
@@ -424,7 +424,7 @@ export const INDUSTRY_SCENARIOS_DATA: IndustryScenarioItem[] = [
     expectedOutcome: 'Tăng 180% lượt đặt lịch khám trước qua Zalo, giảm 50% áp lực điều phối phòng chờ.',
     recommendedBudget: '2.490.000đ - 3.990.000đ',
     keyDeliverables: ['Hồ sơ chuyên môn bác sĩ/kỹ thuật viên', 'Đặt lịch hẹn tự động nhắc qua tin nhắn', 'Tối ưu đề xuất AI Search Local'],
-    recommendedPackage: 'Website phòng khám 2.490k + Tối ưu GEO AI 2.9tr/th'
+    recommendedPackage: 'Website phòng khám 2.490k + Tối ưu đề xuất AI & Maps'
   },
   {
     id: 'scenario-construction',

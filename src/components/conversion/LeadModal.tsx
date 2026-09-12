@@ -162,10 +162,25 @@ export const LeadModal: React.FC<LeadModalProps> = ({
             <div className="success-icon-circle">
               <CheckCircle2 size={38} />
             </div>
-            <h3 className="success-title">Đã Nhận Yêu Cầu Của Bạn!</h3>
+            <h3 className="success-title">Đã Nhận Bài Toán Của Bạn!</h3>
             <p className="success-text">
-              Chuyên viên LocalMate đã tiếp nhận thông tin về nhu cầu <strong>"{formData.service}"</strong> và sẽ liên hệ hỗ trợ bạn qua Zalo/SĐT trong vòng <strong>15 phút</strong>.
+              Kỹ thuật viên LocalMate đã tiếp nhận thông tin về nhu cầu <strong>"{formData.service}"</strong> và sẽ liên hệ hỗ trợ bạn qua Zalo/SĐT trong vòng <strong>15 phút</strong>.
             </p>
+            <div style={{
+              backgroundColor: '#f0fdf4',
+              border: '1px solid #bbf7d0',
+              borderRadius: '8px',
+              padding: '0.65rem 0.85rem',
+              fontSize: '0.825rem',
+              color: '#166534',
+              marginBottom: '1.25rem',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem'
+            }}>
+              <ShieldCheck size={16} style={{ flexShrink: 0 }} />
+              <span>Cam kết phản hồi chân thành từ kỹ thuật viên, tuyệt đối không spam cuộc gọi bán hàng.</span>
+            </div>
 
             <div className="success-buttons">
               <a
@@ -180,7 +195,7 @@ export const LeadModal: React.FC<LeadModalProps> = ({
                 href={`tel:${CONTACT_INFO.phoneRaw}`}
                 className="btn-modal-call"
               >
-                <Phone size={18} /> Gọi Hotline Ngay ({CONTACT_INFO.phoneRaw})
+                <Phone size={18} /> Gọi Hotline Trực Tiếp ({CONTACT_INFO.phoneRaw})
               </a>
               <button
                 type="button"
@@ -196,13 +211,13 @@ export const LeadModal: React.FC<LeadModalProps> = ({
             {/* Header */}
             <div className="modal-header">
               <div className="modal-top-tag">
-                <Sparkles size={14} /> KHỞI ĐẦU DỄ DÀNG • DEMO 0Đ
+                <Sparkles size={14} /> TRAO ĐỔI VỚI KỸ THUẬT VIÊN • TƯ VẤN 0Đ
               </div>
               <h3 id="modal-headline" className="modal-title">
-                Đăng Ký Tư Vấn &amp; Nhận Demo 0đ
+                Kể việc bạn đang cần giải quyết
               </h3>
               <p className="modal-desc">
-                Chuyên viên kỹ thuật sẽ tư vấn giải pháp phù hợp nhất với mô hình kinh doanh của bạn.
+                Mô tả tự do bài toán thực tế của bạn. Kỹ thuật viên LocalMate sẽ phân tích và phản hồi giải pháp phù hợp nhất.
               </p>
             </div>
 
@@ -215,6 +230,41 @@ export const LeadModal: React.FC<LeadModalProps> = ({
 
             {/* Form */}
             <form onSubmit={handleSubmit} className="modal-form" noValidate>
+              {/* Row: Mô tả tự do khó khăn - Đặt lên đầu để người dùng kể việc tự nhiên */}
+              <div className="form-field-wrap">
+                <label htmlFor="modal-lead-msg" className="field-title">
+                  Bạn đang gặp khó khăn gì trong công việc hiện tại?
+                </label>
+                <textarea
+                  id="modal-lead-msg"
+                  rows={3}
+                  placeholder="Ví dụ: Quán mới mở chưa ai thấy trên Google Maps, web cũ mở trên điện thoại bị chậm, muốn có người hướng dẫn..."
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  className="modal-input modal-textarea"
+                />
+              </div>
+
+              {/* Row: Số điện thoại / Zalo */}
+              <div className="form-field-wrap">
+                <label htmlFor="modal-lead-phone" className="field-title">
+                  Số điện thoại hoặc Zalo của bạn <span className="field-required">*</span>
+                </label>
+                <input
+                  id="modal-lead-phone"
+                  type="tel"
+                  required
+                  placeholder="Ví dụ: 0912 345 678"
+                  value={formData.phone}
+                  onChange={(e) => {
+                    setFormData({ ...formData, phone: e.target.value });
+                    if (errorMsg) setErrorMsg('');
+                  }}
+                  className="modal-input"
+                  autoComplete="tel"
+                />
+              </div>
+
               {/* Row: Họ và tên */}
               <div className="form-field-wrap">
                 <label htmlFor="modal-lead-name" className="field-title">
@@ -235,30 +285,10 @@ export const LeadModal: React.FC<LeadModalProps> = ({
                 />
               </div>
 
-              {/* Row: Số điện thoại / Zalo */}
-              <div className="form-field-wrap">
-                <label htmlFor="modal-lead-phone" className="field-title">
-                  Số điện thoại / Zalo <span className="field-required">*</span>
-                </label>
-                <input
-                  id="modal-lead-phone"
-                  type="tel"
-                  required
-                  placeholder="Ví dụ: 0912 345 678"
-                  value={formData.phone}
-                  onChange={(e) => {
-                    setFormData({ ...formData, phone: e.target.value });
-                    if (errorMsg) setErrorMsg('');
-                  }}
-                  className="modal-input"
-                  autoComplete="tel"
-                />
-              </div>
-
               {/* Row: Dịch vụ quan tâm */}
               <div className="form-field-wrap">
                 <label htmlFor="modal-lead-service" className="field-title">
-                  Nhu cầu bạn đang quan tâm
+                  Nhu cầu phân loại nhanh (tùy chọn)
                 </label>
                 <select
                   id="modal-lead-service"
@@ -274,21 +304,6 @@ export const LeadModal: React.FC<LeadModalProps> = ({
                 </select>
               </div>
 
-              {/* Row: Ghi chú */}
-              <div className="form-field-wrap">
-                <label htmlFor="modal-lead-msg" className="field-title">
-                  Ghi chú thêm (không bắt buộc)
-                </label>
-                <textarea
-                  id="modal-lead-msg"
-                  rows={2}
-                  placeholder="Ví dụ: Cần làm website trong 5 ngày, xem demo trước..."
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="modal-input modal-textarea"
-                />
-              </div>
-
               {/* Submit CTA Button */}
               <button
                 type="submit"
@@ -297,30 +312,35 @@ export const LeadModal: React.FC<LeadModalProps> = ({
               >
                 {isSubmitting ? (
                   <>
-                    <Loader2 size={19} className="spin-icon" /> Đang gửi đăng ký...
+                    <Loader2 size={19} className="spin-icon" /> Đang gửi yêu cầu...
                   </>
                 ) : (
                   <>
-                    Gửi Đăng Ký Nhận Demo 0đ <ArrowRight size={19} />
+                    Kể việc bạn đang cần • Nhận tư vấn 0đ <ArrowRight size={19} />
                   </>
                 )}
               </button>
 
-              {/* CAM KẾT UY TÍN: 'Bảo mật thông tin - Phản hồi trong 15 phút - Hoàn toàn miễn phí' */}
-              <div className="modal-trust-bar">
-                <div className="trust-item">
-                  <Lock size={13} className="t-icon" />
-                  <span>Bảo mật thông tin</span>
+              {/* CAM KẾT CHÂN THÀNH KHÔNG SPAM */}
+              <div className="modal-trust-bar" style={{ flexDirection: 'column', gap: '0.4rem', alignItems: 'center' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#047857', fontWeight: 600, fontSize: '0.8rem', textAlign: 'center' }}>
+                  <ShieldCheck size={15} color="#0d7647" style={{ flexShrink: 0 }} />
+                  <span>Cam kết phản hồi chân thành từ kỹ thuật viên, không spam cuộc gọi bán hàng</span>
                 </div>
-                <div className="dot-sep">•</div>
-                <div className="trust-item">
-                  <Clock size={13} className="t-icon" />
-                  <span>Phản hồi 15 phút</span>
-                </div>
-                <div className="dot-sep">•</div>
-                <div className="trust-item">
-                  <ShieldCheck size={13} className="t-icon" />
-                  <span>Hoàn toàn miễn phí</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#64748b', fontSize: '0.75rem' }}>
+                  <div className="trust-item">
+                    <Lock size={12} className="t-icon" />
+                    <span>Bảo mật dữ liệu</span>
+                  </div>
+                  <div className="dot-sep">•</div>
+                  <div className="trust-item">
+                    <Clock size={12} className="t-icon" />
+                    <span>Phản hồi trong 15 phút</span>
+                  </div>
+                  <div className="dot-sep">•</div>
+                  <div className="trust-item">
+                    <span>100% Tư vấn miễn phí</span>
+                  </div>
                 </div>
               </div>
 

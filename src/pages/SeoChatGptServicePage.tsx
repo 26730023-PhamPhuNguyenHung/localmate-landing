@@ -338,7 +338,7 @@ export const SeoChatGptServicePage: React.FC<SeoChatGptServicePageProps> = ({ on
               5 Bước đưa thương hiệu vào bộ nhớ đàm thoại của ChatGPT
             </h2>
             <p style={{ fontSize: '1rem', color: '#475569', lineHeight: 1.6, textWrap: 'pretty' }}>
-              Không phụ thuộc vào quảng cáo trả phí ngắn hạn. Xây dựng tài sản số vĩnh viễn giúp ChatGPT luôn ưu tiên nhắc tên bạn.
+              Không phụ thuộc vào quảng cáo trả phí ngắn hạn. Xây dựng tài sản số bền vững giúp ChatGPT luôn ưu tiên nhắc tên bạn.
             </p>
           </div>
 

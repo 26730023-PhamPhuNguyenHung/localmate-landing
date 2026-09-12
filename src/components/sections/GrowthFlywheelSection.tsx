@@ -183,7 +183,7 @@ const FLYWHEEL_STAGES: FlywheelStage[] = [
     ],
     traditionalProblem: 'Tốn 8-10 triệu thuê nhân viên riêng hoặc bỏ mặc Fanpage mốc meo; bị đối thủ chơi xấu đánh giá 1 sao mà không biết xử lý ra sao.',
     flywheelAdvantage: 'Có nguyên một đội ngũ kỹ thuật và nội dung đồng hành chi phí chỉ 990k/tháng; uy tín 5 sao tích lũy liên tục tạo lực đẩy lớn cho bánh đà.',
-    ctaText: 'Đăng ký gói Digital Care 990k'
+    ctaText: 'Tư vấn gói Digital Care 990k'
   },
   {
     id: 4,

@@ -1,5 +1,25 @@
 # BÀI HỌC VÀ LƯU Ý KỸ THUẬT (LESSONS LEARNED & BUG MEMORY)
 
+## [2026-09-13] — Subagent 4: Service Architecture & Taxonomy Refiner (Taxonomy & Problem-First Taxonomy)
+- **Vấn đề cấu trúc & wording dịch vụ cũ:**
+  - Một số capability đặt tên sặc mùi thuật ngữ (GEO, AEO, Schema JSON-LD, Cloudflare Edge CDN, Core Web Vitals 90+, Thumb-zone CRO), khiến khách hàng phổ thông không hiểu và tưởng đây là dịch vụ đắt tiền/phức tạp.
+  - Các kỹ thuật này bị nâng lên thành "giải pháp ngang hàng" thay vì giữ vai trò là năng lực/module hỗ trợ bên trong.
+  - Xuất hiện rải rác các từ cam kết quá đà vi phạm Brand Voice V2: "bảo hành trọn đời", "sở hữu vĩnh viễn", "cam kết Top 1 - 3".
+- **Giải pháp chuẩn hóa Service Architecture:**
+  - **Cấu trúc Problem-First -> Solution -> Capability**:
+    1. Vấn đề thực tế (Gửi ảnh Zalo trôi tin, website vỡ trên điện thoại, khách tìm Maps không thấy, tự chạy ads tốn tiền click tặc, bận việc quên gọi lại sót khách, làm xong web lỗi không ai sửa).
+    2. Giải pháp tổng thể tương ứng 5 trụ cột.
+    3. Năng lực kỹ thuật bên trong được phiên dịch sang ngôn ngữ đời sống:
+       - Schema JSON-LD / Entity NAP -> "Đồng bộ thông tin xác thực doanh nghiệp"
+       - GEO / AEO / ChatGPT -> "Tối ưu để trợ lý AI đề xuất (ChatGPT & Gemini)"
+       - Cloudflare Edge / PageSpeed 90+ -> "Tối ưu mở trang cực nhanh dưới 1.2s"
+       - GA4 / Meta Pixel -> "Đo lường chi phí từng cuộc gọi & tin nhắn Zalo"
+  - **Làm sạch Wording**:
+    - "Bảo hành trọn đời / sở hữu vĩnh viễn" -> "Đồng hành hỗ trợ kỹ thuật lâu dài", "Bàn giao 100% tài khoản chính chủ".
+    - "Cam kết Top 1" -> "Hiện diện nổi bật trên Google Maps & Tìm kiếm địa phương", "Top 3 khu vực".
+  - **Phạm vi dọn dẹp**: Đồng bộ 100% qua `solutionsData.ts`, `solutionPillarsData.ts`, các components Section, Deliverables, Pricing và các Cluster/Service pages.
+- **Nghiệm thu kỹ thuật**: `tsc --noEmit` PASS 100%, không type error, không broken interface.
+
 ## [2026-09-13] — Subagent 6: Homepage UI/UX Designer & Component Refactorer (9 Brand Voice V2 Sections)
 - **Vấn đề nhận diện từ giao diện Homepage cũ:**
   - Sections cũ có nhiều yếu tố rườm rà, lạm dụng gradient màu mè, bảng giá chi tiết hiển thị quá sớm gây ngợp, và thiếu sự gắn kết theo luồng giải quyết vấn đề từ góc nhìn khách hàng.

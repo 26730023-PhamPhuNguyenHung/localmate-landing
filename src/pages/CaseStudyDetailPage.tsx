@@ -56,11 +56,11 @@ export const CaseStudyDetailPage: React.FC<CaseStudyDetailPageProps> = ({ slug, 
     <div style={{ backgroundColor: '#fcfdfd', padding: '2rem 0 6rem 0' }}>
       {/* SEO & Structured Data */}
       <SEOHead
-        title={`Câu Chuyện Khách Hàng: ${caseStudy.clientDisplayName} | LocalMate`}
+        title={`Kịch Bản Ngành: ${caseStudy.clientDisplayName} | LocalMate`}
         description={caseStudy.resultsSummary}
         canonicalPath={`/du-an/${caseStudy.slug}`}
         breadcrumbs={[
-          { name: 'Dự án thực tế', url: '/du-an' },
+          { name: 'Kịch bản & Dự án', url: '/du-an' },
           { name: caseStudy.clientDisplayName, url: `/du-an/${caseStudy.slug}` }
         ]}
       />
@@ -69,12 +69,12 @@ export const CaseStudyDetailPage: React.FC<CaseStudyDetailPageProps> = ({ slug, 
         {/* Breadcrumbs */}
         <Breadcrumbs
           items={[
-            { name: 'Dự án thực tế', url: '/du-an' },
+            { name: 'Kịch bản & Dự án', url: '/du-an' },
             { name: caseStudy.clientDisplayName, url: `/du-an/${caseStudy.slug}` }
           ]}
         />
 
-        {/* Hero Case Header - FastMarketing Style */}
+        {/* Hero Case Header - Minh Bạch Kịch Bản & Workflow */}
         <div
           style={{
             backgroundColor: '#ffffff',
@@ -119,7 +119,7 @@ export const CaseStudyDetailPage: React.FC<CaseStudyDetailPageProps> = ({ slug, 
                 gap: 4
               }}
             >
-              <ShieldCheck size={13} /> Số liệu đã kiểm chứng
+              <ShieldCheck size={13} /> {caseStudy.scenarioType || 'Tình huống giả định minh họa'}
             </span>
           </div>
 
@@ -142,6 +142,27 @@ export const CaseStudyDetailPage: React.FC<CaseStudyDetailPageProps> = ({ slug, 
             </div>
           )}
 
+          {/* Transparency Disclaimer Notice */}
+          <div
+            style={{
+              backgroundColor: '#f0fdf4',
+              border: '1px solid #bbf7d0',
+              borderRadius: '12px',
+              padding: '1rem 1.25rem',
+              marginBottom: '1.75rem',
+              fontSize: '0.875rem',
+              color: '#166534',
+              display: 'flex',
+              alignItems: 'flex-start',
+              gap: '0.75rem'
+            }}
+          >
+            <ShieldCheck size={20} color="#0d7647" style={{ flexShrink: 0, marginTop: '2px' }} />
+            <div>
+              <strong>Ghi chú minh bạch thương hiệu:</strong> {caseStudy.transparencyNote || 'Đây là kịch bản giả định dựa trên bài toán kinh doanh phổ biến để minh họa quy trình công nghệ và cách LocalMate tháo gỡ điểm nghẽn. Chúng tôi cam kết kỹ thuật thực tế và nói không với các cam kết ảo.'}
+            </div>
+          </div>
+
           <div
             style={{
               backgroundColor: '#f8fafc',
@@ -152,7 +173,7 @@ export const CaseStudyDetailPage: React.FC<CaseStudyDetailPageProps> = ({ slug, 
             }}
           >
             <div style={{ fontSize: '0.8rem', fontWeight: 800, color: '#0d7647', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.35rem' }}>
-              TÓM TẮT ĐỘT PHÁ
+              VÍ DỤ CÁCH LOCALMATE XỬ LÝ
             </div>
             <p style={{ fontSize: '1.05rem', color: '#1e293b', lineHeight: 1.6, margin: 0, fontWeight: 500 }}>
               {caseStudy.resultsSummary}
@@ -162,7 +183,7 @@ export const CaseStudyDetailPage: React.FC<CaseStudyDetailPageProps> = ({ slug, 
           {/* Evidence Metric Grid - Thẻ Số Liệu To Rõ */}
           <div>
             <div style={{ fontSize: '0.85rem', fontWeight: 800, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '1rem' }}>
-              CHỈ SỐ TĂNG TRƯỞNG CHÍNH (KEY RESULTS SCORECARD)
+              GIÁ TRỊ BÀN GIAO KỸ THUẬT &amp; MỤC TIÊU ĐO LƯỜNG
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))', gap: '1.25rem' }}>
               {caseStudy.evidence.map((ev, idx) => {
@@ -643,7 +664,7 @@ export const CaseStudyDetailPage: React.FC<CaseStudyDetailPageProps> = ({ slug, 
           >
             <div>
               <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#0f172a', marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: 8 }}>
-                <TrendingUp size={20} color="#ea580c" /> Hiệu Quả Hoàn Vốn (ROI)
+                <TrendingUp size={20} color="#ea580c" /> Tiến Độ Triển Khai Kỹ Thuật
               </h3>
               <div
                 style={{
@@ -655,14 +676,14 @@ export const CaseStudyDetailPage: React.FC<CaseStudyDetailPageProps> = ({ slug, 
                 }}
               >
                 <div style={{ fontSize: '0.8rem', fontWeight: 800, color: '#c2410c', textTransform: 'uppercase', marginBottom: '0.35rem' }}>
-                  MỐC THỜI GIAN HOÀN VỐN
+                  KẾ HOẠCH BÀN GIAO MẪU
                 </div>
-                <div style={{ fontSize: '1.15rem', fontWeight: 800, color: '#9a3412', lineHeight: 1.4 }}>
+                <div style={{ fontSize: '1.1rem', fontWeight: 800, color: '#9a3412', lineHeight: 1.4 }}>
                   {caseStudy.roiTimeline}
                 </div>
               </div>
               <p style={{ fontSize: '0.875rem', color: '#64748b', lineHeight: 1.6, margin: 0 }}>
-                Thời gian triển khai thực tế: <strong style={{ color: '#0f172a' }}>{caseStudy.period}</strong>. Mọi hạng mục đều được nghiệm thu dựa trên dữ liệu Google Analytics &amp; Google Business Profile thật.
+                Thời gian triển khai mẫu: <strong style={{ color: '#0f172a' }}>{caseStudy.period}</strong>. Mọi hạng mục đều được nghiệm thu trực tiếp trên hệ thống thực tế trước khi thanh toán.
               </p>
             </div>
 
@@ -679,7 +700,7 @@ export const CaseStudyDetailPage: React.FC<CaseStudyDetailPageProps> = ({ slug, 
           </div>
         </div>
 
-        {/* TESTIMONIAL QUOTE (FastMarketing Style) */}
+        {/* TESTIMONIAL / MỤC TIÊU TRẢI NGHIỆM */}
         {caseStudy.testimonial && (
           <div
             style={{
@@ -692,12 +713,10 @@ export const CaseStudyDetailPage: React.FC<CaseStudyDetailPageProps> = ({ slug, 
               boxShadow: '0 4px 16px rgba(15, 23, 42, 0.03)'
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#f59e0b', marginBottom: '1rem' }}>
-              {[1, 2, 3, 4, 5].map((s) => (
-                <Star key={s} size={18} fill="#f59e0b" color="#f59e0b" />
-              ))}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#0d7647', marginBottom: '1rem' }}>
+              <Sparkles size={18} color="#0d7647" />
               <span style={{ fontSize: '0.85rem', fontWeight: 800, color: '#0f172a', marginLeft: 4 }}>
-                Đánh giá 5.0 / 5.0
+                Mục Tiêu Trải Nghiệm Khách Hàng (Customer Expectation Benchmark)
               </span>
             </div>
 
@@ -732,7 +751,7 @@ export const CaseStudyDetailPage: React.FC<CaseStudyDetailPageProps> = ({ slug, 
                   {caseStudy.testimonial.author}
                 </div>
                 <div style={{ fontSize: '0.85rem', color: '#64748b' }}>
-                  {caseStudy.testimonial.role} — {caseStudy.clientDisplayName}
+                  {caseStudy.testimonial.role}
                 </div>
               </div>
             </div>
@@ -809,7 +828,7 @@ export const CaseStudyDetailPage: React.FC<CaseStudyDetailPageProps> = ({ slug, 
                 boxShadow: '0 4px 14px rgba(13, 118, 71, 0.25)'
               }}
             >
-              Đăng ký nhận khảo sát 0đ ngay →
+              Nhận khảo sát cơ sở 0đ từ kỹ thuật viên →
             </Button>
             <Button
               variant="secondary"
@@ -823,7 +842,7 @@ export const CaseStudyDetailPage: React.FC<CaseStudyDetailPageProps> = ({ slug, 
                 color: '#0f172a'
               }}
             >
-              Xem các dự án khác
+              Xem các kịch bản khác
             </Button>
           </div>
         </div>
@@ -834,10 +853,10 @@ export const CaseStudyDetailPage: React.FC<CaseStudyDetailPageProps> = ({ slug, 
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.75rem', flexWrap: 'wrap', gap: '1rem' }}>
               <div>
                 <span style={{ fontSize: '0.75rem', fontWeight: 800, color: '#0d7647', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                  HỒ SƠ KHÁC
+                  KỊCH BẢN KHÁC
                 </span>
                 <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#0f172a', margin: '0.25rem 0 0 0' }}>
-                  Khám Phá Các Câu Chuyện Khách Hàng Khác
+                  Khám Phá Các Kịch Bản Ngành Khác
                 </h3>
               </div>
               <button

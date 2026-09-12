@@ -134,7 +134,7 @@ export const GeoServicePage: React.FC<GeoServicePageProps> = ({ onOpenConsultFor
       title: 'Xây dựng Prompt Bank (50–80 câu hỏi AI phổ biến nhất trong khu vực)',
       badge: 'Bao Phủ Ý Định Khách Hàng',
       icon: <MessageSquare className="w-6 h-6 text-[#0d7647]" />,
-      desc: 'Nghiên cứu bộ 50 đến 80 câu lệnh hỏi tự nhiên mà người dân địa phương thường dùng để trò chuyện với AI (VD: "Quán lẩu gia đình ấm cúng có chỗ đậu ô tô gần đây?", "Phòng khám nha khoa niềng răng uy tín gần tôi"). Tối ưu nội dung ngữ nghĩa (Semantic Content) để khi khách hỏi bất kỳ câu nào trong bộ prompt, cơ sở của bạn đều đứng trong Top 1–3 gợi ý.',
+      desc: 'Nghiên cứu bộ 50 đến 80 câu lệnh hỏi tự nhiên mà người dân địa phương thường dùng để trò chuyện với AI (VD: "Quán lẩu gia đình ấm cúng có chỗ đậu ô tô gần đây?", "Phòng khám nha khoa niềng răng uy tín gần tôi"). Tối ưu nội dung ngữ nghĩa (Semantic Content) để khi khách hỏi bất kỳ câu nào trong bộ prompt, cơ sở của bạn đều xuất hiện trong danh sách gợi ý hàng đầu.',
       actionPoint: 'Đón đầu trực tiếp câu hỏi người dùng khi họ mở ChatGPT Voice hoặc Google Gemini trên điện thoại.'
     },
     {
@@ -215,7 +215,7 @@ export const GeoServicePage: React.FC<GeoServicePageProps> = ({ onOpenConsultFor
     },
     {
       q: 'Sau khi làm xong, các tài khoản và dữ liệu thuộc về ai?',
-      a: '100% thuộc về bạn! Toàn bộ tài khoản Google Business Profile, danh bạ dữ liệu, email quản trị và mã nguồn Schema đều được LocalMate bàn giao quyền chính chủ vĩnh viễn cho bạn. Chúng tôi cam kết minh bạch số liệu, không giữ pass, không gây phụ thuộc.'
+      a: '100% thuộc về bạn! Toàn bộ tài khoản Google Business Profile, danh bạ dữ liệu, email quản trị và mã nguồn Schema đều được LocalMate bàn giao 100% tài khoản chính chủ cho bạn. Chúng tôi cam kết minh bạch số liệu, không giữ pass, không gây phụ thuộc.'
     }
   ];
 
@@ -361,7 +361,7 @@ export const GeoServicePage: React.FC<GeoServicePageProps> = ({ onOpenConsultFor
                   }}
                 >
                   <Send size={18} />
-                  <span>Đăng Ký Audit Đề Xuất AI Miễn Phí</span>
+                  <span>Nhận Báo Cáo Khảo Sát AI 0đ</span>
                 </a>
                 <a
                   href="#bang-gia-geo"
@@ -1132,7 +1132,7 @@ export const GeoServicePage: React.FC<GeoServicePageProps> = ({ onOpenConsultFor
               </div>
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem' }}>
                 <CheckCircle2 size={16} color="#0d7647" style={{ flexShrink: 0, marginTop: '0.2rem' }} />
-                <span><strong>100% Tài khoản chính chủ:</strong> Toàn bộ dữ liệu, email quản trị, quyền ghim vị trí đều thuộc sở hữu của bạn vĩnh viễn.</span>
+                <span><strong>100% Tài khoản chính chủ:</strong> Toàn bộ dữ liệu, email quản trị, quyền ghim vị trí đều thuộc sở hữu 100% chính chủ của bạn.</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem' }}>
                 <CheckCircle2 size={16} color="#0d7647" style={{ flexShrink: 0, marginTop: '0.2rem' }} />

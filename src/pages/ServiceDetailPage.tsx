@@ -530,7 +530,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slug, onOp
             }}
           >
             <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#0d7647', backgroundColor: '#ecfdf5', padding: '0.3rem 0.75rem', borderRadius: '9999px' }}>
-              DỰ ÁN THỰC TẾ ĐÃ LÀM
+              KỊCH BẢN GIẢ ĐỊNH &amp; WORKFLOW MINH HỌA
             </span>
             <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#0f172a', marginTop: '0.75rem', marginBottom: '0.75rem' }}>
               {proofCaseStudy.clientDisplayName}
@@ -560,7 +560,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ slug, onOp
                 textDecoration: 'none'
               }}
             >
-              <span>Xem chi tiết câu chuyện dự án này</span>
+              <span>Xem chi tiết kịch bản &amp; workflow này</span>
               <ArrowRight size={16} />
             </Link>
           </div>

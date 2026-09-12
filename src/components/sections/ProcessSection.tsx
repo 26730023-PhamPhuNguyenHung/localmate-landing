@@ -34,16 +34,17 @@ export const ProcessSection: React.FC = () => {
     {
       num: '04',
       tag: 'BƯỚC 04',
-      title: 'Đồng hành trọn đời',
+      title: 'Đồng hành hỗ trợ kỹ thuật lâu dài',
       lead: 'Hỗ trợ kỹ thuật 24/7',
       desc: 'Kỹ thuật viên địa phương túc trực hỗ trợ dài lâu, gửi kèm video 2 phút hướng dẫn tự cập nhật nội dung dễ hiểu, bảo hành kỹ thuật không thu phí duy trì vô lý.',
-      deliverable: 'Bảo hành & Hỗ trợ trọn đời',
+      deliverable: 'Đồng hành hỗ trợ kỹ thuật lâu dài',
       icon: Headphones
     }
   ];
 
   return (
-    <section className="section-component process-story-section" id="quy-trinh" aria-label="Quy trình làm việc 4 bước">
+    <section className="section-component process-story-section" id="cach-lam-viec" aria-label="Quy trình và cách làm việc 4 bước">
+      <div id="quy-trinh" style={{ position: 'absolute', marginTop: '-90px' }} aria-hidden="true" />
       <Container>
         {/* Section Header */}
         <div className="section-header">

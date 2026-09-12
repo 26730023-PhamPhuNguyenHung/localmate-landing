@@ -75,7 +75,7 @@ export const StrategyPhasesPage: React.FC<StrategyPhasesPageProps> = ({ onOpenCo
         'Khẳng định quyền sở hữu thực thể doanh nghiệp trên Google, đồng bộ dữ liệu địa danh (NAP: Tên - Địa chỉ - Điện thoại), loại bỏ nguy cơ bị đối thủ chiếm đoạt địa điểm và kích hoạt hệ thống tích lũy đánh giá 5 sao từ khách hàng thực.',
       ktvTasks: [
         'Khảo sát thực địa vị trí cơ sở, tọa độ GPS chuẩn xác, mặt tiền và biển hiệu kinh doanh thực tế.',
-        'Xác minh chính chủ Google Business Profile (GBP) bằng video/thư xác thực, gắn thẳng vào email cá nhân/công ty của bạn (bạn nắm 100% quyền sở hữu vĩnh viễn, không ai lấy lại được).',
+        'Xác minh chính chủ Google Business Profile (GBP) bằng video/thư xác thực, gắn thẳng vào email cá nhân/công ty của bạn (bạn nắm 100% quyền sở hữu chính chủ, không ai lấy lại được).',
         'Quét và dọn sạch các địa điểm rác, gộp địa điểm trùng lặp, chỉnh sửa sai sót về tên đường, số nhà, phường xã.',
         'Đồng bộ thông tin thương hiệu (NAP) trên bản đồ Google Maps, Apple Maps, Facebook và các danh bạ địa phương.',
         'Thiết kế và in ấn bảng QR Code để bàn mica cao cấp: Khách hàng quét mã là mở ngay biểu mẫu đánh giá 5 sao, kèm gợi ý từ khóa dịch vụ tăng tín hiệu đề xuất.'
@@ -87,7 +87,7 @@ export const StrategyPhasesPage: React.FC<StrategyPhasesPageProps> = ({ onOpenCo
         'Tài liệu hướng dẫn nhân viên xin review tự nhiên, không gây phản cảm cho khách.'
       ],
       practicalAdvice:
-        'Đừng vội chạy quảng cáo khi Google Maps chưa chuẩn. Một địa điểm xác minh chính chủ có 20-30 đánh giá 5 sao sẽ giúp tăng 300% tỷ lệ khách bấm gọi điện khi họ nhìn thấy bạn trên bản đồ.',
+        'Đừng vội chạy quảng cáo khi Google Maps chưa chuẩn. Một địa điểm xác minh chính chủ có 20-30 đánh giá 5 sao sẽ giúp gia tăng đáng kể tỷ lệ khách hàng tin tưởng bấm gọi điện khi họ nhìn thấy bạn trên bản đồ.',
       nextStepBridge: 'Sau khi có địa danh chính chủ vững vàng, bước tiếp theo là xây dựng Sales Hub để hứng trọn traffic.'
     },
     {
@@ -195,7 +195,7 @@ export const StrategyPhasesPage: React.FC<StrategyPhasesPageProps> = ({ onOpenCo
       coreGoal:
         'Tự động hóa 100% khâu tiếp nhận thông tin khách hàng, báo chuông điện thoại trong vòng 3 giây khi có khách mới, loại bỏ hoàn toàn tình trạng mất đơn và cam kết bảo hành hạ tầng kỹ thuật xuyên suốt 5 năm.',
       ktvTasks: [
-        'Lập trình Webhook kết nối Form đăng ký và Nút gọi trên Web/Landing Page thẳng vào Google Sheets cá nhân của bạn để lưu trữ data vĩnh viễn.',
+        'Lập trình Webhook kết nối Form đăng ký và Nút gọi trên Web/Landing Page thẳng vào Google Sheets cá nhân của bạn để lưu trữ data an toàn lâu dài.',
         'Tích hợp Bot thông báo Telegram / Zalo tự động: ngay khi khách điền số điện thoại hoặc yêu cầu gọi lại, điện thoại của bạn reo chuông báo tin nhắn tức thì.',
         'Cấu hình hệ thống giám sát hoạt động máy chủ (Uptime Monitoring 24/7): nếu website gặp sự cố quá 60 giây, KTV LocalMate nhận cảnh báo và xử lý ngay.',
         'Đào tạo 1-1 cho chủ cơ sở hoặc nhân viên trực hotline cách xử lý data khách nhanh trong "5 phút vàng" để chốt đơn thành công.',

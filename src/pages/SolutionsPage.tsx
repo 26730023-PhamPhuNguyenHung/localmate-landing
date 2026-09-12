@@ -296,7 +296,7 @@ export const SolutionsPage: React.FC<SolutionsPageProps> = ({ onOpenConsultForm 
                   boxShadow: 'var(--shadow-orange)'
                 }}
               >
-                Đăng ký tư vấn giải pháp {activeSolution.title}
+                Nhận tư vấn giải pháp {activeSolution.title}
               </button>
               <span style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--color-text-muted)' }}>
                 Gói khuyên dùng: <strong style={{ color: 'var(--color-navy)' }}>{activeSolution.recommendedPackage}</strong>

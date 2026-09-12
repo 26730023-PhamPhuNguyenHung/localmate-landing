@@ -41,9 +41,9 @@ interface SolutionPillarItem {
 
 const SOLUTION_PILLARS: SolutionPillarItem[] = [
   {
-    id: 'xay-nen-tang-so',
+    id: 'hien-dien-so-website',
     step: '01',
-    title: 'Xây nền tảng số',
+    title: 'Hiện diện số & Website',
     subtitle: 'Website & Hồ sơ số',
     desc: 'Website bán hàng, hồ sơ năng lực số chuẩn di động, rõ ràng bảng giá.',
     href: '/giai-phap/xay-nen-tang-so',
@@ -52,48 +52,48 @@ const SOLUTION_PILLARS: SolutionPillarItem[] = [
     colorClass: 'pillar-emerald'
   },
   {
-    id: 'duoc-tim-thay',
+    id: 'tim-khach-hang',
     step: '02',
-    title: 'Được tìm thấy',
-    subtitle: 'Google Maps & AI Search',
-    desc: 'Xác minh Google Maps chính chủ, tối ưu GEO để AI đề xuất đầu tiên.',
-    href: '/giai-phap/duoc-tim-thay',
-    badge: 'Hot 2026',
-    icon: MapPin,
-    colorClass: 'pillar-amber'
-  },
-  {
-    id: 'thu-hut-khach-hang',
-    step: '03',
-    title: 'Thu hút khách',
-    subtitle: 'Quảng cáo & Tìm lead',
-    desc: 'Google Ads 0% kê giá, lọc click ảo và tối ưu cuộc gọi từ khách gần.',
+    title: 'Tìm khách hàng',
+    subtitle: 'Quảng cáo & Khách gần',
+    desc: 'Google Ads 0% kê giá, lọc click ảo và tối ưu cuộc gọi từ khách gần tiệm.',
     href: '/giai-phap/thu-hut-khach-hang',
-    badge: 'Ra lead',
+    badge: 'Ra đơn',
     icon: TrendingUp,
     colorClass: 'pillar-blue'
   },
   {
-    id: 'van-hanh-tu-dong-hoa',
-    step: '04',
-    title: 'Vận hành hiệu quả',
-    subtitle: 'CRM & Tự động hóa',
-    desc: 'Quản lý khách hàng tinh gọn, Mini App Zalo & chăm sóc tự động.',
-    href: '/giai-phap/van-hanh-tu-dong-hoa',
-    badge: 'Tinh gọn',
-    icon: Cpu,
-    colorClass: 'pillar-purple'
-  },
-  {
-    id: 'dong-hanh-cham-soc',
-    step: '05',
-    title: 'Chăm sóc đồng hành',
-    subtitle: 'Bảo trì & Kỹ thuật',
-    desc: 'Đội ngũ IT riêng hỗ trợ 1-1 qua Zalo, bảo hành kỹ thuật 5 năm.',
+    id: 'quan-ly-cham-soc-khach',
+    step: '03',
+    title: 'Quản lý & Chăm sóc khách',
+    subtitle: 'Đồng hành & Bảo hành 5 năm',
+    desc: 'Đội ngũ IT riêng hỗ trợ 1-1 qua Zalo, giữ chân khách quen, bảo hành 5 năm.',
     href: '/giai-phap/dong-hanh-cham-soc',
     badge: 'Bảo hành 5 năm',
     icon: ShieldCheck,
     colorClass: 'pillar-teal'
+  },
+  {
+    id: 'bot-viec-thu-cong',
+    step: '04',
+    title: 'Bớt việc thủ công',
+    subtitle: 'CRM & Tự động gom đơn',
+    desc: 'Quản lý khách hàng tinh gọn, Mini App Zalo & chăm sóc tự động không sót việc.',
+    href: '/giai-phap/van-hanh-tu-dong-hoa',
+    badge: 'Tiết kiệm giờ',
+    icon: Cpu,
+    colorClass: 'pillar-purple'
+  },
+  {
+    id: 'ung-dung-ai',
+    step: '05',
+    title: 'Ứng dụng AI',
+    subtitle: 'Google Maps & AI Search',
+    desc: 'Xác minh Google Maps chính chủ, tối ưu để AI ChatGPT / Gemini đề xuất đầu tiên.',
+    href: '/giai-phap/duoc-tim-thay',
+    badge: 'Chuẩn 2026',
+    icon: MapPin,
+    colorClass: 'pillar-amber'
   }
 ];
 
@@ -157,7 +157,6 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
       clearTimeout(dropdownTimeoutRef.current);
       dropdownTimeoutRef.current = null;
     }
-    setResourcesDropdownOpen(false);
     setSolutionsDropdownOpen(true);
   };
 
@@ -172,7 +171,6 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
       clearTimeout(resourcesTimeoutRef.current);
       resourcesTimeoutRef.current = null;
     }
-    setSolutionsDropdownOpen(false);
     setResourcesDropdownOpen(true);
   };
 
@@ -201,7 +199,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
     if (onOpenDemoForm) {
       onOpenDemoForm();
     } else {
-      navigate('/lien-he');
+      navigate('/khao-sat-du-an');
     }
   };
 
@@ -280,8 +278,8 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
                       {/* Mega Menu Top Header Banner */}
                       <div className="mega-header-bar">
                         <div className="mega-header-info">
-                          <span className="mega-kicker">HỆ THỐNG GIẢI PHÁP CHUYỂN ĐỔI SỐ</span>
-                          <h3 className="mega-headline">5 Trụ Cột Tăng Trưởng Bền Vững Cho Kinh Doanh Địa Phương</h3>
+                          <span className="mega-kicker">HỆ THỐNG GIẢI PHÁP THEO NHU CẦU</span>
+                          <h3 className="mega-headline">5 Nhóm Giải Pháp Tăng Trưởng Dành Cho Hộ Kinh Doanh &amp; SME</h3>
                         </div>
                         <Link
                           to="/giai-phap"
@@ -367,6 +365,24 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
                 )}
               </div>
 
+              {/* Cách làm việc */}
+              <Link
+                to="/#cach-lam-viec"
+                onClick={closeMenus}
+                className={`nav-link ${currentPath === '/cach-lam-viec' ? 'active' : ''}`}
+              >
+                <span>Cách làm việc</span>
+              </Link>
+
+              {/* Ví dụ & Demo */}
+              <Link
+                to="/du-an"
+                onClick={closeMenus}
+                className={`nav-link ${currentPath.startsWith('/du-an') ? 'active' : ''}`}
+              >
+                <span>Ví dụ &amp; Demo</span>
+              </Link>
+
               {/* Bảng giá */}
               <Link
                 to="/bang-gia"
@@ -376,183 +392,6 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
                 <span>Bảng giá</span>
               </Link>
 
-              {/* Dropdown Kiến thức & Tài nguyên */}
-              <div
-                className="nav-dropdown-wrapper"
-                onMouseEnter={handleMouseEnterResources}
-                onMouseLeave={handleMouseLeaveResources}
-              >
-                <button
-                  type="button"
-                  onClick={() => setResourcesDropdownOpen(!resourcesDropdownOpen)}
-                  className={`nav-link-btn ${isResourcesActive ? 'active' : ''}`}
-                  aria-expanded={resourcesDropdownOpen}
-                  aria-haspopup="true"
-                >
-                  <span>Kiến thức &amp; Tài nguyên</span>
-                  <ChevronDown
-                    size={14}
-                    className={`dropdown-caret ${resourcesDropdownOpen ? 'open' : ''}`}
-                  />
-                </button>
-
-                {resourcesDropdownOpen && (
-                  <div
-                    className="resources-dropdown-wrapper"
-                    onMouseEnter={handleMouseEnterResources}
-                    onMouseLeave={handleMouseLeaveResources}
-                  >
-                    <div className="resources-dropdown-card">
-                      {/* Dropdown Header */}
-                      <div className="resources-dropdown-header">
-                        <span className="resources-dropdown-kicker">CẨM NANG &amp; TÀI NGUYÊN THỰC CHIẾN</span>
-                        <h4 className="resources-dropdown-title">Quy Trình Chuẩn &amp; Công Cụ Số Hóa</h4>
-                      </div>
-
-                      {/* Resources Links Grid / List */}
-                      <div className="resources-dropdown-grid">
-                        <Link
-                          to="/chien-luoc-5-giai-doan"
-                          onClick={closeMenus}
-                          className="resource-item-card"
-                        >
-                          <div className="resource-item-icon-box">
-                            <Compass size={18} />
-                          </div>
-                          <div className="resource-item-content">
-                            <div className="resource-item-heading">
-                              <span className="resource-item-name">Lộ trình 5 giai đoạn</span>
-                              <span className="resource-badge">Tăng trưởng</span>
-                            </div>
-                            <p className="resource-item-desc">
-                              Bản đồ tăng trưởng số tinh gọn từ hiện diện đến tự động hóa
-                            </p>
-                          </div>
-                        </Link>
-
-                        <Link
-                          to="/quy-trinh-geo"
-                          onClick={closeMenus}
-                          className="resource-item-card"
-                        >
-                          <div className="resource-item-icon-box geo-box">
-                            <MapPin size={18} />
-                          </div>
-                          <div className="resource-item-content">
-                            <div className="resource-item-heading">
-                              <span className="resource-item-name">Quy trình GEO &amp; AI</span>
-                              <span className="resource-badge badge-hot">Chuẩn 2026</span>
-                            </div>
-                            <p className="resource-item-desc">
-                              Tối ưu Google Maps &amp; xuất hiện đầu tiên khi khách hỏi AI
-                            </p>
-                          </div>
-                        </Link>
-
-                        <Link
-                          to="/tieu-chuan-audit"
-                          onClick={closeMenus}
-                          className="resource-item-card"
-                        >
-                          <div className="resource-item-icon-box">
-                            <CheckSquare size={18} />
-                          </div>
-                          <div className="resource-item-content">
-                            <div className="resource-item-heading">
-                              <span className="resource-item-name">Tiêu chuẩn Audit 2026</span>
-                              <span className="resource-badge">Kỹ thuật</span>
-                            </div>
-                            <p className="resource-item-desc">
-                              Bộ 5 tiêu chuẩn khắt khe về tốc độ, SEO &amp; an toàn dữ liệu
-                            </p>
-                          </div>
-                        </Link>
-
-                        <Link
-                          to="/quy-trinh-cham-soc"
-                          onClick={closeMenus}
-                          className="resource-item-card"
-                        >
-                          <div className="resource-item-icon-box care-box">
-                            <ShieldCheck size={18} />
-                          </div>
-                          <div className="resource-item-content">
-                            <div className="resource-item-heading">
-                              <span className="resource-item-name">Quy trình chăm sóc số</span>
-                              <span className="resource-badge badge-teal">Bảo hành 5 năm</span>
-                            </div>
-                            <p className="resource-item-desc">
-                              Hỗ trợ kỹ thuật 1-1 qua Zalo, sao lưu định kỳ &amp; phòng vệ số
-                            </p>
-                          </div>
-                        </Link>
-
-                        <Link
-                          to="/ho-so-nang-luc"
-                          onClick={closeMenus}
-                          className="resource-item-card"
-                        >
-                          <div className="resource-item-icon-box">
-                            <FileText size={18} />
-                          </div>
-                          <div className="resource-item-content">
-                            <div className="resource-item-heading">
-                              <span className="resource-item-name">Hồ sơ năng lực 2026</span>
-                              <span className="resource-badge badge-primary">40 Slide</span>
-                            </div>
-                            <p className="resource-item-desc">
-                              Toàn cảnh năng lực triển khai, hệ thống công nghệ &amp; case study
-                            </p>
-                          </div>
-                        </Link>
-
-                        <Link
-                          to="/kien-thuc"
-                          onClick={closeMenus}
-                          className="resource-item-card"
-                        >
-                          <div className="resource-item-icon-box">
-                            <BookOpen size={18} />
-                          </div>
-                          <div className="resource-item-content">
-                            <div className="resource-item-heading">
-                              <span className="resource-item-name">Trung tâm Kiến thức</span>
-                              <span className="resource-badge">Cẩm nang</span>
-                            </div>
-                            <p className="resource-item-desc">
-                              Kho bài viết, hướng dẫn thực chiến cho cửa hàng &amp; SME
-                            </p>
-                          </div>
-                        </Link>
-                      </div>
-
-                      {/* Dropdown Bottom Survey Callout */}
-                      <div className="resources-dropdown-bottom">
-                        <Link
-                          to="/khao-sat-du-an"
-                          onClick={closeMenus}
-                          className="resources-survey-callout"
-                        >
-                          <div className="survey-callout-content">
-                            <div className="survey-callout-badge">
-                              <ClipboardCheck size={14} />
-                              <span>Khảo sát dự án 0đ</span>
-                            </div>
-                            <span className="survey-callout-text">
-                              Bạn chưa biết bắt đầu từ đâu? Làm khảo sát 2 phút để nhận bản dự toán &amp; giải pháp phù hợp nhất.
-                            </span>
-                          </div>
-                          <span className="survey-callout-action">
-                            <span>Khảo sát ngay</span>
-                            <ArrowRight size={13} />
-                          </span>
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-
               {/* Về Localmate */}
               <Link
                 to="/ve-localmate"
@@ -561,18 +400,9 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
               >
                 <span>Về Localmate</span>
               </Link>
-
-              {/* Liên hệ */}
-              <Link
-                to="/lien-he"
-                onClick={closeMenus}
-                className={`nav-link ${currentPath.startsWith('/lien-he') ? 'active' : ''}`}
-              >
-                <span>Liên hệ</span>
-              </Link>
             </nav>
 
-            {/* 3. Desktop Actions: [Hotline] [Khảo sát dự án 0đ] [CTA Đăng ký tư vấn] */}
+            {/* 3. Desktop Actions: [Hotline] [Nút CTA Kể việc bạn đang cần] */}
             <div className="header-desktop-actions">
               <a
                 href={`tel:${CONTACT_INFO.phoneRaw}`}
@@ -588,29 +418,20 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
                 </div>
               </a>
 
-              {/* Nút Khảo sát dự án 0đ nổi bật */}
-              <Link
-                to="/khao-sat-du-an"
-                onClick={closeMenus}
-                className="header-survey-btn"
-                title="Làm khảo sát nhu cầu & nhận dự toán 0đ"
-              >
-                <ClipboardCheck size={15} />
-                <span>Khảo sát dự án 0đ</span>
-              </Link>
-
+              {/* Nút CTA chính: Kể việc bạn đang cần -> mở form khảo sát 0đ */}
               <button
                 type="button"
                 onClick={handleActionClick}
                 className="header-cta-button"
-                title="Đăng ký tư vấn & Nhận Demo Web"
+                title="Kể việc bạn đang cần — Khảo sát & Dự toán 0đ"
               >
-                <Sparkles size={15} />
-                <span>Đăng ký tư vấn</span>
+                <ClipboardCheck size={16} />
+                <span>Kể việc bạn đang cần</span>
+                <span className="cta-zero-badge">0đ</span>
               </button>
             </div>
 
-            {/* 4. Mobile Actions: [Hotline gọi nhanh] [CTA Tư vấn] [Menu Hamburger] */}
+            {/* 4. Mobile Actions: [Hotline gọi nhanh] [CTA Khảo sát 0đ] [Menu Hamburger] */}
             <div className="header-mobile-actions">
               <a
                 href={`tel:${CONTACT_INFO.phoneRaw}`}
@@ -626,10 +447,10 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
                 type="button"
                 onClick={handleActionClick}
                 className="header-mobile-cta"
-                title="Đăng ký tư vấn"
+                title="Kể việc bạn đang cần — Khảo sát 0đ"
               >
-                <Sparkles size={13} />
-                <span>Tư vấn</span>
+                <ClipboardCheck size={14} />
+                <span>Khảo sát 0đ</span>
               </button>
 
               <button
@@ -668,11 +489,31 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
 
             {/* Drawer Scroll Body */}
             <div className="drawer-scroll-body">
-              {/* Section 1: 5 Trụ Cột Giải Pháp (Structured & Tap-Friendly >= 44px) */}
+              {/* Card Nổi bật: Kể việc bạn đang cần (Khảo sát 0đ) */}
+              <button
+                type="button"
+                onClick={handleActionClick}
+                className="drawer-survey-card"
+                style={{ width: '100%', textAlign: 'left', border: '1.5px solid #86efac', background: '#f0fdf4', cursor: 'pointer' }}
+              >
+                <div className="drawer-survey-icon-wrap">
+                  <ClipboardCheck size={20} />
+                </div>
+                <div className="drawer-survey-info">
+                  <div className="drawer-survey-headline">
+                    <span className="drawer-survey-name">Kể việc bạn đang cần</span>
+                    <span className="drawer-survey-tag">0đ</span>
+                  </div>
+                  <span className="drawer-survey-sub">Làm khảo sát 2 phút • Nhận dự toán &amp; giải pháp 0đ</span>
+                </div>
+                <ArrowRight size={15} className="drawer-survey-arrow" />
+              </button>
+
+              {/* Section 1: Giải pháp theo nhu cầu thực tế */}
               <div className="drawer-section">
                 <div className="drawer-section-header">
-                  <span className="drawer-section-label">5 TRỤ CỘT GIẢI PHÁP</span>
-                  <span className="drawer-section-sub">Kiến trúc tăng trưởng</span>
+                  <span className="drawer-section-label">GIẢI PHÁP THEO NHU CẦU</span>
+                  <span className="drawer-section-sub">Dễ hiểu &amp; Thực tế</span>
                 </div>
 
                 <div className="drawer-pillars-list">
@@ -702,7 +543,6 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
                     );
                   })}
 
-                  {/* Link nổi bật: Xem tất cả giải pháp */}
                   <Link
                     to="/giai-phap"
                     onClick={closeMenus}
@@ -714,102 +554,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
                 </div>
               </div>
 
-              {/* Section 2: Tài nguyên & Quy trình (Chuẩn FastMarketing) */}
-              <div className="drawer-section">
-                <div className="drawer-section-header">
-                  <span className="drawer-section-label">TÀI NGUYÊN &amp; QUY TRÌNH</span>
-                  <span className="drawer-section-sub">Công cụ &amp; Chuẩn mực</span>
-                </div>
-
-                {/* Card Nổi bật: Khảo sát dự án 0đ */}
-                <Link
-                  to="/khao-sat-du-an"
-                  onClick={closeMenus}
-                  className="drawer-survey-card"
-                >
-                  <div className="drawer-survey-icon-wrap">
-                    <ClipboardCheck size={20} />
-                  </div>
-                  <div className="drawer-survey-info">
-                    <div className="drawer-survey-headline">
-                      <span className="drawer-survey-name">Khảo sát dự án 0đ</span>
-                      <span className="drawer-survey-tag">0đ</span>
-                    </div>
-                    <span className="drawer-survey-sub">Đánh giá hiện trạng &amp; nhận dự toán</span>
-                  </div>
-                  <ArrowRight size={15} className="drawer-survey-arrow" />
-                </Link>
-
-                <div className="drawer-nav-list">
-                  <Link
-                    to="/chien-luoc-5-giai-doan"
-                    onClick={closeMenus}
-                    className={`drawer-nav-link ${currentPath.startsWith('/chien-luoc-5-giai-doan') ? 'active' : ''}`}
-                  >
-                    <div className="drawer-link-with-icon">
-                      <Compass size={16} className="drawer-item-icon" />
-                      <span>Lộ trình 5 giai đoạn</span>
-                    </div>
-                    <span className="drawer-nav-badge">Tăng trưởng</span>
-                  </Link>
-                  <Link
-                    to="/quy-trinh-geo"
-                    onClick={closeMenus}
-                    className={`drawer-nav-link ${currentPath.startsWith('/quy-trinh-geo') ? 'active' : ''}`}
-                  >
-                    <div className="drawer-link-with-icon">
-                      <MapPin size={16} className="drawer-item-icon" />
-                      <span>Quy trình GEO &amp; AI</span>
-                    </div>
-                    <span className="drawer-nav-badge" style={{ backgroundColor: '#fef3c7', color: '#b45309' }}>2026</span>
-                  </Link>
-                  <Link
-                    to="/tieu-chuan-audit"
-                    onClick={closeMenus}
-                    className={`drawer-nav-link ${currentPath.startsWith('/tieu-chuan-audit') ? 'active' : ''}`}
-                  >
-                    <div className="drawer-link-with-icon">
-                      <CheckSquare size={16} className="drawer-item-icon" />
-                      <span>Tiêu chuẩn Audit 2026</span>
-                    </div>
-                    <span className="drawer-nav-badge">Kỹ thuật</span>
-                  </Link>
-                  <Link
-                    to="/quy-trinh-cham-soc"
-                    onClick={closeMenus}
-                    className={`drawer-nav-link ${currentPath.startsWith('/quy-trinh-cham-soc') ? 'active' : ''}`}
-                  >
-                    <div className="drawer-link-with-icon">
-                      <ShieldCheck size={16} className="drawer-item-icon" />
-                      <span>Quy trình chăm sóc số</span>
-                    </div>
-                    <span className="drawer-nav-badge" style={{ backgroundColor: '#ccfbf1', color: '#0f766e' }}>5 năm</span>
-                  </Link>
-                  <Link
-                    to="/ho-so-nang-luc"
-                    onClick={closeMenus}
-                    className={`drawer-nav-link ${currentPath.startsWith('/ho-so-nang-luc') || currentPath.startsWith('/credential') ? 'active' : ''}`}
-                  >
-                    <div className="drawer-link-with-icon">
-                      <FileText size={16} className="drawer-item-icon" />
-                      <span>Hồ sơ năng lực 2026</span>
-                    </div>
-                    <span className="drawer-nav-badge" style={{ backgroundColor: '#edf7f1', color: '#0d7647' }}>40 Slide</span>
-                  </Link>
-                  <Link
-                    to="/kien-thuc"
-                    onClick={closeMenus}
-                    className={`drawer-nav-link ${currentPath.startsWith('/kien-thuc') ? 'active' : ''}`}
-                  >
-                    <div className="drawer-link-with-icon">
-                      <BookOpen size={16} className="drawer-item-icon" />
-                      <span>Trung tâm kiến thức</span>
-                    </div>
-                  </Link>
-                </div>
-              </div>
-
-              {/* Section 3: Điều hướng chính */}
+              {/* Section 2: Điều hướng chính (Menu thân thiện) */}
               <div className="drawer-section">
                 <div className="drawer-section-header">
                   <span className="drawer-section-label">ĐIỀU HƯỚNG CHÍNH</span>
@@ -821,14 +566,42 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
                     onClick={closeMenus}
                     className={`drawer-nav-link ${currentPath === '/' ? 'active' : ''}`}
                   >
-                    <span>Trang chủ</span>
+                    <div className="drawer-link-with-icon">
+                      <Globe size={16} className="drawer-item-icon" />
+                      <span>Trang chủ</span>
+                    </div>
+                  </Link>
+                  <Link
+                    to="/#cach-lam-viec"
+                    onClick={closeMenus}
+                    className={`drawer-nav-link ${currentPath === '/cach-lam-viec' ? 'active' : ''}`}
+                  >
+                    <div className="drawer-link-with-icon">
+                      <CheckCircle2 size={16} className="drawer-item-icon" />
+                      <span>Cách làm việc</span>
+                    </div>
+                    <span className="drawer-nav-badge">4 bước</span>
+                  </Link>
+                  <Link
+                    to="/du-an"
+                    onClick={closeMenus}
+                    className={`drawer-nav-link ${currentPath.startsWith('/du-an') ? 'active' : ''}`}
+                  >
+                    <div className="drawer-link-with-icon">
+                      <FileText size={16} className="drawer-item-icon" />
+                      <span>Ví dụ &amp; Demo</span>
+                    </div>
+                    <span className="drawer-nav-badge">Thực tế</span>
                   </Link>
                   <Link
                     to="/bang-gia"
                     onClick={closeMenus}
                     className={`drawer-nav-link ${currentPath.startsWith('/bang-gia') ? 'active' : ''}`}
                   >
-                    <span>Bảng giá niêm yết</span>
+                    <div className="drawer-link-with-icon">
+                      <FileText size={16} className="drawer-item-icon" />
+                      <span>Bảng giá niêm yết</span>
+                    </div>
                     <span className="drawer-nav-badge">Minh bạch</span>
                   </Link>
                   <Link
@@ -836,14 +609,20 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
                     onClick={closeMenus}
                     className={`drawer-nav-link ${isAboutActive ? 'active' : ''}`}
                   >
-                    <span>Về Localmate</span>
+                    <div className="drawer-link-with-icon">
+                      <Globe size={16} className="drawer-item-icon" />
+                      <span>Về Localmate</span>
+                    </div>
                   </Link>
                   <Link
                     to="/lien-he"
                     onClick={closeMenus}
                     className={`drawer-nav-link ${currentPath.startsWith('/lien-he') ? 'active' : ''}`}
                   >
-                    <span>Liên hệ tư vấn</span>
+                    <div className="drawer-link-with-icon">
+                      <Phone size={16} className="drawer-item-icon" />
+                      <span>Liên hệ tư vấn</span>
+                    </div>
                   </Link>
                 </div>
               </div>
@@ -856,8 +635,8 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
                 onClick={handleActionClick}
                 className="drawer-primary-cta"
               >
-                <Sparkles size={16} />
-                <span>Đăng ký tư vấn / Nhận Demo Web</span>
+                <ClipboardCheck size={17} />
+                <span>Kể việc bạn đang cần (Khảo sát 0đ)</span>
               </button>
 
               <a
@@ -875,7 +654,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
               </a>
 
               <p className="drawer-footer-note">
-                Tư vấn &amp; khảo sát 1-1 tận nơi tại Hóc Môn, TP.HCM &amp; Toàn quốc
+                Tài nguyên chuyên sâu (Lộ trình, GEO, Audit, Hồ sơ năng lực) xem tại chân trang (Footer).
               </p>
             </div>
           </div>
@@ -1666,6 +1445,17 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           background-color: #095935;
           box-shadow: 0 4px 14px rgba(13, 118, 71, 0.32);
           transform: translateY(-1px);
+        }
+
+        .cta-zero-badge {
+          background-color: #22c55e;
+          color: #ffffff;
+          font-size: 0.6875rem;
+          font-weight: 800;
+          padding: 0.1rem 0.45rem;
+          border-radius: 9999px;
+          line-height: 1.2;
+          margin-left: 2px;
         }
 
         /* 4. Mobile Actions inside Header Bar */

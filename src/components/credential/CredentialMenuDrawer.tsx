@@ -313,7 +313,7 @@ export const CredentialMenuDrawer: React.FC<CredentialMenuDrawerProps> = ({
             }}
           >
             <Sparkles size={16} />
-            <span>Đăng Ký Tư Vấn & Demo 0đ</span>
+            <span>Kể việc bạn đang cần • Demo 0đ</span>
           </button>
 
           <a
