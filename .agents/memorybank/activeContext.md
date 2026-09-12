@@ -46,5 +46,24 @@
 - **Zalo Link Direct**: Đồng bộ link Zalo toàn site thành `https://zalo.me/0834422439` (kết nối trực tiếp hotline).
 - **CTA Actions Connected**: Hero "Nhận website demo 0đ", Starter Package, FAQ "Hỗ trợ trực tiếp ngay", Pricing Matrix "Tư vấn ngay" đều kết nối trực tiếp với LeadModal hoặc Router mà không có dead links/anchors.
 - **Pháp nhân & MST**: Đồng bộ MST `4001337934` và Trụ sở ở `TrustSection.tsx` và `index.html` Schema.org.
-- **Backlog**: Tạo `docs/post-launch-polish.md` lưu trữ danh mục cải tiến sau launch.
+## 4. Operational Transformation & Homepage Layout Implementation (Completed)
+- **Tài liệu chiến lược**: Dựa trên `Localmate vận hành.md`, chuyển dịch định vị sang "Người đồng hành số tại địa phương" & "Technical Backend / Deployment Partner cho SaaS, Agency, Vendor và SME".
+- **Bản đặc tả chi tiết (SSOT)**: Đã hoàn thành và lưu tại `docs/specs-localmate-operations.md` và Artifact `specs_localmate_transformation.md`.
+- **Nguyên tắc bảo toàn giao diện**: Giữ nguyên 100% Header, Footer, Hero Video Boomerang loop và toàn bộ Design Tokens (100% Light mode, không glassmorphism).
+- **Các thành phần đã triển khai**:
+  - `src/data/operationsData.ts`: Data-Driven SSOT cho 5 Task Groups, 5 Core Offers, Triết lý, Process 5 bước, Demos thật và FAQ.
+  - `HeroSection.tsx`: Tinh chỉnh copy "Bạn tập trung bán hàng - LocalMate lo phần công nghệ", giữ nguyên boomerang loop.
+  - `ProblemMapperSection.tsx`: 5 nhóm nhu cầu thực tế (Hiện diện 24h, Gom lead CRM, Bớt việc thủ công, Bạn bán - LocalMate triển khai, Tư vấn 0đ).
+  - `CoreOffersSection.tsx`: 5 gói giải pháp B2B & Đối tác (Local Deployment, Software Onboarding, Integration & Automation, White-label Dev Team, Deployment Network).
+  - `PhilosophySection.tsx`: 4 trụ cột triết lý "Không cố bán thêm phần mềm" + Hotline trực tiếp.
+  - `ProcessSection.tsx`: Quy trình 5 bước minh bạch (từ nói việc đến nghiệm thu 100% tài khoản).
+  - `DemoShowcaseSection.tsx`: Build & Test công khai kết hợp Website thật và Automations kiểm chứng.
+  - `FAQSection.tsx`: Bộ câu hỏi thường gặp về mô hình vận hành và pháp nhân.
+  - `FinalCTASection.tsx`: Loại bỏ glassmorphism, form gửi việc 3 trường vàng nhanh gọn.
+  - `HomePage.tsx`: Luồng 10 section mạch lạc, `npm run build` pass 100% không lỗi.
 
+## 5. Fanpage Content Strategy & Automation (Active)
+- **Định vị truyền thông**: "Người đồng hành số tại địa phương" — Không bán tool phức tạp, giải quyết từ câu hỏi "Bạn đang cần làm gì?".
+- **SSOT Memory**: Duy trì file `.agents/memorybank/contentMemory.json` lưu trữ metadata từng bài, kiểm soát tỷ trọng pillar, chống lặp hook/angle/format và tự thích ứng (adaptive content).
+- **Trụ cột nội dung**: 30% Vấn đề vận hành thật, 20% AI & Automation thực dụng, 15% Founder đang xây gì, 15% Breakdown hệ thống, 10% Quan điểm, 10% Offer / Conversion.
+- **Tiêu chuẩn chất lượng**: 100% tiếng Việt tự nhiên, không bịa số liệu/case study giả, không văn sáo rỗng thời đại 4.0. Tự chấm điểm Quality Check 8 tiêu chí >= 7/10 trước khi xuất bản.

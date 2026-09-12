@@ -1,0 +1,48 @@
+{
+  "system": {
+    "version": "1.0.0",
+    "updated_at": "2026-09-12T14:15:00+07:00",
+    "pillar_distribution_target": {
+      "van_de_van_hanh_that": 0.30,
+      "ai_automation_thuc_dung": 0.20,
+      "founder_dang_xay_gi": 0.15,
+      "breakdown_he_thong": 0.15,
+      "quan_diem": 0.10,
+      "offer_conversion": 0.10
+    },
+    "cycle_count": 1
+  },
+  "posts": [
+    {
+      "id": "post_001",
+      "title": "Bạn không thiếu người trực tin nhắn, bạn đang thiếu sợi dây nối giữa Zalo và sổ sách",
+      "pillar": "Vấn đề vận hành thật",
+      "topic": "Xử lý dữ liệu tin nhắn & đơn hàng thủ công",
+      "angle": "Nghịch lý tuyển thêm nhân sự chỉ để copy-paste dữ liệu giữa các ứng dụng",
+      "hook_type": "Một nghịch lý / quan sát thực tế",
+      "format": "Breakdown 3-5 bước / Phân tích tình huống",
+      "audience": "Chủ hộ kinh doanh, xưởng dịch vụ, shop bán lẻ, người làm tự do có 1-5 nhân viên",
+      "funnel_stage": "Awareness",
+      "CTA": "Gợi ý người đọc chia sẻ quy trình thủ công lặp lại để bóc tách giúp",
+      "keywords": [
+        "vận hành thủ công",
+        "copy paste",
+        "Zalo sang Google Sheet",
+        "tối ưu nhân sự",
+        "automation nhỏ"
+      ],
+      "published_at": "2026-09-12T14:15:00+07:00",
+      "engagement_score": null,
+      "comments": 0,
+      "saves": 0,
+      "shares": 0,
+      "leads_generated": 0,
+      "avoid_next": [
+        "Zalo sang Google Sheet",
+        "chủ đề tuyển người làm vặt",
+        "hook dạng: Nhiều chủ xưởng nghĩ...",
+        "format Breakdown 3 bước"
+      ]
+    }
+  ]
+}
