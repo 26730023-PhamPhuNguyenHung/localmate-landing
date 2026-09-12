@@ -36,7 +36,21 @@
 - **Overlay siêu mỏng & Backdrop cục bộ**: Kết hợp linear-gradient siêu nhẹ (0.04 - 0.06) phủ toàn khung và radial-gradient mềm mại chỉ nằm phía sau vùng nội dung trung tâm (`.hero-content-backdrop`), giúp chữ và nút bấm cực kỳ sắc nét mà không làm mờ video.
 - **Tách biệt lớp giao diện**: Video `z-index: 0` cố định với `scale(1.02)` chống hở viền; nội dung `z-index: 2` tương tác trơn tru.
 - **Accessibility & Motion Safety**: Tự động nhận diện `prefers-reduced-motion: reduce` để pause video, nền dự phòng `#edf5f1` đồng màu êm dịu.
-- **Kiểm thử đa màn hình**: Đã kiểm tra và chụp ảnh nghiệm thu qua `agent-browser` trên Mobile 390px, Tablet 768px và Desktop 1440px.
+### F. Tối Ưu Hero Section & Trust Badges Theo Phong Cách SaosangEdu (Subagent 2):
+- **Sub-badge tinh tế (Pill Eyebrow)**: Nền xanh nhạt (`#e8f5e9`), chữ xanh đậm (`#065f46`), viền `#c6ebd4`, nội dung: "Đồng hành số địa phương • Bàn giao demo trong 48h".
+- **Tiêu đề Hero trúng Insight**: "Giúp doanh nghiệp địa phương có website chuẩn, lên Google và thu hút thêm khách." với highlight xanh lá chủ đạo.
+- **Cụm CTA kép chuẩn mực**:
+  - Nút chính: `Tư vấn miễn phí / Xem Demo` (variant `primary`, icon Sparkles + ArrowRight).
+  - Nút phụ: `Xem bảng giá / Tìm hiểu thêm` (variant `white`, scroll mượt tới bảng giá).
+  - Micro-copy cam kết 3 tiêu chuẩn: Dựng demo xem trước 0đ • Báo giá cố định trước khi làm • Nghiệm thu mới thanh toán.
+- **Dải Trust Metrics / Stats Thẻ Số Liệu Gãy Gọn**:
+  - 4 thẻ số liệu gãy gọn tích hợp trong Hero Section:
+    1. `250+` Khách hàng địa phương (Hộ kinh doanh & SMB tin chọn)
+    2. `48 Giờ` Bàn giao demo xem trước (Trải nghiệm 0đ trước khi làm)
+    3. `1 - 1` Hỗ trợ kỹ thuật tại chỗ (KTV địa phương đồng hành)
+    4. `100%` Chính chủ tài khoản (Báo giá cố định, không phí ẩn)
+  - Thẻ nền trắng tinh, viền crisp 1px `#e2e8f0`, icon xanh dịu `#edf7f1`, responsive 4 cột desktop, 2 cột tablet/mobile.
+- **Tinh gọn CSS & Bố Cục**: Tối ưu padding `clamp(2.5rem, 4.5vw, 4.25rem)`, triệt tiêu hoàn toàn nguy cơ horizontal overflow, giữ nguyên hiệu ứng boomerang loop của background video. Build pass 100%.
 
 ---
 
@@ -58,6 +72,7 @@
   - `PhilosophySection.tsx`: Cập nhật triết lý "Không cố bán phần mềm thừa — Tận dụng tối đa những gì bạn đã có" với 4 giá trị cốt lõi (Tiết kiệm chi phí, Minh bạch quyền sở hữu, Hỗ trợ trực tiếp, Đồng hành dài lâu), layout Split 2 cột có Sticky Editorial Manifesto và hotline trực tiếp.
   - `ProcessSection.tsx`: Quy trình 5 bước minh bạch (1. Trao đổi nhu cầu -> 2. Web demo thực tế 0đ duyệt trước trên điện thoại -> 3. Báo giá trọn gói cố định -> 4. Hoàn thiện nghiệm thu tốc độ & tên miền -> 5. Bàn giao 100% tài khoản & KTV hỗ trợ). Layout horizontal timeline trên desktop và vertical stepper spine trên mobile.
   - `DemoShowcaseSection.tsx`: Nâng cấp toàn diện mục "Xem trước thứ bạn sẽ nhận" với 5 sản phẩm bàn giao thực tế, tab website thật và workflow kiểm chứng.
+  - `ServiceCardsSection.tsx`, `CoreOffersSection.tsx`, `StarterPackageSection.tsx` (Subagent 3): Tối ưu hóa chuẩn mực tham chiếu từ saosangedu.com (thẻ nền trắng `#ffffff`, viền nhẹ `#e5e7eb`, hover shadow tinh tế, icon container pastel `#ecfdf5` chữ xanh `#0d7647`, checkmark xanh lá sắc nét, định vị 2 tầng giá khởi điểm & nâng cao minh bạch). Build pass 100%.
 - **Audit Responsive Playwright (Subagent 6)**: 5 viewports chuẩn (390px, 430px, 768px, 1366px, 1440px) pass 100%, không bị horizontal overflow (`hasOverflow: false`).
   - `FAQSection.tsx`: Bộ câu hỏi thường gặp về mô hình vận hành và pháp nhân.
   - `FinalCTASection.tsx`: Loại bỏ glassmorphism, form gửi việc 3 trường vàng nhanh gọn.
@@ -124,4 +139,51 @@
 - **Tách biệt sạch sẽ**: Tạo mới `src/components/sections/TrustBar.tsx`, cấu hình `showTrustStrip` linh hoạt trên `HeroSection.tsx` giúp tránh trùng lặp.
 - **Kiểm thử nghiệm thu**: `npm run build` pass 100% trong 11.58s (0 TypeScript error, 0 broken props/imports).
 
+## 9. Final CTA Banner & Lead Capture Modal Ergonomics (Subagent 7 Complete)
+- **Chuẩn tham chiếu SaosangEdu**:
+  - Banner CTA cuối trang (`FinalCTASection.tsx`): Áp dụng nền xanh đậm thương hiệu (`#0d7647` kết hợp gradient tinh tế `#074e2e` -> `#0d7647`), chữ trắng tương phản cao.
+  - Cung cấp **2 lựa chọn tương tác song song**:
+    1. *Khách thích tự điền*: Form siêu tinh gọn chỉ cần Họ tên + Số điện thoại/Zalo (+ chọn nhu cầu) với input to rõ (`min-height: 48px`, `font-size: 16px` chống iOS auto-zoom).
+    2. *Khách muốn trao đổi ngay*: Bộ nút gọi Hotline trực tiếp (`tel:0834422439`) và nút chat Zalo 24/7 kích thước lớn, kết nối tức thì.
+  - Bộ 3 cam kết uy tín cạnh form: **'Bảo mật thông tin • Phản hồi trong 15 phút • Hoàn toàn miễn phí'** kèm cam kết *Nghiệm thu hài lòng 100% mới thanh toán*.
+- **Modal Tư Vấn Tinh Gọn (`LeadModal.tsx`)**:
+  - Loại bỏ hoàn toàn glassmorphism/backdrop-blur; sử dụng modal card solid `#ffffff` với viền crisp `#e2e8f0` và overlay tối vững chắc (`rgba(15, 23, 42, 0.75)`).
+  - Tối ưu hóa touch target >= 44px, các input to rõ (16px font-size chống iOS zoom), nút CTA dứt khoát toàn chiều ngang (full width), cung cấp hotline fallback ngay trong modal khi khách cần trao đổi gấp.
+  - Kết nối trực tiếp với CRM / Google Sheets Webhook qua `submitLead()` và gửi tracking conversion events đầy đủ.
+- **Kiểm thử nghiệm thu**: `npm run build` pass 100% không lỗi (Vite build thành công trong ~5.8s).
+
+## 10. Trust Section & Before/After Optimization (Subagent 5 Complete)
+- **Tối ưu TrustBar (`src/components/sections/TrustBar.tsx`)**:
+  - Tinh chỉnh 4 cam kết cốt lõi: Báo giá trước khi làm (100% không phí ẩn), Tận dụng thứ đã có (không ép mua phần mềm thừa), KTV địa phương (hỗ trợ tận nơi & Zalo 1-1), Bàn giao 100% tài khoản (khách làm chủ vĩnh viễn).
+  - Thêm thẻ badge `Cam kết 01 - 04` với micro-icon check xanh lá, bố cục grid responsive (1 cột mobile, 2 cột tablet, 4 cột desktop).
+- **Tối ưu Before/After Section (`src/components/sections/BeforeAfterSection.tsx`)**:
+  - Tham chiếu chuẩn saosangedu.com: Ma trận đối chiếu 5 khía cạnh thiết thực (Chi phí đầu tư, Thời gian tiến độ, Quyền sở hữu tài khoản, Hệ thống vận hành, Hỗ trợ sự cố kỹ thuật).
+  - Đặt Cách làm cũ (Đỏ cam, tốn kém, phụ thuộc) đối chiếu trực diện với Giải pháp LocalMate (Xanh lá, minh bạch, chủ động).
+  - Tích hợp **Bộ 3 Thẻ Cam Kết Uy Tín** ngay bên dưới ma trận: *Cam kết chất lượng (Xem demo 0đ)*, *Bảo hành kỹ thuật trọn đời*, *Không phát sinh chi phí*.
+  - Tích hợp thanh hành động nhanh (Action Bar) với nút đăng ký xem demo 0đ kết nối trực tiếp với luồng tư vấn của hệ thống.
+  - Đã tích hợp trực tiếp vào luồng trang chủ `HomePage.tsx` ngay sau `PhilosophySection` để tạo đòn bẩy thuyết phục mạnh mẽ trước khi khách xem `PricingMatrixSection`.
+- **Tối ưu TrustSection (`src/components/sections/TrustSection.tsx`)**:
+  - Bổ sung dải số liệu Social Proof định lượng: `150+ Cửa hàng tin cậy`, `100% Khách hàng làm chủ tài khoản`, `0đ Chi phí phát sinh`.
+  - Phân tách sắc nét giữa: 5 Tài sản bàn giao cầm tay (CCCD, Primary Owner Maps, QR Review 5 sao, Video HD 2 phút, Zalo nhóm 1-1) và Pháp nhân Công ty TNHH LocalMate (MST 4001337934, địa chỉ trụ sở, hóa đơn VAT điện tử, hotline KTV).
+- **Kiểm thử nghiệm thu**:
+  - `npm run build` pass 100% không warning/error (Vite build xong trong 6.92s).
+  - Giao diện tuân thủ tuyệt đối quy chuẩn Light mode, không glassmorphism, tương phản cao, `text-wrap: pretty`.
+
+## 11. Mobile Floating Quick Contacts Ergonomics Optimization (Subagent 8 Complete)
+- **Tham chiếu chuẩn mực từ saosangedu.com**:
+  - Thanh floating liên hệ nhanh cố định cạnh dưới màn hình trên thiết bị di động (<= 768px).
+  - Cụm 3 hành động chuyển đổi nhanh tức thì:
+    1. **Nút Gọi điện**: Liên kết trực tiếp `tel:0834422439`, icon `PhoneCall` nổi bật với nền ấm `#fff7ed` và viền `#fed7aa`, chữ cam đậm `#9a3412` tương phản cao, tích hợp `trackPhoneClick('mobile_floating_bar')`.
+    2. **Nút Nhắn Zalo**: Mở Zalo 24/7 trực tiếp tab mới (`https://zalo.me/0834422439`), icon `MessageCircle` với nền xanh dịu `#eff6ff` và viền `#bfdbfe`, chữ xanh `#1d4ed8`, tích hợp `trackZaloClick('mobile_floating_bar')`.
+    3. **Nút Đăng ký tư vấn**: Primary CTA trung tâm nổi bật nhất, nền xanh thương hiệu `#0d7647`, chữ trắng tương phản cao, icon `Sparkles`, mở Lead Modal xem Web Demo 0đ tức thì, tích hợp `trackCTAClick('Đăng ký tư vấn', 'mobile_floating_bar')`.
+- **Chuẩn công thái học di động (Ergonomics & A11y)**:
+  - Chiều cao các nút đạt chuẩn WCAG 2.1 AA (`min-height: 46px`, tap target >= 44px).
+  - Bo tròn mềm mại 12px (`border-radius: 12px`), bóng đổ nhẹ tự nhiên (`box-shadow: 0 -3px 16px rgba(15, 23, 42, 0.08)`).
+  - Phản hồi xúc giác nhanh (`:active { transform: scale(0.97); }` trong 120ms).
+  - Chống vỡ dòng chữ trên màn hình siêu hẹp (<= 360px): co giãn tỉ lệ thông minh, `white-space: nowrap`, `overflow: hidden`, `text-overflow: ellipsis`.
+- **An toàn Safe Area Insets trên cả iPhone & Android**:
+  - Khai báo chuẩn `viewport-fit=cover` trong `index.html` meta tag.
+  - Sử dụng `padding-bottom: max(8px, env(safe-area-inset-bottom, 8px))` và `padding-left/right: max(10px, env(safe-area-inset-...))` tương thích cả iPhone (Home Indicator) và Android navigation bar.
+  - Tự động cộng khoảng đệm an toàn `padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px)) !important;` cho thẻ `body` trên mobile, triệt tiêu hoàn toàn lỗi che khuất chân trang (footer) hoặc nút tương tác dưới cùng.
+- **Kiểm thử nghiệm thu**: `npm run build` pass 100% không lỗi (Vite build thành công trong ~7.3s).
 

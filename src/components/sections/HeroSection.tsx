@@ -13,7 +13,11 @@ import {
   Navigation,
   Bell,
   TrendingUp,
-  Check
+  Check,
+  Users,
+  Clock,
+  Headphones,
+  ShieldCheck
 } from 'lucide-react';
 import { useRouter } from '../layout/Router';
 
@@ -97,20 +101,47 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     }
   };
 
+  const trustMetrics = [
+    {
+      icon: Users,
+      value: '250+',
+      label: 'Khách hàng địa phương',
+      desc: 'Hộ kinh doanh & SMB tin chọn'
+    },
+    {
+      icon: Clock,
+      value: '48 Giờ',
+      label: 'Bàn giao demo xem trước',
+      desc: 'Trải nghiệm 0đ trước khi làm'
+    },
+    {
+      icon: Headphones,
+      value: '1 - 1',
+      label: 'Hỗ trợ kỹ thuật tại chỗ',
+      desc: 'KTV địa phương đồng hành'
+    },
+    {
+      icon: ShieldCheck,
+      value: '100%',
+      label: 'Chính chủ tài khoản',
+      desc: 'Báo giá cố định, không phí ẩn'
+    }
+  ];
+
   return (
     <section
       id="hero"
       className="hero-section"
       style={{
         backgroundColor: '#edf5f1',
-        paddingTop: 'clamp(2rem, 3.8vw, 3.5rem)',
-        paddingBottom: 'clamp(2.25rem, 4.2vw, 3.75rem)',
+        paddingTop: 'clamp(2.5rem, 4.5vw, 4.25rem)',
+        paddingBottom: 'clamp(2.5rem, 4.5vw, 4.25rem)',
         borderBottom: '1px solid var(--color-border)',
         overflow: 'hidden',
         position: 'relative'
       }}
     >
-      {/* Background Video Animation — Seamless Boomerang Loop */}
+      {/* Background Video Animation — Subtle Ambient Wave */}
       <div className="hero-bg-video-wrapper" aria-hidden="true">
         <video
           ref={videoRef}
@@ -132,29 +163,29 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
       <Container size="lg" style={{ position: 'relative', zIndex: 2 }}>
         <div className="hero-grid">
-          {/* CỘT TRÁI (Content): Bố cục 56% Desktop */}
+          {/* CỘT TRÁI (Content): Bố cục 54% Desktop */}
           <div className="hero-content">
-            {/* Eyebrow Badge: WEBSITE • GOOGLE • QUẢNG CÁO • NỘI DUNG */}
-            <div className="hero-eyebrow-container">
-              <span className="hero-eyebrow-badge">
-                <Sparkles size={13} className="eyebrow-icon" />
-                <span>WEBSITE • GOOGLE • QUẢNG CÁO • NỘI DUNG</span>
+            {/* Sub-badge nhỏ phía trên tiêu đề rõ ràng, màu sắc nhẹ nhàng (saosangedu style) */}
+            <div className="hero-subbadge-wrapper">
+              <span className="hero-subbadge">
+                <Sparkles size={13} className="subbadge-icon" />
+                <span>Đồng hành số địa phương • Bàn giao demo trong 48h</span>
               </span>
             </div>
 
-            {/* H1 lớn: clamp(2.5rem, 4vw, 4rem), line-height: 1.08 */}
+            {/* H1 lớn, tinh gọn, nhắm trúng insight khách hàng địa phương & SMB */}
             <h1 className="hero-headline">
-              Giúp doanh nghiệp nhỏ<br className="hero-desktop-br" />
-              {' '}có website, lên Google<br className="hero-desktop-br" />
-              {' '}và <span className="hero-highlight">tìm thêm khách.</span>
+              Giúp doanh nghiệp địa phương<br className="hero-desktop-br" />
+              {' '}có website chuẩn, lên Google<br className="hero-desktop-br" />
+              {' '}và <span className="hero-highlight">thu hút thêm khách.</span>
             </h1>
 
-            {/* Body text: 1.1rem, line-height: 1.62 */}
+            {/* Body text: Ngắn gọn, giải quyết trực tiếp nhu cầu */}
             <p className="hero-body">
-              Chọn đúng việc bạn cần — từ website bán hàng, định vị Google Maps đến chạy quảng cáo và chăm sóc nội dung. Báo giá cố định trước khi làm, dựng demo xem thử 0đ, nghiệm thu hài lòng mới thanh toán.
+              Giải pháp số thực tế cho hộ kinh doanh và doanh nghiệp vừa &amp; nhỏ: từ website bán hàng tải siêu tốc, định vị Google Maps đến quảng cáo đa kênh. Dựng demo xem trước 0đ, báo giá cố định, nghiệm thu hài lòng mới thanh toán.
             </p>
 
-            {/* CTA Buttons */}
+            {/* Cụm CTA kép: Nút chính 'Tư vấn miễn phí / Xem Demo' & nút phụ 'Xem bảng giá / Tìm hiểu thêm' */}
             <div className="hero-cta-group">
               <Button
                 variant="primary"
@@ -162,8 +193,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 onClick={handleOpenDemo}
                 className="hero-btn-primary"
               >
-                <span>Nhận website demo 0đ</span>
-                <ArrowRight size={18} />
+                <Sparkles size={16} />
+                <span>Tư vấn miễn phí / Xem Demo</span>
+                <ArrowRight size={16} />
               </Button>
 
               <Button
@@ -172,27 +204,27 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 onClick={handleScrollToServices}
                 className="hero-btn-secondary"
               >
-                <span>Xem dịch vụ &amp; giá</span>
+                <span>Xem bảng giá / Tìm hiểu thêm</span>
               </Button>
             </div>
 
-            {/* Micro-copy Desktop */}
-            <div className="hero-microcopy hero-microcopy-desktop">
+            {/* Micro-copy cam kết cốt lõi */}
+            <div className="hero-microcopy">
               <span className="microcopy-check">✓</span>
               <span className="microcopy-text">Dựng demo xem trước 0đ</span>
               <span className="microcopy-dot">•</span>
               <span className="microcopy-check">✓</span>
-              <span className="microcopy-text">Nghiệm thu mới thanh toán</span>
+              <span className="microcopy-text">Báo giá cố định trước khi làm</span>
               <span className="microcopy-dot">•</span>
               <span className="microcopy-check">✓</span>
-              <span className="microcopy-text">100% tài khoản chính chủ</span>
+              <span className="microcopy-text">Nghiệm thu mới thanh toán</span>
             </div>
           </div>
 
-          {/* CỘT PHẢI (Visual Business Growth Stack): Bố cục 44% Desktop */}
+          {/* CỘT PHẢI (Visual Business Growth Stack): Bố cục 46% Desktop */}
           <div className="hero-visual-column">
             <div className="hero-visual-stack">
-              {/* Card 3: Lead Notification Chip */}
+              {/* Floating Chip 1: Lead Notification (Đơn hàng / Đặt lịch mới) */}
               <div className="hero-card-lead">
                 <div className="lead-icon-box">
                   <Bell size={15} className="lead-bell" />
@@ -207,12 +239,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                     <strong>Chị Lan</strong> vừa đặt lịch qua Website
                   </div>
                   <div className="lead-status">
-                    ✓ Đã tự động gửi Zalo
+                    ✓ Đã tự động gửi Zalo thông báo
                   </div>
                 </div>
               </div>
 
-              {/* Card 1 (Main Mockup): Website preview mô phỏng trên smartphone & laptop card */}
+              {/* Card Chính: Website preview mô phỏng trên Laptop & Mobile */}
               <div className="hero-card-main">
                 {/* Browser Topbar */}
                 <div className="mockup-browser-bar">
@@ -244,8 +276,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                     </div>
                     <div className="screen-nav-items">
                       <span className="screen-nav-item active">Trang chủ</span>
-                      <span className="screen-nav-item">Menu</span>
-                      <span className="screen-nav-item">Đặt chỗ</span>
+                      <span className="screen-nav-item">Thực đơn</span>
+                      <span className="screen-nav-item">Đặt bàn</span>
                     </div>
                   </div>
 
@@ -293,17 +325,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 </div>
               </div>
 
-              {/* Sub-cards Group (Card 2: Google Maps & Card 4: Analytics) */}
+              {/* Sub-cards Group (Google Maps Card & Analytics Card) */}
               <div className="hero-subcards-group">
-                {/* Card 2: Google Maps Business profile card */}
+                {/* Floating Chip 2: Google Maps Business Profile Card */}
                 <div className="hero-card-maps">
                   <div className="maps-top">
                     <div className="maps-pin-box">
-                      <MapPin size={14} />
+                      <MapPin size={13} />
                     </div>
                     <div className="maps-verify-badge">
                       <Check size={11} strokeWidth={3} />
-                      <span>Tiệm đã xác minh trên Google Maps</span>
+                      <span>Đã xác minh Google Maps</span>
                     </div>
                   </div>
 
@@ -338,11 +370,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   </div>
                 </div>
 
-                {/* Card 4: Analytics badge */}
+                {/* Floating Chip 3: Analytics Growth Badge */}
                 <div className="hero-card-analytics">
                   <div className="analytics-header">
                     <div className="analytics-icon">
-                      <TrendingUp size={15} />
+                      <TrendingUp size={14} />
                     </div>
                     <div className="analytics-stat">
                       <span className="analytics-value">+185%</span>
@@ -362,15 +394,26 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 </div>
               </div>
             </div>
-
-            {/* Micro-copy Mobile (Placed after Visual Growth Stack) */}
-            <div className="hero-microcopy hero-microcopy-mobile">
-              <span className="microcopy-check">✓</span>
-              <span className="microcopy-text">Không cần ký hợp đồng</span>
-              <span className="microcopy-dot">•</span>
-              <span className="microcopy-text">Xem trước rồi quyết định</span>
-            </div>
           </div>
+        </div>
+
+        {/* TRUST METRICS / STATS STRIP: Trình bày gãy gọn, thẻ số liệu có icon và nhãn súc tích */}
+        <div className="hero-trust-metrics-strip" role="region" aria-label="Thống kê uy tín LocalMate">
+          {trustMetrics.map((item, idx) => {
+            const Icon = item.icon;
+            return (
+              <div key={idx} className="hero-metric-card">
+                <div className="hero-metric-icon-box" aria-hidden="true">
+                  <Icon size={18} strokeWidth={2.2} />
+                </div>
+                <div className="hero-metric-info">
+                  <div className="hero-metric-value">{item.value}</div>
+                  <div className="hero-metric-label">{item.label}</div>
+                  <div className="hero-metric-desc">{item.desc}</div>
+                </div>
+              </div>
+            );
+          })}
         </div>
 
         {/* Optional legacy trust strip preserved for explicit prop */}
@@ -419,7 +462,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           object-fit: cover;
           object-position: center;
           transform: scale(1.02);
-          opacity: 0.96;
+          opacity: 0.95;
           filter: saturate(1.05) contrast(1.02);
           display: block;
           z-index: 0;
@@ -430,18 +473,18 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           inset: 0;
           background: linear-gradient(
             180deg,
-            rgba(255, 255, 255, 0.18) 0%,
-            rgba(255, 255, 255, 0.06) 45%,
-            rgba(255, 255, 255, 0.22) 100%
+            rgba(255, 255, 255, 0.25) 0%,
+            rgba(255, 255, 255, 0.08) 45%,
+            rgba(255, 255, 255, 0.35) 100%
           );
           pointer-events: none;
           z-index: 1;
         }
 
-        /* 2-Column Desktop Grid (56 / 44) */
+        /* 2-Column Desktop Grid */
         .hero-grid {
           display: grid;
-          grid-template-columns: 56fr 44fr;
+          grid-template-columns: 54fr 46fr;
           gap: clamp(2rem, 3.5vw, 3.5rem);
           align-items: center;
         }
@@ -454,39 +497,40 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           text-align: left;
         }
 
-        .hero-eyebrow-container {
+        /* Sub-badge phía trên tiêu đề rõ ràng, màu sắc nhẹ nhàng (saosangedu style) */
+        .hero-subbadge-wrapper {
           margin-bottom: 1.15rem;
         }
 
-        .hero-eyebrow-badge {
+        .hero-subbadge {
           display: inline-flex;
           align-items: center;
-          gap: 0.4rem;
-          font-size: 12px;
+          gap: 0.45rem;
+          font-size: 12.5px;
           font-weight: 700;
-          color: #063d24;
-          background-color: #edf7f1;
+          color: #065f46;
+          background-color: #e8f5e9;
           border: 1px solid #c6ebd4;
           padding: 0.35rem 0.85rem;
           border-radius: 9999px;
-          letter-spacing: 0.04em;
-          text-transform: uppercase;
+          letter-spacing: 0.01em;
           white-space: nowrap;
+          box-shadow: 0 1px 2px rgba(13, 118, 71, 0.06);
         }
 
-        .eyebrow-icon {
+        .subbadge-icon {
           color: #0d7647;
           flex-shrink: 0;
         }
 
         /* Headline: clamp(2.35rem, 3.8vw, 3.5rem), line-height: 1.12, letter-spacing: -0.03em */
         .hero-headline {
-          font-size: clamp(2.35rem, 3.8vw, 3.5rem);
+          font-size: clamp(2.25rem, 3.6vw, 3.4rem);
           color: #0f172a;
           font-weight: 800;
-          line-height: 1.12;
+          line-height: 1.14;
           letter-spacing: -0.03em;
-          margin: 0 0 1.25rem 0;
+          margin: 0 0 1.15rem 0;
           text-wrap: balance;
         }
 
@@ -504,12 +548,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           font-size: 1.05rem;
           color: #475569;
           line-height: 1.62;
-          max-width: 54ch;
-          margin: 0 0 1.75rem 0;
+          max-width: 52ch;
+          margin: 0 0 1.65rem 0;
           text-wrap: pretty;
         }
 
-        /* CTA Buttons */
+        /* CTA Buttons: Cụm CTA kép */
         .hero-cta-group {
           display: flex;
           flex-direction: row;
@@ -556,18 +600,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           display: flex;
           align-items: center;
           gap: 0.45rem;
-          font-size: 13.5px;
+          font-size: 13px;
           color: #64748b;
           font-weight: 500;
           line-height: 1.4;
-        }
-
-        .hero-microcopy-desktop {
-          display: flex;
-        }
-
-        .hero-microcopy-mobile {
-          display: none;
+          flex-wrap: wrap;
         }
 
         .microcopy-check {
@@ -596,15 +633,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           position: relative;
           width: 100%;
           max-width: 530px;
-          min-height: 430px;
+          min-height: 410px;
         }
 
-        /* Subcards Group on Desktop uses display: contents */
         .hero-subcards-group {
           display: contents;
         }
 
-        /* Card 1: Main Mockup (Desktop / Laptop Browser) */
+        /* Card Chính: Mockup Browser Laptop/Desktop */
         .hero-card-main {
           position: relative;
           width: 92%;
@@ -781,7 +817,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         }
 
         .screen-hero-heading {
-          font-size: 13.5px;
+          font-size: 13px;
           font-weight: 800;
           color: #0f172a;
           line-height: 1.3;
@@ -856,7 +892,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           line-height: 1.2;
         }
 
-        /* Card 3: Lead Notification Chip (Floating Top Right) */
+        /* Floating Chip 1: Lead Notification (Floating Top Right) */
         .hero-card-lead {
           position: absolute;
           top: -12px;
@@ -942,7 +978,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           font-weight: 600;
         }
 
-        /* Card 2: Google Maps Profile Card (Floating Bottom Left) */
+        /* Floating Chip 2: Google Maps Profile Card (Floating Bottom Left) */
         .hero-card-maps {
           position: absolute;
           bottom: -18px;
@@ -1082,7 +1118,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           background-color: #dcfce7;
         }
 
-        /* Card 4: Analytics Badge (Floating Bottom Right) */
+        /* Floating Chip 3: Analytics Growth Badge */
         .hero-card-analytics {
           position: absolute;
           bottom: -14px;
@@ -1166,6 +1202,83 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         .chart-bar.bar-5 { height: 80%; }
         .chart-bar.bar-6 { height: 100%; background-color: #16a34a; }
 
+        /* ========================================================
+           TRUST METRICS / STATS STRIP (Saosangedu inspired)
+           Trình bày gãy gọn, thẻ số liệu có icon và nhãn súc tích
+           ======================================================== */
+        .hero-trust-metrics-strip {
+          margin-top: clamp(2.25rem, 4vw, 3.25rem);
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 1rem;
+          width: 100%;
+        }
+
+        .hero-metric-card {
+          background: #ffffff;
+          border: 1px solid #e2e8f0;
+          border-radius: 12px;
+          padding: 0.95rem 1.15rem;
+          display: flex;
+          align-items: center;
+          gap: 0.9rem;
+          box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 1px 2px rgba(15, 23, 42, 0.02);
+          transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .hero-metric-card:hover {
+          transform: translateY(-2px);
+          border-color: #cbd5e1;
+          box-shadow: 0 6px 18px -4px rgba(15, 23, 42, 0.08);
+        }
+
+        .hero-metric-icon-box {
+          width: 40px;
+          height: 40px;
+          border-radius: 10px;
+          background-color: #edf7f1;
+          color: #0d7647;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+
+        .hero-metric-info {
+          display: flex;
+          flex-direction: column;
+          min-width: 0;
+        }
+
+        .hero-metric-value {
+          font-size: 1.25rem;
+          font-weight: 800;
+          color: #0f172a;
+          line-height: 1.15;
+          letter-spacing: -0.02em;
+        }
+
+        .hero-metric-label {
+          font-size: 0.825rem;
+          font-weight: 700;
+          color: #1e293b;
+          line-height: 1.3;
+          margin-top: 2px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .hero-metric-desc {
+          font-size: 0.725rem;
+          color: #64748b;
+          line-height: 1.25;
+          margin-top: 1px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
         /* Legacy Trust Strip (If enabled via prop) */
         .hero-trust-strip {
           display: grid;
@@ -1241,10 +1354,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             display: none;
           }
 
-          /* Mobile H1: 36-44px */
           .hero-headline {
-            font-size: clamp(2.25rem, 7vw, 2.75rem);
-            line-height: 1.15;
+            font-size: clamp(2rem, 6.8vw, 2.65rem);
+            line-height: 1.16;
             letter-spacing: -0.025em;
             margin-bottom: 1rem;
           }
@@ -1252,7 +1364,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           .hero-body {
             font-size: 1rem;
             line-height: 1.55;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.35rem;
           }
 
           /* Mobile CTAs: Primary full-width, Secondary full-width */
@@ -1261,7 +1373,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             flex-direction: column;
             width: 100%;
             gap: 0.65rem;
-            margin-bottom: 0;
+            margin-bottom: 0.85rem;
           }
 
           .hero-btn-primary,
@@ -1270,15 +1382,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             justify-content: center !important;
           }
 
-          /* Hide Desktop Micro-copy on Mobile */
-          .hero-microcopy-desktop {
-            display: none;
+          .hero-microcopy {
+            justify-content: flex-start;
+            margin-bottom: 0.5rem;
           }
 
           /* Visual Growth Stack on Mobile */
           .hero-visual-column {
             width: 100%;
-            margin-top: 1rem;
+            margin-top: 0.5rem;
           }
 
           .hero-visual-stack {
@@ -1326,7 +1438,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             box-sizing: border-box;
           }
 
-          /* Tối ưu browser mockup trên mobile nhỏ chống tràn */
           .mockup-browser-bar {
             padding: 6px 8px;
             gap: 4px;
@@ -1363,20 +1474,68 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             gap: 6px;
           }
 
-          /* Show Mobile Micro-copy after Visual Stack */
-          .hero-microcopy-mobile {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 1rem;
-            text-align: center;
-            width: 100%;
+          /* Trust metrics on tablet/mobile: 2 columns */
+          .hero-trust-metrics-strip {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+            margin-top: 1.75rem;
+          }
+
+          .hero-metric-card {
+            padding: 0.75rem 0.85rem;
+            gap: 0.65rem;
+          }
+
+          .hero-metric-icon-box {
+            width: 34px;
+            height: 34px;
+          }
+
+          .hero-metric-value {
+            font-size: 1.1rem;
+          }
+
+          .hero-metric-label {
+            font-size: 0.75rem;
+            white-space: normal;
+          }
+
+          .hero-metric-desc {
+            display: none;
           }
         }
 
         @media (min-width: 560px) and (max-width: 991px) {
           .hero-subcards-group {
             grid-template-columns: 1.35fr 1fr;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .hero-subbadge {
+            font-size: 11px;
+            padding: 0.3rem 0.7rem;
+            white-space: normal;
+            line-height: 1.3;
+          }
+
+          .hero-trust-metrics-strip {
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+          }
+
+          .hero-metric-card {
+            padding: 0.65rem 0.65rem;
+            gap: 0.5rem;
+          }
+
+          .hero-metric-icon-box {
+            width: 30px;
+            height: 30px;
+          }
+
+          .hero-metric-value {
+            font-size: 1rem;
           }
         }
 
@@ -1387,7 +1546,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           .hero-card-main,
           .hero-card-maps,
           .hero-card-lead,
-          .hero-card-analytics {
+          .hero-card-analytics,
+          .hero-metric-card {
             transition: none;
           }
         }
@@ -1395,3 +1555,5 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     </section>
   );
 };
+
+export default HeroSection;
