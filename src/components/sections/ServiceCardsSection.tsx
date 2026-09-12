@@ -68,7 +68,7 @@ export const CORE_SERVICES_CARDS: ServiceCardItem[] = [
     price: '2.000.000đ',
     starterPriceLabel: 'Gói khởi điểm: 2.000.000đ (1 điểm chính chủ)',
     advancedPrice: 'Gói nâng cao: Từ 3.900.000đ (Chuỗi / Đa chi nhánh)',
-    priceNote: 'Trọn gói 1 lần — Sở hữu vĩnh viễn',
+    priceNote: 'Trọn gói 1 lần — Bàn giao 100% tài khoản chính chủ',
     duration: 'Hoàn thành sau 3–7 ngày',
     ctaText: 'Xem gói Google Maps',
     serviceNameForLead: 'Xác minh & Tối ưu Google Maps',
@@ -136,6 +136,7 @@ const ICON_COMPONENTS = {
 
 export interface ServiceCardsSectionProps {
   onOpenLeadForm?: (serviceName: string) => void;
+  onOpenConsultForm?: (serviceName: string) => void;
   onSelectService?: (slug: string) => void;
   className?: string;
   id?: string;
@@ -143,10 +144,12 @@ export interface ServiceCardsSectionProps {
 
 export const ServiceCardsSection: React.FC<ServiceCardsSectionProps> = ({
   onOpenLeadForm,
+  onOpenConsultForm,
   onSelectService,
   className = '',
   id = 'dich-vu-cot-loi'
 }) => {
+  const effectiveLeadCallback = onOpenLeadForm || onOpenConsultForm;
   const { navigate } = useRouter();
 
   const handleCardNavigate = (slug: string, serviceName: string) => {
@@ -159,8 +162,8 @@ export const ServiceCardsSection: React.FC<ServiceCardsSectionProps> = ({
 
   const handleCtaClick = (e: React.MouseEvent, item: ServiceCardItem) => {
     e.stopPropagation();
-    if (item.ctaText.includes('Tư vấn') && onOpenLeadForm) {
-      onOpenLeadForm(item.serviceNameForLead);
+    if (item.ctaText.includes('Tư vấn') && effectiveLeadCallback) {
+      effectiveLeadCallback(item.serviceNameForLead);
     } else {
       handleCardNavigate(item.slug, item.serviceNameForLead);
     }
@@ -168,8 +171,8 @@ export const ServiceCardsSection: React.FC<ServiceCardsSectionProps> = ({
 
   const handleQuickLeadClick = (e: React.MouseEvent, serviceName: string) => {
     e.stopPropagation();
-    if (onOpenLeadForm) {
-      onOpenLeadForm(serviceName);
+    if (effectiveLeadCallback) {
+      effectiveLeadCallback(serviceName);
     } else {
       navigate('/lien-he');
     }
