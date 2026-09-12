@@ -45,6 +45,18 @@
 - **Nội dung 100% tiếng Việt thực tế**: Tập trung giải quyết nỗi đau vận hành, không công kích đối thủ, không dùng thuật ngữ hoa mỹ, tương thích giao diện Light Mode không glassmorphism.
 - **TypeScript Build:** Kiểm tra `npx tsc --noEmit` và `npm run build` đạt **0 lỗi, build pass 100%**.
 
+### A0.1 Hoàn Thành Bộ Trình Chiếu Hồ Sơ Năng Lực 40 Slide (Credential Deck Viewer):
+- **Tác giả:** Credential UI Architect
+- **Các thành phần xây dựng:**
+  1. `src/data/credentialData.ts`: 40 slide chuẩn hóa chia 4 phần mục lục, dữ liệu kinh doanh thực tế, phong phú, không dùng lorem ipsum.
+  2. `src/components/credential/CredentialSlideCard.tsx`: Hiển thị slide chuẩn 16:9 với 10 loại layout (Cover, Letter, Metrics, Grid4, Comparison, Checklist 35 Task, Case Study, Process, Pillars, Contact), 100% Light Mode sáng sủa, sắc nét, tương phản cao, chống glassmorphism.
+  3. `src/components/credential/CredentialToolbar.tsx`: Thanh điều hướng ghim trên cùng (Sticky Top HUD) gồm Logo LocalMate, Dropdown chọn 4 phần mục lục, Ô nhập slide trực tiếp (`[ 1 ] / 40`), Nút Prev/Next, Zoom (-/100%/+), Fullscreen (F), CTA "Tư vấn 1:1" mở LeadModal, Nút Hamburger mở Drawer.
+  4. `src/components/credential/CredentialMenuDrawer.tsx`: Drawer mục lục trượt mượt mà cho phép cuộn nhanh đến bất kỳ slide nào trong 40 slide.
+  5. `src/pages/CredentialPage.tsx`: Trang chủ hoàn chỉnh tích hợp `SEOHead`, Keyboard shortcuts (`ArrowLeft`, `ArrowRight`, `F`, `Home`, `End`, `Escape`), Auto-Sync cuộn chuột, Thanh tiến độ đọc (Progress Bar) và chuyển đổi chế độ Cuộn Liên Tục vs Thuyết Trình.
+  6. `src/App.tsx`: Tích hợp route `/ho-so-nang-luc` và `/credential`, tự động ẩn Header và MobileFloatingCTA mặc định để tối ưu không gian trình chiếu.
+  7. Tích hợp liên kết truy cập nhanh tại Header Desktop, Header Mobile Drawer và Footer Cột 3.
+- **Kiểm thử chất lượng:** TypeScript compile `tsc --noEmit` exit code 0, `npm run build` pass 100%.
+
 ### A0. Ban Hành Hệ Thống 7 Tài Liệu SSOT Tái Kiến Trúc Dịch Vụ (`docs/services/`):
 - **Tác giả:** Docs SSOT Architect
 - **Vị trí lưu trữ:** `docs/services/`

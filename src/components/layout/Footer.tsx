@@ -12,10 +12,12 @@ import {
   ArrowRight,
   Building2,
   Users,
-  FileText
+  FileText,
+  Sparkles,
+  BookOpen
 } from 'lucide-react';
 import { CONTACT_INFO, COMPANY_INFO } from '../../data/landingContent';
-import { Link } from '../layout/Router';
+import { Link } from './Router';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -129,80 +131,111 @@ export const Footer: React.FC = () => {
             <div className="footer-tax-box">
               <span>Mã số thuế: <strong>{COMPANY_INFO.taxCode}</strong></span>
               <span className="divider-tax">•</span>
-              <span>Được thành lập ngày <strong>{COMPANY_INFO.establishedDate}</strong></span>
+              <span>Thành lập ngày <strong>{COMPANY_INFO.establishedDate}</strong></span>
             </div>
           </div>
 
-          {/* CỘT 2: DỊCH VỤ CỐT LÕI */}
-          <div className="footer-col col-services">
-            <h4 className="footer-col-title">Dịch Vụ Cốt Lõi</h4>
-            <ul className="footer-nav-list">
-              <li>
-                <Link to="/landing-490k" className="nav-item-link">
-                  <ArrowRight size={13} className="nav-arrow" />
-                  <span>Website 1 trang từ 490.000đ</span>
-                  <span className="hot-tag">Hot</span>
+          {/* CỘT 2: GIẢI PHÁP THEO 5 TRỤ CỘT CHÍNH */}
+          <div className="footer-col col-solutions">
+            <h4 className="footer-col-title">5 Trụ Cột Giải Pháp</h4>
+            
+            <div className="footer-pillars-list">
+              {/* 01. Xây nền tảng số */}
+              <div className="footer-pillar-block">
+                <Link to="/giai-phap/xay-nen-tang-so" className="pillar-link-primary">
+                  <span className="pillar-num-badge">01</span>
+                  <span className="pillar-link-title">Xây nền tảng số</span>
                 </Link>
-              </li>
-              <li>
-                <Link to="/dich-vu/geo" className="nav-item-link">
-                  <ArrowRight size={13} className="nav-arrow" />
-                  <span>Dịch vụ GEO — Đề xuất AI</span>
-                  <span className="hot-tag">Mới</span>
+                <div className="pillar-sublinks-row">
+                  <Link to="/landing-490k" className="pillar-sub-link">
+                    Web 1 trang 490k
+                  </Link>
+                  <span className="sublink-divider">•</span>
+                  <Link to="/dich-vu/thiet-ke-website" className="pillar-sub-link">
+                    Web doanh nghiệp
+                  </Link>
+                </div>
+              </div>
+
+              {/* 02. Được tìm thấy */}
+              <div className="footer-pillar-block">
+                <Link to="/giai-phap/duoc-tim-thay" className="pillar-link-primary">
+                  <span className="pillar-num-badge">02</span>
+                  <span className="pillar-link-title">Được tìm thấy</span>
                 </Link>
-              </li>
-              <li>
-                <Link to="/dich-vu/aeo" className="nav-item-link">
-                  <ArrowRight size={13} className="nav-arrow" />
-                  <span>Dịch vụ AEO — Trích dẫn AI</span>
+                <div className="pillar-sublinks-row">
+                  <Link to="/dich-vu/local-search" className="pillar-sub-link">
+                    Google Maps SEO
+                  </Link>
+                  <span className="sublink-divider">•</span>
+                  <Link to="/dich-vu/geo" className="pillar-sub-link">
+                    GEO AI Search
+                  </Link>
+                  <span className="sublink-divider">•</span>
+                  <Link to="/dich-vu/aeo" className="pillar-sub-link">
+                    AEO Trích dẫn
+                  </Link>
+                </div>
+              </div>
+
+              {/* 03. Thu hút khách */}
+              <div className="footer-pillar-block">
+                <Link to="/giai-phap/thu-hut-khach-hang" className="pillar-link-primary">
+                  <span className="pillar-num-badge">03</span>
+                  <span className="pillar-link-title">Thu hút khách hàng</span>
                 </Link>
-              </li>
-              <li>
-                <Link to="/dich-vu/seo-ai" className="nav-item-link">
-                  <ArrowRight size={13} className="nav-arrow" />
-                  <span>SEO Google AI Overviews</span>
+                <div className="pillar-sublinks-row">
+                  <Link to="/dich-vu/google-ads" className="pillar-sub-link">
+                    Google Ads 0% kê giá
+                  </Link>
+                  <span className="sublink-divider">•</span>
+                  <Link to="/dich-vu/seo-ai" className="pillar-sub-link">
+                    SEO AI Overviews
+                  </Link>
+                </div>
+              </div>
+
+              {/* 04. Vận hành hiệu quả */}
+              <div className="footer-pillar-block">
+                <Link to="/giai-phap/van-hanh-tu-dong-hoa" className="pillar-link-primary">
+                  <span className="pillar-num-badge">04</span>
+                  <span className="pillar-link-title">Vận hành hiệu quả</span>
                 </Link>
-              </li>
-              <li>
-                <Link to="/dich-vu/seo-chatgpt" className="nav-item-link">
-                  <ArrowRight size={13} className="nav-arrow" />
-                  <span>SEO Đề xuất ChatGPT</span>
+                <div className="pillar-sublinks-row">
+                  <span className="pillar-sub-text">
+                    CRM tinh gọn, Mini App Zalo &amp; Tự động hóa
+                  </span>
+                </div>
+              </div>
+
+              {/* 05. Chăm sóc đồng hành */}
+              <div className="footer-pillar-block">
+                <Link to="/giai-phap/dong-hanh-cham-soc" className="pillar-link-primary">
+                  <span className="pillar-num-badge">05</span>
+                  <span className="pillar-link-title">Chăm sóc đồng hành</span>
                 </Link>
-              </li>
-              <li>
-                <Link to="/dich-vu/google-maps" className="nav-item-link">
-                  <ArrowRight size={13} className="nav-arrow" />
-                  <span>Đưa tiệm lên Google Maps</span>
+                <div className="pillar-sublinks-row">
+                  <Link to="/dich-vu/cham-soc-website" className="pillar-sub-link">
+                    Chăm sóc web bảo hành 5 năm
+                  </Link>
+                  <span className="sublink-divider">•</span>
+                  <Link to="/dich-vu/chay-khach-cham-soc" className="pillar-sub-link">
+                    Vận hành 1-1
+                  </Link>
+                </div>
+              </div>
+
+              {/* Link Xem tất cả giải pháp */}
+              <div className="pillar-all-wrapper">
+                <Link to="/giai-phap" className="footer-view-all-btn">
+                  <span>Xem tất cả giải pháp &amp; báo giá</span>
+                  <ArrowRight size={13} />
                 </Link>
-              </li>
-              <li>
-                <Link to="/dich-vu/google-ads" className="nav-item-link">
-                  <ArrowRight size={13} className="nav-arrow" />
-                  <span>Quảng cáo Google Ads 0% kê giá</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/dich-vu/khac-phuc-loi-google-ads" className="nav-item-link">
-                  <ArrowRight size={13} className="nav-arrow" />
-                  <span>Khắc phục lỗi Ads sửa chữa</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/dich-vu/cham-soc-website" className="nav-item-link">
-                  <ArrowRight size={13} className="nav-arrow" />
-                  <span>Chăm sóc Web bảo hành 5 năm</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/dich-vu" className="nav-item-link highlight-menu-link">
-                  <ArrowRight size={13} className="nav-arrow" />
-                  <span>Xem tất cả 15 dịch vụ &amp; báo giá →</span>
-                </Link>
-              </li>
-            </ul>
+              </div>
+            </div>
           </div>
 
-          {/* CỘT 3: CHÍNH SÁCH & PHÁP LÝ MINH BẠCH */}
+          {/* CỘT 3: CHÍNH SÁCH & MINH BẠCH */}
           <div className="footer-col col-policies">
             <h4 className="footer-col-title">Chính Sách &amp; Minh Bạch</h4>
             <ul className="footer-nav-list">
@@ -213,8 +246,26 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/kien-thuc" className="nav-item-link">
+                  <BookOpen size={13} className="nav-arrow" />
+                  <span>Kiến thức &amp; Hướng dẫn</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/ho-so-nang-luc" className="nav-item-link">
+                  <Sparkles size={13} className="nav-arrow" />
+                  <span style={{ fontWeight: 700, color: '#0d7647' }}>Hồ sơ năng lực 2026 (40 Slide)</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/ve-localmate" className="nav-item-link">
+                  <Users size={13} className="nav-arrow" />
+                  <span>Về Localmate &amp; Tầm nhìn</span>
+                </Link>
+              </li>
+              <li>
                 <Link to="/chinh-sach-bao-mat" className="nav-item-link">
-                  <FileText size={13} className="nav-arrow" />
+                  <ShieldCheck size={13} className="nav-arrow" />
                   <span>Chính sách bảo mật thông tin</span>
                 </Link>
               </li>
@@ -226,7 +277,7 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <Link to="/chinh-sach-dich-vu" className="nav-item-link">
-                  <FileText size={13} className="nav-arrow" />
+                  <Lock size={13} className="nav-arrow" />
                   <span>Quy định hỗ trợ &amp; Bảo hành</span>
                 </Link>
               </li>
@@ -237,9 +288,9 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/gioi-thieu" className="nav-item-link">
-                  <Users size={13} className="nav-arrow" />
-                  <span>Về chúng tôi &amp; Tầm nhìn</span>
+                <Link to="/lien-he" className="nav-item-link">
+                  <Phone size={13} className="nav-arrow" />
+                  <span>Liên hệ tư vấn trực tiếp</span>
                 </Link>
               </li>
             </ul>
@@ -373,11 +424,13 @@ export const Footer: React.FC = () => {
             <div className="policy-quick-nav">
               <Link to="/bang-gia">Bảng giá</Link>
               <span className="dot-sep">•</span>
-              <Link to="/chinh-sach-bao-mat">Bảo mật dữ liệu</Link>
+              <Link to="/ve-localmate">Về Localmate</Link>
               <span className="dot-sep">•</span>
-              <Link to="/dieu-khoan">Điều khoản dịch vụ</Link>
+              <Link to="/chinh-sach-bao-mat">Bảo mật</Link>
               <span className="dot-sep">•</span>
-              <Link to="/chinh-sach-dich-vu">Hỗ trợ &amp; Bảo hành</Link>
+              <Link to="/dieu-khoan">Điều khoản</Link>
+              <span className="dot-sep">•</span>
+              <Link to="/chinh-sach-dich-vu">Bảo hành</Link>
               <span className="dot-sep">•</span>
               <Link to="/sitemap">Sơ đồ website</Link>
             </div>
@@ -388,7 +441,7 @@ export const Footer: React.FC = () => {
       <style>{`
         /* ==========================================================================
            LOCALMATE FOOTER COMPONENT STYLES
-           Design Language: Light mode, clean, high contrast, strict no glassmorphism
+           Design Language: MISA Light Theme, high contrast, strict no glassmorphism
            ========================================================================== */
         .localmate-footer {
           background-color: #ffffff;
@@ -528,8 +581,8 @@ export const Footer: React.FC = () => {
 
         @media (min-width: 1024px) {
           .footer-main-grid {
-            grid-template-columns: 1.35fr 0.9fr 0.9fr 1.05fr;
-            gap: 2.5rem;
+            grid-template-columns: 1.25fr 1.15fr 0.75fr 0.95fr;
+            gap: 2.25rem;
           }
         }
 
@@ -576,7 +629,7 @@ export const Footer: React.FC = () => {
           text-wrap: pretty;
         }
 
-        /* Column 1 Contact Items */
+        /* Column 1: Contact Items */
         .footer-contact-list {
           display: flex;
           flex-direction: column;
@@ -681,7 +734,111 @@ export const Footer: React.FC = () => {
           color: #94a3b8;
         }
 
-        /* Navigation Columns (Col 2 & Col 3) */
+        /* Column 2: 5 Pillars Solution Structure */
+        .footer-pillars-list {
+          display: flex;
+          flex-direction: column;
+          gap: 0.85rem;
+        }
+
+        .footer-pillar-block {
+          display: flex;
+          flex-direction: column;
+          gap: 0.2rem;
+          padding-bottom: 0.65rem;
+          border-bottom: 1px solid #f1f5f9;
+        }
+
+        .footer-pillar-block:last-of-type {
+          border-bottom: none;
+          padding-bottom: 0;
+        }
+
+        .pillar-link-primary {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          text-decoration: none;
+          color: #0f172a;
+          font-size: 0.875rem;
+          font-weight: 700;
+          transition: color 0.15s ease;
+        }
+
+        .pillar-link-primary:hover {
+          color: #0d7647;
+        }
+
+        .pillar-num-badge {
+          font-size: 0.6875rem;
+          font-weight: 800;
+          color: #0d7647;
+          background-color: #edf7f1;
+          padding: 0.1rem 0.4rem;
+          border-radius: 4px;
+        }
+
+        .pillar-link-title {
+          font-size: 0.875rem;
+          font-weight: 700;
+        }
+
+        .pillar-sublinks-row {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: 0.35rem 0.45rem;
+          padding-left: 1.75rem;
+          font-size: 0.775rem;
+        }
+
+        .pillar-sub-link {
+          color: #64748b;
+          text-decoration: none;
+          transition: color 0.15s ease;
+        }
+
+        .pillar-sub-link:hover {
+          color: #0d7647;
+          text-decoration: underline;
+        }
+
+        .sublink-divider {
+          color: #cbd5e1;
+          font-size: 0.65rem;
+        }
+
+        .pillar-sub-text {
+          color: #64748b;
+          font-size: 0.75rem;
+        }
+
+        .pillar-all-wrapper {
+          padding-top: 0.45rem;
+        }
+
+        .footer-view-all-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 0.8125rem;
+          font-weight: 700;
+          color: #0d7647;
+          text-decoration: none;
+          padding: 6px 12px;
+          border-radius: 6px;
+          background-color: #edf7f1;
+          border: 1px solid #c6ebd4;
+          transition: all 0.15s ease;
+          width: fit-content;
+        }
+
+        .footer-view-all-btn:hover {
+          background-color: #0d7647;
+          color: #ffffff;
+        }
+
+        /* Column 3: Navigation Links */
         .footer-nav-list {
           list-style: none;
           padding: 0;
@@ -716,23 +873,6 @@ export const Footer: React.FC = () => {
 
         .nav-item-link:hover .nav-arrow {
           color: #0d7647;
-        }
-
-        .hot-tag {
-          font-size: 0.675rem;
-          font-weight: 800;
-          color: #ffffff;
-          background-color: #ef4444;
-          padding: 0.1rem 0.4rem;
-          border-radius: 9999px;
-          text-transform: uppercase;
-          margin-left: 0.25rem;
-        }
-
-        .highlight-menu-link {
-          font-weight: 700;
-          color: #0d7647 !important;
-          margin-top: 0.35rem;
         }
 
         /* Column 4: Local Support Card & Social */
@@ -799,28 +939,27 @@ export const Footer: React.FC = () => {
           color: #0f172a;
           border: 1px solid #cbd5e1;
           font-size: 0.775rem;
-          font-weight: 700;
+          font-weight: 600;
           padding: 0.45rem 0.85rem;
           border-radius: 6px;
           text-decoration: none;
-          transition: border-color 0.15s ease, color 0.15s ease;
+          transition: background-color 0.15s ease;
         }
 
         .btn-local-contact:hover {
-          border-color: #0d7647;
-          color: #0d7647;
+          background-color: #f1f5f9;
         }
 
         .footer-social-wrapper {
           display: flex;
           align-items: center;
-          gap: 0.65rem;
+          gap: 0.75rem;
         }
 
         .social-label {
           font-size: 0.8rem;
-          font-weight: 700;
-          color: #475569;
+          color: #64748b;
+          font-weight: 600;
         }
 
         .social-icons-group {
@@ -840,55 +979,55 @@ export const Footer: React.FC = () => {
           justify-content: center;
           color: #334155;
           text-decoration: none;
+          font-size: 0.8rem;
           font-weight: 800;
-          font-size: 0.825rem;
           transition: all 0.15s ease;
         }
 
         .footer-social-circle:hover {
-          background-color: #ecfdf5;
+          background-color: #0d7647;
           border-color: #0d7647;
-          color: #0d7647;
-          transform: translateY(-1px);
+          color: #ffffff;
+          transform: translateY(-2px);
         }
 
-        /* 3. Trust Certifications & Badges Strip */
+        /* 3. Trust Strip */
         .footer-trust-strip {
           display: flex;
           flex-direction: column;
           gap: 1.25rem;
-          padding: 1.25rem 0;
-          border-top: 1px solid #e2e8f0;
-          border-bottom: 1px solid #e2e8f0;
+          padding: 1.5rem 0;
+          border-top: 1px solid #f1f5f9;
+          border-bottom: 1px solid #f1f5f9;
           margin-bottom: 1.5rem;
         }
 
-        @media (min-width: 900px) {
+        @media (min-width: 1024px) {
           .footer-trust-strip {
             flex-direction: row;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
           }
         }
 
         .trust-pills-list {
           display: flex;
-          align-items: center;
           flex-wrap: wrap;
-          gap: 0.55rem;
+          align-items: center;
+          gap: 0.65rem;
         }
 
         .trust-pill-badge {
           display: inline-flex;
           align-items: center;
-          gap: 0.35rem;
-          font-size: 0.775rem;
-          font-weight: 700;
-          color: #1e293b;
+          gap: 0.4rem;
           background-color: #f8fafc;
           border: 1px solid #e2e8f0;
           padding: 0.35rem 0.75rem;
           border-radius: 9999px;
+          font-size: 0.775rem;
+          color: #334155;
+          font-weight: 600;
         }
 
         .trust-icon {
@@ -909,33 +1048,23 @@ export const Footer: React.FC = () => {
         .bct-badge-img {
           height: 38px;
           width: auto;
-          max-width: 145px;
           object-fit: contain;
           display: block;
-          transition: transform 0.15s ease;
         }
 
-        .bct-badge-img:hover {
-          transform: scale(1.03);
-        }
-
-        /* 4. Bottom Copyright & Mission Bar */
+        /* 4. Bottom Bar */
         .footer-bottom-bar {
           display: flex;
           flex-direction: column;
-          gap: 1rem;
-          padding-top: 0.25rem;
+          gap: 0.85rem;
+          padding-top: 0.5rem;
+          font-size: 0.8rem;
+          color: #64748b;
         }
 
         .footer-mission-statement {
-          font-size: 0.8rem;
-          color: #475569;
-          line-height: 1.55;
+          line-height: 1.5;
           text-wrap: pretty;
-          background-color: #f8fafc;
-          border: 1px solid #f1f5f9;
-          padding: 0.65rem 0.95rem;
-          border-radius: 8px;
         }
 
         .footer-mission-statement strong {
@@ -945,9 +1074,7 @@ export const Footer: React.FC = () => {
         .footer-sub-links-row {
           display: flex;
           flex-direction: column;
-          gap: 0.75rem;
-          font-size: 0.775rem;
-          color: #64748b;
+          gap: 0.5rem;
         }
 
         @media (min-width: 768px) {
@@ -958,19 +1085,15 @@ export const Footer: React.FC = () => {
           }
         }
 
-        .copyright-text {
-          line-height: 1.5;
-        }
-
         .copyright-text strong {
           color: #334155;
         }
 
         .policy-quick-nav {
           display: flex;
-          align-items: center;
-          gap: 0.6rem;
           flex-wrap: wrap;
+          align-items: center;
+          gap: 0.4rem;
         }
 
         .policy-quick-nav a {

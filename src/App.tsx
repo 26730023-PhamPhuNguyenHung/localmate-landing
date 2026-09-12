@@ -29,6 +29,12 @@ import { SeoAiServicePage } from './pages/SeoAiServicePage';
 import { SeoChatGptServicePage } from './pages/SeoChatGptServicePage';
 import { OperationalCareClusterPage } from './pages/OperationalCareClusterPage';
 import { LocalSearchClusterPage } from './pages/LocalSearchClusterPage';
+import { PresenceSolutionPage } from './pages/solutions/PresenceSolutionPage';
+import { SearchSolutionPage } from './pages/solutions/SearchSolutionPage';
+import { AcquisitionSolutionPage } from './pages/solutions/AcquisitionSolutionPage';
+import { AutomationSolutionPage } from './pages/solutions/AutomationSolutionPage';
+import { CareSolutionPage } from './pages/CareSolutionPage';
+import { CredentialPage } from './pages/CredentialPage';
 
 // Modals
 import { AdvisorModal } from './components/advisor/AdvisorModal';
@@ -57,107 +63,146 @@ const MainContent: React.FC = () => {
   };
 
   const renderPage = () => {
+    const normalizedPath = currentPath.replace(/\/$/, '') || '/';
+
     // 1. Root Homepage
-    if (currentPath === '/' || currentPath === '') {
+    if (normalizedPath === '/') {
       return <HomePage onOpenConsultForm={handleOpenLeadForm} />;
     }
 
     // 2. Standalone Landing 490k
-    if (currentPath.startsWith('/landing-490k') || currentPath.startsWith('/goi-490k')) {
+    if (normalizedPath.startsWith('/landing-490k') || normalizedPath.startsWith('/goi-490k')) {
       return <Landing490kPage />;
     }
 
+    // 2.5 Credential Deck Viewer (Hồ Sơ Năng Lực 40 Slide)
+    if (
+      normalizedPath === '/ho-so-nang-luc' ||
+      normalizedPath === '/credential' ||
+      normalizedPath.startsWith('/ho-so-nang-luc') ||
+      normalizedPath.startsWith('/credential')
+    ) {
+      return <CredentialPage onOpenConsultForm={handleOpenLeadForm} />;
+    }
+
     // 3. Admin & Advisor
-    if (currentPath.startsWith('/advisor')) {
+    if (normalizedPath.startsWith('/advisor')) {
       return <AdvisorPage />;
     }
-    if (currentPath.startsWith('/admin/pricing')) {
+    if (normalizedPath.startsWith('/admin/pricing')) {
       return <AdminPricingPage />;
     }
 
-    // 4. Services Hierarchy
-    if (currentPath === '/dich-vu' || currentPath === '/dich-vu/') {
-      return <ServicesPage />;
-    }
+    // 4. Five Solution Pillars (Primary /giai-phap/... & Convenient Aliases /dich-vu/...)
+    // Pillar 1: Xây Nền Tảng Số
     if (
-      currentPath === '/dich-vu/local-search' ||
-      currentPath === '/dich-vu/local-search/' ||
-      currentPath === '/dich-vu/google-maps-seo' ||
-      currentPath === '/dich-vu/google-maps-seo/' ||
-      currentPath === '/dich-vu/seo-maps' ||
-      currentPath === '/dich-vu/seo-maps/' ||
-      currentPath === '/local-search' ||
-      currentPath === '/local-search/' ||
-      currentPath.startsWith('/dich-vu/local-search') ||
-      currentPath.startsWith('/dich-vu/google-maps-seo') ||
-      currentPath.startsWith('/dich-vu/seo-maps')
+      normalizedPath === '/giai-phap/xay-nen-tang-so' ||
+      normalizedPath === '/giai-phap/nen-tang-so' ||
+      normalizedPath === '/dich-vu/xay-nen-tang-so' ||
+      normalizedPath === '/dich-vu/nen-tang-so'
+    ) {
+      return <PresenceSolutionPage onOpenConsultForm={handleOpenLeadForm} />;
+    }
+
+    // Pillar 2: Được Tìm Thấy
+    if (
+      normalizedPath === '/giai-phap/duoc-tim-thay' ||
+      normalizedPath === '/dich-vu/duoc-tim-thay'
+    ) {
+      return <SearchSolutionPage onOpenConsultForm={handleOpenLeadForm} />;
+    }
+
+    // Pillar 3: Thu Hút Khách Hàng
+    if (
+      normalizedPath === '/giai-phap/thu-hut-khach-hang' ||
+      normalizedPath === '/dich-vu/thu-hut-khach-hang'
+    ) {
+      return <AcquisitionSolutionPage onOpenConsultForm={handleOpenLeadForm} />;
+    }
+
+    // Pillar 4: Vận Hành Tự Động Hóa
+    if (
+      normalizedPath === '/giai-phap/van-hanh-tu-dong-hoa' ||
+      normalizedPath === '/dich-vu/van-hanh-tu-dong-hoa'
+    ) {
+      return <AutomationSolutionPage onOpenConsultForm={handleOpenLeadForm} />;
+    }
+
+    // Pillar 5: Đồng Hành Chăm Sóc
+    if (
+      normalizedPath === '/giai-phap/dong-hanh-cham-soc' ||
+      normalizedPath === '/giai-phap/dong-hanh-duy-tri' ||
+      normalizedPath === '/dich-vu/dong-hanh-cham-soc' ||
+      normalizedPath === '/dich-vu/dong-hanh-duy-tri'
+    ) {
+      return <CareSolutionPage onOpenConsultForm={handleOpenLeadForm} />;
+    }
+
+    // Solution Hub & Legacy Services Hub: /giai-phap and /dich-vu
+    if (normalizedPath === '/giai-phap' || normalizedPath === '/dich-vu') {
+      return <ServicesPage onOpenConsultForm={handleOpenLeadForm} />;
+    }
+
+    // 5. Deep Service Clusters & Specialized Routes
+    if (
+      normalizedPath === '/dich-vu/local-search' ||
+      normalizedPath === '/dich-vu/google-maps-seo' ||
+      normalizedPath === '/dich-vu/seo-maps' ||
+      normalizedPath === '/local-search' ||
+      normalizedPath.startsWith('/dich-vu/local-search') ||
+      normalizedPath.startsWith('/dich-vu/google-maps-seo') ||
+      normalizedPath.startsWith('/dich-vu/seo-maps')
     ) {
       return <LocalSearchClusterPage onOpenConsultForm={handleOpenLeadForm} />;
     }
     if (
-      currentPath === '/dich-vu/chay-khach-cham-soc' ||
-      currentPath === '/dich-vu/chay-khach-cham-soc/' ||
-      currentPath === '/dich-vu/chay-khach-van-hanh' ||
-      currentPath === '/dich-vu/chay-khach-van-hanh/' ||
-      currentPath === '/chay-khach-van-hanh' ||
-      currentPath === '/chay-khach-van-hanh/' ||
-      currentPath === '/chay-khach-cham-soc' ||
-      currentPath === '/chay-khach-cham-soc/' ||
-      currentPath.startsWith('/dich-vu/chay-khach')
+      normalizedPath === '/dich-vu/chay-khach-cham-soc' ||
+      normalizedPath === '/dich-vu/chay-khach-van-hanh' ||
+      normalizedPath === '/chay-khach-van-hanh' ||
+      normalizedPath === '/chay-khach-cham-soc' ||
+      normalizedPath.startsWith('/dich-vu/chay-khach')
     ) {
       return <OperationalCareClusterPage onOpenConsultForm={handleOpenLeadForm} />;
     }
     if (
-      currentPath === '/dich-vu/geo' ||
-      currentPath === '/dich-vu/geo/' ||
-      currentPath === '/dich-vu-geo' ||
-      currentPath === '/dich-vu-geo/' ||
-      currentPath === '/geo' ||
-      currentPath === '/geo/' ||
-      currentPath.startsWith('/dich-vu/toi-uu-ai-geo') ||
-      currentPath.startsWith('/dich-vu/geo') ||
-      currentPath.startsWith('/dich-vu-geo')
+      normalizedPath === '/dich-vu/geo' ||
+      normalizedPath === '/dich-vu-geo' ||
+      normalizedPath === '/geo' ||
+      normalizedPath.startsWith('/dich-vu/toi-uu-ai-geo') ||
+      normalizedPath.startsWith('/dich-vu/geo') ||
+      normalizedPath.startsWith('/dich-vu-geo')
     ) {
       return <GeoServicePage onOpenConsultForm={handleOpenLeadForm} />;
     }
     if (
-      currentPath === '/dich-vu/aeo' ||
-      currentPath === '/dich-vu/aeo/' ||
-      currentPath === '/dich-vu-aeo' ||
-      currentPath === '/dich-vu-aeo/' ||
-      currentPath === '/aeo' ||
-      currentPath === '/aeo/' ||
-      currentPath.startsWith('/dich-vu/toi-uu-aeo') ||
-      currentPath.startsWith('/dich-vu/aeo')
+      normalizedPath === '/dich-vu/aeo' ||
+      normalizedPath === '/dich-vu-aeo' ||
+      normalizedPath === '/aeo' ||
+      normalizedPath.startsWith('/dich-vu/toi-uu-aeo') ||
+      normalizedPath.startsWith('/dich-vu/aeo')
     ) {
       return <AeoServicePage onOpenConsultForm={handleOpenLeadForm} />;
     }
     if (
-      currentPath === '/dich-vu/seo-ai' ||
-      currentPath === '/dich-vu/seo-ai/' ||
-      currentPath === '/dich-vu-seo-ai' ||
-      currentPath === '/dich-vu-seo-ai/' ||
-      currentPath === '/seo-ai' ||
-      currentPath === '/seo-ai/' ||
-      currentPath.startsWith('/dich-vu/google-ai-overviews') ||
-      currentPath.startsWith('/dich-vu/seo-ai')
+      normalizedPath === '/dich-vu/seo-ai' ||
+      normalizedPath === '/dich-vu-seo-ai' ||
+      normalizedPath === '/seo-ai' ||
+      normalizedPath.startsWith('/dich-vu/google-ai-overviews') ||
+      normalizedPath.startsWith('/dich-vu/seo-ai')
     ) {
       return <SeoAiServicePage onOpenConsultForm={handleOpenLeadForm} />;
     }
     if (
-      currentPath === '/dich-vu/seo-chatgpt' ||
-      currentPath === '/dich-vu/seo-chatgpt/' ||
-      currentPath === '/dich-vu-seo-chatgpt' ||
-      currentPath === '/dich-vu-seo-chatgpt/' ||
-      currentPath === '/seo-chatgpt' ||
-      currentPath === '/seo-chatgpt/' ||
-      currentPath.startsWith('/dich-vu/chatgpt-seo') ||
-      currentPath.startsWith('/dich-vu/seo-chatgpt')
+      normalizedPath === '/dich-vu/seo-chatgpt' ||
+      normalizedPath === '/dich-vu-seo-chatgpt' ||
+      normalizedPath === '/seo-chatgpt' ||
+      normalizedPath.startsWith('/dich-vu/chatgpt-seo') ||
+      normalizedPath.startsWith('/dich-vu/seo-chatgpt')
     ) {
       return <SeoChatGptServicePage onOpenConsultForm={handleOpenLeadForm} />;
     }
-    if (currentPath.startsWith('/dich-vu/')) {
-      const slug = currentPath.replace('/dich-vu/', '').replace(/\/$/, '');
+    if (normalizedPath.startsWith('/dich-vu/')) {
+      const slug = normalizedPath.replace('/dich-vu/', '');
       if (slug === 'local-search' || slug === 'google-maps-seo' || slug === 'seo-maps') {
         return <LocalSearchClusterPage onOpenConsultForm={handleOpenLeadForm} />;
       }
@@ -176,36 +221,54 @@ const MainContent: React.FC = () => {
       return <ServiceDetailPage slug={slug} onOpenConsultForm={handleOpenLeadForm} />;
     }
 
-    // 5. Knowledge Hub Hierarchy
-    if (currentPath === '/kien-thuc' || currentPath === '/kien-thuc/') {
+    // 6. Knowledge Hub Hierarchy
+    if (normalizedPath === '/kien-thuc') {
       return <KnowledgePage />;
     }
-    if (currentPath.startsWith('/kien-thuc/')) {
-      const slug = currentPath.replace('/kien-thuc/', '').replace(/\/$/, '');
+    if (normalizedPath.startsWith('/kien-thuc/')) {
+      const slug = normalizedPath.replace('/kien-thuc/', '');
       return <ArticleDetailPage slug={slug} onOpenConsultForm={handleOpenLeadForm} />;
     }
 
-    // 6. Case Studies / Projects Hierarchy
-    if (currentPath === '/du-an' || currentPath === '/du-an/') {
+    // 7. Case Studies / Projects Hierarchy
+    if (normalizedPath === '/du-an') {
       return <ProjectsPage />;
     }
-    if (currentPath.startsWith('/du-an/')) {
-      const slug = currentPath.replace('/du-an/', '').replace(/\/$/, '');
+    if (normalizedPath.startsWith('/du-an/')) {
+      const slug = normalizedPath.replace('/du-an/', '');
       return <CaseStudyDetailPage slug={slug} onOpenConsultForm={handleOpenLeadForm} />;
     }
 
-    // 7. Pricing
-    if (currentPath.startsWith('/bang-gia')) {
+    // 8. Pricing
+    if (normalizedPath.startsWith('/bang-gia')) {
       return <PricingPage />;
     }
 
-    // 8. Industry Solutions
-    if (currentPath.startsWith('/giai-phap')) {
+    // 9. Industry & Pillar Solutions
+    if (normalizedPath === '/giai-phap') {
+      return <ServicesPage onOpenConsultForm={handleOpenLeadForm} />;
+    }
+    if (normalizedPath === '/giai-phap/nen-tang-so' || normalizedPath === '/giai-phap/hien-dien-so') {
+      return <PresenceSolutionPage onOpenConsultForm={handleOpenLeadForm} />;
+    }
+    if (normalizedPath === '/giai-phap/duoc-tim-thay' || normalizedPath === '/giai-phap/tim-kiem-cuc-bo-ai') {
+      return <SearchSolutionPage onOpenConsultForm={handleOpenLeadForm} />;
+    }
+    if (normalizedPath === '/giai-phap/thu-hut-khach-hang') {
+      return <AcquisitionSolutionPage onOpenConsultForm={handleOpenLeadForm} />;
+    }
+    if (normalizedPath === '/giai-phap/van-hanh-tu-dong-hoa' || normalizedPath === '/giai-phap/tu-dong-hoa-van-hanh') {
+      return <AutomationSolutionPage onOpenConsultForm={handleOpenLeadForm} />;
+    }
+    if (normalizedPath === '/giai-phap/dong-hanh-duy-tri' || normalizedPath === '/giai-phap/dong-hanh-bao-tri') {
+      return <CareSolutionPage onOpenConsultForm={handleOpenLeadForm} />;
+    }
+    if (normalizedPath.startsWith('/giai-phap')) {
       return <SolutionsPage onOpenConsultForm={handleOpenLeadForm} />;
     }
 
     // 9. About & Contact
-    if (currentPath.startsWith('/gioi-thieu')) {
+    if (currentPath.startsWith('/gioi-thieu') || currentPath.startsWith('/ve-localmate')) {
       return <AboutPage />;
     }
     if (currentPath.startsWith('/lien-he')) {
@@ -232,14 +295,25 @@ const MainContent: React.FC = () => {
     return <HomePage onOpenConsultForm={handleOpenLeadForm} />;
   };
 
+  const normalizedPath = currentPath.replace(/\/$/, '') || '/';
+  const isCredentialView =
+    normalizedPath === '/ho-so-nang-luc' ||
+    normalizedPath === '/credential' ||
+    normalizedPath.startsWith('/ho-so-nang-luc') ||
+    normalizedPath.startsWith('/credential');
+
   return (
     <div className="localmate-app">
-      <Header onOpenDemoForm={() => handleOpenLeadForm('Tư vấn Web Demo 0đ')} />
+      {!isCredentialView && (
+        <Header onOpenDemoForm={() => handleOpenLeadForm('Tư vấn Web Demo 0đ')} />
+      )}
       <main id="main-content">{renderPage()}</main>
-      <Footer />
+      {!isCredentialView && <Footer />}
 
       {/* Mobile Floating Sticky CTA */}
-      <MobileFloatingCTA onOpenConsultForm={() => handleOpenLeadForm('Tư vấn Web Demo 0đ')} />
+      {!isCredentialView && (
+        <MobileFloatingCTA onOpenConsultForm={() => handleOpenLeadForm('Tư vấn Web Demo 0đ')} />
+      )}
 
       {/* Global Modals */}
       <LeadModal

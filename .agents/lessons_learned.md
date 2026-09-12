@@ -1,9 +1,18 @@
 # Lessons Learned & Operational Insights (LocalMate)
 
-## 0. Cấu Trúc Dữ Liệu Hồ Sơ Năng Lực 40 Slide Chuẩn Quốc Tế (`credentialDeckData.ts`)
-- **Chuyển hóa từ Agency Enterprise sang Người đồng hành số Địa phương**: Thay vì áp dụng nguyên bản ngôn ngữ hàn lâm xa lạ của agency lớn, toàn bộ 40 slide đã được "bản địa hóa" 100% sang định vị mộc mạc, thực chiến của LocalMate: làm rõ từng đầu việc, không hứa hẹn viển vông, cam kết bảo hành kỹ thuật 5 năm và hỗ trợ 1-1 tại chỗ.
-- **Tính trọn vẹn của Data Schema**: Mỗi slide đều bắt buộc có đủ 14 trường dữ liệu (`id`, `index`, `screen`, `label`, `title`, `partId`, `partTitle`, `isDivider`, `summary`, `bullets`, `metrics`, `tags`, `quote`, `notes`), giúp các component hiển thị UI Slide (Carousel, Presentation mode, PDF generator hoặc Landing page) có thể render linh hoạt mà không lo thiếu dữ liệu (`undefined`).
-- **Tập trung vào giá trị chuyển đổi thật**: Các số liệu (metrics) và case study gắn liền trực tiếp với doanh thu cửa hàng (cuộc gọi hotline, lượt chỉ đường Google Maps, trích dẫn AI Search không tốn tiền ads, tỷ lệ chốt khách khi có Sales Hub rõ giá) thay vì các chỉ số tương tác ảo (like, share, view).
+## 0. Hệ Thống Trình Chiếu Hồ Sơ Năng Lực 40 Slide (Credential Deck Viewer)
+- **Kiến trúc UI chuyên nghiệp (16:9 Aspect Ratio Presentation Deck)**:
+  - Slide card hỗ trợ chuẩn khung hình 16:9 (`aspectRatio: '16 / 9'`) với tính năng Zoom tỷ lệ linh hoạt (70% – 150%), tương thích cả cuộn dọc (Continuous Scroll) lẫn trình chiếu từng slide (Presentation Single Slide) phục vụ họp trực tiếp hoặc chiếu màn hình lớn.
+  - Phân loại 10 loại layout tinh tế: Bìa mở/kết (`cover`), Thư ngỏ ban sáng lập (`letter`), Khối số liệu 2 cột (`metrics`), Lưới 4 thẻ (`grid4`), Bảng so sánh (`comparison`), Checklist 35 task nghiệm thu (`checklist`), Case study thực tế (`casestudy`), Quy trình 5 bước (`process`), Bản đồ 5 trụ cột (`pillars`), Form liên hệ (`contact`).
+- **CredentialToolbar ghim trên cùng (Sticky Top HUD)**:
+  - Tích hợp Logo LocalMate, Dropdown chọn 4 Phần mục lục, Ô nhảy slide trực tiếp (`[ 1 ] / 40`), Nút Prev/Next, Điều khiển Zoom, Nút bật/tắt toàn màn hình (Fullscreen API), Nút CTA "Tư vấn 1:1" mở LeadModal và Nút Drawer mục lục di động.
+  - Tích hợp phím tắt toàn năng: `ArrowRight` / `PageDown` (tiếp), `ArrowLeft` / `PageUp` (trước), `Home` / `End`, `F` (Fullscreen), `Escape` (thoát drawer).
+- **Thanh cuộn đồng bộ thông minh (Auto-Sync Scroll & Reading Progress)**:
+  - Tích hợp thanh đo tiến độ đọc (`readingProgress`) chạy mượt theo % hoàn thành của 40 slide.
+  - Tự động đồng bộ số trang hiện tại khi người dùng cuộn chuột trên trang.
+- **Tuân thủ triệt để Design System**:
+  - 100% Light Mode sáng sủa (`#ffffff`, `#f8fafc`), chữ tương phản cao (`#0f172a`, `#1e293b`), màu thương hiệu xanh ngọc bích LocalMate (`#0d7647`), TUYỆT ĐỐI KHÔNG DÙNG GLASSMORPHISM, `scrollbar-gutter: stable`.
+  - Tích hợp route `/ho-so-nang-luc` và alias `/credential`, tự động ẩn Header và MobileCTA toàn cục để không gian trình chiếu không bị che chắn hay phân tâm.
 
 ## 1. Content Strategy & Copywriting
 - **Chống sáo rỗng công nghệ**: Tránh tuyệt đối các từ khóa vô thưởng vô phạt như "Trong thời đại 4.0", "AI thay đổi thế giới", "Chuyển đổi số toàn diện". Doanh nghiệp SME/kinh doanh địa phương chỉ quan tâm họ bớt được bước tay chân nào và có mất khách không.

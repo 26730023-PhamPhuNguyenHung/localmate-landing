@@ -7,14 +7,13 @@ import {
   Sparkles,
   MapPin,
   Globe,
-  FileText,
   Phone,
-  Layout,
   TrendingUp,
-  Briefcase,
-  CheckCircle2,
+  ShieldCheck,
   ArrowRight,
-  Cpu
+  Cpu,
+  CheckCircle2,
+  LucideIcon
 } from 'lucide-react';
 import { useRouter, Link } from './Router';
 import { CONTACT_INFO } from '../../data/landingContent';
@@ -23,10 +22,80 @@ interface HeaderProps {
   onOpenDemoForm?: () => void;
 }
 
+interface SolutionPillarItem {
+  id: string;
+  step: string;
+  title: string;
+  subtitle: string;
+  desc: string;
+  href: string;
+  badge: string;
+  icon: LucideIcon;
+  colorClass: string;
+}
+
+const SOLUTION_PILLARS: SolutionPillarItem[] = [
+  {
+    id: 'xay-nen-tang-so',
+    step: '01',
+    title: 'Xây nền tảng số',
+    subtitle: 'Website & Hồ sơ số',
+    desc: 'Website bán hàng, hồ sơ năng lực số chuẩn di động, rõ ràng bảng giá.',
+    href: '/giai-phap/xay-nen-tang-so',
+    badge: 'Khởi tạo',
+    icon: Globe,
+    colorClass: 'pillar-emerald'
+  },
+  {
+    id: 'duoc-tim-thay',
+    step: '02',
+    title: 'Được tìm thấy',
+    subtitle: 'Google Maps & AI Search',
+    desc: 'Xác minh Google Maps chính chủ, tối ưu GEO để AI đề xuất đầu tiên.',
+    href: '/giai-phap/duoc-tim-thay',
+    badge: 'Hot 2026',
+    icon: MapPin,
+    colorClass: 'pillar-amber'
+  },
+  {
+    id: 'thu-hut-khach-hang',
+    step: '03',
+    title: 'Thu hút khách',
+    subtitle: 'Quảng cáo & Tìm lead',
+    desc: 'Google Ads 0% kê giá, lọc click ảo và tối ưu cuộc gọi từ khách gần.',
+    href: '/giai-phap/thu-hut-khach-hang',
+    badge: 'Ra lead',
+    icon: TrendingUp,
+    colorClass: 'pillar-blue'
+  },
+  {
+    id: 'van-hanh-tu-dong-hoa',
+    step: '04',
+    title: 'Vận hành hiệu quả',
+    subtitle: 'CRM & Tự động hóa',
+    desc: 'Quản lý khách hàng tinh gọn, Mini App Zalo & chăm sóc tự động.',
+    href: '/giai-phap/van-hanh-tu-dong-hoa',
+    badge: 'Tinh gọn',
+    icon: Cpu,
+    colorClass: 'pillar-purple'
+  },
+  {
+    id: 'dong-hanh-cham-soc',
+    step: '05',
+    title: 'Chăm sóc đồng hành',
+    subtitle: 'Bảo trì & Kỹ thuật',
+    desc: 'Đội ngũ IT riêng hỗ trợ 1-1 qua Zalo, bảo hành kỹ thuật 5 năm.',
+    href: '/giai-phap/dong-hanh-cham-soc',
+    badge: 'Bảo hành 5 năm',
+    icon: ShieldCheck,
+    colorClass: 'pillar-teal'
+  }
+];
+
 export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<'services' | 'knowledge' | null>(null);
+  const [solutionsDropdownOpen, setSolutionsDropdownOpen] = useState(false);
 
   const headerRef = useRef<HTMLElement>(null);
   const dropdownTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -45,7 +114,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (headerRef.current && !headerRef.current.contains(event.target as Node)) {
-        setActiveDropdown(null);
+        setSolutionsDropdownOpen(false);
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
@@ -67,25 +136,34 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setMobileMenuOpen(false);
-        setActiveDropdown(null);
+        setSolutionsDropdownOpen(false);
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  const handleMouseEnterDropdown = (type: 'services' | 'knowledge') => {
+  const handleMouseEnterDropdown = () => {
     if (dropdownTimeoutRef.current) {
       clearTimeout(dropdownTimeoutRef.current);
       dropdownTimeoutRef.current = null;
     }
-    setActiveDropdown(type);
+    setSolutionsDropdownOpen(true);
   };
 
   const handleMouseLeaveDropdown = () => {
     dropdownTimeoutRef.current = setTimeout(() => {
-      setActiveDropdown(null);
-    }, 150);
+      setSolutionsDropdownOpen(false);
+    }, 160);
+  };
+
+  const closeMenus = () => {
+    if (dropdownTimeoutRef.current) {
+      clearTimeout(dropdownTimeoutRef.current);
+      dropdownTimeoutRef.current = null;
+    }
+    setSolutionsDropdownOpen(false);
+    setMobileMenuOpen(false);
   };
 
   const handleActionClick = () => {
@@ -97,14 +175,14 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
     }
   };
 
-  const closeMenus = () => {
-    if (dropdownTimeoutRef.current) {
-      clearTimeout(dropdownTimeoutRef.current);
-      dropdownTimeoutRef.current = null;
-    }
-    setActiveDropdown(null);
-    setMobileMenuOpen(false);
-  };
+  const isSolutionsActive =
+    currentPath.startsWith('/giai-phap') ||
+    currentPath.startsWith('/dich-vu') ||
+    currentPath.startsWith('/landing-490k');
+
+  const isAboutActive =
+    currentPath.startsWith('/ve-localmate') ||
+    currentPath.startsWith('/gioi-thieu');
 
   return (
     <>
@@ -130,254 +208,120 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
               />
             </Link>
 
-            {/* 2. Desktop Navigation: [Dịch vụ] [Bảng giá] [Dự án] [Kiến thức] [Giới thiệu] */}
+            {/* 2. Desktop Navigation: [Giải pháp] [Bảng giá] [Kiến thức] [Về Localmate] [Liên hệ] */}
             <nav className="header-desktop-nav" aria-label="Điều hướng chính">
-              {/* Dịch vụ Dropdown */}
+              {/* Giải pháp Dropdown & Smart Mega Menu */}
               <div
                 className="nav-dropdown-wrapper"
-                onMouseEnter={() => handleMouseEnterDropdown('services')}
+                onMouseEnter={handleMouseEnterDropdown}
                 onMouseLeave={handleMouseLeaveDropdown}
               >
                 <button
                   type="button"
-                  onClick={() => setActiveDropdown(activeDropdown === 'services' ? null : 'services')}
-                  className={`nav-link-btn ${currentPath.startsWith('/dich-vu') || currentPath.startsWith('/landing-490k') ? 'active' : ''}`}
-                  aria-expanded={activeDropdown === 'services'}
+                  onClick={() => setSolutionsDropdownOpen(!solutionsDropdownOpen)}
+                  className={`nav-link-btn ${isSolutionsActive ? 'active' : ''}`}
+                  aria-expanded={solutionsDropdownOpen}
+                  aria-haspopup="true"
                 >
-                  <span>Dịch vụ</span>
+                  <span>Giải pháp</span>
                   <ChevronDown
                     size={14}
-                    className={`dropdown-caret ${activeDropdown === 'services' ? 'open' : ''}`}
+                    className={`dropdown-caret ${solutionsDropdownOpen ? 'open' : ''}`}
                   />
                 </button>
 
-                {/* Dịch vụ Mega Menu Panel */}
-                {activeDropdown === 'services' && (
+                {/* Smart Mega Menu Panel: 5 Pillars */}
+                {solutionsDropdownOpen && (
                   <div
                     className="mega-menu-wrapper"
-                    onMouseEnter={() => handleMouseEnterDropdown('services')}
+                    onMouseEnter={handleMouseEnterDropdown}
                     onMouseLeave={handleMouseLeaveDropdown}
                   >
                     <div className="mega-menu-card">
-                      {/* 3 Columns Categorized Services */}
-                      <div className="mega-columns-grid">
-                        {/* Col 1: Đề Xuất AI & GEO */}
-                        <div className="mega-col">
-                          <div className="mega-col-heading">
-                            <Cpu size={15} color="var(--color-primary)" />
-                            <span>Đề Xuất AI &amp; GEO</span>
-                          </div>
-                          <div className="mega-link-list">
-                            <Link to="/dich-vu/geo" onClick={closeMenus} className="mega-item">
-                              <div className="mega-item-icon icon-emerald">
-                                <Cpu size={16} />
-                              </div>
-                              <div className="mega-item-body">
-                                <div className="mega-item-title">
-                                  <span>Dịch Vụ GEO (AI Search)</span>
-                                  <span className="mega-badge badge-green">Hot 2026</span>
-                                </div>
-                                <p className="mega-item-desc">Được ChatGPT, Gemini đề xuất tiệm đầu tiên.</p>
-                              </div>
-                            </Link>
-
-                            <Link to="/dich-vu/aeo" onClick={closeMenus} className="mega-item">
-                              <div className="mega-item-icon icon-blue">
-                                <Sparkles size={16} />
-                              </div>
-                              <div className="mega-item-body">
-                                <div className="mega-item-title">
-                                  <span>Dịch Vụ AEO (Answer AI)</span>
-                                  <span className="mega-badge badge-neutral">Mới</span>
-                                </div>
-                                <p className="mega-item-desc">Tối ưu trích dẫn câu trả lời trên Perplexity &amp; Siri.</p>
-                              </div>
-                            </Link>
-
-                            <Link to="/dich-vu/seo-ai" onClick={closeMenus} className="mega-item">
-                              <div className="mega-item-icon icon-purple">
-                                <TrendingUp size={16} />
-                              </div>
-                              <div className="mega-item-body">
-                                <div className="mega-item-title">
-                                  <span>SEO Google AI Overviews</span>
-                                </div>
-                                <p className="mega-item-desc">Xuất hiện ngay trong khung tóm tắt AI của Google.</p>
-                              </div>
-                            </Link>
-
-                            <Link to="/dich-vu/seo-chatgpt" onClick={closeMenus} className="mega-item">
-                              <div className="mega-item-icon icon-amber">
-                                <FileText size={16} />
-                              </div>
-                              <div className="mega-item-body">
-                                <div className="mega-item-title">
-                                  <span>SEO ChatGPT &amp; SearchGPT</span>
-                                </div>
-                                <p className="mega-item-desc">Để AI ghi nhớ và gợi ý thương hiệu khi khách hỏi.</p>
-                              </div>
-                            </Link>
-                          </div>
+                      {/* Mega Menu Top Header Banner */}
+                      <div className="mega-header-bar">
+                        <div className="mega-header-info">
+                          <span className="mega-kicker">HỆ THỐNG GIẢI PHÁP CHUYỂN ĐỔI SỐ</span>
+                          <h3 className="mega-headline">5 Trụ Cột Tăng Trưởng Bền Vững Cho Kinh Doanh Địa Phương</h3>
                         </div>
-
-                        {/* Col 2: Website & Tối Ưu */}
-                        <div className="mega-col">
-                          <div className="mega-col-heading">
-                            <Globe size={15} color="var(--color-primary)" />
-                            <span>Website &amp; Tối Ưu</span>
-                          </div>
-                          <div className="mega-link-list">
-                            <Link to="/landing-490k" onClick={closeMenus} className="mega-item">
-                              <div className="mega-item-icon icon-emerald">
-                                <Layout size={16} />
-                              </div>
-                              <div className="mega-item-body">
-                                <div className="mega-item-title">
-                                  <span>Website 1 Trang Bán Hàng</span>
-                                  <span className="mega-badge badge-red">490k</span>
-                                </div>
-                                <p className="mega-item-desc">Gọn gàng, rõ giá, có nút gọi Hotline &amp; Zalo ngay.</p>
-                              </div>
-                            </Link>
-
-                            <Link to="/dich-vu/thiet-ke-website" onClick={closeMenus} className="mega-item">
-                              <div className="mega-item-icon icon-blue">
-                                <Globe size={16} />
-                              </div>
-                              <div className="mega-item-body">
-                                <div className="mega-item-title">
-                                  <span>Thiết Kế Web Doanh Nghiệp</span>
-                                  <span className="mega-badge badge-neutral">3–5 trang</span>
-                                </div>
-                                <p className="mega-item-desc">Đầy đủ giới thiệu, dịch vụ, bảng giá và hồ sơ năng lực.</p>
-                              </div>
-                            </Link>
-
-                            <Link to="/dich-vu/toi-uu-toc-do-web" onClick={closeMenus} className="mega-item">
-                              <div className="mega-item-icon icon-amber">
-                                <Sparkles size={16} />
-                              </div>
-                              <div className="mega-item-body">
-                                <div className="mega-item-title">
-                                  <span>Tăng Tốc Web PageSpeed &gt; 90</span>
-                                  <span className="mega-badge badge-green">&lt; 1s</span>
-                                </div>
-                                <p className="mega-item-desc">Nén ảnh WebP, CDN Cloudflare, mở trang tức thì.</p>
-                              </div>
-                            </Link>
-
-                            <Link to="/dich-vu/cham-soc-website" onClick={closeMenus} className="mega-item">
-                              <div className="mega-item-icon icon-purple">
-                                <Briefcase size={16} />
-                              </div>
-                              <div className="mega-item-body">
-                                <div className="mega-item-title">
-                                  <span>Chăm Sóc Web (Bảo Hành 5 Năm)</span>
-                                </div>
-                                <p className="mega-item-desc">Đội IT riêng túc trực hỗ trợ 1-1, sao lưu hàng tuần.</p>
-                              </div>
-                            </Link>
-                          </div>
-                        </div>
-
-                        {/* Col 3: Google Maps & Quảng Cáo */}
-                        <div className="mega-col">
-                          <div className="mega-col-heading">
-                            <MapPin size={15} color="var(--color-primary)" />
-                            <span>Google Maps &amp; Quảng Cáo</span>
-                          </div>
-                          <div className="mega-link-list">
-                            <Link to="/dich-vu/google-maps" onClick={closeMenus} className="mega-item">
-                              <div className="mega-item-icon icon-amber">
-                                <MapPin size={16} />
-                              </div>
-                              <div className="mega-item-body">
-                                <div className="mega-item-title">
-                                  <span>Đưa Tiệm Lên Google Maps</span>
-                                  <span className="mega-badge badge-green">Từ 299k</span>
-                                </div>
-                                <p className="mega-item-desc">Xác minh chính chủ 100%, tặng mã QR xin 5 sao.</p>
-                              </div>
-                            </Link>
-
-                            <Link to="/dich-vu/seo-tong-the" onClick={closeMenus} className="mega-item">
-                              <div className="mega-item-icon icon-emerald">
-                                <TrendingUp size={16} />
-                              </div>
-                              <div className="mega-item-body">
-                                <div className="mega-item-title">
-                                  <span>SEO Tổng Thể Địa Phương</span>
-                                </div>
-                                <p className="mega-item-desc">Phủ từ khóa bán kính 3–10km kéo khách ghé tiệm.</p>
-                              </div>
-                            </Link>
-
-                            <Link to="/dich-vu/google-ads" onClick={closeMenus} className="mega-item">
-                              <div className="mega-item-icon icon-amber">
-                                <Sparkles size={16} />
-                              </div>
-                              <div className="mega-item-body">
-                                <div className="mega-item-title">
-                                  <span>Quảng Cáo Google Ads</span>
-                                  <span className="mega-badge badge-red">Từ 390k</span>
-                                </div>
-                                <p className="mega-item-desc">Nhắm đúng người đang cần mua, 0% kê giá ads.</p>
-                              </div>
-                            </Link>
-
-                            <Link to="/dich-vu/khac-phuc-loi-google-ads" onClick={closeMenus} className="mega-item">
-                              <div className="mega-item-icon icon-pink">
-                                <FileText size={16} />
-                              </div>
-                              <div className="mega-item-body">
-                                <div className="mega-item-title">
-                                  <span>Khắc Phục Lỗi Ads Sửa Chữa</span>
-                                  <span className="mega-badge badge-neutral">Chữa ca khó</span>
-                                </div>
-                                <p className="mega-item-desc">Gỡ khóa ngành sửa điện thoại, laptop, điện lạnh.</p>
-                              </div>
-                            </Link>
-                          </div>
-                        </div>
+                        <Link
+                          to="/giai-phap"
+                          onClick={closeMenus}
+                          className="mega-view-all-header-btn"
+                        >
+                          <span>Xem tất cả giải pháp</span>
+                          <ArrowRight size={14} />
+                        </Link>
                       </div>
 
-                      {/* Right Promo Rail */}
-                      <div className="mega-promo-column">
-                        <div className="mega-highlight-card">
-                          <span className="highlight-tag">GÓI KHỞI TẠO NỔI BẬT</span>
-                          <h4 className="highlight-title">Website 1 Trang 490.000đ</h4>
-                          <p className="highlight-desc">
-                            Website chuẩn di động + Google Maps + Nút gọi Zalo trực tiếp.
-                          </p>
-                          <div className="highlight-checklist">
-                            <div className="checklist-item">
-                              <CheckCircle2 size={13} color="var(--color-primary-light)" />
-                              <span>Báo giá trọn gói, không phụ phí</span>
-                            </div>
-                            <div className="checklist-item">
-                              <CheckCircle2 size={13} color="var(--color-primary-light)" />
-                              <span>Bàn giao 100% tài khoản chính chủ</span>
-                            </div>
+                      {/* 5 Pillars Horizontal Grid */}
+                      <div className="mega-pillars-grid">
+                        {SOLUTION_PILLARS.map((pillar) => {
+                          const IconComp = pillar.icon;
+                          const isActivePillar = currentPath === pillar.href;
+                          return (
+                            <Link
+                              key={pillar.id}
+                              to={pillar.href}
+                              onClick={closeMenus}
+                              className={`mega-pillar-card ${pillar.colorClass} ${isActivePillar ? 'active-pillar' : ''}`}
+                            >
+                              <div className="pillar-card-header">
+                                <span className="pillar-step-number">{pillar.step}</span>
+                                <div className="pillar-icon-box">
+                                  <IconComp size={18} />
+                                </div>
+                                <span className="pillar-badge-pill">{pillar.badge}</span>
+                              </div>
+
+                              <div className="pillar-card-body">
+                                <h4 className="pillar-title">{pillar.title}</h4>
+                                <span className="pillar-subtitle">{pillar.subtitle}</span>
+                                <p className="pillar-desc">{pillar.desc}</p>
+                              </div>
+
+                              <div className="pillar-card-footer">
+                                <span className="pillar-link-text">Chi tiết giải pháp</span>
+                                <ArrowRight size={12} className="pillar-arrow" />
+                              </div>
+                            </Link>
+                          );
+                        })}
+                      </div>
+
+                      {/* Mega Menu Bottom Bar */}
+                      <div className="mega-bottom-bar">
+                        <div className="mega-bottom-left">
+                          <div className="mega-recommend-pill">
+                            <Sparkles size={13} />
+                            <span>Gợi ý cho người mới:</span>
                           </div>
-                          <Link to="/landing-490k" onClick={closeMenus} className="highlight-action-btn">
-                            Xem chi tiết gói 490k →
+                          <Link
+                            to="/landing-490k"
+                            onClick={closeMenus}
+                            className="mega-recommend-link"
+                          >
+                            <strong>Gói Website 1 Trang 490.000đ</strong> — Khởi tạo hiện diện số, có Zalo &amp; Maps ngay
                           </Link>
                         </div>
 
-                        {/* Direct Hotline strip inside mega menu */}
-                        <a
-                          href={`tel:${CONTACT_INFO.phoneRaw}`}
-                          className="mega-hotline-strip"
-                          title="Gọi hotline tư vấn"
-                        >
-                          <div className="hotline-strip-icon">
-                            <Phone size={14} color="#ffffff" />
-                          </div>
-                          <div className="hotline-strip-text">
-                            <span className="hotline-strip-label">Tư vấn trực tiếp 24/7</span>
-                            <span className="hotline-strip-phone">0834 422 439</span>
-                          </div>
-                        </a>
+                        <div className="mega-bottom-right">
+                          <a
+                            href={`tel:${CONTACT_INFO.phoneRaw}`}
+                            className="mega-direct-hotline"
+                            title="Gọi Hotline tư vấn nhanh"
+                          >
+                            <Phone size={13} className="mega-phone-icon" />
+                            <span>Hotline tư vấn: <strong>0834 422 439</strong></span>
+                          </a>
+                          <Link
+                            to="/giai-phap"
+                            onClick={closeMenus}
+                            className="mega-main-all-link"
+                          >
+                            <span>Xem tất cả giải pháp →</span>
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -393,97 +337,42 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
                 <span>Bảng giá</span>
               </Link>
 
-              {/* Dự án */}
+              {/* Kiến thức */}
               <Link
-                to="/du-an"
+                to="/kien-thuc"
                 onClick={closeMenus}
-                className={`nav-link ${currentPath.startsWith('/du-an') ? 'active' : ''}`}
+                className={`nav-link ${currentPath.startsWith('/kien-thuc') ? 'active' : ''}`}
               >
-                <span>Dự án</span>
+                <span>Kiến thức</span>
               </Link>
 
-              {/* Kiến thức Dropdown */}
-              <div
-                className="nav-dropdown-wrapper"
-                onMouseEnter={() => handleMouseEnterDropdown('knowledge')}
-                onMouseLeave={handleMouseLeaveDropdown}
-              >
-                <button
-                  type="button"
-                  onClick={() => setActiveDropdown(activeDropdown === 'knowledge' ? null : 'knowledge')}
-                  className={`nav-link-btn ${currentPath.startsWith('/kien-thuc') ? 'active' : ''}`}
-                  aria-expanded={activeDropdown === 'knowledge'}
-                >
-                  <span>Kiến thức</span>
-                  <ChevronDown
-                    size={14}
-                    className={`dropdown-caret ${activeDropdown === 'knowledge' ? 'open' : ''}`}
-                  />
-                </button>
-
-                {activeDropdown === 'knowledge' && (
-                  <div
-                    className="knowledge-dropdown-panel"
-                    onMouseEnter={() => handleMouseEnterDropdown('knowledge')}
-                    onMouseLeave={handleMouseLeaveDropdown}
-                  >
-                    <Link to="/kien-thuc" onClick={closeMenus} className="knowledge-item">
-                      <div className="knowledge-item-icon icon-emerald">
-                        <Globe size={15} />
-                      </div>
-                      <div>
-                        <div className="knowledge-title">Kinh Nghiệm Làm Website</div>
-                        <div className="knowledge-desc">Cấu trúc trang web chuyển đổi cao</div>
-                      </div>
-                    </Link>
-
-                    <Link to="/kien-thuc" onClick={closeMenus} className="knowledge-item">
-                      <div className="knowledge-item-icon icon-amber">
-                        <MapPin size={15} />
-                      </div>
-                      <div>
-                        <div className="knowledge-title">Tối Ưu Google Maps &amp; SEO</div>
-                        <div className="knowledge-desc">Cách tăng đánh giá 5 sao &amp; khách gần</div>
-                      </div>
-                    </Link>
-
-                    <Link to="/kien-thuc" onClick={closeMenus} className="knowledge-item">
-                      <div className="knowledge-item-icon icon-blue">
-                        <Sparkles size={15} />
-                      </div>
-                      <div>
-                        <div className="knowledge-title">Quảng Cáo Google Ads Thực Chiến</div>
-                        <div className="knowledge-desc">Lọc từ khóa tránh lãng phí ngân sách</div>
-                      </div>
-                    </Link>
-
-                    <Link to="/kien-thuc" onClick={closeMenus} className="knowledge-item">
-                      <div className="knowledge-item-icon icon-pink">
-                        <FileText size={15} />
-                      </div>
-                      <div>
-                        <div className="knowledge-title">Nội Dung &amp; Bài Viết Fanpage</div>
-                        <div className="knowledge-desc">Mẫu bài đăng thu hút khách hàng</div>
-                      </div>
-                    </Link>
-
-                    <div className="knowledge-footer-link">
-                      <Link to="/kien-thuc" onClick={closeMenus} className="knowledge-all-btn">
-                        <span>Xem tất cả bài hướng dẫn</span>
-                        <ArrowRight size={13} />
-                      </Link>
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* Giới thiệu */}
+              {/* Về Localmate */}
               <Link
-                to="/gioi-thieu"
+                to="/ve-localmate"
                 onClick={closeMenus}
-                className={`nav-link ${currentPath.startsWith('/gioi-thieu') ? 'active' : ''}`}
+                className={`nav-link ${isAboutActive ? 'active' : ''}`}
               >
-                <span>Giới thiệu</span>
+                <span>Về Localmate</span>
+              </Link>
+
+              {/* Hồ sơ năng lực 2026 */}
+              <Link
+                to="/ho-so-nang-luc"
+                onClick={closeMenus}
+                className={`nav-link ${currentPath.startsWith('/ho-so-nang-luc') || currentPath.startsWith('/credential') ? 'active' : ''}`}
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}
+              >
+                <span>Hồ sơ năng lực</span>
+                <span style={{ fontSize: '10px', backgroundColor: '#edf7f1', color: '#0d7647', padding: '1px 5px', borderRadius: '4px', fontWeight: 700 }}>2026</span>
+              </Link>
+
+              {/* Liên hệ */}
+              <Link
+                to="/lien-he"
+                onClick={closeMenus}
+                className={`nav-link ${currentPath.startsWith('/lien-he') ? 'active' : ''}`}
+              >
+                <span>Liên hệ</span>
               </Link>
             </nav>
 
@@ -509,12 +398,12 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
                 className="header-cta-button"
                 title="Đăng ký tư vấn & Nhận Demo Web"
               >
-                <Sparkles size={16} />
+                <Sparkles size={15} />
                 <span>Đăng ký tư vấn</span>
               </button>
             </div>
 
-            {/* 4. Mobile Actions: [Hotline gọi nhanh] [CTA Nhận demo] [Menu Hamburger] */}
+            {/* 4. Mobile Actions: [Hotline gọi nhanh] [CTA Tư vấn] [Menu Hamburger] */}
             <div className="header-mobile-actions">
               <a
                 href={`tel:${CONTACT_INFO.phoneRaw}`}
@@ -570,189 +459,117 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
               </button>
             </div>
 
-            {/* Drawer Body — Flat Clear List, No Nested Confusing Dropdowns */}
+            {/* Drawer Scroll Body */}
             <div className="drawer-scroll-body">
-              {/* Primary Navigation Links */}
+              {/* Section 1: 5 Trụ Cột Giải Pháp (Structured & Tap-Friendly >= 44px) */}
               <div className="drawer-section">
-                <div className="drawer-section-label">ĐIỀU HƯỚNG CHÍNH</div>
+                <div className="drawer-section-header">
+                  <span className="drawer-section-label">5 TRỤ CỘT GIẢI PHÁP</span>
+                  <span className="drawer-section-sub">Kiến trúc tăng trưởng</span>
+                </div>
+
+                <div className="drawer-pillars-list">
+                  {SOLUTION_PILLARS.map((pillar) => {
+                    const IconComp = pillar.icon;
+                    const isActive = currentPath === pillar.href;
+                    return (
+                      <Link
+                        key={pillar.id}
+                        to={pillar.href}
+                        onClick={closeMenus}
+                        className={`drawer-pillar-item ${pillar.colorClass} ${isActive ? 'active' : ''}`}
+                      >
+                        <div className="drawer-pillar-step">{pillar.step}</div>
+                        <div className="drawer-pillar-icon">
+                          <IconComp size={17} />
+                        </div>
+                        <div className="drawer-pillar-content">
+                          <div className="drawer-pillar-title-row">
+                            <span className="drawer-pillar-title">{pillar.title}</span>
+                            <span className="drawer-pillar-badge">{pillar.badge}</span>
+                          </div>
+                          <span className="drawer-pillar-desc">{pillar.subtitle}</span>
+                        </div>
+                        <ArrowRight size={14} className="drawer-pillar-arrow" />
+                      </Link>
+                    );
+                  })}
+
+                  {/* Link nổi bật: Xem tất cả giải pháp */}
+                  <Link
+                    to="/giai-phap"
+                    onClick={closeMenus}
+                    className="drawer-all-solutions-link"
+                  >
+                    <span>Xem tất cả giải pháp &amp; dịch vụ</span>
+                    <ArrowRight size={15} />
+                  </Link>
+                </div>
+              </div>
+
+              {/* Section 2: Điều hướng chính */}
+              <div className="drawer-section">
+                <div className="drawer-section-header">
+                  <span className="drawer-section-label">ĐIỀU HƯỚNG CHÍNH</span>
+                </div>
+
                 <div className="drawer-nav-list">
                   <Link
                     to="/"
                     onClick={closeMenus}
-                    className={`drawer-link ${currentPath === '/' ? 'active' : ''}`}
+                    className={`drawer-nav-link ${currentPath === '/' ? 'active' : ''}`}
                   >
                     <span>Trang chủ</span>
                   </Link>
                   <Link
                     to="/bang-gia"
                     onClick={closeMenus}
-                    className={`drawer-link ${currentPath.startsWith('/bang-gia') ? 'active' : ''}`}
+                    className={`drawer-nav-link ${currentPath.startsWith('/bang-gia') ? 'active' : ''}`}
                   >
                     <span>Bảng giá niêm yết</span>
-                    <span className="drawer-badge-pill">Minh bạch</span>
-                  </Link>
-                  <Link
-                    to="/du-an"
-                    onClick={closeMenus}
-                    className={`drawer-link ${currentPath.startsWith('/du-an') ? 'active' : ''}`}
-                  >
-                    <span>Dự án thực tế</span>
+                    <span className="drawer-nav-badge">Minh bạch</span>
                   </Link>
                   <Link
                     to="/kien-thuc"
                     onClick={closeMenus}
-                    className={`drawer-link ${currentPath.startsWith('/kien-thuc') ? 'active' : ''}`}
+                    className={`drawer-nav-link ${currentPath.startsWith('/kien-thuc') ? 'active' : ''}`}
                   >
-                    <span>Kiến thức &amp; Hướng dẫn</span>
+                    <span>Kiến thức</span>
                   </Link>
                   <Link
-                    to="/gioi-thieu"
+                    to="/ve-localmate"
                     onClick={closeMenus}
-                    className={`drawer-link ${currentPath.startsWith('/gioi-thieu') ? 'active' : ''}`}
+                    className={`drawer-nav-link ${isAboutActive ? 'active' : ''}`}
                   >
-                    <span>Giới thiệu LocalMate</span>
+                    <span>Về Localmate</span>
+                  </Link>
+                  <Link
+                    to="/ho-so-nang-luc"
+                    onClick={closeMenus}
+                    className={`drawer-nav-link ${currentPath.startsWith('/ho-so-nang-luc') || currentPath.startsWith('/credential') ? 'active' : ''}`}
+                  >
+                    <span>Hồ sơ năng lực</span>
+                    <span className="drawer-nav-badge" style={{ backgroundColor: '#edf7f1', color: '#0d7647' }}>40 Slide</span>
                   </Link>
                   <Link
                     to="/lien-he"
                     onClick={closeMenus}
-                    className={`drawer-link ${currentPath.startsWith('/lien-he') ? 'active' : ''}`}
+                    className={`drawer-nav-link ${currentPath.startsWith('/lien-he') ? 'active' : ''}`}
                   >
                     <span>Liên hệ tư vấn</span>
                   </Link>
                 </div>
               </div>
-
-              {/* Highlighted Services — Directly Accessible, Tap Target >= 44px */}
-              <div className="drawer-section">
-                <div className="drawer-section-label">DỊCH VỤ TRIỂN KHAI NHANH</div>
-                <div className="drawer-services-list">
-                  <Link
-                    to="/landing-490k"
-                    onClick={closeMenus}
-                    className="drawer-service-link"
-                  >
-                    <div className="drawer-service-icon icon-emerald">
-                      <Layout size={15} />
-                    </div>
-                    <span className="drawer-service-name">Website 1 Trang Bán Hàng</span>
-                    <span className="drawer-price-badge badge-red">490k</span>
-                  </Link>
-
-                  <Link
-                    to="/dich-vu/google-maps"
-                    onClick={closeMenus}
-                    className="drawer-service-link"
-                  >
-                    <div className="drawer-service-icon icon-amber">
-                      <MapPin size={15} />
-                    </div>
-                    <span className="drawer-service-name">Đưa Tiệm Lên Google Maps</span>
-                    <span className="drawer-price-badge badge-green">Từ 299k</span>
-                  </Link>
-
-                  <Link
-                    to="/dich-vu/geo"
-                    onClick={closeMenus}
-                    className="drawer-service-link"
-                  >
-                    <div className="drawer-service-icon icon-emerald">
-                      <Cpu size={15} />
-                    </div>
-                    <span className="drawer-service-name">Tối Ưu Đề Xuất AI (GEO Local)</span>
-                    <span className="drawer-price-badge badge-green">2.9tr/th</span>
-                  </Link>
-
-                  <Link
-                    to="/dich-vu/aeo"
-                    onClick={closeMenus}
-                    className="drawer-service-link"
-                  >
-                    <div className="drawer-service-icon icon-blue">
-                      <Sparkles size={15} />
-                    </div>
-                    <span className="drawer-service-name">Tối Ưu Trích Dẫn Nguồn (AEO)</span>
-                    <span className="drawer-price-badge badge-neutral">Mới</span>
-                  </Link>
-
-                  <Link
-                    to="/dich-vu/seo-ai"
-                    onClick={closeMenus}
-                    className="drawer-service-link"
-                  >
-                    <div className="drawer-service-icon icon-purple">
-                      <TrendingUp size={15} />
-                    </div>
-                    <span className="drawer-service-name">SEO Google AI Overviews</span>
-                    <span className="drawer-price-badge badge-green">Top 0</span>
-                  </Link>
-
-                  <Link
-                    to="/dich-vu/seo-chatgpt"
-                    onClick={closeMenus}
-                    className="drawer-service-link"
-                  >
-                    <div className="drawer-service-icon icon-amber">
-                      <FileText size={15} />
-                    </div>
-                    <span className="drawer-service-name">SEO Đề Xuất ChatGPT</span>
-                    <span className="drawer-price-badge badge-green">2.9tr/th</span>
-                  </Link>
-
-                  <Link
-                    to="/dich-vu/google-ads"
-                    onClick={closeMenus}
-                    className="drawer-service-link"
-                  >
-                    <div className="drawer-service-icon icon-blue">
-                      <Sparkles size={15} />
-                    </div>
-                    <span className="drawer-service-name">Quảng Cáo Google Ads</span>
-                    <span className="drawer-price-badge badge-red">Từ 390k</span>
-                  </Link>
-
-                  <Link
-                    to="/dich-vu/content-marketing"
-                    onClick={closeMenus}
-                    className="drawer-service-link"
-                  >
-                    <div className="drawer-service-icon icon-pink">
-                      <FileText size={15} />
-                    </div>
-                    <span className="drawer-service-name">Chăm Sóc Fanpage FB</span>
-                    <span className="drawer-price-badge badge-green">990k/th</span>
-                  </Link>
-
-                  <Link
-                    to="/dich-vu/website-landing-page"
-                    onClick={closeMenus}
-                    className="drawer-service-link"
-                  >
-                    <div className="drawer-service-icon icon-purple">
-                      <Globe size={15} />
-                    </div>
-                    <span className="drawer-service-name">Web Doanh Nghiệp 3–5 Trang</span>
-                  </Link>
-
-                  <Link
-                    to="/dich-vu"
-                    onClick={closeMenus}
-                    className="drawer-all-services-link"
-                  >
-                    <span>Xem tất cả dịch vụ &amp; bảng giá</span>
-                    <ArrowRight size={14} />
-                  </Link>
-                </div>
-              </div>
             </div>
 
-            {/* Drawer Footer Actions: Big CTA & Direct Hotline */}
+            {/* Drawer Footer Actions */}
             <div className="drawer-footer">
               <button
                 type="button"
                 onClick={handleActionClick}
                 className="drawer-primary-cta"
               >
-                <Sparkles size={17} />
+                <Sparkles size={16} />
                 <span>Đăng ký tư vấn / Nhận Demo Web</span>
               </button>
 
@@ -762,16 +579,16 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
                 title="Gọi hotline tư vấn 0834 422 439"
               >
                 <div className="drawer-hotline-icon">
-                  <Phone size={17} />
+                  <Phone size={16} />
                 </div>
                 <div className="drawer-hotline-content">
-                  <span className="drawer-hotline-sub">Gọi tư vấn trực tiếp 24/7</span>
+                  <span className="drawer-hotline-sub">Tư vấn trực tiếp 24/7</span>
                   <span className="drawer-hotline-num">0834 422 439</span>
                 </div>
               </a>
 
               <p className="drawer-footer-note">
-                Tư vấn &amp; trải nghiệm demo miễn phí (8:00 - 21:00)
+                Tư vấn &amp; khảo sát 1-1 tận nơi tại Hóc Môn, TP.HCM &amp; Toàn quốc
               </p>
             </div>
           </div>
@@ -779,7 +596,10 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
       )}
 
       <style>{`
-        /* Base Header */
+        /* ==========================================================================
+           HEADER COMPONENT STYLES
+           Theme: MISA Light Theme, Crisp Contrast, Absolutely No Glassmorphism
+           ========================================================================== */
         .site-header {
           position: sticky;
           top: 0;
@@ -795,11 +615,12 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           align-items: center;
           width: 100%;
           box-sizing: border-box;
+          scrollbar-gutter: stable;
         }
 
         .site-header.header-scrolled {
-          border-bottom: 1px solid #e2e8f0;
-          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+          border-bottom: 1px solid #cbd5e1;
+          box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
         }
 
         .header-inner {
@@ -809,7 +630,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           width: 100%;
         }
 
-        /* Logo */
+        /* 1. Logo */
         .header-logo-wrap {
           display: flex;
           align-items: center;
@@ -825,7 +646,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           display: block;
         }
 
-        /* Desktop Nav */
+        /* 2. Desktop Nav */
         .header-desktop-nav {
           display: flex;
           align-items: center;
@@ -843,13 +664,14 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           transition: color 0.15s ease, background-color 0.15s ease;
           display: inline-flex;
           align-items: center;
-          gap: 4px;
+          gap: 5px;
           background: none;
           border: none;
           cursor: pointer;
           font-family: inherit;
           white-space: nowrap;
           box-sizing: border-box;
+          min-height: 40px;
         }
 
         .nav-link:hover,
@@ -861,7 +683,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
         .nav-link.active,
         .nav-link-btn.active {
           color: #0d7647;
-          font-weight: 600;
+          font-weight: 650;
           background-color: #edf7f1;
         }
 
@@ -879,15 +701,17 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           color: #0d7647;
         }
 
-        /* Desktop Mega Menu for Services */
+        /* ==========================================================================
+           MEGA MENU PANEL (5 PILLARS ARCHITECTURE)
+           ========================================================================== */
         .mega-menu-wrapper {
           position: absolute;
           top: calc(100% + 8px);
           left: 50%;
           transform: translateX(-50%);
-          width: min(1200px, 94vw);
+          width: min(1180px, 94vw);
           z-index: 1050;
-          animation: headerFadeIn 0.16s ease-out;
+          animation: headerFadeIn 0.18s ease-out;
         }
 
         @keyframes headerFadeIn {
@@ -905,64 +729,162 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           background-color: #ffffff;
           border: 1px solid #e2e8f0;
           border-radius: 16px;
-          box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
-          padding: 1.5rem 1.65rem;
-          display: grid;
-          grid-template-columns: 1fr 280px;
-          gap: 1.75rem;
+          box-shadow: 0 20px 48px rgba(15, 23, 42, 0.1);
+          padding: 1.5rem;
+          display: flex;
+          flex-direction: column;
+          gap: 1.25rem;
           box-sizing: border-box;
         }
 
-        .mega-columns-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 1.5rem;
-        }
-
-        .mega-col {
-          display: flex;
-          flex-direction: column;
-          gap: 0.5rem;
-        }
-
-        .mega-col-heading {
+        /* Mega Header Bar */
+        .mega-header-bar {
           display: flex;
           align-items: center;
-          gap: 0.45rem;
-          font-size: 0.775rem;
-          font-weight: 700;
-          color: #0d7647;
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
-          padding-bottom: 0.4rem;
-          border-bottom: 1px solid #e2e8f0;
-          margin-bottom: 0.15rem;
+          justify-content: space-between;
+          border-bottom: 1px solid #f1f5f9;
+          padding-bottom: 0.85rem;
         }
 
-        .mega-link-list {
+        .mega-header-info {
           display: flex;
           flex-direction: column;
-          gap: 0.35rem;
+          gap: 0.2rem;
         }
 
-        .mega-item {
-          display: flex;
-          align-items: flex-start;
-          gap: 0.7rem;
-          padding: 0.5rem 0.65rem;
-          border-radius: 10px;
+        .mega-kicker {
+          font-size: 0.6875rem;
+          font-weight: 750;
+          color: #0d7647;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+        }
+
+        .mega-headline {
+          font-size: 0.95rem;
+          font-weight: 700;
+          color: #0f172a;
+          margin: 0;
+          line-height: 1.3;
+        }
+
+        .mega-view-all-header-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 0.8125rem;
+          font-weight: 600;
+          color: #0d7647;
           text-decoration: none;
-          border: 1px solid transparent;
-          transition: all 0.15s ease;
-        }
-
-        .mega-item:hover {
+          padding: 6px 12px;
+          border-radius: 6px;
           background-color: #f0fdf4;
-          border-color: #c6ebd4;
-          transform: translateY(-1px);
+          border: 1px solid #bbf7d0;
+          transition: background-color 0.15s ease, color 0.15s ease;
         }
 
-        .mega-item-icon {
+        .mega-view-all-header-btn:hover {
+          background-color: #0d7647;
+          color: #ffffff;
+        }
+
+        /* 5 Pillars Grid */
+        .mega-pillars-grid {
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          gap: 0.9rem;
+        }
+
+        .mega-pillar-card {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          padding: 1rem 0.9rem;
+          border-radius: 12px;
+          background-color: #f8fafc;
+          border: 1px solid #e2e8f0;
+          text-decoration: none;
+          transition: all 0.18s ease;
+          min-height: 195px;
+          box-sizing: border-box;
+        }
+
+        .mega-pillar-card:hover {
+          background-color: #ffffff;
+          transform: translateY(-2px);
+          box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+        }
+
+        /* Color thematic accents for pillars */
+        .pillar-emerald:hover, .pillar-emerald.active-pillar {
+          border-color: #0d7647;
+        }
+        .pillar-emerald .pillar-icon-box {
+          background-color: #edf7f1;
+          color: #0d7647;
+        }
+        .pillar-emerald .pillar-step-number {
+          color: #0d7647;
+        }
+
+        .pillar-amber:hover, .pillar-amber.active-pillar {
+          border-color: #d97706;
+        }
+        .pillar-amber .pillar-icon-box {
+          background-color: #fef3c7;
+          color: #b45309;
+        }
+        .pillar-amber .pillar-step-number {
+          color: #b45309;
+        }
+
+        .pillar-blue:hover, .pillar-blue.active-pillar {
+          border-color: #2563eb;
+        }
+        .pillar-blue .pillar-icon-box {
+          background-color: #eff6ff;
+          color: #1d4ed8;
+        }
+        .pillar-blue .pillar-step-number {
+          color: #1d4ed8;
+        }
+
+        .pillar-purple:hover, .pillar-purple.active-pillar {
+          border-color: #7c3aed;
+        }
+        .pillar-purple .pillar-icon-box {
+          background-color: #f5f3ff;
+          color: #6d28d9;
+        }
+        .pillar-purple .pillar-step-number {
+          color: #6d28d9;
+        }
+
+        .pillar-teal:hover, .pillar-teal.active-pillar {
+          border-color: #0f766e;
+        }
+        .pillar-teal .pillar-icon-box {
+          background-color: #f0fdfa;
+          color: #0f766e;
+        }
+        .pillar-teal .pillar-step-number {
+          color: #0f766e;
+        }
+
+        .pillar-card-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 0.65rem;
+        }
+
+        .pillar-step-number {
+          font-size: 0.8125rem;
+          font-weight: 800;
+          letter-spacing: 0.02em;
+        }
+
+        .pillar-icon-box {
           width: 32px;
           height: 32px;
           border-radius: 8px;
@@ -970,297 +892,171 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           align-items: center;
           justify-content: center;
           flex-shrink: 0;
-          margin-top: 2px;
         }
 
-        .icon-emerald { background-color: #edf7f1; color: #0d7647; }
-        .icon-amber { background-color: #fef3c7; color: #d97706; }
-        .icon-blue { background-color: #eff6ff; color: #2563eb; }
-        .icon-purple { background-color: #f5f3ff; color: #7c3aed; }
-        .icon-pink { background-color: #fdf2f8; color: #db2777; }
-
-        .mega-item-body {
-          display: flex;
-          flex-direction: column;
-          gap: 0.15rem;
-          min-width: 0;
-        }
-
-        .mega-item-title {
-          font-size: 0.875rem;
-          font-weight: 600;
-          color: #0f172a;
-          display: flex;
-          align-items: center;
-          gap: 0.4rem;
-          white-space: nowrap;
-          line-height: 1.3;
-        }
-
-        .mega-item-desc {
-          font-size: 0.725rem;
-          color: #64748b;
-          line-height: 1.35;
-          margin: 0;
-        }
-
-        .mega-badge {
-          font-size: 0.65rem;
+        .pillar-badge-pill {
+          font-size: 0.625rem;
           font-weight: 700;
-          padding: 0.12rem 0.45rem;
+          color: #475569;
+          background-color: #ffffff;
+          border: 1px solid #cbd5e1;
+          padding: 0.12rem 0.4rem;
           border-radius: 999px;
-          line-height: 1;
           white-space: nowrap;
         }
 
-        .badge-red { background-color: #fee2e2; color: #dc2626; }
-        .badge-green { background-color: #dcfce7; color: #15803d; }
-        .badge-neutral { background-color: #f1f5f9; color: #475569; }
-
-        /* Right Promo Column */
-        .mega-promo-column {
+        .pillar-card-body {
           display: flex;
           flex-direction: column;
-          justify-content: space-between;
-          gap: 0.75rem;
-          border-left: 1px solid #e2e8f0;
-          padding-left: 1.5rem;
-        }
-
-        .mega-highlight-card {
-          background: linear-gradient(145deg, #072e3b, #0d7647);
-          border-radius: 14px;
-          padding: 1.1rem;
-          color: #ffffff;
-          display: flex;
-          flex-direction: column;
-          gap: 0.5rem;
+          gap: 0.2rem;
           flex: 1;
-          justify-content: space-between;
         }
 
-        .highlight-tag {
-          font-size: 0.65rem;
-          font-weight: 800;
-          color: #86efac;
-          letter-spacing: 0.05em;
-          text-transform: uppercase;
-        }
-
-        .highlight-title {
-          font-size: 0.95rem;
+        .pillar-title {
+          font-size: 0.875rem;
           font-weight: 700;
-          color: #ffffff;
+          color: #0f172a;
           margin: 0;
-          line-height: 1.3;
-        }
-
-        .highlight-desc {
-          font-size: 0.75rem;
-          color: rgba(255, 255, 255, 0.9);
-          line-height: 1.4;
-          margin: 0;
-        }
-
-        .highlight-checklist {
-          display: flex;
-          flex-direction: column;
-          gap: 0.3rem;
-          font-size: 0.725rem;
-          color: rgba(255, 255, 255, 0.95);
-        }
-
-        .checklist-item {
-          display: flex;
-          align-items: center;
-          gap: 0.4rem;
-        }
-
-        .highlight-action-btn {
-          margin-top: 0.25rem;
-          background-color: #ffffff;
-          color: #0f172a;
-          font-size: 0.775rem;
-          font-weight: 700;
-          text-align: center;
-          padding: 0.5rem 0.75rem;
-          border-radius: 8px;
-          text-decoration: none;
-          transition: background-color 0.15s ease;
-        }
-
-        .highlight-action-btn:hover {
-          background-color: #dcfce7;
-          color: #0d7647;
-        }
-
-        .mega-hotline-strip {
-          background-color: #f8fafc;
-          border: 1px solid #e2e8f0;
-          border-radius: 12px;
-          padding: 0.65rem 0.85rem;
-          display: flex;
-          align-items: center;
-          gap: 0.65rem;
-          text-decoration: none;
-          transition: all 0.15s ease;
-        }
-
-        .mega-hotline-strip:hover {
-          border-color: #0d7647;
-          background-color: #f0fdf4;
-        }
-
-        .hotline-strip-icon {
-          width: 30px;
-          height: 30px;
-          border-radius: 50%;
-          background-color: #0d7647;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-shrink: 0;
-        }
-
-        .hotline-strip-text {
-          display: flex;
-          flex-direction: column;
-        }
-
-        .hotline-strip-label {
-          font-size: 0.65rem;
-          color: #64748b;
-          font-weight: 500;
-          line-height: 1.2;
-        }
-
-        .hotline-strip-phone {
-          font-size: 0.925rem;
-          font-weight: 700;
-          color: #0f172a;
-          line-height: 1.2;
-        }
-
-        /* Responsive Laptop 14" Zoom 125% (1025px - 1240px) for Mega Menu */
-        @media (min-width: 1025px) and (max-width: 1240px) {
-          .mega-menu-card {
-            padding: 1.15rem 1.25rem;
-            gap: 1.15rem;
-            grid-template-columns: 1fr 240px;
-          }
-          .mega-columns-grid {
-            gap: 0.9rem;
-          }
-          .mega-item {
-            padding: 0.4rem 0.5rem;
-            gap: 0.5rem;
-          }
-          .mega-item-icon {
-            width: 28px;
-            height: 28px;
-          }
-          .mega-item-title {
-            font-size: 0.8125rem;
-          }
-          .mega-item-desc {
-            font-size: 0.675rem;
-          }
-          .mega-promo-column {
-            padding-left: 1rem;
-          }
-        }
-
-        /* Knowledge Dropdown Panel */
-        .knowledge-dropdown-panel {
-          position: absolute;
-          top: calc(100% + 8px);
-          left: 0;
-          width: 310px;
-          background-color: #ffffff;
-          border: 1px solid #e2e8f0;
-          border-radius: 14px;
-          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
-          padding: 0.65rem;
-          z-index: 1050;
-          display: flex;
-          flex-direction: column;
-          gap: 0.25rem;
-          animation: headerFadeIn 0.16s ease-out;
-        }
-
-        .knowledge-item {
-          display: flex;
-          align-items: flex-start;
-          gap: 0.65rem;
-          padding: 0.55rem 0.65rem;
-          border-radius: 8px;
-          text-decoration: none;
-          transition: background-color 0.15s ease;
-        }
-
-        .knowledge-item:hover {
-          background-color: #f0fdf4;
-        }
-
-        .knowledge-item-icon {
-          width: 28px;
-          height: 28px;
-          border-radius: 6px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-shrink: 0;
-          margin-top: 1px;
-        }
-
-        .knowledge-title {
-          font-size: 0.85rem;
-          font-weight: 600;
-          color: #0f172a;
           line-height: 1.25;
         }
 
-        .knowledge-desc {
+        .pillar-subtitle {
           font-size: 0.725rem;
-          color: #64748b;
-          line-height: 1.35;
-          margin-top: 2px;
+          font-weight: 600;
+          color: #0d7647;
+          line-height: 1.25;
         }
 
-        .knowledge-footer-link {
-          border-top: 1px solid #e2e8f0;
-          padding-top: 0.4rem;
-          margin-top: 0.25rem;
+        .pillar-desc {
+          font-size: 0.725rem;
+          color: #475569;
+          line-height: 1.4;
+          margin: 0.35rem 0 0 0;
+          text-wrap: pretty;
         }
 
-        .knowledge-all-btn {
+        .pillar-card-footer {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          margin-top: 0.75rem;
+          font-size: 0.75rem;
+          font-weight: 650;
+          color: #0d7647;
+          border-top: 1px dashed #e2e8f0;
+          padding-top: 0.5rem;
+        }
+
+        .pillar-arrow {
+          transition: transform 0.15s ease;
+        }
+
+        .mega-pillar-card:hover .pillar-arrow {
+          transform: translateX(3px);
+        }
+
+        /* Mega Bottom Bar */
+        .mega-bottom-bar {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          font-size: 0.775rem;
-          font-weight: 600;
+          border-top: 1px solid #f1f5f9;
+          padding-top: 0.85rem;
+          gap: 1rem;
+          flex-wrap: wrap;
+        }
+
+        .mega-bottom-left {
+          display: flex;
+          align-items: center;
+          gap: 0.6rem;
+          font-size: 0.8125rem;
+        }
+
+        .mega-recommend-pill {
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
+          font-size: 0.6875rem;
+          font-weight: 700;
+          color: #15803d;
+          background-color: #dcfce7;
+          padding: 0.2rem 0.55rem;
+          border-radius: 999px;
+          white-space: nowrap;
+        }
+
+        .mega-recommend-link {
+          color: #334155;
+          text-decoration: none;
+          line-height: 1.3;
+        }
+
+        .mega-recommend-link strong {
+          color: #0d7647;
+        }
+
+        .mega-recommend-link:hover {
+          text-decoration: underline;
+        }
+
+        .mega-bottom-right {
+          display: flex;
+          align-items: center;
+          gap: 1.25rem;
+        }
+
+        .mega-direct-hotline {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 0.8125rem;
+          color: #475569;
+          text-decoration: none;
+        }
+
+        .mega-direct-hotline strong {
+          color: #0d7647;
+          font-size: 0.875rem;
+        }
+
+        .mega-direct-hotline:hover {
+          color: #0d7647;
+        }
+
+        .mega-phone-icon {
+          color: #0d7647;
+        }
+
+        .mega-main-all-link {
+          font-size: 0.8125rem;
+          font-weight: 700;
           color: #0d7647;
           text-decoration: none;
-          padding: 0.4rem 0.65rem;
+          padding: 6px 14px;
           border-radius: 6px;
-          transition: background-color 0.15s ease;
-        }
-
-        .knowledge-all-btn:hover {
           background-color: #edf7f1;
+          border: 1px solid #c6ebd4;
+          transition: background-color 0.15s ease, color 0.15s ease;
+          white-space: nowrap;
         }
 
-        /* Desktop Actions: Hotline & CTA */
+        .mega-main-all-link:hover {
+          background-color: #0d7647;
+          color: #ffffff;
+        }
+
+        /* 3. Desktop Actions: Hotline & CTA */
         .header-desktop-actions {
           display: flex;
           align-items: center;
-          gap: 16px;
+          gap: 14px;
         }
 
         .header-hotline-link {
           display: inline-flex;
           align-items: center;
-          gap: 10px;
+          gap: 8px;
           text-decoration: none;
           padding: 4px 10px 4px 6px;
           border-radius: 10px;
@@ -1288,7 +1084,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
         .header-hotline-link:hover .hotline-icon-wrap {
           background-color: #dcfce7;
           border-color: #0d7647;
-          transform: scale(1.06);
+          transform: scale(1.05);
         }
 
         .header-hotline-icon {
@@ -1333,7 +1129,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           font-size: 0.875rem;
           font-weight: 600;
           height: 42px;
-          padding: 0 22px;
+          padding: 0 20px;
           border-radius: 9999px;
           border: none;
           cursor: pointer;
@@ -1349,7 +1145,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           transform: translateY(-1px);
         }
 
-        /* Mobile Actions inside Header */
+        /* 4. Mobile Actions inside Header Bar */
         .header-mobile-actions {
           display: none;
           align-items: center;
@@ -1359,7 +1155,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
         .header-mobile-call-btn {
           display: inline-flex;
           align-items: center;
-          gap: 6px;
+          gap: 5px;
           min-height: 40px;
           padding: 0 12px;
           background-color: #edf7f1;
@@ -1436,8 +1232,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
         @media (max-width: 1024px) {
           .header-desktop-nav,
           .header-desktop-actions,
-          .mega-menu-wrapper,
-          .knowledge-dropdown-panel {
+          .mega-menu-wrapper {
             display: none !important;
           }
           .header-mobile-actions {
@@ -1445,7 +1240,33 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           }
         }
 
-        /* Mobile Drawer Styles */
+        /* Laptop Zoom 125% adjustment (1025px - 1240px) */
+        @media (min-width: 1025px) and (max-width: 1240px) {
+          .mega-pillars-grid {
+            gap: 0.6rem;
+          }
+          .mega-pillar-card {
+            padding: 0.85rem 0.75rem;
+            min-height: 185px;
+          }
+          .pillar-title {
+            font-size: 0.8125rem;
+          }
+          .pillar-subtitle {
+            font-size: 0.6875rem;
+          }
+          .pillar-desc {
+            font-size: 0.6875rem;
+          }
+          .nav-link, .nav-link-btn {
+            padding: 8px 10px;
+            font-size: 0.875rem;
+          }
+        }
+
+        /* ==========================================================================
+           MOBILE DRAWER (FULL ACCESSIBILITY, TOUCH TARGET >= 44PX)
+           ========================================================================== */
         .mobile-drawer-overlay {
           position: fixed;
           inset: 0;
@@ -1457,7 +1278,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
         .mobile-drawer-backdrop {
           position: absolute;
           inset: 0;
-          background-color: rgba(15, 23, 42, 0.45);
+          background-color: rgba(15, 23, 42, 0.5);
           animation: drawerBackdropFade 0.2s ease-out;
         }
 
@@ -1468,10 +1289,10 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
 
         .mobile-drawer-panel {
           position: relative;
-          width: min(380px, 90vw);
+          width: min(390px, 92vw);
           height: 100%;
           background-color: #ffffff;
-          box-shadow: -4px 0 24px rgba(0, 0, 0, 0.12);
+          box-shadow: -4px 0 24px rgba(0, 0, 0, 0.14);
           display: flex;
           flex-direction: column;
           z-index: 1110;
@@ -1535,34 +1356,159 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           scrollbar-gutter: stable;
           display: flex;
           flex-direction: column;
-          gap: 18px;
+          gap: 20px;
           box-sizing: border-box;
         }
 
         .drawer-section {
           display: flex;
           flex-direction: column;
-          gap: 6px;
+          gap: 8px;
+        }
+
+        .drawer-section-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0 4px;
         }
 
         .drawer-section-label {
           font-size: 0.6875rem;
-          font-weight: 700;
-          color: #64748b;
+          font-weight: 750;
+          color: #0d7647;
           text-transform: uppercase;
           letter-spacing: 0.05em;
-          padding-left: 6px;
-          margin-bottom: 2px;
         }
 
+        .drawer-section-sub {
+          font-size: 0.6875rem;
+          color: #64748b;
+          font-weight: 500;
+        }
+
+        /* Drawer Pillars List */
+        .drawer-pillars-list {
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+        }
+
+        .drawer-pillar-item {
+          min-height: 52px;
+          padding: 8px 12px;
+          border-radius: 10px;
+          background-color: #f8fafc;
+          border: 1px solid #e2e8f0;
+          text-decoration: none;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          transition: background-color 0.15s ease, border-color 0.15s ease;
+          box-sizing: border-box;
+        }
+
+        .drawer-pillar-item:hover,
+        .drawer-pillar-item.active {
+          background-color: #f0fdf4;
+          border-color: #a7f3d0;
+        }
+
+        .drawer-pillar-step {
+          font-size: 0.75rem;
+          font-weight: 800;
+          color: #0d7647;
+          width: 20px;
+          flex-shrink: 0;
+        }
+
+        .drawer-pillar-icon {
+          width: 32px;
+          height: 32px;
+          border-radius: 8px;
+          background-color: #ffffff;
+          border: 1px solid #e2e8f0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #0d7647;
+          flex-shrink: 0;
+        }
+
+        .drawer-pillar-content {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          gap: 1px;
+          min-width: 0;
+        }
+
+        .drawer-pillar-title-row {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
+
+        .drawer-pillar-title {
+          font-size: 0.875rem;
+          font-weight: 700;
+          color: #0f172a;
+          line-height: 1.25;
+        }
+
+        .drawer-pillar-badge {
+          font-size: 0.5875rem;
+          font-weight: 700;
+          color: #15803d;
+          background-color: #dcfce7;
+          padding: 0.1rem 0.4rem;
+          border-radius: 999px;
+          white-space: nowrap;
+        }
+
+        .drawer-pillar-desc {
+          font-size: 0.725rem;
+          color: #64748b;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .drawer-pillar-arrow {
+          color: #94a3b8;
+          flex-shrink: 0;
+        }
+
+        .drawer-all-solutions-link {
+          min-height: 44px;
+          padding: 10px 14px;
+          background-color: #edf7f1;
+          border: 1px solid #c6ebd4;
+          border-radius: 10px;
+          color: #0d7647;
+          font-size: 0.85rem;
+          font-weight: 700;
+          text-decoration: none;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-top: 2px;
+          transition: background-color 0.15s ease;
+        }
+
+        .drawer-all-solutions-link:hover {
+          background-color: #dcfce7;
+        }
+
+        /* Drawer Nav List */
         .drawer-nav-list {
           display: flex;
           flex-direction: column;
-          gap: 2px;
+          gap: 3px;
         }
 
-        .drawer-link {
-          min-height: 44px;
+        .drawer-nav-link {
+          min-height: 46px;
           padding: 10px 14px;
           font-size: 0.9375rem;
           font-weight: 600;
@@ -1575,17 +1521,18 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           transition: background-color 0.15s ease, color 0.15s ease;
         }
 
-        .drawer-link:hover {
+        .drawer-nav-link:hover {
           background-color: #f8fafc;
           color: #0d7647;
         }
 
-        .drawer-link.active {
+        .drawer-nav-link.active {
           background-color: #edf7f1;
           color: #0d7647;
+          font-weight: 700;
         }
 
-        .drawer-badge-pill {
+        .drawer-nav-badge {
           font-size: 0.65rem;
           font-weight: 600;
           background-color: #dcfce7;
@@ -1594,74 +1541,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           border-radius: 999px;
         }
 
-        .drawer-services-list {
-          display: flex;
-          flex-direction: column;
-          gap: 4px;
-        }
-
-        .drawer-service-link {
-          min-height: 44px;
-          padding: 8px 12px;
-          font-size: 0.875rem;
-          font-weight: 600;
-          color: #1e293b;
-          text-decoration: none;
-          border-radius: 8px;
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          transition: background-color 0.15s ease;
-        }
-
-        .drawer-service-link:hover {
-          background-color: #f0fdf4;
-        }
-
-        .drawer-service-icon {
-          width: 30px;
-          height: 30px;
-          border-radius: 7px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-shrink: 0;
-        }
-
-        .drawer-service-name {
-          flex: 1;
-          font-size: 0.875rem;
-          color: #0f172a;
-        }
-
-        .drawer-price-badge {
-          font-size: 0.65rem;
-          font-weight: 700;
-          padding: 0.12rem 0.45rem;
-          border-radius: 999px;
-          white-space: nowrap;
-        }
-
-        .drawer-all-services-link {
-          min-height: 44px;
-          padding: 10px 12px;
-          font-size: 0.8125rem;
-          font-weight: 600;
-          color: #0d7647;
-          text-decoration: none;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          border-radius: 8px;
-          margin-top: 4px;
-          background-color: #f0fdf4;
-          transition: background-color 0.15s ease;
-        }
-
-        .drawer-all-services-link:hover {
-          background-color: #dcfce7;
-        }
-
+        /* Drawer Footer */
         .drawer-footer {
           padding: 16px;
           border-top: 1px solid #e2e8f0;
@@ -1678,7 +1558,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           background-color: #0d7647;
           color: #ffffff;
           font-size: 0.9375rem;
-          font-weight: 600;
+          font-weight: 650;
           border: none;
           border-radius: 9999px;
           display: flex;
@@ -1697,7 +1577,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
         }
 
         .drawer-hotline-card {
-          min-height: 50px;
+          min-height: 48px;
           width: 100%;
           background-color: #f0fdf4;
           border: 1px solid #c6ebd4;
@@ -1717,8 +1597,8 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
         }
 
         .drawer-hotline-icon {
-          width: 34px;
-          height: 34px;
+          width: 32px;
+          height: 32px;
           border-radius: 50%;
           background-color: #0d7647;
           color: #ffffff;
@@ -1762,4 +1642,5 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
     </>
   );
 };
+
 export default Header;
