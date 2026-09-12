@@ -26,6 +26,12 @@
 - Header 1240px không bị rớt chữ trên bất kỳ tiêu đề nào, fix tràn viền 2 thẻ bên phải.
 - Footer nền sáng chuẩn MISA/AMIS với 4 cột, dải social, trust pills và logo Bộ Công Thương.
 
+### D. Tích Hợp Background Video Seamless Boomerang Loop Cho Hero Section:
+- Cắt dựng video trừu tượng lượn sóng xanh (`Animating_abstract_green_wavy_ba._20260912095226.mp4`): kỹ thuật Boomerang loop 0s -> 3.5s rồi đảo ngược 3.5s -> 0s, loại bỏ frame trùng ở đỉnh và đáy để chuyển động trơn tru không khựng giật.
+- Tối ưu dung lượng chuẩn web: MP4 H.264 (~740 KB) và WebM VP9 (~530 KB) không audio.
+- Tích hợp vào `HeroSection.tsx` với overlay gradient mờ sáng tự nhiên, nền sáng chữ đậm, tương phản cao, tuyệt đối không glassmorphism, không cản trở click.
+- Đã kiểm thử trực quan đa viewport (Desktop 1440, Tablet 768, Mobile 390) bằng `agent-browser`.
+
 ---
 
 ## 3. Production Readiness & Ads Launch Sprint (Current SSOT)

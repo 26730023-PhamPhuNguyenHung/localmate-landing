@@ -23,3 +23,14 @@
 - **Tập trung hóa dịch vụ gửi Lead (`submitLead`)**: Tránh viết hàm fetch phân tán ở nhiều form (`LeadModal`, `ContactPage`, `Landing490kPage`, `FinalCTASection`). Gom tất cả qua 1 service duy nhất (`src/services/leadService.ts`) để tự động kèm UTM attribution, đồng bộ Google Sheets, và kích hoạt conversion event (`generate_lead`, `lead_created`) cho cả Google Ads và Meta Ads.
 - **Không dùng `alert()` trong luồng đăng ký mua hàng/dịch vụ**: Dùng modal state, inline error messages hoặc toast notification để trải nghiệm trên mobile mượt mà, không bị chặn bởi pop-up native của trình duyệt.
 
+## 4. Bài học về Tối Ưu Background Video & Infinite Loop (Web Performance & UI)
+- **Kỹ thuật Boomerang / Ping-Pong Loop Không Khựng Khung Hình (Zero-Stutter)**:
+  - Khi tạo loop xuôi-ngược (`[fwd][rev]`), nếu không xử lý, frame ở đỉnh đảo chiều và frame ở điểm tiếp giáp 0s sẽ bị lặp lại 2 lần liên tiếp gây khựng nhẹ (stutter).
+  - Khắc phục bằng FFmpeg trim chính xác: loại bỏ frame trùng ở đỉnh và đuôi (`[0:v]trim=start=0:end=3.5` + `trim=start=0.04167:end=3.45833,reverse`). Nhờ đó chuyển động sóng đạt gia tốc điều hòa êm ái tuyệt đối.
+- **Tối Ưu Dung Lượng & Tiết Kiệm Băng Thông Web**:
+  - Luôn loại bỏ luồng âm thanh thừa (`-an`) cho video nền.
+  - Xuất song song bản WebM (VP9, ~530 KB) và MP4 (H.264 High Profile, faststart, ~740 KB) để trình duyệt ưu tiên nạp WebM nhẹ hơn 30-40%.
+- **Quy Chuẩn UI Light Mode & Không Dùng Glassmorphism**:
+  - Background video phải có `pointer-events: none;` và `z-index: 0;` để không chặn click của người dùng.
+  - Sử dụng lớp phủ gradient sáng (`hero-bg-overlay`) hòa trộn từ màu nền `#fbfcfb` vào trong suốt rồi phủ lại ở đáy, giúp toàn bộ chữ đen `#0F172A`, nút bấm và card trắng đặc `#ffffff` nổi bật 100%, không bị chìm hay mờ ảo.
+

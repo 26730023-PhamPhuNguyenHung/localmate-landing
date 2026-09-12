@@ -27,7 +27,23 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDemoForm }) => {
       }}
       id="hero"
     >
-      <Container size="lg" style={{ paddingInline: 'clamp(16px, 4vw, 24px)' }}>
+      {/* Background Video Animation — Seamless Boomerang Loop */}
+      <div className="hero-bg-video-wrapper" aria-hidden="true">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          className="hero-bg-video"
+        >
+          <source src="/assets/videos/hero-wave-loop.webm" type="video/webm" />
+          <source src="/assets/videos/hero-wave-loop.mp4" type="video/mp4" />
+        </video>
+        <div className="hero-bg-overlay" />
+      </div>
+
+      <Container size="lg" style={{ paddingInline: 'clamp(16px, 4vw, 24px)', position: 'relative', zIndex: 1 }}>
         <div className="hero-centered-content">
           {/* Compact Eyebrow */}
           <div className="hero-eyebrow-wrapper">
@@ -109,6 +125,44 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDemoForm }) => {
       </Container>
 
       <style>{`
+        .hero-bg-video-wrapper {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          pointer-events: none;
+          z-index: 0;
+        }
+
+        .hero-bg-video {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          min-width: 100%;
+          min-height: 100%;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center bottom;
+          opacity: 0.85;
+          display: block;
+        }
+
+        .hero-bg-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+            to bottom,
+            rgba(251, 252, 251, 0.4) 0%,
+            rgba(251, 252, 251, 0.1) 35%,
+            rgba(251, 252, 251, 0.5) 75%,
+            rgba(251, 252, 251, 1) 100%
+          );
+          pointer-events: none;
+        }
+
         .hero-centered-content {
           display: flex;
           flex-direction: column;
