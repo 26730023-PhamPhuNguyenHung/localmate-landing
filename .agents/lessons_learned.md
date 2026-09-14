@@ -1,5 +1,19 @@
 # BÀI HỌC VÀ LƯU Ý KỸ THUẬT (LESSONS LEARNED & BUG MEMORY)
 
+## [2026-09-14] — Nâng Cấp Toàn Diện Schema.org JSON-LD Graph & Noscript Fallback trong index.html
+- **Vấn đề Schema & Fallback cũ:**
+  - `index.html` dùng mảng schema rời rạc, thiếu `@graph` thống nhất, không có `@id` gốc cố định cho Organization dẫn đến việc Google và các hệ thống AI (GEO/AEO) không xâu chuỗi được quan hệ giữa `WebSite` và pháp nhân `LocalBusiness`.
+  - `hasOfferCatalog` trước đây chứa các gói GEO cũ với mức giá lệch SSOT (2.9M, thiếu các gói Maps, Ads, CRM Zalo chuẩn theo 5 trụ cột).
+  - Khối `noscript` fallback chứa thông tin giá cũ, màu nền tối và cấu trúc dịch vụ chưa chuẩn hóa.
+- **Giải pháp chuẩn hóa Google & GEO Schema Graph:**
+  - Thiết lập `@id`: `"https://localmate.vn/#organization"` làm thực thể gốc cố định duy nhất.
+  - Tổ chức cấu trúc `@graph`:
+    1. `WebSite`: `@id: "https://localmate.vn/#website"`, trỏ publisher về `{"@id": "https://localmate.vn/#organization"}`.
+    2. Thực thể liên hợp `["Organization", "ProfessionalService", "LocalBusiness"]`: name "LocalMate", legalName "CÔNG TY TNHH LOCALMATE", taxID "4001337934", địa chỉ chuẩn "03 Trường Chinh, Phường Hội An Tây, Đà Nẵng", hotline, email, `sameAs` (Facebook, LinkedIn, GitHub), `hasOfferCatalog` chứa 7 dịch vụ chuẩn từ `src/data/company.ts`.
+    3. `FAQPage`: Đồng bộ câu hỏi thực tế về dịch vụ, thanh toán, cam kết sở hữu tài sản số và báo giá trọn gói.
+  - Viết lại toàn bộ `noscript` fallback sang Light Mode sáng sủa, đồng bộ 100% 5 trụ cột dịch vụ, bảng giá niêm yết từ 490k và thông tin pháp nhân của LocalMate.
+- **Nghiệm thu:** `npm run build` hoàn thành không lỗi (exit code 0), `dist/index.html` chứa schema graph và noscript đồng bộ tuyệt đối.
+
 ## [2026-09-14] — Tái Tạo Chuẩn Hóa public/llms.txt & public/llms-full.txt (SSOT Data Sync)
 - **Vấn đề tồn dư dữ liệu cũ:**
   - `public/llms.txt` trước đó có chứa email cá nhân `hungphamphunguyen@gmail.com`, gây rò rỉ thông tin cá nhân và thiếu tính chuyên nghiệp của thực thể doanh nghiệp.
