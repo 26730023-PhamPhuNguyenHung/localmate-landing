@@ -62,7 +62,7 @@ export const NAV_LINKS = [
   { label: 'Bảng giá', href: '/bang-gia' },
   { label: 'Dự án đã làm', href: '/du-an' },
   { label: 'Kiến thức Marketing', href: '/kien-thuc' },
-  { label: 'Về LocalMate', href: '/gioi-thieu' },
+  { label: 'Về LocalMate', href: '/ve-localmate' },
   { label: 'Liên hệ', href: '/lien-he' }
 ];
 
@@ -136,7 +136,7 @@ export const BEFORE_AFTER = {
   after: [
     'Có website đẹp giới thiệu dịch vụ rõ ràng, chuyên nghiệp.',
     'Nút gọi Hotline, nhắn tin Zalo hiển thị ngay khi mở trang.',
-    'Khách xung quanh mở Google Maps là thấy địa chỉ và đánh giá 5 sao.',
+    'Khách xung quanh mở Google Maps là thấy địa chỉ và đánh giá chân thực của khách hàng.',
     'Bài viết và hình ảnh được đăng tải đều đặn mỗi tuần.',
     'Chủ doanh nghiệp làm chủ 100% tài khoản và dữ liệu.',
     'Có đội ngũ kỹ thuật hỗ trợ nhanh qua Zalo bất cứ khi nào cần.'
@@ -218,8 +218,8 @@ export const SPECIALIZED_SERVICES = [
   {
     id: 'google-maps',
     title: 'Đưa Doanh Nghiệp Lên Google Maps',
-    desc: 'Tạo mới hoặc chuẩn hóa vị trí trên bản đồ, thêm ảnh mặt tiền, giờ mở cửa và mã QR xin đánh giá 5 sao.',
-    description: 'Tạo mới hoặc chuẩn hóa vị trí trên bản đồ, thêm ảnh mặt tiền, giờ mở cửa và mã QR xin đánh giá 5 sao.',
+    desc: 'Tạo mới hoặc chuẩn hóa vị trí trên bản đồ, thêm ảnh mặt tiền, giờ mở cửa và tạo QR giúp khách hàng để lại đánh giá chân thực trên Google.',
+    description: 'Tạo mới hoặc chuẩn hóa vị trí trên bản đồ, thêm ảnh mặt tiền, giờ mở cửa và tạo QR giúp khách hàng để lại đánh giá chân thực trên Google.',
     priceFrom: 'Từ 299.000đ',
     icon: 'MapPin'
   },
@@ -292,7 +292,7 @@ export const SERVICE_GROUPS: ServiceGroup[] = [
       'Đăng ký mới Google Maps 299k',
       'Tối ưu hoàn thiện hồ sơ Maps 390k',
       'Tối ưu đề xuất AI (GEO Local) 2.900k/th',
-      'Tạo mã QR xin đánh giá 5 sao 99k',
+      'Tạo QR giúp khách hàng để lại đánh giá chân thực trên Google 99k',
       'Chăm sóc vị trí Maps hàng tháng 490k'
     ],
     startingPrice: 'Từ 299.000đ',
@@ -340,7 +340,7 @@ export const INDUSTRY_SOLUTIONS: IndustrySolution[] = [
       'Menu điện tử hình ảnh rõ nét, mở nhanh',
       'Nút gọi đặt bàn & nhắn Zalo nổi bật',
       'Vị trí Google Maps hiển thị chỉ đường',
-      'Đánh giá 5 sao từ khách quen'
+      'Đánh giá chân thực từ khách hàng'
     ],
     recommendedPackage: 'Website quán ăn 1.990.000đ + Google Maps 299k',
     slug: 'nha-hang-quan-an',
@@ -432,7 +432,7 @@ export const DEMO_SHOWCASES = [
     url: 'https://huongsenspa.localmate.vn',
     domain: 'huongsenspa.localmate.vn',
     tags: ['Đặt Lịch Hẹn', 'Bảng Giá Dịch Vụ', 'Đánh Giá Google'],
-    features: ['Đặt lịch trực tuyến', 'Bảng giá rõ ràng', 'Đánh giá 5 sao'],
+    features: ['Đặt lịch trực tuyến', 'Bảng giá rõ ràng', 'Đánh giá chân thực trên Google'],
     color: '#e06d53',
     summary: 'Website làm đẹp sang trọng, rõ bảng giá các gói liệu trình và dễ dàng đặt hẹn trước.'
   }
@@ -523,8 +523,8 @@ export const KNOWLEDGE_ARTICLES = [
     title: 'Cách tự kiểm tra và tối ưu Google Maps để khách quanh vùng tìm thấy ngay',
     category: 'Google Maps',
     date: '08 Tháng 8, 2026',
-    excerpt: 'Kiểm tra vị trí ghim chuẩn, cập nhật số điện thoại chính chủ và cách tạo mã QR nhận đánh giá 5 sao từ khách quen.',
-    desc: 'Kiểm tra vị trí ghim chuẩn, cập nhật số điện thoại chính chủ và cách tạo mã QR nhận đánh giá 5 sao từ khách quen.',
+    excerpt: 'Kiểm tra vị trí ghim chuẩn, cập nhật số điện thoại chính chủ và cách tạo QR giúp khách hàng để lại đánh giá chân thực trên Google.',
+    desc: 'Kiểm tra vị trí ghim chuẩn, cập nhật số điện thoại chính chủ và cách tạo QR giúp khách hàng để lại đánh giá chân thực trên Google.',
     readTime: '7 phút đọc',
     slug: 'huong-dan-toi-uu-google-business-profile'
   },

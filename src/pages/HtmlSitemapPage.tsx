@@ -48,7 +48,7 @@ export const HtmlSitemapPage: React.FC = () => {
             </h3>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.9rem' }}>
               <li><Link to="/" style={{ color: 'var(--color-text)', textDecoration: 'none', fontWeight: 600 }}>• Trang chủ (/)</Link></li>
-              <li><Link to="/gioi-thieu" style={{ color: 'var(--color-text)', textDecoration: 'none', fontWeight: 600 }}>• Giới thiệu LocalMate (/gioi-thieu)</Link></li>
+              <li><Link to="/ve-localmate" style={{ color: 'var(--color-text)', textDecoration: 'none', fontWeight: 600 }}>• Về LocalMate (/ve-localmate)</Link></li>
               <li><Link to="/dich-vu" style={{ color: 'var(--color-text)', textDecoration: 'none', fontWeight: 600 }}>• Danh mục dịch vụ (/dich-vu)</Link></li>
               <li><Link to="/bang-gia" style={{ color: 'var(--color-text)', textDecoration: 'none', fontWeight: 600 }}>• Bảng giá niêm yết (/bang-gia)</Link></li>
               <li><Link to="/du-an" style={{ color: 'var(--color-text)', textDecoration: 'none', fontWeight: 600 }}>• Dự án thực tế (/du-an)</Link></li>

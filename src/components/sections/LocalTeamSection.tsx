@@ -711,7 +711,7 @@ export const LocalTeamSection: React.FC<LocalTeamSectionProps> = ({
             {isSummary && (
               <button
                 type="button"
-                onClick={() => navigate('/gioi-thieu')}
+                onClick={() => navigate('/ve-localmate')}
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
