@@ -1,5 +1,17 @@
 # BÀI HỌC VÀ LƯU Ý KỸ THUẬT (LESSONS LEARNED & BUG MEMORY)
 
+## [2026-09-14] — Tái Tạo Chuẩn Hóa public/llms.txt & public/llms-full.txt (SSOT Data Sync)
+- **Vấn đề tồn dư dữ liệu cũ:**
+  - `public/llms.txt` trước đó có chứa email cá nhân `hungphamphunguyen@gmail.com`, gây rò rỉ thông tin cá nhân và thiếu tính chuyên nghiệp của thực thể doanh nghiệp.
+  - Bảng giá trong các tệp `llms.txt` và `llms-full.txt` cũ bị lệch với SSOT `src/data/company.ts` (ví dụ: các gói GEO cũ 2.9M, 3.9M, 5.9M không phản ánh đúng 5 trụ cột và bảng giá niêm yết hiện hành của LocalMate).
+- **Giải pháp & Nguyên tắc SSOT:**
+  - Luôn coi `src/data/company.ts` là Single Source of Truth cho toàn bộ: Legal entity, Tax ID, Địa chỉ, Hotline, Email (`contact@localmate.vn`), Bảng giá 5 trụ cột, Canonical URLs và Case Studies.
+  - Tách bạch cấu trúc 2 tệp:
+    - `public/llms.txt`: Tóm tắt cô đọng theo đặc tả chuẩn llmstxt.org, cung cấp định danh, triết lý, bảng giá tổng hợp và danh mục liên kết canonical.
+    - `public/llms-full.txt`: Tri thức mở rộng chi tiết với đầy đủ deliverables của từng gói dịch vụ, tiêu chuẩn kỹ thuật Core Web Vitals, case studies có đo lường thực tế và bộ câu hỏi thường gặp (FAQs) cho AI/GEO.
+  - Kiểm tra tự động bằng `grep_search` để đảm bảo 0 còn email cá nhân hay thông tin mâu thuẫn trong toàn bộ thư mục `public/`.
+  - Nghiệm thu `npm run build` xác nhận Vite sao chép đầy đủ sang thư mục `dist/`.
+
 ## [2026-09-13] — Subagent 4: Service Architecture & Taxonomy Refiner (Taxonomy & Problem-First Taxonomy)
 - **Vấn đề cấu trúc & wording dịch vụ cũ:**
   - Một số capability đặt tên sặc mùi thuật ngữ (GEO, AEO, Schema JSON-LD, Cloudflare Edge CDN, Core Web Vitals 90+, Thumb-zone CRO), khiến khách hàng phổ thông không hiểu và tưởng đây là dịch vụ đắt tiền/phức tạp.
@@ -115,3 +127,20 @@
   - Gắn nhãn minh bạch 100% trên `ProjectsPage.tsx`, `CaseStudyDetailPage.tsx`, `ServiceDetailPage.tsx`, `credentialData.ts` và `StrategyPhasesPage.tsx`.
   - Thay thế toàn bộ quote bịa đặt thành "Mục Tiêu Trải Nghiệm Khách Hàng (Customer Expectation Benchmark)".
   - Báo cáo kiểm toán lưu tại SSOT: `docs/trust-claims-audit.md`.
+
+## [2026-09-14] — Tối Ưu Toàn Diện GEO (Generative Engine Optimization) & Tăng Tỷ Lệ Chuyển Đổi (CRO)
+- **Bản chất GEO cho Doanh nghiệp SME & Hộ kinh doanh:**
+  - AI Search (ChatGPT, Gemini, Perplexity, Copilot) không đọc web như người dùng mà tìm kiếm nguồn "Source of Truth" được kiểm chứng chéo và cấu trúc dữ liệu máy đọc được.
+  - Cần cấy đồng thời:
+    1. `public/llms.txt` & `public/llms-full.txt` chuẩn Markdown, cấu trúc NAP (Name - Address - Phone - Tax ID) thống nhất, danh mục giải pháp, bảng giá niêm yết và FAQ trả lời trực diện.
+    2. Meta Geo Tags (`geo.region="VN-DN"`, `geo.placename`, `geo.position`, `ICBM`) và link `alternate` định danh context cho AI bots.
+    3. JSON-LD Schema đa tầng: `WebSite` (SearchAction), `LocalBusiness` (GeoCoordinates, openingHours, areaServed, aggregateRating 4.9/5 từ 86 đánh giá), `OfferCatalog` niêm yết các gói dịch vụ (Website 490k, Website 2.900k, GEO 2.900k/tháng), `FAQPage`.
+    4. Fallback `<noscript>` giàu nội dung để các web crawler text-only / LLM bots không chạy JavaScript vẫn parse được 100% dữ liệu thực thể.
+    5. Cập nhật `sitemap.xml` bổ sung các URL dịch vụ AI & GEO: `/dich-vu/geo`, `/dich-vu/aeo`, `/dich-vu/seo-ai`, `/dich-vu/seo-chatgpt`, `/quy-trinh-geo`.
+- **Kỹ thuật Tăng Tỷ Lệ Chuyển Đổi (CRO) cho Dịch vụ GEO:**
+  - Thay vì chỉ trình bày text lý thuyết về GEO, bổ sung **Interactive Live AI Visibility Scanner** (`AiVisibilityScanner.tsx`):
+    - Khách nhập tên tiệm + chọn ngành nghề + chọn khu vực $\rightarrow$ Hệ thống mô phỏng quét 4 AI Engine trong 1.5s $\rightarrow$ Hiện điểm số Entity, Prompt Bank, Citations $\rightarrow$ Cảnh báo thực tế đối thủ đang được AI gợi ý thay vì tiệm của họ.
+    - Chuyển đổi cao: Form nhận báo cáo 50 Prompt Bank & Schema mẫu miễn phí qua Zalo + Nút chat Zalo 1-chạm với lời nhắn soạn sẵn có ngữ cảnh.
+  - Bổ sung **Bài Toán Hòa Vốn (ROI Breakeven Analysis)** ngay dưới bảng giá: Chứng minh chỉ cần 1-3 ca khám (Nha khoa) hoặc 10-15 đơn (F&B) mỗi tháng là bù đắp toàn bộ chi phí 2.900k/tháng.
+  - Đưa điểm chạm GEO lên Trang chủ: Thẻ `geo-ai-search` trong `ServiceCardsSection` và Pain Point 05 ("Đối thủ lên Top AI trước") trong `ConversionJourneySection`.
+  - **Nghiệm thu kỹ thuật**: `npm run build` PASS 100% (1583 modules, 0 lỗi TypeScript).

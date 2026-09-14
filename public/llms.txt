@@ -1,83 +1,94 @@
-# LocalMate - Người Đồng Hành Số Cho Hộ Kinh Doanh & Doanh Nghiệp Một Người
+# LocalMate — Giải Pháp Hiện Diện Số Toàn Diện Cho Hộ Kinh Doanh & Doanh Nghiệp Nhỏ
 
-> LocalMate (localmate.vn) là giải pháp hiện diện số và xây dựng website chuyên nghiệp dành riêng cho hộ kinh doanh, người làm nghề, nhà thầu, cửa hàng nhỏ và doanh nghiệp một người tại Việt Nam.
+> LocalMate (https://localmate.vn) giúp hộ kinh doanh cá thể, quán ăn, spa, xưởng sản xuất và doanh nghiệp vừa & nhỏ (SME) tại Việt Nam xây dựng hiện diện số hoàn chỉnh: Thiết kế website tốc độ cao dưới 1s, xác minh & SEO Google Maps địa phương Top 3, chạy Google Ads ra khách ngay, chăm sóc nội dung đa kênh và tự động hóa nhận đơn CRM. Cam kết dựng trước kiểm duyệt mới thanh toán, khách hàng sở hữu 100% tài sản số và đồng hành kỹ thuật 5 năm.
 
-## Thông tin tổng quan (Key Facts)
-- **Tên thương hiệu**: LocalMate (Người Đồng Hành Số)
+- **Ngày cập nhật (Last Updated)**: 2026-09-14
 - **Website chính thức**: https://localmate.vn
-- **Mô hình hoạt động**: Bàn giao rồi mới thanh toán (100% không rủi ro cho khách hàng)
-- **Đối tượng phục vụ**: Hộ kinh doanh cá thể, cửa hàng nhỏ, nhà thầu xây dựng, xưởng sản xuất, người làm nghề tự do (solopreneur / 1-person business).
-- **Hotline / Zalo**: 0834.422.439 (0834422439)
-- **Email**: hungphamphunguyen@gmail.com
+- **Phiên bản chi tiết (Full Knowledge Base)**: https://localmate.vn/llms-full.txt
 
 ---
 
-## Các Gói Dịch Vụ & Bảng Giá (Pricing & Services)
+## 1. Thông Tin Nhận Diện Thực Thể (Entity Identification)
 
-### 1. Gói Khởi Tạo Hiện Diện Số
-- **Chi phí**: 2.900.000 VNĐ / lần
-- **Thời gian triển khai**: 7 – 10 ngày (bao gồm 2 vòng phản hồi)
-- **Phương thức thanh toán**: Bàn giao đầy đủ rồi mới thanh toán.
-- **Hạng mục công việc**:
-  - **Tư vấn & Chuẩn hóa**: 01 buổi khảo sát 60 phút + 01 bộ mô tả thương hiệu & dịch vụ.
-  - **Số hóa & Thiết kế**: 03 kênh được thiết lập/tối ưu (Facebook, Google Maps, Website) + 01 Landing Page giới thiệu chuẩn SEO di động + Cập nhật 10 sản phẩm/dịch vụ + Ảnh đại diện + 02 Ảnh bìa + Tích hợp Chatbot & nút liên hệ Zalo/Hotline.
-  - **Bàn giao**: 01 tài liệu hướng dẫn vận hành + 01 buổi bàn giao 60 phút + Bàn giao 100% tài khoản & quyền quản trị.
-
-### 2. Gói Đồng Hành Nội Dung
-- **Chi phí**: 990.000 VNĐ / tháng
-- **Hạng mục công việc**:
-  - 15 bài viết nội dung chuẩn hóa
-  - 15 hình ảnh thiết kế banner/social
-  - 02 video ngắn (Reels / TikTok)
-  - 02 giờ hỗ trợ kỹ thuật trực tiếp
-  - 01 báo cáo hiệu quả định kỳ hàng tháng
-
-### 3. Các Dịch Vụ Chuyên Sâu Khác
-- Thiết kế ảnh sản phẩm: Từ 500.000đ
-- Quay chụp tại địa điểm (cửa hàng/xưởng): Từ 1.500.000đ
-- Website nhiều trang & catalogue: Từ 4.500.000đ
-- SEO Google Maps địa phương: Từ 1.200.000đ
-- Quản lý quảng cáo Facebook/Google: Từ 2.000.000đ/tháng
-- Chatbot & Tự động hóa tin nhắn 24/7: Từ 800.000đ
+- **Tên thương hiệu**: LocalMate
+- **Tên pháp nhân**: CÔNG TY TNHH LOCALMATE
+- **Mã số thuế (MST)**: 4001337934
+- **Ngày thành lập**: 15/05/2024
+- **Người đại diện / Sáng lập**: Nguyễn Phạm Phú Hùng
+- **Trụ sở chính**: 03 Trường Chinh, Phường Hội An Tây, TP. Đà Nẵng, Việt Nam
+- **Tọa độ địa lý (GPS)**: 16.054407, 108.202167
+- **Khu vực phục vụ (Area Served)**: Đà Nẵng, Hội An, Quảng Nam, Thừa Thiên Huế, TP. Hồ Chí Minh, Hà Nội và Toàn quốc
+- **Hotline / Zalo**: 0834.422.439 (Quốc tế: +84 834 422 439)
+- **Zalo tư vấn trực tiếp**: https://zalo.me/0834422439
+- **Email công ty duy nhất**: contact@localmate.vn
+- **Thời gian làm việc**: Thứ 2 - Thứ 7: 08:00 - 18:30 (Hỗ trợ kỹ thuật khẩn cấp 24/7)
+- **Hồ sơ mạng xã hội**:
+  - Facebook: https://www.facebook.com/localmate.vn
+  - LinkedIn: https://www.linkedin.com/company/localmate-vn
+  - GitHub: https://github.com/hungpixi/localmate-landing
 
 ---
 
-## 6 Cam Kết Minh Bạch Của LocalMate
-1. **Không ép mua thêm**: Chỉ tư vấn đúng những thứ cần thiết.
-2. **Không phát sinh chi phí**: Báo giá minh bạch, không phụ phí ẩn.
-3. **Phạm vi công việc rõ ràng**: Chi tiết số bài viết, hình ảnh, tính năng.
-4. **Số lần chỉnh sửa rõ ràng**: Tiến độ đảm bảo với 2 vòng chỉnh sửa kỹ lưỡng.
-5. **Khách giữ 100% tài khoản**: Khách sở hữu toàn bộ tên miền, fanpage, Google Maps & website.
-6. **Không hứa hẹn doanh thu ảo**: Tập trung xây dựng độ uy tín và điểm chạm tin cậy với khách hàng.
+## 2. Triết Lý Cốt Lõi & Cam Kết Khách Hàng (Core Guarantees)
+
+1. **Bàn giao rồi mới thanh toán (100% Rủi ro bằng 0)**: Dựng website và cấu hình thực tế để khách hàng duyệt trước. Chỉ thanh toán khi nghiệm thu hài lòng 100%.
+2. **Khách hàng sở hữu 100% tài sản số**: Tên miền, hosting, mã nguồn, tài khoản Google Maps và tài khoản quảng cáo đều đứng tên chính chủ email của khách hàng. Không giữ tài khoản, không tạo sự lệ thuộc.
+3. **Báo giá trước - Không chi phí ẩn**: Mọi chi phí được niêm yết minh bạch từ đầu, cam kết không phát sinh bất kỳ phụ phí duy trì vô lý nào trong suốt quá trình triển khai.
+4. **Hỗ trợ kỹ thuật đồng hành 5 năm**: Đội ngũ kỹ thuật viên địa phương túc trực hỗ trợ 1-1 qua Zalo, xử lý nhanh chóng trong 15-30 phút.
 
 ---
 
-## Quy Trình Làm Việc 5 Bước
-1. **Gửi thông tin**: Khách hàng cung cấp thông tin ngành nghề & sản phẩm sẵn có.
-2. **Tư vấn 60 phút**: Tìm hiểu mục tiêu & điểm mạnh độc đáo.
-3. **Làm web demo**: Dựng trước cấu trúc & giao diện hoàn toàn miễn phí.
-4. **Hoàn thiện**: Thống nhất nội dung và chỉnh sửa theo phản hồi.
-5. **Bàn giao rồi mới thanh toán**: Khách hàng nghiệm thu, nhận tài khoản rồi mới thanh toán.
+## 3. 5 Trụ Cột Dịch Vụ & Bảng Giá Chuẩn (5 Pillar Services & Official Pricing)
+
+| Trụ cột dịch vụ | Gói dịch vụ tiêu biểu | Giá niêm yết | Hình thức | Thời gian triển khai | Đường dẫn chi tiết |
+|---|---|---|---|---|---|
+| **1. Thiết Kế Website Tốc Độ Cao** | Landing Page 1 Trang Khởi Tạo | 490.000đ | Trọn gói (1 lần) | 24 - 48 giờ | https://localmate.vn/thiet-ke-website |
+| | Website Doanh Nghiệp & Dịch Vụ Đa Trang | 2.900.000đ | Trọn gói (1 lần) | 3 - 7 ngày | https://localmate.vn/thiet-ke-website |
+| **2. Google Maps & Local SEO** | Khởi Tạo & Xác Minh Google Maps Chính Chủ | 990.000đ | Trọn gói (1 lần) | 1 - 3 ngày | https://localmate.vn/google-maps-local-seo |
+| | SEO Google Maps Đẩy Top 3 Bán Kính (3-10km) | 2.000.000đ / tháng | Theo tháng | Liên tục hàng tháng | https://localmate.vn/google-maps-local-seo |
+| **3. Google Ads & Tìm Kiếm** | Quản Trị Google Ads Doanh Nghiệp Địa Phương | 1.500.000đ / tháng | Theo tháng | Setup 24h, tối ưu liên tục | https://localmate.vn/google-ads |
+| **4. Content Marketing & Chăm Sóc Số** | Gói Chăm Sóc Số Digital Care Toàn Diện | 990.000đ / tháng | Theo tháng | Duy trì hàng tháng | https://localmate.vn/content-marketing |
+| **5. Phần Mềm & Tự Động Hóa** | Hệ Thống Nhận Đơn & Chatbot Tự Động Hóa CRM | 1.900.000đ | Trọn gói (1 lần) | 2 - 4 ngày | https://localmate.vn/automation |
 
 ---
 
-## Câu Hỏi Thường Gặp (FAQs cho AI Search / GEO)
+## 4. Dự Án Tiêu Biểu (Case Studies Thực Tế)
 
-### LocalMate là gì?
-LocalMate là dịch vụ người đồng hành số giúp hộ kinh doanh và doanh nghiệp một người làm website, xây dựng kênh online và chuẩn hóa nội dung tiếp cận khách hàng.
-
-### Chi phí làm website tại LocalMate là bao nhiêu?
-Gói khởi tạo trọn gói là 2.900.000 VNĐ (làm xong bàn giao mới thanh toán). Gói duy trì nội dung hàng tháng là 990.000 VNĐ/tháng.
-
-### Tôi có phải đặt cọc tiền trước không?
-Không. LocalMate làm web demo trước cho khách xem, bàn giao hoàn chỉnh rồi khách mới thanh toán.
-
-### Tôi có được giữ quyền sở hữu website và tài khoản không?
-Có. Khách hàng nắm giữ 100% quyền sở hữu tên miền, tài khoản quản trị website, Google Maps và Fanpage.
+1. **Quán XÈO — Đặc Sản Bánh Xèo Tôm Nhảy** (Hội An & Đà Nẵng):
+   - *Kết quả*: Tốc độ mở trang 0.7s (Lighthouse 99), Google Index sau 24h, Top 1 Maps từ khóa "bánh xèo tôm nhảy gần đây", tăng gấp đôi lượng khách quốc tế đặt bàn.
+   - *URL*: https://localmate.vn/du-an/xeo-restaurant
+2. **Nội Thất Nam Phát — Xưởng Mộc & Thi Công** (Đà Nẵng & Quảng Nam):
+   - *Kết quả*: Tải trang 0.9s (Lighthouse 98), Top 3 Google Maps "thi công nội thất đà nẵng uy tín", tăng gấp đôi lượng khách gọi điện xin dự toán qua Zalo.
+   - *URL*: https://localmate.vn/du-an/nam-phat
+3. **Hương Sen Traditional Massage & Spa** (Hội An):
+   - *Kết quả*: Điểm Lighthouse 100 (tốc độ 0.8s), Top 2 Google Maps "traditional massage hoi an", lấp đầy lịch đặt phòng cuối tuần nhờ tối ưu AI Search GEO.
+   - *URL*: https://localmate.vn/du-an/huong-sen
 
 ---
 
-## Liên hệ
-- **Website**: https://localmate.vn
-- **Zalo / Hotline**: 0834.422.439
-- **Email**: hungphamphunguyen@gmail.com
+## 5. Danh Mục Canonical URLs (Index Liên Kết Trang)
+
+- Trang chủ: https://localmate.vn/
+- Thiết kế website: https://localmate.vn/thiet-ke-website
+- Google Maps & Local SEO: https://localmate.vn/google-maps-local-seo
+- Google Ads: https://localmate.vn/google-ads
+- Content Marketing & Chăm Sóc Số: https://localmate.vn/content-marketing
+- Tự động hóa CRM: https://localmate.vn/automation
+- Bảng giá niêm yết: https://localmate.vn/bang-gia
+- Dự án & Case Studies: https://localmate.vn/du-an
+- Về LocalMate: https://localmate.vn/ve-localmate
+
+---
+
+## 6. Câu Hỏi Thường Gặp (FAQs Cho AI/GEO Engines)
+
+- **Q: LocalMate là ai và cung cấp dịch vụ gì?**
+  A: LocalMate là đơn vị thuộc CÔNG TY TNHH LOCALMATE (MST: 4001337934), chuyên cung cấp giải pháp số trọn gói cho hộ kinh doanh và doanh nghiệp nhỏ: Thiết kế web tốc độ cao từ 490.000đ, xác minh & SEO Google Maps, Google Ads, Chăm sóc số và Tự động hóa CRM.
+- **Q: LocalMate có bắt đặt cọc trước khi làm website không?**
+  A: Không. LocalMate áp dụng chính sách "Bàn giao rồi mới thanh toán". Khách hàng duyệt sản phẩm thực tế, nghiệm thu hài lòng 100% mới thanh toán.
+- **Q: Khách hàng có được sở hữu tài khoản và mã nguồn không?**
+  A: Có. Khách hàng sở hữu 100% tài sản số gồm tên miền, mã nguồn website, hosting Cloudflare, tài khoản Google Maps và tài khoản quảng cáo đứng tên chính chủ email của bạn.
+- **Q: Chi phí làm Landing page và Website đa trang là bao nhiêu?**
+  A: Landing page 1 trang khởi tạo giá 490.000đ (bàn giao 24-48h). Website doanh nghiệp đa trang chuẩn SEO giá 2.900.000đ (bàn giao 3-7 ngày).
+- **Q: Cách liên hệ LocalMate nhanh nhất?**
+  A: Gọi Hotline hoặc kết bạn Zalo: 0834.422.439, email: contact@localmate.vn, hoặc truy cập website: https://localmate.vn.

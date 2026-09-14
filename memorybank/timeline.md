@@ -2,6 +2,54 @@
 
 Ghi nhận các mốc sự kiện, commit và trạng thái vận hành của dự án.
 
+## [2026-09-14] - Tái Tạo Chuẩn Hóa public/llms.txt & public/llms-full.txt Từ SSOT src/data/company.ts
+- **Mục tiêu**: Đồng bộ hóa 100% dữ liệu LLMs/GEO với Single Source of Truth `src/data/company.ts`, loại bỏ triệt để email cá nhân, đồng bộ bảng giá niêm yết chuẩn và cung cấp tri thức máy đọc (Machine-Readable Knowledge Base) cho AI Search Engines.
+- **Các hạng mục đã hoàn thành**:
+  1. *Loại bỏ hoàn toàn email cá nhân*: Xóa bỏ email cá nhân khỏi toàn bộ hệ thống tri thức, chỉ duy trì duy nhất email công ty `contact@localmate.vn`.
+  2. *Đồng bộ bảng giá niêm yết chuẩn xác*:
+     - Landing page 1 trang: 490.000đ (24-48h, bàn giao 100% quyền).
+     - Website đa trang doanh nghiệp: 2.900.000đ (3-7 ngày, bàn giao xong mới thanh toán).
+     - Google Maps xác minh GPS chính chủ: 990.000đ (1-3 ngày, chống cướp Maps).
+     - SEO Google Maps đẩy Top 3 bán kính: 2.000.000đ / tháng.
+     - Quản trị Google Ads địa phương: 1.500.000đ / tháng.
+     - Chăm sóc số Digital Care toàn diện: 990.000đ / tháng (15 bài viết + 15 banner hình ảnh + sao lưu).
+     - Tự động hóa bán hàng & CRM Zalo: 1.900.000đ (2-4 ngày, đồng bộ Sheets + Telegram/Zalo bot).
+  3. *Chuẩn hóa Entity & AI/GEO Index*:
+     - Pháp nhân: CÔNG TY TNHH LOCALMATE, MST: 4001337934, Trụ sở: 03 Trường Chinh, P. Hội An Tây, TP. Đà Nẵng, GPS: (16.054407, 108.202167).
+     - Khu vực: Đà Nẵng, Hội An, Quảng Nam, Thừa Thiên Huế, TP. Hồ Chí Minh, Hà Nội và Toàn quốc.
+     - Triết lý cốt lõi: Dựng trước nghiệm thu mới thanh toán, khách hàng sở hữu 100% tài sản số, báo giá trước không phí ẩn, bảo hành đồng hành 5 năm.
+     - 5 Trụ cột cốt lõi và hệ thống canonical URLs: `/thiet-ke-website`, `/google-maps-local-seo`, `/google-ads`, `/content-marketing`, `/automation`, `/bang-gia`, `/du-an`, `/ve-localmate`.
+     - 3 Case Studies chuẩn có số liệu đo lường thực tế (Quán XÈO Lighthouse 99 - 0.7s; Xưởng Nam Phát Lighthouse 98 - 0.9s; Hương Sen Spa Lighthouse 100 - 0.8s).
+     - Bộ câu hỏi thường gặp (FAQs) cho AI/GEO Engines.
+  4. *Nghiệm thu kỹ thuật*:
+     - `public/llms.txt` và `public/llms-full.txt` định dạng Markdown sạch, chuẩn cú pháp llmstxt.org.
+     - `npm run build` hoàn thành với mã thoát 0, file được tự động copy sang thư mục `dist/`.
+
+## [2026-09-14] - Tối Ưu Toàn Diện GEO (Generative Engine Optimization) & Tăng Tỷ Lệ Chuyển Đổi (CRO)
+- **Mục tiêu**: Tối ưu hóa GEO cho chính website `https://localmate.vn/` trên các mô hình AI Search lớn (ChatGPT Search, Google Gemini & AI Overviews, Perplexity AI, Microsoft Copilot) đồng thời biến trang Dịch vụ GEO và các điểm chạm trên Trang chủ thành phễu chuyển đổi cao (CRO).
+- **Các hạng mục đã hoàn thành**:
+  1. *Technical GEO & AI Indexing*:
+     - Nâng cấp `public/llms.txt` và tạo mới `public/llms-full.txt`: Chuẩn hóa Markdown dành cho LLMs với cấu trúc thực thể thống nhất (MST 4001337934, địa chỉ Đà Nẵng, hotline 0834.422.439, bảng giá niêm yết, 6 cam kết, FAQ trực diện).
+     - Bổ sung Geo meta tags vào `index.html`: `geo.region="VN-DN"`, `geo.placename="Đà Nẵng, Việt Nam"`, `geo.position="16.054407;108.202167"`, `ICBM`.
+     - Cập nhật link alternate: `llms.txt` và `llms-full.txt`.
+     - Mở rộng JSON-LD Schema trong `index.html`: `WebSite` (SearchAction), `LocalBusiness` (GeoCoordinates, openingHours, areaServed, aggregateRating 4.9/5, OfferCatalog niêm yết 4 gói chính), `FAQPage`.
+     - Cập nhật nội dung text-only trong `<noscript>` đầy đủ thông tin dịch vụ GEO và bảng giá để text/AI bots không chạy JavaScript vẫn parse được 100% dữ liệu.
+     - Cập nhật `public/sitemap.xml`: Bổ sung các URL dịch vụ AI/GEO (`/dich-vu/geo`, `/dich-vu/aeo`, `/dich-vu/seo-ai`, `/dich-vu/seo-chatgpt`, `/quy-trinh-geo`).
+  2. *Interactive Live AI Visibility Scanner (`AiVisibilityScanner.tsx`)*:
+     - Tạo công cụ quét trực quan tại chỗ cho khách hàng trên `GeoServicePage.tsx`:
+     - Nhập tên quán + chọn ngành nghề + chọn khu vực -> Mô phỏng quét qua 4 AI Engine lớn trong 1.5s.
+     - Hiển thị điểm số Entity, Prompt Bank, Citations và cảnh báo mô phỏng thực tế câu trả lời của AI.
+     - Tối ưu chuyển đổi: Form nộp thông tin nhận báo cáo 50 Prompt Bank & Schema mẫu miễn phí qua Zalo + Nút chat Zalo trực tiếp 1-chạm.
+  3. *Tối Ưu Chuyển Đổi & Minh Bạch Bảng Giá*:
+     - Bổ sung khối "Bài Toán Hòa Vốn (ROI Breakeven Analysis)": Chỉ ra cụ thể mỗi ngành (F&B, Spa, Nha khoa, Gara) chỉ cần 1-3 hoặc 10-15 khách mới/tháng là bù đủ chi phí 2.900k/tháng.
+     - Bổ sung các nút Zalo Quick Action kèm tin nhắn mẫu có ngữ cảnh.
+  4. *Đồng Bộ Điểm Chạm GEO Trên Trang Chủ (`HomePage.tsx`)*:
+     - Bổ sung thẻ `geo-ai-search` (Tối Ưu AI Search & GEO 2026) vào `ServiceCardsSection.tsx`.
+     - Bổ sung Pain Point 05 ("Đối thủ lên Top AI trước") vào `ConversionJourneySection.tsx`.
+  5. *Nghiệm thu kỹ thuật*:
+     - `npm run build` (tsc && vite build) PASS 100% (1583 modules, 0 lỗi TypeScript).
+
+
 ## [2026-09-13] - Subagent 4: Service Architecture & Taxonomy Refiner (Chuẩn Hóa Kiến Trúc Dịch Vụ & Ngôn Ngữ Gần Gũi)
 - **Mục tiêu**: Rà soát cấu trúc dịch vụ trong `src/data/solutionsData.ts`, `src/data/solutionPillarsData.ts`, các components và các trang dịch vụ; bảo đảm luồng Problem-First -> Solution -> Capability; đưa kỹ thuật (GEO, AEO, Schema, JSON-LD, Cloudflare Edge...) về đúng vị trí module hỗ trợ bên trong; loại bỏ từ cấm ("trọn đời", "vĩnh viễn", "cam kết Top 1").
 - **Các hạng mục hoàn tất**:
