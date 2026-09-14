@@ -153,7 +153,7 @@ export const SOLUTION_PILLARS: SolutionPillar[] = [
     ],
     deliverables: [
       'Toàn quyền sở hữu tài khoản Google Maps chính chủ',
-      'Mã QR in để bàn nhận đánh giá 5 sao thật từ khách',
+      'Tạo QR giúp khách hàng đã sử dụng dịch vụ để lại đánh giá chân thực trên Google',
       'Thông tin dữ liệu xác thực chuẩn 100% trên công cụ kiểm tra của Google',
       'Báo cáo số lượt gọi điện và bấm chỉ đường trên Maps'
     ],
@@ -406,7 +406,7 @@ export const INDUSTRY_SCENARIOS_DATA: IndustryScenarioItem[] = [
     ],
     expectedOutcome: 'Tăng 150-250% lượt khách tìm đường ghé quán và gọi đặt bàn trực tiếp không mất phí hoa hồng trung gian.',
     recommendedBudget: '1.490.000đ - 2.990.000đ',
-    keyDeliverables: ['Định vị Google Maps GPS chuẩn xác', 'Menu điện tử mở nhanh < 1s', 'Mã QR xin đánh giá 5 sao tại bàn'],
+    keyDeliverables: ['Định vị Google Maps GPS chuẩn xác', 'Menu điện tử mở nhanh < 1s', 'Mã QR để bàn giúp khách để lại đánh giá chân thực'],
     recommendedPackage: 'Website quán ăn 1.990k + Google Maps 299k'
   },
   {

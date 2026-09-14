@@ -41,6 +41,7 @@ import {
 
 import { AiSearchClusterNav } from '../components/services/AiSearchClusterNav';
 import { CapabilityContextBox } from '../components/ui/CapabilityContextBox';
+import { AiVisibilityScanner } from '../components/geo/AiVisibilityScanner';
 
 interface GeoServicePageProps {
   onOpenConsultForm?: (serviceName?: string) => void;
@@ -496,7 +497,7 @@ export const GeoServicePage: React.FC<GeoServicePageProps> = ({ onOpenConsultFor
                   </div>
 
                   <p style={{ margin: '0 0 0.75rem 0', color: '#1e293b', lineHeight: 1.5 }}>
-                    Dựa trên dữ liệu thực thể số đã xác thực và hơn <strong>120 đánh giá 5 sao tích cực</strong> gần đây, tôi đề xuất bạn nên đến ngay:
+                    Dựa trên dữ liệu thực thể số đã xác thực và hơn <strong>120 đánh giá chân thực tích cực</strong> gần đây, tôi đề xuất bạn nên đến ngay:
                   </p>
 
                   <div style={{ backgroundColor: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '8px', padding: '0.85rem' }}>
@@ -531,6 +532,13 @@ export const GeoServicePage: React.FC<GeoServicePageProps> = ({ onOpenConsultFor
               </div>
             </div>
           </div>
+        </Container>
+      </section>
+
+      {/* ==================== 1.5. CÔNG CỤ QUÉT TẠI CHỖ: AI VISIBILITY SCANNER ==================== */}
+      <section style={{ backgroundColor: '#f8fafc', padding: '1rem 0 3rem 0', borderBottom: '1px solid #e2e8f0' }}>
+        <Container size="lg">
+          <AiVisibilityScanner onOpenConsultForm={onOpenConsultForm} />
         </Container>
       </section>
 
@@ -1137,6 +1145,80 @@ export const GeoServicePage: React.FC<GeoServicePageProps> = ({ onOpenConsultFor
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem' }}>
                 <CheckCircle2 size={16} color="#0d7647" style={{ flexShrink: 0, marginTop: '0.2rem' }} />
                 <span><strong>Hỗ trợ kỹ thuật 1-1 tại chỗ:</strong> Đội ngũ LocalMate hỗ trợ trực tiếp tại TP.HCM &amp; Đà Nẵng, không để khách bơ vơ.</span>
+              </div>
+            </div>
+          </div>
+
+          {/* ROI Breakeven Justification (Tối Ưu Chuyển Đổi Thực Tế) */}
+          <div
+            style={{
+              backgroundColor: '#ffffff',
+              border: '2px solid #0d7647',
+              borderRadius: '16px',
+              padding: '2rem',
+              maxWidth: '960px',
+              margin: '2rem auto 0 auto',
+              boxShadow: '0 4px 15px rgba(13, 118, 71, 0.08)'
+            }}
+          >
+            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', marginBottom: '1.25rem', borderBottom: '1px solid #e2e8f0', paddingBottom: '1rem' }}>
+              <div>
+                <span style={{ fontSize: '0.75rem', fontWeight: 800, color: '#0d7647', textTransform: 'uppercase', backgroundColor: '#e8f5ed', padding: '0.25rem 0.65rem', borderRadius: '6px' }}>
+                  BÀI TOÁN KINH TẾ THỰC TẾ
+                </span>
+                <h4 style={{ margin: '0.5rem 0 0 0', fontSize: '1.25rem', fontWeight: 900, color: '#0f172a' }}>
+                  Điểm Hòa Vốn Dịch Vụ GEO: Cần Bao Nhiêu Khách Mới Mỗi Tháng Để Có Lãi?
+                </h4>
+              </div>
+              <a
+                href={`${CONTACT_INFO.zaloUrl}?text=${encodeURIComponent('Chào KTV LocalMate, tôi muốn tính toán điểm hòa vốn và ước tính lượng khách từ GEO cho quán của tôi.')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.4rem',
+                  backgroundColor: '#0d7647',
+                  color: '#ffffff',
+                  padding: '0.65rem 1.25rem',
+                  borderRadius: '8px',
+                  fontWeight: 800,
+                  fontSize: '0.875rem',
+                  textDecoration: 'none'
+                }}
+              >
+                <MessageSquare size={16} />
+                <span>Chat Zalo Nhận Tính Toán Miễn Phí</span>
+              </a>
+            </div>
+
+            <p style={{ fontSize: '0.9rem', color: '#475569', lineHeight: 1.6, margin: '0 0 1.25rem 0' }}>
+              Với chi phí dịch vụ chỉ <strong>2.900.000đ/tháng</strong> (tương đương chưa đến 98.000đ/ngày), bạn không cần hàng nghìn lượt truy cập ảo. Mục tiêu của GEO là chuyển đổi khách hàng có nhu cầu khẩn cấp quanh tiệm:
+            </p>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
+              <div style={{ backgroundColor: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '10px', padding: '1rem' }}>
+                <div style={{ fontSize: '0.8rem', fontWeight: 700, color: '#0d7647', textTransform: 'uppercase' }}>F&amp;B / Quán Ăn</div>
+                <div style={{ fontSize: '1.35rem', fontWeight: 900, color: '#0f172a', margin: '0.25rem 0' }}>10–15 Khách/tháng</div>
+                <div style={{ fontSize: '0.8rem', color: '#64748b' }}>Đơn bình quân 200k-300k. AI gợi ý khách du lịch &amp; khách văn phòng quanh tiệm.</div>
+              </div>
+
+              <div style={{ backgroundColor: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '10px', padding: '1rem' }}>
+                <div style={{ fontSize: '0.8rem', fontWeight: 700, color: '#0d7647', textTransform: 'uppercase' }}>Spa / Thẩm Mỹ / Salon</div>
+                <div style={{ fontSize: '1.35rem', fontWeight: 900, color: '#0f172a', margin: '0.25rem 0' }}>3–5 Khách/tháng</div>
+                <div style={{ fontSize: '0.8rem', color: '#64748b' }}>Đơn dịch vụ từ 600k-1.500k. Tỷ lệ khách quay lại và giới thiệu cao.</div>
+              </div>
+
+              <div style={{ backgroundColor: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '10px', padding: '1rem' }}>
+                <div style={{ fontSize: '0.8rem', fontWeight: 700, color: '#0d7647', textTransform: 'uppercase' }}>Phòng Khám / Nha Khoa</div>
+                <div style={{ fontSize: '1.35rem', fontWeight: 900, color: '#0f172a', margin: '0.25rem 0' }}>1–2 Bệnh nhân/tháng</div>
+                <div style={{ fontSize: '0.8rem', color: '#64748b' }}>Đơn niềng răng / làm răng / khám bệnh từ 2tr-10tr. Hòa vốn ngay từ ca đầu tiên.</div>
+              </div>
+
+              <div style={{ backgroundColor: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '10px', padding: '1rem' }}>
+                <div style={{ fontSize: '0.8rem', fontWeight: 700, color: '#0d7647', textTransform: 'uppercase' }}>Gara / Cứu Hộ / Sửa Chữa</div>
+                <div style={{ fontSize: '1.35rem', fontWeight: 900, color: '#0f172a', margin: '0.25rem 0' }}>1–3 Cuộc gọi/tháng</div>
+                <div style={{ fontSize: '0.8rem', color: '#64748b' }}>Khách tìm gấp khi gặp sự cố, tỷ lệ chuyển đổi thành khách hàng thực tế &gt; 80%.</div>
               </div>
             </div>
           </div>

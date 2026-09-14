@@ -79,7 +79,7 @@ export const TECH_CATEGORIES: TechCategoryMeta[] = [
   {
     key: 'google-seo',
     title: 'Google Maps & Local SEO',
-    description: 'Tạo vị trí Google Maps 299k, tối ưu lên top tìm kiếm gần, tạo mã QR đánh giá 5 sao.',
+    description: 'Tạo vị trí Google Maps 299k, tối ưu lên top tìm kiếm gần, tạo QR giúp khách hàng để lại đánh giá chân thực trên Google.',
     badge: '7 dịch vụ'
   },
   {
@@ -484,10 +484,10 @@ export const INITIAL_SERVICES_CATALOG: CatalogServiceItem[] = [
   {
     id: '19',
     code: 'SEO-GBP',
-    name: 'Google Maps Chính Chủ 100% & Bộ QR Review 5 Sao',
+    name: 'Google Maps Chính Chủ 100% & Bộ QR Đánh Giá Chân Thực',
     categoryGroup: 'google-seo',
     goalGroup: 'co-them-khach',
-    scope: 'Xác minh GPS chính chủ 100% bằng Gmail của bạn, chống cướp Maps, tặng bộ QR Review 5 sao để bàn, bảo hành 5 năm.',
+    scope: 'Xác minh GPS chính chủ 100% bằng Gmail của bạn, chống cướp Maps, tạo QR giúp khách hàng để lại đánh giá chân thực trên Google, bảo hành 5 năm.',
     effort: '1–2 giờ',
     priceDisplay: '299.000đ',
     numericPrice: 299000,

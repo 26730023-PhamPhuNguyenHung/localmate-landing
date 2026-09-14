@@ -71,7 +71,7 @@ const SERVICE_TIERS: ServiceTier[] = [
     highlights: [
       'Website 3–5 trang hoàn chỉnh, chuẩn SEO, PageSpeed 95+',
       'Xác minh Google Maps GPS chính chủ 100% (CCCD & Gmail)',
-      'Tặng bộ ấn phẩm mã QR Mica/Decal để bàn xin Review 5 sao',
+      'Tặng bộ ấn phẩm mã QR Mica/Decal để bàn giúp khách để lại đánh giá chân thực trên Google',
       'Form tư vấn tự động gửi chuông báo về Telegram/Zalo',
       'Tặng 1 năm Cloudflare Edge Hosting tốc độ cao',
       'Video 2 phút hướng dẫn chủ shop tự sửa nội dung 1-1',
@@ -181,7 +181,7 @@ const WEBFX_DELIVERABLES_MATRIX: DeliverableGroup[] = [
         enterprise: 'Chiến lược phủ từ khóa bán kính 10–15km'
       },
       {
-        name: 'Bộ ấn phẩm QR Code xin Review 5 sao',
+        name: 'Bộ ấn phẩm QR Code đánh giá chân thực trên Google',
         hint: 'Tăng uy tín & lượt đánh giá thực tế',
         starter: 'Mã QR điện tử (PNG/SVG)',
         growth: 'Bộ file in Mica/Decal để bàn cao cấp',

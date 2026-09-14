@@ -13,6 +13,33 @@
 
 ## 2. Recent Accomplishments & Updates
 
+### A0000000000. Xây Dựng 3 Pillar Pages Chuẩn SEO & GEO (/google-ads, /content-marketing, /automation):
+- **Tác giả:** SEO & GEO Pillar Pages Specialist
+- **Vị trí tệp:**
+  - `src/pages/GoogleAdsPillarPage.tsx` (`/google-ads`)
+  - `src/pages/ContentMarketingPillarPage.tsx` (`/content-marketing`)
+  - `src/pages/AutomationPillarPage.tsx` (`/automation`)
+  - `src/App.tsx`: Cập nhật định tuyến chuẩn và legacy alias routes.
+- **Tiêu chuẩn hoàn tất:**
+  1. Dữ liệu chuẩn SSOT từ `COMPANY_DATA` (`src/data/company.ts`).
+  2. Hero section thiết thực cho SME: Không nói suông, tập trung bài toán thực tế.
+  3. Answer-First Block: Đoạn văn 50–80 từ cô đọng, chuẩn AI Overviews & SearchGPT/Perplexity.
+  4. Bảng tóm tắt: Bảng giá, Deliverables, Timeline, Ownership, Support, Last Updated.
+  5. Chi tiết 4 module giải pháp thực tế + Bảng đối chiếu giải pháp cũ vs LocalMate.
+  6. FAQ chi tiết 5 câu hỏi sát sườn + Form đăng ký nhận tư vấn kết nối `submitLead`.
+  7. Giao diện 100% Light Mode sáng sủa, độ tương phản cao, tuyệt đối không glassmorphism.
+- **Nghiệm thu kỹ thuật:** `npx tsc --noEmit` và `npm run build` PASS 100% với exit code 0.
+
+### A000000000. Hoàn Thiện Canonical Routes, Catalog Bảng Giá Toàn Diện (/bang-gia) & Header/Footer SSOT:
+- **Tác giả:** System & Routing Specialist
+- **Vị trí tệp:**
+  - `src/App.tsx`: Wire up toàn bộ canonical routes (`/thiet-ke-website`, `/google-maps-local-seo`, `/google-ads`, `/content-marketing`, `/automation`, `/bang-gia`, `/du-an`, `/du-an/:slug`, `/ve-localmate`, `/lien-he`).
+  - `src/data/caseStudiesData.ts`: Tích hợp 3 case studies thực tế từ `company.ts` (`xeo-restaurant`, `nam-phat`, `huong-sen`) với đầy đủ số liệu đo lường thật.
+  - `src/components/sections/FullServicesCatalogSection.tsx`: Catalog 41+ micro-services nhóm theo 5 trụ cột, lọc theo từ khóa và hình thức thanh toán.
+  - `src/pages/PricingPage.tsx`: Đưa catalog làm trọng tâm, minh bạch giá từ 99k.
+  - `src/components/layout/Header.tsx` & `Footer.tsx`: Cập nhật menu điều hướng trỏ về canonical URLs; Footer hiển thị đúng pháp nhân, MST 4001337934, địa chỉ 03 Trường Chinh, hotline 0834.422.439, email contact@localmate.vn.
+- **Nghiệm thu kỹ thuật:** `npx tsc --noEmit` PASS 100% không lỗi.
+
 ### A00000000. Xây Dựng Trang Quy Trình Vận Hành & Chăm Sóc Số Định Kỳ (`CareWorkflowPage.tsx`):
 - **Tác giả:** Local Care & Operations Workflow Specialist
 - **Vị trí tệp:** `src/pages/CareWorkflowPage.tsx` (route chính: `/quy-trinh-cham-soc`, aliases: `/quy-trinh-cham-soc-website`, `/quy-trinh-van-hanh`, `/cham-soc-website`).
@@ -39,7 +66,7 @@
 - **Phạm vi hoàn tất:**
   1. **Triết lý & Khung chiến lược**: Học hỏi trang Chiến lược SEO 5 giai đoạn từ FastMarketing, điều chỉnh 100% sát sườn với bối cảnh doanh nghiệp và cửa hàng địa phương tại Việt Nam (từ con số 0 đến tự vận hành sinh khách bền vững).
   2. **Chi tiết 5 giai đoạn thực chiến**:
-     - *Giai đoạn 1: Chuẩn hóa Định Danh & Google Maps* (Khảo sát vị trí thực tế, xác minh chính chủ vào Gmail của chủ tiệm, dọn sạch Maps rác/trùng lặp, thiết kế & in bảng QR Code mica đón review 5 sao).
+     - *Giai đoạn 1: Chuẩn hóa Định Danh & Google Maps* (Khảo sát vị trí thực tế, xác minh chính chủ vào Gmail của chủ tiệm, dọn sạch Maps rác/trùng lặp, thiết kế & in bảng QR Code mica giúp khách để lại đánh giá chân thực trên Google).
      - *Giai đoạn 2: Xây Dựng Nền Tảng Sales Hub & Khung Dữ Liệu AI* (Website siêu tốc < 0.8s Cloudflare Edge, khai báo Schema JSON-LD LocalBusiness chuẩn W3C, tệp llms.txt & robots.txt cho bot AI).
      - *Giai đoạn 3: Phủ Từ Khóa Nhu Cầu Địa Phương* (Chiếm lĩnh trang 1 Google và Top 3 Maps cho các cụm từ "gần đây", quận/huyện, khẩn cấp và hiển thị trong Google AI Overviews).
      - *Giai đoạn 4: Thu Hút Khách & Kéo Chuyển Đổi Thực* (Quảng cáo Google Search/Meta chuẩn bán kính 3-7km, 0% kê giá, chặn 200+ từ khóa rác, đo lường từng cuộc gọi và tin nhắn Zalo).
@@ -101,7 +128,7 @@
 - **Cấu trúc hoàn chỉnh 4 phần và chuẩn 40 slide:**
   - **Phần 1: Giới thiệu & Năng lực (Slide 01 - 07)**: Bìa, Thư ngỏ Founder & KTV Trưởng, Mục lục 4 phần, Số liệu năng lực thật (250+ điểm, demo 48h, 100% chính chủ, bảo hành 5 năm), Đội ngũ kỹ thuật in-house 1-1, Mạng lưới khách hàng địa phương, Hạ tầng Cloudflare Edge & Schema.org / OpenSearch.
   - **Phần 2: Hệ thống Giải pháp 5 Trụ Cột (Slide 08 - 24)**: Khung 5 Trụ cột, Giải pháp GEO & Local AI Search, Bối cảnh thị trường, Nhóm ngành chịu tác động, Mô hình kinh doanh phù hợp, Năng lực mở rộng chuỗi, Công nghệ llms.txt & OpenSearch, Tối ưu Google AI Overviews & AEO, Bộ 5 dịch vụ nền tảng, Công cụ Instant Business Audit, Tín hiệu thuật toán AI, 6 chỉ số đo lường thực nhận, Báo cáo tiến độ tuần, CRM Mini Zalo/Telegram, Tốc độ tải trang < 0.8s Cloudflare Edge, Kênh kéo khách tức thì (Top 3 Maps & Google Ads bán kính), Checklist 35 đầu việc kỹ thuật.
-  - **Phần 3: Case Studies & Tình Huống Thực Tế (Slide 25 - 36)**: Khung Case studies, Case 1 Bán lẻ & Thiết bị âm thanh, Case 1 Đo lường AI Visibility, Case 2 Nha khoa chuyên khoa tăng 250% cuộc gọi, Case 2 Trích dẫn câu hỏi chuyên môn AI, Case 3 Nhà hàng & Quán Cafe tích review 5 sao bằng mã QR, Case 4 Gara ô tô & Cứu hộ 24/7, Case 5 Thợ sửa chữa tại nhà & Báo giá minh bạch, Case 6 Dogfooding LocalMate tăng trưởng 100% bằng chính giải pháp của mình, Khắc phục lỗi chính sách tài khoản Google/Meta, Bộ deliverables bàn giao trọn gói, Bảng đối chiếu cách cũ vs LocalMate.
+  - **Phần 3: Case Studies & Tình Huống Thực Tế (Slide 25 - 36)**: Khung Case studies, Case 1 Bán lẻ & Thiết bị âm thanh, Case 1 Đo lường AI Visibility, Case 2 Nha khoa chuyên khoa tăng 250% cuộc gọi, Case 2 Trích dẫn câu hỏi chuyên môn AI, Case 3 Nhà hàng & Quán Cafe thu hút đánh giá chân thực qua mã QR, Case 4 Gara ô tô & Cứu hộ 24/7, Case 5 Thợ sửa chữa tại nhà & Báo giá minh bạch, Case 6 Dogfooding LocalMate tăng trưởng 100% bằng chính giải pháp của mình, Khắc phục lỗi chính sách tài khoản Google/Meta, Bộ deliverables bàn giao trọn gói, Bảng đối chiếu cách cũ vs LocalMate.
   - **Phần 4: Hợp tác & Cam kết (Slide 37 - 40)**: Nguyên tắc hợp tác & Cam kết 5 năm, 3 Tầng đầu tư linh hoạt (Foundation - Growth - Scale Pro), Quy trình 5 bước nghiệm thu hài lòng mới thanh toán, Thông tin liên hệ & Đặt lịch tư vấn 1-1 tại chỗ (Hotline 0834.422.439, 03 Trường Chinh, Đà Nẵng).
 - **TypeScript Type Safety:** 100% type-safe, đầy đủ `id`, `index` (1-40), `screen` ("01"-"40"), `label`, `title`, `partId`, `partTitle`, `isDivider`, `summary`, `bullets`, `metrics`, `tags`, `quote`, `notes`. Kiểm tra `npx tsc --noEmit` đạt 0 lỗi.
 
@@ -195,7 +222,7 @@
 - **4 Giai đoạn cốt lõi gắn liền hệ sinh thái dịch vụ LocalMate**:
   1. **Giai đoạn 01 - Thu hút (Stay Visible)**: Lên top tìm kiếm Google Maps & Google Search, tối ưu bán kính 3–10km, phủ từ khóa địa phương không dấu/có dấu, 100% tài khoản chính chủ.
   2. **Giai đoạn 02 - Chuyển đổi (Capture Leads)**: Tốc độ website tải siêu tốc < 1s trên Cloudflare Edge, bộ nút Gọi/Zalo/Chỉ đường một chạm, form nhận demo 0đ không rào cản.
-  3. **Giai đoạn 03 - Chăm sóc & Vận hành (Care & RevOps)**: Gói Digital Care chăm sóc Fanpage & website 990k/tháng, quy trình QR tích lũy đánh giá Google Maps 5 sao thật, bảo mật SSL dữ liệu.
+  3. **Giai đoạn 03 - Chăm sóc & Vận hành (Care & RevOps)**: Gói Digital Care chăm sóc Fanpage & website 990k/tháng, quy trình tạo QR giúp khách hàng đã sử dụng dịch vụ để lại đánh giá chân thực trên Google, bảo mật SSL dữ liệu.
   4. **Giai đoạn 04 - Đòn bẩy & Tái đầu tư (Scale & Automate)**: Tái đầu tư lợi nhuận vào quảng cáo Google Ads / Meta Ads bám đuổi, tự động hóa đơn hàng & đặt lịch qua Zalo OA, đồng bộ CRM.
 - **Thiết kế & Tương tác**:
   - Giao diện 100% Light Mode sáng sủa, nền sáng chữ đậm, viền nhẹ `#e2e8f0`, hệ icon pastel dịu mắt theo 4 gam màu chủ đạo.
@@ -274,7 +301,7 @@
 - **5 Sản phẩm bàn giao thực tế**:
   1. **Website hoàn chỉnh**: Chuẩn SEO on-page, 100% responsive di động & laptop, nút Hotline 1-chạm & chat Zalo, tốc độ < 0.8s, bàn giao 100% tài khoản, kèm nút tương tác chuyển xem website demo thật.
   2. **Bàn giao trang quản trị tiếng Việt**: Bảng điều khiển tối giản, cập nhật giá món và đăng bài trong 3 phút, kèm video clip hướng dẫn 1-2 phút riêng biệt.
-  3. **Hồ sơ Google Business & Maps**: Xác minh chính chủ Gmail của bạn, ghim định vị chuẩn, hiển thị hotline, giờ mở cửa và bộ mã QR 5 sao tại quầy.
+  3. **Hồ sơ Google Business & Maps**: Xác minh chính chủ Gmail của bạn, ghim định vị chuẩn, hiển thị hotline, giờ mở cửa và bộ mã QR đánh giá chân thực tại quầy.
   4. **Lịch biên tập nội dung**: Kế hoạch bài đăng tháng trên Google Sheets, rõ tiêu đề và ngày đăng, viết sát thực tế, khách duyệt trước mới xuất bản.
   5. **Báo cáo quảng cáo minh bạch**: Chạy trực tiếp trên tài khoản của khách, tiền trừ thẻ gốc từ Meta/Google, 0% kê giá hay ăn chênh lệch chi phí ads.
 - **Tab Switcher 3 chế độ**: "5 Sản phẩm bàn giao thực tế", "Website thật đang hoạt động" (`DEMO_SHOWCASES`), "Workflow & Tự động hóa kiểm chứng" (`PROOF_SHOWCASE_DATA`).
@@ -304,7 +331,7 @@
 - **4 Thẻ Gói Khởi Điểm Phổ Biến Ở Trên Cùng**:
   - **Gói Khởi Nghiệp Tối Giản**: 490.000đ trọn gói (1 trang landing gọn gàng, chuẩn di động, hotline & Zalo tức thì, SLA 24h–48h).
   - **Gói Web Giới Thiệu**: Từ 2.900.000đ trọn gói (Xem demo trước, ưng ý mới thanh toán, tặng bộ SEO & GA4, bàn giao 100% tài khoản, SLA 3–5 ngày).
-  - **Gói Google Maps**: 2.000.000đ trọn gói (Xác minh chính chủ 100%, Local SEO, đăng 20+ hình ảnh, tặng mã QR để bàn xin 5 sao, SLA 2–4 ngày).
+  - **Gói Google Maps**: 2.000.000đ trọn gói (Xác minh chính chủ 100%, Local SEO, đăng 20+ hình ảnh, tặng mã QR để bàn giúp khách để lại đánh giá chân thực, SLA 2–4 ngày).
   - **Gói Quản Trị Duy Trì**: 990.000đ / tháng (Chăm sóc nội dung & kỹ thuật định kỳ, backup 24/7, duy trì top Maps, hỗ trợ qua nhóm Zalo riêng, SLA 2h–4h).
 - **Danh Sách Dịch Vụ Chi Tiết 41 Dịch Vụ Công Khai**:
   - Bảo toàn 100% tính năng tra cứu với Search Bar thời gian thực và Bộ lọc phân loại 9 nhóm dịch vụ.
@@ -355,7 +382,7 @@
   - Đã tích hợp trực tiếp vào luồng trang chủ `HomePage.tsx` ngay sau `PhilosophySection` để tạo đòn bẩy thuyết phục mạnh mẽ trước khi khách xem `PricingMatrixSection`.
 - **Tối ưu TrustSection (`src/components/sections/TrustSection.tsx`)**:
   - Bổ sung dải số liệu Social Proof định lượng: `150+ Cửa hàng tin cậy`, `100% Khách hàng làm chủ tài khoản`, `0đ Chi phí phát sinh`.
-  - Phân tách sắc nét giữa: 5 Tài sản bàn giao cầm tay (CCCD, Primary Owner Maps, QR Review 5 sao, Video HD 2 phút, Zalo nhóm 1-1) và Pháp nhân Công ty TNHH LocalMate (MST 4001337934, địa chỉ trụ sở, hóa đơn VAT điện tử, hotline KTV).
+  - Phân tách sắc nét giữa: 5 Tài sản bàn giao cầm tay (CCCD, Primary Owner Maps, QR Đánh Giá Chân Thực, Video HD 2 phút, Zalo nhóm 1-1) và Pháp nhân Công ty TNHH LocalMate (MST 4001337934, địa chỉ trụ sở, hóa đơn VAT điện tử, hotline KTV).
 - **Kiểm thử nghiệm thu**:
   - `npm run build` pass 100% không warning/error (Vite build xong trong 6.92s).
   - Giao diện tuân thủ tuyệt đối quy chuẩn Light mode, không glassmorphism, tương phản cao, `text-wrap: pretty`.
@@ -443,7 +470,7 @@
 
 ## 13. Cụm Dịch Vụ Local Search, Google Maps & Technical (Chuẩn Hóa Từ FastMarketing Cho LocalMate)
 - **Học hỏi FastMarketing & Chuẩn hóa cho LocalMate**:
-  1. **Dịch vụ Google Maps**: Xác minh GPS chính chủ 100% bằng Gmail của khách (Primary Owner), thiết lập khiên bảo vệ chống đối thủ chơi xấu cướp Maps hoặc đổi số điện thoại lén, tặng kèm bộ ấn phẩm mã QR Review 5 sao để bàn chuẩn file in vector, cam kết bảo hành kỹ thuật lên đến 5 năm (giá gốc từ 299k).
+  1. **Dịch vụ Google Maps**: Xác minh GPS chính chủ 100% bằng Gmail của khách (Primary Owner), thiết lập khiên bảo vệ chống đối thủ chơi xấu cướp Maps hoặc đổi số điện thoại lén, tặng kèm bộ ấn phẩm mã QR Đánh Giá Chân Thực để bàn chuẩn file in vector, cam kết bảo hành kỹ thuật lên đến 5 năm (giá gốc từ 299k).
   2. **Dịch vụ SEO Tổng Thể Địa Phương**: Phủ sóng bán kính 3–10km xung quanh điểm bán, tối ưu 100% cụm từ khóa có dấu & không dấu (ví dụ: "sua xe gan day", "nha khoa uy tin q7"), phủ 25+ trích dẫn địa phương Local Citations kéo khách ghé tiệm và gọi hotline liên tục (từ 390k).
   3. **Dịch vụ Tối Ưu Tốc Độ Web**: Cam kết điểm Google PageSpeed Insights 90+ trên cả Mobile & Desktop, tốc độ mở trang dưới 1s trên mạng lưới biên Cloudflare Edge CDN toàn cầu, nén ảnh WebP/AVIF lossless, Zero CLS (0.000), bảo hành tốc độ 5 năm (từ 299k).
   4. **Dịch vụ Thực Thể Số (Entity & Schema)**: Cấu hình trọn bộ Schema JSON-LD LocalBusiness (GeoCoordinates, OpeningHours, PriceRange, SameAs) và đồng bộ NAP trên Knowledge Graph, giúp cả Google và AI (ChatGPT, Gemini) nhận diện thương hiệu độc nhất (từ 199k).
@@ -453,7 +480,7 @@
   - Tab navigator 5 dịch vụ trực quan, đầy đủ bài toán, giải pháp, bảng giá, quy trình 5 bước.
   - Công cụ tự chẩn đoán sức khỏe số 0đ (Local Health Score Checker) cho phép chủ quán tích chọn triệu chứng và tính điểm nghẽn trực tiếp.
   - Widget so sánh trực quan tốc độ Cloudflare Edge vs Hosting truyền thống.
-  - Mô hình Standee mã QR Review 5 sao để bàn cho quán ăn, spa, nha khoa.
+  - Mô hình Standee mã QR Đánh Giá Chân Thực để bàn cho quán ăn, spa, nha khoa.
   - Bảng cam kết 4 KHÔNG & 4 CÓ của Người đồng hành số địa phương.
 - **Tích hợp hệ sinh thái**:
   - Cập nhật 5 dịch vụ trong `src/data/servicesData.ts` và `src/data/servicesCatalog.ts`.
@@ -498,7 +525,7 @@
 - **Mục tiêu**: Tích hợp toàn bộ hệ thống routing, alias thuận tiện và kiểm thử chất lượng tổng thể toàn dự án theo chuẩn SSOT.
 - **Khai báo 5 Trụ Cột Giải Pháp (Solution Pillars) trong `src/App.tsx`**:
   1. `/giai-phap/xay-nen-tang-so` (alias `/giai-phap/nen-tang-so`, `/dich-vu/xay-nen-tang-so`, `/dich-vu/nen-tang-so`) -> `PresenceSolutionPage`: Xây dựng nền tảng số, website chuẩn di động < 1s, định vị Google Maps GPS, kết nối nút gọi/Zalo 1 chạm, bàn giao 100% tài khoản chính chủ và cam kết bảo hành kỹ thuật 5 năm.
-  2. `/giai-phap/duoc-tim-thay` (alias `/dich-vu/duoc-tim-thay`) -> `SearchSolutionPage`: Đưa cơ sở lên top Google Maps Local Pack, tối ưu đề xuất AI (GEO - ChatGPT & Gemini), chuẩn hóa NAP và bộ mã QR thu thập đánh giá 5 sao.
+  2. `/giai-phap/duoc-tim-thay` (alias `/dich-vu/duoc-tim-thay`) -> `SearchSolutionPage`: Đưa cơ sở lên top Google Maps Local Pack, tối ưu đề xuất AI (GEO - ChatGPT & Gemini), chuẩn hóa NAP và tạo QR giúp khách hàng đã sử dụng dịch vụ để lại đánh giá chân thực trên Google.
   3. `/giai-phap/thu-hut-khach-hang` (alias `/dich-vu/thu-hut-khach-hang`) -> `AcquisitionSolutionPage`: Kéo khách gọi điện và ghé tiệm quanh bán kính 3-10km, quảng cáo Google Ads & Meta Ads 0% kê giá (trừ tiền thẻ chính chủ), xử lý kháng lỗi ngành nhạy cảm.
   4. `/giai-phap/van-hanh-tu-dong-hoa` (alias `/dich-vu/van-hanh-tu-dong-hoa`) -> `AutomationSolutionPage`: Vận hành tự động hóa, chuông báo đơn tức thì qua Telegram sau 3 giây, đặt lịch hẹn online 24/7 và đồng bộ Google Sheets CRM không tốn phí bản quyền.
   5. `/giai-phap/dong-hanh-cham-soc` (alias `/giai-phap/dong-hanh-duy-tri`, `/dich-vu/dong-hanh-cham-soc`, `/dich-vu/dong-hanh-duy-tri`) -> `CareSolutionPage`: Phòng kỹ thuật số ngoài túc trực 24/7, xử lý sự cố trong 2 giờ, hỗ trợ đăng bài/đổi giá qua Zalo và hoàn thiện hồ sơ thông báo Bộ Công Thương.
@@ -582,4 +609,24 @@
   - Cập nhật `src/App.tsx`: Liên kết route chính `/tieu-chuan-audit` cùng các alias `/tieu-chuan-audit-ky-thuat`, `/technical-audit-standards`, `/tieu-chuan-website-2026`.
   - Cập nhật `src/pages/HtmlSitemapPage.tsx`: Thêm liên kết vào sơ đồ website HTML.
 - **Kiểm thử**: `npm run build` thành công 100% (1580 modules transformed, 0 lỗi TypeScript).
+
+---
+
+## 18. Hoàn Thành Cập Nhật Cấu Hình Technical Crawl, SEO & IndexNow Automation
+- **Tác giả / Vai trò**: Subagent Technical Crawl & SEO Optimizer
+- **Chi tiết các mục triển khai**:
+  1. `public/robots.txt`:
+     - Khai báo Allow cho toàn bộ Search Bots (Googlebot, Bingbot) và AI Crawlers (OAI-SearchBot, GPTBot, ChatGPT-User, ClaudeBot, Claude-Web, PerplexityBot, Applebot-Extended, Google-Extended, Bytespider).
+     - Khai báo sitemap chuẩn: `https://localmate.vn/sitemap.xml` và tài liệu ngữ cảnh LLM: `Link: https://localmate.vn/llms.txt`.
+  2. `public/sitemap.xml`:
+     - Cập nhật chuẩn hóa danh sách 15 URL cốt lõi (Trang chủ, 5 trụ cột dịch vụ, Bảng giá, Dự án, 3 Case Studies chuẩn mực Xèo, Nam Phát, Hương Sen, Về LocalMate, Liên hệ, Kiến thức, Landing 490k) và các dịch vụ GEO/AEO/bài viết thực tế.
+     - Đồng bộ ngày `lastmod` thực tế: `2026-09-14`.
+  3. IndexNow Key & Automation:
+     - Tạo file xác thực key root: `public/8c3b7a2d59144e3fae8026194b159f8e.txt`, `public/indexnow-key.txt`, `public/indexnow.json`.
+     - Tạo script tự động `scripts/submit-indexnow.js` ping đồng thời `api.indexnow.org` và `www.bing.com`.
+     - Thêm lệnh `npm run submit:indexnow` vào `package.json`.
+     - Kiểm thử gửi payload: Cả 2 cổng Bing và IndexNow đều trả về HTTP `202 Accepted` thành công.
+  4. Routing Architecture (`src/App.tsx`):
+     - Định tuyến trực tiếp các canonical paths: `/thiet-ke-website`, `/google-maps-local-seo`, `/google-ads`, `/content-marketing`, `/automation` về đúng components chuyên biệt.
+  5. Nghiệm thu: `npm run build` PASS 100% (1580 modules, không lỗi TypeScript).
 

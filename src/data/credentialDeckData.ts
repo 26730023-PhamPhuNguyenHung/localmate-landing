@@ -545,7 +545,7 @@ export const CREDENTIAL_SLIDES: CredentialSlide[] = [
     bullets: [
       '1. Trang bán hàng Sales Hub di động: Tải siêu tốc, bố cục thuyết phục, hiển thị rõ 5 yếu tố cốt lõi để khách quyết định gọi điện.',
       '2. Xác minh & Tối ưu Google Maps: Đăng ký Gmail chính chủ, ghim chuẩn định vị, cập nhật ảnh chất lượng cao và chống cướp quyền sở hữu.',
-      '3. Bộ nhận diện mã QR Review 5 sao: Thiết kế bảng mica để bàn có mã QR thông minh, khách quét là mở ngay form chấm 5 sao Google.',
+      '3. Bộ mã QR đánh giá chân thực: Tạo QR giúp khách hàng đã sử dụng dịch vụ để lại đánh giá chân thực trên Google.',
       '4. Hệ thống thông báo đơn tự động: Khách bấm gọi hoặc gửi thông tin, chuông điện thoại chủ tiệm reo và tin nhắn đổ về Zalo trong 2 giây.',
       '5. Gói bảo dưỡng & sao lưu định kỳ: Hàng tuần hệ thống tự động backup dữ liệu, kiểm tra liên kết hỏng và cập nhật bảo mật.'
     ],
@@ -603,7 +603,7 @@ export const CREDENTIAL_SLIDES: CredentialSlide[] = [
     summary: 'Mô hình AI không đoán mò mà tổng hợp dữ liệu từ những nguồn có độ uy tín thực tế cao. LocalMate tối ưu đồng bộ 4 nhóm tín hiệu số cốt lõi để thương hiệu của bạn luôn là câu trả lời mặc định của AI.',
     bullets: [
       'Tín hiệu 1 — Dữ liệu thực thể đồng nhất (NAP Consistency): Tên, địa chỉ, số điện thoại khớp từng chữ trên mọi nền tảng.',
-      'Tín hiệu 2 — Khối lượng & Chất lượng Đánh giá (Review Velocity): Đánh giá 5 sao đều đặn có kèm hình ảnh và từ khóa dịch vụ cụ thể.',
+      'Tín hiệu 2 — Khối lượng & Chất lượng Đánh giá (Review Velocity): Đánh giá chân thực đều đặn từ khách hàng thật có kèm hình ảnh và từ khóa dịch vụ cụ thể.',
       'Tín hiệu 3 — Cấu trúc Schema Microdata sạch: Website khai báo rõ ràng ai là chủ sở hữu, bằng cấp chuyên môn và giấy phép kinh doanh.',
       'Tín hiệu 4 — Mức độ trích dẫn của bên thứ ba (Brand Citations): Được các trang báo địa phương, danh bạ doanh nghiệp uy tín nhắc tên.'
     ],
@@ -612,7 +612,7 @@ export const CREDENTIAL_SLIDES: CredentialSlide[] = [
       { label: 'Trọng số đánh giá thật', value: '40%', detail: 'Từ người dùng địa phương có tài khoản thật' },
       { label: 'Tỷ lệ đề xuất thành công', value: '89%', detail: 'Khi thỏa mãn trọn vẹn 4 tín hiệu' }
     ],
-    tags: ['Tín Hiệu AI', 'NAP', 'Review 5 Sao', 'Entity Schema', 'Trích Dẫn Số'],
+    tags: ['Tín Hiệu AI', 'NAP', 'Đánh Giá Chân Thực', 'Entity Schema', 'Trích Dẫn Số'],
     quote: {
       text: 'AI rất thông minh nhưng cũng rất cẩn trọng. Nó chỉ dám gợi ý cho người dùng những cơ sở có dữ liệu minh bạch, vị trí xác thực và khách hàng cũ khen ngợi đều đặn.',
       author: 'Phan Quốc Bảo',
@@ -814,7 +814,7 @@ export const CREDENTIAL_SLIDES: CredentialSlide[] = [
     bullets: [
       'Case 1: Cửa hàng bán lẻ & thiết bị âm thanh — Tối ưu định vị và tăng lưu lượng khách ghé tiệm.',
       'Case 2: Phòng khám nha khoa chuyên khoa — Tăng 250% cuộc gọi đặt lịch từ bán kính 5km và đón đầu AI Search.',
-      'Case 3: Chuỗi nhà hàng & quán cafe F&B — Phủ từ khóa địa phương và tự động thu thập đánh giá 5 sao thật.',
+      'Case 3: Chuỗi nhà hàng & quán cafe F&B — Phủ từ khóa địa phương và tạo QR giúp khách hàng để lại đánh giá chân thực trên Google.',
       'Case 4: Gara sửa chữa & cứu hộ ô tô 24/7 — Chiếm lĩnh top tìm kiếm nhu cầu khẩn cấp.',
       'Case 5: Thợ dịch vụ sửa chữa tại nhà — Xây dựng uy tín và báo giá minh bạch chốt hợp đồng nhanh.',
       'Case 6: Bản thân LocalMate — Ứng dụng chính xác những gì triển khai cho khách hàng để tăng trưởng tự thân.'
@@ -953,23 +953,23 @@ export const CREDENTIAL_SLIDES: CredentialSlide[] = [
     index: 30,
     screen: '30',
     label: 'Case 3 - Nhà Hàng & Quán Cafe F&B',
-    title: 'Chuỗi Nhà Hàng & Cafe: Phủ Từ Khóa Khu Vực & Tự Động Thu Hút Đánh Giá 5 Sao Thật',
+    title: 'Chuỗi Nhà Hàng & Cafe: Phủ Từ Khóa Khu Vực & Thu Hút Đánh Giá Chân Thực Từ Khách Thật',
     partId: 'part-3',
     partTitle: 'Phần 3: Case Studies & Tình Huống Thực Tế',
     isDivider: false,
     summary: 'Nhà hàng ẩm thực đặc sản miền Trung với 3 chi nhánh tại khu du lịch ven biển gặp khó khăn trong việc thu hút khách du lịch tự túc và khách gia đình do thiếu hụt đánh giá thực tế trên Google Maps.',
     bullets: [
       'Vấn đề cũ: Khách ăn xong rất hài lòng nhưng hầu như không ai nhớ lên mạng đánh giá; đối thủ cạnh tranh mua review ảo lấn lướt.',
-      'Giải pháp Mã QR Review Thông Minh: Thiết kế bảng mica trang trọng tại mỗi bàn ăn; khách quét QR là mở thẳng trang đánh giá 5 sao kèm gợi ý món ngon.',
+      'Giải pháp Mã QR Đánh Giá Chân Thực: Tạo QR giúp khách hàng đã sử dụng dịch vụ để lại đánh giá chân thực trên Google dễ dàng.',
       'Chính sách tặng tráng miệng nhẹ: Khách check-in và gửi đánh giá được tặng một phần chè hoặc nước uống thanh mát.',
       'Phủ từ khóa ẩm thực địa phương: Tối ưu trang web với các từ khóa "quán hải sản ngon gần biển Mỹ Khê", "ăn gì ngon ở Đà Nẵng".'
     ],
     metrics: [
-      { label: 'Đánh giá 5 sao thật tích lũy', value: '480+ Review', detail: 'Tăng vọt chỉ sau 3 tháng' },
+      { label: 'Đánh giá chân thực tích lũy', value: '480+ Review', detail: 'Tăng vọt chỉ sau 3 tháng' },
       { label: 'Điểm số Google trung bình', value: '4.9 / 5.0', detail: 'Nổi bật nhất khu vực ven biển' },
       { label: 'Lượng khách du lịch ghé quán', value: '+140%', detail: 'Tìm thấy qua tìm kiếm bản đồ' }
     ],
-    tags: ['Case 3', 'F&B', 'Nhà Hàng', 'Mã QR Review', 'Đánh Giá 5 Sao Thật'],
+    tags: ['Case 3', 'F&B', 'Nhà Hàng', 'Mã QR Review', 'Đánh Giá Chân Thực'],
     quote: {
       text: 'Trước đây khách ăn xong khen ngon rồi về, tiệm chẳng đọng lại gì trên mạng. Từ ngày có cái bảng QR của LocalMate, chỉ 3 tháng mà quán lên gần 500 review thật, khách du lịch Tây lẫn Ta cứ thế mở Maps đi tới.',
       author: 'Anh Lê Văn Khang',
@@ -1106,7 +1106,7 @@ export const CREDENTIAL_SLIDES: CredentialSlide[] = [
     bullets: [
       '1. Toàn bộ mã nguồn & Hosting Edge: Bàn giao quyền quản trị tên miền, tài khoản Cloudflare và mã nguồn trang web.',
       '2. Hồ sơ Google Business Profile chính chủ: Chuyển giao quyền Chủ sở hữu chính vào tài khoản Gmail riêng của khách hàng.',
-      '3. Bảng Mica Mã QR Review 5 sao cao cấp: Kỹ thuật viên mang đến tận cửa hàng đặt tại quầy lễ tân hoặc từng bàn.',
+      '3. Bảng Mica Mã QR đánh giá chân thực: Kỹ thuật viên mang đến tận cửa hàng đặt tại quầy lễ tân hoặc từng bàn.',
       '4. Hệ thống CRM Mini Google Sheets: Cấu hình sẵn bảng tính lưu trữ khách hàng kèm liên kết Webhook Zalo/Telegram.',
       '5. Bộ video hướng dẫn 3 phút: Video quay màn hình hướng dẫn chủ tiệm tự sửa đổi giá món ăn, cập nhật ảnh mới trên điện thoại.',
       '6. Giấy chứng nhận bảo hành kỹ thuật 5 năm: Văn bản pháp lý cam kết thời hạn hỗ trợ và đường dây nóng hỗ trợ khẩn cấp.'
@@ -1260,7 +1260,7 @@ export const CREDENTIAL_SLIDES: CredentialSlide[] = [
       'Văn phòng & Trạm Kỹ thuật thực địa: 03 Trường Chinh, Quận Thanh Khê, TP. Đà Nẵng (Sẵn sàng ghé tận nơi trong bán kính 20km).',
       'Kênh tiếp nhận yêu cầu Demo 48h: Truy cập https://localmate.vn hoặc quét mã QR trên màn hình.',
       'Cam kết phản hồi: Tiếp nhận thông tin và phản hồi giải pháp sơ bộ trong vòng 15 phút làm việc.',
-      'Ưu đãi khởi động: Tặng ngay bộ Bảng Mica Mã QR Review 5 sao và gói Audit sức khỏe số miễn phí cho 10 điểm đăng ký sớm trong tháng.'
+      'Ưu đãi khởi động: Tặng ngay bộ Bảng Mica Mã QR giúp khách hàng để lại đánh giá chân thực và gói Audit sức khỏe số miễn phí cho 10 điểm đăng ký sớm trong tháng.'
     ],
     metrics: [
       { label: 'Hotline trực tiếp', value: '0834.422.439', detail: 'Tư vấn kỹ thuật 1-1 không qua sale' },

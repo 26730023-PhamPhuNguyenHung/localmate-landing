@@ -742,16 +742,16 @@ export const CORE_P0_SERVICES: ServiceEntity[] = [
   {
     id: 'google-maps',
     slug: 'google-maps',
-    name: 'Dịch vụ Google Maps — Xác minh GPS chính chủ 100%, chống cướp Maps & QR Review 5 sao',
+    name: 'Dịch vụ Google Maps — Xác minh GPS chính chủ 100%, chống cướp Maps & QR Đánh Giá Chân Thực',
     shortName: 'Google Maps Chính Chủ',
     category: 'Bản Đồ & Khách Địa Phương',
     categorySlug: 'google-maps',
     badge: 'Chính Chủ 100% ⭐',
     heroAsset: '/assets/illustrations/mascot-local-map.png',
     problem: 'Khách hàng xung quanh mở điện thoại tìm kiếm nhưng chỉ thấy cơ sở đối thủ, hoặc vị trí của bạn chưa có trên bản đồ, bị sai lệch GPS, hay tệ hơn là bị đối thủ chơi xấu đổi hotline, đề xuất đóng cửa vĩnh viễn và cướp quyền Maps.',
-    outcome: 'Hoàn thiện hồ sơ Google Maps được Google xác minh GPS chính chủ 100%, kích hoạt khiên bảo vệ chống cướp Maps, trang bị bộ QR Review 5 sao để bàn giúp khách quét đánh giá dễ dàng và thu hút hàng trăm khách ghé tiệm mỗi tháng.',
+    outcome: 'Hoàn thiện hồ sơ Google Maps được Google xác minh GPS chính chủ 100%, kích hoạt khiên bảo vệ chống cướp Maps, tạo QR giúp khách hàng đã sử dụng dịch vụ để lại đánh giá chân thực trên Google và thu hút hàng trăm khách ghé tiệm mỗi tháng.',
     promise: '100% chính chủ bằng Gmail của bạn (Primary Owner), không giữ quyền, hướng dẫn quản trị trực quan, cam kết bảo hành kỹ thuật & bảo vệ vị trí lên đến 5 năm.',
-    description: 'LocalMate trực tiếp đo đạc tọa độ GPS thực tế, đăng ký xác minh chính chủ với Google, chuẩn hóa toàn diện danh mục ngành nghề, hình ảnh sắc nét và thiết lập cơ chế giám sát chống bị đối thủ sửa lén thông tin. Đi kèm bộ ấn phẩm mã QR Review 5 sao chuẩn in ấn để bàn.',
+    description: 'LocalMate trực tiếp đo đạc tọa độ GPS thực tế, đăng ký xác minh chính chủ với Google, chuẩn hóa toàn diện danh mục ngành nghề, hình ảnh sắc nét và thiết lập cơ chế giám sát chống bị đối thủ sửa lén thông tin. Đi kèm bộ ấn phẩm mã QR giúp khách hàng để lại đánh giá chân thực chuẩn in ấn để bàn.',
     startingPrice: 'Từ 299.000đ',
     priceNote: 'Giá gốc bình dân cho tiểu thương & hộ kinh doanh • Bảo hành kỹ thuật lên đến 5 năm.',
     sla: '3–5 ngày hoàn tất xác minh & bàn giao',
@@ -771,7 +771,7 @@ export const CORE_P0_SERVICES: ServiceEntity[] = [
       'Thiết lập khiên giám sát chống cướp Maps: Cảnh báo và tự động khôi phục nếu đối thủ đề xuất chỉnh sửa sai lệch',
       'Chuẩn hóa đồng bộ thông tin NAP (Tên tiệm, Địa chỉ, Hotline, Giờ mở cửa, Website/Zalo)',
       'Bộ hình ảnh thực tế 15–20 tấm rõ đẹp: Mặt tiền, biển hiệu, không gian trải nghiệm và sản phẩm',
-      'Thiết kế bộ mã QR Review 5 sao chuyên nghiệp (file in PDF vector độ phân giải cao + file mẫu standee mica để bàn)',
+      'Thiết kế bộ mã QR đánh giá Google chuyên nghiệp (file in PDF vector độ phân giải cao + file mẫu standee mica để bàn)',
       'Cài đặt sẵn danh mục sản phẩm/dịch vụ chi tiết kèm mức giá niêm yết công khai trên Maps',
       'Bộ câu hỏi & giải đáp thường gặp (FAQ) tự động trên Google Business Profile',
       'Biên bản bàn giao và cam kết đồng hành bảo hành kỹ thuật lên đến 5 năm'
@@ -794,8 +794,8 @@ export const CORE_P0_SERVICES: ServiceEntity[] = [
       },
       {
         step: '04',
-        title: 'Bàn giao Bộ QR Review 5 Sao',
-        description: 'Xuất file in ấn mã QR chuyên dụng để bàn, hướng dẫn nhân viên cách xin đánh giá 5 sao từ khách quen.'
+        title: 'Bàn giao Bộ QR Đánh Giá Chân Thực',
+        description: 'Xuất file in ấn mã QR chuyên dụng để bàn, tạo QR giúp khách hàng đã sử dụng dịch vụ để lại đánh giá chân thực trên Google.'
       },
       {
         step: '05',
@@ -809,7 +809,7 @@ export const CORE_P0_SERVICES: ServiceEntity[] = [
       'Tài khoản Gmail cá nhân của bạn để nhận quyền Chủ sở hữu chính'
     ],
     proofCaseStudySlug: 'quan-an-ong-tam-saigon',
-    proofHighlight: 'Tăng 320% lượt bấm gọi và chỉ đường trong 60 ngày sau khi xác minh chính chủ và đặt bộ QR Review 5 sao tại bàn.',
+    proofHighlight: 'Tăng 320% lượt bấm gọi và chỉ đường trong 60 ngày sau khi xác minh chính chủ và đặt bộ QR đánh giá chân thực tại bàn.',
     faqs: [
       {
         question: 'Tôi có thực sự làm chủ 100% vị trí Google Maps sau khi làm không?',
@@ -820,8 +820,8 @@ export const CORE_P0_SERVICES: ServiceEntity[] = [
         answer: 'Google cho phép người dùng đề xuất chỉnh sửa, nên nhiều đối thủ lợi dụng để phá hoại. Với quy trình của LocalMate, chúng tôi cấu hình khiên bảo vệ với thông tin xác thực đầy đủ, giúp Google tự động từ chối các đề xuất chỉnh sửa ác ý, đồng thời hỗ trợ khôi phục ngay nếu có sự cố.'
       },
       {
-        question: 'Bộ QR Review 5 sao hoạt động như thế nào?',
-        answer: 'Khách hàng chỉ cần giơ camera điện thoại quét mã QR tại bàn hoặc quầy thu ngân, màn hình sẽ mở ngay trang đánh giá 5 sao cho tiệm của bạn mà không cần phải gõ tìm kiếm. Đây là cách tăng đánh giá thật nhanh nhất và an toàn tuyệt đối với Google.'
+        question: 'Bộ QR đánh giá hoạt động như thế nào?',
+        answer: 'Tạo QR giúp khách hàng đã sử dụng dịch vụ để lại đánh giá chân thực trên Google. Khách hàng chỉ cần giơ camera điện thoại quét mã QR tại bàn hoặc quầy thu ngân, màn hình sẽ mở ngay trang đánh giá cho tiệm của bạn mà không cần phải gõ tìm kiếm, an toàn tuyệt đối theo chính sách Google.'
       },
       {
         question: 'Bảo hành 5 năm của LocalMate gồm những gì?',
@@ -1118,7 +1118,7 @@ export const CORE_P0_SERVICES: ServiceEntity[] = [
       'Tối ưu hồ sơ Google Business Profile: Danh mục phụ (Secondary categories), dịch vụ và bài đăng cập nhật',
       'Xây dựng 25–40 trích dẫn địa phương (Local Citations) trên các danh bạ uy tín tại Việt Nam',
       'Cấu hình mã nhúng bản đồ Google Maps và tín hiệu tương tác địa lý (Geo Tagged Photos)',
-      'Tạo kịch bản và mã QR xin đánh giá 5 sao có chứa từ khóa ngành nghề từ khách thật',
+      'Tạo QR giúp khách hàng đã sử dụng dịch vụ để lại đánh giá chân thực trên Google có chứa từ khóa ngành nghề từ khách thật',
       'Báo cáo thứ hạng từ khóa theo bán kính địa lý (Geo-Grid Ranking Report) minh bạch'
     ],
     process: [

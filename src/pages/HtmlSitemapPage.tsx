@@ -53,6 +53,8 @@ export const HtmlSitemapPage: React.FC = () => {
               <li><Link to="/bang-gia" style={{ color: 'var(--color-text)', textDecoration: 'none', fontWeight: 600 }}>• Bảng giá niêm yết (/bang-gia)</Link></li>
               <li><Link to="/du-an" style={{ color: 'var(--color-text)', textDecoration: 'none', fontWeight: 600 }}>• Dự án thực tế (/du-an)</Link></li>
               <li><Link to="/kien-thuc" style={{ color: 'var(--color-text)', textDecoration: 'none', fontWeight: 600 }}>• Hướng dẫn &amp; Kiến thức (/kien-thuc)</Link></li>
+              <li><Link to="/thiet-ke-website" style={{ color: 'var(--color-primary-dark)', textDecoration: 'none', fontWeight: 700 }}>• Pillar 1: Thiết kế Website Tốc Độ Cao (/thiet-ke-website)</Link></li>
+              <li><Link to="/google-maps-local-seo" style={{ color: 'var(--color-primary-dark)', textDecoration: 'none', fontWeight: 700 }}>• Pillar 2: Google Maps &amp; Local SEO (/google-maps-local-seo)</Link></li>
               <li><Link to="/landing-490k" style={{ color: 'var(--color-text)', textDecoration: 'none', fontWeight: 600 }}>• Gói Website 1 trang 490k (/landing-490k)</Link></li>
               <li><Link to="/tieu-chuan-audit" style={{ color: 'var(--color-primary-dark)', textDecoration: 'none', fontWeight: 700 }}>• Tiêu chuẩn Audit Kỹ thuật 2026 (/tieu-chuan-audit)</Link></li>
               <li><Link to="/quy-trinh-cham-soc" style={{ color: 'var(--color-primary-dark)', textDecoration: 'none', fontWeight: 700 }}>• Quy trình vận hành &amp; Chăm sóc định kỳ (/quy-trinh-cham-soc)</Link></li>

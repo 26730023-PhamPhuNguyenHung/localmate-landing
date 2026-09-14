@@ -58,7 +58,7 @@ Localmate cấu trúc toàn bộ danh mục dịch vụ thành 5 trụ cột tư
 - **Lời hứa thương hiệu:** Đưa thông tin cơ sở kinh doanh xuất hiện chuẩn xác và nổi bật tại nơi khách hàng đang tìm kiếm: từ công cụ tìm kiếm truyền thống (Google Tìm kiếm, Google Maps) đến các công cụ đề xuất thế hệ mới (ChatGPT, Perplexity, Gemini).
 
 #### Danh mục Capabilities trực thuộc:
-1. **Tối Ưu Vị Trí Google Maps & Local SEO:** Xác minh hồ sơ Google Business Profile, tối ưu danh mục chính/phụ, địa chỉ NAP (Name, Address, Phone) đồng nhất, thiết lập mã QR đánh giá 5 sao.
+1. **Tối Ưu Vị Trí Google Maps & Local SEO:** Xác minh hồ sơ Google Business Profile, tối ưu danh mục chính/phụ, địa chỉ NAP (Name, Address, Phone) đồng nhất, thiết lập mã QR đánh giá chân thực trên Google.
 2. **SEO Từ Khóa Nhu Cầu Địa Phương (Local Intent SEO):** Tối ưu các cụm từ khóa có tỷ lệ chuyển đổi cao theo khu vực (ví dụ: *"phòng khám nha khoa quận 7"*, *"sửa máy giặt tại nhà thủ đức"*).
 3. **Cấu Trúc Dữ Liệu Thực Thể & Schema (Entity & Structured Data):** Nhúng Schema `LocalBusiness`, `MedicalClinic`, `AutoRepair`, `OpeningHoursSpecification`, `GeoCoordinates` để bot tìm kiếm hiểu rõ bản chất doanh nghiệp.
 4. **Tối Ưu Đề Xuất Tìm Kiếm AI (GEO & AEO):** Chuẩn bị dữ liệu dạng hỏi đáp thực tế, tài liệu `llms.txt`, trích dẫn nguồn uy tín để các mô hình ngôn ngữ lớn (LLM) dễ dàng trích dẫn khi người dùng hỏi trợ lý ảo.

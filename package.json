@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "submit:indexnow": "node scripts/submit-indexnow.js"
   },
   "dependencies": {
     "lucide-react": "^0.344.0",

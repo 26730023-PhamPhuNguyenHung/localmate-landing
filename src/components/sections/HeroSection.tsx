@@ -174,16 +174,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </span>
             </div>
 
-            {/* H1 lớn, tinh gọn, nhắm trúng insight khách hàng địa phương & SMB */}
+            {/* H1 lớn, tinh gọn, định vị thương hiệu chuẩn Entity */}
             <h1 className="hero-headline">
-              Giúp doanh nghiệp địa phương<br className="hero-desktop-br" />
-              {' '}đưa công việc lên môi trường số,<br className="hero-desktop-br" />
-              {' '}<span className="hero-highlight">tìm khách hàng và vận hành dễ dàng.</span>
+              Xây Hiện Diện Số Thực Tế<br className="hero-desktop-br" />
+              {' '}<span className="hero-highlight">Đón Khách & Tăng Trưởng Bền Vững.</span>
             </h1>
 
-            {/* Body text: Ngắn gọn, giải quyết trực tiếp nhu cầu */}
+            {/* Body text: Định vị thương hiệu chuẩn SSOT */}
             <p className="hero-body">
-              Giải pháp số thực tế cho hộ kinh doanh và doanh nghiệp địa phương: từ website bán hàng tải siêu tốc, định vị Google Maps, tự động hóa gom lead đến quảng cáo đa kênh. Dựng demo xem trước 0đ, báo giá cố định trước khi làm, nghiệm thu hài lòng mới thanh toán.
+              LocalMate giúp hộ kinh doanh và doanh nghiệp nhỏ xây hiện diện số: website, Google Maps, quảng cáo và hệ thống nhận khách — triển khai nhanh, báo giá trước và bàn giao tài khoản cho khách.
             </p>
 
             {/* INSTANT AUDIT HOOK (WebFX Style) — Cho phép nhập tên tiệm/link web và nhận phân tích + Demo 0đ tức thì */}
@@ -198,10 +197,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             <div className="hero-secondary-links">
               <button
                 type="button"
-                onClick={handleScrollToServices}
+                onClick={() => navigate('/bang-gia')}
                 className="hero-secondary-link-btn"
               >
-                <span>Xem bảng giá 41 dịch vụ niêm yết</span>
+                <span>Xem toàn bộ 45 dịch vụ chi tiết</span>
                 <ArrowRight size={13} />
               </button>
               <span className="hero-link-divider">•</span>
@@ -337,7 +336,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                     <div className="maps-title">Tiệm Cà Phê &amp; Điểm Tâm Phố Xanh</div>
                     <div className="maps-rating-row">
                       <span className="maps-score">5.0</span>
-                      <div className="maps-stars" aria-label="5 sao">
+                      <div className="maps-stars" aria-label="Điểm đánh giá 5.0">
                         <Star size={11} fill="#f59e0b" color="#f59e0b" />
                         <Star size={11} fill="#f59e0b" color="#f59e0b" />
                         <Star size={11} fill="#f59e0b" color="#f59e0b" />

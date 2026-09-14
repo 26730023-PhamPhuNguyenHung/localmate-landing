@@ -1,31 +1,67 @@
+# ==============================================================================
+# LocalMate Robots.txt - Technical Crawl & Search / AI Crawler Directives
+# Domain: https://localmate.vn
+# Last Updated: 2026-09-14
+# ==============================================================================
+
+# Default Crawlers
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /api/
 
-# AI Crawlers & LLM Agents
+# ------------------------------------------------------------------------------
+# Major Search Engine Crawlers
+# ------------------------------------------------------------------------------
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# ------------------------------------------------------------------------------
+# AI Crawlers, Search Agents & LLM Scrapers
+# ------------------------------------------------------------------------------
+# Official OpenAI Search Crawler for ChatGPT Search
+User-agent: OAI-SearchBot
+Allow: /
+
+# OpenAI LLM Training & Web Crawler
 User-agent: GPTBot
 Allow: /
 
+# OpenAI ChatGPT User Browsing
 User-agent: ChatGPT-User
 Allow: /
 
+# Anthropic Claude Crawlers
 User-agent: ClaudeBot
 Allow: /
 
 User-agent: Claude-Web
 Allow: /
 
+# Perplexity AI Search Crawler
 User-agent: PerplexityBot
 Allow: /
 
-User-agent: Google-Extended
-Allow: /
-
-User-agent: Bytespider
-Allow: /
-
+# Apple Search & Apple Intelligence Crawler
 User-agent: Applebot-Extended
 Allow: /
 
-# LLM Documentation links
+User-agent: Applebot
+Allow: /
+
+# Google AI & Extended Crawlers
+User-agent: Google-Extended
+Allow: /
+
+# ByteDance / TikTok AI Crawler
+User-agent: Bytespider
+Allow: /
+
+# ------------------------------------------------------------------------------
+# Sitemaps & Machine-Readable Knowledge Architecture
+# ------------------------------------------------------------------------------
 Sitemap: https://localmate.vn/sitemap.xml
 Link: https://localmate.vn/llms.txt

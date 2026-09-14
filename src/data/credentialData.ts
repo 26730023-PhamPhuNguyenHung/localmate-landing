@@ -551,7 +551,7 @@ export const CREDENTIAL_SLIDES: CredentialSlide[] = [
         keyPoints: [
           'Chuẩn hóa thông tin NAP (Name, Address, Phone) trên 30+ danh bạ uy tín',
           'Tối ưu danh mục chính và danh mục phụ theo thuật toán Google Maps',
-          'Xây dựng chiến lược phản hồi đánh giá và gia tăng review 5 sao thật',
+          'Xây dựng chiến lược phản hồi đánh giá và tạo QR giúp khách hàng đã sử dụng dịch vụ để lại đánh giá chân thực trên Google',
           'Tối ưu hóa Schema LocalBusiness, Geotag hình ảnh chuẩn tọa độ GPS'
         ]
       }

@@ -12,7 +12,7 @@ export interface SEOHeadProps {
   ogImage?: string;
   ogType?: 'website' | 'article';
   breadcrumbs?: BreadcrumbItem[];
-  schemaType?: 'Organization' | 'ProfessionalService' | 'Service' | 'Article' | 'FAQPage';
+  schemaType?: 'Organization' | 'ProfessionalService' | 'Service' | 'Article' | 'FAQPage' | 'CreativeWork';
   schemaData?: Record<string, any>;
 }
 

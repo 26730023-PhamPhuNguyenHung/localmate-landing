@@ -91,7 +91,7 @@
 - **4 Giai đoạn cốt lõi gắn liền hệ sinh thái dịch vụ LocalMate**:
   1. **Giai đoạn 01 - Thu hút (Stay Visible)**: Lên top tìm kiếm Google Maps & Google Search, tối ưu bán kính 3–10km, phủ từ khóa địa phương không dấu/có dấu, 100% tài khoản chính chủ.
   2. **Giai đoạn 02 - Chuyển đổi (Capture Leads)**: Tốc độ website tải siêu tốc < 1s trên Cloudflare Edge, bộ nút Gọi/Zalo/Chỉ đường một chạm, form nhận demo 0đ không rào cản.
-  3. **Giai đoạn 03 - Chăm sóc & Vận hành (Care & RevOps)**: Gói Digital Care chăm sóc Fanpage & website 990k/tháng, quy trình QR tích lũy đánh giá Google Maps 5 sao thật, bảo mật SSL dữ liệu.
+  3. **Giai đoạn 03 - Chăm sóc & Vận hành (Care & RevOps)**: Gói Digital Care chăm sóc Fanpage & website 990k/tháng, quy trình tạo QR giúp khách hàng đã sử dụng dịch vụ để lại đánh giá chân thực trên Google, bảo mật SSL dữ liệu.
   4. **Giai đoạn 04 - Đòn bẩy & Tái đầu tư (Scale & Automate)**: Tái đầu tư lợi nhuận vào quảng cáo Google Ads / Meta Ads bám đuổi, tự động hóa đơn hàng & đặt lịch qua Zalo OA, đồng bộ CRM.
 - **Thiết kế & Tương tác**:
   - Giao diện 100% Light Mode sáng sủa, nền sáng chữ đậm, viền nhẹ `#e2e8f0`, hệ icon pastel dịu mắt theo 4 gam màu chủ đạo.
@@ -170,7 +170,7 @@
 - **5 Sản phẩm bàn giao thực tế**:
   1. **Website hoàn chỉnh**: Chuẩn SEO on-page, 100% responsive di động & laptop, nút Hotline 1-chạm & chat Zalo, tốc độ < 0.8s, bàn giao 100% tài khoản, kèm nút tương tác chuyển xem website demo thật.
   2. **Bàn giao trang quản trị tiếng Việt**: Bảng điều khiển tối giản, cập nhật giá món và đăng bài trong 3 phút, kèm video clip hướng dẫn 1-2 phút riêng biệt.
-  3. **Hồ sơ Google Business & Maps**: Xác minh chính chủ Gmail của bạn, ghim định vị chuẩn, hiển thị hotline, giờ mở cửa và bộ mã QR 5 sao tại quầy.
+  3. **Hồ sơ Google Business & Maps**: Xác minh chính chủ Gmail của bạn, ghim định vị chuẩn, hiển thị hotline, giờ mở cửa và bộ mã QR đánh giá chân thực tại quầy.
   4. **Lịch biên tập nội dung**: Kế hoạch bài đăng tháng trên Google Sheets, rõ tiêu đề và ngày đăng, viết sát thực tế, khách duyệt trước mới xuất bản.
   5. **Báo cáo quảng cáo minh bạch**: Chạy trực tiếp trên tài khoản của khách, tiền trừ thẻ gốc từ Meta/Google, 0% kê giá hay ăn chênh lệch chi phí ads.
 - **Tab Switcher 3 chế độ**: "5 Sản phẩm bàn giao thực tế", "Website thật đang hoạt động" (`DEMO_SHOWCASES`), "Workflow & Tự động hóa kiểm chứng" (`PROOF_SHOWCASE_DATA`).
@@ -200,7 +200,7 @@
 - **4 Thẻ Gói Khởi Điểm Phổ Biến Ở Trên Cùng**:
   - **Gói Khởi Nghiệp Tối Giản**: 490.000đ trọn gói (1 trang landing gọn gàng, chuẩn di động, hotline & Zalo tức thì, SLA 24h–48h).
   - **Gói Web Giới Thiệu**: Từ 2.900.000đ trọn gói (Xem demo trước, ưng ý mới thanh toán, tặng bộ SEO & GA4, bàn giao 100% tài khoản, SLA 3–5 ngày).
-  - **Gói Google Maps**: 2.000.000đ trọn gói (Xác minh chính chủ 100%, Local SEO, đăng 20+ hình ảnh, tặng mã QR để bàn xin 5 sao, SLA 2–4 ngày).
+  - **Gói Google Maps**: 2.000.000đ trọn gói (Xác minh chính chủ 100%, Local SEO, đăng 20+ hình ảnh, tặng mã QR để bàn giúp khách để lại đánh giá chân thực, SLA 2–4 ngày).
   - **Gói Quản Trị Duy Trì**: 990.000đ / tháng (Chăm sóc nội dung & kỹ thuật định kỳ, backup 24/7, duy trì top Maps, hỗ trợ qua nhóm Zalo riêng, SLA 2h–4h).
 - **Danh Sách Dịch Vụ Chi Tiết 41 Dịch Vụ Công Khai**:
   - Bảo toàn 100% tính năng tra cứu với Search Bar thời gian thực và Bộ lọc phân loại 9 nhóm dịch vụ.
@@ -251,7 +251,7 @@
   - Đã tích hợp trực tiếp vào luồng trang chủ `HomePage.tsx` ngay sau `PhilosophySection` để tạo đòn bẩy thuyết phục mạnh mẽ trước khi khách xem `PricingMatrixSection`.
 - **Tối ưu TrustSection (`src/components/sections/TrustSection.tsx`)**:
   - Bổ sung dải số liệu Social Proof định lượng: `150+ Cửa hàng tin cậy`, `100% Khách hàng làm chủ tài khoản`, `0đ Chi phí phát sinh`.
-  - Phân tách sắc nét giữa: 5 Tài sản bàn giao cầm tay (CCCD, Primary Owner Maps, QR Review 5 sao, Video HD 2 phút, Zalo nhóm 1-1) và Pháp nhân Công ty TNHH LocalMate (MST 4001337934, địa chỉ trụ sở, hóa đơn VAT điện tử, hotline KTV).
+  - Phân tách sắc nét giữa: 5 Tài sản bàn giao cầm tay (CCCD, Primary Owner Maps, QR Đánh Giá Chân Thực, Video HD 2 phút, Zalo nhóm 1-1) và Pháp nhân Công ty TNHH LocalMate (MST 4001337934, địa chỉ trụ sở, hóa đơn VAT điện tử, hotline KTV).
 - **Kiểm thử nghiệm thu**:
   - `npm run build` pass 100% không warning/error (Vite build xong trong 6.92s).
   - Giao diện tuân thủ tuyệt đối quy chuẩn Light mode, không glassmorphism, tương phản cao, `text-wrap: pretty`.
@@ -339,7 +339,7 @@
 
 ## 13. Cụm Dịch Vụ Local Search, Google Maps & Technical (Chuẩn Hóa Từ FastMarketing Cho LocalMate)
 - **Học hỏi FastMarketing & Chuẩn hóa cho LocalMate**:
-  1. **Dịch vụ Google Maps**: Xác minh GPS chính chủ 100% bằng Gmail của khách (Primary Owner), thiết lập khiên bảo vệ chống đối thủ chơi xấu cướp Maps hoặc đổi số điện thoại lén, tặng kèm bộ ấn phẩm mã QR Review 5 sao để bàn chuẩn file in vector, cam kết bảo hành kỹ thuật lên đến 5 năm (giá gốc từ 299k).
+  1. **Dịch vụ Google Maps**: Xác minh GPS chính chủ 100% bằng Gmail của khách (Primary Owner), thiết lập khiên bảo vệ chống đối thủ chơi xấu cướp Maps hoặc đổi số điện thoại lén, tặng kèm bộ ấn phẩm mã QR Đánh Giá Chân Thực để bàn chuẩn file in vector, cam kết bảo hành kỹ thuật lên đến 5 năm (giá gốc từ 299k).
   2. **Dịch vụ SEO Tổng Thể Địa Phương**: Phủ sóng bán kính 3–10km xung quanh điểm bán, tối ưu 100% cụm từ khóa có dấu & không dấu (ví dụ: "sua xe gan day", "nha khoa uy tin q7"), phủ 25+ trích dẫn địa phương Local Citations kéo khách ghé tiệm và gọi hotline liên tục (từ 390k).
   3. **Dịch vụ Tối Ưu Tốc Độ Web**: Cam kết điểm Google PageSpeed Insights 90+ trên cả Mobile & Desktop, tốc độ mở trang dưới 1s trên mạng lưới biên Cloudflare Edge CDN toàn cầu, nén ảnh WebP/AVIF lossless, Zero CLS (0.000), bảo hành tốc độ 5 năm (từ 299k).
   4. **Dịch vụ Thực Thể Số (Entity & Schema)**: Cấu hình trọn bộ Schema JSON-LD LocalBusiness (GeoCoordinates, OpeningHours, PriceRange, SameAs) và đồng bộ NAP trên Knowledge Graph, giúp cả Google và AI (ChatGPT, Gemini) nhận diện thương hiệu độc nhất (từ 199k).
@@ -349,7 +349,7 @@
   - Tab navigator 5 dịch vụ trực quan, đầy đủ bài toán, giải pháp, bảng giá, quy trình 5 bước.
   - Công cụ tự chẩn đoán sức khỏe số 0đ (Local Health Score Checker) cho phép chủ quán tích chọn triệu chứng và tính điểm nghẽn trực tiếp.
   - Widget so sánh trực quan tốc độ Cloudflare Edge vs Hosting truyền thống.
-  - Mô hình Standee mã QR Review 5 sao để bàn cho quán ăn, spa, nha khoa.
+  - Mô hình Standee mã QR Đánh Giá Chân Thực để bàn cho quán ăn, spa, nha khoa.
   - Bảng cam kết 4 KHÔNG & 4 CÓ của Người đồng hành số địa phương.
 - **Tích hợp hệ sinh thái**:
   - Cập nhật 5 dịch vụ trong `src/data/servicesData.ts` và `src/data/servicesCatalog.ts`.
@@ -394,7 +394,7 @@
 - **Mục tiêu**: Tích hợp toàn bộ hệ thống routing, alias thuận tiện và kiểm thử chất lượng tổng thể toàn dự án theo chuẩn SSOT.
 - **Khai báo 5 Trụ Cột Giải Pháp (Solution Pillars) trong `src/App.tsx`**:
   1. `/giai-phap/xay-nen-tang-so` (alias `/giai-phap/nen-tang-so`, `/dich-vu/xay-nen-tang-so`, `/dich-vu/nen-tang-so`) -> `PresenceSolutionPage`: Xây dựng nền tảng số, website chuẩn di động < 1s, định vị Google Maps GPS, kết nối nút gọi/Zalo 1 chạm, bàn giao 100% tài khoản chính chủ và cam kết bảo hành kỹ thuật 5 năm.
-  2. `/giai-phap/duoc-tim-thay` (alias `/dich-vu/duoc-tim-thay`) -> `SearchSolutionPage`: Đưa cơ sở lên top Google Maps Local Pack, tối ưu đề xuất AI (GEO - ChatGPT & Gemini), chuẩn hóa NAP và bộ mã QR thu thập đánh giá 5 sao.
+  2. `/giai-phap/duoc-tim-thay` (alias `/dich-vu/duoc-tim-thay`) -> `SearchSolutionPage`: Đưa cơ sở lên top Google Maps Local Pack, tối ưu đề xuất AI (GEO - ChatGPT & Gemini), chuẩn hóa NAP và tạo QR giúp khách hàng đã sử dụng dịch vụ để lại đánh giá chân thực trên Google.
   3. `/giai-phap/thu-hut-khach-hang` (alias `/dich-vu/thu-hut-khach-hang`) -> `AcquisitionSolutionPage`: Kéo khách gọi điện và ghé tiệm quanh bán kính 3-10km, quảng cáo Google Ads & Meta Ads 0% kê giá (trừ tiền thẻ chính chủ), xử lý kháng lỗi ngành nhạy cảm.
   4. `/giai-phap/van-hanh-tu-dong-hoa` (alias `/dich-vu/van-hanh-tu-dong-hoa`) -> `AutomationSolutionPage`: Vận hành tự động hóa, chuông báo đơn tức thì qua Telegram sau 3 giây, đặt lịch hẹn online 24/7 và đồng bộ Google Sheets CRM không tốn phí bản quyền.
   5. `/giai-phap/dong-hanh-cham-soc` (alias `/giai-phap/dong-hanh-duy-tri`, `/dich-vu/dong-hanh-cham-soc`, `/dich-vu/dong-hanh-duy-tri`) -> `CareSolutionPage`: Phòng kỹ thuật số ngoài túc trực 24/7, xử lý sự cố trong 2 giờ, hỗ trợ đăng bài/đổi giá qua Zalo và hoàn thiện hồ sơ thông báo Bộ Công Thương.

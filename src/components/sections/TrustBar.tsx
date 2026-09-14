@@ -1,31 +1,31 @@
 import React from 'react';
-import { ShieldCheck, Wrench, MapPin, KeyRound, CheckCircle2 } from 'lucide-react';
+import { ShieldCheck, KeyRound, CheckCircle2, Clock, Check } from 'lucide-react';
 
 export const TrustBar: React.FC = () => {
   const trustPoints = [
     {
-      icon: ShieldCheck,
+      icon: CheckCircle2,
       badge: 'Cam kết 01',
-      title: 'Báo giá trước khi làm',
-      subtitle: 'Minh bạch 100%, tuyệt đối không chi phí ẩn'
-    },
-    {
-      icon: Wrench,
-      badge: 'Cam kết 02',
-      title: 'Tận dụng thứ đã có',
-      subtitle: 'Không ép mua thêm phần mềm cồng kềnh'
-    },
-    {
-      icon: MapPin,
-      badge: 'Cam kết 03',
-      title: 'Kỹ thuật viên địa phương',
-      subtitle: 'Hỗ trợ tận nơi & xử lý qua Zalo 1-1 nhanh chóng'
+      title: 'Bàn giao mới thanh toán',
+      subtitle: 'Xem demo trước 0đ, nghiệm thu hài lòng mới trả tiền'
     },
     {
       icon: KeyRound,
+      badge: 'Cam kết 02',
+      title: '100% chính chủ',
+      subtitle: 'Tên miền, hosting, code, tài khoản Maps & Ads thuộc về bạn'
+    },
+    {
+      icon: ShieldCheck,
+      badge: 'Cam kết 03',
+      title: 'Báo giá trước không phí ẩn',
+      subtitle: 'Báo giá trọn gói niêm yết rõ ràng, không phát sinh phụ phí'
+    },
+    {
+      icon: Clock,
       badge: 'Cam kết 04',
-      title: 'Bàn giao 100% tài khoản',
-      subtitle: 'Khách hàng toàn quyền làm chủ 100% chính chủ'
+      title: 'Đồng hành 5 năm',
+      subtitle: 'Kỹ thuật viên địa phương hỗ trợ 1-1, bảo hành hạ tầng lâu dài'
     }
   ];
 

@@ -72,7 +72,7 @@
   - Giải pháp: Chuyển đổi sang **Editorial Rows (Split 35/65)** cho Discovery nhu cầu, **Asymmetric 3-Package Layout** cho Bảng giá (1 gói chính nổi bật + 2 gói phụ xếp chồng), và **Minimal Horizontal Trust Strip** (không card).
   - Giảm hơn 40% số lượng visual cards, tạo nhịp điệu thị giác đĩnh đạc và sang trọng như một Digital Studio cao cấp.
 - **Giải quyết dứt điểm Mâu thuẫn Báo giá 490k vs 2.9tr**:
-  - Tách bạch rõ ràng: Gói Bán hàng 1 trang (490k / 24h) dành cho tiệm nhỏ/cá nhân, Gói Khởi tạo chuẩn (2.9tr / 3-5 ngày) bao gồm Web 3-5 trang + Google Maps chính chủ + Bộ mã QR Review 5 sao để bàn.
+  - Tách bạch rõ ràng: Gói Bán hàng 1 trang (490k / 24h) dành cho tiệm nhỏ/cá nhân, Gói Khởi tạo chuẩn (2.9tr / 3-5 ngày) bao gồm Web 3-5 trang + Google Maps chính chủ + Bộ mã QR đánh giá chân thực để bàn.
   - Loại bỏ việc dump toàn bộ 41 dịch vụ lẻ ra mặt tiền trang chủ, đưa vào collapsible catalog drawer mở rộng theo yêu cầu (`.catalog-toggle-btn`).
 - **Nâng cấp Typography & 16px Root Base**:
   - Cố định `html { font-size: 16px; }` thay vì bị hạ xuống 14.5px/14px.

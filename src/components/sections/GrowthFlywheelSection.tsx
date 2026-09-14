@@ -149,7 +149,7 @@ const FLYWHEEL_STAGES: FlywheelStage[] = [
     englishTitle: 'Care & RevOps',
     solutionSlug: '/giai-phap/dong-hanh-duy-tri',
     solutionTitle: 'Trụ Cột 05: Chăm Sóc & Đồng Hành Kỹ Thuật',
-    tagline: 'Chăm sóc Fanpage định kỳ 990k/tháng, quy trình tích lũy review Google Maps 5 sao và bảo mật hạ tầng số ổn định 24/7.',
+    tagline: 'Chăm sóc Fanpage định kỳ 990k/tháng, quy trình tạo QR giúp khách hàng đã sử dụng dịch vụ để lại đánh giá chân thực trên Google và bảo mật hạ tầng số ổn định 24/7.',
     color: {
       primary: '#d97706',
       bgSoft: '#fffbeb',
@@ -163,7 +163,7 @@ const FLYWHEEL_STAGES: FlywheelStage[] = [
     kpiLabel: 'Đội ngũ IT & Nội dung số đồng hành trọn gói',
     localMateServices: [
       'Gói Digital Care chăm sóc Fanpage & Website 990k/tháng',
-      'Kịch bản QR Code tích lũy đánh giá Google Maps 5 sao thật',
+      'Tạo QR giúp khách hàng đã sử dụng dịch vụ để lại đánh giá chân thực trên Google',
       'Bảo mật SSL, chống spam, sao lưu mã nguồn định kỳ',
       'Hỗ trợ kỹ thuật 1-1 qua Zalo khi có phát sinh'
     ],
@@ -173,8 +173,8 @@ const FLYWHEEL_STAGES: FlywheelStage[] = [
         desc: 'Đăng tải bài viết chuyên môn, hình ảnh dịch vụ chỉn chu định kỳ hàng tuần giúp khách hàng cảm thấy tin cậy và cơ sở luôn hoạt động sôi nổi.'
       },
       {
-        title: 'Tích lũy đánh giá 5 sao từ khách thật',
-        desc: 'Quy trình đặt mã QR tại quầy và kịch bản xin đánh giá khéo léo sau bán, tạo nền tảng tín nhiệm vững chắc cho địa điểm.'
+        title: 'Tích lũy đánh giá chân thực từ khách hàng thật',
+        desc: 'Quy trình tạo QR giúp khách hàng đã sử dụng dịch vụ để lại đánh giá chân thực trên Google, tạo nền tảng tín nhiệm vững chắc cho địa điểm.'
       },
       {
         title: 'Hạ tầng số luôn an toàn & ổn định',
@@ -182,7 +182,7 @@ const FLYWHEEL_STAGES: FlywheelStage[] = [
       }
     ],
     traditionalProblem: 'Tốn 8-10 triệu thuê nhân viên riêng hoặc bỏ mặc Fanpage mốc meo; bị đối thủ chơi xấu đánh giá 1 sao mà không biết xử lý ra sao.',
-    flywheelAdvantage: 'Có nguyên một đội ngũ kỹ thuật và nội dung đồng hành chi phí chỉ 990k/tháng; uy tín 5 sao tích lũy liên tục tạo lực đẩy lớn cho bánh đà.',
+    flywheelAdvantage: 'Có nguyên một đội ngũ kỹ thuật và nội dung đồng hành chi phí chỉ 990k/tháng; uy tín thương hiệu tích lũy liên tục qua các đánh giá chân thực tạo lực đẩy lớn cho bánh đà.',
     ctaText: 'Tư vấn gói Digital Care 990k'
   },
   {
@@ -965,7 +965,7 @@ export const GrowthFlywheelSection: React.FC<GrowthFlywheelSectionProps> = ({ on
                   <strong>Chi phí ngày càng tăng:</strong> Tháng nào cũng phải chi ngân sách quảng cáo mới có khách, tắt tiền là tắt đơn.
                 </li>
                 <li>
-                  <strong>Bỏ quên uy tín tích lũy:</strong> Không có quy trình thu nhận đánh giá 5 sao và bảo dưỡng số nên tài sản số không tăng giá trị.
+                  <strong>Bỏ quên uy tín tích lũy:</strong> Không có quy trình thu nhận đánh giá chân thực của khách hàng và bảo dưỡng số nên tài sản số không tăng giá trị.
                 </li>
                 <li>
                   <strong>Số liệu phân tán:</strong> Khó nắm bắt khách đến từ đâu, đo lường toàn lượt click ảo không sinh ra tiền.
@@ -1021,7 +1021,7 @@ export const GrowthFlywheelSection: React.FC<GrowthFlywheelSectionProps> = ({ on
                 }}
               >
                 <li>
-                  <strong>Khách hàng là động lực trung tâm:</strong> Khách hài lòng để lại đánh giá 5 sao trên Google Maps, kéo thêm hàng chục khách mới.
+                  <strong>Khách hàng là động lực trung tâm:</strong> Khách đã trải nghiệm để lại đánh giá chân thực trên Google Maps, kéo thêm hàng chục khách mới.
                 </li>
                 <li>
                   <strong>Chi phí tìm khách giảm dần:</strong> Thứ hạng Google Maps và SEO địa phương bền vững, khách tự tìm đến mà không phụ thuộc tiền ads.

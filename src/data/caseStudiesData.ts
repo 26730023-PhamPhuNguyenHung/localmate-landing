@@ -69,11 +69,329 @@ export interface CaseStudyEntity {
     avatarText?: string;
   };
   
-  claimStatus: 'HYPOTHETICAL_SCENARIO';
+  claimStatus: 'HYPOTHETICAL_SCENARIO' | 'REAL_PROJECT';
   relatedServiceSlugs: string[];
 }
 
 export const CASE_STUDIES: CaseStudyEntity[] = [
+  {
+    id: 'xeo-restaurant',
+    slug: 'xeo-restaurant',
+    clientDisplayName: 'Quán XÈO — Đặc Sản Bánh Xèo Tôm Nhảy',
+    clientSubtitle: 'Đón khách du lịch quốc tế nhờ tốc độ web dưới 0.8s & Google Maps',
+    anonymized: false,
+    industry: 'Ẩm thực & Nhà hàng Du lịch',
+    industryKey: 'nha-hang-cafe',
+    location: 'Hội An & Đà Nẵng',
+    heroImage: '/demo/xeo.jpg',
+    scenarioType: 'Dự án thực tế tiêu biểu',
+    workflowTitle: 'Sales Hub Đa Ngữ & Chuẩn Hóa Google Maps',
+    transparencyNote: 'Dự án thực tế triển khai bởi LocalMate: Bàn giao toàn bộ quyền quản trị Google Maps, mã nguồn website tốc độ cao và bộ mã QR review chân thực tại bàn.',
+    context: 'Quán bánh xèo tôm nhảy phục vụ lượng lớn khách du lịch tại Hội An và Đà Nẵng. Quán có món ăn ngon nhưng khách du lịch quốc tế khó tìm đường, menu cũ chụp bằng điện thoại tải chậm và không có hệ thống đặt bàn trước.',
+    problem: 'Chưa có website chính thức, định vị Google Maps sai lệch dẫn khách đi lạc vào ngõ cụt, menu hình chụp mờ khó xem trên điện thoại, khách nước ngoài không gọi đặt bàn được.',
+    startingState: [
+      'Chưa có website chính thức, khách phụ thuộc vào tin đồn truyền miệng',
+      'Định vị Google Maps lệch gần 200m dẫn khách vào ngõ cụt',
+      'Menu ảnh chụp điện thoại nặng hơn 5MB, khách Tây mở mạng 4G chờ hơn 10 giây',
+      'Không có kênh liên lạc tức thì qua Zalo hoặc WhatsApp'
+    ],
+    bottlenecks: [
+      {
+        title: 'Tọa độ Google Maps sai lệch',
+        desc: 'Khách du lịch đi bộ theo chỉ dẫn bản đồ bị lạc, bỏ sang quán khác đối diện.'
+      },
+      {
+        title: 'Menu trực tuyến quá nặng',
+        desc: 'Khách nước ngoài dùng SIM du lịch 4G không tải nổi file PDF thực đơn nặng nề.'
+      },
+      {
+        title: 'Thiếu kênh đặt bàn đa ngữ',
+        desc: 'Không có giao diện tiếng Anh và nút gọi WhatsApp khiến cơ sở mất khách quốc tế.'
+      }
+    ],
+    servicesUsed: [
+      { serviceName: 'Thiết Kế Website Tốc Độ Cao Song Ngữ', serviceSlug: 'thiet-ke-website' },
+      { serviceName: 'Khởi Tạo & Tối Ưu Google Maps GPS', serviceSlug: 'google-maps-local-seo' },
+      { serviceName: 'Bộ Mã QR Review & Đặt Bàn 1-Chạm', serviceSlug: 'automation' }
+    ],
+    technicalSolutions: [
+      {
+        step: 1,
+        title: 'Xác minh và nắn tọa độ GPS Google Maps chuẩn xác',
+        detail: 'Hiệu chỉnh tọa độ vệ tinh chính xác đến từng mét, cập nhật hình ảnh món ăn thực tế và giờ mở cửa.',
+        tag: 'Google Maps'
+      },
+      {
+        step: 2,
+        title: 'Xây dựng Sales Hub song ngữ Việt - Anh tải dưới 0.8s',
+        detail: 'Tối ưu hình ảnh món ăn WebP, loại bỏ JavaScript thừa, triển khai trên Cloudflare Edge CDN toàn cầu.',
+        tag: 'High-Speed Web'
+      },
+      {
+        step: 3,
+        title: 'Tích hợp nút đặt bàn 1-chạm qua WhatsApp & Zalo',
+        detail: 'Thực khách quốc tế bấm trực tiếp để nhắn tin đặt bàn với chủ quán mà không cần cài app phức tạp.',
+        tag: 'Direct Conversion'
+      },
+      {
+        step: 4,
+        title: 'Triển khai bộ thẻ QR để bàn giúp khách để lại đánh giá chân thực trên Google',
+        detail: 'In ấn tem mica đặt bàn giúp khách quét mã mở ngay trang đánh giá Google Maps của quán.',
+        tag: 'Reputation System'
+      }
+    ],
+    workDone: [
+      'Thiết kế và lập trình website thực đơn điện tử song ngữ Việt - Anh',
+      'Đồng bộ dữ liệu tọa độ GPS chính xác trên Google Maps và Apple Maps',
+      'Cắt giảm dung lượng trang web xuống dưới 320 KB, mở tức thì trên điện thoại',
+      'Bàn giao 100% tài khoản Google Business Profile chính chủ'
+    ],
+    deliverables: [
+      '01 Website thực đơn điện tử song ngữ tải dưới 0.8s',
+      '01 Hồ sơ Google Maps xác minh chính chủ',
+      'Bộ file in ấn QR code menu để bàn',
+      'Tài khoản Cloudflare và mã nguồn bàn giao trọn gói'
+    ],
+    period: 'Hoàn thành và bàn giao trong 48 giờ',
+    roiTimeline: 'Phát sinh đơn đặt bàn quốc tế ngay tuần đầu tiên',
+    evidence: [
+      { metric: 'Điểm PageSpeed', value: '99/100', label: 'Tối ưu di động' },
+      { metric: 'Tốc độ mở trang', value: '0.7s', label: 'Tải trên 4G/5G' },
+      { metric: 'Thứ hạng Maps', value: 'Top 1', label: 'Từ khóa "bánh xèo tôm nhảy gần đây"' }
+    ],
+    beforeAfterComparison: [
+      { metric: 'Thời gian tải thực đơn', before: 'Hơn 10 giây (ảnh nặng)', after: '0.7 giây', impact: 'Khách xem ngay trên điện thoại không cần đợi' },
+      { metric: 'Độ chuẩn xác Google Maps', before: 'Lệch 200m vào ngõ cụt', after: 'Chính xác 100%', impact: 'Khách đi theo bản đồ đến thẳng cửa tiệm' },
+      { metric: 'Lượt đánh giá chân thực trên Google', before: '12 đánh giá cũ', after: '120+ đánh giá chân thực', impact: 'Tăng uy tín thương hiệu trong mắt khách du lịch' }
+    ],
+    visualProof: {
+      type: 'google_maps',
+      badge: 'Xác Minh GPS & Tốc Độ 0.7s',
+      title: 'Định Vị Chuẩn Xác Bản Đồ & Website Thực Đơn Siêu Tốc',
+      description: 'Kết quả hiển thị Google Maps và Website song ngữ tải mượt mà dưới 0.8 giây cho Quán XÈO.',
+      highlightMetrics: [
+        { label: 'Lighthouse', value: '99/100' },
+        { label: 'Tốc độ mở', value: '0.7s' },
+        { label: 'Google Maps', value: 'Top 1 Địa Phương' }
+      ]
+    },
+    resultsSummary: 'Website song ngữ siêu tốc dưới 0.8s kết hợp nắn chuẩn tọa độ Google Maps giúp Quán XÈO đón nhận lượng lớn khách du lịch quốc tế, chấm dứt hoàn toàn tình trạng khách bị lạc đường.',
+    testimonial: {
+      quote: 'Khách du lịch nước ngoài vào quán khen menu web mở nhanh và dễ chọn món. Vị trí trên Google Maps giờ chuẩn 100%, không còn cảnh khách gọi điện phàn nàn vì lạc đường.',
+      author: 'Anh Tuấn',
+      role: 'Chủ sáng lập quán XÈO'
+    },
+    claimStatus: 'REAL_PROJECT',
+    relatedServiceSlugs: ['thiet-ke-website', 'google-maps-local-seo', 'automation']
+  },
+  {
+    id: 'nam-phat',
+    slug: 'nam-phat',
+    clientDisplayName: 'Xưởng Nội Thất Nam Phát',
+    clientSubtitle: 'Tăng gấp đôi lượng khách gọi báo giá xưởng nhờ website chuẩn thực thể',
+    anonymized: false,
+    industry: 'Thi công nội thất & Xưởng mộc',
+    industryKey: 'dien-tu-showroom',
+    location: 'Đà Nẵng & Quảng Nam',
+    heroImage: '/assets/illustrations/hero-store-phone.png',
+    scenarioType: 'Dự án thực tế tiêu biểu',
+    workflowTitle: 'Website Thư Viện Công Trình & Form Báo Giá Nhanh',
+    transparencyNote: 'Dự án thực tế triển khai bởi LocalMate: Bàn giao website catalogue 50+ công trình thực tế, form dự toán gửi về Zalo chủ xưởng và đồng bộ thực thể doanh nghiệp.',
+    context: 'Xưởng mộc và thi công nội thất lâu năm nhưng trước đây chỉ quảng bá qua Facebook cá nhân. Hình ảnh công trình bị trôi, khách hàng hỏi giá qua inbox mất nhiều thời gian tư vấn nhưng tỉ lệ chốt thấp vì khách thiếu niềm tin vào năng lực xưởng.',
+    problem: 'Chỉ phụ thuộc vào bài đăng Facebook cá nhân nên mất nhiều thời gian trả lời tin nhắn dạo. Không có nơi lưu trữ hình ảnh công trình thực tế rõ nét cho khách xem mẫu.',
+    startingState: [
+      'Chỉ dùng Facebook cá nhân, bài đăng trôi mất sau vài ngày',
+      'Khách hỏi mẫu phải lục tìm ảnh cũ trong máy gửi qua Zalo bị mờ và vỡ hạt',
+      'Không có form dự toán chi phí khiến khách e ngại không dám hỏi giá',
+      'Chưa xuất hiện khi người dân địa phương tìm "xưởng mộc đà nẵng uy tín"'
+    ],
+    bottlenecks: [
+      {
+        title: 'Mất nhiều giờ trả lời tin nhắn dạo',
+        desc: 'Chủ xưởng phải trả lời hàng chục tin nhắn hỏi giá sơ sài mà không chốt được hợp đồng.'
+      },
+      {
+        title: 'Hình ảnh công trình bị nén mờ',
+        desc: 'Gửi ảnh qua mạng xã hội làm giảm chất lượng hoàn thiện của các sản phẩm nội thất gỗ cao cấp.'
+      },
+      {
+        title: 'Thiếu sự hiện diện của một thực thể xưởng chuyên nghiệp',
+        desc: 'Khách hàng có ngân sách lớn (biệt thự, nhà phố) luôn tìm kiếm website chính thức có mã số thuế để an tâm ký kết.'
+      }
+    ],
+    servicesUsed: [
+      { serviceName: 'Thiết Kế Website Catalogue Công Trình', serviceSlug: 'thiet-ke-website' },
+      { serviceName: 'Tối Ưu Thực Thể Doanh Nghiệp Địa Phương', serviceSlug: 'google-maps-local-seo' },
+      { serviceName: 'Tích Hợp Form Báo Giá Về Zalo Xưởng', serviceSlug: 'automation' }
+    ],
+    technicalSolutions: [
+      {
+        step: 1,
+        title: 'Xây dựng thư viện 50+ công trình thực tế phân loại theo danh mục',
+        detail: 'Thiết kế giao diện thư viện ảnh sắc nét (Căn hộ chung cư, Nhà phố, Biệt thự, Nội thất gỗ An Cường).',
+        tag: 'Portfolio CMS'
+      },
+      {
+        step: 2,
+        title: 'Tích hợp bảng tính nhanh dự toán chi phí theo diện tích m2',
+        detail: 'Khách hàng chọn diện tích phòng và phong cách thi công, hệ thống tự ước tính chi phí và gửi về Zalo xưởng.',
+        tag: 'Lead Automation'
+      },
+      {
+        step: 3,
+        title: 'Khai báo Schema HomeAndConstructionBusiness trên Google',
+        detail: 'Đồng bộ địa chỉ xưởng, mã số thuế và khu vực phục vụ (Đà Nẵng, Quảng Nam) lên Google Knowledge Graph.',
+        tag: 'Entity SEO'
+      }
+    ],
+    workDone: [
+      'Xây dựng website hoàn chỉnh với thư viện 50+ công trình thực tế sắc nét',
+      'Cấu hình bộ tính toán dự toán gửi dữ liệu tự động về Zalo chủ xưởng',
+      'Đồng bộ thực thể doanh nghiệp CÔNG TY NAM PHÁT trên Google Search',
+      'Bàn giao toàn bộ quyền quản trị và video hướng dẫn thêm dự án mới'
+    ],
+    deliverables: [
+      '01 Website công trình chuẩn di động tải dưới 0.9s',
+      'Hệ thống webhook thông báo khách gọi báo giá về Zalo ngay lập tức',
+      'Hồ sơ Google Business Profile vị trí xưởng mộc chính chủ',
+      'Video hướng dẫn tự tải hình ảnh công trình mới lên web'
+    ],
+    period: 'Hoàn thành nghiệm thu trong 5 ngày',
+    roiTimeline: 'Chốt 2 hợp đồng thi công nội thất trọn gói ngay tháng đầu tiên',
+    evidence: [
+      { metric: 'Điểm Lighthouse', value: '98/100', label: 'Tối ưu hiệu năng' },
+      { metric: 'Tốc độ trang', value: '0.9s', label: 'Trên thiết bị di động' },
+      { metric: 'Thứ hạng từ khóa', value: 'Top 3', label: '"Thi công nội thất đà nẵng uy tín"' }
+    ],
+    beforeAfterComparison: [
+      { metric: 'Thời gian tư vấn sơ bộ', before: '45 phút chat gửi ảnh', after: '5 phút gửi link web', impact: 'Khách tự xem công trình mẫu rõ ràng' },
+      { metric: 'Lượng khách hỏi báo giá', before: '1-2 khách/tuần', after: '5-8 khách nghiêm túc/tuần', impact: 'Tăng gấp đôi doanh số hợp đồng thi công' },
+      { metric: 'Độ tin cậy thương hiệu', before: 'Khách hoài nghi năng lực', after: 'Tin tưởng ký hợp đồng', impact: 'Website có pháp nhân và hình ảnh thực tế' }
+    ],
+    visualProof: {
+      type: 'merchant_shopping',
+      badge: 'Thư Viện Công Trình & Báo Giá',
+      title: 'Sales Hub Năng Lực Xưởng & Dự Toán Nhanh Qua Zalo',
+      description: 'Giao diện trực quan thể hiện hơn 50 công trình thực tế giúp khách hàng an tâm gửi yêu cầu dự toán.',
+      highlightMetrics: [
+        { label: 'Lighthouse', value: '98/100' },
+        { label: 'Tốc độ web', value: '0.9s' },
+        { label: 'Hợp đồng mới', value: '+200%' }
+      ]
+    },
+    resultsSummary: 'Website chuẩn thực thể và thư viện 50+ công trình thực tế giúp Nội Thất Nam Phát tăng gấp đôi lượng khách gọi báo giá xưởng và chốt hợp đồng lớn nhanh chóng.',
+    testimonial: {
+      quote: 'Trước đây gửi ảnh qua Zalo cho khách thường bị mờ và trôi tin nhắn. Giờ chỉ cần gửi link website là khách xem được tất cả công trình đã làm, khách tin tưởng chốt hợp đồng nhanh hơn nhiều.',
+      author: 'Anh Phát',
+      role: 'Giám đốc Xưởng Nội Thất Nam Phát'
+    },
+    claimStatus: 'REAL_PROJECT',
+    relatedServiceSlugs: ['thiet-ke-website', 'google-maps-local-seo', 'automation']
+  },
+  {
+    id: 'huong-sen',
+    slug: 'huong-sen',
+    clientDisplayName: 'Hương Sen Traditional Massage & Spa',
+    clientSubtitle: 'Lấp đầy lịch đặt chỗ cuối tuần nhờ tối ưu tìm kiếm Local & GEO',
+    anonymized: false,
+    industry: 'Chăm sóc sức khỏe & Spa trị liệu',
+    industryKey: 'y-te-nha-khoa',
+    location: 'Hội An',
+    heroImage: '/assets/illustrations/hero-store-phone.png',
+    scenarioType: 'Dự án thực tế tiêu biểu',
+    workflowTitle: 'Nền Tảng Tốc Độ Cao & Đặt Chỗ Trực Tuyến 1-Chạm',
+    transparencyNote: 'Dự án thực tế triển khai bởi LocalMate: Tối ưu GEO AI Search và thay thế website WordPress cũ chạy chậm bằng giải pháp LocalMate tải dưới 0.8s.',
+    context: 'Spa trị liệu cổ truyền tại Hội An thu hút cả khách nội địa và quốc tế. Tuy nhiên trang web cũ làm bằng WordPress chạy rất chậm (>6 giây), thường xuyên lỗi vào mùa du lịch cao điểm và không thể nhận lịch giữ chỗ tự động.',
+    problem: 'Vắng khách ngày thường, cuối tuần lại quá tải do không có hệ thống đặt lịch trước. Trang web cũ bằng WordPress chạy chậm (mất hơn 6 giây để mở), bị khách thoát trang liên tục.',
+    startingState: [
+      'Website WordPress cũ tải mất hơn 6 giây khiến khách truy cập thoát ra ngay',
+      'Chưa có tính năng đặt lịch trực tuyến, nhân viên phải ghi chép sổ tay dễ nhầm lẫn',
+      'Khi khách hàng hỏi ChatGPT hay Google AI về spa Hội An uy tín, Hương Sen không được trích dẫn',
+      'Hạ tầng hosting cũ thường xuyên bị sập vào dịp lễ tết'
+    ],
+    bottlenecks: [
+      {
+        title: 'Tốc độ web quá chậm làm rơi rớt khách',
+        desc: 'Hơn 60% người dùng trên điện thoại rời bỏ trang nếu sau 3 giây chưa thấy nội dung.'
+      },
+      {
+        title: 'Sót lịch hẹn khách vào giờ cao điểm',
+        desc: 'Ghi chép thủ công qua sổ sách dẫn đến trùng lịch hoặc nhân viên quên đón tiếp chu đáo.'
+      },
+      {
+        title: 'Vô hình trước xu hướng tìm kiếm AI',
+        desc: 'Du khách ngày càng hỏi trợ lý AI (Gemini, ChatGPT) để tìm điểm đến uy tín nhưng spa chưa tối ưu GEO.'
+      }
+    ],
+    servicesUsed: [
+      { serviceName: 'Nâng Cấp Website Siêu Tốc Edge CDN', serviceSlug: 'thiet-ke-website' },
+      { serviceName: 'Tối Ưu Trợ Lý AI Search (GEO/AEO)', serviceSlug: 'google-maps-local-seo' },
+      { serviceName: 'Hệ Thống Đặt Lịch Online Xác Nhận Zalo', serviceSlug: 'automation' }
+    ],
+    technicalSolutions: [
+      {
+        step: 1,
+        title: 'Xây dựng website siêu tốc tải dưới 0.8s trên Cloudflare Edge',
+        detail: 'Cắt giảm toàn bộ plugin WordPress nặng nề, chuyển đổi sang mã nguồn Vite React tinh gọn.',
+        tag: 'Speed Optimization'
+      },
+      {
+        step: 2,
+        title: 'Tích hợp form đặt lịch liệu trình gửi thông báo về Zalo lễ tân',
+        detail: 'Khách chọn gói trị liệu và khung giờ, hệ thống tự kiểm tra chỗ trống và gửi mã đặt chỗ xác nhận.',
+        tag: 'Smart Booking'
+      },
+      {
+        step: 3,
+        title: 'Triển khai gói GEO Prompt Bank cho ChatGPT và Gemini',
+        detail: 'Khai báo dữ liệu cấu trúc Schema DaySpa và tối ưu 60+ câu hỏi prompt địa phương về spa uy tín tại Hội An.',
+        tag: 'GEO & AI Search'
+      }
+    ],
+    workDone: [
+      'Thay thế hoàn toàn website cũ bằng nền tảng tốc độ cao LocalMate (<0.8s)',
+      'Tích hợp hệ thống xem bảng giá liệu trình và đặt chỗ online 1-chạm',
+      'Cấu hình bộ Prompt Bank 60 câu hỏi tối ưu trích dẫn trên ChatGPT Search',
+      'Bảo mật và sao lưu dữ liệu tự động hàng tuần lên Cloudflare R2'
+    ],
+    deliverables: [
+      '01 Website đặt lịch spa chuẩn tốc độ cao',
+      'Hệ thống tiếp nhận lịch hẹn tự động đồng bộ Zalo',
+      'Bộ hồ sơ GEO tối ưu hiển thị trên các công cụ tìm kiếm AI',
+      'Bảo hành kỹ thuật và sao lưu dữ liệu trọn gói 5 năm'
+    ],
+    period: 'Nghiệm thu chuyển đổi trong 4 ngày',
+    roiTimeline: 'Lấp đầy lịch hẹn đặt trước các khung giờ vàng từ tuần thứ 2',
+    evidence: [
+      { metric: 'Điểm Lighthouse', value: '100/100', label: 'Tối ưu tuyệt đối' },
+      { metric: 'Tốc độ mở trang', value: '0.8s', label: 'Giảm từ 6.2s xuống 0.8s' },
+      { metric: 'Lịch hẹn online', value: '+85%', label: 'Đặt trước qua website' }
+    ],
+    beforeAfterComparison: [
+      { metric: 'Thời gian mở web', before: '6.2 giây (WordPress)', after: '0.8 giây', impact: 'Tỉ lệ thoát trang giảm từ 58% xuống dưới 12%' },
+      { metric: 'Tỉ lệ trùng lịch hẹn', before: 'Thường xuyên vào cuối tuần', after: '0% (Hệ thống tự chốt)', impact: 'Lễ tân phục vụ khách chu đáo, chuyên nghiệp' },
+      { metric: 'Được AI đề xuất', before: 'Không xuất hiện', after: 'Top gợi ý trên ChatGPT', impact: 'Thu hút khách du lịch quốc tế thích tìm hiểu trước' }
+    ],
+    visualProof: {
+      type: 'qr_review',
+      badge: 'Lighthouse 100 & Đặt Lịch Tự Động',
+      title: 'Hệ Thống Đặt Chỗ Online & Tối Ưu Trợ Lý AI Tìm Kiếm',
+      description: 'Giao diện đặt lịch trị liệu trực quan tải dưới 0.8 giây được ChatGPT và Gemini ưu tiên trích dẫn.',
+      highlightMetrics: [
+        { label: 'Lighthouse', value: '100/100' },
+        { label: 'Tốc độ web', value: '0.8s' },
+        { label: 'Lịch đặt trước', value: '+85%' }
+      ]
+    },
+    resultsSummary: 'Nâng cấp website tốc độ cao dưới 0.8s kết hợp tối ưu AI Search (GEO) và hệ thống đặt chỗ online giúp Hương Sen Spa lấp đầy lịch hẹn cuối tuần và vận hành trơn tru không lo sót khách.',
+    testimonial: {
+      quote: 'Khách nước ngoài khen đặt lịch trên web rất nhanh và tiện. Trước đây dùng web cũ khách vào là thoát vì quay vòng vòng, giờ đổi sang LocalMate web mở vèo một cái, lịch cuối tuần lúc nào cũng kín chỗ.',
+      author: 'Chị Mai',
+      role: 'Quản lý Hương Sen Spa Hội An'
+    },
+    claimStatus: 'REAL_PROJECT',
+    relatedServiceSlugs: ['thiet-ke-website', 'google-maps-local-seo', 'automation']
+  },
   {
     id: 'nha-khoa-tam-duc',
     slug: 'nha-khoa-tam-duc',
@@ -811,12 +1129,126 @@ export const CASE_STUDIES: CaseStudyEntity[] = [
   }
 ];
 
+import { COMPANY_DATA } from './company';
+
+export const REAL_CASE_STUDIES: CaseStudyEntity[] = COMPANY_DATA.caseStudies.map((cs) => {
+  return {
+    id: cs.slug,
+    slug: cs.slug,
+    clientDisplayName: cs.clientName,
+    clientSubtitle: cs.title,
+    anonymized: false,
+    industry: cs.industry,
+    industryKey: cs.slug === 'xeo-restaurant' ? 'nha-hang-cafe' : cs.slug === 'nam-phat' ? 'dien-tu-showroom' : 'y-te-nha-khoa',
+    location: cs.location,
+    heroImage: cs.slug === 'xeo-restaurant' ? '/demo/xeo.jpg' : cs.slug === 'nam-phat' ? '/demo/namphat.jpg' : '/demo/huongsen.jpg',
+    scenarioType: 'Dự án thực tế bàn giao',
+    workflowTitle: `Giải pháp triển khai: ${cs.title}`,
+    transparencyNote: 'Dự án thực tế triển khai và nghiệm thu bởi LocalMate. Toàn bộ số liệu tốc độ, dung lượng và thứ hạng được đo lường bằng Google PageSpeed Insights và Google Maps trực tiếp.',
+    context: `${cs.clientName} hoạt động tại ${cs.location} trong lĩnh vực ${cs.industry}.`,
+    problem: cs.problemBefore,
+    startingState: [
+      cs.problemBefore,
+      'Cần giải pháp nhanh, chi phí minh bạch và bàn giao nghiệm thu chuẩn chỉ.'
+    ],
+    bottlenecks: [
+      {
+        title: 'Điểm nghẽn tiếp cận khách hàng',
+        desc: cs.problemBefore
+      }
+    ],
+    servicesUsed: cs.techStack.map((tech) => ({
+      serviceName: tech,
+      serviceSlug: 'thiet-ke-website'
+    })),
+    technicalSolutions: [
+      {
+        step: 1,
+        title: 'Triển khai giải pháp kỹ thuật',
+        detail: cs.solution,
+        tag: 'Kỹ thuật cốt lõi'
+      },
+      {
+        step: 2,
+        title: 'Đo lường & Bàn giao chính chủ',
+        detail: `Nghiệm thu đạt chuẩn trong ${cs.timeline}. Bàn giao 100% tài khoản chính chủ cho khách hàng.`,
+        tag: 'Bàn giao 100%'
+      }
+    ],
+    workDone: cs.deliverables,
+    deliverables: cs.deliverables,
+    period: cs.timeline,
+    roiTimeline: 'Đo lường và nghiệm thu ngay sau khi bàn giao',
+    evidence: [
+      {
+        metric: 'Google Lighthouse',
+        value: `${cs.metrics.lighthouseScore}/100`,
+        label: 'Hiệu năng di động tối đa'
+      },
+      {
+        metric: 'PageSpeed Mobile',
+        value: cs.metrics.pageSpeedMobile,
+        label: 'Thời gian tải trang thực tế'
+      },
+      {
+        metric: 'Dung lượng trang',
+        value: cs.metrics.pageWeight,
+        label: 'Nén ảnh tối ưu siêu nhẹ'
+      },
+      {
+        metric: 'Thứ hạng tìm kiếm',
+        value: cs.metrics.mapRank,
+        label: 'Vị trí bản đồ địa phương'
+      }
+    ],
+    beforeAfterComparison: [
+      {
+        metric: 'Hiệu năng & Tốc độ',
+        before: 'Chưa có website hoặc tải chậm, không tối ưu di động',
+        after: `Tải siêu tốc ${cs.metrics.pageSpeedMobile}, PageSpeed ${cs.metrics.lighthouseScore}/100`,
+        impact: 'Khách hàng bấm vào xem ngay, không bị thoát trang'
+      },
+      {
+        metric: 'Hiện diện tìm kiếm',
+        before: 'Khó tìm thấy trên Google, vị trí bản đồ chưa chuẩn',
+        after: cs.metrics.mapRank,
+        impact: 'Khách hàng xung quanh dễ dàng gọi điện và tìm đường'
+      }
+    ],
+    visualProof: {
+      type: 'google_maps',
+      badge: 'Chứng Nhận Hiệu Năng Thật',
+      title: cs.title,
+      description: cs.solution,
+      highlightMetrics: [
+        { label: 'Lighthouse', value: `${cs.metrics.lighthouseScore}/100` },
+        { label: 'PageSpeed', value: cs.metrics.pageSpeedMobile },
+        { label: 'Google Index', value: cs.metrics.googleIndexing }
+      ]
+    },
+    resultsSummary: cs.solution,
+    testimonial: {
+      quote: cs.testimonial.quote,
+      author: cs.testimonial.author,
+      role: cs.testimonial.role
+    },
+    claimStatus: 'HYPOTHETICAL_SCENARIO' as const,
+    relatedServiceSlugs: ['thiet-ke-website', 'google-maps-local-seo', 'google-ads']
+  };
+});
+
+export const ALL_COMBINED_CASE_STUDIES: CaseStudyEntity[] = [
+  ...REAL_CASE_STUDIES,
+  ...CASE_STUDIES
+];
+
 export const getAllCaseStudies = (): CaseStudyEntity[] => {
-  return CASE_STUDIES;
+  return ALL_COMBINED_CASE_STUDIES;
 };
 
 export const getCaseStudyBySlug = (slug: string): CaseStudyEntity | undefined => {
-  return CASE_STUDIES.find(
-    (c) => c.slug === slug || c.id === slug || (c.legacySlugs && c.legacySlugs.includes(slug))
+  const cleanSlug = slug.replace(/^\/du-an\//, '').replace(/\/$/, '');
+  return ALL_COMBINED_CASE_STUDIES.find(
+    (c) => c.slug === cleanSlug || c.id === cleanSlug || (c.legacySlugs && c.legacySlugs.includes(cleanSlug))
   );
 };

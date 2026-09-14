@@ -22,7 +22,7 @@ Các ảnh chụp màn hình UI được chuẩn hóa và lưu trữ tại `docs
 Các tài nguyên đồ họa 3D / vector được tối ưu và đặt trong `public/assets/`:
 
 ### Illustrations (`public/assets/illustrations/`):
-1. `hero-store-phone.png`: Điện thoại hiển thị bản đồ cửa hàng, Google & Facebook icons, đánh giá 5 sao.
+1. `hero-store-phone.png`: Điện thoại hiển thị bản đồ cửa hàng, Google & Facebook icons, điểm đánh giá của khách hàng.
 2. `roadmap-flag-path.png`: Con đường uốn lượn dẫn tới lá cờ mục tiêu màu xanh lá.
 3. `pricing-laptop-analytics.png`: Laptop hiển thị dashboard biểu đồ tăng trưởng và video demo.
 4. `location-pin-plant.png`: Ghim định vị kèm mầm cây xanh tin cậy.

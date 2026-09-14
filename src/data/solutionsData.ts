@@ -628,7 +628,7 @@ export const SOLUTIONS: Solution[] = [
     ],
     whatWeDo: [
       'Đăng ký, xác minh chính chủ và tối ưu hóa hồ sơ Google Business Profile (Google Maps) chuẩn vị trí địa chỉ thật.',
-      'Cung cấp bộ mã QR Review 5 sao để bàn giúp xin đánh giá từ khách hàng hài lòng nhanh chóng trong 5 giây.',
+      'Tạo QR giúp khách hàng đã sử dụng dịch vụ để lại đánh giá chân thực trên Google nhanh chóng trong 5 giây.',
       'Tối ưu hóa nội dung tìm kiếm địa phương: cài đặt sitemap, robots.txt, tiêu đề dịch vụ và từ khóa có dấu / không dấu bám sát vị trí quận huyện.',
       'Khai báo thông tin xác thực cơ sở (địa chỉ, số hotline, giờ mở cửa, dịch vụ) và cấu hình sẵn sàng để trợ lý AI dễ dàng đọc hiểu và gợi ý.',
       'Tăng tốc độ tải trang đạt chuẩn tối ưu để được Google ưu tiên xếp hạng cao.'
@@ -655,7 +655,7 @@ export const SOLUTIONS: Solution[] = [
         title: 'Khai báo dữ liệu xác thực & Tối ưu AI Search',
         duration: '1 ngày',
         localmateDoes: 'Cài đặt mã dữ liệu xác thực cơ sở vào web, tạo tệp dữ liệu máy học và cấu hình thông tin tóm tắt cho AI.',
-        clientDoes: 'Đặt bộ bảng mica mã QR Review 5 sao tại quầy để bắt đầu xin đánh giá từ khách quen.',
+        clientDoes: 'Đặt bộ bảng mica mã QR tại quầy giúp khách hàng để lại đánh giá chân thực trên Google.',
         outcome: 'Hệ sinh thái tìm kiếm đa kênh Google + Maps + AI hoạt động đồng bộ'
       }
     ],
@@ -737,7 +737,7 @@ export const SOLUTIONS: Solution[] = [
         items: [
           'Tài khoản Google Business Profile xác minh chính chủ 100% bàn giao cho Gmail bạn',
           'Tối ưu đầy đủ danh mục dịch vụ, hình ảnh thực tế, số hotline và địa chỉ ghim đúng vị trí',
-          'Bộ file thiết kế mã QR Code để bàn xin đánh giá 5 sao từ khách quen',
+          'Bộ file thiết kế mã QR Code để bàn giúp khách để lại đánh giá chân thực trên Google',
           'Bảo hành chống cướp Maps và hỗ trợ cập nhật thông tin trong 5 năm'
         ],
         ownershipTag: 'Chính chủ Gmail cá nhân'
@@ -777,7 +777,7 @@ export const SOLUTIONS: Solution[] = [
       {
         step: '04',
         title: 'Kích hoạt tối ưu AI Search & Bàn giao QR Review',
-        description: 'Triển khai cấu hình GEO cho các công cụ AI và bàn giao bảng QR đánh giá 5 sao cho tiệm.',
+        description: 'Triển khai cấu hình GEO cho các công cụ AI và bàn giao bảng QR đánh giá chân thực cho tiệm.',
         duration: '0.5 ngày'
       }
     ],
@@ -803,7 +803,7 @@ export const SOLUTIONS: Solution[] = [
       {
         step: '04',
         title: 'Kích hoạt tối ưu AI Search & Bàn giao QR Review',
-        description: 'Triển khai cấu hình GEO cho các công cụ AI và bàn giao bảng QR đánh giá 5 sao cho tiệm.',
+        description: 'Triển khai cấu hình GEO cho các công cụ AI và bàn giao bảng QR đánh giá chân thực cho tiệm.',
         duration: '0.5 ngày'
       }
     ],
@@ -818,7 +818,7 @@ export const SOLUTIONS: Solution[] = [
         keySetup: [
           'Xác minh Maps chuẩn địa chỉ tòa nhà',
           'Đồng bộ từ khóa dịch vụ: niềng răng, bọc sứ, nhổ răng khôn',
-          'Bộ mã QR để bàn xin đánh giá 5 sao sau khi làm dịch vụ',
+          'Bộ mã QR để bàn giúp khách để lại đánh giá chân thực sau khi làm dịch vụ',
           'Khai báo Schema MedicalBusiness chuẩn y tế'
         ],
         result:
@@ -846,7 +846,7 @@ export const SOLUTIONS: Solution[] = [
     pricing: [
       {
         id: 'offer-maps-setup',
-        name: 'Tạo Google Maps Chính Chủ & QR 5 Sao',
+        name: 'Tạo Google Maps Chính Chủ & QR Đánh Giá Chân Thực',
         priceDisplay: '299.000đ',
         numericPrice: 299000,
         unit: 'trọn gói',
@@ -854,7 +854,7 @@ export const SOLUTIONS: Solution[] = [
         highlights: [
           'Xác minh vị trí chính chủ bằng Gmail cá nhân',
           'Ghim đúng tọa độ GPS, chống thất lạc vị trí',
-          'Tặng bộ thiết kế mã QR Code để bàn xin review 5 sao',
+          'Tạo QR giúp khách hàng đã sử dụng dịch vụ để lại đánh giá chân thực trên Google',
           'Đồng hành hỗ trợ chống cướp Maps trong 5 năm'
         ],
         ctaText: 'Đăng Ký Làm Maps 299k'
@@ -896,7 +896,7 @@ export const SOLUTIONS: Solution[] = [
     pricingPackages: [
       {
         id: 'offer-maps-setup',
-        name: 'Tạo Google Maps Chính Chủ & QR 5 Sao',
+        name: 'Tạo Google Maps Chính Chủ & QR Đánh Giá Chân Thực',
         priceDisplay: '299.000đ',
         numericPrice: 299000,
         unit: 'trọn gói',
@@ -904,7 +904,7 @@ export const SOLUTIONS: Solution[] = [
         highlights: [
           'Xác minh vị trí chính chủ bằng Gmail cá nhân',
           'Ghim đúng tọa độ GPS, chống thất lạc vị trí',
-          'Tặng bộ thiết kế mã QR Code để bàn xin review 5 sao',
+          'Tạo QR giúp khách hàng đã sử dụng dịch vụ để lại đánh giá chân thực trên Google',
           'Đồng hành hỗ trợ chống cướp Maps trong 5 năm'
         ],
         ctaText: 'Đăng Ký Làm Maps 299k'
@@ -1904,7 +1904,7 @@ export const SOLUTIONS: Solution[] = [
         shortDescription: 'Giữ vững thông tin chính chủ và bổ sung hình ảnh định kỳ.',
         description: 'Theo dõi sự thay đổi trên hồ sơ doanh nghiệp, ngăn chặn hành vi sửa đổi lén từ đối thủ, đăng bài cập nhật và hỗ trợ trả lời đánh giá.',
         plainLanguageMeaning: 'Giữ cho hồ sơ bản đồ luôn chính xác, ngăn kẻ xấu sửa đổi thông tin lén và đăng ảnh mới đều đặn.',
-        practicalBenefit: 'Bảo vệ tài sản số quan trọng, giữ vững uy tín 5 sao với khách hàng.',
+        practicalBenefit: 'Bảo vệ tài sản số quan trọng, giữ vững uy tín thương hiệu chân thực với khách hàng.',
         mappedCatalogServiceIds: ['22']
       },
       {

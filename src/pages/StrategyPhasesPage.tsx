@@ -65,20 +65,20 @@ export const StrategyPhasesPage: React.FC<StrategyPhasesPageProps> = ({ onOpenCo
       phaseNumber: '01',
       title: 'Chuẩn Hóa Định Danh & Google Maps',
       shortTitle: 'Chuẩn Hóa Maps & Định Danh',
-      subtitle: 'Xác minh chính chủ, dọn sạch thông tin rác & gắn bảng QR tích lũy 5 sao',
+      subtitle: 'Xác minh chính chủ, dọn sạch thông tin rác & gắn bảng QR đánh giá chân thực',
       tag: 'Giai Đoạn Nền Tảng',
       badgeColor: '#0d7647',
       badgeBg: '#edf7f1',
       icon: MapPin,
       duration: '3 – 5 ngày làm việc',
       coreGoal:
-        'Khẳng định quyền sở hữu thực thể doanh nghiệp trên Google, đồng bộ dữ liệu địa danh (NAP: Tên - Địa chỉ - Điện thoại), loại bỏ nguy cơ bị đối thủ chiếm đoạt địa điểm và kích hoạt hệ thống tích lũy đánh giá 5 sao từ khách hàng thực.',
+        'Khẳng định quyền sở hữu thực thể doanh nghiệp trên Google, đồng bộ dữ liệu địa danh (NAP: Tên - Địa chỉ - Điện thoại), loại bỏ nguy cơ bị đối thủ chiếm đoạt địa điểm và tạo QR giúp khách hàng đã sử dụng dịch vụ để lại đánh giá chân thực trên Google.',
       ktvTasks: [
         'Khảo sát thực địa vị trí cơ sở, tọa độ GPS chuẩn xác, mặt tiền và biển hiệu kinh doanh thực tế.',
         'Xác minh chính chủ Google Business Profile (GBP) bằng video/thư xác thực, gắn thẳng vào email cá nhân/công ty của bạn (bạn nắm 100% quyền sở hữu chính chủ, không ai lấy lại được).',
         'Quét và dọn sạch các địa điểm rác, gộp địa điểm trùng lặp, chỉnh sửa sai sót về tên đường, số nhà, phường xã.',
         'Đồng bộ thông tin thương hiệu (NAP) trên bản đồ Google Maps, Apple Maps, Facebook và các danh bạ địa phương.',
-        'Thiết kế và in ấn bảng QR Code để bàn mica cao cấp: Khách hàng quét mã là mở ngay biểu mẫu đánh giá 5 sao, kèm gợi ý từ khóa dịch vụ tăng tín hiệu đề xuất.'
+        'Thiết kế và in ấn bảng QR Code để bàn mica cao cấp: Tạo QR giúp khách hàng đã sử dụng dịch vụ để lại đánh giá chân thực trên Google.'
       ],
       deliverables: [
         'Quyền Chủ sở hữu duy nhất (Primary Owner) Google Business Profile trên Gmail chính chủ của bạn.',
@@ -87,7 +87,7 @@ export const StrategyPhasesPage: React.FC<StrategyPhasesPageProps> = ({ onOpenCo
         'Tài liệu hướng dẫn nhân viên xin review tự nhiên, không gây phản cảm cho khách.'
       ],
       practicalAdvice:
-        'Đừng vội chạy quảng cáo khi Google Maps chưa chuẩn. Một địa điểm xác minh chính chủ có 20-30 đánh giá 5 sao sẽ giúp gia tăng đáng kể tỷ lệ khách hàng tin tưởng bấm gọi điện khi họ nhìn thấy bạn trên bản đồ.',
+        'Đừng vội chạy quảng cáo khi Google Maps chưa chuẩn. Một địa điểm xác minh chính chủ có 20-30 đánh giá chân thực sẽ giúp gia tăng đáng kể tỷ lệ khách hàng tin tưởng bấm gọi điện khi họ nhìn thấy bạn trên bản đồ.',
       nextStepBridge: 'Sau khi có địa danh chính chủ vững vàng, bước tiếp theo là xây dựng Sales Hub để hứng trọn traffic.'
     },
     {
@@ -504,7 +504,7 @@ export const StrategyPhasesPage: React.FC<StrategyPhasesPageProps> = ({ onOpenCo
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 <li style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', color: 'var(--color-text-main)', fontSize: '0.95rem', lineHeight: 1.5 }}>
                   <Check size={18} style={{ color: 'var(--color-primary)', flexShrink: 0, marginTop: '2px' }} />
-                  <span><strong>G1. Chuẩn hóa Maps chính chủ:</strong> Xác minh vào Gmail của bạn, dọn sạch Maps rác, bảng QR để bàn đón review 5 sao liên tục.</span>
+                  <span><strong>G1. Chuẩn hóa Maps chính chủ:</strong> Xác minh vào Gmail của bạn, dọn sạch Maps rác, bảng QR để bàn giúp khách để lại đánh giá chân thực.</span>
                 </li>
                 <li style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', color: 'var(--color-text-main)', fontSize: '0.95rem', lineHeight: 1.5 }}>
                   <Check size={18} style={{ color: 'var(--color-primary)', flexShrink: 0, marginTop: '2px' }} />

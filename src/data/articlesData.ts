@@ -171,7 +171,7 @@ export const ARTICLES: ArticleEntity[] = [
     primaryIntent: 'HOW_TO',
     funnelStage: 'TOFU',
     primaryKeyword: 'cách tối ưu google maps',
-    summary: 'Cách điền thông tin doanh nghiệp, lựa chọn danh mục chuẩn, tải ảnh thực tế và xây dựng quy trình xin đánh giá 5 sao từ khách hàng thật.',
+    summary: 'Cách điền thông tin doanh nghiệp, lựa chọn danh mục chuẩn, tải ảnh thực tế và tạo QR giúp khách hàng đã sử dụng dịch vụ để lại đánh giá chân thực trên Google.',
     author: {
       name: 'Phạm Minh Quân',
       role: 'Chuyên viên kỹ thuật Maps tại LocalMate'
@@ -185,7 +185,7 @@ export const ARTICLES: ArticleEntity[] = [
       { id: 'chon-danh-muc-chuan', title: '2. Cách chọn đúng danh mục ngành nghề' },
       { id: 'chuan-hoa-nap', title: '3. Chuẩn hóa Tên tiệm - Địa chỉ - Số điện thoại' },
       { id: 'hinh-anh-va-geotag', title: '4. Tải hình ảnh thực tế của cửa hàng' },
-      { id: 'quy-trinh-xin-review', title: '5. Cách xin đánh giá 5 sao từ khách quen' }
+      { id: 'quy-trinh-xin-review', title: '5. Cách xin đánh giá chân thực từ khách hàng' }
     ],
     contentSections: [
       {
@@ -222,10 +222,10 @@ export const ARTICLES: ArticleEntity[] = [
       },
       {
         headingId: 'quy-trinh-xin-review',
-        heading: '5. Cách xin đánh giá 5 sao từ khách quen',
+        heading: '5. Cách xin đánh giá chân thực từ khách hàng',
         paragraphs: [
           'Đừng bao giờ mua đánh giá ảo! Hãy tạo mã QR dẫn thẳng đến trang đánh giá của Google và in ra để tại quầy thu ngân hoặc dán trên bàn.',
-          'Thời điểm tốt nhất để xin đánh giá là ngay sau khi khách hàng khen ngợi dịch vụ hoặc vừa nhận bàn giao sản phẩm ưng ý. Kèm theo một lời cảm ơn chân thành, khách sẽ rất vui vẻ để lại 5 sao cho tiệm.'
+          'Thời điểm tốt nhất để xin đánh giá là ngay sau khi khách hàng sử dụng dịch vụ hoặc nhận bàn giao sản phẩm. Kèm theo một lời cảm ơn chân thành và mã QR, khách sẽ rất thuận tiện để lại đánh giá chân thực cho tiệm.'
         ]
       }
     ],
@@ -243,7 +243,7 @@ export const ARTICLES: ArticleEntity[] = [
     relatedArticleSlugs: ['cach-doc-search-terms-google-ads', 'cau-truc-landing-page-chuyen-doi-cao'],
     cta: {
       title: 'Cần Đưa Cửa Hàng Lên Google Maps Chuyên Nghiệp?',
-      subtitle: 'LocalMate giúp bạn xác minh vị trí chính chủ, điền thông tin chuẩn và thiết lập mã QR xin đánh giá 5 sao trọn gói chỉ từ 299.000đ.',
+      subtitle: 'LocalMate giúp bạn xác minh vị trí chính chủ, điền thông tin chuẩn và tạo QR giúp khách hàng đã sử dụng dịch vụ để lại đánh giá chân thực trên Google trọn gói chỉ từ 299.000đ.',
       buttonText: 'Tối Ưu Google Maps Ngay',
       targetServiceSlug: 'google-maps'
     }

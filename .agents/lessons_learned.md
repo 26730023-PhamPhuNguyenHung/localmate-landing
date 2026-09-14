@@ -1,5 +1,91 @@
 # BÀI HỌC VÀ LƯU Ý KỸ THUẬT (LESSONS LEARNED & BUG MEMORY)
 
+## [2026-09-14] — Xây Dựng 3 Pillar Pages Tiếp Theo Chuẩn SEO & GEO: /google-ads, /content-marketing, /automation
+- **Yêu cầu & Thách thức:**
+  - Hoàn thiện 3 trang Pillar Pages còn lại theo chuẩn Single Source of Truth (SSOT) `src/data/company.ts`:
+    1. `/google-ads` (`src/pages/GoogleAdsPillarPage.tsx`)
+    2. `/content-marketing` (`src/pages/ContentMarketingPillarPage.tsx`)
+    3. `/automation` (`src/pages/AutomationPillarPage.tsx`)
+  - Cấu trúc mỗi trang:
+    1. Hero section với thông điệp thực tế cho SME
+    2. Answer-First Block (50-80 từ trả lời trực tiếp cho AI & người đọc)
+    3. Bảng tóm tắt: Bảng giá, Deliverables, Timeline, Ownership, Support, Last Updated
+    4. Chi tiết gói giải pháp & tính năng thực tế + Bảng so sánh trực quan
+    5. FAQ & CTA nhận tư vấn kết nối `submitLead`
+  - Giao diện Light Mode, tương phản cao, tuyệt đối không glassmorphism.
+- **Kỹ thuật & Kiến trúc thực hiện:**
+  - `GoogleAdsPillarPage.tsx`: Nhấn mạnh 0% kê giá, khách hàng tự quản lý thẻ Visa/Mastercard với Google, LocalMate chỉ thu phí công kỹ thuật 1.500.000đ/tháng, chặn click tặc đa tầng và đo lường bằng cuộc gọi Hotline/Zalo thật. Answer-First Block: 74 từ.
+  - `ContentMarketingPillarPage.tsx`: Giải pháp phòng marketing thuê ngoài cho SME chỉ 990.000đ/tháng với 15 bài viết SEO, 15 thiết kế đồ họa, sao lưu hàng tuần Cloudflare R2, bảo trì Uptime/SSL 24/7 và cập nhật giá/banner trong 15–30 phút. Answer-First Block: 76 từ.
+  - `AutomationPillarPage.tsx`: Hệ thống thông báo đơn hàng rung chuông điện thoại sau 3 giây qua Zalo/Telegram, đồng bộ Google Sheets Mini CRM, chatbot tự động gửi bảng giá với chi phí cài đặt 1 lần 1.900.000đ và 0đ phí duy trì phần mềm hàng tháng. Answer-First Block: 77 từ.
+  - Cập nhật định tuyến `src/App.tsx` cho các canonical routes `/google-ads`, `/content-marketing`, `/automation` và các aliases liên quan.
+- **Nghiệm thu & Bài học:**
+  - Khi alias component import trong TypeScript (`as LegacyName`), cần cẩn trọng rà soát toàn bộ file router để tránh lỗi thiếu import component trùng tên ở nhánh khác.
+  - Các icon Lucide truyền vào `React.ComponentType` nên đặt kiểu `any` hoặc `React.ComponentType<LucideProps>` để tránh lỗi type incompatibility với `PropTypes` trong chế độ strict mode.
+  - `npx tsc --noEmit` và `npm run build` hoàn thành với mã thoát 0 (0 lỗi).
+
+## [2026-09-14] — Xây Dựng 2 Pillar Pages Chuẩn SEO & GEO: /thiet-ke-website & /google-maps-local-seo
+- **Yêu cầu & Thách thức:**
+  - Xây dựng 2 trang Pillar Page cốt lõi tương ứng 2 trụ cột đầu tiên trong `src/data/company.ts`:
+    1. `/thiet-ke-website` (`src/pages/WebDesignPillarPage.tsx`)
+    2. `/google-maps-local-seo` (`src/pages/GoogleMapsPillarPage.tsx`)
+  - Cấu trúc chuẩn hóa 6 phần:
+    1. Hero section với headline rõ ràng, cam kết "Bàn giao mới thanh toán", nút tư vấn Zalo
+    2. Answer-First Block: Đoạn văn 50–80 từ trả lời trực tiếp cho AI ("Làm website 1 trang cho hộ kinh doanh giá bao nhiêu?", "Dịch vụ Google Maps bao gồm những gì?")
+    3. Bảng tóm tắt thông tin rõ ràng (8 tiêu chí bắt buộc: Bảng giá, Đối tượng phù hợp, Hạng mục bàn giao, Thời gian triển khai, Chi phí duy trì, Quyền sở hữu, Bảo hành, Ngày cập nhật)
+    4. Chi tiết các gói cước và quy trình 4 bước thực chiến
+    5. Case studies liên quan (dẫn link sang `/du-an/...` với các dự án thực tế Quán XÈO, Nội Thất Nam Phát, Hương Sen Spa)
+    6. FAQ chi tiết và CTA chuyển đổi cao
+  - Giao diện Light Mode, phông Be Vietnam Pro, không glassmorphism.
+- **Giải pháp & Kỹ thuật triển khai:**
+  - Khởi tạo `src/pages/WebDesignPillarPage.tsx` và `src/pages/GoogleMapsPillarPage.tsx` đọc trực tiếp từ `COMPANY_DATA` trong `src/data/company.ts`.
+  - Thiết kế Answer-First Block chuẩn SEO/GEO với độ dài 72 từ (Web) và 76 từ (Maps), hỗ trợ nút copy và schema `FAQPage` JSON-LD tự động bơm vào thẻ head.
+  - Xây dựng bảng tóm tắt 8 tiêu chí chuẩn xác, layout responsive ngang có cuộn mượt mà trên mobile.
+  - Cập nhật định tuyến trong `src/App.tsx` trỏ `/thiet-ke-website` và `/google-maps-local-seo` về 2 trang Pillar mới.
+  - Cập nhật `src/pages/HtmlSitemapPage.tsx` bổ sung 2 liên kết Pillar pages.
+- **Nghiệm thu:**
+  - `npx tsc --noEmit` và `npm run build` hoàn thành với mã thoát 0.
+  - Không glassmorphism, tương phản chữ đậm trên nền sáng, typography `Be Vietnam Pro`.
+
+
+## [2026-09-14] — Hoàn Thiện Canonical Routes, Catalog Bảng Giá Toàn Diện (/bang-gia) & Chuẩn Hóa Header/Footer
+- **Yêu cầu & Vấn đề xử lý:**
+  1. *Routing*: `src/App.tsx` cần kết nối toàn bộ canonical routes chuẩn (`/thiet-ke-website`, `/google-maps-local-seo`, `/google-ads`, `/content-marketing`, `/automation`, `/bang-gia`, `/du-an`, `/du-an/:slug`, `/ve-localmate`, `/lien-he`) tương ứng với 5 Pillar Pages chuyên sâu và 3 Case Studies thực tế từ `company.ts`.
+  2. *Catalog Bảng giá*: Trang `/bang-gia` (`PricingPage.tsx`) trước đây ẩn drawer 41 dịch vụ trong accordion và chỉ hiện 16 item. Cần một Catalog toàn diện (`FullServicesCatalogSection.tsx`) hiển thị mở sẵn, nhóm theo 5 trụ cột rõ ràng từ `company.ts` & `servicesCatalog.ts` kèm bộ lọc tìm kiếm tức thì theo từ khóa và hình thức thanh toán (trọn gói / theo tháng).
+  3. *Header & Footer*: Cập nhật menu Desktop Mega Menu và Mobile Drawer trỏ trực tiếp về các canonical routes mới. Footer loại bỏ thông tin cũ/lệch chuẩn, đồng bộ 100% thông tin pháp nhân từ `company.ts` (CÔNG TY TNHH LOCALMATE, MST 4001337934, địa chỉ 03 Trường Chinh, hotline 0834.422.439, email contact@localmate.vn).
+- **Giải pháp & Thiết kế kỹ thuật:**
+  - `src/App.tsx`: Wire up chuẩn xác cả canonical routes mới lẫn các legacy aliases để đảm bảo không bị 404.
+  - `src/data/caseStudiesData.ts`: Bổ sung mapping 3 case studies thực tế (`xeo-restaurant`, `nam-phat`, `huong-sen`) với đầy đủ số liệu đo lường thật (Lighthouse 99, PageSpeed 0.7s, Top Maps).
+  - `src/components/sections/FullServicesCatalogSection.tsx`: Catalog 41+ micro-services với bộ lọc tìm kiếm text, filter 5 trụ cột có badge đếm số lượng dịch vụ, thẻ card chi tiết từng dịch vụ kèm mã SLA, scope và nút chọn dịch vụ mở LeadModal.
+  - `src/pages/PricingPage.tsx`: Đặt `FullServicesCatalogSection` làm trọng tâm của trang bảng giá.
+  - `src/components/layout/Header.tsx` & `Footer.tsx`: Cập nhật `SOLUTION_PILLARS` và Footer grid đồng bộ theo SSOT `company.ts`.
+- **Nghiệm thu:**
+  - `npx tsc --noEmit` hoàn thành với exit code 0.
+  - Giao diện tuân thủ tuyệt đối: 100% Light Mode sáng sủa, không glassmorphism, nền sáng chữ đậm, scrollbar-gutter: stable, text-wrap: pretty.
+- **Vấn đề tồn đọng:**
+  - Trang `/du-an` trước đây chỉ hiển thị 5 kịch bản giả định (Practice Blueprints), chưa trưng bày trực tiếp 3 dự án khách hàng thực tế đã bàn giao từ `src/data/company.ts` (`COMPANY_DATA.caseStudies`: Quán XÈO, Xưởng Nội Thất Nam Phát, Hương Sen Spa).
+  - Chưa làm nổi bật các chỉ số đo lường có thật bằng công cụ toàn cầu: PageSpeed 98-100, Thời gian tải <0.8s, Dung lượng <500KB, Lập chỉ mục Google Search và Thứ hạng Google Maps.
+  - Trang chi tiết `/du-an/:slug` chưa hỗ trợ các canonical slug thực tế (`/du-an/xeo-restaurant`, `/du-an/nam-phat`, `/du-an/huong-sen`) và thiếu cấu trúc chuẩn mực 7 phần.
+- **Giải pháp chuẩn hóa:**
+  - `src/pages/ProjectsPage.tsx`:
+    - Đưa 3 dự án thực tế làm tâm điểm hàng đầu với Tab chuyển đổi giữa "Dự Án Thực Tế Đã Bàn Giao" và "Kịch Bản & Workflow Mẫu Theo Ngành".
+    - Thiết kế Scorecard và bảng so sánh 5 chỉ số kỹ thuật thực tế (PageSpeed, Tải trang, Dung lượng, Google Index, Google Maps).
+    - Giữ Light Mode 100%, không glassmorphism, viền nhẹ tương phản cao, nút gọi khảo sát 0đ kết nối trực tiếp Modal Lead.
+  - `src/pages/CaseStudyDetailPage.tsx`:
+    - Hỗ trợ chuẩn xác các canonical slug `/du-an/xeo-restaurant`, `/du-an/nam-phat`, `/du-an/huong-sen` và fallback kịch bản cũ an toàn.
+    - Cấu trúc chuẩn mực 7 phần:
+      1. Khách hàng & Vấn đề ban đầu
+      2. Giải pháp triển khai
+      3. Công nghệ & Hạng mục bàn giao
+      4. Thời gian thực hiện
+      5. Chỉ số đo lường thực tế
+      6. Đánh giá của khách hàng
+      7. CTA khảo sát cơ sở 0đ
+    - Tích hợp Schema `Article` / `CreativeWork` kết hợp Breadcrumbs JSON-LD trong `SEOHead.tsx`.
+- **Nghiệm thu:**
+  - `npm run build` hoàn thành với exit code 0.
+  - Các canonical URLs đồng bộ 100% với `public/sitemap.xml`.
+
+
 ## [2026-09-14] — Nâng Cấp Toàn Diện Schema.org JSON-LD Graph & Noscript Fallback trong index.html
 - **Vấn đề Schema & Fallback cũ:**
   - `index.html` dùng mảng schema rời rạc, thiếu `@graph` thống nhất, không có `@id` gốc cố định cho Organization dẫn đến việc Google và các hệ thống AI (GEO/AEO) không xâu chuỗi được quan hệ giữa `WebSite` và pháp nhân `LocalBusiness`.
@@ -158,3 +244,23 @@
   - Bổ sung **Bài Toán Hòa Vốn (ROI Breakeven Analysis)** ngay dưới bảng giá: Chứng minh chỉ cần 1-3 ca khám (Nha khoa) hoặc 10-15 đơn (F&B) mỗi tháng là bù đắp toàn bộ chi phí 2.900k/tháng.
   - Đưa điểm chạm GEO lên Trang chủ: Thẻ `geo-ai-search` trong `ServiceCardsSection` và Pain Point 05 ("Đối thủ lên Top AI trước") trong `ConversionJourneySection`.
   - **Nghiệm thu kỹ thuật**: `npm run build` PASS 100% (1583 modules, 0 lỗi TypeScript).
+
+## 🚀 [2026-09-14] Cấu Hình Technical Crawl & SEO / IndexNow Automation (SSOT)
+- **Bối cảnh & Thách thức**:
+  - Các công cụ tìm kiếm và AI Agents thế hệ mới (OpenAI SearchBot, GPTBot, ChatGPT-User, ClaudeBot, PerplexityBot, Applebot-Extended) cần cấu hình `robots.txt` cho phép crawl rõ ràng và liên kết trực tiếp đến `llms.txt`.
+  - Google và Bing cần danh sách URL chuẩn (15 URLs SSOT) với ngày `lastmod` thực tế để ưu tiên lập chỉ mục.
+  - Công nghệ IndexNow giúp thông báo cho Bing, Yandex, Naver... cập nhật URL tức thì khi deploy thay vì chờ bot tự crawl thụ động.
+- **Giải pháp kỹ thuật đã triển khai**:
+  1. `public/robots.txt`:
+     - Khai báo rõ ràng Allow cho Googlebot, Bingbot, OAI-SearchBot, GPTBot, ChatGPT-User, ClaudeBot, Claude-Web, PerplexityBot, Applebot-Extended, Google-Extended, Bytespider.
+     - Khai báo `Sitemap: https://localmate.vn/sitemap.xml` và `Link: https://localmate.vn/llms.txt`.
+  2. `public/sitemap.xml`:
+     - Cập nhật chuẩn hóa 15 URL cốt lõi (Trang chủ, 5 trụ cột dịch vụ, Bảng giá, Dự án & 3 Case Studies chuẩn mực Xèo, Nam Phát, Hương Sen, Về LocalMate, Liên hệ, Kiến thức, Landing 490k) cùng các dịch vụ GEO/AEO đột phá.
+     - Đặt `lastmod` thực tế chuẩn ISO `2026-09-14`.
+  3. IndexNow Key & Automation:
+     - Tạo file xác thực `public/8c3b7a2d59144e3fae8026194b159f8e.txt`, `public/indexnow-key.txt`, `public/indexnow.json`.
+     - Tạo script `scripts/submit-indexnow.js` ping đồng thời `api.indexnow.org` và `www.bing.com` qua HTTP POST chuẩn spec IndexNow.
+     - Thêm lệnh `npm run submit:indexnow` vào `package.json`.
+     - Kiểm thử thực tế: Kết quả trả về HTTP `202 Accepted` cho cả 2 cổng IndexNow & Bing.
+  4. Routing Router Support:
+     - Bổ sung routing trực tiếp trong `src/App.tsx` cho các canonical path: `/thiet-ke-website`, `/google-maps-local-seo`, `/google-ads`, `/content-marketing`, `/automation` để người dùng và bots truy cập trực tiếp URL đều render đúng component chuyên biệt tương ứng.

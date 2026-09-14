@@ -21,7 +21,7 @@ export interface ServiceCardItem {
   slug: string;
   badge: string;
   badgeType: 'hot' | 'popular' | 'trusted' | 'efficient';
-  icon: 'Globe' | 'MapPin' | 'TrendingUp' | 'FileText';
+  icon: 'Globe' | 'MapPin' | 'TrendingUp' | 'FileText' | 'Sparkles';
   description: string;
   price: string;
   pricePeriod?: string;
@@ -124,6 +124,29 @@ export const CORE_SERVICES_CARDS: ServiceCardItem[] = [
       'Kỹ thuật viên túc trực hỗ trợ thay đổi nội dung',
       'Thay thế hoàn toàn nhân sự kỹ thuật full-time'
     ]
+  },
+  {
+    id: 'geo-ai-search',
+    title: 'Tối Ưu AI Search & GEO 2026',
+    slug: '/dich-vu/geo',
+    badge: 'Xu hướng 2026 ⭐',
+    badgeType: 'hot',
+    icon: 'Sparkles',
+    description: 'Chuẩn hóa thực thể số, Schema và Prompt Bank để ChatGPT, Gemini, Perplexity ưu tiên đề xuất tiệm của bạn.',
+    price: '2.900.000đ',
+    pricePeriod: '/ tháng',
+    starterPriceLabel: 'Gói khởi điểm: 2.900.000đ/tháng (1 cơ sở)',
+    advancedPrice: 'Gói nâng cao: 4.900.000đ/tháng (Đa kênh & Maps)',
+    priceNote: 'Nghiệm thu đo lường Share of Model thực tế',
+    duration: 'Triển khai 5–7 ngày • Báo cáo tháng',
+    ctaText: 'Xem dịch vụ GEO',
+    serviceNameForLead: 'Dịch vụ GEO Địa Phương 2026',
+    highlights: [
+      'AI gọi tên quán khi khách hỏi quanh tiệm',
+      'Bộ 50–80 Prompt Bank câu hỏi tự nhiên địa phương',
+      'Cấy Schema LocalBusiness đa tầng chuẩn AI',
+      'Đo lường Share of Model với ảnh chụp truy vấn thật'
+    ]
   }
 ];
 
@@ -131,7 +154,8 @@ const ICON_COMPONENTS = {
   Globe,
   MapPin,
   TrendingUp,
-  FileText
+  FileText,
+  Sparkles
 };
 
 export interface ServiceCardsSectionProps {

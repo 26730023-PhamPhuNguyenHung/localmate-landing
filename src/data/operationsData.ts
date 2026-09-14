@@ -514,13 +514,13 @@ export const DELIVERABLES_DATA: DeliverableItem[] = [
     number: '03',
     badge: 'Bàn giao thực tế',
     title: 'Hồ sơ Google Business & Google Maps GPS Chuẩn Xác',
-    tagline: 'Tọa độ GPS chính xác từng mét, đồng bộ thực thể Entity NAP với Knowledge Graph, mã QR Review 5 sao thật',
-    description: 'Vị trí cơ sở được ghim đúng tọa độ GPS thực tế trên bản đồ Google Maps, đồng bộ chuẩn xác Tên - Địa chỉ - Số điện thoại (NAP) với mạng lưới thực thể Entity. Bàn giao quyền sở hữu vào Gmail của bạn, hướng dẫn xin đánh giá 5 sao thật (nói KHÔNG với review ảo).',
+    tagline: 'Tọa độ GPS chính xác từng mét, đồng bộ thực thể Entity NAP với Knowledge Graph, mã QR đánh giá chân thực trên Google',
+    description: 'Vị trí cơ sở được ghim đúng tọa độ GPS thực tế trên bản đồ Google Maps, đồng bộ chuẩn xác Tên - Địa chỉ - Số điện thoại (NAP) với mạng lưới thực thể Entity. Bàn giao quyền sở hữu vào Gmail của bạn, tạo QR giúp khách hàng đã sử dụng dịch vụ để lại đánh giá chân thực trên Google (nói KHÔNG với review ảo).',
     checklist: [
       'Định vị tọa độ Google Maps GPS chính xác 100% từng mét thực địa',
       'Đồng bộ thực thể Entity NAP trên Google Knowledge Graph & Local Pack',
       'Xác minh chính chủ liên kết trực tiếp vào tài khoản Google của bạn',
-      'Cung cấp mã QR để bàn giúp khách quét đánh giá 5 sao thật nhanh chóng'
+      'Cung cấp mã QR để bàn giúp khách quét để lại đánh giá chân thực trên Google nhanh chóng'
     ],
     mockup: {
       type: 'maps',
@@ -530,7 +530,7 @@ export const DELIVERABLES_DATA: DeliverableItem[] = [
         { label: 'Định vị tọa độ', value: 'GPS chính xác thực địa • Khớp chỉ đường Maps', isHighlight: true },
         { label: 'Tình trạng hồ sơ', value: 'Đã xác minh chính chủ (Owner: Gmail của bạn)' },
         { label: 'Đồng bộ Entity', value: 'Khớp NAP trên Knowledge Graph & Danh bạ uy tín' },
-        { label: 'Mã QR Review', value: 'Mã QR in để bàn nhận đánh giá 5 sao thật từ khách' }
+        { label: 'Mã QR Review', value: 'Mã QR in để bàn nhận đánh giá chân thực từ khách' }
       ]
     }
   },
@@ -642,7 +642,7 @@ export const PROOF_SHOWCASE_DATA: ProofShowcaseItem[] = [
     tag: 'HIỆN DIỆN SỐ 24H',
     title: 'Website giới thiệu dịch vụ chuẩn UX mở siêu nhanh trong 24 giờ',
     context: 'Một cơ sở kinh doanh dịch vụ cần trang web gấp để gửi cho đối tác và chạy quảng cáo ngay trong tuần, nhưng ngại các agency báo giá hàng chục triệu và làm mất 1 tháng.',
-    solutionBuilt: 'Sử dụng cấu trúc chuẩn hóa: Tên miền riêng, hosting tốc độ cao, bảng giá công khai, mã QR Maps 5 sao và nút gọi điện thoại/Zalo nổi bật trên di động.',
+    solutionBuilt: 'Sử dụng cấu trúc chuẩn hóa: Tên miền riêng, hosting tốc độ cao, bảng giá công khai, mã QR đánh giá Maps chân thực và nút gọi điện thoại/Zalo nổi bật trên di động.',
     executionTime: 'Hoàn thành và bàn giao trong đúng 24 giờ',
     metrics: 'Tốc độ tải trang < 0.8s • Bàn giao 100% tài khoản'
   },
@@ -1208,7 +1208,7 @@ export const ALL_15_SERVICES_DATA: OperationServiceItem[] = [
     headline: 'Khách gõ tìm kiếm quanh đây là thấy tiệm bạn ngay trên đầu bản đồ',
     problem: 'Khách hàng ở ngay con hẻm bên cạnh mở Google Maps tìm quán ăn, tiệm sửa xe hay phòng khám nhưng chỉ thấy đối thủ. Vị trí của bạn chưa có ghim, hoặc bị đối thủ chơi xấu đổi số điện thoại, cướp quyền sở hữu.',
     outcome: 'Điểm Google Maps của bạn hiện rõ ràng trên bản đồ với huy hiệu đã xác minh chính chủ, hiển thị số hotline gọi ngay và bộ ảnh thực tế bắt mắt.',
-    promise: 'Bàn giao quyền quản trị Primary Owner trực tiếp vào Gmail của bạn, tặng bộ mã QR để bàn xin đánh giá 5 sao, cam kết bảo hành chống mất maps 5 năm.',
+    promise: 'Bàn giao quyền quản trị Primary Owner trực tiếp vào Gmail của bạn, tặng bộ mã QR để bàn giúp khách để lại đánh giá chân thực trên Google, cam kết bảo hành chống mất maps 5 năm.',
     description: 'LocalMate trực tiếp hỗ trợ xác minh điểm Google Maps chính chủ, chuẩn hóa thông tin giờ mở cửa, danh mục dịch vụ và tối ưu kỹ thuật Local SEO để điểm bán của bạn lọt vào Top 3 tìm kiếm nổi bật (Local 3-Pack) khi khách hàng tìm quanh khu vực.',
     startingPrice: 'Từ 299.000đ (Khởi tạo)',
     priceNote: 'Khởi tạo ghim chuẩn: 299k • SEO Top Maps trọn gói: 1.490k',
@@ -1227,19 +1227,19 @@ export const ALL_15_SERVICES_DATA: OperationServiceItem[] = [
       'Bàn giao 100% quyền Quản trị viên chính (Primary Owner), không giữ con tin kỹ thuật',
       'Cập nhật đầy đủ số hotline, giờ mở cửa hàng ngày, menu dịch vụ và hình ảnh thực tế',
       'Chống đối thủ chơi xấu: Đổi số điện thoại lén lút, đổi tên tiệm hoặc báo đóng cửa',
-      'Tặng kèm file in mã QR để bàn (Mica / Decal) giúp khách quét đánh giá 5 sao tức thì',
+      'Tặng kèm file in mã QR để bàn (Mica / Decal) giúp khách quét để lại đánh giá chân thực tức thì',
       'Kỹ thuật tối ưu đẩy top 3 tìm kiếm khi khách gõ "gần đây"'
     ],
     process: [
       { step: '01', title: 'Thu thập thông tin tiệm', description: 'Gửi địa chỉ chính xác, ảnh biển hiệu mặt tiền và số điện thoại nhận cuộc gọi.' },
       { step: '02', title: 'Ghim vị trí & Xác minh', description: 'Kỹ thuật viên ghim tọa độ GPS chính xác và tiến hành quy trình xác minh chính chủ.' },
       { step: '03', title: 'Tối ưu hồ sơ chuẩn SEO', description: 'Điền đầy đủ danh mục ngành, bài đăng giới thiệu, sản phẩm và album ảnh sắc nét.' },
-      { step: '04', title: 'Thiết kế mã QR 5 sao', description: 'Tạo mã QR riêng biệt trỏ thẳng vào form đánh giá 5 sao để bạn in để quầy thu ngân.' },
+      { step: '04', title: 'Thiết kế mã QR đánh giá', description: 'Tạo QR giúp khách hàng đã sử dụng dịch vụ để lại đánh giá chân thực trên Google, sẵn sàng in để quầy thu ngân.' },
       { step: '05', title: 'Bàn giao tài khoản & Bảo hành', description: 'Chuyển giao quyền sở hữu tối cao vào Gmail của bạn và kích hoạt bảo hành 5 năm.' }
     ],
     features: [
       'Khách tìm quanh khu vực thấy tiệm đầu tiên, bấm nút gọi điện thoại hoặc bấm chỉ đường ngay',
-      'Tài khoản chính chủ 100%, tự tin tích lũy đánh giá 5 sao bền vững theo năm tháng',
+      'Tài khoản chính chủ 100%, tự tin tích lũy đánh giá chân thực bền vững theo năm tháng',
       'Bảo hành quyền sở hữu và kỹ thuật bảo vệ Maps suốt 5 năm'
     ],
     faqs: [

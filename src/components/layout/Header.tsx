@@ -41,59 +41,59 @@ interface SolutionPillarItem {
 
 const SOLUTION_PILLARS: SolutionPillarItem[] = [
   {
-    id: 'hien-dien-so-website',
+    id: 'thiet-ke-website',
     step: '01',
-    title: 'Hiện diện số & Website',
-    subtitle: 'Website & Hồ sơ số',
-    desc: 'Website bán hàng, hồ sơ năng lực số chuẩn di động, rõ ràng bảng giá.',
-    href: '/giai-phap/xay-nen-tang-so',
-    badge: 'Khởi tạo',
+    title: 'Thiết Kế Website',
+    subtitle: 'Tốc độ < 1s & Bán hàng',
+    desc: 'Website bán hàng, hồ sơ năng lực số chuẩn di động, bàn giao mới thanh toán.',
+    href: '/thiet-ke-website',
+    badge: 'Từ 490k',
     icon: Globe,
     colorClass: 'pillar-emerald'
   },
   {
-    id: 'tim-khach-hang',
+    id: 'google-maps-local-seo',
     step: '02',
-    title: 'Tìm khách hàng',
-    subtitle: 'Quảng cáo & Khách gần',
-    desc: 'Google Ads 0% kê giá, lọc click ảo và tối ưu cuộc gọi từ khách gần tiệm.',
-    href: '/giai-phap/thu-hut-khach-hang',
-    badge: 'Ra đơn',
+    title: 'Google Maps & Local SEO',
+    subtitle: 'Xác minh GPS & Top 3',
+    desc: 'Xác minh Google Maps chính chủ, tối ưu lên Top 3 tìm kiếm quanh bán kính 3-10km.',
+    href: '/google-maps-local-seo',
+    badge: 'Từ 299k',
+    icon: MapPin,
+    colorClass: 'pillar-amber'
+  },
+  {
+    id: 'google-ads',
+    step: '03',
+    title: 'Google Ads & Tìm Kiếm',
+    subtitle: '0% kê giá & Ra cuộc gọi',
+    desc: 'Google Ads 0% kê giá, chặn click ảo, tối ưu chuyển đổi gọi Zalo & Hotline.',
+    href: '/google-ads',
+    badge: 'Từ 390k',
     icon: TrendingUp,
     colorClass: 'pillar-blue'
   },
   {
-    id: 'quan-ly-cham-soc-khach',
-    step: '03',
-    title: 'Quản lý & Chăm sóc khách',
-    subtitle: 'Đồng hành & Bảo hành 5 năm',
-    desc: 'Đội ngũ IT riêng hỗ trợ 1-1 qua Zalo, giữ chân khách quen, bảo hành 5 năm.',
-    href: '/giai-phap/dong-hanh-cham-soc',
-    badge: 'Bảo hành 5 năm',
+    id: 'content-marketing',
+    step: '04',
+    title: 'Content & Chăm Sóc Số',
+    subtitle: 'Bảo trì & Bài viết SEO',
+    desc: 'Chăm sóc website, viết bài chuẩn SEO, bảo mật sao lưu và đồng hành 5 năm.',
+    href: '/content-marketing',
+    badge: 'Từ 290k/th',
     icon: ShieldCheck,
     colorClass: 'pillar-teal'
   },
   {
-    id: 'bot-viec-thu-cong',
-    step: '04',
-    title: 'Bớt việc thủ công',
-    subtitle: 'CRM & Tự động gom đơn',
-    desc: 'Quản lý khách hàng tinh gọn, Mini App Zalo & chăm sóc tự động không sót việc.',
-    href: '/giai-phap/van-hanh-tu-dong-hoa',
-    badge: 'Tiết kiệm giờ',
+    id: 'automation',
+    step: '05',
+    title: 'Phần Mềm & Tự Động Hóa',
+    subtitle: 'CRM & Báo đơn Telegram',
+    desc: 'Báo đơn Telegram tức thì, Google Sheets CRM, chatbot AI bán hàng 24/7.',
+    href: '/automation',
+    badge: 'Từ 299k',
     icon: Cpu,
     colorClass: 'pillar-purple'
-  },
-  {
-    id: 'ung-dung-ai',
-    step: '05',
-    title: 'Ứng dụng AI',
-    subtitle: 'Google Maps & AI Search',
-    desc: 'Xác minh Google Maps chính chủ, tối ưu để AI ChatGPT / Gemini đề xuất đầu tiên.',
-    href: '/giai-phap/duoc-tim-thay',
-    badge: 'Chuẩn 2026',
-    icon: MapPin,
-    colorClass: 'pillar-amber'
   }
 ];
 
@@ -204,6 +204,11 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
   };
 
   const isSolutionsActive =
+    currentPath === '/thiet-ke-website' ||
+    currentPath === '/google-maps-local-seo' ||
+    currentPath === '/google-ads' ||
+    currentPath === '/content-marketing' ||
+    currentPath === '/automation' ||
     currentPath.startsWith('/giai-phap') ||
     currentPath.startsWith('/dich-vu') ||
     currentPath.startsWith('/landing-490k');

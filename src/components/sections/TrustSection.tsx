@@ -17,8 +17,8 @@ export const TrustSection: React.FC = () => {
     },
     {
       badge: 'Tài sản 03',
-      title: 'Bộ mã QR Review 5 sao & Bảng giá để bàn',
-      desc: 'File thiết kế chuẩn in ấn sắc nét đặt tại quầy thu ngân để khách hàng ghé tiệm quét đánh giá 5 sao tức thì.'
+      title: 'Bộ mã QR đánh giá Google & Bảng giá để bàn',
+      desc: 'Tạo QR giúp khách hàng đã sử dụng dịch vụ để lại đánh giá chân thực trên Google, thiết kế chuẩn in ấn đặt tại quầy.'
     },
     {
       badge: 'Tài sản 04',

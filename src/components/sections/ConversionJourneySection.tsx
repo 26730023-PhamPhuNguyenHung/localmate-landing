@@ -249,6 +249,56 @@ const JOURNEY_PAIN_POINTS: PainPointItem[] = [
       ],
       prefillNote: 'Cơ sở của tôi cần người hỗ trợ kỹ thuật túc trực lâu dài để cập nhật nội dung và bảo trì website.'
     }
+  },
+  {
+    id: 'pain-geo-ai',
+    number: '05',
+    tabTitle: 'Đối thủ lên Top AI trước',
+    painHeading: 'Khách hỏi ChatGPT, Gemini quanh tiệm nhưng AI toàn chỉ sang đối thủ',
+    painDesc: 'Năm 2026, khách hàng dùng giọng nói hỏi AI trên điện thoại tìm quán ăn, nha khoa, spa uy tín. Cơ sở chưa cấy Schema và Prompt Bank sẽ bị AI bỏ qua và chỉ đường cho khách sang quán đối thủ.',
+    icon: Sparkles,
+    solution: {
+      title: 'Tối Ưu Thực Thể Số & Prompt Bank Đón Đầu Khách Hỏi AI (GEO 2026)',
+      badge: 'Xu hướng 2026 • Ra khách mới',
+      price: 'Từ 2.900.000đ/tháng',
+      sla: 'Nghiệm thu Share of Model hàng tháng',
+      summary: 'Cấy cấu trúc dữ liệu JSON-LD Schema đa tầng, phủ 50–80 Prompt Bank câu hỏi tự nhiên địa phương và đồng bộ 20+ danh bạ để AI ưu tiên gọi tên tiệm của bạn.',
+      highlights: [
+        'AI gọi tên tiệm khi khách hỏi tìm kiếm địa phương quanh bán kính 3–5km',
+        'Xây dựng 50–80 Prompt Bank chuẩn thói quen ngôn ngữ người dân bản địa',
+        'Đồng bộ NAP trên 20+ nền tảng: Google Maps, Apple Maps, Cốc Cốc, Bing',
+        'Đo lường Share of Model minh bạch kèm ảnh chụp câu trả lời thực tế của AI'
+      ],
+      workflowLink: '/dich-vu/geo',
+      workflowLinkLabel: 'Xem quy trình triển khai GEO 5 trụ cột',
+      workflowSteps: [
+        {
+          step: '1',
+          title: 'Khảo sát thực thể & tọa độ GPS',
+          desc: 'Chuẩn hóa NAP và cấy Schema LocalBusiness vào mã nguồn web.',
+          time: '2 ngày'
+        },
+        {
+          step: '2',
+          title: 'Xây dựng Prompt Bank câu hỏi tự nhiên',
+          desc: 'Nghiên cứu các mẫu câu khách hỏi ChatGPT/Gemini về ngành của bạn.',
+          time: '2 ngày'
+        },
+        {
+          step: '3',
+          title: 'Đồng bộ 20+ Citations chéo',
+          desc: 'Tạo mạng lưới kiểm chứng dữ liệu mở để AI tin cậy trích dẫn.',
+          time: '3 ngày'
+        },
+        {
+          step: '4',
+          title: 'Quét đo lường Share of Model định kỳ',
+          desc: 'Báo cáo số lần xuất hiện trên 4 AI Engine lớn, nghiệm thu minh bạch.',
+          time: 'Hàng tháng'
+        }
+      ],
+      prefillNote: 'Quán của tôi cần làm GEO để khi khách hỏi ChatGPT hoặc Google AI sẽ được đề xuất lên vị trí số 1.'
+    }
   }
 ];
 

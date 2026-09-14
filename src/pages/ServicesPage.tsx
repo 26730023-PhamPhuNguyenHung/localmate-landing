@@ -87,7 +87,7 @@ const SOLUTION_PILLARS_HUB: SolutionPillarHubItem[] = [
       'Tối ưu toàn diện hồ sơ Google Business Profile (đồng nhất tên, địa chỉ, số điện thoại NAP, định vị GPS chuẩn)',
       'Cấu hình Schema.org JSON-LD chuyên sâu (LocalBusiness, GeoCoordinates) giúp AI đọc hiểu dịch vụ',
       'Triển khai kỹ thuật GEO / AEO giúp thương hiệu được AI Overviews & ChatGPT trích dẫn làm nguồn uy tín',
-      'Thiết lập mã QR và quy trình tự động thu thập đánh giá 5 sao thực tế từ khách quen tại quầy'
+      'Tạo QR giúp khách hàng đã sử dụng dịch vụ để lại đánh giá chân thực trên Google'
     ],
     techModules: [
       'Google Maps Top 3',
@@ -96,7 +96,7 @@ const SOLUTION_PILLARS_HUB: SolutionPillarHubItem[] = [
       'Schema.org JSON-LD',
       'AI Overviews',
       'Local Citations',
-      'Mã QR Đánh Giá 5 Sao'
+      'Mã QR Đánh Giá Chân Thực'
     ],
     startingPrice: 'Từ 299.000đ',
     slaTime: 'Hoàn tất trong 24 – 48 giờ',

@@ -214,7 +214,7 @@ export const DemoShowcaseSection: React.FC = () => {
                           <div className="mockup-maps-buttons">
                             <span className="mockup-map-btn">📍 Chỉ đường</span>
                             <span className="mockup-map-btn">📞 Gọi điện</span>
-                            <span className="mockup-map-btn qr">Mã QR 5 sao</span>
+                            <span className="mockup-map-btn qr">Mã QR đánh giá</span>
                           </div>
                         </div>
                       )}

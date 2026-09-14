@@ -19,11 +19,12 @@ import {
   Compass,
   CheckSquare
 } from 'lucide-react';
-import { CONTACT_INFO, COMPANY_INFO } from '../../data/landingContent';
+import { COMPANY_DATA } from '../../data/company';
 import { Link } from './Router';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
+  const { entity } = COMPANY_DATA;
 
   return (
     <footer className="localmate-footer" aria-label="Thông tin cuối trang LocalMate">
@@ -50,48 +51,39 @@ export const Footer: React.FC = () => {
           <div className="footer-header-cta">
             <div className="footer-local-badge">
               <span className="live-dot" aria-hidden="true"></span>
-              <span>Tư vấn trực tiếp 1-1 tận nơi tại Hóc Môn, TP.HCM &amp; Toàn quốc</span>
+              <span>Hỗ trợ kỹ thuật 1-1 tại Đà Nẵng, Hội An, TP.HCM &amp; Toàn quốc</span>
             </div>
             <a
-              href={`tel:${CONTACT_INFO.phoneRaw}`}
+              href={`tel:${entity.contact.hotlineTel}`}
               className="footer-quick-phone-btn"
               title="Gọi Hotline tư vấn nhanh"
             >
               <Phone size={15} />
-              <span>0834 422 439</span>
+              <span>{entity.contact.hotlineDisplay}</span>
             </a>
           </div>
         </div>
 
-        {/* MAIN CONTENT GRID: 4 COLUMNS */}
+        {/* MAIN CONTENT GRID: 5 COLUMNS */}
         <div className="footer-main-grid">
           {/* CỘT 1: HỒ SƠ PHÁP NHÂN & ĐỊA BÀN PHỤC VỤ (LOCAL IDENTITY) */}
           <div className="footer-col col-identity">
             <h3 className="footer-heading-legal">
-              {COMPANY_INFO.legalName}
+              {entity.legalName}
             </h3>
 
             <p className="footer-intro-desc">
-              Đơn vị tiên phong cung cấp giải pháp Website, Google Maps và Digital Marketing tinh gọn, giá minh bạch dành cho chủ tiệm, tiểu thương và doanh nghiệp địa phương.
+              {entity.shortDescription}
             </p>
 
             <div className="footer-contact-list">
-              {/* Địa bàn làm việc & Văn phòng Hóc Môn */}
-              <div className="contact-item">
-                <MapPin size={16} className="contact-icon highlight-icon" />
-                <div className="contact-text">
-                  <strong>Văn phòng tư vấn (TP.HCM):</strong>
-                  <span>Khu vực Hóc Môn &amp; Quận 12, TP. Hồ Chí Minh</span>
-                  <span className="local-tag">Hỗ trợ hẹn gặp khảo sát 1-1 tận nơi</span>
-                </div>
-              </div>
-
               {/* Trụ sở đăng ký kinh doanh */}
               <div className="contact-item">
-                <Building2 size={16} className="contact-icon" />
+                <Building2 size={16} className="contact-icon highlight-icon" />
                 <div className="contact-text">
-                  <strong>Trụ sở pháp lý:</strong>
-                  <span>{COMPANY_INFO.taxAddress}</span>
+                  <strong>Trụ sở chính:</strong>
+                  <span>{entity.headquarters.streetAddress}, {entity.headquarters.addressLocality}</span>
+                  <span className="local-tag">Hỗ trợ khảo sát &amp; demo 1-1 tận nơi</span>
                 </div>
               </div>
 
@@ -100,8 +92,8 @@ export const Footer: React.FC = () => {
                 <Phone size={16} className="contact-icon" />
                 <div className="contact-text">
                   <strong>Hotline / Zalo tư vấn:</strong>
-                  <a href={`tel:${CONTACT_INFO.phoneRaw}`} className="footer-hotline-link">
-                    0834 422 439
+                  <a href={`tel:${entity.contact.hotlineTel}`} className="footer-hotline-link">
+                    {entity.contact.hotlineDisplay}
                   </a>
                   <span className="sub-note">(Hỗ trợ nhanh 24/7)</span>
                 </div>
@@ -112,8 +104,8 @@ export const Footer: React.FC = () => {
                 <Mail size={16} className="contact-icon" />
                 <div className="contact-text">
                   <strong>Hộp thư điện tử:</strong>
-                  <a href={CONTACT_INFO.mailtoUrl} className="footer-link-inline">
-                    {CONTACT_INFO.email}
+                  <a href={`mailto:${entity.contact.email}`} className="footer-link-inline">
+                    {entity.contact.email}
                   </a>
                 </div>
               </div>
@@ -124,7 +116,7 @@ export const Footer: React.FC = () => {
                 <div className="contact-text">
                   <strong>Giờ làm việc:</strong>
                   <span className="working-hours-tag">
-                    8:00 – 20:00 cả tuần (Thứ Hai – Chủ Nhật)
+                    {entity.contact.workingHours}
                   </span>
                 </div>
               </div>
@@ -132,100 +124,106 @@ export const Footer: React.FC = () => {
 
             {/* Thông tin thuế & thành lập */}
             <div className="footer-tax-box">
-              <span>Mã số thuế: <strong>{COMPANY_INFO.taxCode}</strong></span>
+              <span>Mã số thuế: <strong>{entity.taxId}</strong></span>
               <span className="divider-tax">•</span>
-              <span>Thành lập ngày <strong>{COMPANY_INFO.establishedDate}</strong></span>
+              <span>Đại diện pháp luật: <strong>{entity.founder}</strong></span>
             </div>
           </div>
 
-          {/* CỘT 2: GIẢI PHÁP THEO NHU CẦU */}
+          {/* CỘT 2: 5 TRỤ CỘT GIẢI PHÁP CANONICAL */}
           <div className="footer-col col-solutions">
-            <h4 className="footer-col-title">Giải Pháp Theo Nhu Cầu</h4>
+            <h4 className="footer-col-title">5 Trụ Cột Dịch Vụ Cốt Lõi</h4>
             
             <div className="footer-pillars-list">
-              {/* 01. Hiện diện số & Website */}
+              {/* 01. Thiết kế Website */}
               <div className="footer-pillar-block">
-                <Link to="/giai-phap/xay-nen-tang-so" className="pillar-link-primary">
+                <Link to="/thiet-ke-website" className="pillar-link-primary">
                   <span className="pillar-num-badge">01</span>
-                  <span className="pillar-link-title">Hiện diện số &amp; Website</span>
+                  <span className="pillar-link-title">Thiết Kế Website Tốc Độ Cao</span>
                 </Link>
                 <div className="pillar-sublinks-row">
+                  <Link to="/thiet-ke-website" className="pillar-sub-link">
+                    Web Doanh Nghiệp
+                  </Link>
+                  <span className="sublink-divider">•</span>
                   <Link to="/landing-490k" className="pillar-sub-link">
-                    Web 1 trang 490k
-                  </Link>
-                  <span className="sublink-divider">•</span>
-                  <Link to="/dich-vu/thiet-ke-website" className="pillar-sub-link">
-                    Web doanh nghiệp
+                    Web 1 Trang 490k
                   </Link>
                 </div>
               </div>
 
-              {/* 02. Tìm khách hàng */}
+              {/* 02. Google Maps & Local SEO */}
               <div className="footer-pillar-block">
-                <Link to="/giai-phap/thu-hut-khach-hang" className="pillar-link-primary">
+                <Link to="/google-maps-local-seo" className="pillar-link-primary">
                   <span className="pillar-num-badge">02</span>
-                  <span className="pillar-link-title">Tìm khách hàng</span>
+                  <span className="pillar-link-title">Google Maps &amp; Local SEO</span>
                 </Link>
                 <div className="pillar-sublinks-row">
-                  <Link to="/dich-vu/google-ads" className="pillar-sub-link">
-                    Google Ads 0% kê giá
+                  <Link to="/google-maps-local-seo" className="pillar-sub-link">
+                    Top 3 Bán Kính
                   </Link>
                   <span className="sublink-divider">•</span>
-                  <Link to="/dich-vu/local-search" className="pillar-sub-link">
-                    Khách gần quanh tiệm
+                  <Link to="/google-maps-local-seo" className="pillar-sub-link">
+                    GPS Chính Chủ
                   </Link>
                 </div>
               </div>
 
-              {/* 03. Quản lý & Chăm sóc khách */}
+              {/* 03. Google Ads & Tìm Kiếm */}
               <div className="footer-pillar-block">
-                <Link to="/giai-phap/dong-hanh-cham-soc" className="pillar-link-primary">
+                <Link to="/google-ads" className="pillar-link-primary">
                   <span className="pillar-num-badge">03</span>
-                  <span className="pillar-link-title">Quản lý &amp; Chăm sóc khách</span>
+                  <span className="pillar-link-title">Google Ads &amp; Tìm Kiếm</span>
                 </Link>
                 <div className="pillar-sublinks-row">
-                  <Link to="/dich-vu/cham-soc-website" className="pillar-sub-link">
-                    Bảo hành 5 năm
+                  <Link to="/google-ads" className="pillar-sub-link">
+                    0% Kê Giá
                   </Link>
                   <span className="sublink-divider">•</span>
-                  <span className="pillar-sub-text">Hỗ trợ 1-1 qua Zalo</span>
+                  <Link to="/google-ads" className="pillar-sub-link">
+                    Chặn Click Ảo
+                  </Link>
                 </div>
               </div>
 
-              {/* 04. Bớt việc thủ công */}
+              {/* 04. Content Marketing & Chăm Sóc Số */}
               <div className="footer-pillar-block">
-                <Link to="/giai-phap/van-hanh-tu-dong-hoa" className="pillar-link-primary">
+                <Link to="/content-marketing" className="pillar-link-primary">
                   <span className="pillar-num-badge">04</span>
-                  <span className="pillar-link-title">Bớt việc thủ công</span>
+                  <span className="pillar-link-title">Content &amp; Chăm Sóc Số</span>
                 </Link>
                 <div className="pillar-sublinks-row">
-                  <span className="pillar-sub-text">
-                    CRM tinh gọn, Mini App Zalo &amp; Tự động gom đơn
-                  </span>
-                </div>
-              </div>
-
-              {/* 05. Ứng dụng AI */}
-              <div className="footer-pillar-block">
-                <Link to="/giai-phap/duoc-tim-thay" className="pillar-link-primary">
-                  <span className="pillar-num-badge">05</span>
-                  <span className="pillar-link-title">Ứng dụng AI</span>
-                </Link>
-                <div className="pillar-sublinks-row">
-                  <Link to="/dich-vu/local-search" className="pillar-sub-link">
-                    Google Maps chính chủ
+                  <Link to="/content-marketing" className="pillar-sub-link">
+                    Digital Care
                   </Link>
                   <span className="sublink-divider">•</span>
-                  <Link to="/dich-vu/geo" className="pillar-sub-link">
-                    GEO &amp; AI Search
+                  <Link to="/quy-trinh-cham-soc" className="pillar-sub-link">
+                    Bảo Hành 5 Năm
                   </Link>
                 </div>
               </div>
 
-              {/* Link Xem tất cả giải pháp */}
+              {/* 05. Phần Mềm & Tự Động Hóa */}
+              <div className="footer-pillar-block">
+                <Link to="/automation" className="pillar-link-primary">
+                  <span className="pillar-num-badge">05</span>
+                  <span className="pillar-link-title">Phần Mềm &amp; Tự Động Hóa</span>
+                </Link>
+                <div className="pillar-sublinks-row">
+                  <Link to="/automation" className="pillar-sub-link">
+                    Telegram Báo Đơn
+                  </Link>
+                  <span className="sublink-divider">•</span>
+                  <Link to="/automation" className="pillar-sub-link">
+                    Google Sheets CRM
+                  </Link>
+                </div>
+              </div>
+
+              {/* Link Xem tất cả bảng giá & catalog */}
               <div className="pillar-all-wrapper">
-                <Link to="/giai-phap" className="footer-view-all-btn">
-                  <span>Xem tất cả giải pháp &amp; báo giá</span>
+                <Link to="/bang-gia" className="footer-view-all-btn">
+                  <span>Xem Bảng giá &amp; Catalog 41+ dịch vụ</span>
                   <ArrowRight size={13} />
                 </Link>
               </div>
@@ -356,11 +354,11 @@ export const Footer: React.FC = () => {
             <div className="local-support-card">
               <div className="local-card-badge">Tư Vấn 1-1 Tận Nơi</div>
               <p className="local-card-desc">
-                Bạn ở <strong>Hóc Môn, Quận 12 hoặc khu vực lân cận TP.HCM</strong>? Chuyên viên LocalMate sẵn sàng mang máy tính đến tận cửa hàng để khảo sát, tư vấn giải pháp và lên bản demo website miễn phí.
+                Bạn ở <strong>Đà Nẵng, Hội An, TP.HCM hoặc khu vực lân cận</strong>? Chuyên viên LocalMate sẵn sàng mang máy tính đến tận cửa hàng để khảo sát, tư vấn giải pháp và lên bản demo website miễn phí.
               </p>
               <div className="local-action-buttons">
                 <a
-                  href={CONTACT_INFO.zaloUrl}
+                  href={entity.contact.zaloUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-local-zalo"
@@ -379,7 +377,7 @@ export const Footer: React.FC = () => {
               <span className="social-label">Kênh kết nối:</span>
               <div className="social-icons-group">
                 <a
-                  href="https://facebook.com"
+                  href={entity.socialProfiles.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="footer-social-circle"
@@ -388,7 +386,7 @@ export const Footer: React.FC = () => {
                   <span>f</span>
                 </a>
                 <a
-                  href={CONTACT_INFO.zaloUrl}
+                  href={entity.contact.zaloUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="footer-social-circle"
@@ -397,16 +395,7 @@ export const Footer: React.FC = () => {
                   <span>Z</span>
                 </a>
                 <a
-                  href="https://youtube.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="footer-social-circle"
-                  aria-label="Kênh YouTube LocalMate"
-                >
-                  <span>▶</span>
-                </a>
-                <a
-                  href={`tel:${CONTACT_INFO.phoneRaw}`}
+                  href={`tel:${entity.contact.hotlineTel}`}
                   className="footer-social-circle"
                   aria-label="Gọi Hotline LocalMate"
                 >
@@ -422,12 +411,12 @@ export const Footer: React.FC = () => {
           <div className="trust-pills-list">
             <div className="trust-pill-badge">
               <Clock size={14} className="trust-icon" />
-              <span>Làm việc 8:00 – 20:00 cả tuần</span>
+              <span>{entity.contact.workingHours}</span>
             </div>
 
             <div className="trust-pill-badge">
               <CheckCircle2 size={14} className="trust-icon" />
-              <span>Tư vấn trực tiếp 1-1 tại Hóc Môn &amp; TP.HCM</span>
+              <span>Tư vấn trực tiếp 1-1 tại Đà Nẵng, Hội An &amp; Toàn quốc</span>
             </div>
 
             <div className="trust-pill-badge">
@@ -470,7 +459,7 @@ export const Footer: React.FC = () => {
 
           <div className="footer-sub-links-row">
             <div className="copyright-text">
-              © {currentYear} <strong>{COMPANY_INFO.legalName}</strong>. Toàn quyền bảo lưu.
+              © {currentYear} <strong>{entity.legalName}</strong>. Toàn quyền bảo lưu.
             </div>
 
             <div className="policy-quick-nav">

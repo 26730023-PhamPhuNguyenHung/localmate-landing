@@ -244,7 +244,7 @@ Dưới đây là kết quả kiểm toán 16 khối nội dung đang có trên 
 - **4 Tabs Ngành & Workflow Chi Tiết:**
   1. **Quán ăn / Nhà hàng / Tiệm đồ uống:**
      - *Hiện trạng cũ:* Khách đến đông lúng túng, quên món, khách gọi đặt bàn qua Zalo trôi tin nhắn.
-     - *Sau khi làm với Localmate:* Google Maps chuẩn vị trí $\rightarrow$ Khách xem thực đơn & giá online $\rightarrow$ Form đặt bàn nhanh $\rightarrow$ Tin nhắn Zalo xác nhận ngay cho khách $\rightarrow$ Tự động xin đánh giá 5 sao sau bữa ăn.
+     - *Sau khi làm với Localmate:* Google Maps chuẩn vị trí $\rightarrow$ Khách xem thực đơn & giá online $\rightarrow$ Form đặt bàn nhanh $\rightarrow$ Tin nhắn Zalo xác nhận ngay cho khách $\rightarrow$ Tự động tạo QR giúp khách để lại đánh giá chân thực trên Google sau bữa ăn.
   2. **Trung tâm đào tạo / Lớp năng khiếu / Kỹ năng:**
      - *Hiện trạng cũ:* Phụ huynh hỏi học phí nhiều nơi, quản lý lịch học thử bằng sổ tay, quên nhắc đóng học phí.
      - *Sau khi làm với Localmate:* Trang giới thiệu giáo viên & học phí minh bạch $\rightarrow$ Đăng ký học thử tự động chia theo ca $\rightarrow$ Nhắc lịch học qua Zalo phụ huynh $\rightarrow$ Dashboard theo dõi chuyên cần.

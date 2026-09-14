@@ -32,8 +32,13 @@ import { LocalSearchClusterPage } from './pages/LocalSearchClusterPage';
 import { PresenceSolutionPage } from './pages/solutions/PresenceSolutionPage';
 import { SearchSolutionPage } from './pages/solutions/SearchSolutionPage';
 import { AcquisitionSolutionPage } from './pages/solutions/AcquisitionSolutionPage';
-import { AutomationSolutionPage } from './pages/solutions/AutomationSolutionPage';
+import { AutomationSolutionPage as AutomationLegacySolutionPage } from './pages/solutions/AutomationSolutionPage';
 import { CareSolutionPage } from './pages/CareSolutionPage';
+import { WebDesignPillarPage } from './pages/WebDesignPillarPage';
+import { GoogleMapsPillarPage } from './pages/GoogleMapsPillarPage';
+import { GoogleAdsPillarPage } from './pages/GoogleAdsPillarPage';
+import { ContentMarketingPillarPage } from './pages/ContentMarketingPillarPage';
+import { AutomationPillarPage } from './pages/AutomationPillarPage';
 import { CredentialPage } from './pages/CredentialPage';
 import { ProjectBriefPage } from './pages/ProjectBriefPage';
 import { CareWorkflowPage } from './pages/CareWorkflowPage';
@@ -152,8 +157,14 @@ const MainContent: React.FC = () => {
       return <AdminPricingPage />;
     }
 
-    // 4. Five Solution Pillars (Primary /giai-phap/... & Convenient Aliases /dich-vu/...)
-    // Pillar 1: Xây Nền Tảng Số
+    // 4. Five Canonical Solution Pillars & Convenient Aliases
+    // Pillar 1: Thiết Kế Website Tốc Độ Cao
+    if (
+      normalizedPath === '/thiet-ke-website' ||
+      normalizedPath === '/dich-vu/thiet-ke-website'
+    ) {
+      return <WebDesignPillarPage onOpenConsultForm={handleOpenLeadForm} />;
+    }
     if (
       normalizedPath === '/giai-phap/xay-nen-tang-so' ||
       normalizedPath === '/giai-phap/nen-tang-so' ||
@@ -163,7 +174,13 @@ const MainContent: React.FC = () => {
       return <PresenceSolutionPage onOpenConsultForm={handleOpenLeadForm} />;
     }
 
-    // Pillar 2: Được Tìm Thấy
+    // Pillar 2: Google Maps & Local SEO
+    if (
+      normalizedPath === '/google-maps-local-seo' ||
+      normalizedPath === '/dich-vu/google-maps-local-seo'
+    ) {
+      return <GoogleMapsPillarPage onOpenConsultForm={handleOpenLeadForm} />;
+    }
     if (
       normalizedPath === '/giai-phap/duoc-tim-thay' ||
       normalizedPath === '/dich-vu/duoc-tim-thay'
@@ -171,23 +188,43 @@ const MainContent: React.FC = () => {
       return <SearchSolutionPage onOpenConsultForm={handleOpenLeadForm} />;
     }
 
-    // Pillar 3: Thu Hút Khách Hàng
+    // Pillar 3: Google Ads & Tìm Kiếm
+    if (
+      normalizedPath === '/google-ads' ||
+      normalizedPath === '/dich-vu/google-ads' ||
+      normalizedPath.startsWith('/google-ads')
+    ) {
+      return <GoogleAdsPillarPage onOpenConsultForm={handleOpenLeadForm} />;
+    }
+
+    // Pillar 4: Content Marketing & Chăm Sóc Số
+    if (
+      normalizedPath === '/content-marketing' ||
+      normalizedPath === '/dich-vu/content-marketing' ||
+      normalizedPath === '/cham-soc-noi-dung' ||
+      normalizedPath.startsWith('/content-marketing')
+    ) {
+      return <ContentMarketingPillarPage onOpenConsultForm={handleOpenLeadForm} />;
+    }
+
+    // Pillar 5: Phần Mềm & Tự Động Hóa
+    if (
+      normalizedPath === '/automation' ||
+      normalizedPath === '/dich-vu/automation' ||
+      normalizedPath === '/tu-dong-hoa' ||
+      normalizedPath === '/phan-mem-tu-dong-hoa' ||
+      normalizedPath.startsWith('/automation')
+    ) {
+      return <AutomationPillarPage onOpenConsultForm={handleOpenLeadForm} />;
+    }
+
+    // Legacy / Convenient Aliases for Solutions
     if (
       normalizedPath === '/giai-phap/thu-hut-khach-hang' ||
       normalizedPath === '/dich-vu/thu-hut-khach-hang'
     ) {
       return <AcquisitionSolutionPage onOpenConsultForm={handleOpenLeadForm} />;
     }
-
-    // Pillar 4: Vận Hành Tự Động Hóa
-    if (
-      normalizedPath === '/giai-phap/van-hanh-tu-dong-hoa' ||
-      normalizedPath === '/dich-vu/van-hanh-tu-dong-hoa'
-    ) {
-      return <AutomationSolutionPage onOpenConsultForm={handleOpenLeadForm} />;
-    }
-
-    // Pillar 5: Đồng Hành Chăm Sóc
     if (
       normalizedPath === '/giai-phap/dong-hanh-cham-soc' ||
       normalizedPath === '/giai-phap/dong-hanh-duy-tri' ||
@@ -195,6 +232,12 @@ const MainContent: React.FC = () => {
       normalizedPath === '/dich-vu/dong-hanh-duy-tri'
     ) {
       return <CareSolutionPage onOpenConsultForm={handleOpenLeadForm} />;
+    }
+    if (
+      normalizedPath === '/giai-phap/van-hanh-tu-dong-hoa' ||
+      normalizedPath === '/dich-vu/van-hanh-tu-dong-hoa'
+    ) {
+      return <AutomationLegacySolutionPage onOpenConsultForm={handleOpenLeadForm} />;
     }
 
     // Quy Trình Vận Hành & Chăm Sóc Số Định Kỳ
@@ -301,7 +344,7 @@ const MainContent: React.FC = () => {
 
     // 7. Case Studies / Projects Hierarchy
     if (normalizedPath === '/du-an') {
-      return <ProjectsPage />;
+      return <ProjectsPage onOpenConsultForm={handleOpenLeadForm} />;
     }
     if (normalizedPath.startsWith('/du-an/')) {
       const slug = normalizedPath.replace('/du-an/', '');
@@ -327,7 +370,7 @@ const MainContent: React.FC = () => {
       return <AcquisitionSolutionPage onOpenConsultForm={handleOpenLeadForm} />;
     }
     if (normalizedPath === '/giai-phap/van-hanh-tu-dong-hoa' || normalizedPath === '/giai-phap/tu-dong-hoa-van-hanh') {
-      return <AutomationSolutionPage onOpenConsultForm={handleOpenLeadForm} />;
+      return <AutomationLegacySolutionPage onOpenConsultForm={handleOpenLeadForm} />;
     }
     if (normalizedPath === '/giai-phap/dong-hanh-duy-tri' || normalizedPath === '/giai-phap/dong-hanh-bao-tri') {
       return <CareSolutionPage onOpenConsultForm={handleOpenLeadForm} />;

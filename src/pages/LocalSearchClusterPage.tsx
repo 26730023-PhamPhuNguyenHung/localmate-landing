@@ -132,7 +132,7 @@ export const LocalSearchClusterPage: React.FC<LocalSearchClusterPageProps> = ({ 
     <div style={{ backgroundColor: '#ffffff', minHeight: '100vh', scrollbarGutter: 'stable' }}>
       <SEOHead
         title="Dịch Vụ Google Maps, SEO Tổng Thể Địa Phương & Tối Ưu Tốc Độ Web | LocalMate"
-        description="Cụm dịch vụ Local Search & Technical cho doanh nghiệp địa phương: Xác minh Google Maps GPS chính chủ 100%, chống cướp Maps, bộ QR review 5 sao, SEO bán kính 3-10km từ khóa có/không dấu, PageSpeed 90+ Cloudflare, Entity Schema và SEO Audit 0đ. Cam kết bảo hành 5 năm!"
+        description="Cụm dịch vụ Local Search & Technical cho doanh nghiệp địa phương: Xác minh Google Maps GPS chính chủ 100%, chống cướp Maps, bộ QR đánh giá chân thực trên Google, SEO bán kính 3-10km từ khóa có/không dấu, PageSpeed 90+ Cloudflare, Entity Schema và SEO Audit 0đ. Cam kết bảo hành 5 năm!"
         canonicalPath="/dich-vu/local-search"
         breadcrumbs={breadcrumbs}
       />
@@ -434,7 +434,7 @@ export const LocalSearchClusterPage: React.FC<LocalSearchClusterPageProps> = ({ 
                   <ShieldCheck size={14} /> XÁC MINH GPS CHÍNH CHỦ 100% • CHỐNG CƯỚP MAPS
                 </div>
                 <h3 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#0f172a', lineHeight: 1.3, marginBottom: '1rem' }}>
-                  Dịch Vụ Google Maps — Tọa Độ Chuẩn, Không Bị Chơi Xấu, Tặng Kèm Bộ QR Review 5 Sao
+                  Dịch Vụ Google Maps — Tọa Độ Chuẩn, Không Bị Chơi Xấu, Tặng Kèm Bộ QR Đánh Giá Chân Thực
                 </h3>
                 <p style={{ color: '#475569', fontSize: '1rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
                   LocalMate trực tiếp định vị tọa độ GPS chính xác từng mét, kích hoạt quy trình xác minh chính chủ bằng Gmail của bạn (Primary Owner). Thiết lập khiên bảo vệ chống đối thủ đề xuất chỉnh sửa sai hotline hoặc báo đóng cửa vị trí.
@@ -444,7 +444,7 @@ export const LocalSearchClusterPage: React.FC<LocalSearchClusterPageProps> = ({ 
                   {[
                     'Xác minh GPS chính chủ 100% bằng Gmail của bạn (Nắm toàn quyền, không ai lấy lại được)',
                     'Thiết lập khiên bảo vệ chống cướp Maps: Ngăn chặn đối thủ đổi lén số điện thoại và giờ mở cửa',
-                    'Tặng bộ thiết kế mã QR Review 5 sao để bàn (File in ấn chuẩn sắc nét đặt tại quầy)',
+                    'Tạo QR giúp khách hàng đã sử dụng dịch vụ để lại đánh giá chân thực trên Google (File in ấn chuẩn sắc nét đặt tại quầy)',
                     'Đăng tải 15–20 ảnh thực tế rõ đẹp: Mặt tiền, bảng hiệu, không gian và bảng giá',
                     'Cam kết đồng hành & bảo hành kỹ thuật lên đến 5 năm'
                   ].map((item, idx) => (
@@ -498,10 +498,10 @@ export const LocalSearchClusterPage: React.FC<LocalSearchClusterPageProps> = ({ 
                 <div style={{ backgroundColor: '#f8fafc', borderRadius: '12px', padding: '1rem', marginBottom: '1.25rem', border: '1px dashed #cbd5e1' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
                     <QrCode size={18} color="#0d7647" />
-                    <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#0f172a' }}>Bộ QR Review 5 Sao Kèm Theo</span>
+                    <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#0f172a' }}>Bộ QR Đánh Giá Google Kèm Theo</span>
                   </div>
                   <p style={{ fontSize: '0.8rem', color: '#64748b', margin: 0 }}>
-                    In standee mica để tại bàn. Khách chỉ cần mở camera quét là mở thẳng form chấm 5 sao, không cần gõ tìm kiếm.
+                    In standee mica để tại bàn. Khách chỉ cần mở camera quét là mở thẳng trang để lại đánh giá chân thực trên Google, không cần gõ tìm kiếm.
                   </p>
                 </div>
 
@@ -621,7 +621,7 @@ export const LocalSearchClusterPage: React.FC<LocalSearchClusterPageProps> = ({ 
                 </div>
 
                 <div style={{ fontSize: '0.85rem', color: '#475569', backgroundColor: '#f8fafc', padding: '0.85rem', borderRadius: '10px', borderLeft: '4px solid #0d7647' }}>
-                  💡 <strong>Kinh nghiệm thực chiến:</strong> Khách hàng địa phương thường ghé tiệm ngay trong ngày nếu thấy đánh giá trên 4.5 sao và khoảng cách di chuyển dưới 15 phút.
+                  💡 <strong>Kinh nghiệm thực chiến:</strong> Khách hàng địa phương thường ghé tiệm ngay trong ngày nếu thấy điểm đánh giá cao (từ 4.5 trở lên) và khoảng cách di chuyển dưới 15 phút.
                 </div>
               </div>
             </div>
@@ -973,7 +973,7 @@ export const LocalSearchClusterPage: React.FC<LocalSearchClusterPageProps> = ({ 
                   },
                   {
                     id: 'no_reviews_qr',
-                    label: 'Chưa có bộ mã QR để bàn xin đánh giá 5 sao thật từ khách quen đến quán'
+                    label: 'Chưa có bộ mã QR để bàn giúp khách để lại đánh giá chân thực trên Google'
                   },
                   {
                     id: 'no_schema_entity',
@@ -1067,7 +1067,7 @@ export const LocalSearchClusterPage: React.FC<LocalSearchClusterPageProps> = ({ 
         </Container>
       </section>
 
-      {/* 5. Feature Highlight: Bộ QR Review 5 Sao & Khiên Bảo Vệ 5 Năm */}
+      {/* 5. Feature Highlight: Bộ QR Đánh Giá Chân Thực & Khiên Bảo Vệ 5 Năm */}
       <section style={{ padding: '4.5rem 0', backgroundColor: '#ffffff' }}>
         <Container size="lg">
           <div
@@ -1083,11 +1083,11 @@ export const LocalSearchClusterPage: React.FC<LocalSearchClusterPageProps> = ({ 
                 <QrCode size={16} /> GIẢI PHÁP ĐỘC QUYỀN LOCALMATE
               </div>
               <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.35rem)', fontWeight: 800, color: '#0f172a', lineHeight: 1.3, marginBottom: '1.25rem' }}>
-                Bộ QR Review 5 Sao Để Bàn — Khách Quét 1 Chạm, Đánh Giá Thật Tăng Nhanh
+                Bộ QR Đánh Giá Chân Thực Để Bàn — Khách Quét 1 Chạm, Để Lại Nhận Xét Nhanh Chóng
               </h2>
               <p style={{ color: '#475569', fontSize: '1.05rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
                 Nhiều quán xin đánh giá bằng miệng nhưng khách thường quên hoặc lười vì phải gõ tìm tên tiệm. 
-                LocalMate thiết kế trọn bộ ấn phẩm mã QR chuyên nghiệp: khách dùng camera điện thoại quét là mở ngay trang chấm 5 sao kèm gợi ý lời khen tích cực.
+                LocalMate thiết kế trọn bộ ấn phẩm mã QR chuyên nghiệp: khách dùng camera điện thoại quét là mở ngay trang để lại đánh giá chân thực trên Google mà không cần tìm kiếm.
               </p>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '2rem' }}>
@@ -1119,10 +1119,10 @@ export const LocalSearchClusterPage: React.FC<LocalSearchClusterPageProps> = ({ 
 
               <Button
                 variant="primary"
-                onClick={() => handleCTA('Đăng ký Bộ QR Review 5 Sao')}
+                onClick={() => handleCTA('Đăng ký Bộ QR Đánh Giá Chân Thực')}
                 style={{ backgroundColor: '#0d7647', color: '#ffffff', borderRadius: '10px', padding: '0.85rem 1.75rem', fontWeight: 700 }}
               >
-                Nhận Bộ QR Review 5 Sao Ngay
+                Nhận Bộ QR Đánh Giá Chân Thực Ngay
               </Button>
             </div>
 
@@ -1152,7 +1152,7 @@ export const LocalSearchClusterPage: React.FC<LocalSearchClusterPageProps> = ({ 
                   CẢM ƠN QUÝ KHÁCH
                 </div>
                 <div style={{ fontSize: '1.05rem', fontWeight: 900, color: '#0f172a', marginBottom: '0.75rem' }}>
-                  ĐÁNH GIÁ 5 SAO CHO TIỆM
+                  ĐỂ LẠI ĐÁNH GIÁ TRÊN GOOGLE
                 </div>
 
                 <div
@@ -1180,7 +1180,7 @@ export const LocalSearchClusterPage: React.FC<LocalSearchClusterPageProps> = ({ 
                   ))}
                 </div>
                 <p style={{ fontSize: '0.75rem', color: '#64748b', margin: 0 }}>
-                  Mở camera điện thoại quét mã • Vào thẳng trang đánh giá 5 sao
+                  Mở camera điện thoại quét mã • Vào thẳng trang đánh giá chân thực trên Google
                 </p>
               </div>
 
@@ -1286,7 +1286,7 @@ export const LocalSearchClusterPage: React.FC<LocalSearchClusterPageProps> = ({ 
                 <div style={{ display: 'flex', gap: '0.75rem' }}>
                   <span style={{ color: '#0d7647', fontWeight: 800 }}>✓</span>
                   <div>
-                    <strong style={{ color: '#0f172a' }}>Tặng kèm bộ mã QR Review 5 sao:</strong> Tặng sẵn file in standee để bàn giúp tiệm bùng nổ đánh giá thật từ khách quen.
+                    <strong style={{ color: '#0f172a' }}>Tặng kèm bộ mã QR đánh giá chân thực:</strong> Tạo QR giúp khách hàng đã sử dụng dịch vụ để lại đánh giá chân thực trên Google.
                   </div>
                 </div>
               </div>

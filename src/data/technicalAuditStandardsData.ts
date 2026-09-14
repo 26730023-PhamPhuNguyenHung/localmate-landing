@@ -216,12 +216,12 @@ export const AUDIT_CRITERIA_30: AuditCriterion[] = [
     categoryId: 'local-signals',
     categoryName: 'Bản đồ & Tín hiệu địa phương (Local Signals)',
     categoryShort: 'Bản đồ & Tín hiệu',
-    title: 'Bộ mã QR thông minh thu thập Review 5 sao thật tại quầy',
-    benchmark: 'Quét 1 giây mở thẳng giao diện cho điểm 5 sao trên Google Maps',
+    title: 'Tạo QR giúp khách hàng đã sử dụng dịch vụ để lại đánh giá chân thực trên Google',
+    benchmark: 'Quét 1 giây mở thẳng giao diện để lại đánh giá chân thực trên Google Maps',
     priority: 'high',
     priorityLabel: 'Quan trọng',
-    simpleExplanation: 'Khách dùng dịch vụ xong chỉ cần đưa điện thoại quét mã QR tại quầy là màn hình mở ngay chỗ viết nhận xét 5 sao, không phải mất công tìm kiếm tên quán.',
-    businessImpact: 'Tăng nhanh số lượng đánh giá thực tế từ khách hàng thật; giúp cơ sở vượt mặt đối thủ cùng phố về điểm uy tín và số sao trung bình.',
+    simpleExplanation: 'Khách dùng dịch vụ xong chỉ cần đưa điện thoại quét mã QR tại quầy là màn hình mở ngay chỗ viết nhận xét chân thực, không phải mất công tìm kiếm tên quán.',
+    businessImpact: 'Tăng nhanh số lượng đánh giá thực tế từ khách hàng thật; giúp cơ sở vượt mặt đối thủ cùng phố về điểm uy tín và đánh giá khách quan.',
     localmateSolution: 'Tạo mã QR tĩnh liên kết trực tiếp URL đánh giá chuẩn của Google Maps, thiết kế sẵn mẫu in để bàn/quầy thu ngân đẹp mắt và nhúng widget đánh giá uy tín trên website.'
   },
   {

@@ -86,7 +86,7 @@ export const CAPABILITIES: CapabilityItem[] = [
     name: 'Xác Minh & Tối Ưu Google Maps Chính Chủ',
     badge: 'Bán Kính Gần',
     shortDescription: 'Đưa cơ sở lên vị trí hàng đầu trên bản đồ tìm kiếm địa phương.',
-    description: 'Xác minh quyền sở hữu Google Business Profile bằng Gmail chính chủ của bạn, ghim chuẩn vị trí GPS, cập nhật ảnh mặt tiền, giờ mở cửa, số hotline và tặng kèm bộ mã QR Review 5 sao để bàn.',
+    description: 'Xác minh quyền sở hữu Google Business Profile bằng Gmail chính chủ của bạn, ghim chuẩn vị trí GPS, cập nhật ảnh mặt tiền, giờ mở cửa, số hotline và tạo QR giúp khách hàng đã sử dụng dịch vụ để lại đánh giá chân thực trên Google.',
     practicalValue: 'Cư dân xung quanh tìm kiếm là thấy ngay chỉ đường đến tiệm và bấm gọi điện thoại trực tiếp.',
     iconName: 'MapPin',
     mappedCatalogServiceIds: ['19', '20', '22'],

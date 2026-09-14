@@ -2,6 +2,31 @@
 
 Ghi nhận các mốc sự kiện, commit và trạng thái vận hành của dự án.
 
+## [2026-09-14] - Xây Dựng 2 Pillar Pages Chuẩn SEO & GEO: /thiet-ke-website & /google-maps-local-seo
+- **Mục tiêu**: Xây dựng 2 trang Pillar chuyên sâu cho Trụ cột 1 (Thiết Kế Website Tốc Độ Cao) và Trụ cột 2 (Google Maps & Local SEO) dựa trên dữ liệu SSOT `src/data/company.ts`.
+- **Hạng mục hoàn thành**:
+  1. *Trang Pillar 1: `/thiet-ke-website`* (`src/pages/WebDesignPillarPage.tsx`):
+     - Hero section với headline rõ ràng, cam kết "Bàn giao mới thanh toán", nút gọi Zalo 1-1 và nhận demo 0đ.
+     - Answer-First Block: Đoạn văn 72 từ trả lời trực tiếp cho AI câu hỏi *"Làm website 1 trang cho hộ kinh doanh giá bao nhiêu?"*.
+     - Bảng tóm tắt 8 tiêu chí chuẩn xác: Bảng giá (490k vs 2.9M), Đối tượng phù hợp, Hạng mục bàn giao, Thời gian triển khai (24-48h vs 3-7 ngày), Chi phí duy trì (0đ/tháng), Quyền sở hữu (100%), Bảo hành (12 tháng vs 5 năm), Ngày cập nhật (14/09/2026).
+     - Chi tiết 2 gói cước (Landing Page 1 Trang Khởi Tạo & Website Doanh Nghiệp Đa Trang) và Quy trình 4 bước thực chiến.
+     - Case studies liên quan: Quán XÈO (`/du-an/xeo-restaurant`) và Nội Thất Nam Phát (`/du-an/nam-phat`).
+     - FAQ chi tiết 6 câu hỏi và khối CTA cam kết 3 không.
+  2. *Trang Pillar 2: `/google-maps-local-seo`* (`src/pages/GoogleMapsPillarPage.tsx`):
+     - Hero section với cam kết bàn giao tài khoản Google Business Profile chính chủ 100% mới thanh toán.
+     - Answer-First Block: Đoạn văn 76 từ trả lời trực tiếp cho AI câu hỏi *"Dịch vụ Google Maps bao gồm những gì?"*.
+     - Bảng tóm tắt 8 tiêu chí chuẩn xác: Bảng giá (990k vs 2tr/tháng), Đối tượng phù hợp, Hạng mục bàn giao, Thời gian triển khai (1-3 ngày vs liên tục), Chi phí duy trì (0đ vs 2tr/tháng), Quyền sở hữu (100% Gmail chính chủ), Bảo hành (12 tháng), Ngày cập nhật (14/09/2026).
+     - Chi tiết 2 gói cước (Khởi Tạo & Xác Minh Chính Chủ & SEO Google Maps Đẩy Top 3 Bán Kính) và Quy trình 4 bước thực chiến.
+     - Case studies liên quan: Quán XÈO (`/du-an/xeo-restaurant`) và Hương Sen Spa (`/du-an/huong-sen`).
+     - FAQ chi tiết 6 câu hỏi và khối CTA trực tiếp qua Zalo / Khảo sát 0đ.
+  3. *Routing & Sitemap Synchronization*:
+     - Định tuyến chuẩn trong `src/App.tsx` trỏ `/thiet-ke-website` và `/google-maps-local-seo` về 2 trang mới.
+     - Bổ sung 2 URL vào `src/pages/HtmlSitemapPage.tsx`.
+  4. *Nghiệm thu*:
+     - `npm run build` (`tsc && vite build`) hoàn thành thành công với exit code 0.
+     - Light Mode chuẩn mực, font Be Vietnam Pro, không glassmorphism.
+
+
 ## [2026-09-14] - Tái Tạo Chuẩn Hóa public/llms.txt & public/llms-full.txt Từ SSOT src/data/company.ts
 - **Mục tiêu**: Đồng bộ hóa 100% dữ liệu LLMs/GEO với Single Source of Truth `src/data/company.ts`, loại bỏ triệt để email cá nhân, đồng bộ bảng giá niêm yết chuẩn và cung cấp tri thức máy đọc (Machine-Readable Knowledge Base) cho AI Search Engines.
 - **Các hạng mục đã hoàn thành**:
@@ -178,7 +203,7 @@ Ghi nhận các mốc sự kiện, commit và trạng thái vận hành của d�
 - **Mục tiêu**: Nâng cấp toàn diện hệ thống Case Studies của LocalMate tại `src/data/caseStudiesData.ts`, `src/pages/ProjectsPage.tsx` và `src/pages/CaseStudyDetailPage.tsx` học hỏi cách FastMarketing trình bày case studies chi tiết với ảnh chụp, số liệu và câu chuyện giải quyết vấn đề.
 - **5 Câu chuyện khách hàng địa phương tiêu biểu**:
   1. *Phòng khám Nha Khoa Tâm Đức*: Cơ sở mới vắng khách -> Tối ưu Google Maps + Schema Y tế (@type: Dentist) -> Đạt Top 1 tìm kiếm bán kính 5km, tăng +250% cuộc gọi đặt lịch hàng tuần.
-  2. *Tiệm Cà Phê Mộc & Nhà Hàng Hội An*: Tối ưu bộ mã QR thông minh để bàn xin đánh giá 5 sao thật -> Đạt 480+ lượt review tích cực thật, Google Maps tự động đề xuất khách du lịch, tiết kiệm 100% ngân sách ads (0 đồng).
+  2. *Tiệm Cà Phê Mộc & Nhà Hàng Hội An*: Tối ưu bộ mã QR để bàn giúp khách để lại đánh giá chân thực trên Google -> Đạt 480+ lượt review tích cực thật, Google Maps tự động đề xuất khách du lịch, tiết kiệm 100% ngân sách ads (0 đồng).
   3. *Gara Ô Tô Đại Nam (Cứu hộ 24/7)*: Tối ưu trang đích có nút gọi cứu hộ nổi bật + Google Search Ads cụm từ khóa khẩn cấp -> Tiếp nhận 5-8 cuộc gọi kéo xe/tuần, hoàn vốn sau 3 ngày.
   4. *Cửa hàng Thiết bị Âm thanh & Điện tử Hoàng Long*: Khắc phục lỗi tài khoản quảng cáo bị khóa chính sách -> Kháng sạch vi phạm, mở rộng kênh Google Shopping & Maps kéo 35-42 khách đến phòng nghe thử/tuần.
   5. *Dịch vụ Sửa chữa Điện lạnh tại nhà Bách Khoa Fix*: Xây dựng Sales Hub bảng giá minh bạch 100% + Tem bảo hành QR -> Xóa nỗi sợ chặt chém giá, tăng tỷ lệ chốt đơn từ 30% lên 75%.
@@ -248,4 +273,53 @@ Ghi nhận các mốc sự kiện, commit và trạng thái vận hành của d�
   9. Tại sao là Localmate: 5 điểm tựa bền vững.
   10. Final CTA: Kể vấn đề & nhận tư vấn nhẹ nhàng 0đ.
 - **Tài liệu SSOT**: `docs/homepage-ia-v2.md` đã được biên soạn chi tiết gồm ma trận KEEP/MOVE/REMOVE/MERGE, Code Skeleton cho `HomePage.tsx`, Data Schema và Design Guardrails.
+
+---
+
+## [2026-09-14] - Nâng Cấp Hệ Thống Case Studies / Dự Án Thực Tế (SSOT Alignment)
+- **Mục tiêu**: Đồng bộ toàn bộ hệ thống Case Studies với dữ liệu thực tế từ `src/data/company.ts` (`COMPANY_DATA.caseStudies`).
+- **Nâng cấp `src/pages/ProjectsPage.tsx` (`/du-an`)**:
+  - Trưng bày nổi bật 3 dự án thực tế: Quán XÈO, Xưởng Nội Thất Nam Phát, Hương Sen Traditional Massage & Spa.
+  - Hiển thị đầy đủ 5 chỉ số đo lường có thật: PageSpeed 98-100, Thời gian tải trang <0.8s (0.7s - 0.9s), Dung lượng siêu nhẹ <500KB (280KB - 450KB), Lập chỉ mục Google Search trong 24h, Thứ hạng Google Maps Top 1 - 3 địa phương.
+  - Bổ sung bảng so sánh chỉ số kỹ thuật thực tế giữa 3 dự án.
+  - Cung cấp Tab chuyển đổi linh hoạt giữa "Dự Án Thực Tế Đã Bàn Giao" và "Kịch Bản & Workflow Mẫu Theo Ngành".
+- **Nâng cấp `src/pages/CaseStudyDetailPage.tsx`**:
+  - Hỗ trợ đầy đủ các canonical slug: `/du-an/xeo-restaurant`, `/du-an/nam-phat`, `/du-an/huong-sen` (và fallback giữ tương thích kịch bản cũ).
+  - Chuẩn hóa cấu trúc 7 phần chuẩn mực: Khách hàng & Vấn đề ban đầu -> Giải pháp triển khai -> Công nghệ & Hạng mục bàn giao -> Thời gian thực hiện -> Chỉ số đo lường thực tế -> Đánh giá của khách hàng -> CTA khảo sát 0đ.
+  - Tích hợp Schema `Article` / `CreativeWork` kết hợp Breadcrumbs JSON-LD trong `SEOHead.tsx`.
+- **Nghiệm thu kỹ thuật**: `npm run build` PASS 100% (exit code 0, 0 lỗi TypeScript).
+
+---
+
+## [2026-09-14] - Hoàn Thành 3 Pillar Pages Chuẩn SEO & GEO (/google-ads, /content-marketing, /automation)
+- **Mục tiêu**: Xây dựng 3 Pillar Pages tiếp theo theo Single Source of Truth (SSOT) `src/data/company.ts`, tối ưu hóa tìm kiếm người dùng và Answer Engine Optimization (GEO/AEO).
+- **Trang 1: `/google-ads` (`src/pages/GoogleAdsPillarPage.tsx`)**:
+  - Dữ liệu tham chiếu: `COMPANY_DATA.pillars[2]` (`pillar-ads`), gói `google-ads-starter` (1.500.000đ/tháng).
+  - Hero section: Định vị 0% kê giá, khách hàng tự gắn thẻ Visa/Mastercard thanh toán trực tiếp cho Google, LocalMate thu phí công kỹ thuật cố định.
+  - Answer-First Block: 74 từ trả lời trực tiếp cho AI và người đọc về mô hình quản trị quảng cáo từ khóa ý định cao (High Intent), lọc từ khóa phủ định và chặn click tặc.
+  - Bảng tóm tắt: Bảng giá, Deliverables, Timeline, Ownership, Support, Last Updated.
+  - Chi tiết 4 trọng tâm kỹ thuật + Bảng đối chiếu cách làm cũ vs chuẩn minh bạch LocalMate.
+  - Accordion FAQ 5 câu hỏi sát sườn + Form đăng ký nhận danh sách từ khóa 0đ (kết nối `submitLead`).
+- **Trang 2: `/content-marketing` (`src/pages/ContentMarketingPillarPage.tsx`)**:
+  - Dữ liệu tham chiếu: `COMPANY_DATA.pillars[3]` (`pillar-content`), gói `content-care-package` (990.000đ/tháng).
+  - Hero section: Giải phóng thời gian cho SME, không cần thuê nhân sự marketing đắt đỏ.
+  - Answer-First Block: 76 từ tóm tắt định nghĩa gói Digital Care, 15 bài viết SEO, 15 ảnh thiết kế, sao lưu Cloudflare R2 và bảo trì Uptime/SSL 24/7.
+  - Bảng tóm tắt: Bảng giá 990.000đ/tháng, 15 bài + 15 ảnh, sao lưu hàng tuần, hỗ trợ sửa giá/banner trong 15-30p, sở hữu 100% bản quyền.
+  - Bảng đối chiếu bài toán chi phí: Tự làm vs Thuê full-time (7-10tr) vs Gói Digital Care LocalMate (tiết kiệm 85%).
+  - Accordion FAQ 5 câu hỏi + Form đăng ký nhận kế hoạch 15 bài viết mẫu 0đ.
+- **Trang 3: `/automation` (`src/pages/AutomationPillarPage.tsx`)**:
+  - Dữ liệu tham chiếu: `COMPANY_DATA.pillars[4]` (`pillar-automation`), gói `automation-crm-zalo` (1.900.000đ trọn gói).
+  - Hero section: Báo đơn rung chuông sau 3 giây về Zalo/Telegram, đồng bộ Google Sheets CRM, 0đ phí duy trì phần mềm hàng tháng.
+  - Answer-First Block: 77 từ giải thích kiến trúc Webhook nhẹ, đồng bộ Mini CRM và chatbot tự động gửi bảng giá.
+  - Bảng tóm tắt: Bảng giá 1.900.000đ (thanh toán 1 lần trọn đời), 0đ phí duy trì, timeline 2-4 ngày, bảo hành 12 tháng.
+  - Chi tiết 4 module cốt lõi + Bảng đối chiếu quy trình thủ công vs luồng tự động.
+  - Accordion FAQ 5 câu hỏi + Form nhận demo bắn đơn thử nghiệm 0đ.
+- **Đồng bộ Router trong `src/App.tsx`**:
+  - Tích hợp route `/google-ads`, `/content-marketing`, `/automation` cùng các alias thuận tiện.
+- **Nghiệm thu kỹ thuật**:
+  - `npx tsc --noEmit`: PASS (0 type errors).
+  - `npm run build`: PASS (Vite production build thành công 100%).
+  - Tuân thủ nghiêm ngặt quy tắc Light Mode, độ tương phản cao, tuyệt đối không dùng glassmorphism.
+
+
 
