@@ -1,5 +1,36 @@
 # BÀI HỌC VÀ LƯU Ý KỸ THUẬT (LESSONS LEARNED & BUG MEMORY)
 
+## [2026-09-17] — Chuẩn Hóa Kiến Trúc Cloudflare Pages Static Serving & Redirects Cho Landing Page Đích (/geo)
+- **Vấn đề phát sinh thực tế:**
+  - Trang landing page `/geo` cần phục vụ song song cả dưới dạng SPA route lẫn Direct Static URL siêu tốc không cần chờ tải bundle JavaScript React.
+  - Nếu chỉ dùng file `dist/landing-geo.html` với relative path `./geo/...`, khi người dùng truy cập `localmate.vn/geo/` (có dấu gạch chéo cuối), trình duyệt sẽ hiểu base là `/geo/` và load sai thành `/geo/geo/hero-scene.png` gây lỗi 404 hình ảnh.
+- **Giải pháp & Kiến trúc chuẩn:**
+  1. *Root-Relative Paths & Base Tag*: Luôn sử dụng đường dẫn tuyệt đối bắt đầu từ gốc domain (`/geo/image.png`) hoặc bổ sung `<base href="/">` trong `<head>` để triệt tiêu vĩnh viễn lỗi đường dẫn tương đối khi URL thay đổi có hoặc không có trailing slash.
+  2. *Dual Static Output*: Script export (`scripts/export-geo-html.mjs`) ghi đồng thời vào cả `public/landing-geo.html` và `public/geo/index.html`. Cloudflare Pages sẽ tự động nhận diện `geo/index.html` và serve trực tiếp HTTP 200 cho cả `/geo` và `/geo/` với độ trễ thấp nhất.
+  3. *Cloudflare `_redirects` SSOT*: Tạo file `public/_redirects`:
+     ```
+     /geo /geo/index.html 200
+     /geo/ /geo/index.html 200
+     /landing-geo /landing-geo.html 200
+     /landing-490k /landing-490k.html 200
+     /* /index.html 200
+     ```
+     Đảm bảo các landing page tĩnh được serve ngay lập tức, trong khi tất cả các route khác fallback về `/index.html` cho React Router.
+
+## [2026-09-17] — Tối Ưu Mobile Typography, Khử Lỗi Rớt Chữ Vụn Vặt & Thiết Kế Lại Footer Promise Badge
+- **Vấn đề phát sinh thực tế:**
+  1. *Tiêu đề Hero H1 rớt từ vụn vỡ*: `font-size: 34px` trên mobile 360–390px quá lớn khiến 1 câu 13 chữ bị ngắt thành 5 dòng cụt lủn ("KHÁCH HỎI", "CHATGPT VỀ", "DỊCH VỤ.", "AI CÓ NHẮC ĐẾN", "BẠN KHÔNG?"), mỗi dòng chỉ có 1–2 từ.
+  2. *Badge Footer Promise bị ép co rúm*: Thẻ cam kết sứ mệnh `"Cùng nhau xây dựng một Việt Nam thịnh vượng trong kỷ nguyên AI"` bị nhét bên trong cột con "Dịch vụ nổi bật" (vốn chỉ chiếm 1/2 màn hình mobile ~165px). Diện tích text còn lại ~115px không đủ chứa cụm `"một Việt Nam thịnh vượng"`, khiến chữ `"vượng"` bị rớt trơ trọi 1 mình thành dòng thứ 4.
+  3. *Proof items 3 cột co rúm*: Dàn hàng ngang 3 cột trên mobile màn hẹp khiến câu `"Phù hợp với doanh nghiệp đã có website"` bị xé thành 4 dòng li ti khó đọc.
+  4. *Orphan word ở chữ viết tay*: Cụm từ `"mạnh mẽ"` bị bẻ đôi, chữ `"mẽ"` rớt đơn lẻ xuống dòng riêng.
+- **Giải pháp & Kỹ thuật chuẩn hóa:**
+  1. *Tách Footer Promise Badge thành Full-Width Banner*: Đưa `.geo-footer-promise` ra làm con trực tiếp của `.geo-container`, nằm ngang giữa `geo-footer-grid` và `geo-footer-bottom`.
+     - Trên Desktop: Chiều ngang fit-content, căn giữa trang trọng, 1 dòng duy nhất.
+     - Trên Mobile: Chiều rộng 100%, padding 12px 14px, nền xanh `#f0faf5`, viền nhạt `#d4ece1`, icon mầm xanh `#008762` bên trái, text 11.5–12px cân đối 2 dòng, bọc `<b style="white-space:nowrap">một Việt Nam thịnh vượng</b>` để triệt tiêu vĩnh viễn lỗi rớt chữ đơn lẻ.
+  2. *Responsive Fluid Typography cho Hero H1*: Dùng `font-size: clamp(22px, 6.2vw, 28px); line-height: 1.24; letter-spacing: -0.035em; text-wrap: balance;`. Kết quả: Tiêu đề chia đều thành 2 dòng trên và 2 dòng dưới cân xứng tuyệt đối trên cả 360px và 390px.
+  3. *Chuyển Proof Items thành danh sách dọc dạng Pill*: Trên mobile (`max-width: 640px`), `.geo-proofs` chuyển sang `flex-direction: column; gap: 7px;`. Mỗi item là 1 card pill bo góc `#ffffffba` viền `#dcf2e8`, icon tròn 32px bên trái và câu mô tả trọn vẹn 1 dòng bên phải.
+  4. *Khử chữ rớt lẻ cho Handwritten*: Bọc `<span style="white-space:nowrap">mạnh mẽ</span>` và dùng `text-wrap: balance; font-size: clamp(14px, 4.2vw, 16px) !important;`.
+
 ## [2026-09-17] — Khắc Phục Lỗi Font Ký Tự Tiếng Việt In Hoa Có Dấu & Layout Viewport-Fit Cho Landing Page Ads
 - **Vấn đề phát sinh:**
   1. *Lỗi Font Ký Tự Có Dấu*: Khi viết in hoa tiếng Việt có dấu (`Ắ, Ầ, Ỏ, Ậ, Ộ, Ờ...`) với font-weight nặng như `900` hoặc các số lẻ (`850`, `750`), trình duyệt Chromium trên Windows bị thiếu glyphs tiếng Việt nên tự động fallback sang font hệ thống (Segoe UI / Arial), làm cho chữ có dấu bị lệch phông, nét mỏng/dày bất thường so với chữ không dấu.
@@ -296,3 +327,24 @@
      - Kiểm thử thực tế: Kết quả trả về HTTP `202 Accepted` cho cả 2 cổng IndexNow & Bing.
   4. Routing Router Support:
      - Bổ sung routing trực tiếp trong `src/App.tsx` cho các canonical path: `/thiet-ke-website`, `/google-maps-local-seo`, `/google-ads`, `/content-marketing`, `/automation` để người dùng và bots truy cập trực tiếp URL đều render đúng component chuyên biệt tương ứng.
+
+## 🎨 [2026-09-17] Redesign Footer Landing Page Tinh Gọn (Less Content, More Trust) & Bài Học Baseline Alignment
+- **Bối cảnh & Vấn đề**:
+  - Footer cũ phình to như một mega menu (5 cột dày đặc, ~800px chiều cao) với quá nhiều badge ("2026", "5 năm", "40 slide", "0đ"), subtitles và card chồng card.
+  - Người dùng truy cập từ Google Ads / mobile bị phân tâm, visual noise cao, không tập trung vào CTA chính.
+- **Giải pháp kiến trúc & Visual Redesign**:
+  - Tối giản hóa còn đúng **2 tầng** với cấu trúc **4 cột** rõ ràng:
+    1. *Brand (33%)*: Logo + 2 dòng giới thiệu định vị SME + Địa bàn phục vụ ("Đà Nẵng · Hội An · TP.HCM · Toàn quốc").
+    2. *Dịch vụ*: Đúng 5 link canon: Thiết kế website, Google Maps & Local SEO, Google Ads, Content & chăm sóc số, CRM & Automation.
+    3. *Thông tin*: Đúng 5 link: Cách làm việc, Bảng giá, Dự án / Demo, Về LocalMate, Chính sách bảo mật.
+    4. *Cần hỗ trợ?*: Text định hướng + CTA Primary "Nhắn Zalo" (nền xanh brand) + Hotline / Email + 3 social icon phẳng.
+  - Tầng 2: Bottom Bar (~60px) gồm Copyright và Điều khoản · Bảo mật.
+  - Chiều cao desktop đạt chuẩn: **488px** (nằm trọn vẹn trong khoảng mục tiêu 400–500px).
+- **Bài học kỹ thuật CSS & Responsive**:
+  - **Lỗi Baseline Mismatch của Divider Dot**:
+    - Khi các thẻ `<a>` bị dính global CSS với `min-height: 44px` (touch target) hoặc line-height lệch với thẻ `<span>`, việc dùng `align-items: center` sẽ kéo thẻ dot xuống giữa bounding box (22px), trong khi text của `<a>` nằm ở nửa trên.
+    - **Khắc phục triệt để**: Thiết lập `height: auto; min-height: auto; line-height: 1.5; padding: 0;` cho các thẻ link trong bottom bar và dùng `align-items: center` đồng nhất với `line-height: 1.5;` trên cả thẻ separator.
+  - **Thứ tự hiển thị trên Mobile (Flex/Grid Order)**:
+    - Trên mobile (< 768px), stack 1 column theo thứ tự tâm lý chuyển đổi: `Brand (1) -> Cần hỗ trợ / CTA (2) -> Dịch vụ (3) -> Thông tin (4) -> Bottom bar`. Người dùng di động vừa lướt hết trang sẽ thấy ngay nút Zalo và Hotline trước khi cần tra cứu các link sitemap phụ.
+  - **Đo lường & Kiểm thử thực tế**:
+    - Dùng Playwright Python script với `page.set_viewport_size()` để kiểm tra ma trận 6 viewports (`1920x1080`, `1440x900`, `1366x768`, `1024x768`, `768x1024`, `390x844`). Xác nhận `has_overflow: false` trên toàn bộ thiết bị và lưu ảnh chụp visual proof vào `artifacts/screenshots/`.

@@ -1,0 +1,8 @@
+# Cloudflare Pages Redirects / Rewrites
+/geo /geo/index.html 200
+/geo/ /geo/index.html 200
+/landing-geo /landing-geo.html 200
+/landing-490k /landing-490k.html 200
+
+# SPA fallback
+/* /index.html 200

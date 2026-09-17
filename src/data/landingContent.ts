@@ -52,7 +52,7 @@ export const CONTACT_INFO = {
   mailtoUrl: 'mailto:contact@localmate.vn',
   email: 'contact@localmate.vn',
   officeAddress: 'Hóc Môn, TP. Hồ Chí Minh (Tư vấn trực tiếp 1-1 tận nơi)',
-  address: 'Hóc Môn, TP. Hồ Chí Minh & 03 Trường Chinh, TP. Đà Nẵng',
+  address: '03 Trường Chinh, TP. Đà Nẵng',
   workingHours: '8:00 - 20:00 cả tuần (Thứ Hai – Chủ Nhật)'
 };
 

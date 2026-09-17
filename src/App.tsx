@@ -431,7 +431,7 @@ const MainContent: React.FC = () => {
 
   return (
     <div className="localmate-app">
-      {!isCredentialView && (
+      {!isCredentialView && !isGeoLandingView && (
         <Header onOpenDemoForm={() => handleOpenLeadForm('Tư vấn Web Demo 0đ')} />
       )}
       <main id="main-content">{renderPage()}</main>

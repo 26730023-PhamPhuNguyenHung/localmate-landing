@@ -2,6 +2,44 @@
 
 Ghi nhận các mốc sự kiện, commit và trạng thái vận hành của dự án.
 
+## [2026-09-17] - Triển Khai & Phục Vụ Thành Công /geo Lên Production (localmate.vn)
+- **Mục tiêu**: Đưa landing page GEO tối ưu mobile lên trực tiếp route `/geo` của tên miền chính thức `localmate.vn` trên Cloudflare Pages (`localmate-vn`).
+- **Thực thi Kiến trúc Routing & Serving**:
+  1. *Cấu hình Static Serving Song Hành*:
+     - Tạo script `scripts/export-geo-html.mjs` tự động đồng bộ cả 2 file: `public/landing-geo.html` và `public/geo/index.html` với thẻ `<base href="/">` và đường dẫn tài nguyên gốc `/geo/...`.
+     - Cấu hình file `public/_redirects` cho Cloudflare Pages:
+       ```
+       /geo /geo/index.html 200
+       /geo/ /geo/index.html 200
+       /landing-geo /landing-geo.html 200
+       /landing-490k /landing-490k.html 200
+       /* /index.html 200
+       ```
+  2. *Build & Deploy qua Wrangler CLI*:
+     - Chạy `node scripts/export-geo-html.mjs` & `npm run build` (tsc + vite build pass 100%).
+     - Deploy lên Cloudflare Pages qua Wrangler CLI: `npx wrangler pages deploy dist --project-name=localmate-vn`.
+- **Nghiệm thu Live Production**:
+  - `curl -I https://localmate.vn/geo` -> HTTP 308 -> `/geo/` -> HTTP 200 OK.
+  - Kiểm tra tài nguyên ảnh (`/geo/hero-scene.png`, `/geo/logo.png`, `/geo/pricing-scene.png`) -> HTTP 200 OK.
+  - Chụp ảnh kiểm thử trực tiếp bằng Playwright trên thiết bị di động (390x844): Hero section và Footer promise badge hiển thị cân đối hoàn hảo, không còn bất kỳ lỗi rớt chữ đơn lẻ hay vỡ layout.
+
+## [2026-09-17] - Tối Ưu Mobile Responsive: Khử Lỗi Rớt Dòng Vụn Vặt & Tái Cấu Trúc Footer Promise Badge
+- **Bối cảnh & Vấn đề**:
+  1. *Tiêu đề Hero*: Font 34px trên mobile 360–390px quá to khiến tiêu đề bị bẻ thành 5 dòng cụt lủn ("KHÁCH HỎI", "CHATGPT VỀ", "DỊCH VỤ.", "AI CÓ NHẮC ĐẾN", "BẠN KHÔNG?").
+  2. *Badge Promise ở Footer*: Thẻ "Cùng nhau xây dựng một Việt Nam thịnh vượng trong kỷ nguyên AI" bị nhét vào cột con 50% "Dịch vụ nổi bật", khiến chữ "vượng" bị rớt trơ trọi 1 mình thành dòng thứ 4.
+  3. *3 Khối Proof items*: Ép 3 cột ngang co rúm khiến text rớt 4 dòng li ti.
+  4. *Orphan word*: Từ "mạnh mẽ" bị rớt chữ "mẽ" lẻ loi.
+- **Giải pháp & Thực thi**:
+  1. Đưa `.geo-footer-promise` ra ngoài grid 4 cột, trở thành banner sứ mệnh full-width giữa grid và copyright:
+     - Desktop: 1 hàng ngang fit-content thanh lịch.
+     - Mobile: 100% chiều rộng, nền `#f0faf5`, viền `#d4ece1`, text 11.5–12px cân đối 2 dòng, bọc `white-space: nowrap` cho "một Việt Nam thịnh vượng".
+  2. Áp dụng Fluid Typography `clamp(22px, 6.2vw, 28px)` và `text-wrap: balance` cho Hero H1. Tiêu đề ngắt thành 2 dòng trên và 2 dòng dưới cân xứng tuyệt đối.
+  3. Chuyển Proof items trên mobile sang layout dọc dạng Pill card (`flex-direction: column; gap: 7px;`), mỗi câu nằm trọn 1 dòng.
+  4. Đồng bộ triệt để cả 3 tầng: mã nguồn `src/` (`GeoFooter.tsx`, `GeoHeroSection.tsx`, `geo-landing.css`), file tĩnh `public/landing-geo.html` qua export script, và file `dist/landing-geo.html`.
+- **Nghiệm thu**:
+  - Test trực tiếp bằng `playwright-cli` ở các kích thước `360x780` và `390x844`.
+  - Không còn hiện tượng rớt chữ vụn vặt, layout thoáng đãng, sang trọng.
+
 ## [2026-09-17] - Fix Lỗi Font Dấu Tiếng Việt, Tối Ưu Pricing Section Fit Màn Hình Desktop & Tinh Gọn Footer /geo
 - **Bối cảnh & Vấn đề**:
   1. *Lỗi Font*: Google Fonts `Be Vietnam Pro` trên một số trình duyệt Chromium bị fallback sang Segoe UI khi gặp các ký tự tiếng Việt in hoa có dấu (`Ắ, Ầ, Ỏ, Ậ, Ộ, Ờ...`) do thiếu tham số `&subset=vietnamese` và việc sử dụng các font-weight không chuẩn (`900`, `850`, `750`).
@@ -393,5 +431,25 @@ Ghi nhận các mốc sự kiện, commit và trạng thái vận hành của d�
   - `npm run build`: PASS (Vite production build thành công 100%).
   - Tuân thủ nghiêm ngặt quy tắc Light Mode, độ tương phản cao, tuyệt đối không dùng glassmorphism.
 
+---
 
-
+## [2026-09-17] - Audit & Redesign Toàn Diện Footer LocalMate (Minimalist 2-Tier 4-Column Layout)
+- **Mục tiêu**: Thay thế toàn bộ component Footer cũ (mega-menu 5 cột, quá tải thông tin, nhiều badge gây nhiễu, cao ~800px) thành một Footer tinh gọn, sang trọng, chiều cao chuẩn desktop 400–500px, đáp ứng triết lý "LESS CONTENT, MORE TRUST".
+- **Cải tiến kiến trúc & giao diện (`src/components/layout/Footer.tsx`)**:
+  - **Tầng 1: Main Footer (Grid 4 cột)**:
+    - *Cột 1 (Brand, 33% width)*: Logo LocalMate, mô tả xúc tích 2 dòng ("Website, Google Maps, quảng cáo và hệ thống số cho hộ kinh doanh & SME"), địa bàn phục vụ ("Đà Nẵng · Hội An · TP.HCM · Toàn quốc").
+    - *Cột 2 (Dịch vụ)*: Đúng 5 liên kết dịch vụ cốt lõi (Thiết kế website, Google Maps & Local SEO, Google Ads, Content & chăm sóc số, CRM & Automation). Loại bỏ hoàn toàn số thứ tự, badge, subtitle.
+    - *Cột 3 (Thông tin)*: Đúng 5 liên kết điều hướng thông tin (Cách làm việc, Bảng giá, Dự án / Demo, Về LocalMate, Chính sách bảo mật).
+    - *Cột 4 (Contact / CTA)*: Heading "Cần hỗ trợ?", mô tả ngắn, CTA Primary "Nhắn Zalo" (brand green, bo góc 8px), text link Hotline "0834 422 439", email `contact@localmate.vn`, nhóm 3 social icon phẳng (Facebook, Zalo, Hotline). Xóa bỏ card bọc thô cứng.
+  - **Tầng 2: Bottom Bar**: Divider 1px `#E5E7EB`, Copyright left, "Điều khoản · Bảo mật" right. Tinh chỉnh CSS baseline alignment cho dấu bullet separator.
+  - **Loại bỏ**: Hàng header nhỏ rườm rà phía trên footer và thanh trust pills lặp lại nội dung.
+- **Kết quả nghiệm thu kỹ thuật (Definition of Done)**:
+  - **Responsive Matrix Audit (Playwright)**:
+    - `1920x1080`: 488px (đạt chuẩn 400–500px).
+    - `1440x900`: 488px.
+    - `1366x768`: 488px (thoáng đãng, thanh lịch, tỷ lệ vàng).
+    - `1024x768` & `768x1024`: 2x2 grid mượt mà.
+    - `390x844`: 1 column stack theo thứ tự chuẩn Brand -> Contact/CTA -> Dịch vụ -> Thông tin -> Bottom bar.
+    - `has_overflow: false` 100% trên tất cả các breakpoint (`scrollWidth <= innerWidth`).
+  - `npx tsc --noEmit`: PASS (0 errors).
+  - `npm run build`: PASS (Vite bundle built in 6.16s).

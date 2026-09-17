@@ -31,7 +31,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenConsultForm }) => {
       />
 
       {/* 1. Hero — Giúp doanh nghiệp nhỏ có website, lên Google và tìm thêm khách hàng */}
-      <HeroSection onOpenDemoForm={() => onOpenConsultForm && onOpenConsultForm('Tư vấn Web Demo 0đ')} />
+      <HeroSection onOpenDemoForm={(industryName) => onOpenConsultForm && onOpenConsultForm(industryName || 'Tư vấn Web Demo 0đ')} />
 
       {/* 2. Khách đang cần việc gì? — Phân nhóm theo lời khách hàng nói (Section 18) */}
       <ProblemMapperSection />

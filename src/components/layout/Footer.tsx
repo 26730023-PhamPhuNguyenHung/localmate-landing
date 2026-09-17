@@ -126,7 +126,7 @@ export const Footer: React.FC = () => {
                 aria-label="Facebook LocalMate"
                 title="Fanpage Facebook LocalMate"
               >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                 </svg>
               </a>
@@ -146,7 +146,7 @@ export const Footer: React.FC = () => {
                 aria-label="Hotline LocalMate"
                 title="Gọi Hotline 0834 422 439"
               >
-                <Phone size={15} aria-hidden="true" />
+                <Phone size={14} aria-hidden="true" />
               </a>
             </div>
           </div>
@@ -162,7 +162,7 @@ export const Footer: React.FC = () => {
             <Link to="/dieu-khoan" className="footer-legal-link">
               Điều khoản
             </Link>
-            <span className="footer-legal-dot" aria-hidden="true">·</span>
+            <span className="footer-legal-sep" aria-hidden="true">·</span>
             <Link to="/chinh-sach-bao-mat" className="footer-legal-link">
               Bảo mật
             </Link>
@@ -174,12 +174,12 @@ export const Footer: React.FC = () => {
         /* ==========================================================================
            LOCALMATE FOOTER COMPONENT (REDESIGNED 2026)
            Style: Clean, Minimalist, High Contrast, Strict No Glassmorphism
-           Height: 400 - 500px on Desktop
+           Height Target: 400 - 500px on Desktop
            ========================================================================== */
         .localmate-footer {
           background-color: #ffffff;
           border-top: 1px solid #e9edf2;
-          padding: 72px 0 0 0;
+          padding: 56px 0 0 0;
           font-family: inherit;
           scrollbar-gutter: stable;
           color: #667085;
@@ -189,21 +189,21 @@ export const Footer: React.FC = () => {
         .footer-main-grid {
           display: grid;
           grid-template-columns: 1fr;
-          gap: 36px;
-          padding-bottom: 56px;
+          gap: 32px;
+          padding-bottom: 40px;
         }
 
         @media (min-width: 768px) and (max-width: 1199px) {
           .footer-main-grid {
             grid-template-columns: repeat(2, 1fr);
-            gap: 40px 32px;
+            gap: 36px 32px;
           }
         }
 
         @media (min-width: 1200px) {
           .footer-main-grid {
-            grid-template-columns: 34% 1fr 1fr 1.2fr;
-            column-gap: 56px;
+            grid-template-columns: 33% 1.15fr 1fr 1.1fr;
+            column-gap: 52px;
             row-gap: 0;
           }
         }
@@ -227,7 +227,7 @@ export const Footer: React.FC = () => {
           font-size: 16px;
           font-weight: 700;
           color: #111827;
-          margin: 0 0 18px 0;
+          margin: 0 0 16px 0;
           line-height: 1.3;
           letter-spacing: -0.01em;
         }
@@ -237,12 +237,12 @@ export const Footer: React.FC = () => {
           display: inline-flex;
           align-items: center;
           text-decoration: none;
-          margin-bottom: 16px;
+          margin-bottom: 14px;
           width: fit-content;
         }
 
         .footer-logo-img {
-          height: 40px;
+          height: 38px;
           width: auto;
           object-fit: contain;
           display: block;
@@ -250,9 +250,9 @@ export const Footer: React.FC = () => {
 
         .footer-brand-desc {
           font-size: 15px;
-          line-height: 1.6;
+          line-height: 1.55;
           color: #475569;
-          margin: 0 0 14px 0;
+          margin: 0 0 12px 0;
           max-width: 320px;
           text-wrap: pretty;
         }
@@ -268,12 +268,12 @@ export const Footer: React.FC = () => {
         .footer-nav-list {
           display: flex;
           flex-direction: column;
-          gap: 13px;
+          gap: 12px;
         }
 
         .footer-nav-link {
-          font-size: 15px;
-          line-height: 1.5;
+          font-size: 14.5px;
+          line-height: 1.45;
           color: #667085;
           text-decoration: none;
           transition: color 0.15s ease, transform 0.15s ease;
@@ -288,10 +288,10 @@ export const Footer: React.FC = () => {
 
         /* Column 4: Contact / CTA */
         .footer-contact-desc {
-          font-size: 15px;
-          line-height: 1.55;
+          font-size: 14.5px;
+          line-height: 1.5;
           color: #667085;
-          margin: 0 0 16px 0;
+          margin: 0 0 14px 0;
           text-wrap: pretty;
         }
 
@@ -299,8 +299,8 @@ export const Footer: React.FC = () => {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          height: 46px;
-          padding: 0 24px;
+          height: 44px;
+          padding: 0 22px;
           background-color: #0d7647;
           color: #ffffff;
           font-size: 15px;
@@ -309,7 +309,7 @@ export const Footer: React.FC = () => {
           text-decoration: none;
           transition: background-color 0.15s ease, transform 0.1s ease;
           width: fit-content;
-          box-shadow: 0 1px 2px rgba(13, 118, 71, 0.12);
+          box-shadow: 0 1px 2px rgba(13, 118, 71, 0.1);
         }
 
         .footer-cta-btn:hover {
@@ -321,8 +321,8 @@ export const Footer: React.FC = () => {
         .footer-contact-links {
           display: flex;
           flex-direction: column;
-          gap: 10px;
-          margin-top: 16px;
+          gap: 9px;
+          margin-top: 14px;
         }
 
         .footer-direct-link {
@@ -330,7 +330,7 @@ export const Footer: React.FC = () => {
           align-items: center;
           gap: 8px;
           font-size: 14px;
-          line-height: 1.5;
+          line-height: 1.45;
           color: #475569;
           text-decoration: none;
           transition: color 0.15s ease;
@@ -360,13 +360,13 @@ export const Footer: React.FC = () => {
         .footer-social-row {
           display: flex;
           align-items: center;
-          gap: 10px;
-          margin-top: 18px;
+          gap: 8px;
+          margin-top: 16px;
         }
 
         .footer-social-btn {
-          width: 36px;
-          height: 36px;
+          width: 34px;
+          height: 34px;
           border-radius: 50%;
           background-color: #f8fafc;
           border: 1px solid #e2e8f0;
@@ -386,19 +386,18 @@ export const Footer: React.FC = () => {
         }
 
         .zalo-symbol {
-          font-size: 14px;
+          font-size: 13px;
           font-weight: 800;
           line-height: 1;
-          letter-spacing: -0.02em;
         }
 
         /* 2. Bottom Bar */
         .footer-bottom-bar {
           border-top: 1px solid #e5e7eb;
-          padding: 24px 0;
+          padding: 20px 0;
           display: flex;
           flex-direction: column;
-          gap: 12px;
+          gap: 10px;
           align-items: flex-start;
           font-size: 14px;
           color: #667085;
@@ -410,7 +409,7 @@ export const Footer: React.FC = () => {
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
-            height: 64px;
+            height: 60px;
             padding: 0;
           }
         }
@@ -420,15 +419,22 @@ export const Footer: React.FC = () => {
         }
 
         .footer-bottom-legal {
-          display: inline-flex;
+          display: flex;
           align-items: center;
           gap: 8px;
+          font-size: 14px;
+          line-height: 1.5;
         }
 
         .footer-legal-link {
           color: #667085;
           text-decoration: none;
           transition: color 0.15s ease;
+          line-height: 1.5;
+          height: auto;
+          min-height: auto;
+          padding: 0;
+          display: inline-block;
         }
 
         .footer-legal-link:hover {
@@ -436,20 +442,24 @@ export const Footer: React.FC = () => {
           text-decoration: underline;
         }
 
-        .footer-legal-dot {
+        .footer-legal-sep {
           color: #9ca3af;
           font-weight: 700;
+          font-size: 14px;
+          line-height: 1.5;
+          display: inline-block;
+          user-select: none;
         }
 
         /* Mobile specific adjustments */
         @media (max-width: 767px) {
           .localmate-footer {
-            padding: 40px 0 0 0;
+            padding: 36px 0 0 0;
           }
 
           .footer-main-grid {
-            gap: 32px;
-            padding-bottom: 36px;
+            gap: 28px;
+            padding-bottom: 32px;
           }
 
           .footer-cta-btn {
@@ -457,7 +467,7 @@ export const Footer: React.FC = () => {
           }
 
           .footer-bottom-bar {
-            padding: 20px 0 28px 0;
+            padding: 18px 0 24px 0;
           }
         }
       `}</style>
