@@ -44,7 +44,9 @@ export type ArticleQualityStatus =
   | 'fact_check_pending'
   | 'editorial_approved'
   | 'needs_update'
-  | 'flagged';
+  | 'flagged'
+  | 'pass'
+  | 'review_required';
 
 export type ArticleSeoStatus =
   | 'not_optimized'
@@ -99,9 +101,9 @@ export interface PostContentBrief {
   content_type?: ArticleContentType;
   pillar_id?: number | string;
   related_posts?: (number | string)[];
-  related_service?: ArticleRelatedService;
-  author?: ArticleAuthor;
-  reviewed_by?: ArticleReviewer;
+  related_service?: ArticleRelatedService | string;
+  author?: ArticleAuthor | string;
+  reviewed_by?: ArticleReviewer | string;
   fact_checked_at?: string;
   quality_status?: ArticleQualityStatus;
   seo_status?: ArticleSeoStatus;
@@ -118,8 +120,8 @@ export interface PostContentBrief {
   contentType?: ArticleContentType;
   pillarId?: number | string;
   relatedPosts?: (number | string)[];
-  relatedService?: ArticleRelatedService;
-  reviewedBy?: ArticleReviewer;
+  relatedService?: ArticleRelatedService | string;
+  reviewedBy?: ArticleReviewer | string;
   factCheckedAt?: string;
   qualityStatus?: ArticleQualityStatus;
   seoStatus?: ArticleSeoStatus;

@@ -1,0 +1,242 @@
+[
+  {
+    "id": 1,
+    "title": "Website doanh nghiệp là gì? Doanh nghiệp nhỏ có thực sự cần website?",
+    "slug": "website-doanh-nghiep-la-gi-doanh-nghiep-nho-co-can-website",
+    "category": "website",
+    "focus_keyword": "website doanh nghiệp là gì",
+    "words": 650
+  },
+  {
+    "id": 2,
+    "title": "Làm website cho doanh nghiệp nhỏ cần chuẩn bị những gì?",
+    "slug": "lam-website-cho-doanh-nghiep-nho-can-chuan-bi-nhung-gi",
+    "category": "website",
+    "focus_keyword": "chuẩn bị làm website doanh nghiệp nhỏ",
+    "words": 650
+  },
+  {
+    "id": 3,
+    "title": "Chi phí làm website doanh nghiệp nhỏ năm 2026 gồm những gì?",
+    "slug": "chi-phi-lam-website-doanh-nghiep-nho-2026",
+    "category": "website",
+    "focus_keyword": "chi phí làm website doanh nghiệp nhỏ",
+    "words": 650
+  },
+  {
+    "id": 4,
+    "title": "Website giới thiệu công ty nên có những trang nào?",
+    "slug": "website-gioi-thieu-cong-ty-nen-co-nhung-trang-nao",
+    "category": "website",
+    "focus_keyword": "các trang cần có trên website công ty",
+    "words": 650
+  },
+  {
+    "id": 5,
+    "title": "Website bán hàng và website giới thiệu khác nhau như thế nào?",
+    "slug": "website-ban-hang-va-website-gioi-thieu-khac-nhau-nhu-the-nao",
+    "category": "website",
+    "focus_keyword": "so sánh website bán hàng và website giới thiệu",
+    "words": 650
+  },
+  {
+    "id": 6,
+    "title": "10 lỗi phổ biến khiến website doanh nghiệp không có khách hàng",
+    "slug": "10-loi-pho-bien-khien-website-doanh-nghiep-khong-co-khach",
+    "category": "website",
+    "focus_keyword": "lỗi khiến website không có khách",
+    "words": 650
+  },
+  {
+    "id": 7,
+    "title": "Google Maps cho doanh nghiệp: Hướng dẫn từ A đến Z",
+    "slug": "google-maps-cho-doanh-nghiep-huong-dan-tu-a-den-z",
+    "category": "google-maps",
+    "focus_keyword": "google maps cho doanh nghiệp",
+    "words": 650
+  },
+  {
+    "id": 8,
+    "title": "Cách đưa doanh nghiệp lên Google Maps nhanh chóng và chuẩn xác",
+    "slug": "cach-dua-doanh-nghiep-len-google-maps",
+    "category": "google-maps",
+    "focus_keyword": "cách đưa doanh nghiệp lên google maps",
+    "words": 650
+  },
+  {
+    "id": 9,
+    "title": "Cách tối ưu Google Business Profile để khách hàng dễ tìm thấy",
+    "slug": "cach-toi-uu-google-business-profile-de-khach-de-tim-thay",
+    "category": "google-maps",
+    "focus_keyword": "tối ưu google business profile",
+    "words": 650
+  },
+  {
+    "id": 10,
+    "title": "Vì sao doanh nghiệp không xuất hiện trên Google Maps?",
+    "slug": "vi-sao-doanh-nghiep-khong-xuat-hien-tren-google-maps",
+    "category": "google-maps",
+    "focus_keyword": "tại sao doanh nghiệp không hiện trên google maps",
+    "words": 650
+  },
+  {
+    "id": 11,
+    "title": "Cách tăng đánh giá Google Maps đúng cách và bền vững",
+    "slug": "cach-tang-danh-gia-google-maps-dung-cach",
+    "category": "google-maps",
+    "focus_keyword": "cách tăng đánh giá google maps",
+    "words": 650
+  },
+  {
+    "id": 12,
+    "title": "Google Maps bị đình chỉ: Nguyên nhân và cách xử lý khôi phục",
+    "slug": "google-maps-bi-dinh-chi-nguyen-nhan-va-cach-xu-ly",
+    "category": "google-maps",
+    "focus_keyword": "google maps bị đình chỉ",
+    "words": 650
+  },
+  {
+    "id": 13,
+    "title": "Local SEO là gì? Vì sao doanh nghiệp địa phương nên làm Local SEO?",
+    "slug": "local-seo-la-gi-vi-sao-doanh-nghiep-dia-phuong-nen-lam",
+    "category": "local-seo",
+    "focus_keyword": "local seo là gì",
+    "words": 650
+  },
+  {
+    "id": 14,
+    "title": "SEO Google Maps và SEO website khác nhau như thế nào?",
+    "slug": "seo-google-maps-va-seo-website-khac-nhau-nhu-the-nao",
+    "category": "local-seo",
+    "focus_keyword": "so sánh seo google maps và seo website",
+    "words": 650
+  },
+  {
+    "id": 15,
+    "title": "Cách SEO doanh nghiệp lên Google tại khu vực địa phương",
+    "slug": "cach-seo-doanh-nghiep-len-google-tai-khu-vuc-dia-phuong",
+    "category": "local-seo",
+    "focus_keyword": "cách seo từ khóa địa phương",
+    "words": 650
+  },
+  {
+    "id": 16,
+    "title": "Entity SEO là gì và có cần thiết cho doanh nghiệp nhỏ?",
+    "slug": "entity-seo-la-gi-co-can-thiet-cho-doanh-nghiep-nho",
+    "category": "local-seo",
+    "focus_keyword": "entity seo cho doanh nghiệp nhỏ",
+    "words": 650
+  },
+  {
+    "id": 17,
+    "title": "Citation trong Local SEO là gì và cách xây dựng chuẩn xác",
+    "slug": "citation-trong-local-seo-la-gi",
+    "category": "local-seo",
+    "focus_keyword": "citation trong local seo là gì",
+    "words": 650
+  },
+  {
+    "id": 18,
+    "title": "Checklist Local SEO 2026 cho doanh nghiệp địa phương",
+    "slug": "checklist-local-seo-cho-doanh-nghiep-dia-phuong",
+    "category": "local-seo",
+    "focus_keyword": "checklist local seo",
+    "words": 650
+  },
+  {
+    "id": 19,
+    "title": "Google Ads cho doanh nghiệp nhỏ: Bắt đầu từ đâu?",
+    "slug": "google-ads-cho-doanh-nghiep-nho-bat-dau-tu-dau",
+    "category": "google-ads",
+    "focus_keyword": "google ads cho doanh nghiệp nhỏ",
+    "words": 650
+  },
+  {
+    "id": 20,
+    "title": "Google Search Ads hoạt động như thế nào?",
+    "slug": "google-search-ads-hoat-dong-nhu-the-nao",
+    "category": "google-ads",
+    "focus_keyword": "google search ads hoạt động như thế nào",
+    "words": 650
+  },
+  {
+    "id": 21,
+    "title": "Chạy Google Ads bao nhiêu tiền một ngày là hợp lý?",
+    "slug": "chay-google-ads-bao-nhieu-tien-mot-ngay-la-hop-ly",
+    "category": "google-ads",
+    "focus_keyword": "chạy google ads bao nhiêu tiền một ngày",
+    "words": 650
+  },
+  {
+    "id": 22,
+    "title": "Vì sao chạy Google Ads có click nhưng không có khách liên hệ?",
+    "slug": "vi-sao-chay-google-ads-co-click-nhung-khong-co-khach",
+    "category": "google-ads",
+    "focus_keyword": "chạy google ads có click không có khách",
+    "words": 650
+  },
+  {
+    "id": 23,
+    "title": "Landing page chạy Google Ads nên thiết kế như thế nào để ra khách?",
+    "slug": "landing-page-chay-google-ads-nen-thiet-ke-nhu-the-nao",
+    "category": "google-ads",
+    "focus_keyword": "thiết kế landing page chạy google ads",
+    "words": 650
+  },
+  {
+    "id": 24,
+    "title": "Google Ads hay Facebook Ads phù hợp hơn với doanh nghiệp địa phương?",
+    "slug": "google-ads-hay-facebook-ads-phu-hop-hon-voi-doanh-nghiep-dia-phuong",
+    "category": "google-ads",
+    "focus_keyword": "so sánh google ads và facebook ads",
+    "words": 650
+  },
+  {
+    "id": 25,
+    "title": "CRM là gì? Doanh nghiệp nhỏ có thực sự cần hệ thống CRM không?",
+    "slug": "crm-la-gi-doanh-nghiep-nho-co-can-crm-khong",
+    "category": "crm-automation",
+    "focus_keyword": "crm là gì cho doanh nghiệp nhỏ",
+    "words": 650
+  },
+  {
+    "id": 26,
+    "title": "CRM đơn giản cho doanh nghiệp nhỏ nên có những tính năng nào?",
+    "slug": "crm-don-gian-cho-doanh-nghiep-nho-nen-co-nhung-tinh-nang-nao",
+    "category": "crm-automation",
+    "focus_keyword": "tính năng crm cho doanh nghiệp nhỏ",
+    "words": 650
+  },
+  {
+    "id": 27,
+    "title": "Automation cho doanh nghiệp nhỏ: 7 việc nên tự động hóa ngay",
+    "slug": "automation-cho-doanh-nghiep-nho-7-viec-nen-tu-dong-hoa",
+    "category": "crm-automation",
+    "focus_keyword": "tự động hóa cho doanh nghiệp nhỏ",
+    "words": 650
+  },
+  {
+    "id": 28,
+    "title": "Cách quản lý khách hàng từ Facebook, Zalo và website trên một hệ thống",
+    "slug": "cach-quan-ly-khach-hang-tu-facebook-zalo-website-tren-mot-he-thong",
+    "category": "crm-automation",
+    "focus_keyword": "quản lý tin nhắn facebook zalo website tập trung",
+    "words": 650
+  },
+  {
+    "id": 29,
+    "title": "Content marketing cho doanh nghiệp địa phương nên bắt đầu từ đâu?",
+    "slug": "content-marketing-cho-doanh-nghiep-dia-phuong-bat-dau-tu-dau",
+    "category": "content",
+    "focus_keyword": "content marketing cho doanh nghiệp địa phương",
+    "words": 650
+  },
+  {
+    "id": 30,
+    "title": "Chuyển đổi số cho doanh nghiệp nhỏ: Bắt đầu từ 5 việc đơn giản",
+    "slug": "chuyen-doi-so-cho-doanh-nghiep-nho-5-viec-don-gian",
+    "category": "kinh-doanh-dia-phuong",
+    "focus_keyword": "chuyển đổi số cho doanh nghiệp nhỏ",
+    "words": 650
+  }
+]

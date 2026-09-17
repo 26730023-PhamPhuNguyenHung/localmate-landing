@@ -38,3 +38,19 @@
 - **Thanh Footer Ngang Tinh Tế Thay Thế Promo Rail**: Bỏ hoàn toàn Promo Card chiếm cột 4 cồng kềnh; thay bằng 1 thanh ngang thanh mảnh (~54px) dưới chân 3 cột: *"Chưa biết nên bắt đầu từ đâu? Xem bảng giá → [Nhận tư vấn]"*. Giảm chiều cao menu từ ~540px xuống ~310px, hiển thị trọn vẹn và thoáng đãng ngay cả trên màn hình laptop 1366x768.
 - **Mobile Accordion Tinh Gọn**: Trên di động, menu dịch vụ hiển thị dạng accordion chỉ gồm tiêu đề các nhóm và tên dịch vụ (bỏ mô tả dài), kèm 2 nút *"Xem tất cả dịch vụ →"* và *"Nhận tư vấn"*, giúp thao tác một tay mượt mà.
 
+## 8. Bài Học Về Vận Hành Content Engine & Batch Rewrite (Anti-AI Slop SOP)
+- **Tách Biệt Khâu Khám Phá & Khâu Viết Thực Tế**: Không bao giờ viết ngay khi chưa audit và chưa chốt Content Master Plan. Phối hợp 10 Subagents giúp phân tích đa chiều từ Search Intent, Kiến trúc liên kết nội bộ, Chuẩn chứng cứ cho tới Rà soát Red Team.
+- **Quy Hoạch Cụm Chủ Đề (Topic Cluster) Để Diệt Trừ Cannibalization**: Các bài viết tương đồng (như Tạo Maps vs Video xác minh, Web bán hàng vs Web tư vấn) phải được phân vai dứt điểm (Pillar vs Supporting) và đổi góc nhìn (Angle Pivot) trước khi bắt tay vào viết.
+- **Tiêu Chuẩn 10 Điểm Của Bài Viết Chuyển Đổi**:
+  1. *Answer First (100-180 từ đầu)*: Giải quyết dứt điểm thắc mắc, đưa ra kết luận ngay.
+  2. *Context & Boundary*: Nêu rõ ai nên làm, ai chưa nên làm.
+  3. *LocalMate POV*: Luận điểm độc lập, bảo vệ quyền sở hữu chính chủ 100%.
+  4. *Breakdown*: Giải phẫu bình dân theo ngôn ngữ bác thợ.
+  5. *Example*: Tình huống có địa chỉ, ngành nghề thật tại Việt Nam.
+  6. *Decision Support*: Checklist, ma trận so sánh, bảng đối soát chi phí.
+  7. *Trade-off*: Được gì và mất gì, chi phí ẩn.
+  8. *Mistakes*: Sai lầm phổ biến khi triển khai tại hiện trường.
+  9. *Action Plan*: Kế hoạch 24h & 7 ngày.
+  10. *Contextual CTA*: Dẫn dắt tự nhiên về dịch vụ LocalMate tương ứng (`/giai-phap/*`).
+- **Nâng Cấp CMS Thành Editorial Dashboard Chuyên Nghiệp**: Bảng danh sách bài viết phải phản ánh đúng các chỉ số nghiệp vụ (Search Intent, Pillar, Quality Gate PASS/Review, Số từ, Liên kết nội bộ). Trình soạn thảo cần hỗ trợ bộ lọc kiểm tra thời gian thực (Real-time Slop Detector) để ngăn chặn từ sáo rỗng ngay khi gõ phím.
+

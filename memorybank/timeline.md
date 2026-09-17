@@ -2,6 +2,25 @@
 
 Ghi nhận các mốc sự kiện, commit và trạng thái vận hành của dự án.
 
+## [2026-09-17] - Hoàn Tất Chiến Dịch Content Engine: Rewrite 30 Bài Viết & Nâng Cấp CMS Editorial
+- **Bối cảnh & Vấn đề**:
+  - CMS có 30 bài draft dạng placeholder stubs rập khuôn, văn mẫu sáo rỗng, nguy cơ bị Google phạt Thin Content.
+  - Cần chuyển hóa thành Content Engine có góc nhìn riêng, kinh nghiệm thực chiến, ví dụ xưởng/tiệm tại VN, bảng checklist hành động, tối ưu cả Google SEO lẫn Generative Engine Optimization (GEO/AI search).
+- **Thực thi Kỹ thuật Toàn Diện**:
+  1. *Phối hợp 10 Subagents Song Song*: Xuất bản 10 tài liệu SSOT (`docs/content-audit.md`, `docs/search-intent-map.md`, `docs/editorial-pov.md`, `docs/practical-insights.md`, `docs/evidence-policy.md`, `docs/content-architecture.md`, `docs/article-schema.md`, `docs/rewrite-strategy-and-batches.md`, `docs/seo-geo-audit.md`, `docs/content-quality-report.md`).
+  2. *Chốt Content Master Plan (`docs/content-master-plan.md`)*: Phân định 5 Topic Clusters + 1 Master Macro Pillar (Bài 30); giải quyết dứt điểm các cặp keyword cannibalization (Bài 7 vs 8, 1 vs 5, 13 vs 14 vs 15, 16 vs 17, 19 vs 20, 25 vs 26).
+  3. *Thực thi 6 Batches Rewrite Đạt Chuẩn Quality Gate*: Viết lại toàn bộ 30 bài viết đạt 18.763 từ thực chiến, 100% đạt Answer-First, bảng đối soát, kịch bản xưởng/tiệm thật (Bình Thạnh, Gò Vấp, Thủ Đức, Đống Đa...), không một dòng AI slop hay placeholder stub.
+  4. *Nâng Cấp CMS Giao Diện Editorial*:
+     - `src/admin/pages/PostsListPage.tsx`: Thêm các cột Search Intent, Pillar/Supporting badge, Quality Gate status (PASS/Review), SEO/GEO status, Word count, Internal links count, Cảnh báo thiếu bằng chứng, bộ lọc thông minh.
+     - `src/admin/editor/PostEditorPage.tsx`: Hệ thống 6 Tabs (Content, SEO, GEO, Internal Links, Evidence, Revisions), Content Brief Panel và Quality Gate Anti-AI Slop Panel thời gian thực.
+  5. *Đồng bộ Dữ Liệu & Kiểm Định Build*:
+     - Cập nhật `content/seeds/drafts_30_articles.json`, `docs/drafts_30_inventory.json` và `migrations/0003_seed_draft_posts.sql`.
+     - Chạy `npm run build` (`tsc && vite build`) PASS 100% trong 5.50s.
+     - Xuất bản Báo cáo Tổng kết tại `docs/content-rewrite-report.md`.
+- **Nghiệm thu**:
+  - 30/30 bài viết PASS Quality Gate, giữ trạng thái draft an toàn.
+  - CMS UI Light Mode trực quan, mượt mà, chuyên nghiệp.
+
 ## [2026-09-17] - Audit & Redesign Mega Menu Dịch Vụ Chuẩn Digital Studio / SaaS 3 Cột (LocalMate)
 - **Bối cảnh & Vấn đề**:
   - Mega menu cũ chia 4 cột với cột thứ 4 là Promo card lớn ("Gói Khởi Tạo 490k" + Hotline) chiếm diện tích và làm mất cân đối thị giác.
