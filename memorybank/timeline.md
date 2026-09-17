@@ -2,6 +2,16 @@
 
 Ghi nhận các mốc sự kiện, commit và trạng thái vận hành của dự án.
 
+## [2026-09-17] - Fix Căn Giữa Subtitle Section "Câu Chuyện Khách Hàng" (HomePage)
+- **Commit**: `e02ddbc` (`fix(landing): center align customer stories section subtitle`)
+- **Bối cảnh & Vấn đề**:
+  - Đoạn mô tả phụ trong section `#stories`: *"Localmate thấu hiểu đặc thù từng ngành nghề, từ đó thiết kế giải pháp phù hợp giúp bạn hiện diện đúng nơi, tiếp cận đúng khách hàng và phát triển bền vững."* bị dạt sang mép trái, đè lên phần chữ viết tay `side-note.left`.
+  - Nguyên nhân: Trong `globals.css`, thẻ `p` bị gán `max-width: var(--paragraph-max-width)` mà không có `margin-inline: auto`. Trong khi đó `.section-heading p` chỉ có `margin-top: 16px` nên thẻ `p` mặc định dạt về lề trái của container.
+- **Thực thi Kỹ thuật**:
+  - `src/styles/reference-landing.css`: Cập nhật `.section-heading p`, `.stories .section-heading`, `.stories .section-heading p` và `.process .section-heading p` với `margin: 16px auto 0; text-align: center; max-width: 820px;`.
+  - `src/pages/HomePage.tsx`: Bổ sung inline style `textAlign: 'center', marginLeft: 'auto', marginRight: 'auto', maxWidth: '820px'` để bulletproof chống mọi override CSS/cache.
+  - Build `npm run build` (`tsc && vite build`) PASS 100% không lỗi.
+
 ## [2026-09-17] - Hoàn Tất Chiến Dịch Content Engine: Rewrite 30 Bài Viết & Nâng Cấp CMS Editorial
 - **Bối cảnh & Vấn đề**:
   - CMS có 30 bài draft dạng placeholder stubs rập khuôn, văn mẫu sáo rỗng, nguy cơ bị Google phạt Thin Content.
