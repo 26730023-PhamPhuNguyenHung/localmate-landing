@@ -357,7 +357,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenConsultForm }) => {
               Dịch vụ phù hợp cho<br />
               <em>doanh nghiệp địa phương</em>
             </h2>
-            <p>
+            <p style={{ textAlign: 'center', marginLeft: 'auto', marginRight: 'auto', maxWidth: '820px' }}>
               Giúp hộ kinh doanh &amp; SME xây dựng hiện diện số chuyên nghiệp,<br className="desktop" /> tiếp cận đúng khách hàng và phát triển bền vững trên môi trường số.
             </p>
           </div>
@@ -481,7 +481,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenConsultForm }) => {
             <h2>
               Cách Localmate <em>đồng hành cùng bạn</em>
             </h2>
-            <p>
+            <p style={{ textAlign: 'center', marginLeft: 'auto', marginRight: 'auto', maxWidth: '820px' }}>
               Biến hành trình chuyển đổi số trở nên đơn giản, rõ ràng và hiệu quả hơn<br className="desktop" /> cho mọi doanh nghiệp địa phương.
             </p>
           </div>

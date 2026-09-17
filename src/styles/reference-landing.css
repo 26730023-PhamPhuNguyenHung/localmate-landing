@@ -50,7 +50,7 @@ body{font-family:'Be Vietnam Pro',Arial,sans-serif}
 .stories .side-note{max-width:215px;font-size:23px;top:85px}
 .stories .section-heading h2{font-size:40px}.stories .section-heading p{margin:16px auto 0;text-align:center;max-width:820px}
 .process .side-note{max-width:200px;font-size:24px}
-.process .section-heading h2{font-size:52px}
+.process .section-heading h2{font-size:52px}.process .section-heading p{margin:16px auto 0;text-align:center;max-width:820px}
 .services,.process{background:linear-gradient(#ffffff9c,#f4fbf5ec),url('/images/landing/bg-texture.png') center/cover}
 .stories{background:linear-gradient(#ffffffdf,#f3faf1ed),url('/images/landing/bg-texture.png') center/cover}
 .service-card{background:#fff}
