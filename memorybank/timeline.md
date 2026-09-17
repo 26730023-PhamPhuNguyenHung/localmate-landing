@@ -49,6 +49,16 @@ Ghi nhận các mốc sự kiện, commit và trạng thái vận hành của d�
   4. *Cảnh báo đỏ Doorway Pages*: Cảnh báo rủi ro clone trang location page theo quận/huyện; đưa ra quy tắc 4 KHÔNG - 4 CÓ để bảo vệ website khỏi Google Spam Update.
   5. *Đề xuất*: Thiết lập Hệ thống CTA Đa Tầng (Multi-tier CTA) 5 cấp độ và lộ trình nâng cấp dữ liệu + giao diện.
 
+## [2026-09-17] - Bảo Mật: Xóa Gợi Ý Tài Khoản Mặc Định Trang Đăng Nhập CMS (LoginPage)
+- **Commit**: `40465f0` (`sec(auth): remove default credentials hint from login page for production`)
+- **Bối cảnh & Vấn đề**:
+  - Trang đăng nhập CMS `/admin` trước đó hiển thị dòng chữ hỗ trợ dev: *"Tài khoản mặc định khởi tạo: admin / LocalMate@2026"*.
+  - Khi đã deploy môi trường production công khai, dòng này gây rủi ro an ninh thông tin cần được loại bỏ triệt để.
+- **Thực thi Kỹ thuật**:
+  - `src/admin/pages/LoginPage.tsx`: Xóa khối `<div>` gợi ý thông tin đăng nhập mặc định.
+  - Build `npm run build` (`tsc && vite build`) PASS 100% trong 6.86s.
+  - Deploy thành công lên Cloudflare Pages production (`localmate.vn/admin` / `d1b7699e.localmate-vn.pages.dev`).
+
 ## [2026-09-17] - Tối Ưu Vị Trí & Tương Phản Dòng Chữ Viết Tay "Bắt đầu hành trình..." (#contact)
 - **Commit**: `32b3360` (`fix(landing): reposition and resize contact note onto umbrella for high contrast`)
 - **Bối cảnh & Vấn đề**:
