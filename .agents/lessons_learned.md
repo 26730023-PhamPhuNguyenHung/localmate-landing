@@ -1,5 +1,23 @@
 # 📚 LOCALMATE AGENTS LESSONS LEARNED & EDITORIAL RULES
 
+## 16. Bài Học Về Điểm Chạm Chuyển Đổi Tự Nhiên Trong Bài Viết (In-Article CRO & Mobile Sticky Bar)
+- **Triệt tiêu pop-up xâm lấn (Anti-Intrusive CRO)**: Độc giả đọc bài viết kỹ thuật và kinh nghiệm cực kỳ dị ứng với pop-up che chữ, bánh xe quay số, hay modal chặn màn hình. Chuyển đổi bền vững chỉ xảy ra khi lời kêu gọi hành động hòa vào mạch giải quyết vấn đề của bài viết (**Native Contextual Touchpoint**).
+- **Quy tắc 4 Cụm Chủ Đề Ngữ Cảnh (Contextual Reassurance)**:
+  1. *Bài viết Website / Landing Page*: Đưa ra ưu đãi "Dựng Web demo ngành nghề trong 24h từ 490k — xem thử trên điện thoại trước, ưng ý mới làm, không cần đặt cọc".
+  2. *Bài viết Google Maps / Local SEO*: Đưa ra đề xuất "Kiểm tra điểm mù vị trí & thứ hạng Google Maps 0đ trong bán kính 3-5km".
+  3. *Bài viết Quảng cáo Ads*: "Rà soát tài khoản Ads Google/Facebook, chặn click ảo, tối ưu chi phí ra số điện thoại".
+  4. *Bài viết CRM / Vận hành*: "Setup hệ thống quản lý khách & chống trôi tin nhắn Zalo/Fanpage".
+- **Cấu trúc Thẻ Kêu Gọi Chuẩn (In-Article Callout Card)**:
+  - Theme Light Mode tinh tế, solid background (`#ffffff`), viền mềm sắc nét theo màu chủ đề, **tuyệt đối không glassmorphism**.
+  - 1 micro-badge khẳng định giá trị 0đ / bản demo, 1 tiêu đề trực diện, 1 đoạn diễn giải chân thành.
+  - 3 gạch đầu dòng bullet points nêu rõ lợi ích nhận được.
+  - Bộ đôi nút hành động: **Nút chính** (mở `LeadModal` với dịch vụ và ghi chú bài viết đã được điền sẵn) + **Nút phụ** (nhắn Zalo 24/7 trực tiếp cho kỹ thuật viên).
+  - Thanh chân trang cam kết: *Kỹ thuật viên phản hồi trong 15 phút • Không ép buộc mua dịch vụ • Hotline 0834.422.439*.
+- **Mobile Floating Bar - Tối ưu cho ngón tay cái**:
+  - Ghim cố định ở đáy màn hình di động, hỗ trợ `safe-area-inset-bottom` trên iOS Safari/Chrome.
+  - Chia 3 nút cân đối: **Gọi điện** (nền ấm `#fff7ed`, icon cam), **Nhắn Zalo** (nền xanh `#eff6ff`), **Nút CTA ngữ cảnh** (Primary Green `#0d7647`).
+  - Chiều cao touch target đạt 46px chuẩn ergonomics, chống co giật khung hình.
+
 ## 15. Bài Học Về Bảng Lọc Tính Năng CRM Thực Chiến Cho Doanh Nghiệp Nhỏ (Bài 26)
 - **Quy luật Pareto 80/20 trong phần mềm quản lý**: Hơn 85% cơ sở nhỏ bỏ hoang phần mềm CRM sau 1 tháng vì bị "ngộ độc tính năng" (phễu 7 tầng, sơ đồ Gantt, phân quyền đa cấp, ma trận đa chiều). Với tiệm dưới 10 người, CRM chỉ cần tập trung vào đúng 5 tính năng hạt nhân: (1) Lưu danh bạ kèm lịch sử dịch vụ, (2) Nhắc hẹn bảo hành qua Zalo, (3) Phân nhóm VIP/quen/mới, (4) Ghi chú sở thích riêng, (5) Doanh thu theo thợ.
 - **Tiêu chuẩn "3 lần chạm di động" cho bác thợ**: Thợ kỹ thuật dính dầu mỡ, đồ nghề không thể ngồi máy tính nhập 15 trường thông tin. Quy trình nhập phiếu mới trên điện thoại phải hoàn thành trong 30-45 giây với tối đa 3 lần chạm.

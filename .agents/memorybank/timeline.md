@@ -6,6 +6,19 @@ Tài liệu này ghi nhận dòng thời gian các mốc cam kết (commits), s�
 
 ## Mốc Sự Kiện & Commits Gần Nhất
 
+### Mốc: Tối Ưu Hóa CRO & Điểm Chạm Chuyển Đổi Trong Bài Viết (In-Article Callouts & Mobile Floating CTA)
+- **Mã commit**: `2ced842`
+- **Nội dung**: `feat(cro): add in-article callout presets and responsive mobile floating cta`
+- **Chi tiết**:
+  - `src/components/conversion/InArticleCallout.tsx`: Thiết kế component chuyển đổi ngữ cảnh tự nhiên, thuần Light Mode, tuyệt đối không glassmorphism. Hỗ trợ 4 cụm chủ đề chiến lược:
+    1. `web-demo`: Dựng Web demo ngành nghề từ 490k, xem thử trong 24h, không cọc trước.
+    2. `maps-audit`: Kiểm tra điểm mù & thứ hạng Google Maps 0đ bán kính 3-5km.
+    3. `ads-optimization`: Rà soát tài khoản Ads Google/Facebook, chặn click ảo, tối ưu tỷ lệ ra số.
+    4. `crm-setup`: Setup hệ thống CRM & Chăm sóc khách tự động, chống trôi tin nhắn Fanpage/Zalo.
+  - `src/components/layout/MobileFloatingCTA.tsx`: Nâng cấp linh hoạt cho phép tùy biến `ctaText`, `serviceName`, `sourceContext`, giữ vững 2 nút truy cập nhanh: Gọi khẩn cấp (`tel:0834422439`) + Nhắn Zalo 24/7.
+  - `src/pages/PostPreviewPage.tsx`: Tự động nhận diện cụm chủ đề của bài viết (`detectTopic`), thay thế CTA cũ thành `InArticleCallout` và kích hoạt trực tiếp `LeadModal` mà không rời trang.
+  - Kiểm thử `npm run build` PASS 100%.
+
 ### Mốc 1: Khởi tạo & Độc lập Hóa 10 Báo Cáo Red-Team Audit V2
 - **Mã commit**: `8f8b552`
 - **Nội dung**: `docs(audit-v2): add master executive audit and 10 specialist red-team reports`
