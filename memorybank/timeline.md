@@ -2,19 +2,26 @@
 
 Ghi nhận các mốc sự kiện, commit và trạng thái vận hành của dự án.
 
-## [2026-09-17] - Chuẩn Hóa Toàn Diện Header/Footer Mới & Deploy Admin CMS Lên Production (localmate.vn)
+## [2026-09-17] - Chuẩn Hóa Toàn Diện Header/Footer Mới, Tích Hợp Mega Menu & Deploy Admin CMS Lên Production (localmate.vn)
 - **Bối cảnh & Vấn đề**:
   - Giao diện bị trùng 2 header và 2 footer (header cũ từ layout và header mới từ homepage).
   - Route `/admin` chưa được deploy lên Cloudflare Pages production dẫn tới fallback về homepage.
+  - Cần tích hợp lại Dropdown Mega Menu 4 cột giàu thông tin từ header cũ vào Header mới của trang chủ.
 - **Thực thi Kỹ thuật**:
   1. *Header Mới Chuẩn Toàn Cục*: Cập nhật `src/components/layout/Header.tsx` với logo mascot, menu điều hướng đầy đủ, số điện thoại `0834.422.439`, nút `✧ Báo giá nhanh` mở `LeadModal`, menu hamburger cho mobile, tone sáng, 100% không glassmorphism.
-  2. *Footer Mới Chuẩn Toàn Cục*: Cập nhật `src/components/layout/Footer.tsx` với bố cục 4 cột, slogan viết tay, các liên kết dịch vụ & thông tin, liên hệ Zalo/Hotline/Email và MST công ty.
-  3. *Loại bỏ trùng lặp tại HomePage*: Gỡ bỏ hoàn toàn thẻ `<header>` và `<footer>` cục bộ trong `src/pages/HomePage.tsx`.
-  4. *Tách biệt Admin Layout*: Trong `src/App.tsx`, route `/admin*` chỉ hiển thị `AdminLayout` chuyên dụng, hoàn toàn không bị kèm Header/Footer công cộng.
-  5. *Đồng bộ D1 Password Hash*: Khắc phục hash SHA-256 cho mật khẩu mặc định `LocalMate@2026`.
-  6. *Build & Deploy Production*: `npm run build` PASS trong 5.58s. Deploy production thành công qua Wrangler Pages CLI lên Cloudflare Pages (`localmate-vn`).
+  2. *Tích Hợp Mega Menu 4 Cột*:
+     - Cột 1: Website & Bán Hàng (Gói 490k, Web Doanh Nghiệp 3-5 trang, Nâng cấp web).
+     - Cột 2: Google Maps & Tìm Kiếm (Đưa tiệm lên Maps từ 299k, Tối ưu SEO Maps, Mã QR 5 sao).
+     - Cột 3: Quảng Cáo & Hệ Thống (Google Ads từ 390k, Chăm sóc nội dung 990k, CRM Automation).
+     - Cột 4: Promo Rail nổi bật (Gói khởi tạo 490k + Hotline 24/7 0834.422.439).
+     - Mobile: Tích hợp Accordion mở/đóng danh sách dịch vụ mượt mà trên di động.
+  3. *Footer Mới Chuẩn Toàn Cục*: Cập nhật `src/components/layout/Footer.tsx` với bố cục 4 cột, slogan viết tay, các liên kết dịch vụ & thông tin, liên hệ Zalo/Hotline/Email và MST công ty.
+  4. *Loại bỏ trùng lặp tại HomePage*: Gỡ bỏ hoàn toàn thẻ `<header>` và `<footer>` cục bộ trong `src/pages/HomePage.tsx`.
+  5. *Tách biệt Admin Layout*: Trong `src/App.tsx`, route `/admin*` chỉ hiển thị `AdminLayout` chuyên dụng, hoàn toàn không bị kèm Header/Footer công cộng.
+  6. *Đồng bộ D1 Password Hash*: Khắc phục hash SHA-256 cho mật khẩu mặc định `LocalMate@2026`.
+  7. *Build & Deploy Production*: `npm run build` PASS trong 5.94s. Deploy production thành công qua Wrangler Pages CLI lên Cloudflare Pages (`localmate-vn`).
 - **Nghiệm thu Production**:
-  - `https://localmate.vn/`: Duy nhất 1 Header mới và 1 Footer mới.
+  - `https://localmate.vn/`: Duy nhất 1 Header mới kèm Dropdown Mega Menu và 1 Footer mới.
   - `https://localmate.vn/admin`: Màn hình Đăng nhập CMS Quản trị, đăng nhập vào Dashboard quản lý thành công 100%.
 
 ## [2026-09-17] - Xây Dựng Hệ Thống CMS Hoàn Chỉnh Chuẩn WordPress Tinh Gọn Trên Cloudflare (D1, R2, Hono, Tiptap, React)
