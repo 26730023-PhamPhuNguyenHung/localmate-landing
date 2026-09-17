@@ -2,6 +2,27 @@
 
 Ghi nhận các mốc sự kiện, commit và trạng thái vận hành của dự án.
 
+## [2026-09-17] - Redesign Toàn Diện Landing Page GEO / SEO ChatGPT (/geo) Chuẩn Ads Full-Screen
+- **Mục tiêu**: Tái thiết kế toàn bộ trang Landing Page dịch vụ GEO / SEO ChatGPT (`/geo`) theo chuẩn Ads Direct-Response cao cấp, định dạng **3 Section khít màn hình desktop** (`min-height: 100svh`), nhịp điệu thị giác mạnh mẽ và tách module sạch sẽ.
+- **Các thành phần được cấu trúc lại hoàn toàn**:
+  1. *Section 1 — Hero Full-Screen* (`GeoHeroSection.tsx`):
+     - Chiều cao `min-height: calc(100svh - 72px)`, căn giữa dọc, container rộng 1320px.
+     - Cột trái: Eyebrow badge, Headline 2 dòng uy lực trọn vẹn ngữ nghĩa, 4 chip nền tảng AI, 3 trust proof bullets (phù hợp doanh nghiệp có web, kiểm tra nhanh, không cần hiểu kỹ thuật) và Hotline/Zalo.
+     - Cột phải: Thẻ Form Audit trung tâm nổi bật làm visual anchor.
+  2. *Section 2 — Bảng Giá Khít Màn Hình* (`GeoPricingSection.tsx`):
+     - Nền slate nhẹ `#f8fafc` tạo nhịp chuyển thị giác, `min-height: 100svh`.
+     - 2 Card song song: GEO Setup (2.490.000đ/lần) & GEO Growth (Từ 2.990.000đ/tháng) với checklist rõ ràng và bar minh bạch.
+  3. *Section 3 — Mục Tiêu Là Xuất Hiện Đúng Lúc Khách Đang Chọn Nhà Cung Cấp* (`GeoValueSection.tsx`):
+     - Cột trái: 4 Prompts giả lập tin nhắn AI thực tế của khách hàng.
+     - Cột phải: 4 Khối giá trị 01 — 04.
+     - Chân trang: Form chốt cuối nền tối cao cấp tương phản cao.
+  4. *Kiến trúc Modular*:
+     - Tách nhỏ: `GeoLeadFormCard.tsx`, `GeoPricingCard.tsx`, `GeoHeroSection.tsx`, `GeoPricingSection.tsx`, `GeoValueSection.tsx`.
+- **Nghiệm thu**:
+  - `npm run build` hoàn tất trong 4.63s với 0 lỗi.
+  - Trực quan qua `agent-browser` đạt chuẩn laptop 14–15.6 inch và mobile 390px.
+
+
 ## [2026-09-17] - Khôi Phục Trang Chủ (HomePage & Header) Về Chuẩn Bản Production Deploy Trên Wrangler
 - **Bối cảnh & Yêu cầu**: Bản localhost gần đây bị nhồi nhét mega-menu tự bung che khuất màn hình và các khối giao diện phức tạp làm mất tính tinh gọn. Khôi phục lại toàn bộ Trang chủ (`HomePage.tsx`, `Header.tsx` và 15 sections trực thuộc) về chính xác phiên bản đang deploy ổn định trên Wrangler (`localmate.vn` - commit `914fa97`).
 - **Các thành phần được đồng bộ chuẩn xác**:
