@@ -6,6 +6,44 @@ Tài liệu này ghi nhận dòng thời gian các mốc cam kết (commits), s�
 
 ## Mốc Sự Kiện & Commits Gần Nhất
 
+### Mốc: Triển Khai Hoàn Thiện Public Routes & Page Components (/kien-thuc & /kien-thuc/:slug)
+- **Mã commit**: Pending
+- **Nội dung**: `feat(public-routes): implement ArticlesIndexPage and ArticleDetailPage with 5 topic clusters, real-time search, TL;DR, and interactive FAQ`
+- **Chi tiết**:
+  - `src/pages/ArticlesIndexPage.tsx`: Trang danh mục bài viết `/kien-thuc`:
+    - Bộ lọc 5 cụm chủ đề chuẩn (Website, Google Maps, Local SEO, Google Ads, CRM & Tự động hóa) + Tất cả (30 bài).
+    - Thanh tìm kiếm tức thời theo từ khóa, tiêu đề, mô tả.
+    - Grid 30 bài viết với thumbnail ảnh chất lượng cao, thời gian đọc, ngày cập nhật, tóm tắt, tag danh mục.
+    - Tự động preload chunk nội dung khi hover chuột (`preloadArticle`).
+    - SEOHead chuẩn SEO và schema BlogPosting.
+  - `src/pages/ArticleDetailPage.tsx`: Trang đọc chi tiết `/kien-thuc/:slug`:
+    - Breadcrumbs 3 cấp: Trang chủ > Kiến thức > [Tên Chuyên Mục] > [Tiêu đề].
+    - Hero tiêu đề H1 sắc nét, thông tin tác giả, ngày cập nhật, huy hiệu kiểm duyệt thực tế.
+    - Hộp Callout TL;DR (Answer-First) xanh lá chuẩn mực tối ưu cho GEO / AI Overviews.
+    - Render toàn văn HTML với typography chuẩn, bảng so sánh chống vỡ layout mobile.
+    - Accordion FAQ tương tác mở/đóng từng câu kèm JSON-LD Schema FAQPage tự động cho Google Rich Snippets.
+    - Author Box giới thiệu đội ngũ LocalMate Team và CTA tư vấn tích hợp LeadModal.
+    - Grid 3 bài viết liên quan trong cùng cụm chủ đề.
+  - `src/App.tsx`: Tích hợp định tuyến `/kien-thuc`, `/blog`, `/bai-viet` và dynamic route `/kien-thuc/:slug`.
+  - `src/components/layout/Header.tsx`: Bổ sung menu điều hướng "Kiến thức" trên cả Desktop và Mobile.
+  - Kiểm thử `npm run build` PASS 100%, 0 warning, TypeScript check pass.
+
+### Mốc: Kiến Trúc Code-First Articles Data Engine (Zero-API, 0ms Instant Load, Code-Splitting per Slug)
+- **Mã commit**: Pending
+- **Nội dung**: `feat(data-engine): implement code-first articles engine with dynamic code splitting and zero-runtime D1 dependency`
+- **Chi tiết**:
+  - `scripts/build-articles-data.js`: Script chuyển đổi và đóng gói 30 bài viết từ `content/seeds/drafts_30_articles.json` và `content/articles/`:
+    - Auto-inject `id="..."` cho toàn bộ 618 headings (h2, h3).
+    - Tạo mảng Table of Contents (TOC) phân cấp đa tầng (Level 2 & Level 3).
+    - Tổng hợp 146 câu hỏi thường gặp FAQs chuẩn chất lượng cao.
+    - Tạo sẵn Article + FAQPage Schema.org JSON-LD cấu trúc.
+    - Phân tách kiến trúc Two-Tier Split:
+      - Tầng 1: `src/data/articles/metadata.ts` (~66KB uncompressed, gzip ~10KB) phục vụ danh mục, tìm kiếm, blog list, sitemap, trang chủ.
+      - Tầng 2: `src/data/articles/content/${slug}.ts` (30 chunks riêng lẻ) load qua dynamic import khi người dùng vào đọc bài viết cụ thể.
+  - `src/data/articlesData.ts`: Facade Data Engine module cung cấp các hàm query đồng bộ tức thì: `getAllArticles()`, `getArticleMetadataBySlug()`, `getArticlesByCategory()`, `getRelatedArticles()`, `getAllCategories()`, `searchArticles()`, cùng hàm lazy-loader `getArticleBySlug(slug)` kèm In-Memory RAM Cache đạt chuẩn render **0ms**.
+  - `package.json`: Tích hợp lệnh `"build:articles"` và tự động chạy trong `"prebuild"`.
+  - Giảm kích thước bundle index từ 122 kB xuống còn 92 kB (gzip 24.82 kB). Build pass 100% (6.28s).
+
 ### Mốc: Tối Ưu Hóa CRO & Điểm Chạm Chuyển Đổi Trong Bài Viết (In-Article Callouts & Mobile Floating CTA)
 - **Mã commit**: `2ced842`
 - **Nội dung**: `feat(cro): add in-article callout presets and responsive mobile floating cta`

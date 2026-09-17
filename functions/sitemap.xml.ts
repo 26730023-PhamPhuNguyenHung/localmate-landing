@@ -16,19 +16,32 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
     let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
     xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
 
-    // Core Static & Service Landing Pages
+    // Core Static & Service Landing Pages (SSOT Canonical)
     const staticUrls = [
       'https://localmate.vn/',
-      'https://localmate.vn/kien-thuc',
-      'https://localmate.vn/dich-vu',
-      'https://localmate.vn/dich-vu/geo',
-      'https://localmate.vn/dich-vu/thiet-ke-website',
-      'https://localmate.vn/dich-vu/google-maps-seo',
-      'https://localmate.vn/dich-vu/quang-cao-google-ads',
-      'https://localmate.vn/dich-vu/crm-automation',
+      'https://localmate.vn/thiet-ke-website',
+      'https://localmate.vn/google-maps-local-seo',
+      'https://localmate.vn/google-ads',
+      'https://localmate.vn/content-marketing',
+      'https://localmate.vn/automation',
       'https://localmate.vn/bang-gia',
-      'https://localmate.vn/gioi-thieu',
-      'https://localmate.vn/lien-he'
+      'https://localmate.vn/geo',
+      'https://localmate.vn/dich-vu/geo',
+      'https://localmate.vn/dich-vu/aeo',
+      'https://localmate.vn/dich-vu/seo-ai',
+      'https://localmate.vn/dich-vu/seo-chatgpt',
+      'https://localmate.vn/quy-trinh-geo',
+      'https://localmate.vn/du-an',
+      'https://localmate.vn/du-an/xeo-restaurant',
+      'https://localmate.vn/du-an/nam-phat',
+      'https://localmate.vn/du-an/huong-sen',
+      'https://localmate.vn/ve-localmate',
+      'https://localmate.vn/lien-he',
+      'https://localmate.vn/landing-490k',
+      'https://localmate.vn/kien-thuc',
+      'https://localmate.vn/chinh-sach-bao-mat',
+      'https://localmate.vn/dieu-khoan',
+      'https://localmate.vn/chinh-sach-dich-vu'
     ];
 
     for (const url of staticUrls) {

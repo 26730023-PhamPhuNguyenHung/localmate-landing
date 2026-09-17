@@ -1,0 +1,26 @@
+# Cloudflare Pages Caching & Security Headers
+
+# Immutable long-term caching for Vite hashed assets
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Fonts caching
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Images and static media
+/images/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+# Always revalidate root HTML documents so users and crawlers get updates immediately
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Global Security Headers
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()

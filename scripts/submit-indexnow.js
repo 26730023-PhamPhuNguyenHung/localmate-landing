@@ -32,8 +32,8 @@ if (fs.existsSync(INDEXNOW_CONFIG_PATH)) {
   }
 }
 
-// 2. Canonical Standard URLs (15 SSOT core pages)
-const CANONICAL_URLS = [
+// 2. Canonical Standard URLs loaded dynamically from public/sitemap.xml
+let CANONICAL_URLS = [
   `https://${HOST}/`,
   `https://${HOST}/thiet-ke-website`,
   `https://${HOST}/google-maps-local-seo`,
@@ -41,6 +41,7 @@ const CANONICAL_URLS = [
   `https://${HOST}/content-marketing`,
   `https://${HOST}/automation`,
   `https://${HOST}/bang-gia`,
+  `https://${HOST}/geo`,
   `https://${HOST}/du-an`,
   `https://${HOST}/du-an/xeo-restaurant`,
   `https://${HOST}/du-an/nam-phat`,
@@ -48,8 +49,25 @@ const CANONICAL_URLS = [
   `https://${HOST}/ve-localmate`,
   `https://${HOST}/lien-he`,
   `https://${HOST}/kien-thuc`,
-  `https://${HOST}/landing-490k`
+  `https://${HOST}/landing-490k`,
+  `https://${HOST}/chinh-sach-bao-mat`,
+  `https://${HOST}/dieu-khoan`,
+  `https://${HOST}/chinh-sach-dich-vu`
 ];
+
+const SITEMAP_PATH = path.join(projectRoot, 'public', 'sitemap.xml');
+if (fs.existsSync(SITEMAP_PATH)) {
+  try {
+    const sitemapContent = fs.readFileSync(SITEMAP_PATH, 'utf-8');
+    const locMatches = [...sitemapContent.matchAll(/<loc>(.*?)<\/loc>/g)].map(m => m[1]);
+    if (locMatches.length > 0) {
+      CANONICAL_URLS = locMatches;
+      console.log(`[INFO] Loaded ${CANONICAL_URLS.length} canonical URLs dynamically from public/sitemap.xml`);
+    }
+  } catch (err) {
+    console.warn(`[WARN] Could not parse sitemap.xml for IndexNow:`, err.message);
+  }
+}
 
 // Target IndexNow Endpoints (Bing & IndexNow central gateway)
 const ENDPOINTS = [

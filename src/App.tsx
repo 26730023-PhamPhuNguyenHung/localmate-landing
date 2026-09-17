@@ -6,11 +6,15 @@ import { MobileFloatingCTA } from './components/layout/MobileFloatingCTA';
 import { LeadModal } from './components/conversion/LeadModal';
 import { initAttribution, trackPageView } from './analytics/tracker';
 
-// Core Public Pages
+// Core Public Page (Eager for instant LCP)
 import { HomePage } from './pages/HomePage';
-import { GeoLandingPage } from './pages/GeoLandingPage';
-import { LegalPage } from './pages/LegalPage';
-import { NotFoundPage } from './pages/NotFoundPage';
+
+// Secondary Public Pages (Lazy Loaded to protect homepage bundle size)
+const GeoLandingPage = React.lazy(() => import('./pages/GeoLandingPage').then(m => ({ default: m.GeoLandingPage })));
+const LegalPage = React.lazy(() => import('./pages/LegalPage').then(m => ({ default: m.LegalPage })));
+const NotFoundPage = React.lazy(() => import('./pages/NotFoundPage').then(m => ({ default: m.NotFoundPage })));
+const ArticlesIndexPage = React.lazy(() => import('./pages/ArticlesIndexPage').then(m => ({ default: m.ArticlesIndexPage })));
+const ArticleDetailPage = React.lazy(() => import('./pages/ArticleDetailPage').then(m => ({ default: m.ArticleDetailPage })));
 
 // Admin CMS & Draft Preview Pages (Lazy Loaded)
 const DashboardPage = React.lazy(() => import('./admin/pages/DashboardPage').then(m => ({ default: m.DashboardPage })));
@@ -73,6 +77,15 @@ const MainContent: React.FC = () => {
       normalizedPath === '/landing-geo'
     ) {
       return <GeoLandingPage onOpenConsultForm={handleOpenLeadForm} />;
+    }
+
+    // 3. Knowledge Base & Articles (/kien-thuc and /kien-thuc/:slug)
+    if (normalizedPath === '/kien-thuc' || normalizedPath === '/blog' || normalizedPath === '/bai-viet') {
+      return <ArticlesIndexPage onOpenConsultForm={handleOpenLeadForm} />;
+    }
+    if (normalizedPath.startsWith('/kien-thuc/')) {
+      const slug = normalizedPath.replace('/kien-thuc/', '').split('/')[0];
+      return <ArticleDetailPage slug={slug} onOpenConsultForm={handleOpenLeadForm} />;
     }
 
     // 3. Legal & Compliance Policies

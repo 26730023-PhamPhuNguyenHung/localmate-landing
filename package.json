@@ -5,8 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "build:articles": "node scripts/build-articles-data.js",
+    "prebuild": "node scripts/build-articles-data.js && node scripts/generate-seo-files.js",
     "build": "tsc && vite build",
     "preview": "vite preview",
+    "seo:generate": "node scripts/generate-seo-files.js",
     "db:migrate": "npx wrangler d1 execute localmate_survey_db --remote --file=./migrations/0001_cms_init.sql && npx wrangler d1 execute localmate_survey_db --remote --file=./migrations/0002_cms_defaults.sql",
     "cms:seed": "node scripts/generate-seeds.js && node scripts/seed-cms.js && npx wrangler d1 execute localmate_survey_db --remote --file=./migrations/0003_seed_draft_posts.sql",
     "submit:indexnow": "node scripts/submit-indexnow.js"

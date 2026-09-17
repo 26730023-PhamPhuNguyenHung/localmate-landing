@@ -2,10 +2,13 @@
 # LocalMate Robots.txt - Technical Crawl & Search / AI Crawler Directives
 # Domain: https://localmate.vn
 # Standard: RFC 9309 Compliant
-# Last Updated: 2026-09-17 (Post-Audit V2 Hardening)
+# Last Updated: 2026-09-17
+# Generator: scripts/generate-seo-files.js
 # ==============================================================================
 
-# Default Crawlers
+# ------------------------------------------------------------------------------
+# 1. Default Fallback Rules
+# ------------------------------------------------------------------------------
 User-agent: *
 Disallow: /admin/
 Disallow: /api/
@@ -13,14 +16,16 @@ Disallow: /preview/
 Allow: /
 
 # ------------------------------------------------------------------------------
-# Major Search Engine Crawlers
+# 2. Major Search Engine Crawlers
 # ------------------------------------------------------------------------------
+# Google Web Search Crawler
 User-agent: Googlebot
 Disallow: /admin/
 Disallow: /api/
 Disallow: /preview/
 Allow: /
 
+# Microsoft Bing Search Crawler
 User-agent: Bingbot
 Disallow: /admin/
 Disallow: /api/
@@ -28,10 +33,10 @@ Disallow: /preview/
 Allow: /
 
 # ------------------------------------------------------------------------------
-# AI Search Agents & LLM Citation Crawlers
+# 3. Top AI Search Engines & LLM Citation Crawlers
 # ------------------------------------------------------------------------------
-# OpenAI Search Crawler for ChatGPT Search
-User-agent: OAI-SearchBot
+# Google AI & Gemini Training / AI Overviews Crawler
+User-agent: Google-Extended
 Disallow: /admin/
 Disallow: /api/
 Disallow: /preview/
@@ -44,48 +49,50 @@ Disallow: /api/
 Disallow: /preview/
 Allow: /
 
-# OpenAI ChatGPT User Browsing
+# OpenAI Real-Time Browsing by ChatGPT Users
 User-agent: ChatGPT-User
 Disallow: /admin/
 Disallow: /api/
 Disallow: /preview/
 Allow: /
 
-# Anthropic Claude Crawlers
+# OpenAI Search Engine (SearchGPT)
+User-agent: OAI-SearchBot
+Disallow: /admin/
+Disallow: /api/
+Disallow: /preview/
+Allow: /
+
+# Anthropic Claude Web Crawler & Knowledge Indexer
 User-agent: ClaudeBot
 Disallow: /admin/
 Disallow: /api/
 Disallow: /preview/
 Allow: /
 
+# Anthropic Claude Real-Time User Browsing
 User-agent: Claude-Web
 Disallow: /admin/
 Disallow: /api/
 Disallow: /preview/
 Allow: /
 
-# Perplexity AI Search Crawler
+# Perplexity AI Search & Answer Engine Crawler
 User-agent: PerplexityBot
 Disallow: /admin/
 Disallow: /api/
 Disallow: /preview/
 Allow: /
 
-# Apple Search & Apple Intelligence Crawler
-User-agent: Applebot-Extended
-Disallow: /admin/
-Disallow: /api/
-Disallow: /preview/
-Allow: /
-
+# Apple Search, Spotlight & Siri Crawler
 User-agent: Applebot
 Disallow: /admin/
 Disallow: /api/
 Disallow: /preview/
 Allow: /
 
-# Google AI & Extended Crawlers
-User-agent: Google-Extended
+# Apple Intelligence Training & Data Crawler
+User-agent: Applebot-Extended
 Disallow: /admin/
 Disallow: /api/
 Disallow: /preview/
@@ -98,8 +105,22 @@ Disallow: /api/
 Disallow: /preview/
 Allow: /
 
+# Meta AI Crawlers (Llama / Meta AI Search)
+User-agent: FacebookBot
+Disallow: /admin/
+Disallow: /api/
+Disallow: /preview/
+Allow: /
+
+User-agent: meta-externalagent
+Disallow: /admin/
+Disallow: /api/
+Disallow: /preview/
+Allow: /
+
 # ------------------------------------------------------------------------------
-# Sitemaps & Machine-Readable Knowledge Architecture
+# 4. Sitemaps & Machine-Readable Knowledge Architecture
 # ------------------------------------------------------------------------------
 Sitemap: https://localmate.vn/sitemap.xml
 Link: https://localmate.vn/llms.txt
+Link: https://localmate.vn/llms-full.txt

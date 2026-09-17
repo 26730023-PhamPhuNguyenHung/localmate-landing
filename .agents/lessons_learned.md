@@ -1,5 +1,30 @@
 # 📚 LOCALMATE AGENTS LESSONS LEARNED & EDITORIAL RULES
 
+## 18. Bài Học Về Public Routes & Trải Nghiệm Đọc Kiến Thức Thực Chiến (/kien-thuc & /kien-thuc/:slug)
+- **Tổ chức 5 cụm chủ đề trực diện, dễ hiểu**: Thay vì chia danh mục theo thuật ngữ kỹ thuật khó hiểu, cấu trúc 5 cụm chủ đề theo bài toán thực tế của chủ tiệm (*Nền Tảng Website, Google Maps & GBP, SEO Địa Phương, Quảng Cáo Google Ads, CRM & Tự Động Hóa*).
+- **Bộ lọc tức thời kết hợp tìm kiếm Fulltext Client-Side**: Người dùng tìm kiếm trên điện thoại cần kết quả ngay lập tức mà không phải chờ reload trang. Kết hợp `input` tìm kiếm thời gian thực với các thẻ Pill buttons chọn cụm chủ đề giúp độc giả tiếp cận bài viết cần tìm trong 2 giây.
+- **Answer-First TL;DR Callout**: Đặt hộp tóm tắt cốt lõi ngay dưới tiêu đề H1 giúp giải quyết trực tiếp câu hỏi trọng tâm của người đọc, đồng thời tối ưu hóa tối đa cho các công cụ tìm kiếm AI (Google AI Overviews, SearchGPT, Perplexity).
+- **Interactive FAQ Accordion & FAQPage Schema**:
+  - Trình bày câu hỏi thường gặp dạng accordion thu gọn giúp trang đọc không bị kéo quá dài trên màn hình di động, người đọc tự do chọn câu hỏi quan tâm.
+  - Tự động sinh `schema.org/FAQPage` JSON-LD trong `<head>` để Google hiển thị danh sách câu hỏi trực tiếp trên kết quả tìm kiếm tự nhiên.
+- **Bảo toàn chuẩn mực Light Mode & Chống vỡ layout Table**:
+  - Toàn bộ giao diện dùng nền sáng `#ffffff` và `#f8fafc`, màu chữ đậm `#0f172a` và `#1e293b`. Tuyệt đối không glassmorphism.
+  - Mọi bảng biểu HTML (`<table>`) được bọc trong container `overflow-x: auto`, giữ nguyên định dạng so sánh nhiều cột trên desktop nhưng vuốt ngang mượt mà trên màn hình nhỏ mà không làm biến dạng thanh cuộn trang.
+- **Preload On Hover cho tốc độ 0ms**: Tận dụng hàm `preloadArticle(slug)` khi người dùng rê chuột vào card bài viết ở trang danh mục để nạp trước chunk nội dung vào RAM cache, khi click chuyển trang nội dung xuất hiện ngay lập tức không có độ trễ.
+
+## 17. Bài Học Về Kiến Trúc Code-First Articles Data Engine (Zero-API, Dynamic Code-Splitting, 0ms Instant Render)
+- **Bẫy "CMS Database / API Over-Engineering" cho Content tĩnh**: Việc gọi Cloudflare D1 / SQL Database qua API HTTP ở runtime cho các bài viết đã hoàn thiện 100% gây ra 4 nhược điểm nghiêm trọng:
+  1. Độ trễ mạng (Network Latency: 150 - 400ms) làm giảm Core Web Vitals (LCP, FID/INP).
+  2. Nguy cơ gián đoạn (Single Point of Failure): Khi D1 hoặc Worker bảo trì, người dùng đọc bài bị màn hình trắng/lỗi.
+  3. Chi phí vận hành Worker request không cần thiết.
+  4. Phức tạp hóa luồng dữ liệu (State, SWR/TanStack Query, error boundaries).
+- **Kiến trúc Two-Tier Split Code-First**:
+  - **Tầng 1 (Metadata Index)**: Tách riêng danh sách siêu dữ liệu nhẹ (`id`, `slug`, `title`, `category`, `readingTime`, `wordCount`, `seo`, `briefSummary`) gói trong `src/data/articles/metadata.ts`. Kích thước chỉ ~66KB uncompressed (gzip ~10KB). Trang chủ, trang danh mục, tìm kiếm, widget bài viết liên quan chỉ import tầng này $\rightarrow$ **Bundle trang chủ không bị phình dù có 100 bài viết**.
+  - **Tầng 2 (Per-Slug Content Splitting)**: Mỗi bài viết có một chunk riêng (`src/data/articles/content/${slug}.ts`) chứa HTML chi tiết, mục lục TOC, FAQs và Schema.org. Vite tự động cắt thành các chunk JS riêng lẻ (~15-20KB).
+  - **Tầng 3 (Data Engine Facade + In-Memory RAM Cache)**: Module `src/data/articlesData.ts` cung cấp hàm `getArticleBySlug(slug)` nạp động theo nhu cầu (dynamic import). Lần 1 nạp ~5ms, từ lần thứ 2 nạp tức thì từ RAM Cache (**0.00ms**).
+- **Auto-Injection Heading IDs & TOC Generator**: Tự động parse và inject `id="..."` vào toàn bộ 618 thẻ `<h2>`, `<h3>` của 30 bài viết ngay trong build-time, đồng thời trích xuất danh sách TOC đa cấp. Người dùng đọc bài có thể click mục lục cuộn mượt và chia sẻ direct anchor link trực tiếp.
+- **Quy trình Build Pipeline khép kín**: Đặt script vào `"build:articles"` và tích hợp trong `"prebuild"` để luôn đảm bảo dữ liệu Code-First đồng bộ tuyệt đối trước mỗi lần `tsc && vite build`.
+
 ## 16. Bài Học Về Điểm Chạm Chuyển Đổi Tự Nhiên Trong Bài Viết (In-Article CRO & Mobile Sticky Bar)
 - **Triệt tiêu pop-up xâm lấn (Anti-Intrusive CRO)**: Độc giả đọc bài viết kỹ thuật và kinh nghiệm cực kỳ dị ứng với pop-up che chữ, bánh xe quay số, hay modal chặn màn hình. Chuyển đổi bền vững chỉ xảy ra khi lời kêu gọi hành động hòa vào mạch giải quyết vấn đề của bài viết (**Native Contextual Touchpoint**).
 - **Quy tắc 4 Cụm Chủ Đề Ngữ Cảnh (Contextual Reassurance)**:

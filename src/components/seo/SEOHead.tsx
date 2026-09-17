@@ -5,6 +5,14 @@ export interface BreadcrumbItem {
   url: string;
 }
 
+export interface ArticleMetaTags {
+  publishedTime?: string;
+  modifiedTime?: string;
+  author?: string;
+  section?: string;
+  tags?: string[];
+}
+
 export interface SEOHeadProps {
   title: string;
   description: string;
@@ -14,6 +22,8 @@ export interface SEOHeadProps {
   breadcrumbs?: BreadcrumbItem[];
   schemaType?: 'Organization' | 'ProfessionalService' | 'Service' | 'Article' | 'FAQPage' | 'CreativeWork' | 'BreadcrumbList' | 'LocalBusiness' | 'BlogPosting' | 'HowTo';
   schemaData?: Record<string, any>;
+  extraSchemas?: Record<string, any>[];
+  articleMeta?: ArticleMetaTags;
   noIndex?: boolean;
 }
 
@@ -26,6 +36,8 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
   breadcrumbs,
   schemaType = 'ProfessionalService',
   schemaData,
+  extraSchemas,
+  articleMeta,
   noIndex = false
 }) => {
   useEffect(() => {
@@ -75,6 +87,28 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
     updateOrCreateMeta('name', 'twitter:title', fullTitle);
     updateOrCreateMeta('name', 'twitter:description', description);
     updateOrCreateMeta('name', 'twitter:image', fullOgImage);
+    updateOrCreateMeta('name', 'twitter:site', '@localmate_vn');
+    updateOrCreateMeta('name', 'twitter:creator', '@localmate_vn');
+
+    // 6.1. Update Article Specific Meta Tags (OpenGraph Article specs)
+    if (ogType === 'article' || articleMeta) {
+      if (articleMeta?.publishedTime) {
+        updateOrCreateMeta('property', 'article:published_time', articleMeta.publishedTime);
+      }
+      if (articleMeta?.modifiedTime) {
+        updateOrCreateMeta('property', 'article:modified_time', articleMeta.modifiedTime);
+      }
+      if (articleMeta?.author) {
+        updateOrCreateMeta('property', 'article:author', articleMeta.author);
+      }
+      if (articleMeta?.section) {
+        updateOrCreateMeta('property', 'article:section', articleMeta.section);
+      }
+      if (articleMeta?.tags && articleMeta.tags.length > 0) {
+        // Ghi nhận các thẻ tags chính
+        updateOrCreateMeta('property', 'article:tag', articleMeta.tags.join(', '));
+      }
+    }
 
     // 7. Injected Structured Data (JSON-LD) theo chuẩn Entity Graph
     const graphNodes: Record<string, any>[] = [];
@@ -106,7 +140,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
           '@type': 'ListItem',
           position: idx + 1,
           name: b.name,
-          item: `https://localmate.vn${b.url}`
+          item: b.url.startsWith('http') ? b.url : `https://localmate.vn${b.url}`
         }))
       };
       graphNodes.push(breadcrumbSchema);
@@ -129,6 +163,15 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
       graphNodes.push(pageSchema);
     }
 
+    // Append extra schemas (ví dụ FAQPage Schema, HowTo Schema...)
+    if (extraSchemas && extraSchemas.length > 0) {
+      extraSchemas.forEach(s => {
+        if (s && typeof s === 'object') {
+          graphNodes.push(s);
+        }
+      });
+    }
+
     const jsonLdData = {
       '@context': 'https://schema.org',
       '@graph': graphNodes
@@ -143,7 +186,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
       document.head.appendChild(scriptTag);
     }
     scriptTag.text = JSON.stringify(jsonLdData);
-  }, [title, description, canonicalPath, ogImage, ogType, breadcrumbs, schemaType, schemaData, noIndex]);
+  }, [title, description, canonicalPath, ogImage, ogType, breadcrumbs, schemaType, schemaData, extraSchemas, articleMeta, noIndex]);
 
   return null;
 };

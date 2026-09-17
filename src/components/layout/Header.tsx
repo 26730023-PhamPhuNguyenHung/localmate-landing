@@ -415,7 +415,20 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
             Quy trình
           </a>
 
-          {/* 6. Về Localmate */}
+          {/* 6. Kiến thức */}
+          <a
+            className={`nav-link ${currentPath.startsWith('/kien-thuc') ? 'active' : ''}`}
+            href="/kien-thuc"
+            onClick={(e) => {
+              e.preventDefault();
+              closeMenus();
+              navigate('/kien-thuc');
+            }}
+          >
+            Kiến thức
+          </a>
+
+          {/* 7. Về Localmate */}
           <a
             className="nav-link"
             href="#about"
@@ -570,6 +583,18 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
                 className={`mobile-nav-item ${isHome && activeSection === 'process' ? 'active' : ''}`}
               >
                 Quy trình
+              </a>
+
+              <a
+                href="/kien-thuc"
+                onClick={(e) => {
+                  e.preventDefault();
+                  closeMenus();
+                  navigate('/kien-thuc');
+                }}
+                className={`mobile-nav-item ${currentPath.startsWith('/kien-thuc') ? 'active' : ''}`}
+              >
+                Kiến thức
               </a>
 
               <a
