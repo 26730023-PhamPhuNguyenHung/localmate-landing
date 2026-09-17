@@ -1,0 +1,12 @@
+name = "localmate-vn"
+compatibility_date = "2026-09-01"
+pages_build_output_dir = "dist"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "localmate_survey_db"
+database_id = "2a283520-4f4d-4542-8493-8caeb7673808"
+
+[[r2_buckets]]
+binding = "MEDIA_BUCKET"
+bucket_name = "localmate-assets-prod"

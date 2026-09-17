@@ -2,6 +2,39 @@
 
 Ghi nhận các mốc sự kiện, commit và trạng thái vận hành của dự án.
 
+## [2026-09-17] - Chuẩn Hóa Toàn Diện Header/Footer Mới & Deploy Admin CMS Lên Production (localmate.vn)
+- **Bối cảnh & Vấn đề**:
+  - Giao diện bị trùng 2 header và 2 footer (header cũ từ layout và header mới từ homepage).
+  - Route `/admin` chưa được deploy lên Cloudflare Pages production dẫn tới fallback về homepage.
+- **Thực thi Kỹ thuật**:
+  1. *Header Mới Chuẩn Toàn Cục*: Cập nhật `src/components/layout/Header.tsx` với logo mascot, menu điều hướng đầy đủ, số điện thoại `0834.422.439`, nút `✧ Báo giá nhanh` mở `LeadModal`, menu hamburger cho mobile, tone sáng, 100% không glassmorphism.
+  2. *Footer Mới Chuẩn Toàn Cục*: Cập nhật `src/components/layout/Footer.tsx` với bố cục 4 cột, slogan viết tay, các liên kết dịch vụ & thông tin, liên hệ Zalo/Hotline/Email và MST công ty.
+  3. *Loại bỏ trùng lặp tại HomePage*: Gỡ bỏ hoàn toàn thẻ `<header>` và `<footer>` cục bộ trong `src/pages/HomePage.tsx`.
+  4. *Tách biệt Admin Layout*: Trong `src/App.tsx`, route `/admin*` chỉ hiển thị `AdminLayout` chuyên dụng, hoàn toàn không bị kèm Header/Footer công cộng.
+  5. *Đồng bộ D1 Password Hash*: Khắc phục hash SHA-256 cho mật khẩu mặc định `LocalMate@2026`.
+  6. *Build & Deploy Production*: `npm run build` PASS trong 5.58s. Deploy production thành công qua Wrangler Pages CLI lên Cloudflare Pages (`localmate-vn`).
+- **Nghiệm thu Production**:
+  - `https://localmate.vn/`: Duy nhất 1 Header mới và 1 Footer mới.
+  - `https://localmate.vn/admin`: Màn hình Đăng nhập CMS Quản trị, đăng nhập vào Dashboard quản lý thành công 100%.
+
+## [2026-09-17] - Xây Dựng Hệ Thống CMS Hoàn Chỉnh Chuẩn WordPress Tinh Gọn Trên Cloudflare (D1, R2, Hono, Tiptap, React)
+- **Bối cảnh & Mục tiêu**:
+  - Xây dựng một CMS hoàn chỉnh theo tư duy "WordPress đủ dùng cho agency/local business, nhẹ, hiện đại, dễ bảo trì, chạy native Cloudflare".
+  - Giữ nguyên 100% giao diện public và homepage hiện tại của LocalMate. Không hardcode dữ liệu giả. Tất cả CRUD hoạt động thật.
+- **Thực thi Kỹ thuật & Hạ tầng**:
+  1. *Audit Codebase*: Lập tài liệu `docs/CMS-AUDIT.md` phân tích hiện trạng kiến trúc và đề xuất giải pháp.
+  2. *Cloudflare D1 Database*: Thiết lập 10 bảng `cms_*` (`cms_users`, `cms_categories`, `cms_tags`, `cms_post_tags`, `cms_media`, `cms_posts`, `cms_post_revisions`, `cms_pages`, `cms_settings`, `cms_redirects`) trên database `localmate_survey_db`.
+  3. *Cloudflare R2 Media*: Tích hợp upload multipart lên bucket `localmate-assets-prod`, tự động sanitize tên tệp, gán alt-text và lưu trữ metadata vào D1.
+  4. *Backend API (Hono)*: Xây dựng RESTful API trong `functions/api/` hỗ trợ xác thực cookie HttpOnly, mã hóa mật khẩu Web Crypto SHA-256 + Salt, CRUD bài viết, danh mục, thẻ, chuyển hướng 301 tự động khi đổi slug, sitemap.xml và rss.xml động.
+  5. *Tiptap Block Editor*: Lưu trữ canonical content dạng Tiptap JSON (`content_json`) và `rendered_html` đã sanitize XSS. Đầy đủ thanh công cụ soạn thảo, autosave 7 giây, Google SERP Snippet preview, và panel Content Brief nội bộ.
+  6. *Code-Splitting Performance*: Toàn bộ Admin Dashboard và Tiptap Editor được tải lười (`React.lazy()`) và gom thành chunk riêng biệt (`tiptap.js`). Khách xem web công cộng không tải bất kỳ byte nào của Tiptap.
+  7. *30 Bài Viết SEO Khởi Đầu*: Nạp 30 bài viết chi tiết chuẩn SEO theo đúng danh mục vào D1 dưới trạng thái `draft` (100% không tự động publish).
+  8. *Tài Liệu Hướng Dẫn*: Lập `docs/CMS.md`, `docs/CONTENT-WORKFLOW.md` và `IMPLEMENTATION-SUMMARY.md`.
+- **Nghiệm thu**:
+  - `npm run build` PASS 100% (tsc & vite build sạch sẽ trong 6.15s).
+  - Khởi tạo thành công database và nạp 30 bài nháp idempotent qua `npm run cms:seed`.
+  - Tài khoản admin: `admin` / `LocalMate@2026`.
+
 ## [2026-09-17] - Deploy Giao Diện Trang Chủ Mới & Sửa Triệt Để Lỗi Font Handwriting Lên Production (localmate.vn)
 - **Bối cảnh & Yêu cầu**:
   - Chuyển đổi giao diện tham chiếu `localmate.html` thành trang chủ chính thức của `localmate.vn`.

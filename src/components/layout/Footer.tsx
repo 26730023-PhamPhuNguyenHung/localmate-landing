@@ -1,473 +1,401 @@
 import React from 'react';
-import { Container } from '../ui/Container';
-import { Phone, Mail } from 'lucide-react';
-import { COMPANY_DATA } from '../../data/company';
-import { Link } from './Router';
+import { useRouter } from './Router';
+import { ArtCrop } from '../ui/ArtCrop';
 
 export const Footer: React.FC = () => {
-  const currentYear = new Date().getFullYear();
-  const { entity } = COMPANY_DATA;
+  const { currentPath, navigate } = useRouter();
+  const isHome = currentPath === '/' || currentPath === '/cach-lam-viec' || currentPath === '/quy-trinh';
+
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, hash: string, fallbackPath: string) => {
+    e.preventDefault();
+    if (isHome && hash) {
+      const targetId = hash.replace('#', '');
+      const el = document.getElementById(targetId);
+      if (el) {
+        const headerHeight = 85;
+        const targetPos = el.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+        window.scrollTo({ top: targetPos, behavior: 'smooth' });
+        return;
+      }
+    }
+    navigate(fallbackPath);
+    if (hash) {
+      setTimeout(() => {
+        const targetId = hash.replace('#', '');
+        const el = document.getElementById(targetId);
+        if (el) {
+          const headerHeight = 85;
+          const targetPos = el.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+          window.scrollTo({ top: targetPos, behavior: 'smooth' });
+        }
+      }, 150);
+    }
+  };
 
   return (
-    <footer className="localmate-footer" aria-label="Thông tin chân trang LocalMate">
-      <Container size="lg">
-        {/* TẦNG 1: MAIN FOOTER (GRID 4 COLUMNS) */}
-        <div className="footer-main-grid">
-          {/* CỘT 1: BRAND (32-35% CHIỀU NGANG) */}
-          <div className="footer-col footer-col-brand">
-            <Link to="/" className="footer-logo-link" title="LocalMate Việt Nam - Trang chủ">
-              <img
-                src="/logo.png"
-                alt="LocalMate - Hệ thống số cho hộ kinh doanh & SME"
-                width="160"
-                height="42"
-                className="footer-logo-img"
-                loading="lazy"
+    <footer id="about" className="site-footer" aria-label="Thông tin chân trang LocalMate">
+      <div className="footer-container">
+        <div className="footer-grid">
+          {/* Col 1: Brand Info */}
+          <div className="footer-col brand-col">
+            <a
+              href="/"
+              onClick={(e) => handleLinkClick(e, '#home', '/')}
+              className="footer-brand"
+              aria-label="Localmate"
+            >
+              <ArtCrop
+                image={1}
+                box={[72, 4, 213, 83]}
+                className="logo"
+                role="img"
+                ariaLabel="Localmate"
               />
-            </Link>
-
-            <p className="footer-brand-desc">
+            </a>
+            <p className="brand-desc">
               Website, Google Maps, quảng cáo và hệ thống số cho hộ kinh doanh &amp; SME.
             </p>
-
-            <div className="footer-brand-location">
-              Đà Nẵng · Hội An · TP.HCM · Toàn quốc
-            </div>
+            <p className="location-text">⌖ &nbsp;Đà Nẵng · Hội An · TP.HCM · Toàn quốc</p>
+            <p className="handwritten slogan">Cùng doanh nghiệp địa phương vươn xa hơn</p>
           </div>
 
-          {/* CỘT 2: DỊCH VỤ */}
-          <div className="footer-col footer-col-services">
-            <h3 className="footer-col-title">Dịch vụ</h3>
-            <nav className="footer-nav-list" aria-label="Danh mục dịch vụ">
-              <Link to="/thiet-ke-website" className="footer-nav-link">
+          {/* Col 2: Services */}
+          <div className="footer-col">
+            <h4>Dịch vụ</h4>
+            <nav className="footer-links" aria-label="Danh mục dịch vụ">
+              <a
+                href="/thiet-ke-website"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate('/thiet-ke-website');
+                }}
+              >
                 Thiết kế website
-              </Link>
-              <Link to="/google-maps-local-seo" className="footer-nav-link">
+              </a>
+              <a
+                href="/google-maps-local-seo"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate('/google-maps-local-seo');
+                }}
+              >
                 Google Maps &amp; Local SEO
-              </Link>
-              <Link to="/google-ads" className="footer-nav-link">
+              </a>
+              <a
+                href="/google-ads"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate('/google-ads');
+                }}
+              >
                 Google Ads
-              </Link>
-              <Link to="/content-marketing" className="footer-nav-link">
+              </a>
+              <a
+                href="/content-marketing"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate('/content-marketing');
+                }}
+              >
                 Content &amp; chăm sóc số
-              </Link>
-              <Link to="/automation" className="footer-nav-link">
+              </a>
+              <a
+                href="/automation"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate('/automation');
+                }}
+              >
                 CRM &amp; Automation
-              </Link>
+              </a>
             </nav>
           </div>
 
-          {/* CỘT 3: THÔNG TIN */}
-          <div className="footer-col footer-col-info">
-            <h3 className="footer-col-title">Thông tin</h3>
-            <nav className="footer-nav-list" aria-label="Thông tin doanh nghiệp">
-              <Link to="/#cach-lam-viec" className="footer-nav-link">
+          {/* Col 3: Company & Information */}
+          <div className="footer-col">
+            <h4>Thông tin</h4>
+            <nav className="footer-links" aria-label="Thông tin LocalMate">
+              <a
+                href="/quy-trinh"
+                onClick={(e) => handleLinkClick(e, '#process', '/quy-trinh')}
+              >
                 Cách làm việc
-              </Link>
-              <Link to="/bang-gia" className="footer-nav-link">
-                Bảng giá
-              </Link>
-              <Link to="/du-an" className="footer-nav-link">
+              </a>
+              <a
+                href="/bang-gia"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate('/bang-gia');
+                }}
+              >
+                Bảng giá niêm yết
+              </a>
+              <a
+                href="/du-an"
+                onClick={(e) => handleLinkClick(e, '#stories', '/du-an')}
+              >
                 Dự án / Demo
-              </Link>
-              <Link to="/ve-localmate" className="footer-nav-link">
-                Về LocalMate
-              </Link>
-              <Link to="/chinh-sach-bao-mat" className="footer-nav-link">
+              </a>
+              <a
+                href="/ho-so-nang-luc"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate('/ho-so-nang-luc');
+                }}
+              >
+                Hồ sơ năng lực
+              </a>
+              <a
+                href="/chinh-sach-bao-mat"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate('/chinh-sach-bao-mat');
+                }}
+              >
                 Chính sách bảo mật
-              </Link>
+              </a>
             </nav>
           </div>
 
-          {/* CỘT 4: CONTACT / CTA */}
-          <div className="footer-col footer-col-contact">
-            <h3 className="footer-col-title">Cần hỗ trợ?</h3>
-            <p className="footer-contact-desc">
-              Trao đổi trực tiếp với LocalMate về nhu cầu của bạn.
-            </p>
-
+          {/* Col 4: Support & Contact */}
+          <div className="footer-col support-col">
+            <h4>Cần hỗ trợ?</h4>
+            <p>Trao đổi trực tiếp với Localmate<br />về nhu cầu của bạn.</p>
             <a
-              href={entity.contact.zaloUrl}
+              className="zalo-btn"
+              href="https://zalo.me/0834422439"
               target="_blank"
               rel="noopener noreferrer"
-              className="footer-cta-btn"
-              title="Nhắn Zalo với chuyên viên LocalMate"
+              aria-label="Nhắn Zalo với chuyên viên LocalMate"
             >
               Nhắn Zalo
             </a>
-
-            <div className="footer-contact-links">
-              <a
-                href={`tel:${entity.contact.hotlineTel}`}
-                className="footer-direct-link"
-                title="Gọi Hotline tư vấn trực tiếp"
-              >
-                <Phone size={15} className="contact-link-icon" aria-hidden="true" />
-                <span className="contact-phone-num">0834 422 439</span>
-              </a>
-
-              <a
-                href={`mailto:${entity.contact.email}`}
-                className="footer-direct-link"
-                title="Gửi email cho LocalMate"
-              >
-                <Mail size={15} className="contact-link-icon" aria-hidden="true" />
-                <span>{entity.contact.email}</span>
-              </a>
-            </div>
-
-            {/* Social Icons phẳng, tinh gọn */}
-            <div className="footer-social-row" aria-label="Kênh mạng xã hội">
-              <a
-                href={entity.socialProfiles.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="footer-social-btn"
-                aria-label="Facebook LocalMate"
-                title="Fanpage Facebook LocalMate"
-              >
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+            <a className="contact-line" href="tel:0834422439">
+              <strong>
+                <svg
+                  className="icon"
+                  viewBox="0 0 24 25"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.7"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  style={{ width: '1em', height: '1em', display: 'inline-block', verticalAlign: 'middle', marginRight: 6 }}
+                >
+                  <path d="m5 2 4 5-3 3a15 15 0 0 0 8 8l3-3 5 4c-1 4-4 5-8 3C6 18 1 12 1 6c0-2 2-4 4-4Z" />
                 </svg>
-              </a>
-              <a
-                href={entity.contact.zaloUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="footer-social-btn footer-social-zalo"
-                aria-label="Zalo LocalMate"
-                title="Tư vấn Zalo LocalMate"
-              >
-                <span className="zalo-symbol" aria-hidden="true">Z</span>
-              </a>
-              <a
-                href={`tel:${entity.contact.hotlineTel}`}
-                className="footer-social-btn"
-                aria-label="Hotline LocalMate"
-                title="Gọi Hotline 0834 422 439"
-              >
-                <Phone size={14} aria-hidden="true" />
-              </a>
-            </div>
+                0834 422 439
+              </strong>
+            </a>
+            <a className="contact-line email" href="mailto:contact@localmate.vn">
+              ✉ &nbsp;contact@localmate.vn
+            </a>
           </div>
         </div>
 
-        {/* TẦNG 2: BOTTOM BAR */}
-        <div className="footer-bottom-bar">
-          <div className="footer-copyright">
-            © {currentYear} LocalMate. All rights reserved.
-          </div>
-
-          <div className="footer-bottom-legal">
-            <Link to="/dieu-khoan" className="footer-legal-link">
-              Điều khoản
-            </Link>
-            <span className="footer-legal-sep" aria-hidden="true">·</span>
-            <Link to="/chinh-sach-bao-mat" className="footer-legal-link">
-              Bảo mật
-            </Link>
-          </div>
+        {/* Footer Bottom Strip */}
+        <div className="footer-bottom">
+          <span>© 2026 CÔNG TY TNHH LOCALMATE — MST: 4001337934. Trụ sở: 03 Trường Chinh, Đà Nẵng.</span>
+          <a
+            href="/chinh-sach-bao-mat"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate('/chinh-sach-bao-mat');
+            }}
+            className="bottom-policy-link"
+          >
+            Bảo mật &amp; dữ liệu
+          </a>
         </div>
-      </Container>
+      </div>
 
       <style>{`
-        /* ==========================================================================
-           LOCALMATE FOOTER COMPONENT (REDESIGNED 2026)
-           Style: Clean, Minimalist, High Contrast, Strict No Glassmorphism
-           Height Target: 400 - 500px on Desktop
-           ========================================================================== */
-        .localmate-footer {
-          background-color: #ffffff;
-          border-top: 1px solid #e9edf2;
-          padding: 56px 0 0 0;
-          font-family: inherit;
-          scrollbar-gutter: stable;
-          color: #667085;
+        .site-footer {
+          padding: 40px 0 20px;
+          background: linear-gradient(160deg, #f7fcfa, #eef8f3);
+          border-top: 1px solid #dcece4;
+          color: #0b3040;
+          font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+          width: 100%;
+          box-sizing: border-box;
         }
 
-        /* 1. Main Grid (4 Columns) */
-        .footer-main-grid {
+        .footer-container {
+          max-width: 1672px;
+          margin: 0 auto;
+          padding: 0 3.5%;
+          box-sizing: border-box;
+        }
+
+        .footer-grid {
           display: grid;
-          grid-template-columns: 1fr;
-          gap: 32px;
-          padding-bottom: 40px;
+          grid-template-columns: 1.4fr 1fr 1fr 1.25fr;
+          gap: 4%;
         }
 
-        @media (min-width: 768px) and (max-width: 1199px) {
-          .footer-main-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 36px 32px;
-          }
+        .footer-grid > .footer-col + .footer-col {
+          border-left: 1px solid #e3eeed;
+          padding-left: 12%;
         }
 
-        @media (min-width: 1200px) {
-          .footer-main-grid {
-            grid-template-columns: 33% 1.15fr 1fr 1.1fr;
-            column-gap: 52px;
-            row-gap: 0;
-          }
+        .brand-col .logo {
+          width: 185px;
+          aspect-ratio: 213/83;
+          margin-bottom: 12px;
         }
 
-        .footer-col {
-          display: flex;
-          flex-direction: column;
-        }
-
-        /* Mobile ordering per user requirement:
-           1. Brand, 2. CTA/Contact, 3. Dịch vụ, 4. Thông tin */
-        @media (max-width: 767px) {
-          .footer-col-brand { order: 1; }
-          .footer-col-contact { order: 2; }
-          .footer-col-services { order: 3; }
-          .footer-col-info { order: 4; }
-        }
-
-        /* Column Titles */
-        .footer-col-title {
-          font-size: 16px;
-          font-weight: 700;
-          color: #111827;
-          margin: 0 0 16px 0;
-          line-height: 1.3;
-          letter-spacing: -0.01em;
-        }
-
-        /* Column 1: Brand */
-        .footer-logo-link {
-          display: inline-flex;
-          align-items: center;
-          text-decoration: none;
-          margin-bottom: 14px;
-          width: fit-content;
-        }
-
-        .footer-logo-img {
-          height: 38px;
-          width: auto;
-          object-fit: contain;
-          display: block;
-        }
-
-        .footer-brand-desc {
-          font-size: 15px;
-          line-height: 1.55;
-          color: #475569;
-          margin: 0 0 12px 0;
-          max-width: 320px;
-          text-wrap: pretty;
-        }
-
-        .footer-brand-location {
+        .brand-desc {
           font-size: 14px;
+          color: #586e89;
           line-height: 1.5;
-          color: #667085;
+          margin: 8px 0;
+        }
+
+        .location-text {
+          font-size: 14px;
+          color: #586e89;
+          margin: 8px 0;
+        }
+
+        .slogan {
+          font-family: 'Mali', 'Patrick Hand', 'Caveat', cursive;
+          font-style: italic;
           font-weight: 500;
-        }
-
-        /* Columns 2 & 3: Navigation Lists */
-        .footer-nav-list {
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
-        }
-
-        .footer-nav-link {
-          font-size: 14.5px;
-          line-height: 1.45;
-          color: #667085;
-          text-decoration: none;
-          transition: color 0.15s ease, transform 0.15s ease;
-          width: fit-content;
-        }
-
-        .footer-nav-link:hover {
-          color: #0d7647;
-          transform: translateX(2px);
-          text-decoration: underline;
-        }
-
-        /* Column 4: Contact / CTA */
-        .footer-contact-desc {
-          font-size: 14.5px;
-          line-height: 1.5;
-          color: #667085;
-          margin: 0 0 14px 0;
-          text-wrap: pretty;
-        }
-
-        .footer-cta-btn {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          height: 44px;
-          padding: 0 22px;
-          background-color: #0d7647;
-          color: #ffffff;
-          font-size: 15px;
-          font-weight: 700;
-          border-radius: 8px;
-          text-decoration: none;
-          transition: background-color 0.15s ease, transform 0.1s ease;
-          width: fit-content;
-          box-shadow: 0 1px 2px rgba(13, 118, 71, 0.1);
-        }
-
-        .footer-cta-btn:hover {
-          background-color: #0a5c37;
-          color: #ffffff;
-          transform: translateY(-1px);
-        }
-
-        .footer-contact-links {
-          display: flex;
-          flex-direction: column;
-          gap: 9px;
-          margin-top: 14px;
-        }
-
-        .footer-direct-link {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          font-size: 14px;
-          line-height: 1.45;
-          color: #475569;
-          text-decoration: none;
-          transition: color 0.15s ease;
-          width: fit-content;
-        }
-
-        .footer-direct-link:hover {
-          color: #0d7647;
-          text-decoration: underline;
-        }
-
-        .contact-link-icon {
-          color: #0d7647;
-          flex-shrink: 0;
-        }
-
-        .contact-phone-num {
-          font-weight: 700;
-          color: #111827;
-        }
-
-        .footer-direct-link:hover .contact-phone-num {
-          color: #0d7647;
-        }
-
-        /* Social Icons Group */
-        .footer-social-row {
-          display: flex;
-          align-items: center;
-          gap: 8px;
+          font-size: 19px;
+          color: #12815e;
           margin-top: 16px;
         }
 
-        .footer-social-btn {
-          width: 34px;
-          height: 34px;
-          border-radius: 50%;
-          background-color: #f8fafc;
-          border: 1px solid #e2e8f0;
-          color: #475569;
+        .footer-col h4 {
+          margin: 8px 0 16px;
+          font-size: 17px;
+          font-weight: 700;
+          color: #0b3040;
+          letter-spacing: -0.3px;
+        }
+
+        .footer-links a {
+          display: block;
+          margin: 11px 0;
+          font-size: 14px;
+          color: #586e89;
+          text-decoration: none;
+          transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+          color: #087d54;
+        }
+
+        .support-col p {
+          font-size: 14px;
+          color: #586e89;
+          line-height: 1.5;
+          margin: 8px 0 14px;
+        }
+
+        .zalo-btn {
+          display: block;
+          color: #ffffff;
+          background: linear-gradient(125deg, #078555, #05754f);
+          border: 1px solid #087d54;
+          border-radius: 12px;
+          text-align: center;
+          width: 170px;
+          padding: 11px 16px;
+          font-size: 15px;
+          font-weight: 700;
+          text-decoration: none;
+          box-shadow: 0 3px 8px rgba(6, 119, 74, 0.15);
+          transition: transform 0.2s, box-shadow 0.2s;
+          margin-bottom: 14px;
+        }
+
+        .zalo-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 5px 14px rgba(6, 119, 74, 0.25);
+        }
+
+        .contact-line {
+          display: block;
+          margin: 8px 0;
+          font-size: 15px;
+          color: #10263d;
+          text-decoration: none;
+        }
+
+        .contact-line strong {
           display: inline-flex;
           align-items: center;
-          justify-content: center;
-          text-decoration: none;
-          transition: all 0.15s ease;
+          color: #10263d;
         }
 
-        .footer-social-btn:hover {
-          background-color: #0d7647;
-          border-color: #0d7647;
-          color: #ffffff;
-          transform: translateY(-2px);
-        }
-
-        .zalo-symbol {
-          font-size: 13px;
-          font-weight: 800;
-          line-height: 1;
-        }
-
-        /* 2. Bottom Bar */
-        .footer-bottom-bar {
-          border-top: 1px solid #e5e7eb;
-          padding: 20px 0;
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
-          align-items: flex-start;
+        .contact-line.email {
+          color: #586e89;
           font-size: 14px;
-          color: #667085;
-          line-height: 1.5;
         }
 
-        @media (min-width: 768px) {
-          .footer-bottom-bar {
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-            height: 60px;
-            padding: 0;
-          }
+        .contact-line:hover {
+          color: #087d54;
         }
 
-        .footer-copyright {
-          color: #667085;
-        }
-
-        .footer-bottom-legal {
+        .footer-bottom {
           display: flex;
+          justify-content: space-between;
           align-items: center;
-          gap: 8px;
-          font-size: 14px;
-          line-height: 1.5;
+          padding-top: 18px;
+          border-top: 1px solid #cddfdf;
+          margin-top: 32px;
+          font-size: 13px;
+          color: #586e89;
         }
 
-        .footer-legal-link {
-          color: #667085;
+        .bottom-policy-link {
+          color: #586e89;
           text-decoration: none;
-          transition: color 0.15s ease;
-          line-height: 1.5;
-          height: auto;
-          min-height: auto;
-          padding: 0;
-          display: inline-block;
+          transition: color 0.2s;
         }
 
-        .footer-legal-link:hover {
-          color: #0d7647;
-          text-decoration: underline;
+        .bottom-policy-link:hover {
+          color: #087d54;
         }
 
-        .footer-legal-sep {
-          color: #9ca3af;
-          font-weight: 700;
-          font-size: 14px;
-          line-height: 1.5;
-          display: inline-block;
-          user-select: none;
-        }
-
-        /* Mobile specific adjustments */
-        @media (max-width: 767px) {
-          .localmate-footer {
-            padding: 36px 0 0 0;
+        @media (max-width: 1150px) {
+          .footer-grid {
+            gap: 3%;
           }
+          .footer-grid > .footer-col + .footer-col {
+            padding-left: 8%;
+          }
+        }
 
-          .footer-main-grid {
+        @media (max-width: 900px) {
+          .footer-grid {
+            grid-template-columns: repeat(2, 1fr);
             gap: 28px;
-            padding-bottom: 32px;
           }
-
-          .footer-cta-btn {
-            width: 100%;
+          .footer-grid > .footer-col + .footer-col {
+            border-left: none;
+            padding-left: 0;
           }
+          .footer-bottom {
+            flex-direction: column;
+            gap: 10px;
+            text-align: center;
+          }
+        }
 
-          .footer-bottom-bar {
-            padding: 18px 0 24px 0;
+        @media (max-width: 600px) {
+          .site-footer {
+            padding: 32px 0 20px;
+          }
+          .footer-grid {
+            grid-template-columns: 1fr;
+            gap: 24px;
+          }
+          .footer-bottom {
+            font-size: 11px;
+            line-height: 1.4;
           }
         }
       `}</style>

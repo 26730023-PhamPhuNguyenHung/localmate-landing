@@ -47,6 +47,18 @@ import { StrategyPhasesPage } from './pages/StrategyPhasesPage';
 import { GeoWorkflowPage } from './pages/GeoWorkflowPage';
 import { TechnicalAuditStandardsPage } from './pages/TechnicalAuditStandardsPage';
 
+// Admin CMS & Preview Pages (Lazy Loaded for maximum public website speed)
+const DashboardPage = React.lazy(() => import('./admin/pages/DashboardPage').then(m => ({ default: m.DashboardPage })));
+const PostsListPage = React.lazy(() => import('./admin/pages/PostsListPage').then(m => ({ default: m.PostsListPage })));
+const PostEditorPage = React.lazy(() => import('./admin/editor/PostEditorPage').then(m => ({ default: m.PostEditorPage })));
+const CategoriesPage = React.lazy(() => import('./admin/pages/CategoriesPage').then(m => ({ default: m.CategoriesPage })));
+const TagsPage = React.lazy(() => import('./admin/pages/TagsPage').then(m => ({ default: m.TagsPage })));
+const MediaLibraryPage = React.lazy(() => import('./admin/pages/MediaLibraryPage').then(m => ({ default: m.MediaLibraryPage })));
+const RedirectsPage = React.lazy(() => import('./admin/pages/RedirectsPage').then(m => ({ default: m.RedirectsPage })));
+const SettingsPage = React.lazy(() => import('./admin/pages/SettingsPage').then(m => ({ default: m.SettingsPage })));
+const BackupPage = React.lazy(() => import('./admin/pages/BackupPage').then(m => ({ default: m.BackupPage })));
+const PostPreviewPage = React.lazy(() => import('./pages/PostPreviewPage').then(m => ({ default: m.PostPreviewPage })));
+
 // Modals
 import { AdvisorModal } from './components/advisor/AdvisorModal';
 import { ConceptModal } from './components/concept/ConceptModal';
@@ -156,6 +168,46 @@ const MainContent: React.FC = () => {
     }
     if (normalizedPath.startsWith('/admin/pricing')) {
       return <AdminPricingPage />;
+    }
+    // LocalMate WordPress-like CMS Routes
+    if (normalizedPath === '/admin' || normalizedPath === '/admin/dashboard') {
+      return <DashboardPage />;
+    }
+    if (normalizedPath === '/admin/posts/new') {
+      return <PostEditorPage />;
+    }
+    if (normalizedPath.startsWith('/admin/posts/') && normalizedPath.endsWith('/edit')) {
+      const parts = normalizedPath.split('/');
+      const postId = parseInt(parts[3], 10);
+      return <PostEditorPage postId={isNaN(postId) ? undefined : postId} />;
+    }
+    if (normalizedPath === '/admin/posts' || normalizedPath.startsWith('/admin/posts')) {
+      return <PostsListPage />;
+    }
+    if (normalizedPath.startsWith('/admin/categories')) {
+      return <CategoriesPage />;
+    }
+    if (normalizedPath.startsWith('/admin/tags')) {
+      return <TagsPage />;
+    }
+    if (normalizedPath.startsWith('/admin/media')) {
+      return <MediaLibraryPage />;
+    }
+    if (normalizedPath.startsWith('/admin/redirects')) {
+      return <RedirectsPage />;
+    }
+    if (normalizedPath.startsWith('/admin/settings')) {
+      return <SettingsPage />;
+    }
+    if (normalizedPath.startsWith('/admin/backup')) {
+      return <BackupPage />;
+    }
+
+    // Draft Preview Route
+    if (normalizedPath.startsWith('/preview/post/')) {
+      const postIdStr = normalizedPath.replace('/preview/post/', '').split('/')[0];
+      const postId = parseInt(postIdStr, 10);
+      return <PostPreviewPage postId={postId} />;
     }
 
     // 4. Five Canonical Solution Pillars & Convenient Aliases
@@ -434,14 +486,21 @@ const MainContent: React.FC = () => {
     normalizedPath === '/cach-lam-viec' ||
     normalizedPath === '/quy-trinh';
 
-  const hideDefaultLayout = isCredentialView || isGeoLandingView || isHomeView;
+  const isAdminView = normalizedPath.startsWith('/admin');
+  const isPreviewView = normalizedPath.startsWith('/preview');
+
+  const hideDefaultLayout = isCredentialView || isGeoLandingView || isAdminView || isPreviewView;
 
   return (
     <div className="localmate-app">
       {!hideDefaultLayout && (
         <Header onOpenDemoForm={() => handleOpenLeadForm('Tư vấn Web Demo 0đ')} />
       )}
-      <main id="main-content">{renderPage()}</main>
+      <main id="main-content">
+        <React.Suspense fallback={<div style={{ padding: '4rem', textAlign: 'center', color: '#64748b', fontSize: '0.95rem' }}>Đang tải giao diện...</div>}>
+          {renderPage()}
+        </React.Suspense>
+      </main>
       {!hideDefaultLayout && <Footer />}
 
       {/* Mobile Floating Sticky CTA */}

@@ -184,8 +184,6 @@ interface HomePageProps {
 }
 
 export const HomePage: React.FC<HomePageProps> = ({ onOpenConsultForm }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
   const [modalService, setModalService] = useState<(typeof servicesData)[0] | null>(null);
   const [isPolicyModalOpen, setIsPolicyModalOpen] = useState(false);
 
@@ -202,24 +200,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenConsultForm }) => {
   });
 
   const dialogRef = useRef<HTMLDialogElement>(null);
-
-  // Active section tracking via IntersectionObserver
-  useEffect(() => {
-    const sections = document.querySelectorAll('main section[id]');
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { rootMargin: '-15% 0px -65% 0px' }
-    );
-
-    sections.forEach((s) => observer.observe(s));
-    return () => observer.disconnect();
-  }, []);
 
   // Modal open/close sync
   useEffect(() => {
@@ -278,60 +258,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenConsultForm }) => {
       <a className="skip-link" href="#main">
         Đến nội dung chính
       </a>
-
-      {/* 1. Header with Logo, Navigation, Phone, Quick Quote */}
-      <header className="header">
-        <div className="header-inner">
-          <a href="#home" className="brand" aria-label="Localmate — Trang chủ">
-            <ArtCrop image={1} box={[72, 4, 213, 83]} className="logo" role="img" ariaLabel="Localmate — Người đồng hành số" />
-          </a>
-
-          <button
-            className="menu-toggle"
-            aria-label={isMenuOpen ? 'Đóng menu' : 'Mở menu'}
-            aria-expanded={isMenuOpen}
-            aria-controls="navigation"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? '✕' : '☰'}
-          </button>
-
-          <nav id="navigation" className={isMenuOpen ? 'open' : ''} aria-label="Điều hướng chính" onClick={() => setIsMenuOpen(false)}>
-            <a className={activeSection === 'home' ? 'active' : ''} href="#home">
-              Trang chủ
-            </a>
-            <a className={activeSection === 'services' ? 'active' : ''} href="#services">
-              Dịch vụ <small>⌄</small>
-            </a>
-            <a href="/bang-gia">
-              Bảng giá
-            </a>
-            <a className={activeSection === 'stories' ? 'active' : ''} href="#stories">
-              Câu chuyện
-            </a>
-            <a className={activeSection === 'process' ? 'active' : ''} href="#process">
-              Quy trình
-            </a>
-            <a href="#about">
-              Về Localmate
-            </a>
-            <a className={activeSection === 'contact' ? 'active' : ''} href="#contact">
-              Liên hệ
-            </a>
-          </nav>
-
-          <a className="phone" href="tel:0834422439" aria-label="Gọi 0834 422 439">
-            <span>
-              <Icon name="phone" />
-            </span>{' '}
-            0834.422.439
-          </a>
-
-          <a className="button header-cta" href="#contact">
-            ✧ &nbsp; Báo giá nhanh
-          </a>
-        </div>
-      </header>
 
       {/* Main Content Sections */}
       <main id="main">
@@ -768,72 +694,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenConsultForm }) => {
           </p>
         </section>
       </main>
-
-      {/* FOOTER */}
-      <footer id="about">
-        <div className="footer-grid">
-          <div>
-            <a href="#home" className="brand">
-              <ArtCrop image={1} box={[72, 4, 213, 83]} className="logo" role="img" ariaLabel="Localmate" />
-            </a>
-            <p>Website, Google Maps, quảng cáo và hệ thống số cho hộ kinh doanh &amp; SME.</p>
-            <p>⌖ &nbsp;Đà Nẵng · Hội An · TP.HCM · Toàn quốc</p>
-            <p className="handwritten">Cùng doanh nghiệp địa phương vươn xa hơn</p>
-          </div>
-
-          <div>
-            <h4>Dịch vụ</h4>
-            <div id="footer-services">
-              {servicesData.map((s) => (
-                <a
-                  key={s.id}
-                  href="#services"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setModalService(s);
-                  }}
-                >
-                  {s.title}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <h4>Thông tin</h4>
-            <a href="#process">Cách làm việc</a>
-            <a href="/bang-gia">Bảng giá niêm yết</a>
-            <a href="#stories">Dự án / Demo</a>
-            <a href="/ho-so-nang-luc">Hồ sơ năng lực</a>
-            <button className="text-button" onClick={() => setIsPolicyModalOpen(true)}>
-              Chính sách bảo mật
-            </button>
-          </div>
-
-          <div>
-            <h4>Cần hỗ trợ?</h4>
-            <p>Trao đổi trực tiếp với Localmate<br />về nhu cầu của bạn.</p>
-            <a className="button zalo" href="https://zalo.me/0834422439" target="_blank" rel="noopener noreferrer">
-              Nhắn Zalo
-            </a>
-            <a href="tel:0834422439">
-              <strong>
-                <Icon name="phone" /> &nbsp;0834 422 439
-              </strong>
-            </a>
-            <a href="mailto:contact@localmate.vn">
-              ✉ &nbsp;contact@localmate.vn
-            </a>
-          </div>
-        </div>
-
-        <div className="footer-bottom">
-          <span>© 2026 CÔNG TY TNHH LOCALMATE — MST: 4001337934. Trụ sở: 03 Trường Chinh, Đà Nẵng.</span>
-          <button className="text-button" onClick={() => setIsPolicyModalOpen(true)}>
-            Bảo mật &amp; dữ liệu
-          </button>
-        </div>
-      </footer>
 
       {/* DETAIL MODAL DIALOG */}
       <dialog

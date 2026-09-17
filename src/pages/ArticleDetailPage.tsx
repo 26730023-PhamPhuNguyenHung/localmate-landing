@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container } from '../components/ui/Container';
 import { Button } from '../components/ui/Button';
 import { Breadcrumbs } from '../components/ui/Breadcrumbs';
 import { SEOHead } from '../components/seo/SEOHead';
-import { getArticleBySlug, getAllArticles, ArticleEntity } from '../data/articlesData';
+import { getArticleBySlug, ArticleEntity } from '../data/articlesData';
 import { getServiceBySlug } from '../data/servicesData';
 import { useRouter, Link } from '../components/layout/Router';
+import { cmsClient } from '../cms/services/cmsClient';
+import { PostEntity } from '../cms/types';
 import {
   Clock, Calendar, User, ArrowRight, HelpCircle, CheckCircle2,
-  AlertTriangle, Lightbulb, Info, BookOpen
+  AlertTriangle, Lightbulb, Info, BookOpen, Loader2
 } from 'lucide-react';
 
 interface ArticleDetailPageProps {
@@ -18,9 +20,52 @@ interface ArticleDetailPageProps {
 
 export const ArticleDetailPage: React.FC<ArticleDetailPageProps> = ({ slug, onOpenConsultForm }) => {
   const { navigate } = useRouter();
-  const article = getArticleBySlug(slug);
+  const [cmsPost, setCmsPost] = useState<PostEntity | null>(null);
+  const [relatedCmsPosts, setRelatedCmsPosts] = useState<PostEntity[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  if (!article) {
+  // Fallback to static article
+  const staticArticle = getArticleBySlug(slug);
+
+  useEffect(() => {
+    loadArticle();
+  }, [slug]);
+
+  const loadArticle = async () => {
+    setIsLoading(true);
+    try {
+      const res = await cmsClient.getPublicPostBySlug(slug);
+      if (res.redirect) {
+        // 301 SEO redirect triggered
+        navigate(res.redirect.destination);
+        return;
+      }
+      if (res.success && res.data?.post) {
+        setCmsPost(res.data.post);
+        setRelatedCmsPosts(res.data.relatedPosts || []);
+      }
+    } catch {
+      // ignore, will use staticArticle fallback
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Determine active article source (CMS or static)
+  const isCms = !!cmsPost;
+  const article = isCms ? null : staticArticle;
+
+  if (!isCms && !article) {
+    if (isLoading) {
+      return (
+        <div style={{ backgroundColor: '#ffffff', padding: '5rem 0', textAlign: 'center' }}>
+          <Container size="md">
+            <Loader2 size={32} className="spin" color="var(--color-primary)" style={{ margin: '0 auto 1rem auto' }} />
+            <p style={{ color: 'var(--color-text-muted)' }}>Đang tải bài viết...</p>
+          </Container>
+        </div>
+      );
+    }
     return (
       <div style={{ backgroundColor: '#ffffff', padding: '5rem 0', textAlign: 'center' }}>
         <Container size="md">
@@ -38,16 +83,43 @@ export const ArticleDetailPage: React.FC<ArticleDetailPageProps> = ({ slug, onOp
     );
   }
 
-  const targetService = article.cta?.targetServiceSlug ? getServiceBySlug(article.cta.targetServiceSlug) : undefined;
-  const relatedArticles = article.relatedArticleSlugs
-    .map((aSlug) => getArticleBySlug(aSlug))
-    .filter(Boolean) as ArticleEntity[];
+  // Active properties
+  const title = isCms ? cmsPost!.title : article!.title;
+  const summary = isCms ? (cmsPost!.excerpt || '') : article!.summary;
+  const categoryName = isCms ? (cmsPost!.category_name || 'Kiến thức') : article!.category;
+  const readTime = isCms ? cmsPost!.reading_time : article!.readTime;
+  const updatedAt = isCms ? (cmsPost!.updated_at || cmsPost!.published_at || '').split(' ')[0] : article!.updatedAt;
+  const publishedAt = isCms ? (cmsPost!.published_at || '').split(' ')[0] : article!.publishedAt;
+  const authorName = isCms ? (cmsPost!.author_name || 'Ban biên tập LocalMate') : article!.author.name;
+  const authorRole = isCms ? 'Chuyên gia tư vấn LocalMate' : article!.author.role;
+  const heroImage = isCms ? (cmsPost!.featured_image_url || '/logo.png') : article!.heroImage;
+
+  // Render Table of Contents from H2 in rendered_html for CMS post
+  let tocItems: { id: string; title: string }[] = [];
+  if (isCms && cmsPost!.rendered_html) {
+    const h2Matches = cmsPost!.rendered_html.matchAll(/<h2>(.*?)<\/h2>/gi);
+    let count = 1;
+    for (const match of h2Matches) {
+      const headingText = match[1].replace(/<[^>]*>/g, '').trim();
+      if (headingText) {
+        tocItems.push({
+          id: `section-${count++}`,
+          title: headingText
+        });
+      }
+    }
+  } else if (article?.tableOfContents) {
+    tocItems = article.tableOfContents;
+  }
+
+  // Related Services
+  const targetService = !isCms && article?.cta?.targetServiceSlug ? getServiceBySlug(article.cta.targetServiceSlug) : undefined;
 
   const handleCTAClick = () => {
-    if (onOpenConsultForm && targetService) {
-      onOpenConsultForm(targetService.name);
+    if (onOpenConsultForm) {
+      onOpenConsultForm(targetService?.name || 'Tư vấn giải pháp');
     } else {
-      navigate(targetService ? `/dich-vu/${targetService.slug}` : '/lien-he');
+      navigate('/lien-he');
     }
   };
 
@@ -55,25 +127,25 @@ export const ArticleDetailPage: React.FC<ArticleDetailPageProps> = ({ slug, onOp
     <div style={{ backgroundColor: '#ffffff', padding: '2rem 0 5rem 0' }}>
       {/* SEO & Structured Data */}
       <SEOHead
-        title={`${article.title} | LocalMate`}
-        description={article.summary}
-        canonicalPath={`/kien-thuc/${article.slug}`}
+        title={`${isCms && cmsPost!.seo_title ? cmsPost!.seo_title : title} | LocalMate`}
+        description={isCms && cmsPost!.seo_description ? cmsPost!.seo_description : summary}
+        canonicalPath={`/kien-thuc/${slug}`}
         ogType="article"
         breadcrumbs={[
           { name: 'Kiến thức', url: '/kien-thuc' },
-          { name: article.category, url: '/kien-thuc' },
-          { name: article.title, url: `/kien-thuc/${article.slug}` }
+          { name: categoryName, url: '/kien-thuc' },
+          { name: title, url: `/kien-thuc/${slug}` }
         ]}
         schemaType="Article"
         schemaData={{
-          headline: article.title,
-          description: article.summary,
-          datePublished: article.publishedAt,
-          dateModified: article.updatedAt,
+          headline: title,
+          description: summary,
+          datePublished: publishedAt,
+          dateModified: updatedAt,
           author: {
             '@type': 'Person',
-            name: article.author.name,
-            jobTitle: article.author.role
+            name: authorName,
+            jobTitle: authorRole
           },
           publisher: {
             '@type': 'Organization',
@@ -91,8 +163,8 @@ export const ArticleDetailPage: React.FC<ArticleDetailPageProps> = ({ slug, onOp
         <Breadcrumbs
           items={[
             { name: 'Kiến thức', url: '/kien-thuc' },
-            { name: article.category, url: '/kien-thuc' },
-            { name: article.title, url: `/kien-thuc/${article.slug}` }
+            { name: categoryName, url: '/kien-thuc' },
+            { name: title, url: `/kien-thuc/${slug}` }
           ]}
         />
 
@@ -111,13 +183,13 @@ export const ArticleDetailPage: React.FC<ArticleDetailPageProps> = ({ slug, onOp
                   borderRadius: 'var(--radius-full)'
                 }}
               >
-                {article.category}
+                {categoryName}
               </span>
               <span style={{ fontSize: '0.825rem', color: 'var(--color-text-muted)', display: 'flex', alignItems: 'center', gap: 4 }}>
-                <Clock size={14} /> {article.readTime}
+                <Clock size={14} /> {readTime}
               </span>
               <span style={{ fontSize: '0.825rem', color: 'var(--color-text-muted)', display: 'flex', alignItems: 'center', gap: 4 }}>
-                <Calendar size={14} /> Cập nhật: {article.updatedAt}
+                <Calendar size={14} /> Cập nhật: {updatedAt}
               </span>
             </div>
 
@@ -131,7 +203,7 @@ export const ArticleDetailPage: React.FC<ArticleDetailPageProps> = ({ slug, onOp
                 marginBottom: '1.25rem'
               }}
             >
-              {article.title}
+              {title}
             </h1>
 
             {/* Author Box */}
@@ -151,30 +223,43 @@ export const ArticleDetailPage: React.FC<ArticleDetailPageProps> = ({ slug, onOp
                 <User size={20} />
               </div>
               <div>
-                <div style={{ fontSize: '0.9rem', fontWeight: 800, color: 'var(--color-text)' }}>{article.author.name}</div>
-                <div style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)' }}>{article.author.role}</div>
+                <div style={{ fontSize: '0.9rem', fontWeight: 800, color: 'var(--color-text)' }}>{authorName}</div>
+                <div style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)' }}>{authorRole}</div>
               </div>
             </div>
 
             {/* Summary Callout */}
-            <div
-              style={{
-                backgroundColor: '#f8fbfa',
-                borderLeft: '4px solid var(--color-primary)',
-                padding: '1.25rem 1.5rem',
-                borderRadius: '0 var(--radius-md) var(--radius-md) 0',
-                fontSize: '1.025rem',
-                color: 'var(--color-text)',
-                lineHeight: 1.65,
-                fontWeight: 500,
-                marginBottom: '2rem'
-              }}
-            >
-              {article.summary}
-            </div>
+            {summary && (
+              <div
+                style={{
+                  backgroundColor: '#f8fbfa',
+                  borderLeft: '4px solid var(--color-primary)',
+                  padding: '1.25rem 1.5rem',
+                  borderRadius: '0 var(--radius-md) var(--radius-md) 0',
+                  fontSize: '1.025rem',
+                  color: 'var(--color-text)',
+                  lineHeight: 1.65,
+                  fontWeight: 500,
+                  marginBottom: '2rem'
+                }}
+              >
+                {summary}
+              </div>
+            )}
+
+            {/* Featured Image if from CMS */}
+            {isCms && cmsPost!.featured_image_url && (
+              <div style={{ marginBottom: '2.5rem', borderRadius: '12px', overflow: 'hidden', border: '1px solid #e2e8f0' }}>
+                <img
+                  src={cmsPost!.featured_image_url}
+                  alt={title}
+                  style={{ width: '100%', maxHeight: '450px', objectFit: 'cover' }}
+                />
+              </div>
+            )}
 
             {/* Table of Contents */}
-            {article.tableOfContents && article.tableOfContents.length > 0 && (
+            {tocItems.length > 0 && (
               <div
                 style={{
                   backgroundColor: '#f8fbfa',
@@ -188,8 +273,8 @@ export const ArticleDetailPage: React.FC<ArticleDetailPageProps> = ({ slug, onOp
                   <BookOpen size={18} color="var(--color-primary)" /> Mục Lục Hướng Dẫn
                 </div>
                 <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                  {article.tableOfContents.map((toc) => (
-                    <li key={toc.id}>
+                  {tocItems.map((toc, idx) => (
+                    <li key={idx}>
                       <a
                         href={`#${toc.id}`}
                         style={{
@@ -208,110 +293,100 @@ export const ArticleDetailPage: React.FC<ArticleDetailPageProps> = ({ slug, onOp
               </div>
             )}
 
-            {/* Article Content Sections */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', lineHeight: 1.75, color: '#334155', fontSize: '1.025rem' }}>
-              {article.contentSections.map((sec, idx) => (
-                <section key={idx} id={sec.headingId}>
-                  {sec.heading && (
-                    <h2
-                      style={{
-                        fontSize: '1.35rem',
-                        fontWeight: 800,
-                        color: 'var(--color-text)',
-                        marginBottom: '0.85rem',
-                        marginTop: '0.5rem',
-                        lineHeight: 1.35
-                      }}
-                    >
-                      {sec.heading}
-                    </h2>
-                  )}
+            {/* Body Content */}
+            {isCms ? (
+              <div
+                className="article-rendered-body"
+                dangerouslySetInnerHTML={{ __html: cmsPost!.rendered_html }}
+                style={{
+                  fontSize: '1.05rem',
+                  lineHeight: 1.8,
+                  color: '#334155'
+                }}
+              />
+            ) : (
+              /* Legacy static sections renderer */
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', lineHeight: 1.75, color: '#334155', fontSize: '1.025rem' }}>
+                {article!.contentSections.map((sec, idx) => (
+                  <section key={idx} id={sec.headingId}>
+                    {sec.heading && (
+                      <h2
+                        style={{
+                          fontSize: '1.35rem',
+                          fontWeight: 800,
+                          color: 'var(--color-text)',
+                          marginBottom: '0.85rem',
+                          marginTop: '0.5rem',
+                          lineHeight: 1.35
+                        }}
+                      >
+                        {sec.heading}
+                      </h2>
+                    )}
 
-                  {sec.paragraphs.map((p, pIdx) => (
-                    <p key={pIdx} style={{ margin: '0 0 1rem 0' }}>
-                      {p}
-                    </p>
-                  ))}
-
-                  {sec.listItems && (
-                    <ul style={{ paddingLeft: '1.25rem', margin: '0 0 1.25rem 0', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                      {sec.listItems.map((li, lIdx) => (
-                        <li key={lIdx}>{li}</li>
-                      ))}
-                    </ul>
-                  )}
-
-                  {sec.callout && (
-                    <div
-                      style={{
-                        backgroundColor: sec.callout.type === 'warning' ? '#fff7ed' : '#f0fdf4',
-                        border: '1px solid',
-                        borderColor: sec.callout.type === 'warning' ? '#fdba74' : '#86efac',
-                        borderRadius: 'var(--radius-md)',
-                        padding: '1.25rem',
-                        margin: '1.25rem 0'
-                      }}
-                    >
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontWeight: 800, fontSize: '0.9rem', color: sec.callout.type === 'warning' ? '#c2410c' : '#15803d', marginBottom: '0.35rem' }}>
-                        {sec.callout.type === 'warning' ? <AlertTriangle size={18} /> : <Lightbulb size={18} />}
-                        <span>{sec.callout.title}</span>
-                      </div>
-                      <div style={{ fontSize: '0.875rem', color: 'var(--color-text)', lineHeight: 1.55 }}>
-                        {sec.callout.text}
-                      </div>
-                    </div>
-                  )}
-                </section>
-              ))}
-            </div>
-
-            {/* Contextual FAQs */}
-            {article.faqs && article.faqs.length > 0 && (
-              <div style={{ marginTop: '3rem', paddingTop: '2rem', borderTop: '1px solid var(--color-border)' }}>
-                <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--color-text)', marginBottom: '1.25rem' }}>
-                  Câu Hỏi Thường Gặp
-                </h3>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                  {article.faqs.map((faq, idx) => (
-                    <div key={idx} style={{ backgroundColor: '#f8fbfa', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-lg)', padding: '1.25rem' }}>
-                      <h4 style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--color-text)', marginBottom: '0.35rem', display: 'flex', alignItems: 'center', gap: 6 }}>
-                        <HelpCircle size={16} color="var(--color-primary)" /> {faq.question}
-                      </h4>
-                      <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', margin: 0, paddingLeft: '1.4rem' }}>
-                        {faq.answer}
+                    {sec.paragraphs.map((p, pIdx) => (
+                      <p key={pIdx} style={{ margin: '0 0 1rem 0' }}>
+                        {p}
                       </p>
-                    </div>
-                  ))}
-                </div>
+                    ))}
+
+                    {sec.listItems && (
+                      <ul style={{ paddingLeft: '1.25rem', margin: '0 0 1.25rem 0', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+                        {sec.listItems.map((li, lIdx) => (
+                          <li key={lIdx}>{li}</li>
+                        ))}
+                      </ul>
+                    )}
+
+                    {sec.callout && (
+                      <div
+                        style={{
+                          backgroundColor: sec.callout.type === 'warning' ? '#fff7ed' : '#f0fdf4',
+                          border: '1px solid',
+                          borderColor: sec.callout.type === 'warning' ? '#fdba74' : '#86efac',
+                          borderRadius: 'var(--radius-md)',
+                          padding: '1.25rem',
+                          margin: '1.25rem 0'
+                        }}
+                      >
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontWeight: 800, fontSize: '0.9rem', color: sec.callout.type === 'warning' ? '#c2410c' : '#15803d', marginBottom: '0.35rem' }}>
+                          {sec.callout.type === 'warning' ? <AlertTriangle size={18} /> : <Lightbulb size={18} />}
+                          <span>{sec.callout.title}</span>
+                        </div>
+                        <div style={{ fontSize: '0.875rem', color: 'var(--color-text)', lineHeight: 1.55 }}>
+                          {sec.callout.text}
+                        </div>
+                      </div>
+                    )}
+                  </section>
+                ))}
               </div>
             )}
 
             {/* Contextual CTA Box */}
-            {article.cta && (
-              <div
-                style={{
-                  backgroundColor: '#f8fbfa',
-                  border: '2px solid var(--color-primary)',
-                  borderRadius: 'var(--radius-xl)',
-                  padding: '2rem',
-                  marginTop: '3.5rem',
-                  textAlign: 'center'
-                }}
-              >
-                <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: 'var(--color-text)', marginBottom: '0.5rem' }}>
-                  {article.cta.title}
-                </h3>
-                <p style={{ fontSize: '0.925rem', color: 'var(--color-text-muted)', maxWidth: '600px', margin: '0 auto 1.5rem auto', lineHeight: 1.6 }}>
-                  {article.cta.subtitle}
-                </p>
-                <Button variant="primary" size="lg" onClick={handleCTAClick} style={{ fontWeight: 700 }}>
-                  {article.cta.buttonText}
-                </Button>
-              </div>
-            )}
+            <div
+              style={{
+                backgroundColor: '#f8fbfa',
+                border: '2px solid var(--color-primary)',
+                borderRadius: 'var(--radius-xl)',
+                padding: '2rem',
+                marginTop: '3.5rem',
+                textAlign: 'center'
+              }}
+            >
+              <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: 'var(--color-text)', marginBottom: '0.5rem' }}>
+                Cần Triển Khai Cho Doanh Nghiệp Của Bạn?
+              </h3>
+              <p style={{ fontSize: '0.925rem', color: 'var(--color-text-muted)', maxWidth: '600px', margin: '0 auto 1.5rem auto', lineHeight: 1.6 }}>
+                LocalMate hỗ trợ dựng demo xem trước 0đ, cam kết bàn giao toàn quyền và không phát sinh chi phí.
+              </p>
+              <Button variant="primary" size="lg" onClick={handleCTAClick} style={{ fontWeight: 700 }}>
+                Nhận Tư Vấn 0đ Ngay
+              </Button>
+            </div>
           </article>
 
-          {/* Right Sticky Sidebar (Related Service & Articles) */}
+          {/* Right Sticky Sidebar */}
           <aside style={{ position: 'sticky', top: '100px', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
             {/* Target Service Card */}
             {targetService && (
@@ -356,7 +431,7 @@ export const ArticleDetailPage: React.FC<ArticleDetailPageProps> = ({ slug, onOp
             )}
 
             {/* Related Articles */}
-            {relatedArticles.length > 0 && (
+            {(isCms ? relatedCmsPosts : []).length > 0 && (
               <div
                 style={{
                   backgroundColor: '#f8fbfa',
@@ -369,7 +444,7 @@ export const ArticleDetailPage: React.FC<ArticleDetailPageProps> = ({ slug, onOp
                   Bài viết cùng chủ đề
                 </h4>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
-                  {relatedArticles.map((rel) => (
+                  {relatedCmsPosts.map((rel) => (
                     <Link
                       key={rel.id}
                       to={`/kien-thuc/${rel.slug}`}
@@ -386,7 +461,7 @@ export const ArticleDetailPage: React.FC<ArticleDetailPageProps> = ({ slug, onOp
                         {rel.title}
                       </span>
                       <span style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)' }}>
-                        {rel.readTime}
+                        {rel.reading_time || '5 phút đọc'}
                       </span>
                     </Link>
                   ))}

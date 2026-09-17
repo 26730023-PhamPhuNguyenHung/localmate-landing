@@ -1,5 +1,37 @@
 # BÀI HỌC VÀ LƯU Ý KỸ THUẬT (LESSONS LEARNED & BUG MEMORY)
 
+## [2026-09-17] — Tránh Trùng Lặp Header/Footer Giữa Layout Và Page Component & Phân Tách Tuyệt Đối Admin Layout
+- **Vấn đề phát sinh thực tế:**
+  1. *Trùng lặp 2 Header/Footer (Double Layout Stacking)*: Khi chuyển đổi từ giao diện tĩnh sang template SPA, nếu thẻ `<header>` và `<footer>` được giữ lại bên trong `HomePage.tsx` trong khi layout cha `App.tsx` cũng render `<Header>` và `<Footer>`, bất cứ khi nào route fallback về HomePage hoặc logic ẩn layout không khớp, người dùng sẽ thấy 2 header và 2 footer xếp chồng lên nhau.
+  2. *Admin Route Fallback & Session Isolation*: Nếu router của frontend có route quản trị (`/admin`) nhưng server production chưa được deploy phiên bản mới có route này, SPA server sẽ fallback về `index.html` rồi render fallback HomePage với đầy đủ header/footer của khách xem web thay vì giao diện quản trị.
+- **Quy tắc & Kỹ thuật xử lý chuẩn:**
+  1. *Single Source of Truth Cho Layout (DRY Layout)*:
+     - Header và Footer của website CHỈ ĐƯỢC PHÉP render tại một nơi duy nhất: Layout cha (`src/App.tsx`).
+     - Tuyệt đối không hardcode thẻ `<header>` hoặc `<footer>` bên trong bất kỳ Page Component nào (`HomePage.tsx`, `AboutPage.tsx`, etc.).
+  2. *Phân Tách Rõ Ràng Public vs Admin*:
+     - Route Quản trị (`/admin*`) có hệ sinh thái layout riêng (`AdminLayout`: Sidebar, Topbar, Content).
+     - Luôn đưa `isAdminView` vào `hideDefaultLayout` để loại bỏ hoàn toàn Header, Footer và Mobile Floating CTA của khách khi đang ở màn hình quản trị.
+  3. *Kiểm Tra Đồng Bộ Password Hash Khi Khởi Tạo Database*:
+     - Luôn đối chiếu chuỗi hash SHA-256 thực tế được sinh ra bởi Web Crypto API với chuỗi lưu trong file SQL seed defaults để tránh lỗi đăng nhập không thành công do lệch format muối hoặc chuỗi đầu vào.
+
+
+## [2026-09-17] — Kiến Trúc CMS Chuẩn WordPress Tinh Gọn Trên Cloudflare & Code-Splitting Bundle Cho Frontend
+- **Bối cảnh & Vấn đề thực tế:**
+  1. *Nguy cơ phình to bundle (Bundle Bloat)*: Tiptap Editor cùng các extension (StarterKit, Table, Link, Image, Underline) chiếm tới ~590 kB JS. Nếu import trực tiếp vào router chính của SPA, 100% người dùng truy cập trang chủ, trang dịch vụ hoặc đọc bài viết công cộng `/kien-thuc` sẽ bị ép tải toàn bộ mã nguồn của trình soạn thảo quản trị, gây tụt điểm Core Web Vitals và làm chậm trải nghiệm di động.
+  2. *Bảo toàn cơ sở dữ liệu dùng chung (D1 Isolation)*: Khi tài khoản Cloudflare đạt giới hạn số lượng database trên gói Free (10 databases), không thể tạo thêm database mới cho CMS. Nếu tạo các bảng tên chung chung (`posts`, `users`, `categories`, `media`) sẽ có nguy cơ ghi đè hoặc xung đột với các bảng đang phục vụ tính năng survey/brief của dự án.
+- **Giải pháp Kỹ thuật & Chuẩn hóa:**
+  1. *Code-Splitting Tối Đa Với React.lazy() và Rollup manualChunks*:
+     - Toàn bộ các trang quản trị (`DashboardPage`, `PostsListPage`, `PostEditorPage`, `MediaLibraryPage`, `SettingsPage`, `BackupPage`) đều được wrap qua `React.lazy()` và `React.Suspense`.
+     - Trong `vite.config.ts`, khai báo chunk riêng `tiptap` trong `manualChunks`.
+     - Kết quả: Khách đọc website công cộng tải bundle siêu nhẹ (Zero Tiptap footprint), giữ vững Lighthouse 95–100. Chỉ khi admin đăng nhập vào `/admin` thì trình duyệt mới tải chunk biên tập.
+  2. *Phân Lập Domain D1 Bằng Tiền Tố (Table Prefix `cms_*`)*:
+     - Toàn bộ 10 bảng CMS được đặt tên: `cms_users`, `cms_categories`, `cms_tags`, `cms_post_tags`, `cms_media`, `cms_posts`, `cms_post_revisions`, `cms_pages`, `cms_settings`, `cms_redirects`.
+     - Tuyệt đối an toàn 100% khi chạy song song trong cùng database D1 `localmate_survey_db`.
+  3. *Canonical Content Storage*:
+     - Luôn lưu nội dung dưới dạng Tiptap JSON (`content_json`) làm Single Source of Truth cho trình soạn thảo, kèm `rendered_html` đã được sanitize whitelist để hiển thị public tốc độ cao.
+  4. *Bảo Vệ SEO Tự Động Với Bảng Chuyển Hướng 301*:
+     - Khi đổi slug của bài đã xuất bản, backend API tự động tạo bản ghi chuyển hướng 301 trong `cms_redirects` (`/kien-thuc/slug-cu` -> `/kien-thuc/slug-moi`), ngăn ngừa triệt để lỗi 404 cho bot Google và người dùng.
+
 ## [2026-09-17] — Thiết Kế Giao Diện Viewport-Fit Cho Màn Hình Laptop Windows Scale 125% (1536x864 / Usable Height 700-750px)
 - **Vấn đề cốt lõi phát hiện:**
   - Hầu hết laptop chạy Windows (màn hình Full HD 1920x1080) có tỷ lệ hiển thị mặc định của Windows là **125%**.

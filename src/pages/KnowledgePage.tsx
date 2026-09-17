@@ -1,33 +1,91 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container } from '../components/ui/Container';
 import { Breadcrumbs } from '../components/ui/Breadcrumbs';
 import { SEOHead } from '../components/seo/SEOHead';
 import { getAllArticles } from '../data/articlesData';
-import { BookOpen, ArrowRight, Clock, Search } from 'lucide-react';
+import { cmsClient } from '../cms/services/cmsClient';
+import { PostEntity, CategoryEntity } from '../cms/types';
+import { BookOpen, ArrowRight, Clock, Search, Loader2 } from 'lucide-react';
 import { useRouter } from '../components/layout/Router';
 
 export const KnowledgePage: React.FC = () => {
   const { navigate } = useRouter();
-  const articles = getAllArticles();
-  const [selectedPillar, setSelectedPillar] = useState<string>('all');
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
-  const pillars = [
-    { key: 'all', label: 'Tất cả bài viết' },
-    { key: 'google-ads', label: 'Quảng cáo Google Ads' },
-    { key: 'google-maps', label: 'Google Maps' },
-    { key: 'website', label: 'Làm Website' },
-    { key: 'content', label: 'Bài viết Facebook' }
-  ];
+  const [cmsPosts, setCmsPosts] = useState<PostEntity[]>([]);
+  const [categories, setCategories] = useState<CategoryEntity[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const filteredArticles = articles.filter((art) => {
-    const matchesPillar = selectedPillar === 'all' || art.pillarKey === selectedPillar;
-    const matchesSearch = !searchQuery ||
-      art.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      art.summary.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      art.primaryKeyword.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesPillar && matchesSearch;
-  });
+  useEffect(() => {
+    loadCategories();
+  }, []);
+
+  useEffect(() => {
+    loadPosts();
+  }, [selectedCategory, searchQuery]);
+
+  const loadCategories = async () => {
+    try {
+      const res = await cmsClient.getPublicCategories();
+      if (res.success && res.data && res.data.length > 0) {
+        setCategories(res.data);
+      }
+    } catch {
+      // ignore
+    }
+  };
+
+  const loadPosts = async () => {
+    setIsLoading(true);
+    try {
+      const res = await cmsClient.getPublicPosts({
+        category: selectedCategory === 'all' ? undefined : selectedCategory,
+        q: searchQuery || undefined
+      });
+      if (res.success && res.data) {
+        setCmsPosts(res.data.posts);
+      }
+    } catch {
+      // fallback
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Static fallback if CMS has 0 published posts yet (e.g. freshly seeded with 30 drafts)
+  const staticArticles = getAllArticles();
+  const hasCmsPosts = cmsPosts.length > 0;
+
+  const displayList = hasCmsPosts
+    ? cmsPosts.map((p) => ({
+        id: String(p.id),
+        slug: p.slug,
+        title: p.title,
+        category: p.category_name || 'Kiến thức',
+        readTime: p.reading_time || '5 phút đọc',
+        summary: p.excerpt || ''
+      }))
+    : staticArticles.filter((art) => {
+        const matchesCat = selectedCategory === 'all' || art.pillarKey === selectedCategory;
+        const matchesSearch = !searchQuery ||
+          art.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          art.summary.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          art.primaryKeyword.toLowerCase().includes(searchQuery.toLowerCase());
+        return matchesCat && matchesSearch;
+      });
+
+  const categoryPills = [
+    { slug: 'all', name: 'Tất cả bài viết' },
+    ...(categories.length > 0
+      ? categories.map((c) => ({ slug: c.slug, name: c.name }))
+      : [
+          { slug: 'google-ads', name: 'Quảng cáo Google Ads' },
+          { slug: 'google-maps', name: 'Google Maps' },
+          { slug: 'website', name: 'Làm Website' },
+          { slug: 'content', name: 'Bài viết Facebook' }
+        ])
+  ];
 
   return (
     <div style={{ backgroundColor: '#ffffff', padding: '2rem 0 5rem 0' }}>
@@ -96,14 +154,14 @@ export const KnowledgePage: React.FC = () => {
           </div>
         </div>
 
-        {/* Pillar Filter Pills */}
+        {/* Pillar / Category Filter Pills */}
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', justifyContent: 'center', marginBottom: '3rem' }}>
-          {pillars.map((pill) => {
-            const isActive = selectedPillar === pill.key;
+          {categoryPills.map((pill) => {
+            const isActive = selectedCategory === pill.slug;
             return (
               <button
-                key={pill.key}
-                onClick={() => setSelectedPillar(pill.key)}
+                key={pill.slug}
+                onClick={() => setSelectedCategory(pill.slug)}
                 style={{
                   padding: '0.55rem 1.2rem',
                   borderRadius: 'var(--radius-full)',
@@ -116,16 +174,21 @@ export const KnowledgePage: React.FC = () => {
                   transition: 'all 0.15s'
                 }}
               >
-                {pill.label}
+                {pill.name}
               </button>
             );
           })}
         </div>
 
         {/* Articles Grid */}
-        {filteredArticles.length > 0 ? (
+        {isLoading ? (
+          <div style={{ textAlign: 'center', padding: '3rem' }}>
+            <Loader2 size={32} className="spin" color="var(--color-primary)" style={{ margin: '0 auto 0.5rem auto' }} />
+            <div style={{ color: 'var(--color-text-muted)', fontSize: '0.9rem' }}>Đang tìm kiếm bài viết...</div>
+          </div>
+        ) : displayList.length > 0 ? (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '2rem' }}>
-            {filteredArticles.map((art) => (
+            {displayList.map((art) => (
               <article
                 key={art.id}
                 onClick={() => navigate(`/kien-thuc/${art.slug}`)}
