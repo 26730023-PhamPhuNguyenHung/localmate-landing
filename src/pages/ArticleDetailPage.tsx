@@ -29,8 +29,28 @@ interface ArticleDetailPageProps {
   onOpenConsultForm?: (serviceName?: string) => void;
 }
 
+function useIsDesktop(breakpoint = 1080): boolean {
+  const [isDesktop, setIsDesktop] = useState<boolean>(() => {
+    if (typeof window === 'undefined') return true;
+    return window.innerWidth >= breakpoint;
+  });
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const mediaQuery = window.matchMedia(`(min-width: ${breakpoint}px)`);
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+
+    setIsDesktop(mediaQuery.matches);
+    mediaQuery.addEventListener('change', handler);
+    return () => mediaQuery.removeEventListener('change', handler);
+  }, [breakpoint]);
+
+  return isDesktop;
+}
+
 export const ArticleDetailPage: React.FC<ArticleDetailPageProps> = ({ slug, onOpenConsultForm }) => {
   const { navigate } = useRouter();
+  const isDesktop = useIsDesktop(1080);
   
   // Fast metadata fallback for 0ms title/breadcrumbs rendering
   const meta = useMemo(() => getArticleMetadataBySlug(slug), [slug]);
@@ -217,15 +237,17 @@ export const ArticleDetailPage: React.FC<ArticleDetailPageProps> = ({ slug, onOp
                 <ArticleSummary summary={tldrText} />
               )}
 
-              {/* Mobile/Tablet Inline Accordion TOC (Hidden on desktop) */}
-              {article?.html && (
+              {/* Mobile/Tablet Inline Accordion TOC (Chỉ mount trên mobile/tablet để triệt tiêu ghost listeners và xung đột DOM) */}
+              {!isDesktop && article?.html && (
                 <div className="article-mobile-toc-container">
                   <TableOfContents
                     htmlContent={article.html}
                     contentSelector=".article-rendered-content"
-                    title="Mục lục bài viết"
+                    title="Mục lục"
+                    variant="inline-accordion"
                     collapsible={true}
                     defaultCollapsed={true}
+                    autoCloseOnSelect={true}
                     showProgressBar={false}
                   />
                 </div>
@@ -260,17 +282,19 @@ export const ArticleDetailPage: React.FC<ArticleDetailPageProps> = ({ slug, onOp
               )}
             </div>
 
-            {/* Sticky Sidebar Column (Desktop & Laptop >= 1080px) */}
-            <aside className="article-sidebar-column" aria-label="Mục lục và điều hướng bài viết">
-              {article?.html && (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-                  <TableOfContents
-                    htmlContent={article.html}
-                    contentSelector=".article-rendered-content"
-                    title="Mục lục nội dung"
-                    collapsible={false}
-                    showProgressBar={false}
-                  />
+            {/* Sticky Sidebar Column (Chỉ mount trên Desktop & Laptop >= 1080px) */}
+            {isDesktop && (
+              <aside className="article-sidebar-column" aria-label="Mục lục và điều hướng bài viết">
+                {article?.html && (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
+                    <TableOfContents
+                      htmlContent={article.html}
+                      contentSelector=".article-rendered-content"
+                      title="Mục lục"
+                      variant="sidebar"
+                      collapsible={false}
+                      showProgressBar={false}
+                    />
 
                   {/* Sidebar Quick Consultation Card */}
                   <div
@@ -353,6 +377,7 @@ export const ArticleDetailPage: React.FC<ArticleDetailPageProps> = ({ slug, onOp
                 </div>
               )}
             </aside>
+          )}
           </div>
         </Container>
       </div>

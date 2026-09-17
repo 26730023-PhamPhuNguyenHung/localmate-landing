@@ -1,18 +1,17 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { List, ChevronDown, ChevronUp, ArrowUp, BookOpen, Check } from 'lucide-react';
-import { TOCItem, slugifyVietnamese, generateUniqueSlug, extractHeadingsFromHtml } from './tocUtils';
+import { ChevronDown, ChevronUp } from 'lucide-react';
+import { TOCItem, generateUniqueSlug, extractHeadingsFromHtml } from './tocUtils';
 import { ReadingProgressBar } from './ReadingProgressBar';
 
 export interface TableOfContentsProps {
   /**
    * Raw HTML content string.
-   * If provided, headings (h2, h3) will be extracted automatically.
+   * Headings (h2, h3) will be extracted automatically if DOM container isn't ready.
    */
   htmlContent?: string;
 
   /**
-   * CSS selector of the article container where HTML is rendered in DOM (e.g. '.article-rendered-body').
-   * If provided, TableOfContents will scan and ensure DOM heading IDs match TOC links 100%.
+   * CSS selector of the article content container (e.g. '.article-rendered-content').
    */
   contentSelector?: string;
 
@@ -22,17 +21,17 @@ export interface TableOfContentsProps {
   contentRef?: React.RefObject<HTMLElement>;
 
   /**
-   * Title of the Table of Contents card. Default: 'Mục lục bài viết'
+   * Title of the Table of Contents. Default: 'Mục lục'
    */
   title?: string;
 
   /**
-   * Offset in pixels from top of viewport when scrolling to heading (to account for sticky header). Default: 88
+   * Sticky header height offset in pixels when scrolling to heading. Default: 88
    */
   headerOffset?: number;
 
   /**
-   * Whether the TOC card should be sticky on desktop viewports. Default: false
+   * Whether to position sticky on desktop viewports. Default: false (controlled by sidebar wrapper)
    */
   sticky?: boolean;
 
@@ -42,19 +41,29 @@ export interface TableOfContentsProps {
   stickyTop?: string;
 
   /**
-   * Whether to display the ultra-thin Reading Progress Bar at the top of the screen. Default: true
+   * Whether to display ReadingProgressBar. Default: false
    */
   showProgressBar?: boolean;
 
   /**
-   * Whether the TOC card can be collapsed/expanded by the user. Default: true
+   * Whether TOC can be collapsed/expanded (useful for mobile inline view). Default: false
    */
   collapsible?: boolean;
 
   /**
-   * Initial collapsed state. Default: false (open)
+   * Initial collapsed state if collapsible is true. Default: false
    */
   defaultCollapsed?: boolean;
+
+  /**
+   * Display variant: 'sidebar' (desktop guide rail) or 'inline-accordion' (mobile collapsible)
+   */
+  variant?: 'sidebar' | 'inline-accordion';
+
+  /**
+   * Automatically collapse accordion when a heading is clicked (recommended for mobile)
+   */
+  autoCloseOnSelect?: boolean;
 
   /**
    * Optional custom CSS class name.
@@ -69,32 +78,46 @@ export interface TableOfContentsProps {
 
 export const TableOfContents: React.FC<TableOfContentsProps> = ({
   htmlContent,
-  contentSelector = '.article-rendered-body',
+  contentSelector = '.article-rendered-content',
   contentRef,
-  title = 'Mục lục bài viết',
+  title = 'Mục lục',
   headerOffset = 88,
   sticky = false,
   stickyTop = '96px',
-  showProgressBar = true,
-  collapsible = true,
+  showProgressBar = false,
+  collapsible = false,
   defaultCollapsed = false,
+  variant = 'sidebar',
+  autoCloseOnSelect = false,
   className = '',
   style
 }) => {
   const [items, setItems] = useState<TOCItem[]>([]);
   const [activeId, setActiveId] = useState<string>('');
   const [isCollapsed, setIsCollapsed] = useState<boolean>(defaultCollapsed);
-  const [readingPercent, setReadingPercent] = useState<number>(0);
+
+  const rootNavRef = useRef<HTMLElement>(null);
   const tocListRef = useRef<HTMLUListElement>(null);
   const isClickScrolling = useRef<boolean>(false);
   const clickTimeoutRef = useRef<number | null>(null);
 
-  // 1. Extract H2 and H3 Headings from DOM or HTML string
+  // 1. Helper: Check if this specific instance is currently visible in DOM
+  const isInstanceVisible = useCallback((): boolean => {
+    if (!rootNavRef.current) return false;
+    // An element hidden with display: none has offsetParent === null (unless body/fixed)
+    return (
+      rootNavRef.current.offsetParent !== null ||
+      window.getComputedStyle(rootNavRef.current).display !== 'none'
+    );
+  }, []);
+
+  // 2. Extract H2 and H3 Headings from DOM or HTML string
   const syncHeadings = useCallback(() => {
-    const container = contentRef?.current || (contentSelector ? (document.querySelector(contentSelector) as HTMLElement) : null);
+    const container =
+      contentRef?.current ||
+      (contentSelector ? (document.querySelector(contentSelector) as HTMLElement) : null);
 
     if (container) {
-      // Extract directly from rendered DOM and ensure every heading has a unique ID
       const headingElements = container.querySelectorAll<HTMLElement>('h2, h3');
       const extracted: TOCItem[] = [];
       const existingSlugs = new Set<string>();
@@ -120,61 +143,60 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({
         setActiveId(extracted[0].id);
       }
     } else if (htmlContent) {
-      // Fallback: extract from raw HTML string
       const extracted = extractHeadingsFromHtml(htmlContent);
       setItems(extracted);
       if (extracted.length > 0 && !activeId) {
         setActiveId(extracted[0].id);
       }
     }
-  }, [contentRef, contentSelector, htmlContent]);
+  }, [contentRef, contentSelector, htmlContent, activeId]);
 
   useEffect(() => {
     syncHeadings();
-
-    // Re-check after short delay to handle asynchronous hydration or rich text rendering
     const timer = setTimeout(syncHeadings, 150);
     return () => clearTimeout(timer);
   }, [syncHeadings]);
 
-  // 2. High-Performance ScrollSpy (60fps: IntersectionObserver + passive RAF-throttled scroll handler)
+  // 3. High-Performance ScrollSpy with Visibility Guard (Zero Window Side-Effect)
   useEffect(() => {
     if (items.length === 0) return;
-
-    const headingEls: HTMLElement[] = [];
-    items.forEach((item) => {
-      const el = document.getElementById(item.id);
-      if (el) headingEls.push(el);
-    });
-
-    if (headingEls.length === 0) return;
 
     let rafId: number | null = null;
 
     const checkActiveHeading = () => {
       rafId = null;
-      if (isClickScrolling.current) return;
+
+      // GUARD: If user just clicked or this TOC instance is hidden by CSS media queries, do nothing!
+      if (isClickScrolling.current || !isInstanceVisible()) {
+        return;
+      }
+
+      const headingEls: HTMLElement[] = [];
+      for (let i = 0; i < items.length; i++) {
+        const el = document.getElementById(items[i].id);
+        if (el) headingEls.push(el);
+      }
+      if (headingEls.length === 0) return;
 
       const scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
-      const readingLine = scrollY + headerOffset + 40; // Detection threshold just below header
+      const readingThreshold = scrollY + headerOffset + 32;
 
-      // Find heading closest to but above the reading line
       let currentActiveId = items[0].id;
 
       for (let i = 0; i < headingEls.length; i++) {
         const el = headingEls[i];
         const top = el.getBoundingClientRect().top + scrollY;
 
-        if (top <= readingLine) {
+        if (top <= readingThreshold) {
           currentActiveId = el.id;
         } else {
           break;
         }
       }
 
-      // Special case: if scrolled near the bottom of page, highlight the last heading
+      // If near bottom of the page, activate the last heading
       const doc = document.documentElement;
-      if (window.innerHeight + scrollY >= doc.scrollHeight - 50) {
+      if (window.innerHeight + scrollY >= doc.scrollHeight - 60) {
         currentActiveId = headingEls[headingEls.length - 1].id;
       }
 
@@ -188,7 +210,6 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    // Initial check
     checkActiveHeading();
 
     return () => {
@@ -197,25 +218,42 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({
         cancelAnimationFrame(rafId);
       }
     };
-  }, [items, headerOffset]);
+  }, [items, headerOffset, isInstanceVisible]);
 
-  // 3. Keep active TOC item visible inside TOC container if it scrolls
+  // 4. Keep active TOC item visible inside TOC container (STRICTLY CONTAINER-LOCAL ONLY, NO scrollIntoView)
   useEffect(() => {
-    if (!activeId || !tocListRef.current) return;
-    const activeLink = tocListRef.current.querySelector<HTMLElement>(`[data-toc-id="${activeId}"]`);
-    if (activeLink) {
-      activeLink.scrollIntoView({
-        block: 'nearest',
-        behavior: 'smooth'
-      });
-    }
-  }, [activeId]);
+    // Only apply to desktop sidebar with fixed height, not inline accordion
+    if (variant !== 'sidebar' || !activeId || !tocListRef.current) return;
+    const listEl = tocListRef.current;
 
-  // 4. Smooth Scroll to Heading on Click
+    // Check if the TOC container is actually scrollable
+    if (listEl.scrollHeight <= listEl.clientHeight) return;
+
+    const activeItemEl = listEl.querySelector<HTMLElement>(`[data-toc-id="${activeId}"]`);
+    if (!activeItemEl) return;
+
+    const containerRect = listEl.getBoundingClientRect();
+    const itemRect = activeItemEl.getBoundingClientRect();
+
+    // Smooth local scroll within the container only
+    const padding = 20;
+    if (itemRect.top < containerRect.top + padding) {
+      listEl.scrollTop -= containerRect.top + padding - itemRect.top;
+    } else if (itemRect.bottom > containerRect.bottom - padding) {
+      listEl.scrollTop += itemRect.bottom - (containerRect.bottom - padding);
+    }
+  }, [activeId, variant]);
+
+  // 5. Smooth Scroll to Heading on Click
   const handleScrollToHeading = (id: string, e: React.MouseEvent) => {
     e.preventDefault();
     const target = document.getElementById(id);
     if (!target) return;
+
+    // Tự động thu gọn accordion trên mobile nếu được cấu hình
+    if (autoCloseOnSelect && collapsible) {
+      setIsCollapsed(true);
+    }
 
     isClickScrolling.current = true;
     setActiveId(id);
@@ -228,312 +266,189 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({
       behavior: 'smooth'
     });
 
-    // Update URL hash smoothly without default jump
-    if (window.history.pushState) {
-      window.history.pushState(null, '', `#${id}`);
+    // Update URL hash smoothly without jitter or page reload
+    if (window.history.replaceState) {
+      window.history.replaceState(null, '', `#${id}`);
     }
 
-    // Reset lock after smooth scroll completes
     if (clickTimeoutRef.current !== null) {
-      clearTimeout(clickTimeoutRef.current);
+      window.clearTimeout(clickTimeoutRef.current);
     }
     clickTimeoutRef.current = window.setTimeout(() => {
       isClickScrolling.current = false;
-    }, 700);
+    }, 650);
   };
 
-  // Scroll to Top helper
-  const handleScrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    if (items.length > 0) {
-      setActiveId(items[0].id);
-    }
-  };
-
-  // If there are less than 2 headings, don't show empty TOC to keep page clean
+  // If there are less than 2 headings, don't show empty TOC
   if (items.length < 2) {
     return showProgressBar ? (
       <ReadingProgressBar
         targetSelector={contentSelector}
         targetRef={contentRef}
-        onProgressChange={setReadingPercent}
       />
     ) : null;
   }
 
+  const isInline = variant === 'inline-accordion';
+
   return (
     <>
-      {/* 1. Ultra-thin 60fps Reading Progress Bar at Top of Viewport */}
       {showProgressBar && (
         <ReadingProgressBar
           targetSelector={contentSelector}
           targetRef={contentRef}
-          onProgressChange={setReadingPercent}
         />
       )}
 
-      {/* 2. Table of Contents Card */}
+      {/* Embedded CSS for clean hidden scrollbar */}
+      <style>{`
+        .editorial-toc-rail::-webkit-scrollbar {
+          display: none;
+        }
+        .editorial-toc-rail {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
+
       <nav
+        ref={rootNavRef}
         aria-label="Mục lục bài viết"
-        className={`table-of-contents-wrapper ${className}`}
+        className={`editorial-toc-wrapper ${className}`}
         style={{
-          backgroundColor: '#ffffff',
-          border: '1px solid #e2e8f0',
-          borderRadius: '12px',
-          boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.04)',
-          overflow: 'hidden',
-          marginBottom: '2rem',
+          width: '100%',
+          backgroundColor: isInline ? '#ffffff' : 'transparent',
+          border: isInline ? '1px solid #e2e8f0' : 'none',
+          borderRadius: isInline ? '10px' : '0',
+          boxShadow: isInline ? '0 1px 3px rgba(0, 0, 0, 0.03)' : 'none',
+          padding: isInline ? '0.75rem 1rem' : '0',
           position: sticky ? 'sticky' : 'relative',
           top: sticky ? stickyTop : 'auto',
-          zIndex: sticky ? 20 : 'auto',
-          scrollbarGutter: 'stable',
-          transition: 'box-shadow 0.2s ease',
+          zIndex: sticky ? 10 : 'auto',
           ...style
         }}
       >
-        {/* Header bar */}
+        {/* Modern Minimalist Header */}
         <div
           style={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            padding: '0.875rem 1.25rem',
-            backgroundColor: '#f8fafc',
-            borderBottom: isCollapsed ? 'none' : '1px solid #e2e8f0',
+            paddingBottom: isInline ? (isCollapsed ? '0' : '0.65rem') : '0.65rem',
+            borderBottom: isInline && !isCollapsed ? '1px solid #f1f5f9' : 'none',
+            marginBottom: isInline ? (isCollapsed ? '0' : '0.65rem') : '0.5rem',
             cursor: collapsible ? 'pointer' : 'default',
             userSelect: 'none'
           }}
           onClick={() => collapsible && setIsCollapsed(!isCollapsed)}
           role={collapsible ? 'button' : undefined}
           tabIndex={collapsible ? 0 : undefined}
+          aria-expanded={collapsible ? !isCollapsed : undefined}
           onKeyDown={(e) => {
             if (collapsible && (e.key === 'Enter' || e.key === ' ')) {
               e.preventDefault();
               setIsCollapsed(!isCollapsed);
             }
           }}
-          aria-expanded={!isCollapsed}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-            <div
+          <span
+            style={{
+              fontSize: '0.875rem', // 14px
+              fontWeight: 600,
+              color: '#0f172a',
+              letterSpacing: '-0.01em',
+              textTransform: 'none'
+            }}
+          >
+            {title}
+          </span>
+
+          {collapsible && (
+            <button
+              type="button"
+              aria-label={isCollapsed ? 'Mở rộng mục lục' : 'Thu gọn mục lục'}
               style={{
-                width: '28px',
-                height: '28px',
-                borderRadius: '6px',
-                backgroundColor: '#edf7f1',
-                color: '#0d7647',
-                display: 'flex',
+                background: 'none',
+                border: 'none',
+                color: '#64748b',
+                display: 'inline-flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                flexShrink: 0
+                minWidth: '36px',
+                minHeight: '36px',
+                padding: '0.25rem',
+                cursor: 'pointer',
+                borderRadius: '4px'
               }}
             >
-              <List size={16} strokeWidth={2.4} />
-            </div>
-            <span
-              style={{
-                fontSize: '0.95rem',
-                fontWeight: 700,
-                color: '#0f172a',
-                letterSpacing: '-0.01em',
-                textWrap: 'pretty'
-              }}
-            >
-              {title}
-            </span>
-            <span
-              style={{
-                fontSize: '0.725rem',
-                fontWeight: 600,
-                color: '#64748b',
-                backgroundColor: '#e2e8f0',
-                padding: '0.15rem 0.5rem',
-                borderRadius: '9999px',
-                lineHeight: 1.2
-              }}
-            >
-              {items.length} mục
-            </span>
-          </div>
-
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            {/* Reading progress pill indicator */}
-            {readingPercent > 0 && (
-              <span
-                style={{
-                  fontSize: '0.75rem',
-                  fontWeight: 700,
-                  color: readingPercent >= 100 ? '#15803d' : '#0d7647',
-                  backgroundColor: '#edf7f1',
-                  padding: '0.2rem 0.55rem',
-                  borderRadius: '6px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '4px'
-                }}
-              >
-                {readingPercent >= 100 ? (
-                  <>
-                    <Check size={12} strokeWidth={3} /> Hoàn thành
-                  </>
-                ) : (
-                  `Đã đọc ${readingPercent}%`
-                )}
-              </span>
-            )}
-
-            {collapsible && (
-              <button
-                type="button"
-                aria-label={isCollapsed ? 'Mở rộng mục lục' : 'Thu gọn mục lục'}
-                style={{
-                  background: 'none',
-                  border: 'none',
-                  color: '#64748b',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  minWidth: '44px',
-                  minHeight: '44px',
-                  padding: '0.5rem',
-                  cursor: 'pointer',
-                  borderRadius: '6px'
-                }}
-              >
-                {isCollapsed ? <ChevronDown size={18} /> : <ChevronUp size={18} />}
-              </button>
-            )}
-          </div>
+              {isCollapsed ? <ChevronDown size={16} /> : <ChevronUp size={16} />}
+            </button>
+          )}
         </div>
 
-        {/* Content list */}
+        {/* Navigation Rail List */}
         {!isCollapsed && (
-          <div style={{ padding: '0.75rem 0.5rem 0.75rem 0.5rem' }}>
-            <ul
-              ref={tocListRef}
-              style={{
-                listStyle: 'none',
-                padding: 0,
-                margin: 0,
-                maxHeight: sticky ? 'calc(100vh - 240px)' : '420px',
-                overflowY: 'auto',
-                scrollbarGutter: 'stable',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '2px'
-              }}
-            >
-              {items.map((item, index) => {
-                const isActive = activeId === item.id;
-                const isH3 = item.level === 3;
+          <ul
+            ref={tocListRef}
+            className="editorial-toc-rail"
+            style={{
+              listStyle: 'none',
+              padding: 0,
+              margin: 0,
+              borderLeft: '1px solid #e2e8f0', // Continuous subtle guide rail line
+              maxHeight: isInline ? '320px' : 'calc(100vh - 120px)',
+              overflowY: 'auto',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '0.125rem'
+            }}
+          >
+            {items.map((item, index) => {
+              const isActive = activeId === item.id;
+              const isH3 = item.level === 3;
 
-                return (
-                  <li key={`${item.id}-${index}`} data-toc-id={item.id}>
-                    <a
-                      href={`#${item.id}`}
-                      onClick={(e) => handleScrollToHeading(item.id, e)}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'flex-start',
-                        gap: '0.5rem',
-                        padding: isH3 ? '0.45rem 0.75rem 0.45rem 1.75rem' : '0.55rem 0.75rem',
-                        fontSize: isH3 ? '0.85rem' : '0.9rem',
-                        fontWeight: isActive ? 700 : isH3 ? 500 : 600,
-                        color: isActive ? '#0d7647' : isH3 ? '#475569' : '#1e293b',
-                        backgroundColor: isActive ? '#edf7f1' : 'transparent',
-                        borderRadius: '6px',
-                        textDecoration: 'none',
-                        lineHeight: 1.5,
-                        textWrap: 'pretty',
-                        position: 'relative',
-                        transition: 'background-color 0.15s ease, color 0.15s ease'
-                      }}
-                      onMouseEnter={(e) => {
-                        if (!isActive) {
-                          e.currentTarget.style.backgroundColor = '#f1f5f9';
-                          e.currentTarget.style.color = '#0f172a';
-                        }
-                      }}
-                      onMouseLeave={(e) => {
-                        if (!isActive) {
-                          e.currentTarget.style.backgroundColor = 'transparent';
-                          e.currentTarget.style.color = isH3 ? '#475569' : '#1e293b';
-                        }
-                      }}
-                    >
-                      {/* Active indicator bar */}
-                      {isActive && (
-                        <span
-                          style={{
-                            position: 'absolute',
-                            left: '4px',
-                            top: '50%',
-                            transform: 'translateY(-50%)',
-                            width: '3px',
-                            height: '65%',
-                            backgroundColor: '#0d7647',
-                            borderRadius: '2px'
-                          }}
-                        />
-                      )}
-
-                      {/* Sub-item prefix */}
-                      {isH3 && (
-                        <span
-                          style={{
-                            color: isActive ? '#0d7647' : '#94a3b8',
-                            fontSize: '0.8rem',
-                            userSelect: 'none',
-                            lineHeight: 1.4
-                          }}
-                        >
-                          ↳
-                        </span>
-                      )}
-
-                      <span style={{ flex: 1 }}>{item.text}</span>
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
-
-            {/* Bottom actions: Back to Top button */}
-            <div
-              style={{
-                marginTop: '0.5rem',
-                paddingTop: '0.5rem',
-                borderTop: '1px solid #f1f5f9',
-                display: 'flex',
-                justifyContent: 'flex-end',
-                paddingRight: '0.5rem'
-              }}
-            >
-              <button
-                type="button"
-                onClick={handleScrollToTop}
-                style={{
-                  background: 'none',
-                  border: 'none',
-                  color: '#64748b',
-                  fontSize: '0.75rem',
-                  fontWeight: 600,
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '4px',
-                  cursor: 'pointer',
-                  padding: '0.25rem 0.5rem',
-                  borderRadius: '4px',
-                  transition: 'color 0.15s ease'
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = '#0d7647')}
-                onMouseLeave={(e) => (e.currentTarget.style.color = '#64748b')}
-              >
-                <ArrowUp size={13} />
-                <span>Lên đầu trang</span>
-              </button>
-            </div>
-          </div>
+              return (
+                <li
+                  key={`${item.id}-${index}`}
+                  data-toc-id={item.id}
+                  style={{ position: 'relative' }}
+                >
+                  <a
+                    href={`#${item.id}`}
+                    onClick={(e) => handleScrollToHeading(item.id, e)}
+                    style={{
+                      display: 'block',
+                      textDecoration: 'none',
+                      fontSize: isH3 ? '0.8125rem' : '0.875rem', // H3: 13px, H2: 14px
+                      fontWeight: isActive ? 600 : isH3 ? 400 : 500,
+                      lineHeight: isH3 ? 1.4 : 1.45,
+                      color: isActive ? '#0d7647' : isH3 ? '#64748b' : '#475569',
+                      paddingTop: '0.35rem',
+                      paddingBottom: '0.35rem',
+                      paddingRight: '0.5rem',
+                      paddingLeft: isH3 ? '1.75rem' : '0.875rem', // Indent 14px for H3
+                      marginLeft: '-1px', // Seamlessly overlays the 1px guide rail
+                      borderLeft: isActive ? '2px solid #0d7647' : '2px solid transparent',
+                      transition: 'color 0.15s ease, border-color 0.15s ease',
+                      textWrap: 'pretty'
+                    }}
+                    onMouseEnter={(e) => {
+                      if (!isActive) {
+                        e.currentTarget.style.color = '#0d7647';
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (!isActive) {
+                        e.currentTarget.style.color = isH3 ? '#64748b' : '#475569';
+                      }
+                    }}
+                  >
+                    {item.text}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
         )}
       </nav>
     </>

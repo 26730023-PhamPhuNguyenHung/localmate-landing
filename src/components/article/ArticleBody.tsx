@@ -21,11 +21,11 @@ export interface ArticleBodyProps {
  * - Max-width: 760px, margin-inline: auto (Ideal reading measure ~65-75 chars)
  * - Body text: 1.0625rem - 1.125rem (17-18px), line-height: 1.8, color: #1e293b
  * - Paragraph spacing: margin-bottom 1.4em
- * - Heading 2: 1.5rem - 1.75rem, font-weight: 750, margin-top: 2.5rem, margin-bottom: 1rem
- * - Heading 3: 1.25rem - 1.35rem, font-weight: 700, margin-top: 1.8rem, margin-bottom: 0.75rem
+ * - Heading 2: 1.45rem, font-weight: 800, margin-top: 2.25rem, margin-bottom: 0.85rem
+ * - Heading 3: 1.18rem, font-weight: 700, margin-top: 1.6rem, margin-bottom: 0.65rem
  * - Lists: padding-left: 1.4rem, li margin-bottom: 0.5rem, line-height: 1.75
  * - Links: #0d7647, underline with offset, hover: #095935
- * - Strong: font-weight: 650-700 (#0f172a)
+ * - Strong: font-weight: 650 (#0f172a)
  * - Blockquote: border-left 3px solid #0d7647, bg #f8fafc, padding 1rem 1.25rem, radius 0 8px 8px 0
  * - Table: wrapped in horizontal overflow container, responsive on mobile without layout break
  */
@@ -47,6 +47,51 @@ export const ArticleBody: React.FC<ArticleBodyProps> = ({
 
     // 2. Convert raw markdown hr artifacts (<p>---</p>) into clean semantic dividers
     clean = clean.replace(/<p>\s*---\s*<\/p>/g, '<hr class="article-divider" />');
+
+    // 3. Clean up invalid paragraph wrappers around tables or table-responsive divs
+    clean = clean.replace(/<p>\s*(<div class=["'][^"']*table-responsive[^"']*["'][\s\S]*?<\/div>)\s*<\/p>/gi, '$1');
+    clean = clean.replace(/<p>\s*(<table[\s\S]*?<\/table>)\s*<\/p>/gi, '$1');
+
+    // 4. Ensure all tables are wrapped in a robust responsive container with scroll hint and accessibility
+    clean = clean.replace(
+      /(<div class=["'][^"']*table-responsive[^"']*["'][\s\S]*?<\/div>)|(<table[\s\S]*?<\/table>)/gi,
+      (match, wrapped, bareTable) => {
+        if (wrapped) {
+          // If already wrapped, ensure tabindex and accessibility attributes exist
+          let enhanced = wrapped;
+          if (!enhanced.includes('tabindex=')) {
+            enhanced = enhanced.replace(
+              /<div class=["']([^"']*table-responsive[^"']*)["']/i,
+              '<div class="$1" tabindex="0" role="region" aria-label="Bảng dữ liệu"'
+            );
+          }
+          return `
+            <div class="table-scroll-wrapper">
+              <div class="table-scroll-hint" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8L22 12L18 16"/><path d="M6 8L2 12L6 16"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+                <span>Vuốt ngang để xem đầy đủ bảng</span>
+              </div>
+              ${enhanced}
+            </div>
+          `.trim();
+        }
+        if (bareTable) {
+          // If bare table, wrap in responsive container
+          return `
+            <div class="table-scroll-wrapper">
+              <div class="table-scroll-hint" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8L22 12L18 16"/><path d="M6 8L2 12L6 16"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+                <span>Vuốt ngang để xem đầy đủ bảng</span>
+              </div>
+              <div class="table-responsive" tabindex="0" role="region" aria-label="Bảng dữ liệu">
+                ${bareTable}
+              </div>
+            </div>
+          `.trim();
+        }
+        return match;
+      }
+    );
 
     return clean;
   }, [html, stripLeadingTldr]);
@@ -117,7 +162,7 @@ export const ArticleBody: React.FC<ArticleBodyProps> = ({
         /* Headings: Already rendered in ArticleHeader, hide duplicate H1 */
         .article-body h1,
         .article-rendered-content h1 {
-          display: none; /* Already rendered in ArticleHeader */
+          display: none;
         }
 
         /* Heading 2 */
@@ -244,7 +289,6 @@ export const ArticleBody: React.FC<ArticleBodyProps> = ({
         }
 
         /* Blockquote: Editorial Style */
-        /* Hide first blockquote (summary) because it is already rendered in ArticleSummary */
         .article-body > blockquote:first-of-type,
         .article-rendered-content > blockquote:first-of-type {
           display: none;
@@ -284,33 +328,89 @@ export const ArticleBody: React.FC<ArticleBodyProps> = ({
           margin: 2.5rem 0;
         }
 
-        /* Responsive Table Container & Styling */
-        .article-body .table-responsive,
-        .article-rendered-content .table-responsive,
-        .article-body > table,
-        .article-rendered-content > table {
+        /* ==========================================================================
+           Robust Table System (Zero Horizontal Page Overflow)
+           ========================================================================== */
+
+        .article-body .table-scroll-wrapper,
+        .article-rendered-content .table-scroll-wrapper {
           width: 100%;
+          max-width: 100%;
+          margin: 1.8rem 0;
+        }
+
+        /* Scroll Affordance Hint (Mobile/Tablet only) */
+        .article-body .table-scroll-hint,
+        .article-rendered-content .table-scroll-hint {
+          display: none;
+          align-items: center;
+          gap: 0.4rem;
+          font-size: 0.775rem;
+          color: #64748b;
+          margin-bottom: 0.45rem;
+          font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+          .article-body .table-scroll-hint,
+          .article-rendered-content .table-scroll-hint {
+            display: flex;
+          }
+        }
+
+        /* Outer Scroll Container */
+        .article-body .table-responsive,
+        .article-rendered-content .table-responsive {
+          display: block;
+          width: 100%;
+          max-width: 100%;
           overflow-x: auto;
           -webkit-overflow-scrolling: touch;
-          margin: 1.8rem 0;
           border: 1px solid #e2e8f0;
           border-radius: 8px;
           background-color: #ffffff;
           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
           scrollbar-width: thin;
+          scrollbar-color: #cbd5e1 #f8fafc;
         }
 
+        /* Light Mode Custom Scrollbar */
+        .article-body .table-responsive::-webkit-scrollbar,
+        .article-rendered-content .table-responsive::-webkit-scrollbar {
+          height: 6px;
+        }
+
+        .article-body .table-responsive::-webkit-scrollbar-track,
+        .article-rendered-content .table-responsive::-webkit-scrollbar-track {
+          background: #f8fafc;
+          border-radius: 4px;
+        }
+
+        .article-body .table-responsive::-webkit-scrollbar-thumb,
+        .article-rendered-content .table-responsive::-webkit-scrollbar-thumb {
+          background: #cbd5e1;
+          border-radius: 4px;
+        }
+
+        .article-body .table-responsive::-webkit-scrollbar-thumb:hover,
+        .article-rendered-content .table-responsive::-webkit-scrollbar-thumb:hover {
+          background: #94a3b8;
+        }
+
+        /* Inner Table Element */
         .article-body table,
         .article-rendered-content table {
           width: 100%;
-          min-width: 580px; /* Prevents cell collapse on mobile devices */
+          min-width: 520px; /* Optimal reading measure without cell compression */
           border-collapse: collapse;
           font-size: 0.9375rem; /* 15px */
           line-height: 1.6;
           text-align: left;
           border: none;
+          margin: 0;
         }
 
+        /* Table Headers */
         .article-body th,
         .article-rendered-content th {
           background-color: #f8fafc;
@@ -319,11 +419,14 @@ export const ArticleBody: React.FC<ArticleBodyProps> = ({
           padding: 0.75rem 1rem;
           border-bottom: 2px solid #e2e8f0;
           border-right: 1px solid #f1f5f9;
-          white-space: nowrap;
+          white-space: normal; /* Cho phép ngắt dòng tự nhiên, tránh kéo dãn bảng */
+          text-wrap: balance;   /* Cân đối dòng tiêu đề */
           font-size: 0.875rem;
           letter-spacing: 0.01em;
+          vertical-align: bottom;
         }
 
+        /* Table Cells */
         .article-body td,
         .article-rendered-content td {
           padding: 0.85rem 1rem;
@@ -331,6 +434,8 @@ export const ArticleBody: React.FC<ArticleBodyProps> = ({
           border-right: 1px solid #f1f5f9;
           color: #334155;
           vertical-align: top;
+          word-break: normal;
+          overflow-wrap: break-word;
         }
 
         .article-body tr:last-child td,
@@ -345,6 +450,7 @@ export const ArticleBody: React.FC<ArticleBodyProps> = ({
           border-right: none;
         }
 
+        /* Zebra row striping */
         .article-body tr:nth-child(even) td,
         .article-rendered-content tr:nth-child(even) td {
           background-color: #fbfcfb;
@@ -400,6 +506,11 @@ export const ArticleBody: React.FC<ArticleBodyProps> = ({
           .article-rendered-content blockquote {
             padding: 0.85rem 1rem;
             margin: 1.25rem 0;
+          }
+
+          .article-body table,
+          .article-rendered-content table {
+            font-size: 0.875rem; /* 14px for compact mobile view */
           }
 
           .article-body th,
