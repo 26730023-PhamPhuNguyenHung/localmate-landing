@@ -2,6 +2,42 @@
 
 Ghi nhận các mốc sự kiện, commit và trạng thái vận hành của dự án.
 
+## [2026-09-17] - Tinh Chỉnh Hero Logo Gemini & Xóa Ảnh Thừa value-scene.png Tại Section 3 (/geo)
+- **Bối cảnh & Yêu cầu**:
+  1. Thay thế logo Google AI Overview bằng logo Google Gemini đa sắc ở Hero Section vì logo cũ nét mảnh, màu nhạt và lệch tỷ lệ quang học so với 3 card còn lại.
+  2. Xóa bỏ hình ảnh `https://localmate.vn/geo/value-scene.png` trong Section 3 ("Vì sao doanh nghiệp cần Localmate?") do bị thừa và đè lặp lên background cảnh `pricing-scene.png` đã có sẵn.
+- **Giải pháp Kỹ thuật & Thực thi**:
+  1. *Hero Section Platform Cards*:
+     - `GeoShared.tsx`: Cập nhật thẻ thứ 4 `Google AI Overviews` sử dụng logo Gemini (`/geo/platforms/gemini.png`).
+     - `geo-landing.css`: Căn chỉnh `.geo-platform` với `justify-content: flex-start; min-height: 92px;`. Cố định kích thước `.geo-platform-icon` (`height: 36px; width: 36px; flex-shrink: 0;`), đảm bảo 4 icon luôn nằm thẳng tắp trên cùng một đường chân trời tuyệt đối, bất kể nhãn text là 1 dòng hay 2 dòng (`Google AI Overviews`).
+  2. *Section 3 (Value Section)*:
+     - `GeoValueSection.tsx`: Xóa bỏ hoàn toàn thẻ `<img>` `/geo/value-scene.png`.
+     - `geo-landing.css`: Xóa bỏ CSS dead code cho `.geo-ai-scene>img`, reset padding `.geo-ai-scene` (`padding: 10px 0 10px 20px; min-height: auto; align-self: center;`). Thẻ mô phỏng kết quả AI (`.geo-answer`) được căn giữa dọc song song với lưới 4 query, giúp layout sáng sủa, thanh thoát và không còn bị che khuất nền cảnh.
+  3. *Triển khai & Deploy Production*:
+     - Chạy script đồng bộ `scripts/export-geo-html.mjs` ra `public/landing-geo.html` và `public/geo/index.html`.
+     - Chạy `npm run build` (tsc && vite build) hoàn thành với exit code 0.
+     - Deploy lên Cloudflare Pages (`localmate-vn`) qua Wrangler CLI phục vụ trực tiếp trên `https://localmate.vn/geo`.
+- **Nghiệm thu**:
+  - Chụp ảnh kiểm thử thực tế trên Desktop & Mobile.
+  - Section Hero: 4 logo to rõ, đều tăm tắp, logo Gemini nổi bật.
+  - Section 3: Gọn gàng, sạch sẽ, thẻ kết quả AI đứng độc lập sắc nét.
+
+## [2026-09-17] - Trích Xuất Lossless & Tích Hợp Bộ 4 Logo AI Chuẩn Vào Hero Section (/geo)
+- **Bối cảnh & Yêu cầu**: Người dùng cung cấp 4 file ảnh logo gốc (Google AI Overview, Perplexity, Gemini, ChatGPT) để thay thế các biểu tượng generic/conic-gradient cũ trên hero section thành logo chính thức chuẩn sắc nét.
+- **Quy trình Xử lý Kỹ thuật (Asset Sheet Extractor)**:
+  1. *Trích xuất Lossless & Khử nền*:
+     - `ChatGPT`: Trích xuất bông hoa vector OpenAI, khử nền trắng, tạo viền antialiased mượt mà với màu xanh ngọc thương hiệu `#10a37f`.
+     - `Google Gemini`: Tách biểu tượng ngôi sao 4 cánh đa sắc gradient (xanh dương, đỏ, cam, xanh lá), loại bỏ viền trắng (unblend white fringe).
+     - `Perplexity`: Tách cụm icon hoa đối xứng hình học màu teal nguyên bản.
+     - `Google AI Overviews`: Cắt và tách ngôi sao 4 cánh màu xanh dương Google `#1a73e8`, khử nền gradient nhẹ.
+  2. *Cân bằng Quang học (Optical Balance)*: Chuẩn hóa 4 logo trên canvas vuông 256x256 trong suốt, căn chỉnh padding quang học để khi thu nhỏ về `34x34px` (desktop) và `26x26px` (mobile), cả 4 logo đều đạt sự cân đối thị giác đồng nhất.
+  3. *Tích hợp & Triển khai*:
+     - Cập nhật `src/components/geo/landing/GeoShared.tsx` và `src/styles/geo-landing.css` với class `.geo-platform-img`.
+     - Đồng bộ file HTML tĩnh qua `export-geo-html.mjs` và build `npm run build`.
+     - Deploy lên Cloudflare Pages (`localmate-vn`) phục vụ tức thì trên `https://localmate.vn/geo`.
+- **Nghiệm thu**:
+  - `playwright-cli` chụp kiểm thử thực tế trên Desktop (`1366x768`) và Mobile (`390x844`). 4 logo hiển thị sắc nét, thẳng hàng, bóng mờ trang nhã.
+
 ## [2026-09-17] - Triển Khai & Phục Vụ Thành Công /geo Lên Production (localmate.vn)
 - **Mục tiêu**: Đưa landing page GEO tối ưu mobile lên trực tiếp route `/geo` của tên miền chính thức `localmate.vn` trên Cloudflare Pages (`localmate-vn`).
 - **Thực thi Kiến trúc Routing & Serving**:

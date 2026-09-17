@@ -1,5 +1,31 @@
 # BÀI HỌC VÀ LƯU Ý KỸ THUẬT (LESSONS LEARNED & BUG MEMORY)
 
+## [2026-09-17] — Tối Giản Visual Hierarchy: Loại Bỏ Ảnh Bitmap Thừa Trùng Lặp Background & Cân Chỉnh Trục Ngang (Baseline Alignment) Thẻ Icon-Text Nhiều Dòng
+- **Vấn đề phát sinh thực tế:**
+  1. *Ảnh Bitmap Thừa Đè Nền*: Trong Section 3 ("Vì sao doanh nghiệp cần Localmate?"), background của section đã sử dụng ảnh phối cảnh `pricing-scene.png`. Việc nhét thêm một ảnh `value-scene.png` độ phân giải lớn đè lên khiến giao diện bị rối mắt, trùng lặp chi tiết minh họa và đẩy card trả lời AI (`.geo-answer`) tụt xuống đáy, tạo khoảng trống thừa bất hợp lý.
+  2. *Lệch Trục Icon Do Text Rớt Dòng*: Trong lưới 4 thẻ platform ở Hero Section, 3 thẻ đầu có text ngắn 1 dòng ("ChatGPT", "Google Gemini", "Perplexity"), riêng thẻ thứ 4 có text 3 từ ("Google AI Overviews") bị ngắt thành 2 dòng. Nếu container dùng `justify-content: center` và không cố định khung icon, thẻ thứ 4 sẽ bị đẩy icon lên cao hơn 3 thẻ còn lại, làm gãy đường chân trời ngang thị giác.
+- **Quy tắc & Kỹ thuật xử lý chuẩn:**
+  1. *Triệt Tiêu Phối Cảnh Trùng Lặp (Clean Visual Hierarchy)*:
+     - Khi background section đã có cảnh minh họa chiều sâu, các thành phần tương tác bên trong chỉ nên là các thẻ card UI chức năng (Data-Driven Cards, Prompt Queries, Interactive Answer Preview).
+     - Xóa bỏ ảnh minh họa thừa giúp thẻ `.geo-answer` tự động căn giữa dọc (`align-self: center;`) ngang hàng với 4 query prompts, tạo sự đối thoại trực quan trực diện giữa "Câu hỏi khách hàng" và "Kết quả gợi ý từ AI".
+  2. *Đồng Trục Ngang (Absolute Baseline Alignment) cho Card Hỗn Hợp Text*:
+     - Container `.geo-platform`: Dùng `display: flex; flex-direction: column; align-items: center; justify-content: flex-start; min-height: 92px;`.
+     - Khung icon `.geo-platform-icon`: Cố định kích thước `height: 36px; width: 36px; flex-shrink: 0;` để tâm và đáy của 4 icon luôn nằm trên cùng 1 đường thẳng tắp bất chấp chiều dài text bên dưới.
+     - Khối text `.geo-platform span:last-child`: Đặt `display: flex; align-items: center; justify-content: center; min-height: 28px; line-height: 1.2;` để dù text 1 dòng hay 2 dòng thì trọng tâm của chữ vẫn cân đối hài hòa bên dưới icon.
+
+## [2026-09-17] — Cân Bằng Quang Học (Optical Balance) & Khử Nền Lossless Cho Bộ Logo Nền Tảng AI
+- **Vấn đề phát sinh thực tế:**
+  - 4 logo từ các nguồn khác nhau có hình dáng hình học khác biệt lớn: hình tròn đặc (ChatGPT), hình thoi 4 cánh (Gemini), hình chữ nhật dọc (Perplexity), hình ngôi sao 4 cánh mảnh (Google AI Overview).
+  - Nếu chỉ scale theo bounding box thông thường (cùng chiều rộng hay cùng chiều cao), hình có nét mảnh như ngôi sao AI Overview sẽ bị cảm giác bé hơn hẳn so với hình tròn đặc ChatGPT (hiện tượng thiếu cân bằng thị giác - Optical Disparity).
+- **Quy tắc & Kỹ thuật xử lý chuẩn:**
+  1. *Optical Sizing Canvas*: Sử dụng canvas vuông 256x256 trong suốt. Đặt kích thước mục tiêu (target_dim) theo diện tích cảm nhận thị giác:
+     - ChatGPT (khối tròn đặc): `target_dim = 195px`
+     - Gemini (khối thoi đa sắc): `target_dim = 210px`
+     - Perplexity (khối hoa chữ nhật): `target_dim = 210px`
+     - Google AI Overview (ngôi sao nét mảnh): `target_dim = 250px`
+  2. *Unblend White Edge Fringe*: Khi tách logo từ ảnh JPG có nền trắng (Gemini, Perplexity), sử dụng công thức unblend: `clean_rgb = (rgb - 255*(1-a))/a` để loại bỏ dải viền trắng đục (white halos) khi đặt trên nền card hoặc nền chuyển sắc.
+  3. *Hiển thị CSS Responsive*: Khung bao ngoài `.geo-platform-icon` flex center, ảnh con `.geo-platform-img` dùng `object-fit: contain; width: 34px; height: 34px` (desktop) và `26px` (mobile), thêm hiệu ứng micro-interaction `transform: scale(1.1)` khi hover.
+
 ## [2026-09-17] — Chuẩn Hóa Kiến Trúc Cloudflare Pages Static Serving & Redirects Cho Landing Page Đích (/geo)
 - **Vấn đề phát sinh thực tế:**
   - Trang landing page `/geo` cần phục vụ song song cả dưới dạng SPA route lẫn Direct Static URL siêu tốc không cần chờ tải bundle JavaScript React.
