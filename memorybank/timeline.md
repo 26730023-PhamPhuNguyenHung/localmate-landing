@@ -2,6 +2,16 @@
 
 Ghi nhận các mốc sự kiện, commit và trạng thái vận hành của dự án.
 
+## [2026-09-17] - Fix Căn Giữa Subtitle Section "Quy Trình Làm Việc" & "Dịch Vụ" (HomePage)
+- **Commit**: `d74d19c` (`fix(landing): center align process and services section subtitles`)
+- **Bối cảnh & Vấn đề**:
+  - Đoạn mô tả phụ trong section `#process`: *"Biến hành trình chuyển đổi số trở nên đơn giản, rõ ràng và hiệu quả hơn cho mọi doanh nghiệp địa phương."* và `#services` bị lệch tâm sang lề trái tương tự section `#stories`.
+- **Thực thi Kỹ thuật**:
+  - `src/pages/HomePage.tsx`: Thêm `style={{ textAlign: 'center', marginLeft: 'auto', marginRight: 'auto', maxWidth: '820px' }}` cho cả section `#process` và `#services`.
+  - `src/styles/reference-landing.css`: Cập nhật `.process .section-heading p` đồng bộ `margin: 16px auto 0; text-align: center; max-width: 820px;`.
+  - Build `npm run build` (`tsc && vite build`) PASS 100% trong 11.91s.
+  - Deploy thành công lên Cloudflare Pages production (`localmate.vn` / `1b336504.localmate-vn.pages.dev`).
+
 ## [2026-09-17] - Fix Căn Giữa Subtitle Section "Câu Chuyện Khách Hàng" (HomePage)
 - **Commit**: `e02ddbc` (`fix(landing): center align customer stories section subtitle`)
 - **Bối cảnh & Vấn đề**:
