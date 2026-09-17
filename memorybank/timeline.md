@@ -2,6 +2,21 @@
 
 Ghi nhận các mốc sự kiện, commit và trạng thái vận hành của dự án.
 
+## [2026-09-17] - Deploy Giao Diện Trang Chủ Mới & Sửa Triệt Để Lỗi Font Handwriting Lên Production (localmate.vn)
+- **Bối cảnh & Yêu cầu**:
+  - Chuyển đổi giao diện tham chiếu `localmate.html` thành trang chủ chính thức của `localmate.vn`.
+  - Khắc phục lỗi font handwriting tiếng Việt (font Caveat thiếu dấu `ả, ế, ỗ, ệ, ộ, ơ, ắ, ầ, ể, ổ, ố, ự...`).
+- **Thực thi Kỹ thuật**:
+  1. *Font Handwriting*: Thay thế bằng `Mali (Italic 500)` kết hợp `Patrick Hand`, hỗ trợ 100% tiếng Việt có dấu.
+  2. *Tối ưu hóa asset*: Trích xuất tranh minh họa ra `public/images/landing/` và font ra `public/fonts/`, giảm CSS từ 19.4 MB base64 xuống còn 26 KB.
+  3. *Tích hợp React*: Xây dựng `HomePage.tsx` và `reference-landing.css`, kết nối form báo giá với `submitLead`.
+  4. *Fix thẻ head*: Xóa ký tự lạ `w` ngoài thẻ meta trong `index.html`.
+  5. *Build & Deploy*: `npm run build` PASS trong 4.38s. Deploy production thành công qua Wrangler Pages CLI lên Cloudflare Pages dự án `localmate-vn`.
+- **Trạng thái Production**:
+  - URL chính thức: **`https://localmate.vn/`** (Status 200 OK)
+  - Preview URL: **`https://fce3f92d.localmate-vn.pages.dev`** (Status 200 OK)
+  - Commit SHA: `aa290fd`
+
 ## [2026-09-17] - Tối Ưu Toàn Diện Viewport Laptop & Windows Scale 125% Cho Trang Đích (/geo)
 - **Bối cảnh & Vấn đề thực tế**:
   - Màn hình laptop phổ biến (Full HD 1920x1080 cài đặt tỷ lệ hiển thị Windows Scale 125%) có viewport CSS thực tế là `1536 x 864`. Khi tính cả thanh Taskbar và thanh công cụ Chrome, chiều cao khả dụng chỉ còn khoảng `700px – 750px`.
