@@ -182,10 +182,6 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
             <span>{isLoading ? 'Đang đăng nhập...' : 'Đăng nhập Quản trị'}</span>
           </button>
         </form>
-
-        <div style={{ marginTop: '1.5rem', paddingTop: '1.25rem', borderTop: '1px dashed #e2e8f0', fontSize: '0.775rem', color: '#64748b', textAlign: 'center' }}>
-          Tài khoản mặc định khởi tạo: <strong>admin</strong> / <strong>LocalMate@2026</strong>
-        </div>
       </div>
     </div>
   );
