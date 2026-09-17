@@ -3,6 +3,8 @@ import { cmsClient } from '../../cms/services/cmsClient';
 import { MediaEntity } from '../../cms/types';
 import { X, Upload, Check, Loader2, Image as ImageIcon } from 'lucide-react';
 
+import { optimizeImageClient } from '../../utils/imageOptimizer';
+
 interface MediaPickerModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -28,7 +30,7 @@ export const MediaPickerModal: React.FC<MediaPickerModalProps> = ({ isOpen, onCl
   const loadMedia = async () => {
     setIsLoading(true);
     try {
-      const res = await cmsClient.getMedia({ limit: 30 });
+      const res = await cmsClient.getMedia({ limit: 40 });
       if (res.success && res.data) {
         setMediaList(res.data.media);
       }
@@ -40,12 +42,21 @@ export const MediaPickerModal: React.FC<MediaPickerModalProps> = ({ isOpen, onCl
   };
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
+    const rawFile = e.target.files?.[0];
+    if (!rawFile) return;
 
     setIsUploading(true);
     try {
-      const res = await cmsClient.uploadMedia(file, altText);
+      const opt = await optimizeImageClient(rawFile);
+      const res = await cmsClient.uploadMedia(opt.file, {
+        alt_text: altText,
+        width: opt.width,
+        height: opt.height,
+        format: opt.format,
+        hash: opt.hash,
+        size_original: opt.originalSize,
+        size_optimized: opt.optimizedSize
+      });
       if (res.success && res.data) {
         onSelect(res.data);
       }

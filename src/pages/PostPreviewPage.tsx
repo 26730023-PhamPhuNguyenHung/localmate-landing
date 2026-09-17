@@ -5,7 +5,7 @@ import { SEOHead } from '../components/seo/SEOHead';
 import { cmsClient } from '../cms/services/cmsClient';
 import { PostEntity } from '../cms/types';
 import { useRouter } from '../components/layout/Router';
-import { Clock, Calendar, User, BookOpen, AlertTriangle, ArrowLeft } from 'lucide-react';
+import { Clock, Calendar, User, BookOpen, AlertTriangle, ArrowLeft, CheckCircle2, HelpCircle } from 'lucide-react';
 import { Button } from '../components/ui/Button';
 
 interface PostPreviewPageProps {
@@ -208,6 +208,32 @@ export const PostPreviewPage: React.FC<PostPreviewPageProps> = ({ postId }) => {
               </div>
             )}
 
+            {/* GEO Answer-First Callout */}
+            {post.geo_direct_answer && (
+              <div
+                style={{
+                  backgroundColor: '#f0fdf4',
+                  border: '1.5px solid #86efac',
+                  borderRadius: '12px',
+                  padding: '1.25rem 1.5rem',
+                  marginBottom: '2.25rem'
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#15803d', fontWeight: 800, fontSize: '0.85rem', marginBottom: '0.4rem', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                  <CheckCircle2 size={18} />
+                  <span>Câu trả lời trực tiếp (Direct Answer)</span>
+                </div>
+                {post.geo_main_question && (
+                  <h3 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#0f172a', margin: '0 0 0.4rem 0' }}>
+                    {post.geo_main_question}
+                  </h3>
+                )}
+                <p style={{ margin: 0, color: '#334155', fontSize: '0.95rem', lineHeight: 1.65 }}>
+                  {post.geo_direct_answer}
+                </p>
+              </div>
+            )}
+
             {/* Featured Image */}
             {post.featured_image_url && (
               <div style={{ marginBottom: '2.5rem', borderRadius: '12px', overflow: 'hidden', border: '1px solid #e2e8f0' }}>
@@ -230,27 +256,79 @@ export const PostPreviewPage: React.FC<PostPreviewPageProps> = ({ postId }) => {
               }}
             />
 
+            {/* GEO FAQ Section if available */}
+            {post.geo_faq_json && (() => {
+              try {
+                const faqs = JSON.parse(post.geo_faq_json);
+                if (Array.isArray(faqs) && faqs.length > 0) {
+                  return (
+                    <div style={{ marginTop: '3.5rem', padding: '1.75rem', backgroundColor: '#f8fbfa', borderRadius: '14px', border: '1px solid #e2e8f0' }}>
+                      <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0f172a', marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <HelpCircle size={20} color="var(--color-primary)" />
+                        <span>Câu hỏi thường gặp liên quan (FAQ)</span>
+                      </h3>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                        {faqs.map((faq: any, fIdx: number) => (
+                          <div key={fIdx} style={{ backgroundColor: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '8px', padding: '1rem 1.25rem' }}>
+                            <div style={{ fontWeight: 700, fontSize: '0.95rem', color: '#0f172a', marginBottom: '0.35rem' }}>
+                              {faq.question}
+                            </div>
+                            <div style={{ fontSize: '0.9rem', color: '#475569', lineHeight: 1.6 }}>
+                              {faq.answer}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                }
+              } catch {
+                // ignore
+              }
+              return null;
+            })()}
+
             {/* Contextual CTA */}
-            <div
-              style={{
-                backgroundColor: '#f8fbfa',
-                border: '2px solid var(--color-primary)',
-                borderRadius: 'var(--radius-xl)',
-                padding: '2rem',
-                marginTop: '3.5rem',
-                textAlign: 'center'
-              }}
-            >
-              <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: 'var(--color-text)', marginBottom: '0.5rem' }}>
-                Cần Triển Khai Cho Doanh Nghiệp Của Bạn?
-              </h3>
-              <p style={{ fontSize: '0.925rem', color: 'var(--color-text-muted)', maxWidth: '600px', margin: '0 auto 1.5rem auto', lineHeight: 1.6 }}>
-                Đội ngũ LocalMate hỗ trợ tư vấn giải pháp thực tế, lên kế hoạch chi tiết và bàn giao trọn gói không phát sinh chi phí.
-              </p>
-              <Button variant="primary" size="lg" onClick={() => navigate('/lien-he')}>
-                Nhận Tư Vấn Miễn Phí Ngay
-              </Button>
-            </div>
+            {(() => {
+              const cta = post.cta_details;
+              const hasCustomCta = !!cta;
+              return (
+                <div
+                  style={{
+                    backgroundColor: '#f8fbfa',
+                    border: '2px solid var(--color-primary)',
+                    borderRadius: 'var(--radius-xl)',
+                    padding: '2rem',
+                    marginTop: '3.5rem',
+                    textAlign: 'center'
+                  }}
+                >
+                  <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: 'var(--color-text)', marginBottom: '0.5rem' }}>
+                    {hasCustomCta ? cta.headline : 'Cần Triển Khai Cho Doanh Nghiệp Của Bạn?'}
+                  </h3>
+                  <p style={{ fontSize: '0.925rem', color: 'var(--color-text-muted)', maxWidth: '600px', margin: '0 auto 1.5rem auto', lineHeight: 1.6 }}>
+                    {hasCustomCta ? cta.description : 'Đội ngũ LocalMate hỗ trợ tư vấn giải pháp thực tế, lên kế hoạch chi tiết và bàn giao trọn gói không phát sinh chi phí.'}
+                  </p>
+                  <Button
+                    variant="primary"
+                    size="lg"
+                    onClick={() => {
+                      if (hasCustomCta && cta.destination_url) {
+                        if (cta.destination_url.startsWith('http')) {
+                          window.open(cta.destination_url, '_blank');
+                        } else {
+                          navigate(cta.destination_url);
+                        }
+                      } else {
+                        navigate('/lien-he');
+                      }
+                    }}
+                  >
+                    {hasCustomCta ? cta.button_label : 'Nhận Tư Vấn Miễn Phí Ngay'}
+                  </Button>
+                </div>
+              );
+            })()}
           </article>
         </Container>
       </div>

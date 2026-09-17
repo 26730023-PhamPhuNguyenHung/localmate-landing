@@ -104,6 +104,11 @@ publicContentRoutes.get('/posts/:slug', async (c) => {
     ).bind(requestPath).first();
 
     if (redirect) {
+      // Track redirect hit
+      await c.env.DB.prepare(
+        'UPDATE cms_redirects SET hits = hits + 1, last_hit_at = CURRENT_TIMESTAMP WHERE source_path = ?'
+      ).bind(requestPath).run();
+
       return c.json({
         success: false,
         redirect: {
@@ -115,6 +120,20 @@ publicContentRoutes.get('/posts/:slug', async (c) => {
 
     return c.json({ success: false, error: { code: 'NOT_FOUND', message: 'Bài viết không tồn tại hoặc đã gỡ' } }, 404);
   }
+
+  // Get associated CTA or fallback to default active CTA
+  let ctaDetails: any = null;
+  if (post.cta_id) {
+    ctaDetails = await c.env.DB.prepare(
+      'SELECT * FROM cms_ctas WHERE id = ? AND is_active = 1'
+    ).bind(post.cta_id).first();
+  }
+  if (!ctaDetails) {
+    ctaDetails = await c.env.DB.prepare(
+      'SELECT * FROM cms_ctas WHERE is_active = 1 ORDER BY id ASC LIMIT 1'
+    ).first();
+  }
+  post.cta_details = ctaDetails;
 
   // Get related published posts
   const relatedRows = await c.env.DB.prepare(`
@@ -132,6 +151,23 @@ publicContentRoutes.get('/posts/:slug', async (c) => {
       relatedPosts: relatedRows.results
     }
   });
+});
+
+// POST /api/public/cta/track (Real-time CTA Impression & Click Tracking)
+publicContentRoutes.post('/cta/track', async (c) => {
+  const body = await c.req.json().catch(() => null);
+  if (!body || !body.cta_id || !['impression', 'click'].includes(body.event_type)) {
+    return c.json({ success: false, error: { code: 'BAD_REQUEST', message: 'Dữ liệu track không hợp lệ' } }, 400);
+  }
+
+  const ctaId = parseInt(body.cta_id, 10);
+  if (body.event_type === 'impression') {
+    await c.env.DB.prepare('UPDATE cms_ctas SET impressions = impressions + 1 WHERE id = ?').bind(ctaId).run();
+  } else if (body.event_type === 'click') {
+    await c.env.DB.prepare('UPDATE cms_ctas SET clicks = clicks + 1 WHERE id = ?').bind(ctaId).run();
+  }
+
+  return c.json({ success: true, data: { tracked: true } });
 });
 
 // GET /api/public/preview/:id (Draft preview with verification)

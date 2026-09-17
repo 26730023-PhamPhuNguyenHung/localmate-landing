@@ -4,7 +4,7 @@ import { cmsClient } from '../cms/services/cmsClient';
 import {
   LayoutDashboard, FileText, PlusCircle, FolderTree, Tag,
   Image, Compass, Settings, Database, LogOut, Globe,
-  Menu, X, CheckCircle2, User
+  Menu, X, CheckCircle2, User, Sparkles, MousePointerClick
 } from 'lucide-react';
 import { LoginPage } from './pages/LoginPage';
 
@@ -44,16 +44,43 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, activeKey, t
     return <LoginPage onLoginSuccess={() => setIsAuthenticated(true)} />;
   }
 
-  const navItems = [
-    { key: 'dashboard', label: 'Bảng điều khiển', path: '/admin', icon: LayoutDashboard },
-    { key: 'posts', label: 'Tất cả bài viết', path: '/admin/posts', icon: FileText },
-    { key: 'new-post', label: 'Viết bài mới', path: '/admin/posts/new', icon: PlusCircle },
-    { key: 'categories', label: 'Chuyên mục', path: '/admin/categories', icon: FolderTree },
-    { key: 'tags', label: 'Thẻ tag', path: '/admin/tags', icon: Tag },
-    { key: 'media', label: 'Thư viện Media R2', path: '/admin/media', icon: Image },
-    { key: 'redirects', label: 'Chuyển hướng 301', path: '/admin/redirects', icon: Compass },
-    { key: 'settings', label: 'Cài đặt hệ thống', path: '/admin/settings', icon: Settings },
-    { key: 'backup', label: 'Sao lưu JSON', path: '/admin/backup', icon: Database },
+  const navSections = [
+    {
+      title: 'TỔNG QUAN',
+      items: [
+        { key: 'dashboard', label: 'Bảng điều khiển', path: '/admin', icon: LayoutDashboard }
+      ]
+    },
+    {
+      title: 'NỘI DUNG',
+      items: [
+        { key: 'posts', label: 'Tất cả bài viết', path: '/admin/posts', icon: FileText },
+        { key: 'new-post', label: 'Viết bài mới', path: '/admin/posts/new', icon: PlusCircle },
+        { key: 'categories', label: 'Chuyên mục', path: '/admin/categories', icon: FolderTree },
+        { key: 'tags', label: 'Thẻ tag', path: '/admin/tags', icon: Tag }
+      ]
+    },
+    {
+      title: 'MEDIA',
+      items: [
+        { key: 'media', label: 'Thư viện Media R2', path: '/admin/media', icon: Image }
+      ]
+    },
+    {
+      title: 'SEO & CHUYỂN ĐỔI',
+      items: [
+        { key: 'audit', label: 'Kiểm toán SEO & GEO', path: '/admin/audit', icon: Sparkles },
+        { key: 'redirects', label: 'Chuyển hướng 301', path: '/admin/redirects', icon: Compass },
+        { key: 'ctas', label: 'Khối CTA chuyển đổi', path: '/admin/ctas', icon: MousePointerClick }
+      ]
+    },
+    {
+      title: 'HỆ THỐNG',
+      items: [
+        { key: 'settings', label: 'Cài đặt hệ thống', path: '/admin/settings', icon: Settings },
+        { key: 'backup', label: 'Sao lưu JSON', path: '/admin/backup', icon: Database }
+      ]
+    }
   ];
 
   return (
@@ -86,34 +113,41 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, activeKey, t
           </div>
         </div>
 
-        {/* Navigation Links */}
-        <nav style={{ flex: 1, padding: '1rem 0.75rem', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-          {navItems.map((item) => {
-            const Icon = item.icon;
-            const isActive = activeKey === item.key || (item.path === '/admin' && currentPath === '/admin') || (item.path !== '/admin' && currentPath.startsWith(item.path));
-            return (
-              <Link
-                key={item.key}
-                to={item.path}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.75rem',
-                  padding: '0.65rem 0.9rem',
-                  borderRadius: '8px',
-                  textDecoration: 'none',
-                  fontSize: '0.875rem',
-                  fontWeight: isActive ? 700 : 500,
-                  color: isActive ? '#0d7647' : '#334155',
-                  backgroundColor: isActive ? '#edf7f1' : 'transparent',
-                  transition: 'all 0.15s ease'
-                }}
-              >
-                <Icon size={18} color={isActive ? '#0d7647' : '#64748b'} />
-                <span>{item.label}</span>
-              </Link>
-            );
-          })}
+        {/* Navigation Sections */}
+        <nav style={{ flex: 1, padding: '1rem 0.75rem', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+          {navSections.map((section, sIdx) => (
+            <div key={sIdx} style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
+              <div style={{ fontSize: '0.68rem', fontWeight: 800, color: '#94a3b8', padding: '0 0.75rem 0.25rem 0.75rem', letterSpacing: '0.05em' }}>
+                {section.title}
+              </div>
+              {section.items.map((item) => {
+                const Icon = item.icon;
+                const isActive = activeKey === item.key || (item.path === '/admin' && currentPath === '/admin') || (item.path !== '/admin' && currentPath.startsWith(item.path));
+                return (
+                  <Link
+                    key={item.key}
+                    to={item.path}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.65rem',
+                      padding: '0.5rem 0.75rem',
+                      borderRadius: '8px',
+                      textDecoration: 'none',
+                      fontSize: '0.84rem',
+                      fontWeight: isActive ? 700 : 500,
+                      color: isActive ? '#0d7647' : '#334155',
+                      backgroundColor: isActive ? '#edf7f1' : 'transparent',
+                      transition: 'all 0.15s ease'
+                    }}
+                  >
+                    <Icon size={16} color={isActive ? '#0d7647' : '#64748b'} />
+                    <span>{item.label}</span>
+                  </Link>
+                );
+              })}
+            </div>
+          ))}
         </nav>
 
         {/* Sidebar Footer User Info */}

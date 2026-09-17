@@ -9,5 +9,10 @@ DGcom/
 artifacts/
 .playwright-cli/
 *.bak
+.wrangler/
+scratch/
+megamenu_*.png
+mobile_menu.png
+
 
 

@@ -51,6 +51,12 @@ export const ArticleDetailPage: React.FC<ArticleDetailPageProps> = ({ slug, onOp
     }
   };
 
+  useEffect(() => {
+    if (cmsPost?.cta_details?.id) {
+      cmsClient.trackCta(cmsPost.cta_details.id, 'impression').catch(() => {});
+    }
+  }, [cmsPost?.cta_details?.id]);
+
   // Determine active article source (CMS or static)
   const isCms = !!cmsPost;
   const article = isCms ? null : staticArticle;
@@ -153,7 +159,7 @@ export const ArticleDetailPage: React.FC<ArticleDetailPageProps> = ({ slug, onOp
           { name: categoryName, url: '/kien-thuc' },
           { name: title, url: `/kien-thuc/${slug}` }
         ]}
-        schemaType="Article"
+        schemaType={(cmsPost?.schema_type || "Article") as any}
         schemaData={{
           headline: title,
           description: summary,
@@ -172,7 +178,27 @@ export const ArticleDetailPage: React.FC<ArticleDetailPageProps> = ({ slug, onOp
               '@type': 'ImageObject',
               url: 'https://localmate.vn/logo.png'
             }
-          }
+          },
+          ...(cmsPost?.geo_faq_json ? (() => {
+            try {
+              const parsedFaqs = JSON.parse(cmsPost.geo_faq_json);
+              if (Array.isArray(parsedFaqs) && parsedFaqs.length > 0) {
+                return {
+                  mainEntity: parsedFaqs.map((f: any) => ({
+                    '@type': 'Question',
+                    name: f.question,
+                    acceptedAnswer: {
+                      '@type': 'Answer',
+                      text: f.answer
+                    }
+                  }))
+                };
+              }
+            } catch {
+              // ignore json error
+            }
+            return {};
+          })() : {})
         }}
       />
 
@@ -262,6 +288,32 @@ export const ArticleDetailPage: React.FC<ArticleDetailPageProps> = ({ slug, onOp
                 }}
               >
                 {summary}
+              </div>
+            )}
+
+            {/* GEO Answer-First Callout (AI & Direct Answer) */}
+            {isCms && cmsPost?.geo_direct_answer && (
+              <div
+                style={{
+                  backgroundColor: '#f0fdf4',
+                  border: '1.5px solid #86efac',
+                  borderRadius: '12px',
+                  padding: '1.25rem 1.5rem',
+                  marginBottom: '2.25rem'
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#15803d', fontWeight: 800, fontSize: '0.85rem', marginBottom: '0.4rem', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                  <CheckCircle2 size={18} />
+                  <span>Câu trả lời trực tiếp (Direct Answer)</span>
+                </div>
+                {cmsPost.geo_main_question && (
+                  <h3 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#0f172a', margin: '0 0 0.4rem 0' }}>
+                    {cmsPost.geo_main_question}
+                  </h3>
+                )}
+                <p style={{ margin: 0, color: '#334155', fontSize: '0.95rem', lineHeight: 1.65 }}>
+                  {cmsPost.geo_direct_answer}
+                </p>
               </div>
             )}
 
@@ -381,95 +433,151 @@ export const ArticleDetailPage: React.FC<ArticleDetailPageProps> = ({ slug, onOp
               </div>
             )}
 
-            {/* Multi-tier Conversion Action Box */}
-            <div
-              style={{
-                backgroundColor: '#f8fbfa',
-                border: '2px solid var(--color-primary)',
-                borderRadius: 'var(--radius-xl)',
-                padding: '2.5rem 2rem',
-                marginTop: '3.5rem',
-                textAlign: 'center',
-                boxShadow: '0 4px 20px -2px rgba(13, 118, 71, 0.08)'
-              }}
-            >
-              <span
-                style={{
-                  display: 'inline-block',
-                  fontSize: '0.8rem',
-                  fontWeight: 800,
-                  color: 'var(--color-primary-dark)',
-                  backgroundColor: 'var(--color-primary-soft)',
-                  padding: '0.3rem 0.85rem',
-                  borderRadius: '9999px',
-                  marginBottom: '0.85rem',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.04em'
-                }}
-              >
-                Hỗ trợ trực tiếp cho chủ cơ sở kinh doanh
-              </span>
+            {/* GEO FAQ Section if available */}
+            {isCms && cmsPost?.geo_faq_json && (() => {
+              try {
+                const faqs = JSON.parse(cmsPost.geo_faq_json);
+                if (Array.isArray(faqs) && faqs.length > 0) {
+                  return (
+                    <div style={{ marginTop: '3.5rem', padding: '1.75rem', backgroundColor: '#f8fbfa', borderRadius: '14px', border: '1px solid #e2e8f0' }}>
+                      <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0f172a', marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <HelpCircle size={20} color="var(--color-primary)" />
+                        <span>Câu hỏi thường gặp liên quan (FAQ)</span>
+                      </h3>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                        {faqs.map((faq: any, fIdx: number) => (
+                          <div key={fIdx} style={{ backgroundColor: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '8px', padding: '1rem 1.25rem' }}>
+                            <div style={{ fontWeight: 700, fontSize: '0.95rem', color: '#0f172a', marginBottom: '0.35rem' }}>
+                              {faq.question}
+                            </div>
+                            <div style={{ fontSize: '0.9rem', color: '#475569', lineHeight: 1.6 }}>
+                              {faq.answer}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                }
+              } catch {
+                // ignore
+              }
+              return null;
+            })()}
 
-              <h3 style={{ fontSize: '1.45rem', fontWeight: 800, color: 'var(--color-text)', marginBottom: '0.65rem' }}>
-                Cần Triển Khai Thực Tế Cho Cơ Sở Của Bạn?
-              </h3>
-              <p style={{ fontSize: '0.975rem', color: 'var(--color-text-muted)', maxWidth: '580px', margin: '0 auto 1.75rem auto', lineHeight: 1.65 }}>
-                Đội ngũ LocalMate hỗ trợ dựng bản demo thực tế 0đ, khảo sát trực tiếp tại cửa hàng và tư vấn giải pháp sát với ngân sách thực tế của bạn.
-              </p>
-
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center', alignItems: 'center', marginBottom: '1.5rem' }}>
-                <Button variant="primary" size="lg" onClick={handleCTAClick} style={{ fontWeight: 700, padding: '0.85rem 1.75rem' }}>
-                  Nhận Bản Demo 0đ Ngay
-                </Button>
-                
-                <a
-                  href="https://zalo.me/0834422439"
-                  target="_blank"
-                  rel="noopener noreferrer"
+            {/* Dynamic or Fallback Conversion Action Box */}
+            {(() => {
+              const cta = cmsPost?.cta_details;
+              const hasCustomCta = !!cta;
+              return (
+                <div
                   style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '0.5rem',
-                    padding: '0.8rem 1.5rem',
-                    backgroundColor: '#ffffff',
-                    border: '1.5px solid var(--color-primary)',
-                    borderRadius: 'var(--radius-md)',
-                    color: 'var(--color-primary-dark)',
-                    fontWeight: 700,
-                    fontSize: '0.95rem',
-                    textDecoration: 'none',
-                    transition: 'all 0.2s ease'
+                    backgroundColor: '#f8fbfa',
+                    border: '2px solid var(--color-primary)',
+                    borderRadius: 'var(--radius-xl)',
+                    padding: '2.5rem 2rem',
+                    marginTop: '3.5rem',
+                    textAlign: 'center',
+                    boxShadow: '0 4px 20px -2px rgba(13, 118, 71, 0.08)'
                   }}
                 >
-                  Nhắn Zalo Trực Tiếp
-                </a>
+                  <span
+                    style={{
+                      display: 'inline-block',
+                      fontSize: '0.8rem',
+                      fontWeight: 800,
+                      color: 'var(--color-primary-dark)',
+                      backgroundColor: 'var(--color-primary-soft)',
+                      padding: '0.3rem 0.85rem',
+                      borderRadius: '9999px',
+                      marginBottom: '0.85rem',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.04em'
+                    }}
+                  >
+                    Hỗ trợ trực tiếp cho chủ cơ sở kinh doanh
+                  </span>
 
-                <a
-                  href="tel:+84834422439"
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '0.5rem',
-                    padding: '0.8rem 1.25rem',
-                    backgroundColor: 'transparent',
-                    border: '1px solid #cbd5e1',
-                    borderRadius: 'var(--radius-md)',
-                    color: '#475569',
-                    fontWeight: 600,
-                    fontSize: '0.9rem',
-                    textDecoration: 'none'
-                  }}
-                >
-                  Hotline: 0834 422 439
-                </a>
-              </div>
+                  <h3 style={{ fontSize: '1.45rem', fontWeight: 800, color: 'var(--color-text)', marginBottom: '0.65rem' }}>
+                    {hasCustomCta ? cta.headline : 'Cần Triển Khai Thực Tế Cho Cơ Sở Của Bạn?'}
+                  </h3>
+                  <p style={{ fontSize: '0.975rem', color: 'var(--color-text-muted)', maxWidth: '580px', margin: '0 auto 1.75rem auto', lineHeight: 1.65 }}>
+                    {hasCustomCta ? cta.description : 'Đội ngũ LocalMate hỗ trợ dựng bản demo thực tế 0đ, khảo sát trực tiếp tại cửa hàng và tư vấn giải pháp sát với ngân sách thực tế của bạn.'}
+                  </p>
 
-              <div style={{ fontSize: '0.8rem', color: '#64748b', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1.25rem' }}>
-                <span>✓ Bàn giao xem trước 0đ</span>
-                <span>✓ Minh bạch chi phí 100%</span>
-                <span>✓ Không phát sinh phụ phí</span>
-              </div>
-            </div>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center', alignItems: 'center', marginBottom: '1.5rem' }}>
+                    <Button
+                      variant="primary"
+                      size="lg"
+                      onClick={() => {
+                        if (cta?.id) {
+                          cmsClient.trackCta(cta.id, 'click').catch(() => {});
+                        }
+                        if (hasCustomCta && cta.destination_url) {
+                          if (cta.destination_url.startsWith('http')) {
+                            window.open(cta.destination_url, '_blank');
+                          } else {
+                            navigate(cta.destination_url);
+                          }
+                        } else {
+                          handleCTAClick();
+                        }
+                      }}
+                      style={{ fontWeight: 700, padding: '0.85rem 1.75rem' }}
+                    >
+                      {hasCustomCta ? cta.button_label : 'Nhận Bản Demo 0đ Ngay'}
+                    </Button>
+                    
+                    <a
+                      href="https://zalo.me/0834422439"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                        padding: '0.8rem 1.5rem',
+                        backgroundColor: '#ffffff',
+                        border: '1.5px solid var(--color-primary)',
+                        borderRadius: 'var(--radius-md)',
+                        color: 'var(--color-primary-dark)',
+                        fontWeight: 700,
+                        fontSize: '0.95rem',
+                        textDecoration: 'none',
+                        transition: 'all 0.2s ease'
+                      }}
+                    >
+                      Nhắn Zalo Trực Tiếp
+                    </a>
+
+                    <a
+                      href="tel:+84834422439"
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                        padding: '0.8rem 1.25rem',
+                        backgroundColor: 'transparent',
+                        border: '1px solid #cbd5e1',
+                        borderRadius: 'var(--radius-md)',
+                        color: '#475569',
+                        fontWeight: 600,
+                        fontSize: '0.9rem',
+                        textDecoration: 'none'
+                      }}
+                    >
+                      Hotline: 0834 422 439
+                    </a>
+                  </div>
+
+                  <div style={{ fontSize: '0.8rem', color: '#64748b', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1.25rem' }}>
+                    <span>✓ Bàn giao xem trước 0đ</span>
+                    <span>✓ Minh bạch chi phí 100%</span>
+                    <span>✓ Không phát sinh phụ phí</span>
+                  </div>
+                </div>
+              );
+            })()}
           </article>
 
           {/* Right Sticky Sidebar */}

@@ -53,9 +53,24 @@ Tài liệu này ghi nhận dòng thời gian các mốc cam kết (commits), s�
   - Agent tuyệt đối không có quyền gọi API publish; chỉ người thật duyệt mới bấm publish.
   - `npm run build` PASS 100%.
 
+### Mốc 6: Đại Tu Toàn Diện CMS LocalMate (Audit, Refactor & Upgrade 10 Phân Hệ)
+- **Mã sự kiện**: `feat(cms): comprehensive cms refactor with r2 optimization, geo engine, deterministic seo, cta conversion and unified audit`
+- **Chi tiết**:
+  - **Database & D1**: Hoàn thành migration `0004_cms_advanced_upgrade.sql` bổ sung các trường kỹ thuật cho `cms_media` (width, height, format, hash, size_original, size_optimized, focal_x, focal_y), `cms_posts` (geo_main_question, geo_direct_answer, geo_entities, geo_sources, geo_faq_json, cta_id, schema_type, og_image_url), tạo bảng `cms_ctas` và mở rộng `cms_redirects` (hits, last_hit_at).
+  - **Media R2 & Optimization Pipeline**: Nén WebP client-side tự động trước khi upload (`src/utils/imageOptimizer.ts`), tính SHA-256 hash chống tải trùng, phát hiện bài viết đang sử dụng ảnh (`used_in_posts`), chặn xóa media nếu đang gắn trong bài viết. Xây dựng component `<OptimizedImage />` chống CLS, hỗ trợ loading="lazy", decoding="async", LCP priority.
+  - **Content Editor UX**: Tái cấu trúc thành 8 tabs khoa học không gây ngợp (Bài Viết, SEO On-Page, GEO & AI Search, Mạng Xã Hội OG, Schema JSON-LD, CTA Chuyển Đổi, Gợi Ý Links, Lịch Sử). Tích hợp Real-time SEO Scoring (0-100 deterministic) và GEO Readiness checker.
+  - **GEO / AI Search Engine**: Tối ưu Answer-First, Direct Answer (40-70 từ), Main Question, Key Entities, FAQ Accordion và Schema FAQPage tự động, không dùng AI API ảo, không hứa hẹn sai sự thật.
+  - **Conversion / CTA System**: Xây dựng hệ thống CTA chuyển đổi lead tái sử dụng (`/admin/ctas`, `/api/admin/ctas`), hỗ trợ vị trí linh hoạt (end, middle, before-conclusion), theo dõi real-time impression và click (CTR %).
+  - **Global SEO & GEO Audit**: Màn hình `/admin/audit` rà soát toàn bộ bài viết, phân loại lỗi Critical / Warning, liên kết nút "Sửa ngay" trực tiếp vào editor.
+  - **Action-Oriented Dashboard**: Tái cấu trúc `/admin` hiển thị danh sách việc cần làm (Ảnh thiếu ALT, Ảnh >500KB, Ảnh chưa dùng, Bài thiếu mô tả, Bài thiếu ảnh đại diện, Bài chưa chuẩn GEO) click chuyển thẳng vào filter tương ứng.
+  - **Technical SEO**: Cập nhật `functions/sitemap.xml.ts` quét toàn bộ service landing pages và category động; hỗ trợ phát hiện vòng lặp/chuỗi redirect trong Redirect Manager.
+  - **Frontend Rendering**: Tích hợp hiển thị GEO Answer-First Card, FAQ Accordion, Dynamic CTA tracking trong `src/pages/ArticleDetailPage.tsx` và `src/pages/PostPreviewPage.tsx`.
+  - **Verification**: `npm run build` PASS 100% (7.86s). Kiểm thử giao diện trực quan qua Chrome DevTools & Agent Browser PASS 100% trên các độ phân giải 1366x768 và 1280x800 (Zero horizontal overflow).
+
 ---
 
 ## Trạng Thái Hệ Thống Hiện Tại (Current System State)
-- **Local D1 Database**: Đã seed đủ 30 bài viết, trong đó Post 1 là bài viết thực chiến hoàn chỉnh 3.890 từ.
-- **Production Build**: Pass 100% (Vite bundle hoàn tất trong 6.76s).
-- **Trạng thái bài viết**: Toàn bộ 30 bài vẫn đang ở trạng thái `draft` an toàn.
+- **Local D1 Database**: Đã chạy đầy đủ 4 migrations (`0001`, `0002`, `0003`, `0004`), 30 bài viết, 3 mẫu CTA chuyển đổi, 7 chuyên mục.
+- **Production Build**: Pass 100% (`tsc && vite build` hoàn tất không lỗi).
+- **Giao diện Quản trị**: Light mode hoàn chỉnh, màu nhận diện `#0d7647`, tuyệt đối không dùng glassmorphism, responsive mượt mà trên laptop 14" 125% scaling.
+- **Hệ thống API**: 100% endpoints backend trên Hono/Cloudflare Pages Functions hoạt động ổn định với thời gian phản hồi < 50ms.

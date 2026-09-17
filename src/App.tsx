@@ -58,6 +58,8 @@ const MediaLibraryPage = React.lazy(() => import('./admin/pages/MediaLibraryPage
 const RedirectsPage = React.lazy(() => import('./admin/pages/RedirectsPage').then(m => ({ default: m.RedirectsPage })));
 const SettingsPage = React.lazy(() => import('./admin/pages/SettingsPage').then(m => ({ default: m.SettingsPage })));
 const BackupPage = React.lazy(() => import('./admin/pages/BackupPage').then(m => ({ default: m.BackupPage })));
+const SeoGeoAuditPage = React.lazy(() => import('./admin/pages/SeoGeoAuditPage').then(m => ({ default: m.SeoGeoAuditPage })));
+const CtasPage = React.lazy(() => import('./admin/pages/CtasPage').then(m => ({ default: m.CtasPage })));
 const PostPreviewPage = React.lazy(() => import('./pages/PostPreviewPage').then(m => ({ default: m.PostPreviewPage })));
 
 // Modals
@@ -193,6 +195,12 @@ const MainContent: React.FC = () => {
     }
     if (normalizedPath.startsWith('/admin/media')) {
       return <MediaLibraryPage />;
+    }
+    if (normalizedPath.startsWith('/admin/audit')) {
+      return <SeoGeoAuditPage />;
+    }
+    if (normalizedPath.startsWith('/admin/ctas')) {
+      return <CtasPage />;
     }
     if (normalizedPath.startsWith('/admin/redirects')) {
       return <RedirectsPage />;

@@ -172,19 +172,38 @@ export const cmsClient = {
   },
 
   // Media
-  async getMedia(params: { q?: string; page?: number; limit?: number } = {}) {
+  async getMedia(params: { q?: string; filter?: string; page?: number; limit?: number } = {}) {
     const query = new URLSearchParams();
     if (params.q) query.set('q', params.q);
+    if (params.filter) query.set('filter', params.filter);
     if (params.page) query.set('page', String(params.page));
     if (params.limit) query.set('limit', String(params.limit));
     return request<{ media: MediaEntity[]; pagination: any }>(`/admin/media?${query.toString()}`);
   },
 
-  async uploadMedia(file: File, altText?: string, caption?: string) {
+  async uploadMedia(
+    file: File,
+    meta?: {
+      alt_text?: string;
+      caption?: string;
+      width?: number;
+      height?: number;
+      format?: string;
+      hash?: string;
+      size_original?: number;
+      size_optimized?: number;
+    }
+  ) {
     const formData = new FormData();
     formData.append('file', file);
-    if (altText) formData.append('alt_text', altText);
-    if (caption) formData.append('caption', caption);
+    if (meta?.alt_text) formData.append('alt_text', meta.alt_text);
+    if (meta?.caption) formData.append('caption', meta.caption);
+    if (meta?.width) formData.append('width', String(meta.width));
+    if (meta?.height) formData.append('height', String(meta.height));
+    if (meta?.format) formData.append('format', meta.format);
+    if (meta?.hash) formData.append('hash', meta.hash);
+    if (meta?.size_original) formData.append('size_original', String(meta.size_original));
+    if (meta?.size_optimized) formData.append('size_optimized', String(meta.size_optimized));
 
     return request<MediaEntity>('/admin/media/upload', {
       method: 'POST',
@@ -192,15 +211,50 @@ export const cmsClient = {
     });
   },
 
-  async updateMedia(id: number, data: { alt_text?: string; caption?: string }) {
+  async updateMedia(id: number, data: { alt_text?: string; caption?: string; focal_x?: number; focal_y?: number }) {
     return request(`/admin/media/${id}`, {
       method: 'PUT',
       body: JSON.stringify(data)
     });
   },
 
-  async deleteMedia(id: number) {
-    return request(`/admin/media/${id}`, { method: 'DELETE' });
+  async deleteMedia(id: number, force: boolean = false) {
+    return request(`/admin/media/${id}${force ? '?force=true' : ''}`, { method: 'DELETE' });
+  },
+
+  // CTA Conversion Manager
+  async getCtas() {
+    return request<any[]>('/admin/ctas');
+  },
+
+  async createCta(data: any) {
+    return request<any>('/admin/ctas', {
+      method: 'POST',
+      body: JSON.stringify(data)
+    });
+  },
+
+  async updateCta(id: number, data: any) {
+    return request<any>(`/admin/ctas/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(data)
+    });
+  },
+
+  async deleteCta(id: number) {
+    return request<any>(`/admin/ctas/${id}`, { method: 'DELETE' });
+  },
+
+  async trackCta(id: number, type: 'impression' | 'click') {
+    return request('/public/cta/track', {
+      method: 'POST',
+      body: JSON.stringify({ cta_id: id, event_type: type })
+    });
+  },
+
+  // SEO & GEO Global Audit
+  async getSeoGeoAudit() {
+    return request<any>('/admin/audit/seo-geo');
   },
 
   // Settings & Redirects

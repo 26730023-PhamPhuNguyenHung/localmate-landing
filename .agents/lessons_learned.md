@@ -86,6 +86,19 @@
   - Bài học: Bắt buộc phải có Audit Script quét Adjacency Matrix tự động (`scripts/analyze_graph.cjs`) trước khi đưa nội dung vào vận hành. Mọi bài Pillar phải nhận link từ Master Cornerstone và từ bài chuyển tiếp của cụm trước đó.
 - **Thoát Khỏi Bẫy URL Alias Chung Chung (Direct-to-Canonical Conversion)**:
   - Việc 100% bài viết chỉ link về 5 alias `/giai-phap/*` làm lu mờ các trang đích chuyển đổi cao trong `src/App.tsx`. Cần phân bổ chính xác: bài chi phí -> `/bang-gia`, bài bắt đầu nhỏ -> `/landing-490k`, bài lỗi -> `/tieu-chuan-audit` hoặc `/khao-sat-du-an`, bài Entity/AI -> `/dich-vu/geo`.
-- **Topical Gaps Thực Tế Trong Kỷ Nguyên AI Search**:
-  - Người dùng SME hiện nay tìm kiếm không chỉ trên Google truyền thống mà còn hỏi ChatGPT, SearchGPT, Perplexity và Google AI Overviews. Kho 30 bài cần 1 bài cầu nối (Bridge Article) giải thích bình dân về GEO (Generative Engine Optimization) để dẫn dắt vào các dịch vụ đón đầu của LocalMate (`/dich-vu/geo`, `/dich-vu/aeo`).
+## 12. Bài Học Về Kiến Trúc & Vận Hành CMS Quản Trị Thực Dụng (Full-Stack Refactor & R2 Pipeline)
+- **Tối Ưu Ảnh Tự Động Client-Side Sang WebP & Deduplication Hash**:
+  - Không cần đầu tư hạ tầng xử lý ảnh backend phức tạp hay dịch vụ ngoài tốn phí. Nén canvas client-side sang WebP (quality 0.82) và tính hash SHA-256 ngay trên trình duyệt trước khi upload giúp giảm 65–85% dung lượng lưu trữ R2 và chống hoàn toàn việc tải ảnh trùng lặp.
+  - Luôn lưu trữ `width` và `height` trong database để render kèm thẻ `<img>`, triệt tiêu hoàn toàn hiện tượng nhảy khung hình giật layout (Cumulative Layout Shift - CLS) theo chuẩn Core Web Vitals.
+- **Cơ Chế Bảo Vệ Tài Sản Số (Asset Delete Protection Guardrail)**:
+  - Khi xóa một media trong R2, bắt buộc kiểm tra xem asset id hoặc URL đó có đang được gắn làm `featured_image_id` hoặc xuất hiện trong `rendered_html` của bất kỳ bài viết nào hay không. Nếu có, server phải chặn xóa và trả về danh sách các bài viết đang bị ảnh hưởng, trừ khi có cờ `force=true`.
+- **Thiết Kế Post Editor Không Gây Choáng Ngợp (8-Tab Progressive Disclosure)**:
+  - Một CMS thực dụng không được bắt người viết nhìn thấy cùng lúc 50 trường dữ liệu (Title, Slug, SEO, OG, GEO, FAQ, Schema, CTA...). Việc chia thành 8 tabs độc lập (Bài Viết, SEO On-Page, GEO AI, Mạng Xã Hội, Schema, CTA Chuyển Đổi, Gợi Ý Links, Lịch Sử) giúp người dùng tập trung hoàn thành nội dung trước, sau đó mới tối ưu từng tầng.
+- **Tính Điểm SEO & GEO Bằng Thuật Toán Xác Định (Deterministic Scoring)**:
+  - Tuyệt đối không dùng AI API hay LLM bên ngoài để chấm điểm bài viết (gây chậm, tốn chi phí và ảo giác). Sử dụng bộ 10 luật on-page rõ ràng (độ dài title, meta description, heading hierarchy, internal link, thin content, featured image ALT) và GEO Readiness (Answer-First, Main Question, Entities, FAQ) cho ra kết quả tức thì ngay khi gõ phím.
+  - Minh bạch hóa: Không bao giờ tuyên bố đây là "Google Score" hay "Đảm bảo ChatGPT trích dẫn 100%".
+- **Dashboard Định Hướng Hành Động (Action-Oriented Dashboard)**:
+  - Loại bỏ các biểu đồ vanity metrics giả lập. Dashboard phải trả lời câu hỏi: *"Hôm nay tôi cần sửa gì?"* (Ví dụ: 12 ảnh thiếu ALT, 3 ảnh quá khổ, 5 bài thiếu mô tả). Mỗi thẻ vấn đề phải là 1 hyperlink click chuyển thẳng vào bộ lọc tương ứng để xử lý dứt điểm.
+- **Phục Vụ Chuyển Đổi Thực Tế (Lead Generation Engine)**:
+  - CMS không chỉ để SEO đọc. Mỗi bài viết phải có khả năng gắn CTA chuyển đổi có ngữ cảnh (end, middle, before-conclusion), có khả năng theo dõi lượt hiển thị (Impression) và lượt bấm (Click) để đo lường tỷ lệ chuyển đổi thực tế.
 

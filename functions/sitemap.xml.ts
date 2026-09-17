@@ -16,18 +16,35 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
     let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
     xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
 
-    // Static pages
+    // Core Static & Service Landing Pages
     const staticUrls = [
       'https://localmate.vn/',
       'https://localmate.vn/kien-thuc',
       'https://localmate.vn/dich-vu',
+      'https://localmate.vn/dich-vu/geo',
+      'https://localmate.vn/dich-vu/thiet-ke-website',
+      'https://localmate.vn/dich-vu/google-maps-seo',
+      'https://localmate.vn/dich-vu/quang-cao-google-ads',
+      'https://localmate.vn/dich-vu/crm-automation',
       'https://localmate.vn/bang-gia',
       'https://localmate.vn/gioi-thieu',
       'https://localmate.vn/lien-he'
     ];
 
     for (const url of staticUrls) {
-      xml += `  <url>\n    <loc>${url}</loc>\n    <changefreq>daily</changefreq>\n    <priority>0.9</priority>\n  </url>\n`;
+      xml += `  <url>\n    <loc>${url}</loc>\n    <changefreq>daily</changefreq>\n    <priority>${url === 'https://localmate.vn/' ? '1.0' : '0.9'}</priority>\n  </url>\n`;
+    }
+
+    // Dynamic Categories
+    try {
+      const catRows = await DB.prepare(`SELECT slug FROM cms_categories ORDER BY id ASC`).all<{ slug: string }>();
+      if (catRows?.results) {
+        for (const cat of catRows.results) {
+          xml += `  <url>\n    <loc>https://localmate.vn/kien-thuc?category=${cat.slug}</loc>\n    <changefreq>weekly</changefreq>\n    <priority>0.7</priority>\n  </url>\n`;
+        }
+      }
+    } catch {
+      // ignore
     }
 
     // Dynamic published articles

@@ -6,6 +6,7 @@ import { adminPostsRoutes } from './routes/adminPosts';
 import { adminTaxonomyRoutes } from './routes/adminTaxonomy';
 import { adminMediaRoutes } from './routes/adminMedia';
 import { adminSettingsRoutes } from './routes/adminSettings';
+import { adminCtasRoutes } from './routes/adminCtas';
 import { publicContentRoutes } from './routes/publicContent';
 import { verifyToken } from './utils/security';
 
@@ -69,6 +70,7 @@ app.route('/auth', authRoutes);
 app.route('/admin/posts', adminPostsRoutes);
 app.route('/admin', adminTaxonomyRoutes);
 app.route('/admin/media', adminMediaRoutes);
+app.route('/admin/ctas', adminCtasRoutes);
 app.route('/admin', adminSettingsRoutes);
 app.route('/public', publicContentRoutes);
 
