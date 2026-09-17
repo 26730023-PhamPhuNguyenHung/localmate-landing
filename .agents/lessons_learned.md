@@ -38,6 +38,12 @@
 - **Thanh Footer Ngang Tinh Tế Thay Thế Promo Rail**: Bỏ hoàn toàn Promo Card chiếm cột 4 cồng kềnh; thay bằng 1 thanh ngang thanh mảnh (~54px) dưới chân 3 cột: *"Chưa biết nên bắt đầu từ đâu? Xem bảng giá → [Nhận tư vấn]"*. Giảm chiều cao menu từ ~540px xuống ~310px, hiển thị trọn vẹn và thoáng đãng ngay cả trên màn hình laptop 1366x768.
 - **Mobile Accordion Tinh Gọn**: Trên di động, menu dịch vụ hiển thị dạng accordion chỉ gồm tiêu đề các nhóm và tên dịch vụ (bỏ mô tả dài), kèm 2 nút *"Xem tất cả dịch vụ →"* và *"Nhận tư vấn"*, giúp thao tác một tay mượt mà.
 
+## 8. Bài Học Về Layout & Khống Chế Global `p` Max-Width (Gotcha Phổ Biến)
+- **Cái bẫy của Global `p { max-width: ... }`**: Khi CSS toàn cục áp dụng `max-width` (ví dụ `68ch`) lên thẻ `p` để tối ưu trải nghiệm đọc sách/bài viết, nếu không đi kèm `margin-inline: auto`, mọi thẻ `<p>` nằm trong các container căn giữa (`text-align: center`) sẽ bị trình duyệt neo mặc định ở lề trái (`margin-left: 0`).
+- **Triệu chứng trực quan**: Khối tiêu đề phụ (subtitle/heading paragraph) co lại và dạt hẳn sang góc trái màn hình, lệch hoàn toàn so với thẻ H2 căn giữa, thậm chí đè lên các thành phần trang trí hai bên (side notes).
+- **Giải pháp dứt điểm**: Mọi section subtitle (`.section-heading p`, `.stories .section-heading p`, v.v.) phải luôn được khai báo rõ ràng:
+  `margin-left: auto; margin-right: auto; text-align: center; max-width: 820px–850px;` để đảm bảo thẻ block luôn nằm chính giữa tâm container, kết hợp inline style cho các component landing nhạy cảm.
+
 ## 8. Bài Học Về Vận Hành Content Engine & Batch Rewrite (Anti-AI Slop SOP)
 - **Tách Biệt Khâu Khám Phá & Khâu Viết Thực Tế**: Không bao giờ viết ngay khi chưa audit và chưa chốt Content Master Plan. Phối hợp 10 Subagents giúp phân tích đa chiều từ Search Intent, Kiến trúc liên kết nội bộ, Chuẩn chứng cứ cho tới Rà soát Red Team.
 - **Quy Hoạch Cụm Chủ Đề (Topic Cluster) Để Diệt Trừ Cannibalization**: Các bài viết tương đồng (như Tạo Maps vs Video xác minh, Web bán hàng vs Web tư vấn) phải được phân vai dứt điểm (Pillar vs Supporting) và đổi góc nhìn (Angle Pivot) trước khi bắt tay vào viết.
