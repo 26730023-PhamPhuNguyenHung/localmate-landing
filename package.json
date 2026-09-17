@@ -7,7 +7,7 @@
     "dev": "vite",
     "build:articles": "node scripts/build-articles-data.js",
     "prebuild": "node scripts/build-articles-data.js && node scripts/generate-seo-files.js",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build && node scripts/generate-static-routes.js",
     "preview": "vite preview",
     "seo:generate": "node scripts/generate-seo-files.js",
     "db:migrate": "npx wrangler d1 execute localmate_survey_db --remote --file=./migrations/0001_cms_init.sql && npx wrangler d1 execute localmate_survey_db --remote --file=./migrations/0002_cms_defaults.sql",
