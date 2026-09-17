@@ -13,6 +13,28 @@
 
 ## 2. Recent Accomplishments & Updates
 
+### A00000000000. Thiết Kế Content Architecture & Internal Linking Graph Toàn Diện Cho 30 Bài Viết CMS (`docs/content-architecture.md`):
+- **Tác giả:** Subagent 6: INFORMATION ARCHITECT
+- **Vị trí tệp:** `docs/content-architecture.md` (SSOT đối chiếu từ `docs/drafts_30_inventory.json`).
+- **Phạm vi hoàn tất:**
+  1. **Phân Cụm Tự Nhiên & Phân Vai Trò (5 Clusters + 1 Master Cornerstone)**:
+     - *Cụm 1: Website & Landing Page (6 bài)* — Pillar: Bài 01; Supporting: Bài 02, 03, 04, 05, 06. (Target: `/giai-phap/nen-tang-so` & `/landing-490k`).
+     - *Cụm 2: Google Maps & Local Presence (6 bài)* — Pillar: Bài 07; Supporting: Bài 08, 09, 10, 11, 12. (Target: `/giai-phap/duoc-tim-thay`).
+     - *Cụm 3: Local SEO & Discovery (6 bài)* — Pillar: Bài 13; Sub-pillars: Bài 14, 18; Supporting: Bài 15, 16, 17. (Target: `/giai-phap/duoc-tim-thay` & `/dich-vu/geo`).
+     - *Cụm 4: Google Ads & Paid Acquisition (6 bài)* — Pillar: Bài 19; Sub-pillar: Bài 24; Supporting: Bài 20, 21, 22, 23. (Target: `/giai-phap/thu-hut-khach-hang`).
+     - *Cụm 5: CRM & Automation (4 bài)* — Pillar: Bài 25; Sub-pillar: Bài 27; Supporting: Bài 26, 28. (Target: `/giai-phap/van-hanh-tu-dong-hoa`).
+     - *Master Cornerstone & Enabler (2 bài)* — Bài 30 (Lộ trình 5 bước số hóa - Super Pillar liên kết toàn bộ 5 cụm) & Bài 29 (Máy phát nội dung tiệm địa phương).
+  2. **Ma Trận Internal Linking Graph 3 Chiều Hoàn Chỉnh**:
+     - Chiều dọc: Pillar <-> Supporting (100% bài con có contextual link về bài Pillar).
+     - Chiều ngang: Supporting <-> Supporting theo logic vận hành.
+     - Chiều liên cụm: Cross-cluster liên kết tự nhiên theo Customer Journey.
+  3. **Thiết Kế Breadcrumbs & Schema.org**: 4 cấp chuẩn SEO, taxonomy rõ ràng, JSON-LD mẫu.
+  4. **Thuật Toán Related Posts & Next-Best-Article CTA**:
+     - Loại bỏ hoàn toàn random, xây dựng ma trận 3 Card cho 30 bài theo tiến trình nhận thức (Bước tiếp theo - Đào sâu/Cạm bẫy - Cầu nối hệ thống).
+     - Thiết kế khối CTA dẫn dắt hành động riêng cho từng bài (kèm Commercial Action Button).
+- **Trạng thái:** Hoàn tất 100%, sẵn sàng cho các đội ngũ triển khai nội dung và phát triển CMS.
+
+
 ### A0000000000. Xây Dựng 3 Pillar Pages Chuẩn SEO & GEO (/google-ads, /content-marketing, /automation):
 - **Tác giả:** SEO & GEO Pillar Pages Specialist
 - **Vị trí tệp:**
