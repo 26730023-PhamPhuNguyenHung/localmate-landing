@@ -115,6 +115,17 @@
   1. Mọi kịch bản seed content phải có bước kiểm thử đồ thị tự động (`scripts/analyze_graph.cjs`): kiểm tra In-degree $\ge 1$ cho 100% bài viết.
   2. Bắt buộc liên kết 2 chiều Hub-and-Spoke: Bài Pillar phải trỏ xuống các Supporting, và 100% Supporting phải có Reverse Upward Link về Pillar.
   3. Bổ sung liên kết liên cụm (Cross-Cluster Bridge): Bài 06 trỏ sang Bài 07, Bài 12 trỏ sang Bài 13, Bài 22 trỏ sang Bài 06, Bài 24 trỏ sang Bài 28.
-  4. Đưa thẳng link thương mại về Canonical Pages (`/bang-gia`, `/landing-490k`, `/thiet-ke-website`, `/google-maps-local-seo`, `/dich-vu/geo`) thay vì chỉ dùng alias `/giai-phap/*`.
-
-
+  4. Đưa thẳng link thương mại về Canonical Pages (`/bang-gia`, `/landing-490k`, `/thiet-ke-website`, `/google-maps-local-seo`, `/dich-vu/geo`) thay vì chỉ dùng alias `/giai-phap/*`.## 14. Bài học về CMS Guardrails & Chặn Đứng AI Placeholder/Slop Xuất Bản (Audit V2 & Post 1)
+- **Căn nguyên rò rỉ Placeholder (Root Cause)**:
+  - Vòng lặp sinh outline trong `scripts/generate-seeds.js` tự động inject template string `Nội dung chi tiết cho mục "${headingText}" đang được biên tập theo tiêu chuẩn thực tế của LocalMate...` khi thiếu nội dung chi tiết. Đây là cơ chế ngụy trang nguy hiểm: trông bài viết có vẻ hoàn chỉnh nhưng 80% là thin content.
+- **Giải pháp Chặn 2 tầng (Dual-Layer Publish Guardrail)**:
+  1. *Server-Side Validation* (`functions/api/routes/adminPosts.ts`): Bắt buộc kiểm tra khi trạng thái là `published`. Nếu nội dung chứa bất kỳ pattern placeholder (`đang được biên tập`, `sẽ cập nhật`, `tiêu chuẩn thực tế của LocalMate`, `placeholder`, `lorem ipsum`) hoặc tổng từ < 400 từ, API lập tức trả lỗi 400 Bad Request kèm danh sách lý do cụ thể và chặn đứng việc ghi DB.
+  2. *Client-Side Guardrail* (`src/admin/editor/PostEditorPage.tsx`): Trước khi gửi request chuyển sang `published`, frontend quét nội dung và hiển thị alert cảnh báo trực quan ngăn người dùng xuất bản bài viết rác.
+- **Tiêu chuẩn Rewrite Bài Viết Thực Chiến (Case Post ID 1: ~3.890 từ)**:
+  - *Answer-First*: Định nghĩa trọn vẹn bản chất website doanh nghiệp ngay 80 từ đầu, không lan man, không rào đón.
+  - *Bảng so sánh đa chiều*: Lập bảng so sánh 8 tiêu chí giữa Website vs Mạng xã hội (Quyền sở hữu, Khách tìm kiếm, Tự động hóa...).
+  - *Bộ lọc quyết định (Decision Matrix)*: Phân định rạch ròi 4 trường hợp CẦN LÀM NGAY vs 4 trường hợp CHƯA NÊN LÀM để chủ doanh nghiệp tự đối chiếu.
+  - *Ví dụ thực tế đời thường*: Đưa ví dụ xưởng nhôm kính Bình Tân, tiệm sửa điều hòa Quận 7, quán ăn gia đình... để giải thích cấu trúc trang và chi phí.
+  - *Minh bạch chi phí*: Bóc tách 5 khoản chi phí cố định và biến đổi (Domain, Hosting, Thiết kế, Bảo trì, Marketing) giúp khách hàng không bị agency khác "vẽ tiền".
+  - *Checklist tự thẩm định*: 6 bước chủ shop cần chuẩn bị trước khi thuê thiết kế website.
+  - *FAQPage Schema*: Tích hợp 6 câu hỏi đáp thực tế phản ánh đúng thắc mắc phổ biến nhất của chủ doanh nghiệp nhỏ.

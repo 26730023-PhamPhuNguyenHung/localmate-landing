@@ -1,6 +1,14 @@
 // LocalMate CMS - Shared Types & Interfaces
 
-export type PostStatus = 'draft' | 'review' | 'scheduled' | 'published' | 'archived';
+export type PostStatus = 
+  | 'draft' 
+  | 'editorial_ready' 
+  | 'seo_ready' 
+  | 'publish_ready' 
+  | 'review' 
+  | 'scheduled' 
+  | 'published' 
+  | 'archived';
 
 // ==========================================
 // Article-Level Metadata Enums & Interfaces
@@ -182,6 +190,19 @@ export interface PostEntity {
   seo_status?: ArticleSeoStatus;
   blocks_json?: string; // Flexible Content Blocks Document JSON
 
+  // GEO & AI Search Fields
+  geo_main_question?: string;
+  geo_direct_answer?: string;
+  geo_entities?: string;
+  geo_sources?: string;
+  geo_faq_json?: string;
+
+  // Conversion & Schema
+  cta_id?: number | null;
+  cta_details?: CtaEntity;
+  schema_type?: 'Article' | 'BlogPosting' | 'FAQPage' | 'HowTo' | 'Service' | 'LocalBusiness' | 'BreadcrumbList';
+  og_image_url?: string;
+
   // CamelCase Aliases hỗ trợ Frontend Components
   articlePurpose?: ArticlePurpose;
   searchIntent?: SearchIntentLevel | string;
@@ -228,14 +249,21 @@ export interface MediaEntity {
   filename: string;
   original_filename: string;
   mime_type: string;
+  format?: string;
   size: number;
+  size_original?: number;
+  size_optimized?: number;
   width?: number | null;
   height?: number | null;
   alt_text?: string;
   caption?: string;
+  hash?: string;
+  focal_x?: number;
+  focal_y?: number;
   r2_key: string;
   url: string;
   created_at: string;
+  used_in_posts?: { id: number; title: string; slug: string; is_featured: boolean }[];
 }
 
 export interface PostRevisionEntity {
@@ -258,7 +286,24 @@ export interface RedirectEntity {
   destination_url: string;
   status_code: 301 | 302;
   active: 0 | 1;
+  hits?: number;
+  last_hit_at?: string | null;
   created_at: string;
+}
+
+export interface CtaEntity {
+  id: number;
+  name: string;
+  headline: string;
+  description?: string;
+  button_label: string;
+  destination_url: string;
+  placement: 'after-intro' | 'middle' | 'before-conclusion' | 'end';
+  is_active: number | boolean;
+  impressions: number;
+  clicks: number;
+  created_at?: string;
+  updated_at?: string;
 }
 
 export interface UserEntity {
@@ -282,9 +327,57 @@ export interface DashboardStats {
   publishedPosts?: number;
   draftPosts?: number;
   scheduledPosts?: number;
-  recentPosts: PostEntity[];
-  upcomingPosts: PostEntity[];
-  topCategories: CategoryEntity[];
+  issues?: {
+    missingMetaDescription: number;
+    missingFeaturedImage: number;
+    missingAltMedia: number;
+    oversizedMedia: number;
+    geoIssues: number;
+    seoIssues: number;
+    unusedMedia: number;
+  };
+  recentPosts: (PostEntity | any)[];
+  upcomingPosts: (PostEntity | any)[];
+  topCategories: (CategoryEntity | any)[];
+}
+
+// SEO Engine Interfaces
+export interface SeoRuleCheck {
+  id: string;
+  name: string;
+  status: 'good' | 'warning' | 'critical';
+  message: string;
+  detail?: string;
+  score: number;
+  maxScore: number;
+}
+
+export interface SeoScoreReport {
+  totalScore: number; // 0 - 100
+  status: 'good' | 'warning' | 'critical';
+  checks: SeoRuleCheck[];
+  summary: {
+    criticalCount: number;
+    warningCount: number;
+    goodCount: number;
+  };
+}
+
+// GEO Engine Interfaces
+export interface GeoRuleCheck {
+  id: string;
+  name: string;
+  passed: boolean;
+  score: number;
+  maxScore: number;
+  recommendation: string;
+  impact: 'high' | 'medium' | 'low';
+}
+
+export interface GeoReadinessReport {
+  readiness: 'Good' | 'Needs work' | 'Poor';
+  score: number; // 0 - 100
+  checks: GeoRuleCheck[];
 }
 
 export interface ApiResponse<T = any> {
@@ -708,4 +801,5 @@ export interface ArticleDocument {
   };
   blocks: ContentBlock[];
 }
+
 
