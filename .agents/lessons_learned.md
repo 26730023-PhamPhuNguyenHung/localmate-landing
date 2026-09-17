@@ -1,5 +1,36 @@
 # 📚 LOCALMATE AGENTS LESSONS LEARNED & EDITORIAL RULES
 
+## 15. Bài Học Về Bảng Lọc Tính Năng CRM Thực Chiến Cho Doanh Nghiệp Nhỏ (Bài 26)
+- **Quy luật Pareto 80/20 trong phần mềm quản lý**: Hơn 85% cơ sở nhỏ bỏ hoang phần mềm CRM sau 1 tháng vì bị "ngộ độc tính năng" (phễu 7 tầng, sơ đồ Gantt, phân quyền đa cấp, ma trận đa chiều). Với tiệm dưới 10 người, CRM chỉ cần tập trung vào đúng 5 tính năng hạt nhân: (1) Lưu danh bạ kèm lịch sử dịch vụ, (2) Nhắc hẹn bảo hành qua Zalo, (3) Phân nhóm VIP/quen/mới, (4) Ghi chú sở thích riêng, (5) Doanh thu theo thợ.
+- **Tiêu chuẩn "3 lần chạm di động" cho bác thợ**: Thợ kỹ thuật dính dầu mỡ, đồ nghề không thể ngồi máy tính nhập 15 trường thông tin. Quy trình nhập phiếu mới trên điện thoại phải hoàn thành trong 30-45 giây với tối đa 3 lần chạm.
+- **Mẫu CRM 0đ trên Google Sheet là bệ phóng hoàn hảo**: Tận dụng Google Sheet phân quyền (Tab 1: Danh bạ, Tab 2: Lịch sử dịch vụ, Tab 3: Nhắc hẹn tự động bằng hàm `=FILTER(..., G2:G <= TODAY())`) kết hợp Google Form nhập liệu trên điện thoại. Giải pháp này giúp hộ kinh doanh tiết kiệm 15-30 triệu/năm, lưu trữ tới 10 triệu ô dữ liệu bền bỉ trong 5 năm.
+- **Khung thời điểm đầu tư đúng đắn**: Dưới 500 khách và dưới 6 tháng tuổi $\rightarrow$ chi phí CRM = 0đ, dồn tiền kéo khách mới qua Google Maps và Website. Chỉ mua phần mềm chuyên dụng khi danh bạ vượt 1.000 khách thường xuyên, đội ngũ trên 10 người hoặc cần bắn tin Zalo ZNS tự động.
+
+## 14. Bài Học Về Thiết Kế Landing Page Chạy Google Ads Cho Dịch Vụ Địa Phương (Bài 23)
+- **Tư duy "Single-purpose" thay vì "Showcase all"**: Khách hàng Google Ads là tệp khách hàng có tính cấp bách cao nhất (ống nước vỡ, xe chết máy, điều hòa hỏng giữa trưa hè). Dẫn khách về trang chủ có slider, menu 4 tầng và bài giới thiệu công ty là hành vi "đốt tiền" nhanh nhất. Một trang đích ngách chỉ phục vụ 1 mục tiêu duy nhất: **bấm gọi hotline trong 3 giây**.
+- **Cấu trúc 6 khối vàng chốt cuộc gọi**:
+  1. *Hero Section*: Tiêu đề H1 khớp 100% từ khóa tìm kiếm + Huy hiệu 3 cam kết + Nút gọi to nổi bật.
+  2. *Nút gọi nổi 1 chạm (Sticky Call Bar)*: Luôn ghim đáy màn hình ở tầm ngón tay cái, gồm nút Gọi (xanh lá) và nút Chat Zalo (xanh dương), liên kết chuẩn `tel:`.
+  3. *Bảng giá niêm yết công khai*: Liệt kê 4-6 lỗi thông dụng kèm giá khởi điểm, cam kết kiểm tra miễn phí trước khi làm để dập tan nỗi sợ chặt chém.
+  4. *Ảnh thợ & xưởng thật*: 4-6 ảnh chụp điện thoại chân thực, cấm dùng stock photos người nước ngoài giả tạo.
+  5. *Cam kết bảo hành bằng văn bản*: Quy định rõ thời gian bảo hành và cam kết thợ có mặt xử lý lại miễn phí trong 24 giờ.
+  6. *Bản đồ định vị & Bán kính phục vụ*: Nhúng bản đồ Google Maps và danh sách quận/huyện phục vụ trong 15-30 phút.
+- **Tiêu chuẩn tốc độ 4G di động < 2s**: Nén ảnh WebP < 100KB, chiều rộng < 800px; triệt tiêu hoàn toàn script slider và hiệu ứng lượn sóng; chỉ giữ lại 2 đoạn mã theo dõi (Google Ads conversion và GA4); dùng CDN có máy chủ tại Việt Nam.
+- **Form đăng ký là rào cản**: Dịch vụ khẩn cấp địa phương tuyệt đối không dùng form điền họ tên/email dài dòng vì làm giảm 50-70% tỷ lệ chuyển đổi; thay bằng nút gọi trực tiếp 1 chạm.
+
+## 13. Bài Học Về CRM Thực Chiến & Quản Trị Khách Hàng Cho Doanh Nghiệp Nhỏ (Bài 25)
+- **Định vị đúng bản chất CRM cho SME**: CRM tuyệt đối không phải là những gói phần mềm hàng chục triệu đồng mỗi năm với hàng trăm tính năng đồ sộ. Dưới góc nhìn thực tế của hộ kinh doanh cá thể và doanh nghiệp nhỏ dưới 15 nhân sự, **CRM là thói quen và quy trình ghi nhớ thông tin khách hàng để phục vụ chu đáo, nhắc lịch đúng lúc và bán lại nhiều lần**.
+- **Giải quyết triệt để vấn đề nhân viên ngại nhập liệu**: Nguyên nhân thất bại lớn nhất của các dự án CRM đắt tiền là bắt buộc nhân viên điền 15-20 ô thông tin phức tạp. Bài học thực tế: Chỉ chuẩn hóa **đúng 5-6 trường dữ liệu cốt lõi** (Ngày tháng, Tên + SĐT Zalo, Địa chỉ, Dịch vụ & Số tiền, Ngày hẹn tái liên hệ, Ghi chú đặc thù). Mỗi đơn hàng nhập dưới 45 giây.
+- **Tiến trình 4 cấp độ thích ứng quy mô**:
+  - Doanh nghiệp dưới 1 năm tuổi hoặc dưới 8 người: Dùng **Cấp độ 2 (Google Sheet phân quyền)** chi phí 0đ.
+  - Doanh nghiệp từ 5-20 người có website và chạy ads: Dùng **Cấp độ 3 (CRM mini tích hợp)** qua Webhook tự đẩy lead về Google Sheet và báo tức thì qua Zalo/Telegram cho người trực hotline trong 3 giây.
+  - Chỉ nâng cấp lên phần mềm chuyên nghiệp khi quy mô vượt 15-20 người và chi phí phần mềm chiếm dưới 2% doanh thu hàng tháng.
+- **Vũ khí đòn bẩy lợi nhuận từ CLV (Customer Lifetime Value)**:
+  - Chi phí tìm khách mới (CAC) đắt gấp 5-7 lần chi phí giữ chân khách cũ.
+  - Tăng tỷ lệ giữ chân khách thêm 5% giúp tăng lợi nhuận ròng từ 25% đến 95%.
+  - Tỷ lệ chốt đơn từ khách cũ đạt 60-70%, trong khi khách lạ từ quảng cáo chỉ đạt 5-20%.
+  - Công thức tính CLV giúp chủ tiệm nhìn ra toàn bộ giá trị tiềm năng sau đơn hàng đầu tiên để đầu tư chăm sóc bài bản theo chu kỳ "1 - 7 - 30 - 90".
+
 ## 12. Bài Học Về Tối Giản Hóa Codebase & Chống Over-Engineering Giai Đoạn Đầu (Cleanup Pass)
 - **Bẫy "Code để đó có thể dùng sau" (YAGNI Violation)**: Tạo hàng loạt trang skeleton, mock data, fake case study hay các cluster ngách (`/advisor`, `/solutions/*`, `/cluster/*`) khi chưa có nhu cầu kinh doanh thực tế chỉ làm phình to codebase, gây chậm build, dễ nảy sinh broken links và tăng chi phí bảo trì.
 - **Quy tắc điều hướng tinh gọn (Anchor First + In-Context Lead Capture)**:

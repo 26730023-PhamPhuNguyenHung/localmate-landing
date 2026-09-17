@@ -179,6 +179,42 @@ Tài liệu này ghi nhận dòng thời gian các mốc cam kết (commits), s�
   - Chạy `validate-content.cjs` đạt điểm tuyệt đối **100/100** (Pass Quality Gate).
   - Chạy `markdown-to-cms.cjs` sinh tự động `article.json` và đồng bộ an toàn vào `content/seeds/drafts_30_articles.json` với trạng thái draft.
 
+### Mốc 18: Chuẩn Hóa & Hoàn Thiện Bài Viết ID 22 (Vì sao chạy Google Ads có click nhưng không có khách? Cách xử lý dứt điểm)
+- **Mã sự kiện**: `content: standardize article 22 vi-sao-chay-google-ads-co-click-nhung-khong-co-khach`
+- **Chi tiết**:
+  - Tạo cấu trúc thư mục chuẩn tại `content/articles/vi-sao-chay-google-ads-co-click-nhung-khong-co-khach/`.
+  - Biên soạn `draft.md` chuẩn cấu trúc: Frontmatter đầy đủ, TL;DR Answer First, 1 H1, đúng 6 H2, bảng ma trận chẩn đoán 5 triệu chứng - nguyên nhân - tác hại ngân sách - giải pháp xử lý ngay, phân tích chi tiết 5 nguyên nhân chí mạng (Bẫy từ khóa Broad Match dính click tặc/mẹo vặt, Trang đích tải quá chậm trên 4G, Giấu giá bắt khách inbox, Nút gọi/Zalo bị lỗi kỹ thuật hoặc khó bấm trên mobile, Bán kính phân phối sai khu vực địa lý).
+  - Hướng dẫn thực chiến từng bước đọc báo cáo Cụm từ tìm kiếm (Search Terms Report) để phát hiện và thanh lọc từ khóa rác.
+  - Quy trình 5 bước khắc phục trong 30 phút (dọn sạch Broad Match, nạp danh sách 30+ từ khóa phủ định, khoanh vùng bán kính 5-10km và chọn Sự hiện diện thực tế, kiểm tra tốc độ 4G và sửa nút gọi Zalo, bổ sung bảng giá niêm yết và 3 cam kết).
+  - Phần FAQ gồm 4 câu hỏi thực tế chuẩn H3.
+  - Tích hợp các liên kết nội bộ tự nhiên trỏ về `/landing-490k`, `/thiet-ke-website`, và bài pillar `/kien-thuc/google-ads-cho-doanh-nghiep-nho-bat-dau-tu-dau`.
+  - Tuân thủ 100% quy chuẩn chống AI slop, quy chuẩn GEO và phong cách "bác thợ hiểu được".
+  - Chạy `validate-content.cjs` đạt điểm tuyệt đối **100/100** (Pass Quality Gate).
+  - Chạy `markdown-to-cms.cjs` sinh tự động `article.json` và đồng bộ an toàn vào `content/seeds/drafts_30_articles.json` với trạng thái draft.
+
+### Mốc 20: Chuẩn Hóa & Hoàn Thiện Bài Viết ID 23 (Landing Page Chạy Google Ads Nên Thiết Kế Thế Nào Để Khách Bấm Gọi Ngay?)
+- **Mã sự kiện**: `content: standardize article 23 landing-page-chay-google-ads-nen-thiet-ke-nhu-the-nao`
+- **Chi tiết**:
+  - Tạo cấu trúc thư mục chuẩn tại `content/articles/landing-page-chay-google-ads-nen-thiet-ke-nhu-the-nao/`.
+  - Biên soạn `draft.md` chuẩn cấu trúc: Frontmatter đầy đủ, TL;DR Answer First, 1 H1, đúng 6 H2, bảng đối chiếu 6 tiêu chí giữa Trang chủ chung chung vs Landing Page ngách, phân tích chi tiết cấu trúc 6 khối vàng chốt cuộc gọi cho dịch vụ địa phương (Hero Section nhận diện trong 3 giây, Nút gọi nổi 1 chạm ghim đáy màn hình, Bảng giá niêm yết minh bạch, Bằng chứng ảnh thật thợ & xưởng, Cam kết bảo hành bằng văn bản, Bản đồ định vị Google Maps & bán kính phục vụ).
+  - Cung cấp checklist kiểm tra 6 khối cấu trúc bằng các hành động cụ thể trên di động.
+  - Hướng dẫn 4 kỹ thuật tối ưu tốc độ tải trang dưới 2 giây trên mạng di động 4G (nén ảnh WebP < 100KB, loại bỏ slider & hiệu ứng nặng, cắt giảm script bên thứ ba, dùng CDN máy chủ trong nước).
+  - Phần FAQ gồm 5 câu hỏi thực tế chuẩn H3.
+  - Tích hợp 3 liên kết nội bộ tự nhiên trỏ về `/landing-490k`, `/thiet-ke-website`, và `/bang-gia`.
+  - Tuân thủ 100% quy chuẩn chống AI slop, quy chuẩn GEO và phong cách "bác thợ hiểu được".
+  - Chạy `validate-content.cjs` đạt điểm tuyệt đối **100/100** (Word count: 2.397 từ, H1: 1, H2: 6, Tables: 2, Internal Links: 3).
+  - Chạy `markdown-to-cms.cjs` sinh tự động `article.json` và đồng bộ an toàn vào `content/seeds/drafts_30_articles.json` với trạng thái draft.
+
+### Mốc 21: Chuẩn Hóa & Hoàn Thiện Bài Viết ID 26 (CRM Đơn Giản Cho Doanh Nghiệp Nhỏ Nên Có Những Tính Năng Nào?)
+- **Mã sự kiện**: `content: standardize article 26 crm-don-gian-cho-doanh-nghiep-nho-nen-co-nhung-tinh-nang-nao`
+- **Chi tiết**:
+  - Tạo cấu trúc thư mục chuẩn tại `content/articles/crm-don-gian-cho-doanh-nghiep-nho-nen-co-nhung-tinh-nang-nao/`.
+  - Biên soạn `draft.md` đạt chuẩn cấu trúc (2.397 từ, nằm chuẩn trong dải 1600 - 2400 từ, 1 H1, đúng 6 H2, bảng đối chiếu 5 tính năng sống còn vs tính năng thừa thãi tốn tiền, bóc tách 5 tính năng hạt nhân, hướng dẫn làm CRM 0đ trên Google Sheet với 3 tab và công thức FILTER, khung quyết định khi nào nên nâng cấp phần mềm, và 4 câu hỏi FAQ chuẩn H3).
+  - Tích hợp liên kết nội bộ tự nhiên trỏ về `/thiet-ke-website` và bài pillar `/kien-thuc/crm-la-gi-doanh-nghiep-nho-co-can-crm-khong`.
+  - Tuân thủ 100% quy chuẩn chống AI slop, quy chuẩn GEO và phong cách ngôn ngữ thực tế cho hộ kinh doanh.
+  - Chạy `validate-content.cjs` đạt điểm tuyệt đối **100/100** (Pass Quality Gate).
+  - Chạy `markdown-to-cms.cjs` sinh tự động `article.json` và đồng bộ an toàn vào `content/seeds/drafts_30_articles.json` với trạng thái draft.
+
 ---
 
 ## Trạng Thái Hệ Thống Hiện Tại (Current System State)
@@ -186,4 +222,4 @@ Tài liệu này ghi nhận dòng thời gian các mốc cam kết (commits), s�
 - **Production Build**: Pass 100% (`tsc && vite build` hoàn tất không lỗi).
 - **Giao diện Quản trị**: Light mode hoàn chỉnh, màu nhận diện `#0d7647`, tuyệt đối không dùng glassmorphism, responsive mượt mà trên laptop 14" 125% scaling.
 - **Hệ thống API**: 100% endpoints backend trên Hono/Cloudflare Pages Functions hoạt động ổn định với thời gian phản hồi < 50ms.
-- **Bài viết đã chuẩn hóa Markdown Pipeline**: ID 1, ID 2, ID 4, ID 5, ID 6, ID 7, ID 9, ID 13, ID 15, ID 16, ID 18, ID 19, ID 21.
+- **Bài viết đã chuẩn hóa Markdown Pipeline**: ID 1, ID 2, ID 4, ID 5, ID 6, ID 7, ID 9, ID 13, ID 15, ID 16, ID 18, ID 19, ID 21, ID 22, ID 25, ID 26, ID 27.
