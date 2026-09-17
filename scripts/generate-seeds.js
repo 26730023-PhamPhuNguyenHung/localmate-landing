@@ -683,15 +683,8 @@ function buildTiptapDoc(item) {
       content: [{ type: 'text', text: headingText }]
     });
 
-    content.push({
-      type: 'paragraph',
-      content: [
-        {
-          type: 'text',
-          text: `Nội dung chi tiết cho mục "${headingText}" đang được biên tập theo tiêu chuẩn thực tế của LocalMate. Chúng tôi sẽ cập nhật các ví dụ cụ thể, số liệu thực chiến và hướng dẫn từng bước tại đây.`
-        }
-      ]
-    });
+    // Tuyệt đối không sinh đoạn văn placeholder / AI-filler. 
+    // Nếu chỉ có outline, để rỗng để hệ thống kiểm soát chất lượng (Quality Gate) chặn xuất bản.
   });
 
   // Closing CTA blockquote

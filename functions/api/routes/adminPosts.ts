@@ -134,6 +134,36 @@ adminPostsRoutes.post('/', async (c) => {
   const { wordCount, readTime } = calculateReadingTime(rawText);
 
   const status = ['draft', 'review', 'scheduled', 'published', 'archived'].includes(body.status) ? body.status : 'draft';
+
+  // Server-side Quality Gate: Block publish if placeholder or thin content
+  if (status === 'published') {
+    const lowerHtml = (rendered_html || '').toLowerCase();
+    const bannedPlaceholders = [
+      'đang được biên tập', 'sẽ cập nhật', 'nội dung chi tiết cho mục',
+      'hướng dẫn từng bước tại đây', 'chúng tôi sẽ cập nhật', 'lorem ipsum'
+    ];
+    for (const phrase of bannedPlaceholders) {
+      if (lowerHtml.includes(phrase)) {
+        return c.json({
+          success: false,
+          error: {
+            code: 'PUBLISH_BLOCKED',
+            message: `Xuất bản bị chặn: Bài viết còn chứa placeholder "${phrase}" chưa hoàn thiện.`
+          }
+        }, 400);
+      }
+    }
+    if (wordCount < 400) {
+      return c.json({
+        success: false,
+        error: {
+          code: 'PUBLISH_BLOCKED',
+          message: `Xuất bản bị chặn: Dung lượng bài viết quá mỏng (${wordCount} từ < 400 từ tối thiểu).`
+        }
+      }, 400);
+    }
+  }
+
   const author_id = body.author_id || 1;
   const category_id = body.category_id || 1;
   const featured_image_id = body.featured_image_id || null;
@@ -141,21 +171,35 @@ adminPostsRoutes.post('/', async (c) => {
   const scheduled_at = status === 'scheduled' ? (body.scheduled_at || null) : null;
   const brief_json = body.brief_json ? (typeof body.brief_json === 'string' ? body.brief_json : JSON.stringify(body.brief_json)) : null;
 
+  // GEO & Conversion fields
+  const geo_main_question = body.geo_main_question ? body.geo_main_question.trim() : null;
+  const geo_direct_answer = body.geo_direct_answer ? body.geo_direct_answer.trim() : null;
+  const geo_entities = body.geo_entities ? body.geo_entities.trim() : null;
+  const geo_sources = body.geo_sources ? body.geo_sources.trim() : null;
+  const geo_faq_json = body.geo_faq_json ? (typeof body.geo_faq_json === 'string' ? body.geo_faq_json : JSON.stringify(body.geo_faq_json)) : null;
+  const cta_id = body.cta_id ? parseInt(body.cta_id, 10) : null;
+  const schema_type = body.schema_type || 'Article';
+  const og_image_url = body.og_image_url || null;
+
   const insertSql = `
     INSERT INTO cms_posts (
       uuid, title, slug, excerpt, content_json, rendered_html,
       featured_image_id, status, author_id, category_id,
       published_at, scheduled_at,
       seo_title, seo_description, focus_keyword, canonical_url,
-      og_title, og_description, og_image_id, robots_index, robots_follow,
-      reading_time, word_count, revision_number, brief_json
+      og_title, og_description, og_image_id, og_image_url, robots_index, robots_follow,
+      reading_time, word_count, revision_number, brief_json,
+      geo_main_question, geo_direct_answer, geo_entities, geo_sources, geo_faq_json,
+      cta_id, schema_type
     ) VALUES (
       ?, ?, ?, ?, ?, ?,
       ?, ?, ?, ?,
       ?, ?,
       ?, ?, ?, ?,
+      ?, ?, ?, ?, ?, ?,
+      ?, ?, 1, ?,
       ?, ?, ?, ?, ?,
-      ?, ?, 1, ?
+      ?, ?
     )
   `;
 
@@ -164,10 +208,12 @@ adminPostsRoutes.post('/', async (c) => {
     featured_image_id, status, author_id, category_id,
     published_at, scheduled_at,
     body.seo_title || title, body.seo_description || body.excerpt || '', body.focus_keyword || '', body.canonical_url || `https://localmate.vn/kien-thuc/${slug}`,
-    body.og_title || title, body.og_description || body.excerpt || '', featured_image_id,
+    body.og_title || title, body.og_description || body.excerpt || '', featured_image_id, og_image_url,
     body.robots_index !== undefined ? (body.robots_index ? 1 : 0) : 1,
     body.robots_follow !== undefined ? (body.robots_follow ? 1 : 0) : 1,
-    readTime, wordCount, brief_json
+    readTime, wordCount, brief_json,
+    geo_main_question, geo_direct_answer, geo_entities, geo_sources, geo_faq_json,
+    cta_id, schema_type
   ).run();
 
   const newId = result.meta.last_row_id;
@@ -224,12 +270,52 @@ adminPostsRoutes.put('/:id', async (c) => {
   const { wordCount, readTime } = calculateReadingTime(rawText);
 
   const status = ['draft', 'review', 'scheduled', 'published', 'archived'].includes(body.status) ? body.status : existing.status;
+
+  // Server-side Quality Gate: Block publish if placeholder or thin content
+  if (status === 'published') {
+    const lowerHtml = (rendered_html || '').toLowerCase();
+    const bannedPlaceholders = [
+      'đang được biên tập', 'sẽ cập nhật', 'nội dung chi tiết cho mục',
+      'hướng dẫn từng bước tại đây', 'chúng tôi sẽ cập nhật', 'lorem ipsum'
+    ];
+    for (const phrase of bannedPlaceholders) {
+      if (lowerHtml.includes(phrase)) {
+        return c.json({
+          success: false,
+          error: {
+            code: 'PUBLISH_BLOCKED',
+            message: `Xuất bản bị chặn: Bài viết còn chứa placeholder "${phrase}" chưa hoàn thiện.`
+          }
+        }, 400);
+      }
+    }
+    if (wordCount < 400) {
+      return c.json({
+        success: false,
+        error: {
+          code: 'PUBLISH_BLOCKED',
+          message: `Xuất bản bị chặn: Dung lượng bài viết quá mỏng (${wordCount} từ < 400 từ tối thiểu).`
+        }
+      }, 400);
+    }
+  }
+
   const published_at = status === 'published' ? (existing.published_at || new Date().toISOString()) : existing.published_at;
   const scheduled_at = status === 'scheduled' ? (body.scheduled_at || existing.scheduled_at) : null;
   const category_id = body.category_id || existing.category_id;
   const featured_image_id = body.featured_image_id !== undefined ? body.featured_image_id : existing.featured_image_id;
   const newRevisionNumber = (existing.revision_number || 1) + 1;
   const brief_json = body.brief_json ? (typeof body.brief_json === 'string' ? body.brief_json : JSON.stringify(body.brief_json)) : existing.brief_json;
+
+  // GEO & Conversion fields
+  const geo_main_question = body.geo_main_question !== undefined ? (body.geo_main_question ? body.geo_main_question.trim() : null) : existing.geo_main_question;
+  const geo_direct_answer = body.geo_direct_answer !== undefined ? (body.geo_direct_answer ? body.geo_direct_answer.trim() : null) : existing.geo_direct_answer;
+  const geo_entities = body.geo_entities !== undefined ? (body.geo_entities ? body.geo_entities.trim() : null) : existing.geo_entities;
+  const geo_sources = body.geo_sources !== undefined ? (body.geo_sources ? body.geo_sources.trim() : null) : existing.geo_sources;
+  const geo_faq_json = body.geo_faq_json !== undefined ? (typeof body.geo_faq_json === 'string' ? body.geo_faq_json : JSON.stringify(body.geo_faq_json)) : existing.geo_faq_json;
+  const cta_id = body.cta_id !== undefined ? (body.cta_id ? parseInt(body.cta_id, 10) : null) : existing.cta_id;
+  const schema_type = body.schema_type || existing.schema_type || 'Article';
+  const og_image_url = body.og_image_url !== undefined ? body.og_image_url : existing.og_image_url;
 
   // Create revision snapshot if post is published or was published
   if (existing.status === 'published' || status === 'published') {
@@ -249,9 +335,11 @@ adminPostsRoutes.put('/:id', async (c) => {
       featured_image_id = ?, status = ?, category_id = ?,
       published_at = ?, scheduled_at = ?, updated_at = CURRENT_TIMESTAMP,
       seo_title = ?, seo_description = ?, focus_keyword = ?, canonical_url = ?,
-      og_title = ?, og_description = ?, og_image_id = ?,
+      og_title = ?, og_description = ?, og_image_id = ?, og_image_url = ?,
       robots_index = ?, robots_follow = ?,
-      reading_time = ?, word_count = ?, revision_number = ?, brief_json = ?
+      reading_time = ?, word_count = ?, revision_number = ?, brief_json = ?,
+      geo_main_question = ?, geo_direct_answer = ?, geo_entities = ?, geo_sources = ?, geo_faq_json = ?,
+      cta_id = ?, schema_type = ?
     WHERE id = ?
   `;
 
@@ -260,10 +348,12 @@ adminPostsRoutes.put('/:id', async (c) => {
     featured_image_id, status, category_id,
     published_at, scheduled_at,
     body.seo_title || title, body.seo_description || body.excerpt || '', body.focus_keyword || '', body.canonical_url || `https://localmate.vn/kien-thuc/${slug}`,
-    body.og_title || title, body.og_description || body.excerpt || '', featured_image_id,
+    body.og_title || title, body.og_description || body.excerpt || '', featured_image_id, og_image_url,
     body.robots_index !== undefined ? (body.robots_index ? 1 : 0) : 1,
     body.robots_follow !== undefined ? (body.robots_follow ? 1 : 0) : 1,
     readTime, wordCount, newRevisionNumber, brief_json,
+    geo_main_question, geo_direct_answer, geo_entities, geo_sources, geo_faq_json,
+    cta_id, schema_type,
     id
   ).run();
 

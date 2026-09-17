@@ -225,6 +225,43 @@ export const PostEditorPage: React.FC<PostEditorPageProps> = ({ postId }) => {
 
     const finalStatus = targetStatus || status;
 
+    // Strict Anti-AI Slop & Placeholder Guardrails: BLOCK PUBLISH if incomplete
+    if (finalStatus === 'published') {
+      const lowerContent = (renderedHtml || '').toLowerCase();
+      const placeholderErrors: string[] = [];
+
+      const bannedPatterns = [
+        { term: 'đang được biên tập', desc: 'Chứa câu placeholder "đang được biên tập"' },
+        { term: 'sẽ cập nhật', desc: 'Chứa câu hứa hẹn "sẽ cập nhật"' },
+        { term: 'nội dung chi tiết cho mục', desc: 'Chứa filler "nội dung chi tiết cho mục..."' },
+        { term: 'hướng dẫn từng bước tại đây', desc: 'Chứa placeholder "hướng dẫn từng bước tại đây"' },
+        { term: 'chúng tôi sẽ cập nhật', desc: 'Chứa placeholder "chúng tôi sẽ cập nhật"' },
+        { term: 'lorem ipsum', desc: 'Chứa văn bản mẫu Lorem Ipsum' }
+      ];
+
+      for (const p of bannedPatterns) {
+        if (lowerContent.includes(p.term)) {
+          placeholderErrors.push(p.desc);
+        }
+      }
+
+      if (wordCount < 400) {
+        placeholderErrors.push(`Bài viết quá mỏng (${wordCount} từ < 400 từ tối thiểu)`);
+      }
+
+      if (placeholderErrors.length > 0) {
+        alert(
+          `❌ XUẤT BẢN BỊ CHẶN (QUALITY GATE BLOCK):\n\n` +
+          `Bài viết chưa đủ điều kiện xuất bản do các lỗi sau:\n` +
+          placeholderErrors.map(e => `• ${e}`).join('\n') +
+          `\n\nVui lòng hoàn tất nội dung nghiệp vụ thực tế trước khi xuất bản!`
+        );
+        setIsSaving(false);
+        setSaveStatus('unsaved');
+        return;
+      }
+    }
+
     const payload: Partial<PostEntity> = {
       title: title.trim(),
       slug: slug.trim(),
