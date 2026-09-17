@@ -16,8 +16,439 @@
 .geo-hero-art{width:61%;right:17%;bottom:-24px;mask-image:linear-gradient(to bottom,transparent 0%,#000 22%,#000 90%,transparent 100%),linear-gradient(to right,transparent,#000 15%,#000 87%,transparent);mask-composite:intersect}
 .geo-cta-art{width:49%;right:25%;bottom:-18px;mask-image:linear-gradient(to bottom,transparent 0%,#000 26%,#000 92%,transparent),linear-gradient(to right,transparent,#000 18%,#000 86%,transparent);mask-composite:intersect}
 .geo-value{background-image:linear-gradient(#f3fbf7bb,#f3fbf766),url('/geo/pricing-scene.png')}
-@media(min-width:1251px){.geo-hero h1{font-size:41px;letter-spacing:-2px;line-height:1.27}.geo-hero h1 strong{font-size:48px}.geo-hero>.geo-container{min-height:calc(100svh - 88px);padding-bottom:30px}.geo-lead-card h2{font-size:34px}.geo-hero .geo-intro{max-width:635px!important}.geo-hero-art{bottom:-60px}.geo-closing h2{font-size:45px}.geo-closing .geo-intro{max-width:580px!important}}
+@media(min-width:1541px) and (min-height:861px){.geo-hero h1{font-size:41px;letter-spacing:-2px;line-height:1.27}.geo-hero h1 strong{font-size:48px}.geo-hero>.geo-container{min-height:calc(100svh - 88px);padding-bottom:30px}.geo-lead-card h2{font-size:34px}.geo-hero .geo-intro{max-width:635px!important}.geo-hero-art{bottom:-60px}.geo-closing h2{font-size:45px}.geo-closing .geo-intro{max-width:580px!important}}
 @media(max-width:640px){.geo-hero-art{width:130%;right:-20%;bottom:auto;top:370px}.geo-cta-art{width:140%;right:-26%;bottom:auto;top:365px}}
+
+/* Laptop & Windows 125% Scale Optimization (1001px - 1540px or height <= 860px) */
+@media (min-width: 1001px) and (max-width: 1540px), (min-width: 1001px) and (max-height: 860px) {
+  .geo-container { width: calc(100% - 64px); max-width: 1360px; }
+  .geo-page section { scroll-margin-top: 74px; }
+  
+  /* Header */
+  .geo-header { height: 72px; border-radius: 0 0 18px 18px; }
+  .geo-header img { width: 180px; height: 62px; }
+  .geo-header nav { gap: 18px; font-size: 13.5px; }
+  .geo-phone { padding: 8px 14px; font-size: 13px; }
+  .geo-header-quote { font-size: 12.5px; padding: 8px 15px; min-height: 42px; border-radius: 13px; }
+  .geo-badge { font-size: 12px; padding: 7px 16px; gap: 8px; }
+  
+  /* Hero Section */
+  .geo-hero > .geo-container {
+    min-height: calc(100svh - 72px);
+    padding: 16px 0 20px;
+    gap: 24px;
+    align-items: center;
+  }
+  .geo-hero h1 {
+    font-size: clamp(27px, 2.25vw, 35px);
+    line-height: 1.22;
+    margin: 10px 0 8px;
+    letter-spacing: -0.04em;
+  }
+  .geo-hero h1 strong {
+    font-size: 1.08em;
+    margin-top: 3px;
+  }
+  .geo-intro {
+    font-size: 15px !important;
+    line-height: 1.5;
+    max-width: 530px !important;
+  }
+  .geo-platforms {
+    margin: 14px 0 16px;
+    gap: 8px;
+  }
+  .geo-platform {
+    min-width: 90px;
+    max-width: 112px;
+    min-height: 78px;
+    padding: 8px 6px;
+    border-radius: 14px;
+    font-size: 11px;
+    gap: 4px;
+  }
+  .geo-platform-icon {
+    height: 30px;
+    width: 30px;
+  }
+  .geo-platform-img {
+    width: 28px;
+    height: 28px;
+  }
+  .geo-platform span:last-child {
+    min-height: 24px;
+    font-size: 10.5px;
+    line-height: 1.15;
+  }
+  .geo-proofs {
+    gap: 12px;
+    max-width: 520px;
+  }
+  .geo-proofs > div {
+    gap: 8px;
+  }
+  .geo-proofs > div > span {
+    width: 36px;
+    height: 36px;
+  }
+  .geo-proofs > div > span svg {
+    width: 18px;
+    height: 18px;
+  }
+  .geo-proofs p {
+    font-size: 11.5px;
+    line-height: 1.4;
+  }
+  .geo-handwritten {
+    font-size: 16px !important;
+    margin-top: 12px !important;
+  }
+  .geo-hero-art {
+    width: 54%;
+    right: 18%;
+    bottom: -20px;
+  }
+  
+  /* Lead Form Card */
+  .geo-lead-card {
+    padding: 18px 22px 16px;
+    border-radius: 20px;
+  }
+  .geo-lead-card .geo-badge {
+    font-size: 11px;
+    padding: 6px 12px;
+  }
+  .geo-lead-card h2 {
+    font-size: clamp(21px, 1.7vw, 25px);
+    margin: 8px 0 5px;
+  }
+  .geo-lead-card > p {
+    font-size: 13px;
+    line-height: 1.45;
+  }
+  .geo-checkpoints {
+    margin: 8px 0 10px;
+    gap: 5px;
+  }
+  .geo-checkpoints li {
+    font-size: 11.5px;
+    line-height: 1.35;
+    gap: 7px;
+  }
+  .geo-checkpoints svg {
+    width: 16px;
+    height: 16px;
+    padding: 2px;
+  }
+  .geo-lead-card form {
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .geo-input {
+    min-height: 42px;
+    padding: 0 12px;
+    border-radius: 12px;
+    gap: 8px;
+  }
+  .geo-input input {
+    height: 40px;
+    font-size: 12.5px;
+  }
+  .geo-lead-card .geo-button {
+    min-height: 44px;
+    font-size: 15px;
+    padding: 8px 16px;
+    border-radius: 13px;
+  }
+  .geo-lead-card .geo-form-privacy {
+    margin-top: 7px;
+    font-size: 10.5px;
+  }
+  
+  /* Section 2 - Pricing */
+  .geo-pricing {
+    padding: 14px 0 12px;
+    min-height: calc(100svh - 72px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .geo-section-heading h2 {
+    font-size: clamp(25px, 2.1vw, 32px);
+    margin: 4px 0 3px;
+  }
+  .geo-section-heading > p {
+    font-size: 14.5px;
+  }
+  .geo-section-heading .geo-heading-note {
+    font-size: 12px;
+    margin-top: 2px;
+  }
+  .geo-price-grid {
+    margin: 12px auto 8px;
+    gap: 12px;
+    max-width: 1120px;
+  }
+  .geo-price-card {
+    padding: 13px 15px 11px;
+    border-radius: 18px;
+  }
+  .geo-popular {
+    top: -13px;
+    font-size: 11px;
+    padding: 3px 12px;
+  }
+  .geo-price-heading {
+    gap: 10px;
+    margin-bottom: 7px;
+  }
+  .geo-price-heading .geo-icon-tile {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+  }
+  .geo-price-heading .geo-icon-tile svg {
+    width: 22px;
+    height: 22px;
+  }
+  .geo-price-heading h3 {
+    font-size: 17.5px;
+  }
+  .geo-price-heading p {
+    font-size: 10.5px;
+    margin-top: 2px;
+  }
+  .geo-price-card .geo-price {
+    font-size: 23px;
+    letter-spacing: -0.7px;
+  }
+  .geo-price small {
+    font-size: 12.5px;
+  }
+  .geo-price-card .geo-price-note {
+    font-size: 10.5px;
+    margin: 2px 0 6px;
+  }
+  .geo-price-card ul {
+    margin: 0 0 8px;
+    gap: 3.5px;
+  }
+  .geo-price-card li {
+    font-size: 11px;
+    line-height: 1.3;
+    gap: 6px;
+  }
+  .geo-price-card li svg {
+    width: 15px;
+    height: 15px;
+    padding: 2px;
+  }
+  .geo-price-card .geo-button {
+    min-height: 36px;
+    font-size: 12.5px;
+    padding: 5px 10px;
+    border-radius: 11px;
+  }
+  .geo-reassurance {
+    margin: 7px auto 0;
+    padding: 7px 16px;
+    border-radius: 15px;
+    gap: 12px;
+    max-width: 820px;
+  }
+  .geo-reassurance .geo-icon-tile {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+  }
+  .geo-reassurance .geo-icon-tile svg {
+    width: 18px;
+    height: 18px;
+  }
+  .geo-reassurance p {
+    font-size: 11.5px;
+    line-height: 1.35;
+  }
+  
+  /* Section 3 - Value */
+  .geo-value {
+    padding: 14px 0 12px;
+    min-height: calc(100svh - 72px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .geo-value-heading h2 {
+    font-size: clamp(23px, 1.9vw, 28px);
+    margin: 4px 0 3px;
+  }
+  .geo-value-heading > p {
+    font-size: 12.5px;
+    line-height: 1.35;
+  }
+  .geo-query-grid {
+    padding: 6px 0 8px 0;
+    gap: 7px;
+  }
+  .geo-query-card {
+    min-height: 78px;
+    padding: 9px 10px 8px 22px;
+    font-size: 11px !important;
+    border-radius: 13px;
+    line-height: 1.3;
+  }
+  .geo-quote-mark {
+    font-size: 24px;
+    left: 5px;
+    top: 1px;
+  }
+  .geo-query-arrow {
+    width: 20px;
+    height: 20px;
+    padding: 3px;
+  }
+  .geo-ai-scene {
+    padding: 3px 0 3px 8px;
+  }
+  .geo-answer {
+    padding: 10px 12px;
+    border-radius: 16px;
+    border-width: 3px;
+  }
+  .geo-search-line {
+    padding: 5px 7px;
+    font-size: 8px;
+  }
+  .geo-answer .geo-answer-label {
+    font-size: 8.5px;
+    margin: 5px 0 3px;
+  }
+  .geo-answer-business {
+    padding: 5px 7px;
+    font-size: 10.5px;
+    border-radius: 9px;
+    gap: 5px;
+  }
+  .geo-answer-business img {
+    width: 40px;
+    height: 22px;
+  }
+  .geo-answer-business p {
+    font-size: 8.5px;
+    margin-top: 2px;
+  }
+  .geo-answer-skeleton {
+    margin: 5px 0 0 26px;
+    gap: 3px;
+  }
+  .geo-answer-skeleton i {
+    height: 5px;
+  }
+  .geo-features {
+    gap: 7px;
+    padding-top: 0;
+  }
+  .geo-feature {
+    min-height: 68px;
+    padding: 8px 11px;
+    border-radius: 15px;
+    gap: 9px;
+  }
+  .geo-feature .geo-icon-tile {
+    width: 38px;
+    height: 38px;
+  }
+  .geo-feature .geo-icon-tile svg {
+    width: 19px;
+    height: 19px;
+  }
+  .geo-feature h3 {
+    font-size: 14.5px;
+    margin-bottom: 2px;
+  }
+  .geo-feature p {
+    font-size: 10.5px;
+    line-height: 1.3;
+  }
+  .geo-audit-strip {
+    width: 86%;
+    padding: 9px 16px;
+    border-radius: 16px;
+    gap: 12px;
+  }
+  .geo-audit-strip .geo-icon-tile {
+    width: 38px;
+    height: 38px;
+  }
+  .geo-audit-strip .geo-icon-tile svg {
+    width: 20px;
+    height: 20px;
+  }
+  .geo-audit-strip h3 {
+    font-size: 15.5px;
+    margin-bottom: 2px;
+  }
+  .geo-audit-strip p {
+    font-size: 10.5px;
+  }
+  .geo-audit-strip .geo-button {
+    font-size: 12.5px;
+    min-height: 35px;
+    padding: 5px 13px;
+    border-radius: 11px;
+  }
+  .geo-value-signoff {
+    font-size: 8.5px !important;
+    letter-spacing: 1.5px;
+    margin-top: 3px;
+  }
+  
+  /* Section 4 - Closing */
+  .geo-closing > .geo-container {
+    padding: 16px 0;
+    min-height: calc(100svh - 72px);
+    align-items: center;
+    gap: 22px;
+  }
+  .geo-closing h2 {
+    font-size: clamp(25px, 2.1vw, 32px);
+    margin: 8px 0 5px;
+  }
+  .geo-closing .geo-intro {
+    font-size: 14px !important;
+  }
+  
+  /* Footer */
+  .geo-footer {
+    padding: 16px 0 0;
+  }
+  .geo-footer-grid {
+    gap: 18px;
+  }
+  .geo-footer-brand img {
+    width: 200px;
+    height: 78px;
+  }
+  .geo-footer h3 {
+    font-size: 13.5px;
+    margin: 10px 0 6px;
+  }
+  .geo-footer p, .geo-footer a {
+    font-size: 11px;
+    line-height: 1.45;
+  }
+  .geo-footer-promise {
+    padding: 8px 14px;
+    margin: 14px auto 0;
+  }
+  .geo-footer-promise p {
+    font-size: 11px;
+  }
+  .geo-footer-bottom {
+    margin-top: 12px;
+    padding: 8px 0;
+  }
+}
 
 
 /* Visual correction pass 2: give mobile art its own layout row. */

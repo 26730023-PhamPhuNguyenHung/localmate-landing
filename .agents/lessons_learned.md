@@ -1,5 +1,25 @@
 # BÀI HỌC VÀ LƯU Ý KỸ THUẬT (LESSONS LEARNED & BUG MEMORY)
 
+## [2026-09-17] — Thiết Kế Giao Diện Viewport-Fit Cho Màn Hình Laptop Windows Scale 125% (1536x864 / Usable Height 700-750px)
+- **Vấn đề cốt lõi phát hiện:**
+  - Hầu hết laptop chạy Windows (màn hình Full HD 1920x1080) có tỷ lệ hiển thị mặc định của Windows là **125%**.
+  - Tỷ lệ này tạo ra kích thước CSS là `1536px width x 864px height`.
+  - Trừ đi thanh Taskbar của Windows (~40–48 CSS px) cùng thanh tab, thanh địa chỉ và bookmark bar của Google Chrome (~120–140 CSS px), **chiều cao viewport khả dụng thực tế trong trình duyệt chỉ còn từ 680px đến 750px**.
+  - Nếu CSS chỉ tối ưu theo width (ví dụ: `@media (min-width: 1251px)` cho font to 41–48px) và để Header cao 88px, padding container 100px, chiều cao section sẽ phình to lên `813px – 880px`. Hậu quả: nút CTA dưới đáy form bị cắt cụt, card giá không xem hết trong 1 màn hình và thanh cam kết bị tràn mép dưới.
+- **Kỹ thuật & Giải pháp chuẩn hóa:**
+  1. *Breakpoint Kép Kết Hợp Chiều Rộng và Chiều Cao*:
+     - Luôn sử dụng: `@media (min-width: 1001px) and (max-width: 1540px), (min-width: 1001px) and (max-height: 860px)`.
+     - Chỉ áp dụng typography cỡ đại (H1 41px–48px, Card 34px) cho các màn hình thật sự lớn cả về ngang lẫn dọc: `@media (min-width: 1541px) and (min-height: 861px)`.
+  2. *Header Viewport Optimization*:
+     - Giảm chiều cao Header trên laptop từ 88px xuống **72px** (`border-radius: 0 0 18px 18px`), logo 180x62px. Tiết kiệm ngay 16px quý giá cho nội dung chính.
+  3. *Tỷ lệ Thu Gọn Cân Đối Cho Form và Thẻ Giá*:
+     - Form Input: Giảm từ min-height 53px xuống **42–44px**, font 12.5px.
+     - CTA Button: Giảm từ min-height 54px xuống **44–46px**, font 15px.
+     - Spacing & Margin: Giảm margin giữa các khối từ 28–36px xuống **12–16px**.
+     - Thẻ Lead Card giảm tổng chiều cao từ 650px xuống **449px**, giúp đáy thẻ nằm ở mốc 585px (dư hơn 165px an toàn trên màn hình 750px).
+  4. *Flex Vertical Center Cho Single-Screen Sections*:
+     - Các section thiết kế theo định hướng 1-Screen Viewport (`.geo-pricing`, `.geo-value`): Dùng `min-height: calc(100svh - 72px); display: flex; flex-direction: column; justify-content: center;`. Toàn bộ nội dung tự động căn giữa dọc hoàn hảo, không bị đè bởi sticky header hay tràn mép dưới.
+
 ## [2026-09-17] — Tối Giản Visual Hierarchy: Loại Bỏ Ảnh Bitmap Thừa Trùng Lặp Background & Cân Chỉnh Trục Ngang (Baseline Alignment) Thẻ Icon-Text Nhiều Dòng
 - **Vấn đề phát sinh thực tế:**
   1. *Ảnh Bitmap Thừa Đè Nền*: Trong Section 3 ("Vì sao doanh nghiệp cần Localmate?"), background của section đã sử dụng ảnh phối cảnh `pricing-scene.png`. Việc nhét thêm một ảnh `value-scene.png` độ phân giải lớn đè lên khiến giao diện bị rối mắt, trùng lặp chi tiết minh họa và đẩy card trả lời AI (`.geo-answer`) tụt xuống đáy, tạo khoảng trống thừa bất hợp lý.

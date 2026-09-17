@@ -2,6 +2,29 @@
 
 Ghi nhận các mốc sự kiện, commit và trạng thái vận hành của dự án.
 
+## [2026-09-17] - Tối Ưu Toàn Diện Viewport Laptop & Windows Scale 125% Cho Trang Đích (/geo)
+- **Bối cảnh & Vấn đề thực tế**:
+  - Màn hình laptop phổ biến (Full HD 1920x1080 cài đặt tỷ lệ hiển thị Windows Scale 125%) có viewport CSS thực tế là `1536 x 864`. Khi tính cả thanh Taskbar và thanh công cụ Chrome, chiều cao khả dụng chỉ còn khoảng `700px – 750px`.
+  - Trên các màn hình này, Header cũ cao 88px cùng padding/margin lớn đẩy chiều cao các section lên `813px – 880px`, khiến:
+    1. *Section Hero*: Nút bấm CTA chính ("Kiểm tra ngay miễn phí") và dòng bảo mật ở chân form bị tràn mép đáy hoặc cắt cụt.
+    2. *Section Pricing*: Tiêu đề bị Header đè một phần và thanh cam kết đáy màn hình bị cắt mất 130px.
+    3. *Section Value*: Thẻ câu hỏi và thanh kiểm tra bị đẩy tràn khỏi màn hình laptop.
+- **Giải pháp Kỹ thuật & Thực thi**:
+  1. *Thiết lập Breakpoint Chuyên biệt cho Laptop & Scale 125%*:
+     - Bổ sung `@media (min-width: 1001px) and (max-width: 1540px), (min-width: 1001px) and (max-height: 860px)`.
+     - Header tinh gọn: Giảm từ 88px xuống 72px (`border-radius: 0 0 18px 18px`), logo 180x62px, menu gọn gàng, tiết kiệm 16px quý giá.
+  2. *Tối ưu Viewport-Fit Toàn Diện*:
+     - *Hero Section*: Container giảm padding dọc xuống 16px/20px, font H1 fluid `clamp(27px, 2.25vw, 35px)`, các thẻ platform 78px, Lead Card giảm chiều cao từ 650px xuống ~449px (đáy thẻ nằm ở 585px trên viewport 750px, dư 165px an toàn, 100% không bị che khuất).
+     - *Pricing Section*: Căn giữa dọc `min-height: calc(100svh - 72px)`, padding thẻ giá 13px 15px, tiêu đề 25-32px, chiều cao toàn bộ section giảm từ 880px xuống đúng 678px -> Vừa khít 100% trong 1 màn hình laptop không cần cuộn dở dang.
+     - *Value Section*: Giảm chiều cao từ 813px xuống 678px, 4 card query 78px, thẻ mô phỏng AI và thanh Audit Strip hiển thị trọn vẹn, thanh thoát.
+  3. *Export, Build & Deploy Production*:
+     - Re-export HTML đồng bộ vào `public/landing-geo.html` và `public/geo/index.html`.
+     - `npm run build` PASS 100% (tsc & vite build).
+     - Deploy lên Cloudflare Pages (`localmate-vn`) phục vụ tức thì tại `https://localmate.vn/geo`.
+- **Nghiệm thu**:
+  - Playwright visual verification: Đo đạc và chụp ảnh tại các viewports laptop thực tế: `1536x750` (1080p @ 125%), `1366x680` (Laptop 14 inch) và `390x844` (Mobile).
+  - Cả 3 section chính (Hero, Pricing, Value) đều nằm vừa vặn, cân đối 100% trong một khung nhìn màn hình laptop. Không còn hiện tượng cắt chữ hay đè mép.
+
 ## [2026-09-17] - Tinh Chỉnh Hero Logo Gemini & Xóa Ảnh Thừa value-scene.png Tại Section 3 (/geo)
 - **Bối cảnh & Yêu cầu**:
   1. Thay thế logo Google AI Overview bằng logo Google Gemini đa sắc ở Hero Section vì logo cũ nét mảnh, màu nhạt và lệch tỷ lệ quang học so với 3 card còn lại.
