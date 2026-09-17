@@ -34,7 +34,7 @@ cms:
   last_synced_at: "2026-09-17T12:50:00+07:00"
 ---
 
-> **TL;DR (Answer First)**: Google Maps cho doanh nghiệp (tên chính thức là Google Business Profile) là công cụ miễn phí từ Google, cho phép cơ sở kinh doanh hiển thị thông tin thực thể (tên tiệm, địa chỉ, hotline, giờ mở cửa, ảnh xưởng thợ và đánh giá khách hàng) trực tiếp trên bản đồ và khối Local 3-Pack. Khi người dùng cần dịch vụ gấp trong bán kính 2-10km (như sửa điện nước, sửa xe, khám răng hay ăn uống), Top 3 Google Maps là điểm chạm quyết định khách bấm gọi hoặc chỉ đường ngay lập tức. Để thành công bền vững, hộ kinh doanh cần tuân thủ 4 nguyên tắc: xác minh chính chủ bằng video thực địa, chọn đúng danh mục chính, đồng nhất thông tin thực thể NAP (Tên - Địa chỉ - Điện thoại) và kết nối đồng bộ với website doanh nghiệp.
+> **Tóm tắt nhanh**: Google Maps cho doanh nghiệp (tên chính thức là Google Business Profile) là công cụ miễn phí từ Google, cho phép cơ sở kinh doanh hiển thị thông tin thực thể (tên tiệm, địa chỉ, hotline, giờ mở cửa, ảnh xưởng thợ và đánh giá khách hàng) trực tiếp trên bản đồ và khối Local 3-Pack. Khi người dùng cần dịch vụ gấp trong bán kính 2-10km (như sửa điện nước, sửa xe, khám răng hay ăn uống), Top 3 Google Maps là điểm chạm quyết định khách bấm gọi hoặc chỉ đường ngay lập tức. Để thành công bền vững, hộ kinh doanh cần tuân thủ 4 nguyên tắc: xác minh chính chủ bằng video thực địa, chọn đúng danh mục chính, đồng nhất thông tin thực thể NAP (Tên - Địa chỉ - Điện thoại) và kết nối đồng bộ với website doanh nghiệp.
 
 # Google Maps cho doanh nghiệp: Hướng dẫn từ A đến Z cho hộ kinh doanh
 

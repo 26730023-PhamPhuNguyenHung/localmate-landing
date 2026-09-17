@@ -39,7 +39,7 @@ cms:
   last_synced_at: "2026-09-17T13:00:00+07:00"
 ---
 
-> **TL;DR (Answer First)**: SEO địa phương (Local SEO) qua hệ thống Trang đích Địa phương (Location Pages) giúp cơ sở kinh doanh xuất hiện trên top tìm kiếm Google tại từng quận, huyện cụ thể. Thay vì phụ thuộc vào 1 trang chủ duy nhất, doanh nghiệp xây dựng các trang chuyên biệt theo từng khu vực để đón khách cần dịch vụ gấp. Một Location Page chuẩn chuyển đổi cần 5 yếu tố thực địa: (1) Danh sách trục đường phục vụ; (2) Bản đồ Google Maps nhúng đúng tọa độ; (3) Ảnh thợ và công trình thật tại địa bàn; (4) Báo giá dịch vụ minh bạch kèm phụ phí cự ly; (5) Khai báo Schema LocalBusiness. Mô hình này giúp doanh nghiệp nhận cuộc gọi đều đặn mà không vi phạm lỗi trang ngõ (Doorway Pages).
+> **Tóm tắt nhanh**: SEO địa phương (Local SEO) qua hệ thống Trang đích Địa phương (Location Pages) giúp cơ sở kinh doanh xuất hiện trên top tìm kiếm Google tại từng quận, huyện cụ thể. Thay vì phụ thuộc vào 1 trang chủ duy nhất, doanh nghiệp xây dựng các trang chuyên biệt theo từng khu vực để đón khách cần dịch vụ gấp. Một Location Page chuẩn chuyển đổi cần 5 yếu tố thực địa: (1) Danh sách trục đường phục vụ; (2) Bản đồ Google Maps nhúng đúng tọa độ; (3) Ảnh thợ và công trình thật tại địa bàn; (4) Báo giá dịch vụ minh bạch kèm phụ phí cự ly; (5) Khai báo Schema LocalBusiness. Mô hình này giúp doanh nghiệp nhận cuộc gọi đều đặn mà không vi phạm lỗi trang ngõ (Doorway Pages).
 
 # Cách SEO doanh nghiệp lên Google tại khu vực địa phương: Cẩm nang Location Pages
 

@@ -159,7 +159,6 @@ export const ArticlesIndexPage: React.FC<ArticlesIndexPageProps> = ({ onOpenCons
       list = list.filter((a) => 
         a.title.toLowerCase().includes(q) ||
         a.excerpt.toLowerCase().includes(q) ||
-        a.seo.focusKeyword.toLowerCase().includes(q) ||
         a.category.toLowerCase().includes(q)
       );
     }

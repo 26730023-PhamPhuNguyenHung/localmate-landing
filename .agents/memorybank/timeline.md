@@ -6,6 +6,22 @@ Tài liệu này ghi nhận dòng thời gian các mốc cam kết (commits), s�
 
 ## Mốc Sự Kiện & Commits Gần Nhất
 
+### Mốc: Article UX Audit & Refactor — Editorial Layout, Slim Navigation & Asymmetric 2-Column Grid
+- **Mã commit**: Pending
+- **Nội dung**: `refactor(article-ux): implement editorial layout, slim breadcrumb bar, byline metadata, and responsive sticky sidebar TOC`
+- **Chi tiết**:
+  - `src/components/ui/Breadcrumbs.tsx`: Thêm prop `noMargin={true}` để loại bỏ khoảng trắng 24px thừa thãi khi lồng trong top header bar.
+  - `src/components/article/ArticleHeader.tsx`: Cân đối tỷ lệ typography editorial, giảm H1 xuống `clamp(1.5rem, 2.75vw, 2.15rem)` chống chiếm nửa màn hình laptop 1366x768 / 1440x900.
+  - `src/components/article/ArticleMeta.tsx`: Loại bỏ phong cách dashboard card, chuyển sang editorial byline với avatar tròn 36px, ngày cập nhật, thời gian đọc và nút chia sẻ ghost button nhỏ gọn.
+  - `src/components/article/ArticleSummary.tsx`: Khử viền xanh dày 2px thô ráp kiểu SEO tool, chuyển thành khối Callout tạp chí cao cấp với viền trái 3px `#0d7647`, nền `#f8fafc`.
+  - `src/pages/ArticleDetailPage.tsx`:
+    - Thanh điều hướng mỏng `.article-top-bar` tiết kiệm 50px vertical space.
+    - Tích hợp `ReadingProgressBar` đỉnh trang.
+    - Kiến trúc Grid 2 cột: Cột nội dung chính 760px chuẩn typography đọc sách báo; cột phụ Sidebar 280px sticky chứa `TableOfContents` và Quick Consultation Card.
+    - Trên mobile/tablet (< 1080px): Sidebar ẩn, TOC hiển thị ở đầu bài dạng accordion thu gọn (`defaultCollapsed={true}`) không chặn đứng luồng đọc.
+  - `src/styles/globals.css`: Bổ sung `.article-layout-grid`, `.article-main-column`, `.article-sidebar-column`, `.article-mobile-toc-container`.
+  - Kiểm thử `npm run build` PASS 100%, 0 warning.
+
 ### Mốc: Triển Khai Hoàn Thiện Public Routes & Page Components (/kien-thuc & /kien-thuc/:slug)
 - **Mã commit**: Pending
 - **Nội dung**: `feat(public-routes): implement ArticlesIndexPage and ArticleDetailPage with 5 topic clusters, real-time search, TL;DR, and interactive FAQ`
@@ -274,11 +290,31 @@ Tài liệu này ghi nhận dòng thời gian các mốc cam kết (commits), s�
   - Chạy `validate-content.cjs` đạt điểm tuyệt đối **100/100** (Pass Quality Gate).
   - Chạy `markdown-to-cms.cjs` sinh tự động `article.json` với 6 mục FAQ được bóc tách chuẩn xác và đồng bộ an toàn vào `content/seeds/drafts_30_articles.json` với trạng thái draft.
 
+### Mốc 23: Chuẩn Hóa Hệ Thống Typography & Editorial Prose System Cho Nội Dung Bài Viết
+- **Mã sự kiện**: `feat(typography): standardize article body prose system and ArticleBody component`
+- **Chi tiết**:
+  - Chuẩn hóa component `src/components/article/ArticleBody.tsx` đáp ứng 100% tiêu chuẩn thiết kế:
+    - Container `.article-body` và `.article-rendered-content`: `max-width: 760px`, `margin-inline: auto` (tỷ lệ chuẩn vàng 65-75 ký tự/dòng chống mỏi mắt).
+    - Body text: `font-size: clamp(1.0625rem, 1.4vw, 1.125rem)` (17-18px), `line-height: 1.8`, màu chữ `#1e293b`.
+    - Paragraph spacing: `margin-bottom: 1.4em`, `text-wrap: pretty`.
+    - Heading 2: `font-size: clamp(1.5rem, 2.5vw, 1.75rem)` (24-28px), `font-weight: 750`, `margin-top: 2.5rem`, `margin-bottom: 1rem`, `border-bottom: 1px solid #f1f5f9` tinh tế, `scroll-margin-top: 85px` chống che khuất khi nhảy từ TOC.
+    - Heading 3: `font-size: clamp(1.25rem, 1.8vw, 1.35rem)` (20-22px), `font-weight: 700`, `margin-top: 1.8rem`, `margin-bottom: 0.75rem`.
+    - Lists: `padding-left: 1.4rem`, `li margin-bottom: 0.5rem`, `line-height: 1.75`. Hỗ trợ cả inline li lẫn `.checklist-item` với checkbox màu thương hiệu `#0d7647`.
+    - Links: màu `#0d7647`, gạch chân cách chữ `underline-offset: 3px`, hover `#095935`.
+    - Strong: giữ độ đậm trang nhã `font-weight: 650`, không lạm dụng đè nặng mắt độc giả.
+    - Blockquote: phong cách editorial trang nhã (`border-left: 3px solid #0d7647`, nền `#f8fafc`, `padding: 1rem 1.25rem`, bo góc phải `0 8px 8px 0`).
+    - Tables: bọc container có `overflow-x: auto`, `min-width: 580px`, header xám nhẹ `#f8fafc` chữ `#0f172a`, viền `#e2e8f0`, responsive trên mobile chống vỡ layout.
+  - Tự động chuẩn hóa nội dung bài viết trong `ArticleBody`: lọc bỏ blockquote TL;DR đầu bài nếu đã có Hero Summary box tránh trùng lặp; chuyển đổi ký tự `<p>---</p>` thành divider `<hr />` thanh lịch.
+  - Tích hợp và đồng bộ quy tắc Typography vào `src/styles/globals.css` làm SSOT toàn cục cho các class `.article-body`, `.article-rendered-content`, `.article-rendered-body`.
+  - Kiểm thử TypeScript và build Vite pass 100% không lỗi.
+
 ---
 
 ## Trạng Thái Hệ Thống Hiện Tại (Current System State)
 - **Local D1 Database**: Đã chạy đầy đủ 4 migrations (`0001`, `0002`, `0003`, `0004`), 30 bài viết, 3 mẫu CTA chuyển đổi, 7 chuyên mục.
 - **Production Build**: Pass 100% (`tsc && vite build` hoàn tất không lỗi).
-- **Giao diện Quản trị**: Light mode hoàn chỉnh, màu nhận diện `#0d7647`, tuyệt đối không dùng glassmorphism, responsive mượt mà trên laptop 14" 125% scaling.
+- **Typography & Prose**: Hệ thống Typography bài viết chuẩn mực đã hoàn thiện và kết nối đồng bộ giữa ArticleDetailPage, TableOfContents và ArticleBody.
+- **Giao diện Quản trị & Độc giả**: Light mode hoàn chỉnh, màu nhận diện `#0d7647`, tuyệt đối không dùng glassmorphism, responsive mượt mà trên laptop 14" 125% scaling.
 - **Hệ thống API**: 100% endpoints backend trên Hono/Cloudflare Pages Functions hoạt động ổn định với thời gian phản hồi < 50ms.
 - **Bài viết đã chuẩn hóa Markdown Pipeline**: ID 1, ID 2, ID 4, ID 5, ID 6, ID 7, ID 9, ID 13, ID 15, ID 16, ID 18, ID 19, ID 21, ID 22, ID 23, ID 25, ID 26, ID 27, ID 29.
+

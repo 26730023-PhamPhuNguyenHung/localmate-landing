@@ -30,7 +30,7 @@ provenance:
 lifecycle_status: "publish_ready"
 ---
 
-> **TL;DR (Answer First)**: Tình trạng chạy Google Ads có click nhưng không có khách xảy ra khi ngân sách bị đốt vào lượt nhấp chuột vô giá trị thay vì người cần dịch vụ thật. 80% nguyên nhân do 5 lỗi kỹ thuật: dùng Đối sánh rộng (Broad Match) hút click mẹo vặt, trang đích tải chậm quá 3 giây trên 4G, giấu giá bắt nhắn tin, nút gọi hotline bị hỏng và nhắm sai bán kính địa lý. Chủ cơ sở chỉ cần 30 phút thực hiện quy trình 5 bước để chặn rác và thu hồi cuộc gọi thật.
+> **Tóm tắt nhanh**: Tình trạng chạy Google Ads có click nhưng không có khách xảy ra khi ngân sách bị đốt vào lượt nhấp chuột vô giá trị thay vì người cần dịch vụ thật. 80% nguyên nhân do 5 lỗi kỹ thuật: dùng Đối sánh rộng (Broad Match) hút click mẹo vặt, trang đích tải chậm quá 3 giây trên 4G, giấu giá bắt nhắn tin, nút gọi hotline bị hỏng và nhắm sai bán kính địa lý. Chủ cơ sở chỉ cần 30 phút thực hiện quy trình 5 bước để chặn rác và thu hồi cuộc gọi thật.
 
 # Vì sao chạy Google Ads có click nhưng không có khách? Cách xử lý dứt điểm
 

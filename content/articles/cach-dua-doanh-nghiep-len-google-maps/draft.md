@@ -37,7 +37,7 @@ cms:
   last_synced_at: "2026-09-17T12:55:00+07:00"
 ---
 
-> **TL;DR (Answer First)**: Năm 2026, cách đưa doanh nghiệp lên Google Maps nhanh nhất là xác minh video thực địa (Video Verification) 60–90 giây trong đúng một cú bấm máy liên tục. Google đã dừng gửi thư bưu điện tại Việt Nam do thư thất lạc và nạn địa chỉ ảo. Để được duyệt trong 24–48 giờ, video bắt buộc phải thể hiện liền mạch 3 nhóm bằng chứng: (1) Biển tên đường và số nhà lân cận; (2) Biển hiệu kinh doanh cố định tại mặt tiền; (3) Mở khóa cửa bước vào trong quay dụng cụ làm việc, giấy phép kinh doanh và màn hình đăng nhập phần mềm quản lý hoặc tài khoản thanh toán.
+> **Tóm tắt nhanh**: Năm 2026, cách đưa doanh nghiệp lên Google Maps nhanh nhất là xác minh video thực địa (Video Verification) 60–90 giây trong đúng một cú bấm máy liên tục. Google đã dừng gửi thư bưu điện tại Việt Nam do thư thất lạc và nạn địa chỉ ảo. Để được duyệt trong 24–48 giờ, video bắt buộc phải thể hiện liền mạch 3 nhóm bằng chứng: (1) Biển tên đường và số nhà lân cận; (2) Biển hiệu kinh doanh cố định tại mặt tiền; (3) Mở khóa cửa bước vào trong quay dụng cụ làm việc, giấy phép kinh doanh và màn hình đăng nhập phần mềm quản lý hoặc tài khoản thanh toán.
 
 # Cách đưa doanh nghiệp lên Google Maps: Hướng dẫn xác minh video thực địa 2026
 

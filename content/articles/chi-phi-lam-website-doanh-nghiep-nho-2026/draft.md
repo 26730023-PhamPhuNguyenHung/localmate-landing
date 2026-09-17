@@ -34,7 +34,7 @@ cms:
   last_synced_at: "2026-09-17T12:55:00+07:00"
 ---
 
-> **TL;DR (Answer First)**: Chi phí làm website doanh nghiệp nhỏ năm 2026 hoàn chỉnh dao động từ 2.900.000đ đến 9.500.000đ cho năm đầu tiên, tùy thuộc vào quy mô (web đơn trang 490k, web giới thiệu chuẩn 2tr9 - 4tr9, hay web bán hàng tích hợp). Chi phí duy trì cố định từ năm thứ hai chỉ khoảng 750.000đ đến 1.500.000đ/năm (gồm tên miền và hosting). Cần cảnh giác bẫy "làm web 0đ" hoặc "500k trọn gói" bị ép phí gia hạn cắt cổ hoặc bị giữ quyền sở hữu tên miền.
+> **Tóm tắt nhanh**: Chi phí làm website doanh nghiệp nhỏ năm 2026 hoàn chỉnh dao động từ 2.900.000đ đến 9.500.000đ cho năm đầu tiên, tùy thuộc vào quy mô (web đơn trang 490k, web giới thiệu chuẩn 2tr9 - 4tr9, hay web bán hàng tích hợp). Chi phí duy trì cố định từ năm thứ hai chỉ khoảng 750.000đ đến 1.500.000đ/năm (gồm tên miền và hosting). Cần cảnh giác bẫy "làm web 0đ" hoặc "500k trọn gói" bị ép phí gia hạn cắt cổ hoặc bị giữ quyền sở hữu tên miền.
 
 # Chi phí làm website doanh nghiệp nhỏ năm 2026 gồm những gì? (Bóc tách minh bạch)
 

@@ -34,7 +34,7 @@ cms:
   last_synced_at: "2026-09-17T13:05:00+07:00"
 ---
 
-> **TL;DR (Answer First)**: Google Search Ads hoạt động theo cơ chế đấu giá tự động trong 0.1 giây mỗi khi người dùng gõ từ khóa. Vị trí hiển thị không phụ thuộc vào việc ai trả nhiều tiền nhất, mà được tính theo công thức: **Ad Rank = Giá thầu tối đa (Max CPC) x Điểm chất lượng (Quality Score)**. Nhờ đó, doanh nghiệp nhỏ có thể xếp trên đối thủ giàu vốn và trả tiền click rẻ hơn 40% nếu tối ưu tốt 3 yếu tố: mẫu quảng cáo sát từ khóa, tỷ lệ nhấp (CTR) cao và trang đích tải dưới 1.5 giây.
+> **Tóm tắt nhanh**: Google Search Ads hoạt động theo cơ chế đấu giá tự động trong 0.1 giây mỗi khi người dùng gõ từ khóa. Vị trí hiển thị không phụ thuộc vào việc ai trả nhiều tiền nhất, mà được tính theo công thức: **Ad Rank = Giá thầu tối đa (Max CPC) x Điểm chất lượng (Quality Score)**. Nhờ đó, doanh nghiệp nhỏ có thể xếp trên đối thủ giàu vốn và trả tiền click rẻ hơn 40% nếu tối ưu tốt 3 yếu tố: mẫu quảng cáo sát từ khóa, tỷ lệ nhấp (CTR) cao và trang đích tải dưới 1.5 giây.
 
 # Google Search Ads hoạt động như thế nào? Cơ chế đấu giá và cách giảm tiền click
 

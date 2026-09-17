@@ -16,7 +16,7 @@ post_id: 17
 lifecycle_status: "publish_ready"
 ---
 
-> **TL;DR (Answer First)**: Citation trong Local SEO là mọi lượt đề cập thông tin định danh của cơ sở trên Internet, gồm bộ ba NAP: **Name (Tên cơ sở)**, **Address (Địa chỉ)** và **Phone (Số điện thoại)**. Citation hoạt động như phiếu xác thực từ bên thứ ba (trang vàng, danh bạ, mạng xã hội). Google đối chiếu các nguồn này để xác thực cơ sở tồn tại ngoài đời. Nếu dữ liệu NAP bị lệch số nhà hay hotline, thuật toán sẽ hạ điểm uy tín, khiến cửa hàng tụt khỏi Top 3 Local Pack trên Google Maps.
+> **Tóm tắt nhanh**: Citation trong Local SEO là mọi lượt đề cập thông tin định danh của cơ sở trên Internet, gồm bộ ba NAP: **Name (Tên cơ sở)**, **Address (Địa chỉ)** và **Phone (Số điện thoại)**. Citation hoạt động như phiếu xác thực từ bên thứ ba (trang vàng, danh bạ, mạng xã hội). Google đối chiếu các nguồn này để xác thực cơ sở tồn tại ngoài đời. Nếu dữ liệu NAP bị lệch số nhà hay hotline, thuật toán sẽ hạ điểm uy tín, khiến cửa hàng tụt khỏi Top 3 Local Pack trên Google Maps.
 
 # Citation trong Local SEO là gì và cách xây dựng chuẩn xác tại Việt Nam
 

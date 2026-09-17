@@ -30,7 +30,7 @@ provenance:
 lifecycle_status: "draft"
 ---
 
-> **TL;DR (Answer First)**: Hồ sơ Google Maps bị đình chỉ (Suspended) gồm 2 cấp độ: Tạm ngưng mềm (Soft Suspension - điểm ghim vẫn hiện ngoài bản đồ nhưng chủ tiệm mất quyền chỉnh sửa) và Tạm ngưng cứng (Hard Suspension - điểm ghim và đánh giá biến mất hoàn toàn khỏi kết quả tìm kiếm). Bốn nguyên nhân cốt lõi: nhồi từ khóa vào tên tiệm, thay đổi thông tin liên lạc (NAP) dồn dập, dùng địa chỉ ảo không người trực, hoặc bị đối thủ cắm cờ báo cáo gian lận. Quy tắc sống còn: Tuyệt đối không bấm nút kháng nghị vội vã. Bạn phải sửa sạch sai phạm trên trang quản trị, chuẩn bị đủ 4 chứng cứ thực địa (giấy phép kinh doanh, hóa đơn tiện ích, ảnh biển hiệu, video quay thực tế) rồi mới gửi đơn qua công cụ Google Business Profile Appeals Tool.
+> **Tóm tắt nhanh**: Hồ sơ Google Maps bị đình chỉ (Suspended) gồm 2 cấp độ: Tạm ngưng mềm (Soft Suspension - điểm ghim vẫn hiện ngoài bản đồ nhưng chủ tiệm mất quyền chỉnh sửa) và Tạm ngưng cứng (Hard Suspension - điểm ghim và đánh giá biến mất hoàn toàn khỏi kết quả tìm kiếm). Bốn nguyên nhân cốt lõi: nhồi từ khóa vào tên tiệm, thay đổi thông tin liên lạc (NAP) dồn dập, dùng địa chỉ ảo không người trực, hoặc bị đối thủ cắm cờ báo cáo gian lận. Quy tắc sống còn: Tuyệt đối không bấm nút kháng nghị vội vã. Bạn phải sửa sạch sai phạm trên trang quản trị, chuẩn bị đủ 4 chứng cứ thực địa (giấy phép kinh doanh, hóa đơn tiện ích, ảnh biển hiệu, video quay thực tế) rồi mới gửi đơn qua công cụ Google Business Profile Appeals Tool.
 
 # Google Maps bị đình chỉ: Nguyên nhân cốt lõi và quy trình kháng nghị khôi phục
 

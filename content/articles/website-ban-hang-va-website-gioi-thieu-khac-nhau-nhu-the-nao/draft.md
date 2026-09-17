@@ -21,7 +21,7 @@ provenance:
   updated_at: "2026-09-17"
 ---
 
-> **TL;DR (Answer First)**: Điểm khác biệt cốt lõi giữa hai mô hình nằm ở hành vi khách hàng: **Website bán hàng (E-commerce)** phục vụ luồng tự mua và thanh toán trực tuyến qua giỏ hàng cho sản phẩm tiêu dùng đóng gói sẵn (quần áo, mỹ phẩm, phụ kiện). Ngược lại, **Website giới thiệu dịch vụ (Lead Generation)** tập trung cung cấp năng lực, bảng giá và thúc đẩy khách hàng bấm gọi hotline hoặc nhắn Zalo để khảo sát thực tế và nhận báo giá chi tiết. Các hộ kinh doanh dịch vụ và thợ nghề tuyệt đối không nên tích hợp giỏ hàng phức tạp, bởi quy trình này tạo rào cản thao tác, làm tăng tỷ lệ thoát trang và trực tiếp làm giảm tỷ lệ chốt đơn.
+> **Tóm tắt nhanh**: Điểm khác biệt cốt lõi giữa hai mô hình nằm ở hành vi khách hàng: **Website bán hàng (E-commerce)** phục vụ luồng tự mua và thanh toán trực tuyến qua giỏ hàng cho sản phẩm tiêu dùng đóng gói sẵn (quần áo, mỹ phẩm, phụ kiện). Ngược lại, **Website giới thiệu dịch vụ (Lead Generation)** tập trung cung cấp năng lực, bảng giá và thúc đẩy khách hàng bấm gọi hotline hoặc nhắn Zalo để khảo sát thực tế và nhận báo giá chi tiết. Các hộ kinh doanh dịch vụ và thợ nghề tuyệt đối không nên tích hợp giỏ hàng phức tạp, bởi quy trình này tạo rào cản thao tác, làm tăng tỷ lệ thoát trang và trực tiếp làm giảm tỷ lệ chốt đơn.
 
 # Website bán hàng và website giới thiệu khác nhau thế nào? Nên chọn loại nào?
 

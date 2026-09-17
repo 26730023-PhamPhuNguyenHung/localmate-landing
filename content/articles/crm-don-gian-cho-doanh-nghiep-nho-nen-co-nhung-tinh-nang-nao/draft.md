@@ -32,7 +32,7 @@ cms:
   last_synced_at: "2026-09-17T13:15:00+07:00"
 ---
 
-> **TL;DR (Answer First)**: Hệ thống CRM đơn giản cho doanh nghiệp nhỏ và hộ kinh doanh dưới 10 người chỉ cần 5 tính năng cốt lõi: (1) Lưu danh bạ tập trung kèm lịch sử dịch vụ; (2) Tự động nhắc hẹn bảo dưỡng qua Zalo; (3) Phân nhóm khách quen, khách VIP và khách mới; (4) Ghi chú sở thích riêng của từng người; (5) Xem doanh thu theo từng thợ. Bạn nên loại bỏ 80% tính năng thừa như ERP hay báo cáo ma trận và tự dựng hệ thống 0đ trên Google Sheet trước khi mua phần mềm.
+> **Tóm tắt nhanh**: Hệ thống CRM đơn giản cho doanh nghiệp nhỏ và hộ kinh doanh dưới 10 người chỉ cần 5 tính năng cốt lõi: (1) Lưu danh bạ tập trung kèm lịch sử dịch vụ; (2) Tự động nhắc hẹn bảo dưỡng qua Zalo; (3) Phân nhóm khách quen, khách VIP và khách mới; (4) Ghi chú sở thích riêng của từng người; (5) Xem doanh thu theo từng thợ. Bạn nên loại bỏ 80% tính năng thừa như ERP hay báo cáo ma trận và tự dựng hệ thống 0đ trên Google Sheet trước khi mua phần mềm.
 
 # CRM đơn giản cho doanh nghiệp nhỏ nên có những tính năng nào? (Bảng lọc thực chiến)
 

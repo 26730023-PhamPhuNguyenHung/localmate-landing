@@ -35,7 +35,7 @@ cms:
   last_synced_at: null
 ---
 
-> **TL;DR (Answer First)**: [Định nghĩa bản chất vấn đề và câu trả lời trực diện ngay trong 60-80 từ đầu tiên. Đầy đủ entity, đứng độc lập được trọn vẹn nghĩa.]
+> **Tóm tắt nhanh**: [Định nghĩa bản chất vấn đề và câu trả lời trực diện ngay trong 60-80 từ đầu tiên. Đầy đủ entity, đứng độc lập được trọn vẹn nghĩa.]
 
 # [H1 Trùng hoặc thống nhất với Title: Tiêu đề bài viết]
 

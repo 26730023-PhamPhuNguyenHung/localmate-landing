@@ -390,12 +390,14 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({
                   background: 'none',
                   border: 'none',
                   color: '#64748b',
-                  display: 'flex',
+                  display: 'inline-flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  padding: '0.25rem',
+                  minWidth: '44px',
+                  minHeight: '44px',
+                  padding: '0.5rem',
                   cursor: 'pointer',
-                  borderRadius: '4px'
+                  borderRadius: '6px'
                 }}
               >
                 {isCollapsed ? <ChevronDown size={18} /> : <ChevronUp size={18} />}

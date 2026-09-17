@@ -16,7 +16,7 @@ lifecycle_status: "publish_ready"
 post_id: 9
 ---
 
-> **TL;DR (Answer First)**: Để tối ưu Google Business Profile lọt vào Top 3 Local Pack trên Google Maps, cơ sở kinh doanh cần đáp ứng 3 trụ cột thuật toán: Sự liên quan (Relevance), Khoảng cách (Distance) và Độ nổi bật (Prominence). 6 hành động kỹ thuật cốt lõi gồm: chọn đúng Danh mục chính hẹp nhất; đặt tên cơ sở khớp 100% với biển hiệu thực tế ngoài đời để không bị khóa; đăng ảnh chụp thật gắn thẻ vị trí kích hoạt nhận diện Google Lens; cập nhật chuẩn xác giờ mở cửa; công khai bảng giá sản phẩm dịch vụ; và bật tính năng tin nhắn với tốc độ phản hồi dưới 15 phút.
+> **Tóm tắt nhanh**: Để tối ưu Google Business Profile lọt vào Top 3 Local Pack trên Google Maps, cơ sở kinh doanh cần đáp ứng 3 trụ cột thuật toán: Sự liên quan (Relevance), Khoảng cách (Distance) và Độ nổi bật (Prominence). 6 hành động kỹ thuật cốt lõi gồm: chọn đúng Danh mục chính hẹp nhất; đặt tên cơ sở khớp 100% với biển hiệu thực tế ngoài đời để không bị khóa; đăng ảnh chụp thật gắn thẻ vị trí kích hoạt nhận diện Google Lens; cập nhật chuẩn xác giờ mở cửa; công khai bảng giá sản phẩm dịch vụ; và bật tính năng tin nhắn với tốc độ phản hồi dưới 15 phút.
 
 # Cách tối ưu Google Business Profile để khách hàng quanh đây dễ tìm thấy
 

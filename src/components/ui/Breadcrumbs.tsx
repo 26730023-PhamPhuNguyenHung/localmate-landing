@@ -3,37 +3,50 @@ import { ChevronRight, Home } from 'lucide-react';
 import { Link } from '../layout/Router';
 import { BreadcrumbItem } from '../seo/SEOHead';
 
-interface BreadcrumbsProps {
+export interface BreadcrumbsProps {
   items: BreadcrumbItem[];
+  noMargin?: boolean;
+  className?: string;
+  style?: React.CSSProperties;
+  maxTitleWidth?: string | number;
 }
 
-export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items }) => {
+export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
+  items,
+  noMargin = false,
+  className = '',
+  style,
+  maxTitleWidth
+}) => {
   return (
     <nav
       aria-label="Breadcrumb"
+      className={`breadcrumbs-nav ${className}`.trim()}
       style={{
         display: 'flex',
         alignItems: 'center',
         flexWrap: 'wrap',
-        gap: '0.4rem',
-        fontSize: '0.825rem',
+        gap: '0.35rem 0.45rem',
+        fontSize: '0.8125rem',
         color: 'var(--color-text-muted)',
-        marginBottom: '1.5rem',
-        lineHeight: 1.4
+        marginBottom: noMargin ? 0 : '1.25rem',
+        lineHeight: 1.4,
+        ...style
       }}
     >
       <Link
         to="/"
+        className="breadcrumb-item-link"
+        title="Quay lại Trang chủ"
         style={{
           display: 'inline-flex',
           alignItems: 'center',
           gap: '0.25rem',
-          color: 'var(--color-text-muted)',
           textDecoration: 'none',
-          fontWeight: 600
+          fontWeight: 500
         }}
       >
-        <Home size={14} />
+        <Home size={13} style={{ flexShrink: 0 }} />
         <span>Trang chủ</span>
       </Link>
 
@@ -41,17 +54,20 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items }) => {
         const isLast = idx === items.length - 1;
         return (
           <React.Fragment key={item.url + idx}>
-            <ChevronRight size={13} style={{ color: 'var(--color-border)', flexShrink: 0 }} />
+            <ChevronRight
+              size={12}
+              style={{ color: '#cbd5e1', flexShrink: 0 }}
+              aria-hidden="true"
+            />
             {isLast ? (
               <span
                 aria-current="page"
+                className="breadcrumb-current-title"
+                title={item.name}
                 style={{
                   color: 'var(--color-navy)',
-                  fontWeight: 700,
-                  maxWidth: '300px',
-                  whiteSpace: 'nowrap',
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis'
+                  fontWeight: 600,
+                  ...(maxTitleWidth ? { maxWidth: maxTitleWidth } : {})
                 }}
               >
                 {item.name}
@@ -59,10 +75,11 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items }) => {
             ) : (
               <Link
                 to={item.url}
+                className="breadcrumb-item-link"
+                title={item.name}
                 style={{
-                  color: 'var(--color-text-muted)',
                   textDecoration: 'none',
-                  fontWeight: 600
+                  fontWeight: 500
                 }}
               >
                 {item.name}

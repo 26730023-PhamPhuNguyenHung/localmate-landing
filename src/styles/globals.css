@@ -1069,4 +1069,491 @@ tr.row-highlight th {
   }
 }
 
+/* ==========================================================================
+   Breadcrumbs & Top Bar Refactoring (SSOT)
+   ========================================================================== */
+.breadcrumbs-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.45rem;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}
+
+.breadcrumb-item-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: #64748b;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.breadcrumb-item-link:hover {
+  color: #0d7647;
+}
+
+.breadcrumb-current-title {
+  color: #0f172a;
+  font-weight: 600;
+  max-width: 170px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@media (min-width: 480px) {
+  .breadcrumb-current-title {
+    max-width: 260px;
+  }
+}
+
+@media (min-width: 768px) {
+  .breadcrumb-current-title {
+    max-width: 380px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .breadcrumb-current-title {
+    max-width: 520px;
+  }
+}
+
+/* Article Detail Top Bar Refactored */
+.article-top-bar {
+  background-color: #ffffff;
+  border-bottom: 1px solid #f1f5f9;
+  padding: 6px 0;
+  width: 100%;
+}
+
+.article-top-nav-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem 1rem;
+}
+
+/* Article 2-Column Editorial Grid Layout */
+.article-layout-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2rem;
+  width: 100%;
+}
+
+.article-main-column {
+  min-width: 0;
+  width: 100%;
+}
+
+.article-sidebar-column {
+  display: none;
+}
+
+@media (min-width: 1080px) {
+  .article-layout-grid {
+    grid-template-columns: minmax(0, 760px) 280px;
+    gap: 3.25rem;
+    align-items: start;
+    justify-content: center;
+  }
+
+  .article-sidebar-column {
+    display: block;
+    position: sticky;
+    top: 88px;
+  }
+
+  .article-mobile-toc-container {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1079px) {
+  .article-mobile-toc-container {
+    display: block;
+    margin-bottom: 2rem;
+  }
+}
+
+.article-top-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #64748b;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.15s ease;
+  flex-shrink: 0;
+}
+
+.article-top-back-link svg {
+  transition: transform 0.15s ease;
+}
+
+.article-top-back-link:hover {
+  color: #0d7647;
+}
+
+.article-top-back-link:hover svg {
+  transform: translateX(-2px);
+}
+
+/* ==========================================================================
+   Article Body Typography & Editorial Prose System (SSOT)
+   ========================================================================== */
+.article-body,
+.article-rendered-content,
+.article-rendered-body {
+  max-width: 760px;
+  margin-inline: auto;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: clamp(1.0625rem, 1.4vw, 1.125rem); /* 17px - 18px */
+  line-height: 1.8;
+  color: #1e293b;
+  font-weight: 400;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  text-wrap: pretty;
+}
+
+/* Hide duplicate h1 inside body as it is already rendered in ArticleHeader */
+.article-body h1,
+.article-rendered-content h1,
+.article-rendered-body h1 {
+  display: none;
+}
+
+/* Heading 2 */
+.article-body h2,
+.article-rendered-content h2,
+.article-rendered-body h2 {
+  font-size: clamp(1.5rem, 2.5vw, 1.75rem); /* 24px - 28px */
+  font-weight: 750;
+  color: #0f172a;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid #f1f5f9;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  text-wrap: pretty;
+  scroll-margin-top: 85px;
+}
+
+/* Heading 3 */
+.article-body h3,
+.article-rendered-content h3,
+.article-rendered-body h3 {
+  font-size: clamp(1.25rem, 1.8vw, 1.35rem); /* 20px - 22px */
+  font-weight: 700;
+  color: #0f172a;
+  margin-top: 1.8rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  text-wrap: pretty;
+  scroll-margin-top: 85px;
+}
+
+/* Paragraphs */
+.article-body p,
+.article-rendered-content p,
+.article-rendered-body p {
+  margin-top: 0;
+  margin-bottom: 1.4em;
+  color: #1e293b;
+  line-height: 1.8;
+  text-wrap: pretty;
+}
+
+/* Lists */
+.article-body ul,
+.article-rendered-content ul,
+.article-rendered-body ul {
+  list-style-type: disc;
+  padding-left: 1.4rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1.4em;
+}
+
+.article-body ol,
+.article-rendered-content ol,
+.article-rendered-body ol {
+  list-style-type: decimal;
+  padding-left: 1.4rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1.4em;
+}
+
+.article-body li,
+.article-rendered-content li,
+.article-rendered-body li {
+  margin-bottom: 0.5rem;
+  line-height: 1.75;
+  color: #1e293b;
+}
+
+/* Fallback for inline li elements within paragraphs */
+.article-body p > li,
+.article-rendered-content p > li,
+.article-rendered-body p > li {
+  display: list-item;
+  margin-left: 1.4rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.75;
+}
+
+/* Checklist Items */
+.article-body .checklist-item,
+.article-rendered-content .checklist-item,
+.article-rendered-body .checklist-item {
+  list-style: none;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  margin-bottom: 0.65rem;
+  padding-left: 0;
+  line-height: 1.75;
+}
+
+.article-body .checklist-item input[type="checkbox"],
+.article-rendered-content .checklist-item input[type="checkbox"],
+.article-rendered-body .checklist-item input[type="checkbox"] {
+  margin-top: 0.35rem;
+  accent-color: #0d7647;
+  flex-shrink: 0;
+  cursor: default;
+}
+
+/* Links */
+.article-body a,
+.article-rendered-content a,
+.article-rendered-body a {
+  color: #0d7647;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+  text-decoration-color: #86efac;
+  font-weight: 600;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.article-body a:hover,
+.article-rendered-content a:hover,
+.article-rendered-body a:hover {
+  color: #095935;
+  text-decoration-color: #095935;
+}
+
+/* Strong & Emphasis */
+.article-body strong,
+.article-rendered-content strong,
+.article-rendered-body strong {
+  color: #0f172a;
+  font-weight: 650;
+}
+
+.article-body em,
+.article-rendered-content em,
+.article-rendered-body em {
+  font-style: italic;
+  color: #334155;
+}
+
+/* Blockquote Editorial Style */
+.article-body blockquote,
+.article-rendered-content blockquote,
+.article-rendered-body blockquote {
+  border-left: 3px solid #0d7647;
+  background-color: #f8fafc;
+  padding: 1rem 1.25rem;
+  margin: 1.6rem 0;
+  border-radius: 0 8px 8px 0;
+  color: #334155;
+  font-style: normal;
+}
+
+.article-body blockquote p,
+.article-rendered-content blockquote p,
+.article-rendered-body blockquote p {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+  color: #334155;
+}
+
+.article-body blockquote p:last-child,
+.article-rendered-content blockquote p:last-child,
+.article-rendered-body blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Section Divider */
+.article-body hr,
+.article-body .article-divider,
+.article-rendered-content hr,
+.article-rendered-content .article-divider,
+.article-rendered-body hr,
+.article-rendered-body .article-divider {
+  border: none;
+  height: 1px;
+  background: #e2e8f0;
+  margin: 2.5rem 0;
+}
+
+/* Responsive Table Container & Styling */
+.article-body .table-responsive,
+.article-rendered-content .table-responsive,
+.article-rendered-body .table-responsive,
+.article-body > table,
+.article-rendered-content > table,
+.article-rendered-body > table {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.8rem 0;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  scrollbar-width: thin;
+}
+
+.article-body table,
+.article-rendered-content table,
+.article-rendered-body table {
+  width: 100%;
+  min-width: 580px;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  text-align: left;
+  border: none;
+}
+
+.article-body th,
+.article-rendered-content th,
+.article-rendered-body th {
+  background-color: #f8fafc;
+  color: #0f172a;
+  font-weight: 700;
+  padding: 0.75rem 1rem;
+  border-bottom: 2px solid #e2e8f0;
+  border-right: 1px solid #f1f5f9;
+  white-space: nowrap;
+  font-size: 0.875rem;
+  letter-spacing: 0.01em;
+}
+
+.article-body td,
+.article-rendered-content td,
+.article-rendered-body td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid #f1f5f9;
+  border-right: 1px solid #f1f5f9;
+  color: #334155;
+  vertical-align: top;
+}
+
+.article-body tr:last-child td,
+.article-rendered-content tr:last-child td,
+.article-rendered-body tr:last-child td {
+  border-bottom: none;
+}
+
+.article-body th:last-child,
+.article-body td:last-child,
+.article-rendered-content th:last-child,
+.article-rendered-content td:last-child,
+.article-rendered-body th:last-child,
+.article-rendered-body td:last-child {
+  border-right: none;
+}
+
+.article-body tr:nth-child(even) td,
+.article-rendered-content tr:nth-child(even) td,
+.article-rendered-body tr:nth-child(even) td {
+  background-color: #fbfcfb;
+}
+
+.article-body tr:hover td,
+.article-rendered-content tr:hover td,
+.article-rendered-body tr:hover td {
+  background-color: #f8fafc;
+}
+
+/* Image styling */
+.article-body img,
+.article-rendered-content img,
+.article-rendered-body img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 1.75rem 0;
+  display: block;
+}
+
+/* Inline Code styling */
+.article-body code,
+.article-rendered-content code,
+.article-rendered-body code {
+  background-color: #f1f5f9;
+  color: #0f172a;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.875em;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Mobile fine-tuning */
+@media (max-width: 640px) {
+  .article-body,
+  .article-rendered-content,
+  .article-rendered-body {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+  }
+
+  .article-body h2,
+  .article-rendered-content h2,
+  .article-rendered-body h2 {
+    margin-top: 2rem;
+    font-size: 1.45rem;
+  }
+
+  .article-body h3,
+  .article-rendered-content h3,
+  .article-rendered-body h3 {
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+  }
+
+  .article-body blockquote,
+  .article-rendered-content blockquote,
+  .article-rendered-body blockquote {
+    padding: 0.85rem 1rem;
+    margin: 1.25rem 0;
+  }
+
+  .article-body th,
+  .article-rendered-content th,
+  .article-rendered-body th,
+  .article-body td,
+  .article-rendered-content td,
+  .article-rendered-body td {
+    padding: 0.65rem 0.75rem;
+  }
+}
+
+
 

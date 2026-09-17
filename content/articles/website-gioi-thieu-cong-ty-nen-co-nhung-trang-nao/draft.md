@@ -32,7 +32,7 @@ cms:
   last_synced_at: null
 ---
 
-> **TL;DR (Answer First)**: Website giới thiệu doanh nghiệp nhỏ hoặc cơ sở dịch vụ chỉ cần đúng **5 trang cốt lõi** để chốt khách hiệu quả: (1) **Trang Chủ** định vị ngành nghề và khu vực trong 3 giây đầu; (2) **Trang Giới Thiệu** minh chứng xưởng thật, thợ thật và tính pháp lý; (3) **Trang Dịch Vụ Mũi Nhọn** bóc tách giải pháp và quy trình làm việc; (4) **Bảng Giá Minh Bạch** niêm yết giá sàn để lọc khách; (5) **Trang Dự Án Thực Tế** cung cấp hình ảnh thi công trước/sau; kèm theo điểm chạm chặng cuối là **Trang Liên Hệ** có bản đồ Google Maps và nút gọi Hotline, Zalo một chạm. Loại bỏ toàn bộ các trang thừa như sứ mệnh, tin tức nội bộ giúp web tải nhanh và tăng tỷ lệ khách nhấc máy gọi ngay.
+> **Tóm tắt nhanh**: Website giới thiệu doanh nghiệp nhỏ hoặc cơ sở dịch vụ chỉ cần đúng **5 trang cốt lõi** để chốt khách hiệu quả: (1) **Trang Chủ** định vị ngành nghề và khu vực trong 3 giây đầu; (2) **Trang Giới Thiệu** minh chứng xưởng thật, thợ thật và tính pháp lý; (3) **Trang Dịch Vụ Mũi Nhọn** bóc tách giải pháp và quy trình làm việc; (4) **Bảng Giá Minh Bạch** niêm yết giá sàn để lọc khách; (5) **Trang Dự Án Thực Tế** cung cấp hình ảnh thi công trước/sau; kèm theo điểm chạm chặng cuối là **Trang Liên Hệ** có bản đồ Google Maps và nút gọi Hotline, Zalo một chạm. Loại bỏ toàn bộ các trang thừa như sứ mệnh, tin tức nội bộ giúp web tải nhanh và tăng tỷ lệ khách nhấc máy gọi ngay.
 
 # Website giới thiệu công ty nên có những trang nào để chốt khách hiệu quả?
 

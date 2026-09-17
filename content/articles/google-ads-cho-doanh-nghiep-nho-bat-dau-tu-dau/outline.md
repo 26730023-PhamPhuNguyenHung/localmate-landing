@@ -1,7 +1,7 @@
 # Dàn Ý Chi Tiết (Content Outline) — Google Ads Cho Doanh Nghiệp Nhỏ
 
 - **H1**: Google Ads Cho Doanh Nghiệp Nhỏ: Bắt Đầu Từ Đâu Để Không Bị Đốt Tiền Oan?
-  - TL;DR (Answer First)
+  - Tóm tắt nhanh
   - Đoạn dẫn bối cảnh thực tế tại các xưởng, tiệm dịch vụ
 
 - **H2 1**: Bản chất Google Search Ads: Cỗ máy đón đầu khách hàng có nhu cầu khẩn cấp

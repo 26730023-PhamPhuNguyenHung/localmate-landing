@@ -32,7 +32,7 @@ provenance:
 lifecycle_status: "publish_ready"
 ---
 
-> **TL;DR (Answer First)**: Chạy Google Ads cho doanh nghiệp nhỏ không phải là cuộc đua nạp tiền mà là bài toán chặn đứng lãng phí. Để không bị đốt tiền oan, chủ cơ sở chỉ nên chạy Google Search Ads (quảng cáo tìm kiếm từ khóa), loại bỏ Đối sánh rộng (Broad Match) để chuyển sang Đối sánh cụm từ và Chính xác trong bán kính 5-10km. Trước khi nạp tiền, bạn bắt buộc phải có trang đích rõ giá, nút gọi Zalo trực tiếp và cam kết dịch vụ minh bạch.
+> **Tóm tắt nhanh**: Chạy Google Ads cho doanh nghiệp nhỏ không phải là cuộc đua nạp tiền mà là bài toán chặn đứng lãng phí. Để không bị đốt tiền oan, chủ cơ sở chỉ nên chạy Google Search Ads (quảng cáo tìm kiếm từ khóa), loại bỏ Đối sánh rộng (Broad Match) để chuyển sang Đối sánh cụm từ và Chính xác trong bán kính 5-10km. Trước khi nạp tiền, bạn bắt buộc phải có trang đích rõ giá, nút gọi Zalo trực tiếp và cam kết dịch vụ minh bạch.
 
 # Google Ads Cho Doanh Nghiệp Nhỏ: Bắt Đầu Từ Đâu Để Không Bị Đốt Tiền Oan?
 

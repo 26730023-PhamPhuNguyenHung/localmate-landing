@@ -37,7 +37,7 @@ cms:
   last_synced_at: "2026-09-17T13:15:00+07:00"
 ---
 
-> **TL;DR (Answer First)**: Tự động hóa cho doanh nghiệp nhỏ không cần CRM đắt đỏ hay nhân sự IT. Chủ tiệm có thể số hóa 7 việc thủ công tốn thời gian với chi phí 0đ bằng công cụ miễn phí (Google Sheets, Apps Script, Telegram Bot, Webhook): (1) Reng chuông Telegram khi khách điền web; (2) Tự gửi tin cảm ơn sau dịch vụ; (3) Nhắc lịch bảo dưỡng sau 3-6 tháng; (4) Lưu số khách vào Google Contacts; (5) Tạo mã VietQR động đúng từng đồng; (6) Xin review Google Maps sau 2 giờ; (7) Báo cáo doanh thu cuối ngày về điện thoại. Áp dụng giúp tiết kiệm 10-15 giờ mỗi tuần và chống sót khách.
+> **Tóm tắt nhanh**: Tự động hóa cho doanh nghiệp nhỏ không cần CRM đắt đỏ hay nhân sự IT. Chủ tiệm có thể số hóa 7 việc thủ công tốn thời gian với chi phí 0đ bằng công cụ miễn phí (Google Sheets, Apps Script, Telegram Bot, Webhook): (1) Reng chuông Telegram khi khách điền web; (2) Tự gửi tin cảm ơn sau dịch vụ; (3) Nhắc lịch bảo dưỡng sau 3-6 tháng; (4) Lưu số khách vào Google Contacts; (5) Tạo mã VietQR động đúng từng đồng; (6) Xin review Google Maps sau 2 giờ; (7) Báo cáo doanh thu cuối ngày về điện thoại. Áp dụng giúp tiết kiệm 10-15 giờ mỗi tuần và chống sót khách.
 
 # Automation cho doanh nghiệp nhỏ: 7 việc thủ công nên tự động hóa ngay (Chi phí 0đ)
 

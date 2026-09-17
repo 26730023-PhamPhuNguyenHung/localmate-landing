@@ -28,7 +28,7 @@ provenance:
       url: "https://localmate.vn/bang-gia"
 ---
 
-> **TL;DR (Answer First)**: Local SEO (Tối ưu hóa tìm kiếm địa phương) là tập hợp kỹ thuật giúp cơ sở kinh doanh xuất hiện ở các vị trí hàng đầu trên Google Tìm kiếm và Google Maps khi khách hàng tìm dịch vụ tại khu vực cụ thể (ví dụ: *sửa xe máy quận Tân Bình*, *nha khoa gần đây*). Khác với SEO toàn quốc, Local SEO nhắm thẳng vào khách hàng bán kính 2-10km có nhu cầu khẩn cấp và sẵn sàng chi tiền ngay. Thứ hạng địa phương do 3 trụ cột thuật toán Google quyết định: Khoảng cách (Distance), Mức độ nổi bật (Prominence) và Sự liên quan (Relevance). Đây là kênh đầu tư mang lại tỷ lệ chuyển đổi cao nhất với chi phí bền vững cho hộ kinh doanh và tiệm nhỏ.
+> **Tóm tắt nhanh**: Local SEO (Tối ưu hóa tìm kiếm địa phương) là tập hợp kỹ thuật giúp cơ sở kinh doanh xuất hiện ở các vị trí hàng đầu trên Google Tìm kiếm và Google Maps khi khách hàng tìm dịch vụ tại khu vực cụ thể (ví dụ: *sửa xe máy quận Tân Bình*, *nha khoa gần đây*). Khác với SEO toàn quốc, Local SEO nhắm thẳng vào khách hàng bán kính 2-10km có nhu cầu khẩn cấp và sẵn sàng chi tiền ngay. Thứ hạng địa phương do 3 trụ cột thuật toán Google quyết định: Khoảng cách (Distance), Mức độ nổi bật (Prominence) và Sự liên quan (Relevance). Đây là kênh đầu tư mang lại tỷ lệ chuyển đổi cao nhất với chi phí bền vững cho hộ kinh doanh và tiệm nhỏ.
 
 # Local SEO là gì? Vì sao doanh nghiệp địa phương nên tập trung làm Local SEO?
 

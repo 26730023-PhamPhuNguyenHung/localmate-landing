@@ -428,9 +428,9 @@ export interface BaseContentBlock<TType extends ContentBlockType, TData> {
   visible?: boolean;
 }
 
-// 1. TL;DR / Answer First
+// 1. Tóm tắt nhanh
 export interface TldrBlockData {
-  title?: string; // Mặc định: "Tóm tắt nhanh (TL;DR)"
+  title?: string; // Mặc định: "Tóm tắt nhanh"
   summary: string; // 1-3 câu trả lời cốt lõi trực diện
   highlightPoint?: string; // Điểm mấu chốt nhất
   actionAdvice?: string; // Khuyên làm gì ngay
@@ -724,7 +724,7 @@ export interface RelatedPostCard {
   intentBadge?: string;
 }
 export interface RelatedPostsBlockData {
-  heading?: string; // Mặc định: "Bài viết cùng chủ đề trong phễu"
+  heading?: string; // Mặc định: "Bài viết liên quan"
   posts: RelatedPostCard[];
 }
 export type RelatedPostsBlock = BaseContentBlock<'related_posts', RelatedPostsBlockData>;

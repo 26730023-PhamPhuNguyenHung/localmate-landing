@@ -16,7 +16,7 @@ lifecycle_status: "publish_ready"
 post_id: 18
 ---
 
-> **TL;DR (Answer First)**: Checklist Local SEO 2026 gồm 20 đầu việc thực chiến chia theo 3 chu kỳ: 8 việc làm 1 lần khi khởi tạo (xác minh Google Maps chính chủ, chuẩn hóa NAP, chọn danh mục hẹp, khai báo Schema LocalBusiness, kết nối website có SSL), 6 việc hàng tuần (đăng 2-3 ảnh thực địa, xin 2 đánh giá thật tại quầy, phản hồi khách trong 24 giờ, đăng ưu đãi Maps), và 6 việc hàng tháng (đo thứ hạng bán kính 3-5 km, kiểm tra link gãy, audit citation, chặn đối thủ phá hoại). Thực hiện đúng 20 bước này giúp cơ sở dịch vụ đứng vững trong Top 3 Google Maps mà không cần mua đánh giá ảo.
+> **Tóm tắt nhanh**: Checklist Local SEO 2026 gồm 20 đầu việc thực chiến chia theo 3 chu kỳ: 8 việc làm 1 lần khi khởi tạo (xác minh Google Maps chính chủ, chuẩn hóa NAP, chọn danh mục hẹp, khai báo Schema LocalBusiness, kết nối website có SSL), 6 việc hàng tuần (đăng 2-3 ảnh thực địa, xin 2 đánh giá thật tại quầy, phản hồi khách trong 24 giờ, đăng ưu đãi Maps), và 6 việc hàng tháng (đo thứ hạng bán kính 3-5 km, kiểm tra link gãy, audit citation, chặn đối thủ phá hoại). Thực hiện đúng 20 bước này giúp cơ sở dịch vụ đứng vững trong Top 3 Google Maps mà không cần mua đánh giá ảo.
 
 # Checklist Local SEO 2026: 20 việc chủ tiệm tự làm để lên top tìm kiếm
 

@@ -13,6 +13,18 @@
 
 ## 2. Recent Accomplishments & Updates
 
+### A00000000000000. Audit & Refactor Toàn Diện Giao Diện Article Detail Chuẩn Editorial / SME Friendly:
+- **Tác giả:** Hệ thống 10 Subagents & Main Agent Reviewer
+- **Vị trí tệp:** `src/pages/ArticleDetailPage.tsx`, `src/components/article/*`, `src/components/ui/Breadcrumbs.tsx`, `scripts/build-articles-data.js`, `src/data/articlesData.ts`
+- **Phạm vi hoàn tất:**
+  1. **Khử bỏ thuật ngữ máy móc & AI slop**: Xóa hoàn toàn badge "Đã kiểm chứng thực tế", đổi "TL;DR (Answer First)" thành "Tóm tắt nhanh", đổi "Bài Viết Cùng Chủ Đề Trong Phễu" thành "Bài viết liên quan".
+  2. **Tái thiết kế Header & Byline**: H1 sử dụng clamp() tinh tế, bỏ khối author card khổng lồ và avatar to lớn, chuyển sang dòng byline editorial trang nhã.
+  3. **Thanh Breadcrumb siêu mỏng**: Chiều cao giảm từ 85px xuống ~48px nền sáng `#fbfcfb`, tự động thu gọn tiêu đề tránh vỡ layout mobile.
+  4. **Typography & Layout 2 cột**: Chuẩn hóa container 760px, font 17-18px, line-height 1.8; Sidebar sticky chứa TOC trên desktop, mobile thu gọn thành accordion.
+  5. **Tính toán Reading Time chuẩn**: Áp dụng công thức `wordCount / 230`, cập nhật chính xác cho toàn bộ 30 bài viết thay vì giá trị hardcode 18 phút.
+  6. **Tách biệt Public Data vs Internal SEO**: Triển khai mapper `toPublicArticle()` và tách dữ liệu brief nội bộ sang `src/data/articles/internalSeo.ts`.
+- **Trạng thái:** Hoàn tất 100%, `npm run build` PASS 100% trong 4.88s (0 lỗi type, 0 lỗi layout overflow).
+
 ### A0000000000000. Thiết Kế Article Schema & Flexible Block System Cho CMS LocalMate (`docs/article-schema.md`):
 - **Tác giả:** Subagent 7: ARTICLE TEMPLATE ENGINEER
 - **Vị trí tệp:** `docs/article-schema.md`, `src/cms/types.ts`

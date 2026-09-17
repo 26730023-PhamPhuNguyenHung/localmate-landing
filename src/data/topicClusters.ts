@@ -203,8 +203,8 @@ export const TOPIC_CLUSTERS: Record<string, TopicCluster> = {
     number: 3,
     name: 'Cụm 3: Local SEO & Hệ Thống Location Pages Đa Khu Vực',
     shortName: 'Local SEO & Location Pages',
-    headline: 'Thống trị từ khóa tìm kiếm địa phương và AI Overviews quanh bán kính kinh doanh',
-    description: 'Chiến lược tối ưu hóa công cụ tìm kiếm địa phương, xây dựng mạng lưới trang vệ tinh đa quận huyện, chuẩn hóa bộ nhận diện NAP và củng cố tín hiệu thực thể Entity.',
+    headline: 'Thống trị kết quả tìm kiếm địa phương và đề xuất AI quanh bán kính kinh doanh',
+    description: 'Chiến lược tối ưu hóa tìm kiếm địa phương, xây dựng mạng lưới trang vệ tinh đa quận huyện, chuẩn hóa thông tin cơ sở và củng cố độ uy tín thương hiệu trên Internet.',
     color: '#0d7647',
     pillar: {
       id: 13,
@@ -346,7 +346,7 @@ export const TOPIC_CLUSTERS: Record<string, TopicCluster> = {
         path: '/kien-thuc/google-ads-hay-facebook-ads-phu-hop-hon-voi-doanh-nghiep-dia-phuong',
         badge: 'Lựa Chọn Kênh',
         readingTime: '6 phút',
-        excerpt: 'So sánh ý định tìm kiếm (Search Intent) với lướt bị động (Social Browsing); bảng phân loại ngành nghề nào nên chọn kênh nào.'
+        excerpt: 'So sánh nhu cầu tìm kiếm chủ động với lướt mạng xã hội bị động; bảng phân loại ngành nghề nào nên chọn kênh nào.'
       }
     ],
     commercialTarget: {

@@ -37,7 +37,7 @@ cms:
   last_synced_at: "2026-09-17T13:00:00+07:00"
 ---
 
-> **TL;DR (Answer First)**: Website có người xem nhưng không có khách gọi điện thường do 10 lỗi trải nghiệm di động: (1) Tải chậm quá 3 giây; (2) Thiếu nút gọi khẩn cấp nổi; (3) Giấu giá bắt khách inbox; (4) Dùng ảnh mạng thiếu tin cậy; (5) Vỡ giao diện điện thoại; (6) Thiếu ảnh nghiệm thu thực tế; (7) Không có Google Maps và địa chỉ thực; (8) Bỏ quên SEO địa phương; (9) Nội dung sáo rỗng; (10) Bỏ bê bảo trì khiến web lỗi SSL hoặc link chết. Sửa triệt để 10 lỗi này giúp cơ sở kinh doanh chốt cuộc gọi ngay lập tức.
+> **Tóm tắt nhanh**: Website có người xem nhưng không có khách gọi điện thường do 10 lỗi trải nghiệm di động: (1) Tải chậm quá 3 giây; (2) Thiếu nút gọi khẩn cấp nổi; (3) Giấu giá bắt khách inbox; (4) Dùng ảnh mạng thiếu tin cậy; (5) Vỡ giao diện điện thoại; (6) Thiếu ảnh nghiệm thu thực tế; (7) Không có Google Maps và địa chỉ thực; (8) Bỏ quên SEO địa phương; (9) Nội dung sáo rỗng; (10) Bỏ bê bảo trì khiến web lỗi SSL hoặc link chết. Sửa triệt để 10 lỗi này giúp cơ sở kinh doanh chốt cuộc gọi ngay lập tức.
 
 # 10 lỗi phổ biến khiến website doanh nghiệp không có khách gọi điện
 

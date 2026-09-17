@@ -3,6 +3,7 @@
 ## 1. Bài học về Quản lý Agent & Prompting
 - **Không nhồi nhét rules dự án khác**: Tránh copy-paste các rules backend B2B (Prisma, Tanstack, Flue) vào dự án landing page đơn giản vì sẽ làm Agent bị ngộ độc context và kẹt vòng lặp.
 - **Tránh Spawn quá nhiều Subagents trên 1 Frontend**: 10 subagents cùng sửa 1 repo frontend gây xung đột git và file lock. Nên dùng 1 Agent chính giải quyết tuần tự theo module hoặc tối đa 2 subagent chạy 2 trang độc lập.
+- **Quy tắc Kiểm thử & Không chạy lặp Screenshot vô tận**: Tránh để subagent rơi vào vòng lặp chụp ảnh màn hình (screenshot loop) hoặc sinh file script test tạm gây chậm tiến độ. Ưu tiên build TypeScript/Vite và visual check dứt điểm.
 - **Rule 14 Verified-First**: Sau mỗi cụm module hoặc 15 phút, chạy `npm run build` và commit local ngay.
 - **Bài học Mobile Responsive & CSS Grid Tràn Màn Hình (Viewport Overflow)**:
   - Lỗi: Dùng `grid-template-columns: repeat(auto-fit, minmax(320px, 1fr))` hoặc `minmax(340px, 1fr)` kết hợp `Container` có padding cố định khiến tổng width vượt quá 360px-375px trên mobile, làm toàn bộ trang bị lệch trái/phải và chữ bị cắt mép.
@@ -129,3 +130,16 @@
   - *Minh bạch chi phí*: Bóc tách 5 khoản chi phí cố định và biến đổi (Domain, Hosting, Thiết kế, Bảo trì, Marketing) giúp khách hàng không bị agency khác "vẽ tiền".
   - *Checklist tự thẩm định*: 6 bước chủ shop cần chuẩn bị trước khi thuê thiết kế website.
   - *FAQPage Schema*: Tích hợp 6 câu hỏi đáp thực tế phản ánh đúng thắc mắc phổ biến nhất của chủ doanh nghiệp nhỏ.
+
+## 15. Bài học về Tái Thiết Kế Giao Diện Bài Viết Editorial Chuẩn Tạp Chí (Anti-AI & Anti-Dashboard)
+- **Căn bệnh "SEO Dashboardification" trên trang bài viết**:
+  - Giao diện bài viết cũ bị lạm dụng các thành phần kỹ thuật máy móc: Badge "Đã kiểm chứng thực tế" kèm khiên bảo vệ (fake credential), hộp viền xanh rực `TL;DR (Answer First)` với icon tick xanh kiểm toán, breadcrumb xám cao 85px, khối tác giả đóng khung to tướng như thẻ widget dashboard admin.
+  - Hậu quả: Độc giả cảm nhận đây là trang xuất bản tự động từ tool SEO hoặc AI generator, làm suy giảm nghiêm trọng độ tin cậy của thương hiệu dịch vụ.
+- **Quy tắc chuyển đổi sang Editorial Magazine Format**:
+  1. *Breadcrumbs*: Chiều cao mỏng nhẹ (~48px), nền sáng đồng bộ `#fbfcfb`, tự động cắt ngắn tiêu đề (ellipsis) theo breakpoint.
+  2. *Header & Byline*: H1 dùng `clamp()`, text-wrap pretty, line-height 1.25. Tác giả và metadata trình bày theo chuẩn Byline tạp chí tinh tế ("Đội ngũ Localmate • Cập nhật dd/mm/yyyy • X phút đọc • Chia sẻ"), bỏ toàn bộ card xám bao quanh.
+  3. *Hộp Tóm Tắt (ArticleSummary)*: Đổi nhãn thành "Tóm tắt nhanh" (không uppercase, không icon kiểm chứng), viền trái xanh mỏng `3px solid #0d7647`, nền sáng dịu `#f8fafc`.
+  4. *Typography Chuẩn Mắt Đọc*: Thân bài giới hạn `max-width: 760px`, cỡ chữ 17-18px, `line-height: 1.8`, màu `#1e293b`. Các bảng biểu so sánh bọc container `overflow-x: auto` chống vỡ ngang trên di động.
+  5. *Tính toán Reading Time từ thực tế*: Tuyệt đối không dùng chuỗi hardcode (như 18 phút đọc). Tính chuẩn theo công thức tiếng Việt: `readingTime = Math.max(1, Math.ceil(wordCount / 230)) + ' phút đọc'`.
+  6. *Tách biệt Public Data và Internal Strategy*: Các trường `searchIntent`, `targetCustomer`, `contentGoal`, `outline`, `brief` thuộc về chiến lược SEO nội bộ, phải lưu tách biệt sang `internalSeo.ts` và dùng mapper `toPublicArticle()`, tuyệt đối không để rò rỉ ra client bundle của người đọc.
+

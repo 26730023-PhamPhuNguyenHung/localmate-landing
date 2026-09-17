@@ -1,5 +1,39 @@
 # 📚 LOCALMATE AGENTS LESSONS LEARNED & EDITORIAL RULES
 
+## 21. Bài Học Về Tối Ưu Hóa Trải Nghiệm Đọc Bài Viết (Editorial UX Refactor & Asymmetric 2-Column Responsive Layout)
+- **Khử bỏ Breadcrumb Banner cồng kềnh**:
+  - Dải nền xám cao ~85px với padding lớn và `marginBottom` 1.5rem hardcoded chiếm quá nhiều vertical space, đẩy tiêu đề và phần mở đầu xuống dưới nếp gấp màn hình (below the fold) trên laptop 1366x768 và 1440x900.
+  - Giải pháp: Sử dụng `Breadcrumbs` với prop `noMargin={true}` lồng trong thanh điều hướng tinh gọn (`.article-top-bar`, `padding: 10px 0`, nền trắng `#ffffff`, viền siêu mỏng `1px solid #f1f5f9`). Tiết kiệm ngay ~45-50px chiều cao dọc.
+- **Cân đối Tỷ lệ Typography Editorial**:
+  - Tiêu đề H1 giảm từ kích thước khổng lồ `clamp(1.85rem, 4vw, 2.65rem)` (~42px) xuống tỷ lệ thanh thoát `clamp(1.5rem, 2.75vw, 2.15rem)` (~28-34px) với `line-height: 1.32`, `letter-spacing: -0.02em` và `text-wrap: pretty`. Tiêu đề không còn choán hết nửa màn hình khi dài 3 dòng.
+- **Chuyển đổi Khối Author/Meta từ "Dashboard Card" sang "Editorial Byline"**:
+  - Thay vì đóng khung tác giả trong một khối hộp xám viền dày giống thẻ widget admin dashboard, chuyển sang định dạng **Editorial Byline** thanh lịch với đường phân cách mảnh trên dưới `1px solid #f1f5f9`, avatar tròn gọn gàng 36px, tên tác giả bold `0.875rem`, chức danh tinh tế, ngày cập nhật, thời gian đọc và nút chia sẻ ghost button nhỏ gọn.
+- **Khử bỏ viền xanh thô ráp kiểu SEO Tool ở khối Answer First (TL;DR)**:
+  - Bỏ viền xanh lá dày 2px rực `#86efac` và icon to bự tạo cảm giác máy móc như tool SEO audit tự động.
+  - Thiết kế lại thành Callout tạp chí cao cấp: nền xám sáng mềm `#f8fafc`, viền trái `3px solid #0d7647`, viền xung quanh mảnh `1px solid #e2e8f0`, bo góc mềm 8px, icon `Sparkles` 14px tinh tế.
+- **Khôi phục Nhịp Điệu Đọc bằng Layout 2 Cột Bất Đối Xứng (Asymmetric 2-Column Grid)**:
+  - Trên Desktop/Laptop (>= 1080px): Cột chính chiếm tối đa 760px chuẩn độ dài dòng 65-75 ký tự, cột bên phải 280px chứa Sticky TOC (`TableOfContents`) bám theo vị trí cuộn và tự động highlight 60fps, kèm theo widget tư vấn nhanh. Độc giả đọc một mạch từ đầu đến cuối mà không bị card mục lục chắn ngang.
+  - Trên Mobile & Tablet (< 1080px): Sidebar ẩn đi, TOC hiển thị ở đầu bài dạng accordion thu gọn (`defaultCollapsed={true}`), người dùng chạm nhẹ để mở khi cần mà không bị chiếm 2 màn hình cuộn.
+- **Tích hợp Thanh Tiến Trình Đọc (ReadingProgressBar)**:
+  - Thanh tiến trình 3px ở đỉnh màn hình (`linear-gradient(90deg, #0d7647 0%, #16a34a 50%, #22c55e 100%)`) cung cấp phản hồi thị giác trực quan liên tục khi độc giả cuộn các bài chuyên sâu 2.000 - 3.000 từ.
+
+## 20. Bài Học Về Chuẩn Hóa Hệ Thống Typography & Editorial Prose System Cho Nội Dung Bài Viết
+- **Tỷ lệ chuẩn vàng cho mắt người đọc (Golden Reading Measure)**:
+  - Container bài viết (`.article-body`, `.article-rendered-content`) bắt buộc giới hạn `max-width: 760px` và `margin-inline: auto`. Chiều dài dòng 65-75 ký tự giúp mắt người đọc không phải đảo quá rộng khi đọc các bài dài 2.000+ từ trên màn hình desktop, giảm 80% mỏi mắt và tỷ lệ thoát trang (bounce rate).
+- **Bộ thông số Typography SSOT thân thiện với độc giả**:
+  - **Body text**: `font-size: clamp(1.0625rem, 1.4vw, 1.125rem)` (17px - 18px), `line-height: 1.8`, màu chữ `#1e293b` (slate-800) đảm bảo độ tương phản cao trên nền trắng mà không gắt như đen tuyệt đối (`#000000`).
+  - **Paragraph spacing**: `margin-bottom: 1.4em`, sử dụng `text-wrap: pretty` chống rớt từ đơn côi cuối đoạn.
+  - **Heading 2**: `font-size: clamp(1.5rem, 2.5vw, 1.75rem)` (24-28px), `font-weight: 750`, `margin-top: 2.5rem`, `margin-bottom: 1rem`, `border-bottom: 1px solid #f1f5f9` tinh tế, `scroll-margin-top: 85px` chống che khuất khi nhảy từ Mục lục TOC.
+  - **Heading 3**: `font-size: clamp(1.25rem, 1.8vw, 1.35rem)` (20-22px), `font-weight: 700`, `margin-top: 1.8rem`, `margin-bottom: 0.75rem`.
+  - **Lists**: `padding-left: 1.4rem`, `li margin-bottom: 0.5rem`, `line-height: 1.75`. Hỗ trợ cả thẻ `li` nằm trong đoạn lẫn `.checklist-item` với checkbox màu thương hiệu `#0d7647`.
+  - **Links**: màu `#0d7647`, gạch chân cách chữ `text-underline-offset: 3px`, hover `#095935`.
+  - **Strong**: dùng `font-weight: 650`, không để font quá đậm hoặc bôi đen cả câu gây rối mắt.
+  - **Blockquote**: phong cách editorial trang nhã (`border-left: 3px solid #0d7647`, nền `#f8fafc`, `padding: 1rem 1.25rem`, bo góc phải `0 8px 8px 0`).
+  - **Tables**: bọc container có `overflow-x: auto`, `min-width: 580px`, header xám nhẹ `#f8fafc` chữ `#0f172a`, viền `#e2e8f0`, responsive mượt mà trên mobile chống vỡ khung.
+- **Xử lý làm sạch nội dung bài viết tự động (Content Sanitization & Normalization)**:
+  - Tự động loại bỏ blockquote TL;DR đầu bài nếu đã có ArticleSummary box hiển thị ở Hero để tránh trùng lặp 2 lần cho độc giả.
+  - Tự động chuyển ký tự `<p>---</p>` từ markdown thành đường kẻ phân đoạn thanh lịch `<hr class="article-divider" />`.
+
 ## 19. Bài Học Về Cloudflare Pages SSG Dual-Targeting: Chống 308 Redirect & 404 Bằng Cách Tạo Cả .html và /index.html
 - **Hiện tượng & Bẫy Kỹ Thuật trên Cloudflare Pages**:
   - Khi deploy trang tĩnh lên Cloudflare Pages kết hợp với Cloudflare Pages Functions (`functions/` directory), rewrite `/* /index.html 200` trong `_redirects` không áp dụng cho các route deep nếu không có file tĩnh tương ứng.

@@ -1,12 +1,16 @@
 // LocalMate High-Performance Code-First Articles Data Engine
 // Zero-API, 0ms Instant Rendering, Full Code-Splitting per Article
 import type {
+  PublicArticleMetadata,
   ArticleMetadata,
   ArticleContent,
+  PublicArticleDetail,
   ArticleDetail,
   ArticleTOCItem,
   ArticleFAQ,
   ArticleBrief,
+  ArticleInternalData,
+  PublicArticleSeo,
   ArticleSeo,
   CategoryInfo
 } from './articles/types';
@@ -14,12 +18,16 @@ import { ARTICLES_METADATA, CATEGORIES_INFO } from './articles/metadata';
 
 // Re-export all types
 export type {
+  PublicArticleMetadata,
   ArticleMetadata,
   ArticleContent,
+  PublicArticleDetail,
   ArticleDetail,
   ArticleTOCItem,
   ArticleFAQ,
   ArticleBrief,
+  ArticleInternalData,
+  PublicArticleSeo,
   ArticleSeo,
   CategoryInfo
 };
@@ -62,33 +70,114 @@ const articleContentLoaders: Record<string, () => Promise<{ default: ArticleCont
 };
 
 // In-Memory RAM Cache to guarantee true 0ms repeat accesses
-const articleMemoryCache = new Map<string, ArticleDetail>();
+const articleMemoryCache = new Map<string, PublicArticleDetail>();
+
+/**
+ * 🛡️ Mapper Helper: Chuyển đổi bất kỳ dữ liệu bài viết thô thành PublicArticleDetail chuẩn.
+ * Loại bỏ 100% dữ liệu SEO nội bộ (focusKeyword, searchIntent, targetCustomer, brief...)
+ * Đảm bảo chỉ chứa và hiển thị các thuộc tính thân thiện với người dùng.
+ */
+export function toPublicArticle(
+  raw: any,
+  relatedPosts?: PublicArticleMetadata[]
+): PublicArticleDetail {
+  if (!raw) return raw;
+  const coverImage = raw.coverImage || raw.featuredImageUrl || '/assets/hero.webp';
+  const htmlContent = raw.html || raw.content || '';
+
+  return {
+    id: raw.id,
+    uuid: raw.uuid,
+    slug: raw.slug,
+    title: raw.title,
+    category: raw.category,
+    categorySlug: raw.categorySlug,
+    excerpt: raw.excerpt || '',
+    readingTime: raw.readingTime,
+    wordCount: raw.wordCount || 0,
+    author: raw.author || 'Đội ngũ Chuyên gia LocalMate',
+    publishedAt: raw.publishedAt,
+    updatedAt: raw.updatedAt,
+    coverImage,
+    featuredImageUrl: coverImage,
+    featuredImageAlt: raw.featuredImageAlt || raw.title,
+    faqCount: raw.faqCount ?? (raw.faqs ? raw.faqs.length : 0),
+    headingsCount: raw.headingsCount ?? (raw.toc ? raw.toc.length : 0),
+    html: htmlContent,
+    content: htmlContent,
+    toc: raw.toc || [],
+    faqs: raw.faqs || [],
+    relatedPosts: relatedPosts || [],
+    schemaOrg: raw.schemaOrg || {},
+    seo: {
+      title: raw.seo?.title || raw.title,
+      description: raw.seo?.description || raw.excerpt || '',
+      canonicalUrl: raw.seo?.canonicalUrl || `https://localmate.vn/blog/${raw.slug}`,
+      ogTitle: raw.seo?.ogTitle || raw.seo?.title || raw.title,
+      ogDescription: raw.seo?.ogDescription || raw.seo?.description || raw.excerpt || ''
+    }
+  };
+}
+
+/**
+ * 🛡️ Mapper Helper: Chuẩn hóa metadata thành PublicArticleMetadata an toàn
+ */
+export function toPublicMetadata(raw: any): PublicArticleMetadata {
+  if (!raw) return raw;
+  const coverImage = raw.coverImage || raw.featuredImageUrl || '/assets/hero.webp';
+  return {
+    id: raw.id,
+    uuid: raw.uuid,
+    slug: raw.slug,
+    title: raw.title,
+    category: raw.category,
+    categorySlug: raw.categorySlug,
+    excerpt: raw.excerpt || '',
+    readingTime: raw.readingTime,
+    wordCount: raw.wordCount || 0,
+    author: raw.author || 'Đội ngũ Chuyên gia LocalMate',
+    publishedAt: raw.publishedAt,
+    updatedAt: raw.updatedAt,
+    coverImage,
+    featuredImageUrl: coverImage,
+    featuredImageAlt: raw.featuredImageAlt || raw.title,
+    faqCount: raw.faqCount ?? 0,
+    headingsCount: raw.headingsCount ?? 0,
+    seo: {
+      title: raw.seo?.title || raw.title,
+      description: raw.seo?.description || raw.excerpt || '',
+      canonicalUrl: raw.seo?.canonicalUrl || `https://localmate.vn/blog/${raw.slug}`,
+      ogTitle: raw.seo?.ogTitle || raw.seo?.title || raw.title,
+      ogDescription: raw.seo?.ogDescription || raw.seo?.description || raw.excerpt || ''
+    }
+  };
+}
 
 /**
  * ⚡ Synchronous: Get all articles metadata (only ~12KB bundle impact)
  */
-export function getAllArticles(): ArticleMetadata[] {
+export function getAllArticles(): PublicArticleMetadata[] {
   return ARTICLES_METADATA;
 }
 
 /**
  * ⚡ Synchronous: Get lightweight metadata for a single article by slug
  */
-export function getArticleMetadataBySlug(slug: string): ArticleMetadata | undefined {
+export function getArticleMetadataBySlug(slug: string): PublicArticleMetadata | undefined {
   return ARTICLES_METADATA.find(item => item.slug === slug);
 }
 
 /**
  * ⚡ Synchronous: Get articles by category slug
  */
-export function getArticlesByCategory(categorySlug: string): ArticleMetadata[] {
+export function getArticlesByCategory(categorySlug: string): PublicArticleMetadata[] {
   return ARTICLES_METADATA.filter(item => item.categorySlug === categorySlug);
 }
 
 /**
  * ⚡ Synchronous: Get related articles in the same category (excluding current)
  */
-export function getRelatedArticles(currentSlug: string, limit = 3): ArticleMetadata[] {
+export function getRelatedArticles(currentSlug: string, limit = 3): PublicArticleMetadata[] {
   const current = getArticleMetadataBySlug(currentSlug);
   if (!current) {
     return ARTICLES_METADATA.slice(0, limit);
@@ -113,27 +202,28 @@ export function getAllCategories(): CategoryInfo[] {
 }
 
 /**
- * ⚡ Synchronous: Client-side fulltext search across title, excerpt, focusKeyword
+ * ⚡ Synchronous: Client-side fulltext search across title, excerpt, category
+ * An toàn 100%: Không tra cứu hay làm rò rỉ focusKeyword nội bộ
  */
-export function searchArticles(query: string): ArticleMetadata[] {
+export function searchArticles(query: string): PublicArticleMetadata[] {
   if (!query || !query.trim()) return ARTICLES_METADATA;
   const q = query.toLowerCase().trim();
   return ARTICLES_METADATA.filter(item => {
     return (
       item.title.toLowerCase().includes(q) ||
       item.excerpt.toLowerCase().includes(q) ||
-      item.category.toLowerCase().includes(q) ||
-      item.seo.focusKeyword.toLowerCase().includes(q)
+      item.category.toLowerCase().includes(q)
     );
   });
 }
 
 /**
- * 🚀 Asynchronous (Code-Splitted): Load full article content (HTML, TOC, FAQs, Brief, Schema)
+ * 🚀 Asynchronous (Code-Splitted): Load full article content (HTML, TOC, FAQs, Schema)
  * Vite automatically loads only the specific ~15KB JS chunk for this slug!
+ * Luôn trả về PublicArticleDetail an toàn đã qua mapper toPublicArticle.
  * Subsequent calls resolve in 0ms from RAM cache.
  */
-export async function getArticleBySlug(slug: string): Promise<ArticleDetail | null> {
+export async function getArticleBySlug(slug: string): Promise<PublicArticleDetail | null> {
   // Check RAM Cache first
   if (articleMemoryCache.has(slug)) {
     return articleMemoryCache.get(slug)!;
@@ -148,10 +238,9 @@ export async function getArticleBySlug(slug: string): Promise<ArticleDetail | nu
   try {
     const mod = await loader();
     const content = mod.default;
-    const detail: ArticleDetail = {
-      ...meta,
-      ...content
-    };
+    const relatedPosts = getRelatedArticles(slug, 3);
+    const detail = toPublicArticle({ ...meta, ...content }, relatedPosts);
+    
     // Cache in RAM
     articleMemoryCache.set(slug, detail);
     return detail;
@@ -172,6 +261,6 @@ export function preloadArticle(slug: string): void {
 /**
  * ⚡ Synchronous Cache Reader: If already loaded, returns immediately, otherwise undefined
  */
-export function getCachedArticleSync(slug: string): ArticleDetail | undefined {
+export function getCachedArticleSync(slug: string): PublicArticleDetail | undefined {
   return articleMemoryCache.get(slug);
 }

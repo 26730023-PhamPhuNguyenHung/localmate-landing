@@ -128,7 +128,7 @@ function validateArticle(articleDir) {
   }
 
   // 5. Answer First / TL;DR Check
-  const hasAnswerFirst = /TL;DR|Answer First|tldr/i.test(body.slice(0, 1000));
+  const hasAnswerFirst = /TL;DR|Answer First|tldr|Tóm tắt nhanh/i.test(body.slice(0, 1000));
   if (!hasAnswerFirst) {
     results.warnings.push('Missing TL;DR or Answer-First block in the first 1000 characters');
     results.score -= 10;

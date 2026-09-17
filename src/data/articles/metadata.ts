@@ -55,28 +55,23 @@ export const ARTICLES_METADATA: ArticleMetadata[] = [
     "category": "Website",
     "categorySlug": "website",
     "excerpt": "Website doanh nghiệp nhỏ là văn phòng số chính chủ hoạt động 24/7. Cẩm nang phân biệt với Facebook, bảng so sánh tính năng, chi phí và checklist tự kiểm tra trước khi thuê.",
-    "readingTime": "18 phút đọc",
-    "wordCount": 3792,
+    "readingTime": "17 phút đọc",
+    "wordCount": 3726,
     "author": "LocalMate Team",
     "publishedAt": "2026-09-14 08:00:00",
     "updatedAt": "2026-09-17 10:00:00",
+    "coverImage": "/logo.png",
     "featuredImageUrl": "/logo.png",
     "featuredImageAlt": "Website doanh nghiệp là gì và phân tích nhu cầu thực tế của doanh nghiệp nhỏ",
+    "faqCount": 6,
+    "headingsCount": 16,
     "seo": {
       "title": "Website Doanh Nghiệp Là Gì? Doanh Nghiệp Nhỏ Có Cần Web Không?",
       "description": "Website doanh nghiệp là gì? Phân tích 8 tiêu chí so sánh web và mạng xã hội, 4 trường hợp cần làm ngay, bóc tách 5 mục chi phí và checklist tránh mất tiền oan.",
-      "focusKeyword": "website doanh nghiệp là gì",
       "canonicalUrl": "https://localmate.vn/kien-thuc/website-doanh-nghiep-la-gi",
       "ogTitle": "Website Doanh Nghiệp Là Gì? Doanh Nghiệp Nhỏ Có Thực Sự Cần Không?",
       "ogDescription": "Giải đáp chi tiết website doanh nghiệp là gì, phân tích lợi ích thực tế và lý do doanh nghiệp nhỏ cần sở hữu website độc lập thay vì chỉ phụ thuộc mạng xã hội."
-    },
-    "briefSummary": {
-      "searchIntent": "TOFU / MOFU - Định nghĩa & Khung ra quyết định thực tế",
-      "targetCustomer": "Chủ tiệm, chủ xưởng, hộ kinh doanh dịch vụ đang đắn đo có nên chi tiền làm website không",
-      "contentGoal": "Giúp chủ cơ sở hiểu đúng bản chất tài sản số, tự phân loại mình có cần web không và không bị agency vẽ tính năng lừa tiền."
-    },
-    "faqCount": 6,
-    "headingsCount": 16
+    }
   },
   {
     "id": 2,
@@ -86,28 +81,23 @@ export const ARTICLES_METADATA: ArticleMetadata[] = [
     "category": "Website",
     "categorySlug": "website",
     "excerpt": "Để hoàn thành một website doanh nghiệp nhỏ trong vòng 3 đến 5 ngày mà không bị phát sinh chi phí, chủ cơ sở chỉ cần tự chuẩn bị đúng 4 nhóm tư liệu thực tế: (1) Tên miền đăng ký bằng số CCCD chính chủ; (2) Tối thiểu 15",
-    "readingTime": "10 phút đọc",
-    "wordCount": 2695,
+    "readingTime": "12 phút đọc",
+    "wordCount": 2681,
     "author": "LocalMate Team",
     "publishedAt": "2026-09-14 08:00:00",
     "updatedAt": "2026-09-17 10:00:00",
+    "coverImage": "/logo.png",
     "featuredImageUrl": "/logo.png",
     "featuredImageAlt": "Làm website cho doanh nghiệp nhỏ cần chuẩn bị những gì - Checklist 4 nhóm tư liệu thực chiến",
+    "faqCount": 4,
+    "headingsCount": 22,
     "seo": {
       "title": "Làm website cho doanh nghiệp nhỏ cần chuẩn bị những gì? (Checklist thực chiến)",
       "description": "Checklist làm website cho doanh nghiệp nhỏ gồm 4 nhóm tư liệu cốt lõi: tên miền chính chủ, ảnh xưởng thật, bảng giá 3-5 dịch vụ mũi nhọn và thông tin Maps.",
-      "focusKeyword": "làm website cho doanh nghiệp nhỏ cần chuẩn bị những gì",
       "canonicalUrl": "https://localmate.vn/kien-thuc/lam-website-cho-doanh-nghiep-nho-can-chuan-bi-nhung-gi",
       "ogTitle": "Làm Website Cho Doanh Nghiệp Nhỏ Cần Chuẩn Bị Những Gì? (Checklist)",
       "ogDescription": "Hướng dẫn chi tiết những việc cần chuẩn bị trước khi làm website: tên miền chính chủ, hình ảnh thực tế, thông tin liên hệ và bảng giá minh bạch."
-    },
-    "briefSummary": {
-      "searchIntent": "MOFU - Hướng dẫn chuẩn bị triển khai",
-      "targetCustomer": "Chủ tiệm, quản lý cơ sở chuẩn bị thuê đơn vị thiết kế web",
-      "contentGoal": "Cung cấp checklist rõ ràng để chủ tiệm chuẩn bị hình ảnh, bài viết, pháp lý và tránh bị đơn vị thiết kế kéo dài thời gian."
-    },
-    "faqCount": 4,
-    "headingsCount": 22
+    }
   },
   {
     "id": 3,
@@ -117,28 +107,23 @@ export const ARTICLES_METADATA: ArticleMetadata[] = [
     "category": "Website",
     "categorySlug": "website",
     "excerpt": "Trong năm 2026, tổng chi phí trọn gói hợp lý để một doanh nghiệp nhỏ sở hữu website tinh gọn hoàn chỉnh dao động từ  cho năm đầu tiên. Chi phí này bao gồm: Tên miền quốc tế hoặc Việt Nam (khoảng 300.000đ - 750.000đ/năm)",
-    "readingTime": "14 phút đọc",
-    "wordCount": 4567,
+    "readingTime": "20 phút đọc",
+    "wordCount": 4511,
     "author": "LocalMate Team",
     "publishedAt": "2026-09-14 08:00:00",
     "updatedAt": "2026-09-17 10:00:00",
+    "coverImage": "/logo.png",
     "featuredImageUrl": "/logo.png",
     "featuredImageAlt": "Bóc tách chi phí làm website doanh nghiệp nhỏ năm 2026 minh bạch từng hạng mục",
+    "faqCount": 6,
+    "headingsCount": 30,
     "seo": {
       "title": "Chi phí làm website doanh nghiệp nhỏ năm 2026 gồm những gì? (Bóc tách minh bạch)",
       "description": "Bóc tách chi phí làm website doanh nghiệp nhỏ năm 2026: tên miền, hosting, thiết kế, phí duy trì hàng năm và 5 bẫy giá rẻ cần tránh để không mất tiền oan.",
-      "focusKeyword": "chi phí làm website doanh nghiệp nhỏ",
       "canonicalUrl": "https://localmate.vn/kien-thuc/chi-phi-lam-website-doanh-nghiep-nho-2026",
       "ogTitle": "Chi Phí Làm Website Doanh Nghiệp Nhỏ Năm 2026 Gồm Những Gì?",
       "ogDescription": "Bóc tách minh bạch chi phí làm website doanh nghiệp nhỏ 2026: tên miền, hosting, thiết kế và phí duy trì hàng năm. Tránh bẫy web giá rẻ bị đòi phí gia hạn cao."
-    },
-    "briefSummary": {
-      "searchIntent": "BOFU - Khảo sát giá & Quyết định ngân sách",
-      "targetCustomer": "Chủ doanh nghiệp nhỏ, hộ kinh doanh đang tìm hiểu báo giá thiết kế website",
-      "contentGoal": "Bóc tách minh bạch chi phí ban đầu (Domain, Hosting, Code) và chi phí duy trì hàng năm để tránh bị bẫy giá rẻ."
-    },
-    "faqCount": 6,
-    "headingsCount": 30
+    }
   },
   {
     "id": 4,
@@ -148,28 +133,23 @@ export const ARTICLES_METADATA: ArticleMetadata[] = [
     "category": "Website",
     "categorySlug": "website",
     "excerpt": "Một website giới thiệu doanh nghiệp dịch vụ nhỏ chỉ cần đúng  để tối ưu hóa tỷ lệ chuyển đổi: (1)  nêu bật ngay dịch vụ bạn làm và khu vực bạn phục vụ trong 3 giây đầu; (2)  phân tích rõ quy trình làm việc và bảng giá m",
-    "readingTime": "8 phút đọc",
-    "wordCount": 3405,
+    "readingTime": "15 phút đọc",
+    "wordCount": 3341,
     "author": "LocalMate Team",
     "publishedAt": "2026-09-14 08:00:00",
     "updatedAt": "2026-09-17 10:00:00",
+    "coverImage": "/logo.png",
     "featuredImageUrl": "/logo.png",
     "featuredImageAlt": "Cấu trúc các trang thiết yếu trên website giới thiệu công ty tối ưu chuyển đổi",
+    "faqCount": 5,
+    "headingsCount": 24,
     "seo": {
       "title": "Website giới thiệu công ty nên có những trang nào để chốt khách hiệu quả?",
       "description": "Website giới thiệu công ty nên có những trang nào để chốt khách? Khám phá cấu trúc 5 trang thiết yếu, bảng lọc trang thừa và checklist giúp tăng tỷ lệ gọi điện.",
-      "focusKeyword": "website giới thiệu công ty nên có những trang nào",
       "canonicalUrl": "https://localmate.vn/kien-thuc/website-gioi-thieu-cong-ty-nen-co-nhung-trang-nao",
       "ogTitle": "Website Giới Thiệu Công Ty Nên Có Những Trang Nào Để Chốt Khách?",
       "ogDescription": "Khám phá cấu trúc chuẩn của website giới thiệu công ty: Trang chủ, Dịch vụ chi tiết, Về chúng tôi, Bảng giá và Liên hệ. Tối ưu chuyển đổi khách hàng."
-    },
-    "briefSummary": {
-      "searchIntent": "TOFU / MOFU - Kiến trúc thông tin tinh gọn",
-      "targetCustomer": "Chủ doanh nghiệp, người quản lý chuẩn bị lên cấu trúc menu cho website dịch vụ",
-      "contentGoal": "Định hình cấu trúc trang chuẩn giúp khách vào web nắm bắt dịch vụ và ra quyết định liên hệ nhanh nhất."
-    },
-    "faqCount": 5,
-    "headingsCount": 24
+    }
   },
   {
     "id": 5,
@@ -179,28 +159,23 @@ export const ARTICLES_METADATA: ArticleMetadata[] = [
     "category": "Website",
     "categorySlug": "website",
     "excerpt": "dành riêng cho sản phẩm chuẩn hóa có giá dưới 1 triệu đồng mà khách có thể tự bấm \"Thêm vào giỏ\" và thanh toán thẻ ngay (như mỹ phẩm, quần áo, phụ kiện). Ngược lại,  dành cho 90% ngành nghề địa phương (sửa chữa, xây dự",
-    "readingTime": "8 phút đọc",
-    "wordCount": 2393,
+    "readingTime": "11 phút đọc",
+    "wordCount": 2361,
     "author": "LocalMate Team",
     "publishedAt": "2026-09-14 08:00:00",
     "updatedAt": "2026-09-17 10:00:00",
+    "coverImage": "/logo.png",
     "featuredImageUrl": "/logo.png",
     "featuredImageAlt": "Website bán hàng và website giới thiệu khác nhau như thế nào",
+    "faqCount": 4,
+    "headingsCount": 21,
     "seo": {
       "title": "Website Bán Hàng Và Website Giới Thiệu Khác Nhau Thế Nào? Nên Chọn Loại Nào?",
       "description": "Website bán hàng và website giới thiệu khác nhau như thế nào? Bảng so sánh 7 tiêu chí cốt lõi, ma trận quyết định chuẩn xác và phân tích tối ưu tỷ lệ chốt đơn.",
-      "focusKeyword": "website bán hàng và website giới thiệu khác nhau như thế nào",
       "canonicalUrl": "https://localmate.vn/kien-thuc/website-ban-hang-va-website-gioi-thieu-khac-nhau-nhu-the-nao",
       "ogTitle": "Website Bán Hàng & Website Giới Thiệu Khác Nhau Thế Nào? Nên Chọn Gì?",
       "ogDescription": "Phân tích điểm khác biệt giữa website bán hàng (giỏ hàng online) và website giới thiệu dịch vụ (thu thập thông tin khách). Hướng dẫn chọn đúng cho doanh nghiệp."
-    },
-    "briefSummary": {
-      "searchIntent": "TOFU / MOFU - So sánh & Ra quyết định kinh tế",
-      "targetCustomer": "Chủ cơ sở phân vân không biết nên làm website có giỏ hàng online hay web giới thiệu tư vấn",
-      "contentGoal": "Làm rõ sự khác biệt giữa e-commerce (giỏ hàng, thanh toán) và lead-generation (tư vấn, chốt khách)."
-    },
-    "faqCount": 4,
-    "headingsCount": 21
+    }
   },
   {
     "id": 6,
@@ -210,28 +185,23 @@ export const ARTICLES_METADATA: ArticleMetadata[] = [
     "category": "Website",
     "categorySlug": "website",
     "excerpt": "Nếu website của bạn có người vào xem nhưng không phát sinh cuộc gọi, 90% nguyên nhân nằm ở 3 điểm nghẽn trải nghiệm di động: (1)  hoặc bị giấu ở chân trang buộc khách phải nhớ số; (2) , bắt khách phải điền form để \"nhận",
-    "readingTime": "7 phút đọc",
-    "wordCount": 2568,
+    "readingTime": "11 phút đọc",
+    "wordCount": 2522,
     "author": "LocalMate Team",
     "publishedAt": "2026-09-14 08:00:00",
     "updatedAt": "2026-09-17 10:00:00",
+    "coverImage": "/logo.png",
     "featuredImageUrl": "/logo.png",
     "featuredImageAlt": "10 lỗi phổ biến khiến website doanh nghiệp không có khách gọi điện",
+    "faqCount": 4,
+    "headingsCount": 17,
     "seo": {
       "title": "10 Lỗi Phổ Biến Khiến Website Doanh Nghiệp Không Có Khách Gọi Điện",
       "description": "10 lỗi website không có khách gọi điện phổ biến nhất: tải chậm trên di động, giấu giá, thiếu nút gọi nổi và giải pháp khắc phục dứt điểm giúp tăng chuyển đổi.",
-      "focusKeyword": "lỗi website không có khách",
       "canonicalUrl": "https://localmate.vn/kien-thuc/10-loi-pho-bien-khien-website-doanh-nghiep-khong-co-khach",
       "ogTitle": "10 Lỗi Phổ Biến Khiến Website Doanh Nghiệp Không Có Khách Hàng",
       "ogDescription": "Khám phá 10 lý do khiến website của bạn có người vào nhưng không ai gọi điện: web tải chậm, thiếu nút Zalo/gọi nhanh, giao diện khó đọc và nội dung mập mờ."
-    },
-    "briefSummary": {
-      "searchIntent": "Problem aware - Chẩn đoán điểm nghẽn chuyển đổi",
-      "targetCustomer": "Chủ tiệm đã có website nhưng hàng tháng không nhận được cuộc gọi nào từ web",
-      "contentGoal": "Chỉ ra các điểm nghẽn về tốc độ, CTA, độ tương phản và nội dung sáo rỗng."
-    },
-    "faqCount": 4,
-    "headingsCount": 17
+    }
   },
   {
     "id": 7,
@@ -241,28 +211,23 @@ export const ARTICLES_METADATA: ArticleMetadata[] = [
     "category": "Google Maps",
     "categorySlug": "google-maps",
     "excerpt": "Google Maps cho doanh nghiệp (tên chính thức: Google Business Profile) là công cụ hoàn toàn miễn phí từ Google, cho phép cơ sở của bạn xuất hiện nổi bật ở vị trí Top 3 Bản đồ (Local 3-Pack) khi khách hàng tìm kiếm các d",
-    "readingTime": "10 phút đọc",
-    "wordCount": 2696,
+    "readingTime": "12 phút đọc",
+    "wordCount": 2669,
     "author": "LocalMate Team",
     "publishedAt": "2026-09-14 08:00:00",
     "updatedAt": "2026-09-17 10:00:00",
+    "coverImage": "/logo.png",
     "featuredImageUrl": "/logo.png",
     "featuredImageAlt": "Google Maps cho doanh nghiệp hướng dẫn từ A đến Z cho hộ kinh doanh địa phương",
+    "faqCount": 5,
+    "headingsCount": 17,
     "seo": {
       "title": "Google Maps cho doanh nghiệp: Hướng dẫn từ A đến Z cho hộ kinh doanh",
       "description": "Hướng dẫn Google Maps cho doanh nghiệp từ A đến Z cho hộ kinh doanh: Cách tạo hồ sơ, xác minh video thực địa, chuẩn hóa NAP và kết nối website hút khách quanh đây.",
-      "focusKeyword": "google maps cho doanh nghiệp",
       "canonicalUrl": "https://localmate.vn/kien-thuc/google-maps-cho-doanh-nghiep-huong-dan-tu-a-den-z",
       "ogTitle": "Google Maps Cho Doanh Nghiệp: Hướng Dẫn Tối Ưu Từ A Đến Z",
       "ogDescription": "Hướng dẫn đầy đủ về Google Business Profile cho doanh nghiệp nhỏ: cách đăng ký, xác minh địa điểm, cập nhật giờ mở cửa và đón khách quanh tiệm."
-    },
-    "briefSummary": {
-      "searchIntent": "TOFU / Pillar - Cẩm nang nền tảng",
-      "targetCustomer": "Chủ tiệm, chủ cơ sở kinh doanh dịch vụ địa phương muốn đưa cửa hàng lên bản đồ Google",
-      "contentGoal": "Tổng quan toàn bộ quy trình từ tạo lập, xác minh, tối ưu và bảo vệ Google Business Profile."
-    },
-    "faqCount": 5,
-    "headingsCount": 17
+    }
   },
   {
     "id": 8,
@@ -272,28 +237,23 @@ export const ARTICLES_METADATA: ArticleMetadata[] = [
     "category": "Google Maps",
     "categorySlug": "google-maps",
     "excerpt": "Năm 2026, cách duy nhất và nhanh nhất để đưa doanh nghiệp lên Google Maps là . Bạn không thể chờ mã thư bưu điện vì tỷ lệ thất lạc tại Việt Nam lên tới hơn 95%. Để quay video đạt chuẩn được duyệt trong vòng 24-48 giờ, b",
-    "readingTime": "8 phút đọc",
-    "wordCount": 2398,
+    "readingTime": "11 phút đọc",
+    "wordCount": 2376,
     "author": "LocalMate Team",
     "publishedAt": "2026-09-14 08:00:00",
     "updatedAt": "2026-09-17 10:00:00",
+    "coverImage": "/logo.png",
     "featuredImageUrl": "/logo.png",
     "featuredImageAlt": "Cách đưa doanh nghiệp lên Google Maps và quy trình xác minh video thực địa 90 giây năm 2026",
+    "faqCount": 6,
+    "headingsCount": 12,
     "seo": {
       "title": "Cách Đưa Doanh Nghiệp Lên Google Maps: Xác Minh Video Thực Địa 2026",
       "description": "Cách đưa doanh nghiệp lên Google Maps năm 2026 bằng video thực địa 90 giây. Kịch bản 1 cú máy, checklist giấy tờ và cách xử lý khi bị từ chối duyệt.",
-      "focusKeyword": "cách đưa doanh nghiệp lên google maps",
       "canonicalUrl": "https://localmate.vn/kien-thuc/cach-dua-doanh-nghiep-len-google-maps",
       "ogTitle": "Cách Đưa Doanh Nghiệp Lên Google Maps Nhanh Chóng & Chuẩn Xác",
       "ogDescription": "Hướng dẫn chi tiết từng bước đưa cửa hàng lên Google Maps: định vị chính xác, điền thông tin liên hệ và vượt qua các yêu cầu xác minh của Google."
-    },
-    "briefSummary": {
-      "searchIntent": "MOFU - Hướng dẫn thao tác kỹ thuật thực tế",
-      "targetCustomer": "Chủ tiệm mới mở hoặc chưa có vị trí trên bản đồ, gặp khó khăn khi xác minh",
-      "contentGoal": "Hướng dẫn từng bước ghim vị trí, điền tên chuẩn theo hướng dẫn của Google và chọn đúng danh mục chính."
-    },
-    "faqCount": 6,
-    "headingsCount": 12
+    }
   },
   {
     "id": 9,
@@ -303,28 +263,23 @@ export const ARTICLES_METADATA: ArticleMetadata[] = [
     "category": "Google Maps",
     "categorySlug": "google-maps",
     "excerpt": "Để đưa tiệm của bạn lên nhóm 3 vị trí hàng đầu trên Google Maps, có : (1)  phải chọn đúng danh mục chuẩn xác nhất do Google cung cấp (chiếm tới 60% trọng số thuật toán liên quan); (2)  để mở rộng phạm vi tìm kiếm; (3)",
-    "readingTime": "12 phút đọc",
-    "wordCount": 3411,
+    "readingTime": "15 phút đọc",
+    "wordCount": 3370,
     "author": "LocalMate Team",
     "publishedAt": "2026-09-14 08:00:00",
     "updatedAt": "2026-09-17 10:00:00",
+    "coverImage": "/logo.png",
     "featuredImageUrl": "/logo.png",
     "featuredImageAlt": "Cách tối ưu Google Business Profile lên Top 3 Local Pack cho doanh nghiệp nhỏ",
+    "faqCount": 5,
+    "headingsCount": 17,
     "seo": {
       "title": "Cách Tối Ưu Google Business Profile Để Khách Quanh Đây Dễ Tìm Thấy",
       "description": "Hướng dẫn tối ưu Google Business Profile lên Top 3 Google Maps với 6 bước kỹ thuật, checklist 8 mục hàng tuần và cách tránh án phạt nhồi từ khóa.",
-      "focusKeyword": "tối ưu google business profile",
       "canonicalUrl": "https://localmate.vn/kien-thuc/cach-toi-uu-google-business-profile-de-khach-de-tim-thay",
       "ogTitle": "Cách Tối Ưu Google Business Profile Để Khách Dễ Tìm Thấy Nhất",
       "ogDescription": "Bật mí 7 bước tối ưu Google Business Profile giúp tiệm của bạn xuất hiện trong top 3 bản đồ khi khách hàng tìm kiếm dịch vụ ở gần."
-    },
-    "briefSummary": {
-      "searchIntent": "Solution aware / Guide - Tối ưu hóa hồ sơ",
-      "targetCustomer": "Chủ tiệm đã có vị trí Maps nhưng thứ hạng còn thấp, ít người gọi",
-      "contentGoal": "Chia sẻ các thủ thuật tối ưu hình ảnh, bài đăng cập nhật, sản phẩm/dịch vụ và NAP consistency."
-    },
-    "faqCount": 5,
-    "headingsCount": 17
+    }
   },
   {
     "id": 10,
@@ -334,28 +289,23 @@ export const ARTICLES_METADATA: ArticleMetadata[] = [
     "category": "Google Maps",
     "categorySlug": "google-maps",
     "excerpt": "Nếu tiệm của bạn đã xác minh nhưng không hiển thị trên Google Maps, có : (1) : Google ưu tiên hiển thị cơ sở gần người tìm kiếm; nếu bạn đứng cách tiệm trên 5km hoặc ở khu vực có mật độ đối thủ quá dày đặc, tiệm sẽ bị ẩ",
-    "readingTime": "8 phút đọc",
-    "wordCount": 3033,
+    "readingTime": "14 phút đọc",
+    "wordCount": 2999,
     "author": "LocalMate Team",
     "publishedAt": "2026-09-14 08:00:00",
     "updatedAt": "2026-09-17 10:00:00",
+    "coverImage": "/logo.png",
     "featuredImageUrl": "/logo.png",
     "featuredImageAlt": "Vì sao doanh nghiệp không xuất hiện trên Google Maps và cách khắc phục nhanh",
+    "faqCount": 6,
+    "headingsCount": 28,
     "seo": {
       "title": "Vì sao doanh nghiệp không xuất hiện trên Google Maps? Cách khắc phục nhanh",
       "description": "Tại sao doanh nghiệp không hiện trên Google Maps? Hướng dẫn chẩn đoán 5 nguyên nhân gốc rễ, bảng đối chiếu If-Then và 4 bước dọn dẹp vị trí trùng lặp dứt điểm.",
-      "focusKeyword": "tại sao doanh nghiệp không hiện trên google maps",
       "canonicalUrl": "https://localmate.vn/kien-thuc/vi-sao-doanh-nghiep-khong-xuat-hien-tren-google-maps",
       "ogTitle": "Vì Sao Doanh Nghiệp Không Xuất Hiện Trên Google Maps? (Cách Sửa)",
       "ogDescription": "Điểm mặt các lý do tiệm của bạn biến mất trên Google Maps: bị tạm ngưng, nhồi từ khóa vào tên, chưa hoàn thành xác minh và giải pháp khắc phục ngay."
-    },
-    "briefSummary": {
-      "searchIntent": "Problem aware / Troubleshooting - Khắc phục sự cố",
-      "targetCustomer": "Chủ cơ sở đã tạo Maps nhưng tìm kiếm không thấy, hoặc hồ sơ bị tụt mất tích",
-      "contentGoal": "Phân tích nguyên nhân: chưa xác minh, xung đột địa chỉ, nhồi nhét từ khóa hoặc bị lọc bởi thuật toán khoảng cách."
-    },
-    "faqCount": 6,
-    "headingsCount": 28
+    }
   },
   {
     "id": 11,
@@ -365,28 +315,23 @@ export const ARTICLES_METADATA: ArticleMetadata[] = [
     "category": "Google Maps",
     "categorySlug": "google-maps",
     "excerpt": "Cách duy nhất để tăng đánh giá Google Maps an toàn và không bao giờ bị thuật toán Google quét xóa là . Google xác thực tính xác thực của review thông qua dữ liệu định vị GPS trên điện thoại của người viết và lịch sử tài",
-    "readingTime": "6 phút đọc",
-    "wordCount": 2384,
+    "readingTime": "11 phút đọc",
+    "wordCount": 2343,
     "author": "LocalMate Team",
     "publishedAt": "2026-09-14 08:00:00",
     "updatedAt": "2026-09-17 10:00:00",
+    "coverImage": "/logo.png",
     "featuredImageUrl": "/logo.png",
     "featuredImageAlt": "Cách tăng đánh giá Google Maps đúng cách và bền vững cho hộ kinh doanh cá thể",
+    "faqCount": 4,
+    "headingsCount": 15,
     "seo": {
       "title": "Cách tăng đánh giá Google Maps đúng cách cho hộ kinh doanh",
       "description": "Cách tăng đánh giá Google Maps bền vững từ khách thật: Quy trình tạo mã QR để bàn, kịch bản mở lời tinh tế và nghệ thuật xử lý review 1 sao chuẩn xác.",
-      "focusKeyword": "cách tăng đánh giá google maps",
       "canonicalUrl": "https://localmate.vn/kien-thuc/cach-tang-danh-gia-google-maps-dung-cach",
       "ogTitle": "Cách Tăng Đánh Giá Google Maps Đúng Cách & Không Bị Quét Xóa",
       "ogDescription": "Hướng dẫn xin đánh giá Google Maps tự nhiên từ khách hàng thật: tạo link rút gọn, in mã QR để bàn và cách trả lời đánh giá tiêu cực khéo léo."
-    },
-    "briefSummary": {
-      "searchIntent": "Strategy / Guide - Tăng trưởng uy tín",
-      "targetCustomer": "Chủ cơ sở muốn tăng số lượng review 5 sao nhưng sợ bị Google phạt hoặc tụt sao",
-      "contentGoal": "Hướng dẫn xin đánh giá tự nhiên, tạo mã QR tại quầy và cảnh báo nguy cơ mua review ảo bị Google xóa hàng loạt."
-    },
-    "faqCount": 4,
-    "headingsCount": 15
+    }
   },
   {
     "id": 12,
@@ -396,28 +341,23 @@ export const ARTICLES_METADATA: ArticleMetadata[] = [
     "category": "Google Maps",
     "categorySlug": "google-maps",
     "excerpt": "Khi Google Maps bị đình chỉ (Suspended), có 2 nguyên nhân cốt tử: (1)  (thay đổi tên cơ sở, số điện thoại hoặc địa chỉ nhiều lần trong thời gian ngắn); (2)  (nhồi nhét từ khóa địa phương hoặc ngành nghề không có trên bi",
-    "readingTime": "8 phút đọc",
-    "wordCount": 3144,
+    "readingTime": "14 phút đọc",
+    "wordCount": 3084,
     "author": "LocalMate Team",
     "publishedAt": "2026-09-14 08:00:00",
     "updatedAt": "2026-09-17 10:00:00",
+    "coverImage": "/logo.png",
     "featuredImageUrl": "/logo.png",
     "featuredImageAlt": "Google Maps bị đình chỉ nguyên nhân cốt lõi và quy trình kháng nghị khôi phục",
+    "faqCount": 6,
+    "headingsCount": 27,
     "seo": {
       "title": "Google Maps bị đình chỉ: Nguyên nhân cốt lõi và quy trình kháng nghị khôi phục",
       "description": "Hồ sơ Google Maps bị đình chỉ phải làm sao? Hướng dẫn phân biệt Soft vs Hard suspension, 4 nguyên nhân cốt lõi, checklist hồ sơ và 4 bước gửi đơn kháng nghị.",
-      "focusKeyword": "google maps bị đình chỉ",
       "canonicalUrl": "https://localmate.vn/kien-thuc/google-maps-bi-dinh-chi-nguyen-nhan-va-cach-xu-ly",
       "ogTitle": "Google Maps Bị Đình Chỉ (Suspended): Nguyên Nhân & Cách Khôi Phục",
       "ogDescription": "Hướng dẫn xử lý khi Google Maps bị đình chỉ: sửa các thông tin vi phạm chính sách, chuẩn bị giấy tờ pháp lý và gửi phiếu yêu cầu hỗ trợ Google."
-    },
-    "briefSummary": {
-      "searchIntent": "Problem aware / Troubleshooting - Khắc phục sự cố nghiêm trọng",
-      "targetCustomer": "Chủ cơ sở đang hoảng loạn vì hồ sơ Google Business Profile bị gắn nhãn \"Đã tạm ngưng\"",
-      "contentGoal": "Phân biệt Soft suspension vs Hard suspension, checklist giấy tờ kháng nghị thành công."
-    },
-    "faqCount": 6,
-    "headingsCount": 27
+    }
   },
   {
     "id": 13,
@@ -427,28 +367,23 @@ export const ARTICLES_METADATA: ArticleMetadata[] = [
     "category": "Local SEO",
     "categorySlug": "local-seo",
     "excerpt": "là tập hợp các kỹ thuật giúp doanh nghiệp của bạn xuất hiện ở những vị trí cao nhất trên Google khi người dùng tìm kiếm sản phẩm/dịch vụ gắn với vị trí địa lý cụ thể (ví dụ: \"sửa máy giặt quận Tân Bình\", \"nha khoa uy t",
-    "readingTime": "9 phút đọc",
-    "wordCount": 2589,
+    "readingTime": "12 phút đọc",
+    "wordCount": 2550,
     "author": "LocalMate Team",
     "publishedAt": "2026-09-14 08:00:00",
     "updatedAt": "2026-09-17 10:00:00",
+    "coverImage": "/logo.png",
     "featuredImageUrl": "/logo.png",
     "featuredImageAlt": "Local SEO là gì - Hướng dẫn chi tiết chiến lược SEO địa phương cho cơ sở kinh doanh",
+    "faqCount": 5,
+    "headingsCount": 21,
     "seo": {
       "title": "Local SEO là gì? Vì sao doanh nghiệp địa phương nên tập trung làm Local SEO?",
       "description": "Local SEO là gì? Khám phá 3 trụ cột xếp hạng của Google, so sánh chi phí với Google Ads và lý do cơ sở kinh doanh nhỏ nên ưu tiên Local SEO để hút khách bền vững.",
-      "focusKeyword": "local seo là gì",
       "canonicalUrl": "https://localmate.vn/kien-thuc/local-seo-la-gi-vi-sao-doanh-nghiep-dia-phuong-nen-lam",
       "ogTitle": "Local SEO Là Gì? Vì Sao Doanh Nghiệp Địa Phương Bắt Buộc Phải Làm?",
       "ogDescription": "Khám phá Local SEO là gì, cách tiếp cận khách hàng tiềm năng trong khu vực lân cận và lý do tỷ lệ chốt đơn của khách địa phương cao gấp nhiều lần."
-    },
-    "briefSummary": {
-      "searchIntent": "TOFU / Pillar - Định hướng chiến lược",
-      "targetCustomer": "Chủ cơ sở kinh doanh khu vực đang phân vân có nên đầu tư làm SEO website không",
-      "contentGoal": "Giải thích cơ chế tìm kiếm vị trí của Google và tỷ lệ chuyển đổi vượt trội của khách hàng tìm kiếm địa phương."
-    },
-    "faqCount": 5,
-    "headingsCount": 21
+    }
   },
   {
     "id": 14,
@@ -458,28 +393,23 @@ export const ARTICLES_METADATA: ArticleMetadata[] = [
     "category": "Local SEO",
     "categorySlug": "local-seo",
     "excerpt": "Sự khác biệt cốt lõi nằm ở hành vi khách hàng:  nhắm vào nhu cầu khẩn cấp, tìm thợ gần nhất để bấm gọi ngay trên điện thoại di động (thích hợp cho sửa xe, sửa khóa, hút hầm cầu, quán ăn, nha khoa). Ngược lại,  nhắm vào",
-    "readingTime": "10 phút đọc",
-    "wordCount": 2369,
+    "readingTime": "11 phút đọc",
+    "wordCount": 2348,
     "author": "LocalMate Team",
     "publishedAt": "2026-09-14 08:00:00",
     "updatedAt": "2026-09-17 10:00:00",
+    "coverImage": "/logo.png",
     "featuredImageUrl": "/logo.png",
     "featuredImageAlt": "So sánh SEO Google Maps và SEO Website đa chiều cho doanh nghiệp địa phương",
+    "faqCount": 4,
+    "headingsCount": 16,
     "seo": {
       "title": "SEO Google Maps và SEO Website khác nhau thế nào? Nên ưu tiên làm cái nào?",
       "description": "So sánh SEO Google Maps và SEO Website qua 8 tiêu chí cốt lõi, phân tích hành vi khách hàng, ma trận quyết định kênh đầu tư và cách phối hợp song kiếm hợp bích.",
-      "focusKeyword": "seo google maps và seo website khác nhau như thế nào",
       "canonicalUrl": "https://localmate.vn/kien-thuc/seo-google-maps-va-seo-website-khac-nhau-nhu-the-nao",
       "ogTitle": "SEO Google Maps & SEO Website Khác Nhau Thế Nào? Nên Làm Gì Trước?",
       "ogDescription": "Phân tích sự khác nhau giữa SEO bản đồ Google Maps và SEO website. Tìm hiểu xem doanh nghiệp dịch vụ nhỏ nên ưu tiên kênh nào để ra khách nhanh nhất."
-    },
-    "briefSummary": {
-      "searchIntent": "Comparison / Decision - Lựa chọn kênh đầu tư",
-      "targetCustomer": "Chủ cơ sở có ngân sách hạn chế, muốn biết nên dồn tiền làm Maps hay làm Web trước",
-      "contentGoal": "Phân tích điểm chạm hiển thị (Local 3-Pack vs Organic Blue Links) và cách hai kênh hỗ trợ nhau."
-    },
-    "faqCount": 4,
-    "headingsCount": 16
+    }
   },
   {
     "id": 15,
@@ -489,28 +419,23 @@ export const ARTICLES_METADATA: ArticleMetadata[] = [
     "category": "Local SEO",
     "categorySlug": "local-seo",
     "excerpt": "Để SEO từ khóa dịch vụ lên top tìm kiếm tại từng quận/huyện cụ thể (ví dụ: \"sửa máy bơm quận 7\", \"hút hầm cầu huyện Nhà Bè\"), phương pháp chuẩn xác nhất là xây dựng  độc lập trên website. Một trang địa điểm đạt chuẩn Go",
-    "readingTime": "8 phút đọc",
-    "wordCount": 2042,
+    "readingTime": "9 phút đọc",
+    "wordCount": 2003,
     "author": "LocalMate Team",
     "publishedAt": "2026-09-14 08:00:00",
     "updatedAt": "2026-09-17 10:00:00",
+    "coverImage": "/logo.png",
     "featuredImageUrl": "/logo.png",
     "featuredImageAlt": "Cách SEO doanh nghiệp lên Google tại khu vực địa phương với Location Pages chuẩn chuyển đổi",
+    "faqCount": 4,
+    "headingsCount": 15,
     "seo": {
       "title": "Cách SEO doanh nghiệp lên Google tại khu vực địa phương: Cẩm nang Location Pages",
       "description": "Cẩm nang SEO địa phương bằng hệ thống Location Pages chuẩn chuyển đổi: nghiên cứu từ khóa quận huyện, nhúng bản đồ Google Maps và chống lỗi Doorway trùng lặp.",
-      "focusKeyword": "seo địa phương",
       "canonicalUrl": "https://localmate.vn/kien-thuc/cach-seo-doanh-nghiep-len-google-tai-khu-vuc-dia-phuong",
       "ogTitle": "Cách SEO Doanh Nghiệp Lên Google Tại Khu Vực Địa Phương Hiệu Quả",
       "ogDescription": "Hướng dẫn kỹ thuật SEO từ khóa địa phương kèm quận huyện: cách viết nội dung bản địa, chèn bản đồ và khai báo Schema LocalBusiness chuẩn xác."
-    },
-    "briefSummary": {
-      "searchIntent": "Solution aware / Guide - Kỹ thuật triển khai",
-      "targetCustomer": "Chủ cơ sở muốn phủ sóng từ khóa dịch vụ theo từng quận/huyện quanh khu vực",
-      "contentGoal": "Hướng dẫn cấu trúc trang địa phương (Location Landing Page) và tối ưu thẻ meta kèm khu vực."
-    },
-    "faqCount": 4,
-    "headingsCount": 15
+    }
   },
   {
     "id": 16,
@@ -520,28 +445,23 @@ export const ARTICLES_METADATA: ArticleMetadata[] = [
     "category": "Local SEO",
     "categorySlug": "local-seo",
     "excerpt": "là cách công cụ tìm kiếm Google nhận diện doanh nghiệp của bạn như một thực thể có thật ngoài đời (có tên tiệm, người đại diện, số điện thoại, mã số thuế và địa chỉ cụ thể), thay vì chỉ nhìn nhận bạn qua các từ khóa vô",
-    "readingTime": "7 phút đọc",
-    "wordCount": 3278,
+    "readingTime": "15 phút đọc",
+    "wordCount": 3237,
     "author": "LocalMate Team",
     "publishedAt": "2026-09-14 08:00:00",
     "updatedAt": "2026-09-17 10:00:00",
+    "coverImage": "/logo.png",
     "featuredImageUrl": "/logo.png",
     "featuredImageAlt": "Entity SEO là gì và hướng dẫn tự xây dựng thực thể số chi phí 0đ cho doanh nghiệp nhỏ",
+    "faqCount": 6,
+    "headingsCount": 23,
     "seo": {
       "title": "Entity SEO Là Gì? Doanh Nghiệp Nhỏ Có Cần Mua Gói Entity Không?",
       "description": "Entity SEO là gì? Bóc trần sự thật về các gói Entity 300 backlink rác 5-10 triệu và hướng dẫn 4 bước tự xây dựng thực thể chuẩn chỉ chi phí 0đ cho doanh nghiệp nhỏ.",
-      "focusKeyword": "entity seo là gì",
       "canonicalUrl": "https://localmate.vn/kien-thuc/entity-seo-la-gi-co-can-thiet-cho-doanh-nghiep-nho",
       "ogTitle": "Entity SEO Là Gì? Doanh Nghiệp Nhỏ Có Cần Làm Entity Không?",
       "ogDescription": "Tìm hiểu Entity SEO dưới góc nhìn thực tế cho doanh nghiệp nhỏ: xây dựng độ uy tín thương hiệu trên Google mà không cần tốn ngân sách khủng."
-    },
-    "briefSummary": {
-      "searchIntent": "Reality check / Commercial investigation - Giải ảo dịch vụ",
-      "targetCustomer": "Chủ cơ sở được chào mời các gói \"Xây dựng Entity 300 profile mạng xã hội giá 3 - 5 triệu\"",
-      "contentGoal": "Giải thích Entity là việc giúp Google hiểu bạn là một thực thể kinh doanh có thật ngoài đời thực."
-    },
-    "faqCount": 6,
-    "headingsCount": 23
+    }
   },
   {
     "id": 17,
@@ -551,28 +471,23 @@ export const ARTICLES_METADATA: ArticleMetadata[] = [
     "category": "Local SEO",
     "categorySlug": "local-seo",
     "excerpt": "trong Local SEO là bất kỳ nơi nào trên mạng internet xuất hiện bộ 3 thông tin cốt lõi của bạn: , viết tắt là . Google đối soát thông tin NAP của bạn trên khắp các trang danh bạ trực tuyến để xác nhận bạn có phải là một",
-    "readingTime": "6 phút đọc",
-    "wordCount": 2292,
+    "readingTime": "10 phút đọc",
+    "wordCount": 2219,
     "author": "LocalMate Team",
     "publishedAt": "2026-09-14 08:00:00",
     "updatedAt": "2026-09-17 10:00:00",
+    "coverImage": "/logo.png",
     "featuredImageUrl": "/logo.png",
     "featuredImageAlt": "Citation trong Local SEO là gì và cách xây dựng đồng bộ NAP chuẩn xác tại Việt Nam",
+    "faqCount": 5,
+    "headingsCount": 19,
     "seo": {
       "title": "Citation trong Local SEO là gì và cách xây dựng chuẩn xác tại Việt Nam",
       "description": "Citation trong Local SEO là gì? Vai trò sống còn của tính nhất quán NAP trên Google Maps, danh sách 15+ danh bạ uy tín tại Việt Nam và quy trình chuẩn hóa.",
-      "focusKeyword": "citation trong local seo là gì",
       "canonicalUrl": "https://localmate.vn/kien-thuc/citation-trong-local-seo-la-gi",
       "ogTitle": "Citation Trong Local SEO Là Gì? Hướng Dẫn Xây Dựng Trích Dẫn Chuẩn",
       "ogDescription": "Hiểu rõ Citation và vai trò khẳng định địa chỉ tiệm với Google. Danh sách các trang danh bạ doanh nghiệp uy tín tại Việt Nam nên đăng ký ngay."
-    },
-    "briefSummary": {
-      "searchIntent": "Guide / Implementation - Hướng dẫn thực hành",
-      "targetCustomer": "Chủ tiệm muốn tự xây dựng mạng lưới danh bạ để củng cố thứ hạng Maps và Web",
-      "contentGoal": "Khái niệm Citation, danh bạ doanh nghiệp uy tín tại Việt Nam (Trang Vàng, Cốc Cốc, Thongtindoanhnghiep)."
-    },
-    "faqCount": 5,
-    "headingsCount": 19
+    }
   },
   {
     "id": 18,
@@ -582,28 +497,23 @@ export const ARTICLES_METADATA: ArticleMetadata[] = [
     "category": "Local SEO",
     "categorySlug": "local-seo",
     "excerpt": "Làm Local SEO cho tiệm địa phương không cần bạn phải là một kỹ sư tin học giỏi. Hơn 80% kết quả đến từ  được chia làm 3 nhóm: (1) : Xác minh Maps chính chủ, chuẩn hóa thông tin NAP, nhúng bản đồ lên website, khai báo da",
-    "readingTime": "9 phút đọc",
-    "wordCount": 2694,
+    "readingTime": "12 phút đọc",
+    "wordCount": 2673,
     "author": "LocalMate Team",
     "publishedAt": "2026-09-14 08:00:00",
     "updatedAt": "2026-09-17 10:00:00",
+    "coverImage": "/logo.png",
     "featuredImageUrl": "/logo.png",
     "featuredImageAlt": "Checklist Local SEO 2026 với 20 đầu việc tự làm đưa doanh nghiệp lên top tìm kiếm",
+    "faqCount": 4,
+    "headingsCount": 30,
     "seo": {
       "title": "Checklist Local SEO 2026: 20 việc chủ tiệm tự làm để lên top tìm kiếm",
       "description": "Checklist Local SEO 2026 với 20 việc tự làm phân loại theo tần suất 1 lần, hàng tuần và hàng tháng giúp chủ tiệm lên Top Google Maps và kéo khách ghé cơ sở.",
-      "focusKeyword": "checklist local seo",
       "canonicalUrl": "https://localmate.vn/kien-thuc/checklist-local-seo-cho-doanh-nghiep-dia-phuong",
       "ogTitle": "Checklist Local SEO 2026: 20 Hạng Mục Giúp Doanh Nghiệp Lên Top",
       "ogDescription": "Tải ngay checklist Local SEO thực chiến: rà soát từ A-Z hồ sơ Google Maps, tối ưu website di động, chuẩn hóa trích dẫn NAP và quy trình đón khách."
-    },
-    "briefSummary": {
-      "searchIntent": "Actionable Checklist - Hướng dẫn tự kiểm tra",
-      "targetCustomer": "Chủ cơ sở muốn tự tay rà soát và tối ưu hiện diện số của tiệm mà không cần thuê ngoài",
-      "contentGoal": "Một checklist thực chiến 20 tiêu chí từ kỹ thuật website, Google Maps, hình ảnh tới đánh giá khách hàng."
-    },
-    "faqCount": 4,
-    "headingsCount": 30
+    }
   },
   {
     "id": 19,
@@ -613,28 +523,23 @@ export const ARTICLES_METADATA: ArticleMetadata[] = [
     "category": "Google Ads",
     "categorySlug": "google-ads",
     "excerpt": "Doanh nghiệp nhỏ hoàn toàn NÊN chạy Google Ads nếu bạn cung cấp các dịch vụ có nhu cầu cấp bách (sửa nhà, cứu hộ xe, nha khoa, thông tắc, sửa điều hòa). Khác với Facebook là quảng cáo ép người lướt mạng xem, Google Sear",
-    "readingTime": "8 phút đọc",
-    "wordCount": 2691,
+    "readingTime": "12 phút đọc",
+    "wordCount": 2612,
     "author": "LocalMate Team",
     "publishedAt": "2026-09-14 08:00:00",
     "updatedAt": "2026-09-17 10:00:00",
+    "coverImage": "/logo.png",
     "featuredImageUrl": "/logo.png",
     "featuredImageAlt": "Google Ads cho doanh nghiệp nhỏ và hướng dẫn thực chiến tránh lãng phí ngân sách",
+    "faqCount": 5,
+    "headingsCount": 25,
     "seo": {
       "title": "Google Ads Cho Doanh Nghiệp Nhỏ: Bắt Đầu Từ Đâu Để Không Bị Đốt Tiền Oan?",
       "description": "Google Ads cho doanh nghiệp nhỏ: 4 điều kiện bắt buộc trước khi nạp tiền, cách tránh bẫy đối sánh rộng của agency và chiến lược bắn tỉa từ khóa bán kính 10km.",
-      "focusKeyword": "google ads cho doanh nghiệp nhỏ",
       "canonicalUrl": "https://localmate.vn/kien-thuc/google-ads-cho-doanh-nghiep-nho-bat-dau-tu-dau",
       "ogTitle": "Google Ads Cho Doanh Nghiệp Nhỏ: Bắt Đầu Từ Đâu Để Không Lỗ Vốn?",
       "ogDescription": "Cẩm nang chạy Google Ads cho người mới bắt đầu: cách chọn từ khóa có nhu cầu cao, thiết lập ngân sách an toàn và đón đầu khách hàng sẵn sàng chi tiền."
-    },
-    "briefSummary": {
-      "searchIntent": "TOFU / Pillar - Tổng quan khởi động",
-      "targetCustomer": "Chủ cơ sở chuẩn bị bỏ tiền chạy quảng cáo tìm khách nhưng chưa hiểu cơ chế",
-      "contentGoal": "Giúp chủ tiệm hiểu bản chất quảng cáo từ khóa tìm kiếm: khách có nhu cầu mới tìm, tiết kiệm hơn chạy dàn trải."
-    },
-    "faqCount": 5,
-    "headingsCount": 25
+    }
   },
   {
     "id": 20,
@@ -645,27 +550,22 @@ export const ARTICLES_METADATA: ArticleMetadata[] = [
     "categorySlug": "google-ads",
     "excerpt": "Mỗi khi có một người dùng gõ từ khóa tìm kiếm trên Google, một cuộc đấu giá chớp nhoáng diễn ra trong vòng 0.1 giây để quyết định quảng cáo nào được hiển thị ở 4 vị trí trên cùng. Vị trí quảng cáo (Ad Rank) được tính th",
     "readingTime": "10 phút đọc",
-    "wordCount": 2146,
+    "wordCount": 2088,
     "author": "LocalMate Team",
     "publishedAt": "2026-09-14 08:00:00",
     "updatedAt": "2026-09-17 10:00:00",
+    "coverImage": "/logo.png",
     "featuredImageUrl": "/logo.png",
     "featuredImageAlt": "Google Search Ads hoạt động như thế nào và cơ chế đấu giá từ khóa",
+    "faqCount": 4,
+    "headingsCount": 13,
     "seo": {
       "title": "Google Search Ads hoạt động như thế nào? Cơ chế đấu giá và cách giảm tiền click",
       "description": "Google search ads hoạt động như thế nào? Giải mã công thức Ad Rank, 3 yếu tố Điểm chất lượng và 3 bí quyết giúp tiệm nhỏ giảm 40% chi phí click từ khóa.",
-      "focusKeyword": "google search ads hoạt động như thế nào",
       "canonicalUrl": "https://localmate.vn/kien-thuc/google-search-ads-hoat-dong-nhu-the-nao",
       "ogTitle": "Google Search Ads Hoạt Động Thế Nào? Cơ Chế Đấu Giá & Điểm Chất Lượng",
       "ogDescription": "Hiểu rõ cơ chế đấu giá Google Search Ads: vì sao giá thầu cao chưa chắc đứng top 1 và cách nâng cao điểm chất lượng để giảm chi phí mỗi click."
-    },
-    "briefSummary": {
-      "searchIntent": "Technical / Educational - Giải phẫu cơ chế đấu thầu",
-      "targetCustomer": "Chủ cơ sở đang tự chạy hoặc thuê chạy Ads nhưng thấy giá mỗi lượt click quá đắt",
-      "contentGoal": "Giải thích cơ chế Đấu giá từ khóa (Ad Auction), Điểm chất lượng (Quality Score) và Thứ hạng quảng cáo (Ad Rank)."
-    },
-    "faqCount": 4,
-    "headingsCount": 13
+    }
   },
   {
     "id": 21,
@@ -675,28 +575,23 @@ export const ARTICLES_METADATA: ArticleMetadata[] = [
     "category": "Google Ads",
     "categorySlug": "google-ads",
     "excerpt": "Với một cơ sở dịch vụ địa phương (sửa xe, sửa nhà, nha khoa, tiệm giặt ủi), mức ngân sách khởi điểm hợp lý nhất là từ  (tương đương khoảng 2.000.000đ - 4.500.000đ/tháng). Mức chi phí này đủ để bạn mang về từ 10 đến 25 l",
-    "readingTime": "11 phút đọc",
-    "wordCount": 4839,
+    "readingTime": "21 phút đọc",
+    "wordCount": 4761,
     "author": "LocalMate Team",
     "publishedAt": "2026-09-14 08:00:00",
     "updatedAt": "2026-09-17 10:00:00",
+    "coverImage": "/logo.png",
     "featuredImageUrl": "/logo.png",
     "featuredImageAlt": "Chạy Google Ads bao nhiêu tiền một ngày là hợp lý cho doanh nghiệp nhỏ",
+    "faqCount": 5,
+    "headingsCount": 20,
     "seo": {
       "title": "Chạy Google Ads bao nhiêu tiền một ngày là hợp lý cho doanh nghiệp nhỏ?",
       "description": "Chạy Google Ads bao nhiêu tiền một ngày là hợp lý? Hướng dẫn tính ngân sách 50k-150k/ngày, công thức hòa vốn ROAS và bảng chi phí cho 5 ngành phổ biến.",
-      "focusKeyword": "chạy google ads bao nhiêu tiền một ngày",
       "canonicalUrl": "https://localmate.vn/kien-thuc/chay-google-ads-bao-nhieu-tien-mot-ngay-la-hop-ly",
       "ogTitle": "Chạy Google Ads Bao Nhiêu Tiền Một Ngày Là Hợp Lý Cho Doanh Nghiệp Nhỏ?",
       "ogDescription": "Bóc tách ngân sách chạy Google Ads hàng ngày: bắt đầu từ 100.000đ - 200.000đ/ngày như thế nào, cách tính số lượt click cần thiết để có 1 đơn hàng."
-    },
-    "briefSummary": {
-      "searchIntent": "Budgeting / Decision - Cân đối ngân sách",
-      "targetCustomer": "Chủ cơ sở băn khoăn không biết cần bao nhiêu vốn để chạy quảng cáo thử nghiệm",
-      "contentGoal": "Công thức tính ngân sách dựa trên CPC trung bình của ngành và tỷ lệ chuyển đổi ước tính."
-    },
-    "faqCount": 5,
-    "headingsCount": 20
+    }
   },
   {
     "id": 22,
@@ -706,28 +601,23 @@ export const ARTICLES_METADATA: ArticleMetadata[] = [
     "category": "Google Ads",
     "categorySlug": "google-ads",
     "excerpt": "Nếu Google Ads của bạn bị trừ tiền liên tục nhưng không có khách gọi, hãy lập tức kiểm tra : (1) : Khách gõ tìm kiếm \"tự sửa\", \"tải tài liệu\", \"tuyển dụng\" nhưng quảng cáo của bạn vẫn kích hoạt do để đối sánh rộng; (2)",
-    "readingTime": "8 phút đọc",
-    "wordCount": 2861,
+    "readingTime": "13 phút đọc",
+    "wordCount": 2806,
     "author": "LocalMate Team",
     "publishedAt": "2026-09-14 08:00:00",
     "updatedAt": "2026-09-17 10:00:00",
+    "coverImage": "/logo.png",
     "featuredImageUrl": "/logo.png",
     "featuredImageAlt": "Vì sao chạy Google Ads có click nhưng không có khách và cách xử lý dứt điểm",
+    "faqCount": 4,
+    "headingsCount": 22,
     "seo": {
       "title": "Vì sao chạy Google Ads có click nhưng không có khách? Cách xử lý dứt điểm",
       "description": "Vì sao chạy Google Ads có click nhưng không có khách? Bắt bệnh 5 nguyên nhân chí mạng đốt tiền và quy trình 5 bước xử lý dứt điểm trong 30 phút để có khách gọi thật.",
-      "focusKeyword": "chạy google ads có click nhưng không có khách",
       "canonicalUrl": "https://localmate.vn/kien-thuc/vi-sao-chay-google-ads-co-click-nhung-khong-co-khach",
       "ogTitle": "Vì Sao Chạy Google Ads Có Click Nhưng Không Có Khách? (Cách Xử Lý)",
       "ogDescription": "Bắt bệnh chiến dịch Google Ads có lượt nhấp nhưng không ai gọi điện: kiểm tra cụm từ tìm kiếm thực tế, tối ưu trải nghiệm trang đích và thêm CTA rõ ràng."
-    },
-    "briefSummary": {
-      "searchIntent": "Troubleshooting / Problem aware - Chẩn đoán sự cố quảng cáo",
-      "targetCustomer": "Chủ tiệm đang bị trừ tiền quảng cáo hàng ngày nhưng không có cuộc gọi hoặc tin nhắn nào",
-      "contentGoal": "Phân tích từ khóa tìm kiếm rác (Search terms), trang đích tải chậm, thiếu thông tin giá và form liên hệ hỏng."
-    },
-    "faqCount": 4,
-    "headingsCount": 22
+    }
   },
   {
     "id": 23,
@@ -737,28 +627,23 @@ export const ARTICLES_METADATA: ArticleMetadata[] = [
     "category": "Google Ads",
     "categorySlug": "google-ads",
     "excerpt": "Một  chỉ cần độ dài vừa đủ trong . Khách hàng bấm từ quảng cáo vào không có kiên nhẫn đọc văn chương hoa mỹ. Họ chỉ tìm kiếm câu trả lời cho 3 câu hỏi trong 5 giây đầu: (1) Bạn có làm đúng dịch vụ tôi vừa tìm không? (2)",
-    "readingTime": "8 phút đọc",
-    "wordCount": 2397,
+    "readingTime": "11 phút đọc",
+    "wordCount": 2367,
     "author": "LocalMate Team",
     "publishedAt": "2026-09-14 08:00:00",
     "updatedAt": "2026-09-17 10:00:00",
+    "coverImage": "/logo.png",
     "featuredImageUrl": "/logo.png",
     "featuredImageAlt": "Landing page chạy Google Ads tối ưu chuyển đổi cuộc gọi cho doanh nghiệp địa phương",
+    "faqCount": 5,
+    "headingsCount": 17,
     "seo": {
       "title": "Landing page chạy Google Ads nên thiết kế thế nào để khách bấm gọi ngay?",
       "description": "Landing page chạy Google Ads cho dịch vụ địa phương cần 6 khối vàng chốt cuộc gọi, tải trang dưới 2s trên mobile. Bí quyết tăng gấp 3 lần khách gọi ngay!",
-      "focusKeyword": "landing page chạy google ads",
       "canonicalUrl": "https://localmate.vn/kien-thuc/landing-page-chay-google-ads-nen-thiet-ke-nhu-the-nao",
       "ogTitle": "Thiết Kế Landing Page Chạy Google Ads: Cấu Trúc Đạt Điểm Chất Lượng 10/10",
       "ogDescription": "Bí quyết làm landing page chạy Google Ads ra khách ngay: giao diện chuẩn mobile, tải siêu nhanh dưới 1.5 giây và thiết kế thông điệp tập trung một mục tiêu."
-    },
-    "briefSummary": {
-      "searchIntent": "Solution aware / Design - Tối ưu tỷ lệ chuyển đổi",
-      "targetCustomer": "Chủ tiệm chuẩn bị làm trang đích chạy quảng cáo dịch vụ địa phương",
-      "contentGoal": "Cấu trúc Hero section, cam kết, bảng giá, bằng chứng xã hội và nút gọi dính đáy màn hình điện thoại."
-    },
-    "faqCount": 5,
-    "headingsCount": 17
+    }
   },
   {
     "id": 24,
@@ -768,28 +653,23 @@ export const ARTICLES_METADATA: ArticleMetadata[] = [
     "category": "Google Ads",
     "categorySlug": "google-ads",
     "excerpt": "là lựa chọn số 1 cho các dịch vụ giải quyết sự cố khẩn cấp hoặc sản phẩm có giá trị cao mà khách hàng chủ động tìm kiếm khi có nhu cầu (sửa khóa, sửa ống nước, cứu hộ ô tô, nha khoa, văn phòng luật, xây nhà). Khách hàn",
-    "readingTime": "7 phút đọc",
-    "wordCount": 2367,
+    "readingTime": "11 phút đọc",
+    "wordCount": 2331,
     "author": "LocalMate Team",
     "publishedAt": "2026-09-14 08:00:00",
     "updatedAt": "2026-09-17 10:00:00",
+    "coverImage": "/logo.png",
     "featuredImageUrl": "/logo.png",
     "featuredImageAlt": "So sánh Google Ads hay Facebook Ads cho doanh nghiệp địa phương",
+    "faqCount": 4,
+    "headingsCount": 20,
     "seo": {
       "title": "Google Ads hay Facebook Ads phù hợp hơn với doanh nghiệp địa phương?",
       "description": "Google Ads hay Facebook Ads phù hợp hơn cho doanh nghiệp địa phương? So sánh 8 tiêu chí kinh tế, ma trận 10 ngành nghề và chiến lược phối hợp ngân sách ra đơn.",
-      "focusKeyword": "google ads hay facebook ads",
       "canonicalUrl": "https://localmate.vn/kien-thuc/google-ads-hay-facebook-ads-phu-hop-hon-voi-doanh-nghiep-dia-phuong",
       "ogTitle": "Google Ads Hay Facebook Ads Tốt Hơn Cho Doanh Nghiệp Địa Phương?",
       "ogDescription": "Nên chạy Google Ads hay Facebook Ads khi kinh doanh tại chỗ? So sánh chi phí, tỷ lệ chốt đơn và gợi ý kênh quảng cáo hiệu quả nhất theo từng ngành nghề."
-    },
-    "briefSummary": {
-      "searchIntent": "Comparison / Strategy - Lựa chọn kênh tiếp cận",
-      "targetCustomer": "Chủ tiệm phân vân không biết nên thuê người chạy quảng cáo Facebook hay Google",
-      "contentGoal": "So sánh dựa trên hành vi: Nhu cầu chủ động (Google - tìm thợ gấp) vs Nhu cầu bị động (Facebook - lướt thấy đẹp)."
-    },
-    "faqCount": 4,
-    "headingsCount": 20
+    }
   },
   {
     "id": 25,
@@ -799,28 +679,23 @@ export const ARTICLES_METADATA: ArticleMetadata[] = [
     "category": "Vận hành & CRM",
     "categorySlug": "crm-automation",
     "excerpt": "thực chất chỉ là từ viết tắt của việc . Đối với một cơ sở kinh doanh nhỏ dưới 10 nhân sự, bạn  tiêu tốn từ 10 đến 30 triệu đồng mỗi năm. Mục tiêu duy nhất của CRM ở quy mô tiệm địa phương là: (1) Lưu trữ số điện thoại",
-    "readingTime": "7 phút đọc",
-    "wordCount": 2980,
+    "readingTime": "13 phút đọc",
+    "wordCount": 2923,
     "author": "LocalMate Team",
     "publishedAt": "2026-09-14 08:00:00",
     "updatedAt": "2026-09-17 10:00:00",
+    "coverImage": "/logo.png",
     "featuredImageUrl": "/logo.png",
     "featuredImageAlt": "CRM là gì cho doanh nghiệp nhỏ và quy trình quản lý thông tin khách hàng tinh gọn",
+    "faqCount": 6,
+    "headingsCount": 20,
     "seo": {
       "title": "CRM là gì? Doanh nghiệp nhỏ có thực sự cần mua phần mềm CRM đắt tiền?",
       "description": "CRM là gì dưới góc nhìn thực tế cho doanh nghiệp nhỏ: giải ảo phần mềm tiền triệu, bảng so sánh 4 cấp độ quản lý khách hàng và công thức tính CLV giúp tăng 40% doanh thu.",
-      "focusKeyword": "crm là gì",
       "canonicalUrl": "https://localmate.vn/kien-thuc/crm-la-gi-doanh-nghiep-nho-co-can-crm-khong",
       "ogTitle": "CRM Là Gì? Doanh Nghiệp Nhỏ Có Cần Đầu Tư Phần Mềm CRM Không?",
       "ogDescription": "Giải thích CRM là gì một cách dễ hiểu nhất cho chủ cửa hàng: cách lưu số điện thoại, quản lý lịch sử chăm sóc và tránh tình trạng nhân viên nghỉ đem mất khách."
-    },
-    "briefSummary": {
-      "searchIntent": "TOFU / Pillar - Giải ảo công nghệ",
-      "targetCustomer": "Chủ tiệm nhỏ, xưởng dịch vụ nghe nói nhiều về CRM nhưng sợ phức tạp và tốn kém",
-      "contentGoal": "Giúp chủ tiệm hiểu CRM không phải cái gì to tát, mà là nơi lưu lịch sử liên hệ, ngày mua, nhắc hẹn để không quên khách."
-    },
-    "faqCount": 6,
-    "headingsCount": 20
+    }
   },
   {
     "id": 26,
@@ -830,28 +705,23 @@ export const ARTICLES_METADATA: ArticleMetadata[] = [
     "category": "Vận hành & CRM",
     "categorySlug": "crm-automation",
     "excerpt": "Một hệ thống CRM hiệu quả cho cơ sở dịch vụ nhỏ dưới 10 người chỉ cần tập trung vào : (1)  gồm Họ tên, Số điện thoại và Địa chỉ nhà; (2)  (ngày sửa, thợ nào làm, phụ tùng đã thay, thời hạn bảo hành); (3) ; (4) . Toàn bộ",
-    "readingTime": "7 phút đọc",
-    "wordCount": 2397,
+    "readingTime": "11 phút đọc",
+    "wordCount": 2333,
     "author": "LocalMate Team",
     "publishedAt": "2026-09-14 08:00:00",
     "updatedAt": "2026-09-17 10:00:00",
+    "coverImage": "/logo.png",
     "featuredImageUrl": "/logo.png",
     "featuredImageAlt": "Bảng lọc tính năng CRM đơn giản cho doanh nghiệp nhỏ và mẫu Google Sheet quản lý khách hàng 0đ",
+    "faqCount": 4,
+    "headingsCount": 21,
     "seo": {
       "title": "CRM đơn giản cho doanh nghiệp nhỏ nên có những tính năng nào? (Bảng lọc thực chiến)",
       "description": "Bảng lọc tính năng CRM đơn giản cho doanh nghiệp nhỏ: Loại bỏ 80% tính năng thừa thãi, giữ lại 5 tính năng cốt lõi và mẫu Google Sheet 0đ dễ dùng.",
-      "focusKeyword": "crm đơn giản cho doanh nghiệp nhỏ",
       "canonicalUrl": "https://localmate.vn/kien-thuc/crm-don-gian-cho-doanh-nghiep-nho-nen-co-nhung-tinh-nang-nao",
       "ogTitle": "Hệ Thống CRM Đơn Giản Cho Doanh Nghiệp Nhỏ Cần Những Tính Năng Gì?",
       "ogDescription": "Tránh lãng phí tiền vào phần mềm CRM cồng kềnh. Đây là 5 tính năng cốt lõi doanh nghiệp nhỏ cần: lưu thông tin khách, theo dõi tiến độ chốt đơn và nhắc lịch hẹn."
-    },
-    "briefSummary": {
-      "searchIntent": "Solution aware / Feature breakdown - Lọc tính năng thiết yếu",
-      "targetCustomer": "Chủ tiệm đang tìm kiếm giải pháp quản lý khách nhưng bị ngợp bởi các phần mềm quá nhiều nút",
-      "contentGoal": "Liệt kê 5 tính năng cốt lõi: Danh bạ tập trung, Lịch sử tương tác, Đường ống bán hàng (Pipeline), Nhắc việc, Báo cáo đơn giản."
-    },
-    "faqCount": 4,
-    "headingsCount": 21
+    }
   },
   {
     "id": 27,
@@ -861,28 +731,23 @@ export const ARTICLES_METADATA: ArticleMetadata[] = [
     "category": "Vận hành & CRM",
     "categorySlug": "crm-automation",
     "excerpt": "Tự động hóa (Automation) cho hộ kinh doanh nhỏ không phải là việc gì xa vời. Đó là việc dùng các công cụ miễn phí sẵn có để : (1) Tự động đẩy thông báo khách đặt lịch trên website về tin nhắn điện thoại của chủ tiệm tức",
-    "readingTime": "6 phút đọc",
-    "wordCount": 2484,
+    "readingTime": "11 phút đọc",
+    "wordCount": 2433,
     "author": "LocalMate Team",
     "publishedAt": "2026-09-14 08:00:00",
     "updatedAt": "2026-09-17 10:00:00",
+    "coverImage": "/logo.png",
     "featuredImageUrl": "/logo.png",
     "featuredImageAlt": "Automation cho doanh nghiệp nhỏ 7 việc thủ công nên tự động hóa ngay",
+    "faqCount": 4,
+    "headingsCount": 20,
     "seo": {
       "title": "Automation cho doanh nghiệp nhỏ: 7 việc thủ công nên tự động hóa ngay (Chi phí 0đ)",
       "description": "Hướng dẫn tự động hóa cho doanh nghiệp nhỏ với 7 việc thủ công nên số hóa 0đ: báo chuông Telegram, nhắn cảm ơn, nhắc lịch, tạo mã QR và chốt sổ nhanh.",
-      "focusKeyword": "tự động hóa cho doanh nghiệp nhỏ",
       "canonicalUrl": "https://localmate.vn/kien-thuc/automation-cho-doanh-nghiep-nho-7-viec-nen-tu-dong-hoa",
       "ogTitle": "Tự Động Hóa (Automation) Cho Doanh Nghiệp Nhỏ: 7 Việc Nên Làm Ngay",
       "ogDescription": "Giải phóng thời gian cho chủ doanh nghiệp: 7 việc thủ công nên tự động hóa bằng công nghệ đơn giản, tiết kiệm hàng giờ mỗi ngày mà không tốn nhiều chi phí."
-    },
-    "briefSummary": {
-      "searchIntent": "Solution aware / How-to - Tự động hóa quy trình",
-      "targetCustomer": "Chủ tiệm quá bận rộn với các việc lặp đi lặp lại: trực tin nhắn, nhắc hẹn, ghi sổ sách",
-      "contentGoal": "Chỉ ra 7 quy trình có thể tự động hóa 100% bằng công cụ không mã nguồn (No-code / Webhook): gửi tin chào, nhắc hẹn, ghi nhận lead, xuất hóa đơn."
-    },
-    "faqCount": 4,
-    "headingsCount": 20
+    }
   },
   {
     "id": 28,
@@ -892,28 +757,23 @@ export const ARTICLES_METADATA: ArticleMetadata[] = [
     "category": "Vận hành & CRM",
     "categorySlug": "crm-automation",
     "excerpt": "Tình trạng phổ biến nhất của các chủ tiệm nhỏ hiện nay là : Khách hỏi giá trên bình luận Facebook, khách nhắn vào Zalo cá nhân, khách điền thông tin trên website và khách gọi điện trực tiếp. Khi nhân viên bận làm tay ch",
-    "readingTime": "12 phút đọc",
-    "wordCount": 4269,
+    "readingTime": "19 phút đọc",
+    "wordCount": 4211,
     "author": "LocalMate Team",
     "publishedAt": "2026-09-14 08:00:00",
     "updatedAt": "2026-09-17 10:00:00",
+    "coverImage": "/logo.png",
     "featuredImageUrl": "/logo.png",
     "featuredImageAlt": "Quản lý tin nhắn Facebook Zalo và Website tập trung trên một điện thoại duy nhất",
+    "faqCount": 4,
+    "headingsCount": 24,
     "seo": {
       "title": "Cách quản lý khách hàng từ Facebook, Zalo và Website tập trung trên một điện thoại",
       "description": "Hướng dẫn cách quản lý tin nhắn facebook zalo website tập trung về 1 điện thoại qua Telegram Hub miễn phí, giúp chủ tiệm không sót đơn và phân công thợ trực dễ dàng.",
-      "focusKeyword": "quản lý tin nhắn facebook zalo website tập trung",
       "canonicalUrl": "https://localmate.vn/kien-thuc/cach-quan-ly-khach-hang-tu-facebook-zalo-website-tren-mot-he-thong",
       "ogTitle": "Cách Quản Lý Khách Hàng Từ Facebook, Zalo & Website Trên 1 Hệ Thống",
       "ogDescription": "Chấm dứt tình trạng sót khách vì mở quá nhiều app: hướng dẫn gom tin nhắn từ Website, Zalo và Facebook về một nơi duy nhất để nhân viên phản hồi trong 30 giây."
-    },
-    "briefSummary": {
-      "searchIntent": "Solution aware / Guide - Đồng bộ đa kênh",
-      "targetCustomer": "Chủ tiệm bị phân tán tin nhắn khách: khách nhắn Fanpage, khách nhắn Zalo, khách gọi web khiến nhân viên bỏ sót",
-      "contentGoal": "Hướng dẫn giải pháp hợp nhất tin nhắn và thông tin khách hàng về một hộp thư duy nhất."
-    },
-    "faqCount": 4,
-    "headingsCount": 24
+    }
   },
   {
     "id": 29,
@@ -923,28 +783,23 @@ export const ARTICLES_METADATA: ArticleMetadata[] = [
     "category": "Content Marketing",
     "categorySlug": "content",
     "excerpt": "Làm nội dung (Content marketing) cho tiệm địa phương . Khách hàng cần tìm thợ sửa nhà, sửa xe hay khám răng không vào mạng để đọc thơ ca hay triết lý kinh doanh. Họ chỉ muốn nhìn thấy . Công thức làm nội dung đơn giản n",
-    "readingTime": "7 phút đọc",
-    "wordCount": 2390,
+    "readingTime": "11 phút đọc",
+    "wordCount": 2354,
     "author": "LocalMate Team",
     "publishedAt": "2026-09-14 08:00:00",
     "updatedAt": "2026-09-17 10:00:00",
+    "coverImage": "/logo.png",
     "featuredImageUrl": "/logo.png",
     "featuredImageAlt": "Chiến lược content marketing thực chiến cho doanh nghiệp địa phương không cần viết văn hoa",
+    "faqCount": 6,
+    "headingsCount": 23,
     "seo": {
       "title": "Content marketing cho doanh nghiệp địa phương: Bắt đầu từ đâu mà không cần viết văn hoa?",
       "description": "Chiến lược content marketing cho doanh nghiệp địa phương chuẩn thực chiến: 4 nhóm chủ đề khách tin nhất, lịch 4 tuần mỗi tuần 2 bài và 3 điều cấm kỵ.",
-      "focusKeyword": "content marketing cho doanh nghiệp địa phương",
       "canonicalUrl": "https://localmate.vn/kien-thuc/content-marketing-cho-doanh-nghiep-dia-phuong-bat-dau-tu-dau",
       "ogTitle": "Content Marketing Cho Doanh Nghiệp Địa Phương: Bắt Đầu Từ Đâu?",
       "ogDescription": "Bí quyết viết bài thu hút cho tiệm địa phương: không cần văn chương bay bổng, chỉ cần chia sẻ thật về kinh nghiệm, bảng giá minh bạch và hình ảnh thực tế."
-    },
-    "briefSummary": {
-      "searchIntent": "Solution aware / Content strategy - Chiến lược nội dung thực tế",
-      "targetCustomer": "Chủ tiệm, thợ lành nghề không biết viết văn, sợ làm nội dung tiếp thị",
-      "contentGoal": "Chỉ ra 4 nhóm nội dung thực tế: Giải đáp thắc mắc khách hay hỏi, Hậu trường làm việc, Phản hồi khách hàng thật, Lời khuyên chuyên môn."
-    },
-    "faqCount": 6,
-    "headingsCount": 23
+    }
   },
   {
     "id": 30,
@@ -954,27 +809,22 @@ export const ARTICLES_METADATA: ArticleMetadata[] = [
     "category": "Kinh doanh địa phương",
     "categorySlug": "kinh-doanh-dia-phuong",
     "excerpt": "hoàn toàn không phải là những dự án phần mềm tiền tỷ hay những thuật ngữ trí tuệ nhân tạo xa vời. Đối với một hộ kinh doanh cá thể hay một cơ sở dịch vụ dưới 10 nhân sự, chuyển đổi số chỉ đơn giản là . Lộ trình chuẩn x",
-    "readingTime": "10 phút đọc",
-    "wordCount": 2796,
+    "readingTime": "12 phút đọc",
+    "wordCount": 2739,
     "author": "LocalMate Team",
     "publishedAt": "2026-09-14 08:00:00",
     "updatedAt": "2026-09-17 10:00:00",
+    "coverImage": "/logo.png",
     "featuredImageUrl": "/logo.png",
     "featuredImageAlt": "Chuyển đổi số cho doanh nghiệp nhỏ: Lộ trình 5 bước thực tế từ 0 đến có khách",
+    "faqCount": 6,
+    "headingsCount": 23,
     "seo": {
       "title": "Chuyển đổi số cho doanh nghiệp nhỏ: Lộ trình 5 bước thực tế từ 0 đến có khách",
       "description": "Lộ trình chuyển đổi số cho doanh nghiệp nhỏ với 5 bước thực tế từ Google Maps, website chính chủ đến tự động hóa, giúp bạn có khách ổn định mà không lãng phí tiền.",
-      "focusKeyword": "chuyển đổi số cho doanh nghiệp nhỏ",
       "canonicalUrl": "https://localmate.vn/kien-thuc/chuyen-doi-so-cho-doanh-nghiep-nho-5-viec-don-gian",
       "ogTitle": "Chuyển Đổi Số Doanh Nghiệp Nhỏ: Bắt Đầu Từ 5 Việc Đơn Giản, Hiệu Quả",
       "ogDescription": "Lộ trình chuyển đổi số thực tế cho cửa hàng và tiệm dịch vụ: 5 việc cụ thể làm được ngay với chi phí siêu rẻ giúp tăng lượng khách và tiết kiệm thời gian."
-    },
-    "briefSummary": {
-      "searchIntent": "Pillar / Macro Roadmap - Lộ trình tổng thể thực chiến",
-      "targetCustomer": "Chủ tiệm, hộ kinh doanh, xưởng nhỏ muốn ứng dụng công nghệ bài bản nhưng không biết bắt đầu từ đâu",
-      "contentGoal": "Đưa ra 5 bước nhỏ, chi phí thấp, thấy ngay kết quả: Tên miền/Email, Google Maps, Website di động, Mã QR thanh toán/review, Quản lý dữ liệu số."
-    },
-    "faqCount": 6,
-    "headingsCount": 23
+    }
   }
 ];

@@ -1060,8 +1060,10 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
             border: 1px solid #d8e7df;
             border-radius: 9px;
             color: #087653;
-            width: 42px;
-            height: 42px;
+            width: 44px;
+            height: 44px;
+            min-width: 44px;
+            min-height: 44px;
             cursor: pointer;
             padding: 0;
           }

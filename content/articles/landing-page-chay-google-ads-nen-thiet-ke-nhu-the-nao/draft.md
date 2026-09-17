@@ -29,7 +29,7 @@ provenance:
       url: "https://localmate.vn/bang-gia"
 ---
 
-> **TL;DR (Answer First)**: Landing page chạy Google Ads cho dịch vụ địa phương (sửa điện lạnh, thông tắc cống, cứu hộ xe, làm nhôm kính, phòng khám mini) chỉ cần độ dài vừa vặn trong 3 đến 5 lần vuốt ngón tay trên điện thoại. Tuyệt đối không dẫn khách vào trang chủ rườm rà. Một trang đích có tỷ lệ chốt cuộc gọi cao bắt buộc phải có cấu trúc 6 khối vàng: (1) Hero section khớp 100% từ khóa tìm kiếm; (2) Nút gọi hotline nổi bật 1 chạm ghim chân trang; (3) Bảng giá dịch vụ công khai minh bạch; (4) Ảnh xưởng và thợ thật đang làm việc; (5) Cam kết bảo hành bằng văn bản rõ ràng; (6) Bản đồ địa chỉ thật và bán kính phục vụ. Trang phải tải siêu tốc dưới 2 giây trên mạng di động 4G để khách không bấm thoát ra ngoài tìm đối thủ.
+> **Tóm tắt nhanh**: Landing page chạy Google Ads cho dịch vụ địa phương (sửa điện lạnh, thông tắc cống, cứu hộ xe, làm nhôm kính, phòng khám mini) chỉ cần độ dài vừa vặn trong 3 đến 5 lần vuốt ngón tay trên điện thoại. Tuyệt đối không dẫn khách vào trang chủ rườm rà. Một trang đích có tỷ lệ chốt cuộc gọi cao bắt buộc phải có cấu trúc 6 khối vàng: (1) Hero section khớp 100% từ khóa tìm kiếm; (2) Nút gọi hotline nổi bật 1 chạm ghim chân trang; (3) Bảng giá dịch vụ công khai minh bạch; (4) Ảnh xưởng và thợ thật đang làm việc; (5) Cam kết bảo hành bằng văn bản rõ ràng; (6) Bản đồ địa chỉ thật và bán kính phục vụ. Trang phải tải siêu tốc dưới 2 giây trên mạng di động 4G để khách không bấm thoát ra ngoài tìm đối thủ.
 
 # Landing page chạy Google Ads nên thiết kế thế nào để khách bấm gọi ngay?
 

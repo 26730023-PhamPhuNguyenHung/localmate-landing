@@ -30,7 +30,7 @@ provenance:
 lifecycle_status: "draft"
 ---
 
-> **TL;DR (Answer First)**: Tình trạng doanh nghiệp không xuất hiện trên Google Maps chủ yếu do 5 nguyên nhân kỹ thuật: (1) Hồ sơ chưa hoàn tất xác minh danh tính; (2) Bộ lọc khoảng cách (Proximity Filter) tự động ẩn điểm ghim khi người tìm đứng xa cơ sở; (3) Lỗi trùng lặp địa chỉ hoặc hotline (Duplicate Listings); (4) Hồ sơ bị phạt tạm ngưng ngầm (Soft Suspension); và (5) Tên tiệm nhồi nhét từ khóa sai quy định. Để xử lý dứt điểm, bạn cần xác thực hồ sơ chính chủ, dọn sạch điểm ghim rác, đưa tên tiệm về đúng biển hiệu thực tế và củng cố tín hiệu SEO địa phương.
+> **Tóm tắt nhanh**: Tình trạng doanh nghiệp không xuất hiện trên Google Maps chủ yếu do 5 nguyên nhân kỹ thuật: (1) Hồ sơ chưa hoàn tất xác minh danh tính; (2) Bộ lọc khoảng cách (Proximity Filter) tự động ẩn điểm ghim khi người tìm đứng xa cơ sở; (3) Lỗi trùng lặp địa chỉ hoặc hotline (Duplicate Listings); (4) Hồ sơ bị phạt tạm ngưng ngầm (Soft Suspension); và (5) Tên tiệm nhồi nhét từ khóa sai quy định. Để xử lý dứt điểm, bạn cần xác thực hồ sơ chính chủ, dọn sạch điểm ghim rác, đưa tên tiệm về đúng biển hiệu thực tế và củng cố tín hiệu SEO địa phương.
 
 # Vì sao doanh nghiệp không xuất hiện trên Google Maps? Cách khắc phục nhanh
 

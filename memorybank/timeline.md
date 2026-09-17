@@ -2,6 +2,23 @@
 
 Ghi nhận các mốc sự kiện, commit và trạng thái vận hành của dự án.
 
+## [2026-09-17] - Audit & Refactor Toàn Diện Giao Diện Article Detail Chuẩn Editorial / SME Friendly
+- **Bối cảnh & Mục tiêu**:
+  - Khắc phục giao diện bài viết trước đó mang cảm giác SEO tool / AI-generated / Dashboard kỹ thuật cồng kềnh.
+  - Xóa bỏ triệt để các badge và wording sáo rỗng: "Đã kiểm chứng thực tế", "TL;DR (Answer First)", "TRẢ LỜI NHANH CỐT LÕI", "Trong Phễu".
+  - Chuyển đổi trải nghiệm đọc sang chuẩn Magazine/Editorial trang nhã, thân thiện với chủ doanh nghiệp nhỏ (SME) Việt Nam.
+- **Thực thi kỹ thuật**:
+  1. **Breadcrumb Top Area**: Tinh giản từ dải xám 85px xuống thanh điều hướng thanh mảnh ~48px nền sáng `#fbfcfb`, tự động truncate tiêu đề thích ứng theo breakpoint.
+  2. **ArticleHeader & ArticleMeta**: H1 dùng `clamp(1.5rem, 2.75vw, 2.15rem)`, `line-height: 1.25`, `text-wrap: pretty`. Xóa bỏ hoàn toàn author card cồng kềnh và avatar to lớn; chuyển thành dòng byline editorial thanh lịch ("Đội ngũ Localmate • Cập nhật dd/mm/yyyy • X phút đọc • Chia sẻ").
+  3. **ArticleSummary (Tóm tắt nhanh)**: Thay thế khối viền xanh SEO tool 2px thành callout nền xám sáng nhẹ `#f8fafc`, viền trái `3px solid #0d7647`, tiêu đề "Tóm tắt nhanh" (không uppercase, không icon check audit).
+  4. **Typography & Asymmetric 2-Column Grid**: Thân bài giới hạn chuẩn 760px (`margin-inline: auto`), body font 17-18px, `line-height: 1.8`, màu slate-800 `#1e293b`. Sidebar 280px sticky chứa TableOfContents trên desktop, mobile tự động chuyển thành inline accordion thu gọn.
+  5. **Data Model & Reading Time**: Tách biệt Public Data và Internal SEO (mapper `toPublicArticle()`), tự động tính `readingTime = Math.ceil(wordCount / 230)` từ plain text thực tế của bài thay vì hardcode 18 phút.
+  6. **Modular Components**: Tách `ArticleDetailPage.tsx` thành các components con độc lập (`ArticleHeader`, `ArticleMeta`, `ArticleSummary`, `ArticleBody`, `ArticleFaq`, `ArticleAuthor`, `ArticleCta`, `ArticleRelatedPosts`).
+- **Nghiệm thu**:
+  - `npm run build` (`tsc && vite build && generate-static-routes.js`) PASS 100% (4.88s), sinh đủ 30 static HTML shells.
+  - Kiểm tra 0 lỗi horizontal overflow, responsive chuẩn từ 390px đến 1920px.
+
+
 ## [2026-09-17] - Chuyển Đổi Sang Kiến Trúc Code-First & Deploy Hoàn Tất 30 Bài Viết Lên localmate.vn
 - **Commits**:
   - `3095414`: `feat(content): implement code-first architecture for 30 articles with ssg and 0ms latency`

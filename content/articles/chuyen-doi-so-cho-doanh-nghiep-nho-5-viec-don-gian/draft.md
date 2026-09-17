@@ -30,7 +30,7 @@ provenance:
 lifecycle_status: "publish_ready"
 ---
 
-> **TL;DR (Answer First)**: Chuyển đổi số cho doanh nghiệp nhỏ không phải là đầu tư phần mềm ERP đắt đỏ hay công nghệ AI phức tạp, mà là số hóa các điểm chạm đón khách: (1) Mặt tiền Google Maps chính chủ; (2) Website di động sở hữu độc lập; (3) Tích lũy đánh giá thật làm đòn bẩy uy tín; (4) Khai thác Google Ads ngách và Local SEO; (5) Giữ chân khách cũ bằng bảng tính tinh gọn kết hợp Zalo. Lộ trình 5 bước này giúp chủ cơ sở xây dựng dòng khách ổn định với chi phí tối thiểu.
+> **Tóm tắt nhanh**: Chuyển đổi số cho doanh nghiệp nhỏ không phải là đầu tư phần mềm ERP đắt đỏ hay công nghệ AI phức tạp, mà là số hóa các điểm chạm đón khách: (1) Mặt tiền Google Maps chính chủ; (2) Website di động sở hữu độc lập; (3) Tích lũy đánh giá thật làm đòn bẩy uy tín; (4) Khai thác Google Ads ngách và Local SEO; (5) Giữ chân khách cũ bằng bảng tính tinh gọn kết hợp Zalo. Lộ trình 5 bước này giúp chủ cơ sở xây dựng dòng khách ổn định với chi phí tối thiểu.
 
 # Chuyển đổi số cho doanh nghiệp nhỏ: Lộ trình 5 bước thực tế từ 0 đến có khách
 
