@@ -149,8 +149,54 @@ export const PostsListPage: React.FC = () => {
 
   const countInternalLinks = (html?: string) => {
     if (!html) return 0;
-    const matches = html.match(/href=["'](\/kien-thuc\/|\/giai-phap\/|#)/g);
+    const matches = html.match(/href=["'](\/kien-thuc\/|\/giai-phap\/|\/dich-vu\/)/g);
     return matches ? matches.length : 0;
+  };
+
+  // Rule-Derived Health Engine: Không dùng điểm ảo, tính trực tiếp từ quy tắc thực tế
+  const evaluatePostHealth = (post: PostEntity) => {
+    const html = post.rendered_html || '';
+    const seoTitle = post.seo_title || '';
+    const desc = post.seo_description || '';
+    const wordCount = post.word_count || 0;
+    
+    // 1. SEO Health
+    const seoFails: string[] = [];
+    if (!seoTitle) seoFails.push('Chưa có SEO Title');
+    else if (seoTitle.length > 70) seoFails.push(`Title quá dài (${seoTitle.length} ký tự, cắt SERP)`);
+    if (!desc) seoFails.push('Chưa có Meta Description');
+    else if (desc.length < 85 || desc.length > 170) seoFails.push(`Mô tả chưa chuẩn (${desc.length} ký tự)`);
+    if (!post.focus_keyword) seoFails.push('Chưa có Focus Keyword');
+    if (wordCount < 500) seoFails.push(`Nội dung mỏng (${wordCount} từ < 500 từ)`);
+
+    // 2. GEO Health (AI Citation)
+    const geoFails: string[] = [];
+    const hasAnswerBlock = html.includes('blockquote') || html.includes('Trả lời nhanh') || html.includes('Answer First');
+    if (!hasAnswerBlock) geoFails.push('Thiếu Answer-First block');
+    if (!html.includes('<h2')) geoFails.push('Thiếu thẻ Heading H2');
+    if (!html.includes('<table')) geoFails.push('Thiếu Bảng đối chiếu / Decision Table');
+    if (wordCount < 600) geoFails.push('Độ sâu chưa đủ cho RAG vector');
+
+    // 3. Evidence Health
+    const evidenceFails: string[] = [];
+    const hasOutbound = html.includes('href="http') || html.includes('google.com') || html.includes('vnnic');
+    if (!hasOutbound) evidenceFails.push('0 External Citation chính thống');
+    if (html.includes('Penguin') || html.includes('giảm 40% chi phí') || html.includes('60% trọng số')) {
+      evidenceFails.push('Chứa khẳng định thuật toán/số liệu ước lệ');
+    }
+
+    // 4. Link Health
+    const links = countInternalLinks(html);
+    const linkFails: string[] = [];
+    if (links === 0) linkFails.push('Bài viết mồ côi (0 internal links)');
+    else if (links < 2) linkFails.push('Ít liên kết nội bộ (< 2 links)');
+
+    return {
+      seo: { pass: seoFails.length === 0, reasons: seoFails },
+      geo: { pass: geoFails.length === 0, reasons: geoFails },
+      evidence: { pass: evidenceFails.length === 0, reasons: evidenceFails },
+      links: { pass: linkFails.length === 0, reasons: linkFails, count: links }
+    };
   };
 
   // Filter posts locally by intent & quality if set
@@ -376,24 +422,22 @@ export const PostsListPage: React.FC = () => {
                         checked={selectedIds.length > 0 && selectedIds.length === displayedPosts.length}
                       />
                     </th>
-                    <th style={{ padding: '0.75rem 0.85rem', minWidth: '260px' }}>Tiêu đề & Góc nhìn riêng</th>
-                    <th style={{ padding: '0.75rem 0.85rem', width: '110px' }}>Loại bài</th>
-                    <th style={{ padding: '0.75rem 0.85rem', width: '130px' }}>Search Intent</th>
-                    <th style={{ padding: '0.75rem 0.85rem', width: '95px' }}>Quality Gate</th>
-                    <th style={{ padding: '0.75rem 0.85rem', width: '85px' }}>SEO / GEO</th>
-                    <th style={{ padding: '0.75rem 0.85rem', width: '90px' }}>Số từ</th>
-                    <th style={{ padding: '0.75rem 0.85rem', width: '85px' }}>Links</th>
-                    <th style={{ padding: '0.75rem 0.85rem', width: '100px' }}>Cập nhật</th>
-                    <th style={{ padding: '0.75rem 0.85rem', width: '120px', textAlign: 'right' }}>Thao tác</th>
+                    <th style={{ padding: '0.75rem 0.85rem', minWidth: '240px' }}>Tiêu đề & Góc nhìn riêng</th>
+                    <th style={{ padding: '0.75rem 0.85rem', width: '95px' }}>Loại bài</th>
+                    <th style={{ padding: '0.75rem 0.85rem', width: '100px' }}>SEO Health</th>
+                    <th style={{ padding: '0.75rem 0.85rem', width: '100px' }}>GEO Health</th>
+                    <th style={{ padding: '0.75rem 0.85rem', width: '105px' }}>Evidence</th>
+                    <th style={{ padding: '0.75rem 0.85rem', width: '75px' }}>Số từ</th>
+                    <th style={{ padding: '0.75rem 0.85rem', width: '75px' }}>Links</th>
+                    <th style={{ padding: '0.75rem 0.85rem', width: '95px' }}>Cập nhật</th>
+                    <th style={{ padding: '0.75rem 0.85rem', width: '115px', textAlign: 'right' }}>Thao tác</th>
                   </tr>
                 </thead>
                 <tbody>
                   {displayedPosts.map((post) => {
                     const brief = parseBrief(post.brief_json);
                     const isPillar = post.id === brief.pillar_id || [1, 7, 13, 19, 25, 30].includes(post.id);
-                    const linkCount = countInternalLinks(post.rendered_html);
-                    const hasTable = (post.rendered_html || '').includes('<table');
-                    const hasMissingEvidence = !hasTable && (post.word_count || 0) < 500;
+                    const health = evaluatePostHealth(post);
 
                     return (
                       <tr
@@ -427,11 +471,6 @@ export const PostsListPage: React.FC = () => {
                             >
                               {post.title}
                             </Link>
-                            {hasMissingEvidence && (
-                              <span title="Cảnh báo: Thiếu bảng biểu hoặc số liệu đối soát" style={{ color: '#d97706', display: 'inline-flex' }}>
-                                <AlertTriangle size={14} />
-                              </span>
-                            )}
                           </div>
                           {brief.unique_angle && (
                             <div style={{ fontSize: '0.75rem', color: '#64748b', marginTop: '0.2rem', fontStyle: 'italic', display: '-webkit-box', WebkitLineClamp: 1, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
@@ -474,67 +513,52 @@ export const PostsListPage: React.FC = () => {
                           )}
                         </td>
 
-                        {/* Search Intent */}
+                        {/* SEO Health Rule-Derived */}
                         <td style={{ padding: '0.75rem 0.85rem' }}>
-                          <span style={{
-                            padding: '0.15rem 0.45rem',
-                            borderRadius: '4px',
-                            fontSize: '0.725rem',
-                            fontWeight: 600,
-                            backgroundColor: '#eff6ff',
-                            color: '#1d4ed8'
-                          }}>
-                            {brief.search_intent ? brief.search_intent.split(' - ')[0] : 'TOFU'}
-                          </span>
-                        </td>
-
-                        {/* Quality Gate Status */}
-                        <td style={{ padding: '0.75rem 0.85rem' }}>
-                          {brief.quality_status === 'pass' ? (
-                            <span style={{
-                              display: 'inline-flex',
-                              alignItems: 'center',
-                              gap: '0.2rem',
-                              padding: '0.15rem 0.45rem',
-                              borderRadius: '4px',
-                              fontSize: '0.725rem',
-                              fontWeight: 700,
-                              backgroundColor: '#dcfce7',
-                              color: '#15803d'
-                            }}>
-                              <ShieldCheck size={12} />
-                              PASS
+                          {health.seo.pass ? (
+                            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.2rem', padding: '0.15rem 0.45rem', borderRadius: '4px', fontSize: '0.725rem', fontWeight: 700, backgroundColor: '#dcfce7', color: '#15803d' }}>
+                              <CheckCircle2 size={12} /> PASS
                             </span>
                           ) : (
-                            <span style={{
-                              display: 'inline-flex',
-                              alignItems: 'center',
-                              gap: '0.2rem',
-                              padding: '0.15rem 0.45rem',
-                              borderRadius: '4px',
-                              fontSize: '0.725rem',
-                              fontWeight: 600,
-                              backgroundColor: '#fee2e2',
-                              color: '#991b1b'
-                            }}>
-                              <AlertCircle size={12} />
-                              Review
+                            <span
+                              title={`Lý do chưa đạt:\n• ${health.seo.reasons.join('\n• ')}`}
+                              style={{ display: 'inline-flex', alignItems: 'center', gap: '0.2rem', padding: '0.15rem 0.45rem', borderRadius: '4px', fontSize: '0.725rem', fontWeight: 700, backgroundColor: '#fee2e2', color: '#991b1b', cursor: 'help' }}
+                            >
+                              <AlertCircle size={12} /> FAIL ({health.seo.reasons.length})
                             </span>
                           )}
                         </td>
 
-                        {/* SEO Status */}
+                        {/* GEO Health Rule-Derived */}
                         <td style={{ padding: '0.75rem 0.85rem' }}>
-                          <span style={{
-                            padding: '0.15rem 0.45rem',
-                            borderRadius: '4px',
-                            fontSize: '0.725rem',
-                            fontWeight: 600,
-                            backgroundColor: brief.seo_status === 'optimized' ? '#ecfdf5' : '#f8fafc',
-                            color: brief.seo_status === 'optimized' ? '#047857' : '#64748b'
-                          }}>
-                            {brief.seo_status === 'optimized' ? 'GEO 100%' : 'Chờ audit'}
-                          </span>
+                          {health.geo.pass ? (
+                            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.2rem', padding: '0.15rem 0.45rem', borderRadius: '4px', fontSize: '0.725rem', fontWeight: 700, backgroundColor: '#dcfce7', color: '#15803d' }}>
+                              <ShieldCheck size={12} /> PASS
+                            </span>
+                          ) : (
+                            <span
+                              title={`Lý do chưa đạt:\n• ${health.geo.reasons.join('\n• ')}`}
+                              style={{ display: 'inline-flex', alignItems: 'center', gap: '0.2rem', padding: '0.15rem 0.45rem', borderRadius: '4px', fontSize: '0.725rem', fontWeight: 700, backgroundColor: '#ffedd5', color: '#c2410c', cursor: 'help' }}
+                            >
+                              <AlertTriangle size={12} /> FAIL ({health.geo.reasons.length})
+                            </span>
+                          )}
+                        </td>
+
+                        {/* Evidence Health Rule-Derived */}
+                        <td style={{ padding: '0.75rem 0.85rem' }}>
+                          {health.evidence.pass ? (
+                            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.2rem', padding: '0.15rem 0.45rem', borderRadius: '4px', fontSize: '0.725rem', fontWeight: 700, backgroundColor: '#dcfce7', color: '#15803d' }}>
+                              <CheckCircle2 size={12} /> PASS
+                            </span>
+                          ) : (
+                            <span
+                              title={`Lý do chưa đạt:\n• ${health.evidence.reasons.join('\n• ')}`}
+                              style={{ display: 'inline-flex', alignItems: 'center', gap: '0.2rem', padding: '0.15rem 0.45rem', borderRadius: '4px', fontSize: '0.725rem', fontWeight: 700, backgroundColor: '#fee2e2', color: '#991b1b', cursor: 'help' }}
+                            >
+                              <AlertCircle size={12} /> FAIL ({health.evidence.reasons.length})
+                            </span>
+                          )}
                         </td>
 
                         {/* Word Count */}
@@ -542,18 +566,22 @@ export const PostsListPage: React.FC = () => {
                           {post.word_count || 0} từ
                         </td>
 
-                        {/* Internal Links Count */}
+                        {/* Internal Links Count & Orphan Warning */}
                         <td style={{ padding: '0.75rem 0.85rem' }}>
-                          <span style={{
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: '0.2rem',
-                            fontSize: '0.78rem',
-                            color: linkCount >= 2 ? '#0d7647' : '#d97706',
-                            fontWeight: 600
-                          }}>
+                          <span
+                            title={health.links.pass ? `${health.links.count} liên kết nội bộ` : health.links.reasons.join(', ')}
+                            style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '0.2rem',
+                              fontSize: '0.78rem',
+                              color: health.links.count === 0 ? '#dc2626' : (health.links.count >= 2 ? '#0d7647' : '#d97706'),
+                              fontWeight: 700,
+                              cursor: health.links.count === 0 ? 'help' : 'default'
+                            }}
+                          >
                             <Link2 size={13} />
-                            {linkCount}
+                            {health.links.count === 0 ? '0 (Mồ côi)' : health.links.count}
                           </span>
                         </td>
 
