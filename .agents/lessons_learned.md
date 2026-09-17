@@ -1,5 +1,16 @@
 # 📚 LOCALMATE AGENTS LESSONS LEARNED & EDITORIAL RULES
 
+## 9. Bài Học Về Search Intent, SERP Fit & Kiểm Soát Cannibalization (Subagent 2)
+- **Bẫy định dạng một màu (Static Blog Trap)**: Người dùng tìm kiếm từ khóa BOFU/Commercial Investigation (như "chi phí làm web", "ngân sách chạy ads ngày") không chỉ muốn đọc văn bản; họ mong muốn công cụ tính toán (Calculator), bảng trượt ngân sách và so sánh gói dịch vụ. Nếu chỉ cung cấp bài viết blog văn bản tĩnh, tỷ lệ thoát trang sẽ cao và SERP ranking sẽ bị các đối thủ có interactive widget vượt mặt.
+- **Phân định ranh giới giữa Blog Post và Service / Landing Pages**:
+  - Blog Post (`/kien-thuc/...`): Phải phục vụ truy vấn Informational / How-to / Troubleshooting mang tính tự làm (DIY) hoặc khảo sát khách quan. Tuyệt đối không tự biến bài blog thành trang bán hàng trơ trẽn.
+  - Service Page (`/thiet-ke-website`, `/google-ads`, `/bang-gia`): Phục vụ truy vấn Commercial / Transactional có chủ đích thuê dịch vụ.
+  - Kết nối giữa 2 tầng: Sử dụng In-text Link tự nhiên và Action Box nổi bật (Hotline khẩn cấp, Form Audit miễn phí) để đưa người đọc từ Blog sang Landing Page mà không gây phản cảm.
+- **Diệt trừ Cannibalization bằng Angle Differentiation**:
+  - Khi 2 bài viết cùng nhắm một chủ đề lớn (ví dụ: Google Maps), phải chia tách rạch ròi: 1 bài là **Pillar Chiến lược & Bản quyền** (Bài 07), 1 bài là **Kỹ thuật xác minh 1 cú bấm máy 90s** (Bài 08).
+  - Không bao giờ đặt tiêu đề và focus keyword chung chung dạng "Google Maps là gì" cho cả 2 bài.
+- **Content Gap thế hệ mới (AI Search)**: Khi hệ thống đã có các trang dịch vụ tiên phong như GEO (`/dich-vu/geo`), AEO (`/dich-vu/aeo`), SEO AI (`/dich-vu/seo-ai`), bắt buộc phải có các bài viết Blog TOFU/MOFU tương ứng để tạo thành Topic Cluster vững chắc, tránh để Service Pages trở thành các "ốc đảo cô lập" (orphan pages) thiếu Topical Authority.
+
 ## 1. Bài Học Về Brand Voice & Tư Duy Biên Tập (Editorial POV)
 - **Bản chất của khách hàng địa phương (SME/Hộ kinh doanh)**: Họ làm việc tay chân, bận rộn cả ngày, chỉ đọc điện thoại vào giờ nghỉ hoặc tối muộn. Văn phong phải ngắn gọn, chắc chắn, nói thẳng vào việc, không vòng vo, không văn hoa sáo rỗng.
 - **Quy tắc "Bác thợ hiểu được"**: Nếu một câu văn chứa từ tiếng Anh viết tắt mà không thể giải thích bằng 5 từ tiếng Việt đơn giản cho một bác thợ 50 tuổi hiểu, câu đó bị loại bỏ ngay lập tức.
@@ -59,4 +70,22 @@
   9. *Action Plan*: Kế hoạch 24h & 7 ngày.
   10. *Contextual CTA*: Dẫn dắt tự nhiên về dịch vụ LocalMate tương ứng (`/giai-phap/*`).
 - **Nâng Cấp CMS Thành Editorial Dashboard Chuyên Nghiệp**: Bảng danh sách bài viết phải phản ánh đúng các chỉ số nghiệp vụ (Search Intent, Pillar, Quality Gate PASS/Review, Số từ, Liên kết nội bộ). Trình soạn thảo cần hỗ trợ bộ lọc kiểm tra thời gian thực (Real-time Slop Detector) để ngăn chặn từ sáo rỗng ngay khi gõ phím.
+
+## 9. Bài Học Về Local SEO, Commercial Intent & Chống Bẫy Doorway Pages (SME Lead Engine)
+- **Tuyệt Đối Tránh Bẫy "Traffic-Only" / Học Thuật Phương Tây**: Chủ tiệm SME không tìm "Entity SEO" hay "Thuật toán đấu giá Vickrey Google Ads". Họ chỉ tìm "cách có khách gọi quanh khu vực", "sửa web bị đắp chiếu", "cứu Google Maps bị khóa". Mọi nội dung kỹ thuật phải được phiên dịch sang ngôn ngữ bác thợ và nỗi đau mất tiền thực tế.
+- **Cảnh Báo Đỏ Về Doorway Pages Tại Việt Nam**: Tuyệt đối không nhân bản trang dịch vụ theo từng quận/huyện bằng cách Find & Replace địa danh (dễ bị Google Spam Update phạt nặng). Mỗi location page phải là 1 Case Study thực tế có hình ảnh thi công, địa chỉ khách hàng thật và nhân sự phụ trách khu vực.
+- **Giải Quyết Lỗ Hổng Đứt Gãy Chuyển Đổi (The Conversion Fracture)**: Bài viết có hay đến mấy mà cuối bài chỉ để 1 dòng hyperlink text thuần thì tỷ lệ mất Lead lên tới 98%. Bắt buộc phải triển khai hệ thống CTA Đa Tầng (Multi-tier CTA): Contextual Note, Lead Magnet (File mẫu Excel / Checklist PDF đổi Zalo), Audit Tool CTA (Scan web miễn phí), Risk-Reversal Offer (Xem demo 0đ trước khi ký) và Floating Action Button (Hotline/Zalo) dính trên di động.
+- **Hành Vi Khách Hàng SME Việt Nam Là Zalo & Hotline**: Khách địa phương không để lại email chờ 24h. Điểm chốt chuyển đổi số 1 luôn là nút gọi điện thoại và nút chat Zalo trực tiếp, kèm mã VietQR thanh toán nhanh.
+
+## 11. Bài Học Về Kiến Trúc Thông Tin, Đồ Thị Liên Kết & Thẩm Quyền Chủ Đề (Subagent 6 - Link Graph Engineer)
+- **Căn Bệnh Chuỗi Xích Đơn Luồng (The Daisy-Chain Anti-Pattern)**:
+  - Khi seed bài viết hàng loạt, xu hướng phổ biến là nối bài n sang bài n+1 (1 -> 2 -> 3 -> 4 -> 5 -> 1). Kết quả tạo ra các vòng lặp bẫy bot khép kín (Spider Trap Loop) tích tụ PageRank ảo tại một cụm (như Cụm Website PR > 0.05) nhưng chặn đứng dòng chảy thẩm quyền sang các cụm khác.
+  - Khắc phục: Phải chuyển sang mô hình **Hub-and-Spoke kết hợp**: Bài Pillar là Hub tỏa liên kết xuống tất cả Supporting; 100% Supporting bắt buộc phải có Reverse Upward Link trỏ ngược lên Pillar để tích tụ Topical Authority.
+- **Thảm Họa Orphan Pillar (Trường Hợp Bài 13 & Bài 06)**:
+  - Bài 13 là Pillar chính của Cụm Local SEO nhưng bị bỏ quên (In-degree = 0), khiến toàn bộ các bài con (Bài 14, 15) chịu cảnh đói PageRank (PR 0.0050 - 0.0071). Bài 06 (10 lỗi website làm mất khách) cũng bị cô lập do chuỗi bài 5 trỏ ngược về 1.
+  - Bài học: Bắt buộc phải có Audit Script quét Adjacency Matrix tự động (`scripts/analyze_graph.cjs`) trước khi đưa nội dung vào vận hành. Mọi bài Pillar phải nhận link từ Master Cornerstone và từ bài chuyển tiếp của cụm trước đó.
+- **Thoát Khỏi Bẫy URL Alias Chung Chung (Direct-to-Canonical Conversion)**:
+  - Việc 100% bài viết chỉ link về 5 alias `/giai-phap/*` làm lu mờ các trang đích chuyển đổi cao trong `src/App.tsx`. Cần phân bổ chính xác: bài chi phí -> `/bang-gia`, bài bắt đầu nhỏ -> `/landing-490k`, bài lỗi -> `/tieu-chuan-audit` hoặc `/khao-sat-du-an`, bài Entity/AI -> `/dich-vu/geo`.
+- **Topical Gaps Thực Tế Trong Kỷ Nguyên AI Search**:
+  - Người dùng SME hiện nay tìm kiếm không chỉ trên Google truyền thống mà còn hỏi ChatGPT, SearchGPT, Perplexity và Google AI Overviews. Kho 30 bài cần 1 bài cầu nối (Bridge Article) giải thích bình dân về GEO (Generative Engine Optimization) để dẫn dắt vào các dịch vụ đón đầu của LocalMate (`/dich-vu/geo`, `/dich-vu/aeo`).
 

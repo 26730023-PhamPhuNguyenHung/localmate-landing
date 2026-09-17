@@ -2,6 +2,53 @@
 
 Ghi nhận các mốc sự kiện, commit và trạng thái vận hành của dự án.
 
+## [2026-09-17] - Subagent 6: Audit Kiến Trúc Thông Tin, Đồ Thị Liên Kết & Thẩm Quyền Chủ Đề (30 Bài Viết)
+- **Tài liệu bàn giao**: `docs/audit-v2/06-topical-authority-link-graph.md`
+- **Phạm vi kiểm định**: Toàn bộ 30 bài viết trong `content/seeds/drafts_30_articles.json`, `src/data/articlesData.ts`, `src/App.tsx` và `docs/content-architecture.md`.
+- **Phát hiện cốt lõi**:
+  1. *Khủng hoảng Orphan Pages*: Phát hiện **Bài 06** (10 lỗi website không có khách) và **Bài 13** (Local SEO là gì - Pillar chính của Cụm 3) hoàn toàn không có internal link trỏ đến (In-degree = 0). Hậu quả: Bài 13 và các bài con (14, 15) bị đói PageRank nghiêm trọng (PR 0.0050 - 0.0071).
+  2. *Bẫy Chuỗi Xích Đơn Luồng (Daisy Chain & Closed Loop Trap)*: Chuỗi bài Cụm 1 tạo thành vòng lặp khép kín `01 -> 02 -> 03 -> 04 -> 05 -> 01`, tích tụ PageRank ảo (> 0.055) nhưng bẫy bot và không phân phối thẩm quyền sang Cụm 2 (Maps) và Cụm 3 (Local SEO).
+  3. *Lãng phí Canonical Landing Pages*: 100% link dịch vụ trong bài viết trỏ về 5 URL alias (`/giai-phap/*`), hoàn toàn bỏ qua các trang đích chuyên sâu chuyển đổi cao trong `src/App.tsx` (`/bang-gia`, `/landing-490k`, `/thiet-ke-website`, `/google-maps-local-seo`, `/dich-vu/geo`, `/tieu-chuan-audit`, `/khao-sat-du-an`).
+  4. *Topical Authority Gaps*: Xác định khoảng trống nhận thức giữa SEO truyền thống và Tìm kiếm Đề xuất AI (GEO / AEO); đề xuất 1 Bridge Article chuyên biệt và tích hợp tracking attribution vào bài viết.
+- **Sản phẩm bàn giao**:
+  - Bản đồ Adjacency Matrix & Mermaid Topology Graph 30 bài.
+  - Ma trận khuyến nghị Internal Links chi tiết từng cặp bài (nguồn, đích, anchor text tự nhiên, vị trí chèn, mục đích chiến lược).
+  - Bảng quy định Next Best Article & Next Best Commercial CTA cho 30/30 bài.
+
+## [2026-09-17] - Subagent 2: Audit Độc Lập Search Intent, SERP Fit & Keyword Cannibalization (30 Bài Viết)
+- **Tài liệu bàn giao**: `docs/audit-v2/02-search-intent-serp-fit.md`
+- **Phạm vi kiểm tra**: Toàn bộ 30 bài viết trong `content/seeds/drafts_30_articles.json`, `scripts/batches/batch-1.cjs` đến `batch-6.cjs` và đối chiếu hệ thống 20+ routes tại `src/App.tsx`.
+- **Phát hiện cốt lõi**:
+  1. *SERP Fit & Format Gap*: Toàn bộ 30 bài đều ở định dạng blog tĩnh, trong khi SERP 2026 của các từ khóa BOFU/MOFU đòi hỏi Rich Formats: Interactive Calculator (Bài 03, 21), Downloadable Doc/Sheet Template (Bài 02, 18), Visual Camera Angle (Bài 08), và Emergency Action Box (Bài 12, 22).
+  2. *Lệch Intent & Thin Content*: 5 bài dưới 500 từ (Bài 14, 21, 26, 28, 29) cần mở rộng dung lượng và đào sâu kỹ thuật; Bài 06 bị lệch số liệu (Slug ghi 10 lỗi nhưng outline chỉ có 6 điểm nghẽn).
+  3. *Bản đồ Cannibalization*: Xác lập ranh giới cho 6 cặp bài viết nội bộ (B07 vs B08, B09 vs B18, B10 vs B12, B13 vs B14, B25 vs B26, B04 vs B23) và 5 điểm xung đột giữa Blog với Service Pages (/bang-gia, /google-maps-local-seo, /google-ads, /automation, /chien-luoc-5-giai-doan).
+  4. *Content Gap khẩn cấp*: 30 bài hạt giống chưa có bài nào về GEO, AEO, ChatGPT Search, AI Overviews để hỗ trợ cho các Landing/Service Pages thế hệ mới (`/geo`, `/dich-vu/geo`, `/dich-vu/aeo`, `/dich-vu/seo-ai`).
+- **Lộ trình khắc phục 4 giai đoạn**: Đồng nhất số liệu Bài 06, thay đổi CTA khẩn cấp, bổ sung interactive widgets và xây dựng Cụm 5 bài AI Search.
+
+
+## [2026-09-17] - Subagent 10: Tổng Biên Tập & SEO Product Manager (Portfolio Valuation & Sequencing Strategy)
+- **Tài liệu bàn giao**: `docs/audit-v2/10-editor-in-chief.md`
+- **Phạm vi thẩm định**: Đánh giá toàn diện 30 bài viết như tài sản kinh doanh theo phương trình Content Economics: `Value = (SEO + Lead + Differentiation) - (Cost + Maintenance)`.
+- **Phân loại 6 nhóm chiến lược**:
+  1. *MUST HAVE (10 bài)*: B30, B01, B03, B06, B07, B08, B12, B18, B21, B22.
+  2. *STRATEGIC (8 bài)*: B05, B11, B13, B16, B19, B24, B25, B27.
+  3. *SUPPORT (6 bài)*: B02, B09, B10, B14, B15, B23.
+  4. *SHOULD MERGE (4 bài)*: B04 -> B02; B20 -> B21; B26 -> B25; B28 -> B27 (Tinh giản từ 30 URL còn 24 URL chất lượng cao).
+  5. *LOW VALUE (1 bài)*: B17 (Citation - từ khóa học thuật ít lead).
+  6. *SHOULD REMOVE / HOLD (1 bài)*: B29 (Content marketing - danh mục mồ côi, chuyển thành post mạng xã hội).
+- **Đột phá định dạng (Content as a Product)**: Lập phương án chuyển đổi 5 tài sản thành Interactive Website Cost Estimator (B03), Ads Breakeven Calculator (B21), Interactive Local SEO Checklist (B18), Emergency Maps Landing Page (B12) và Onboarding Checklist Google Docs (B02).
+- **Lộ trình phát hành 3 giai đoạn (6 tuần)**: Phase 1 (Nền tảng & Cứu hộ khẩn cấp: 6 bài); Phase 2 (Đào sâu chuyên môn: 9 bài); Phase 3 (Thương mại & Dự toán ngân sách: 9 bài).
+
+## [2026-09-17] - Subagent 7: Audit Định Vị Local SEO, Commercial Intent & Khả Năng Tạo Lead SME (30 Bài Viết)
+- **Tài liệu bàn giao**: `docs/audit-v2/07-local-seo-commercial-intent.md`
+- **Phạm vi kiểm tra**: Toàn diện 30 bài viết trong `content/seeds/drafts_30_articles.json` đối chiếu hệ thống 5 Trụ Cột Dịch Vụ (`docs/services/service-taxonomy.md`, `src/data/servicesCatalog.ts`).
+- **Phát hiện cốt lõi**:
+  1. *Định vị*: 30 bài phân bổ đều theo 5 Pillar giải pháp của LocalMate. Tuy nhiên còn 3 bài (#16, #20, #25) rơi vào bẫy lý thuyết phương Tây (Entity SEO, công thức đấu thầu Ads, định nghĩa CRM hàn lâm) thay vì nỗi đau sát sườn của bác thợ/chủ tiệm.
+  2. *Độ sâu Local & Thực thể*: 12/30 bài thiếu địa danh Việt Nam cụ thể; 15/30 bài chưa nhắc Zalo & Hotline - thói quen chốt đơn số 1 của SME Việt Nam.
+  3. *Lỗ hổng đứt gãy chuyển đổi*: 100% bài viết chỉ có link text trần ở chân bài, thiếu hoàn toàn nút bấm (Button), Lead Magnet (Checklist/File mẫu) và Audit Tool CTA -> Tỷ lệ mất lead ước tính > 98%.
+  4. *Cảnh báo đỏ Doorway Pages*: Cảnh báo rủi ro clone trang location page theo quận/huyện; đưa ra quy tắc 4 KHÔNG - 4 CÓ để bảo vệ website khỏi Google Spam Update.
+  5. *Đề xuất*: Thiết lập Hệ thống CTA Đa Tầng (Multi-tier CTA) 5 cấp độ và lộ trình nâng cấp dữ liệu + giao diện.
+
 ## [2026-09-17] - Fix Căn Giữa Subtitle Section "Quy Trình Làm Việc" & "Dịch Vụ" (HomePage)
 - **Commit**: `d74d19c` (`fix(landing): center align process and services section subtitles`)
 - **Bối cảnh & Vấn đề**:
