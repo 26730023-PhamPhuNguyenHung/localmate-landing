@@ -105,4 +105,16 @@
   - Nguy cơ: Nếu vô tình chuyển trạng thái `published`, toàn bộ trang web sẽ bị thuật toán Google Helpful Content Update & SpamBrain gắn cờ phạt chất lượng thấp.
   - Giải pháp: Khóa chặt trạng thái `draft`, thiết lập Hàng rào Kiểm duyệt Đỏ (Red Team Quality Gate) với 14 Tiêu Chí Bác Bỏ Ngay Lập Tức (Knock-out), chấm theo Rubric 100 điểm (>= 85 điểm mới được Publish) và yêu cầu viết lại 100% (100% Rewrite Required) trước khi ra công chúng.
 
+## 13. Lỗi Cô Lập Bài Viết (Orphan Pages) & Vòng Lặp Bẫy Bot (Spider Trap Loop) Trong Link Graph (Subagent 6)
+- **Phát hiện lỗi logic**:
+  - **Bài 06** (`10-loi-pho-bien-khien-website-doanh-nghiep-khong-co-khach`): Bị bỏ quên với 0 incoming link do chuỗi bài Cụm 1 trỏ vòng lại Bài 01 (`05 -> 01`).
+  - **Bài 13** (`local-seo-la-gi-vi-sao-doanh-nghiep-dia-phuong-nen-lam`): Dù là **Pillar của Cụm 3**, nhưng bị 0 incoming link do Bài 12 nhảy cóc thẳng sang Bài 16, và Bài 30 không link tới Bài 13. Hậu quả: PageRank của Bài 13 rớt xuống đáy (0.0050), kéo theo Bài 14 (0.0071) và 15 bị bỏ đói thẩm quyền.
+  - **Closed Loop tại Cụm 1**: Chu trình khép kín `01 -> 02 -> 03 -> 04 -> 05 -> 01` làm bẫy bot và tích tụ PageRank ảo (> 0.055), ngăn cản dòng chảy PageRank sang Cụm 2 và Cụm 3.
+  - **Bất đồng bộ hệ thống dữ liệu**: `src/data/articlesData.ts` chỉ chứa 5 bài viết cũ (`art-01` đến `art-05`), không đồng bộ với 30 bài trong `drafts_30_articles.json`.
+- **Quy tắc ngăn chặn vĩnh viễn (Fix & Prevention)**:
+  1. Mọi kịch bản seed content phải có bước kiểm thử đồ thị tự động (`scripts/analyze_graph.cjs`): kiểm tra In-degree $\ge 1$ cho 100% bài viết.
+  2. Bắt buộc liên kết 2 chiều Hub-and-Spoke: Bài Pillar phải trỏ xuống các Supporting, và 100% Supporting phải có Reverse Upward Link về Pillar.
+  3. Bổ sung liên kết liên cụm (Cross-Cluster Bridge): Bài 06 trỏ sang Bài 07, Bài 12 trỏ sang Bài 13, Bài 22 trỏ sang Bài 06, Bài 24 trỏ sang Bài 28.
+  4. Đưa thẳng link thương mại về Canonical Pages (`/bang-gia`, `/landing-490k`, `/thiet-ke-website`, `/google-maps-local-seo`, `/dich-vu/geo`) thay vì chỉ dùng alias `/giai-phap/*`.
+
 
