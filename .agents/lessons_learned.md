@@ -1,5 +1,26 @@
 # BÀI HỌC VÀ LƯU Ý KỸ THUẬT (LESSONS LEARNED & BUG MEMORY)
 
+## [2026-09-17] — Tối Ưu Bố Cục Full-Width Cho Landing Page Chạy Ads & Chống Ngắt Dòng Vụn Chữ Tiếng Việt
+- **Bối cảnh & Vấn đề phát hiện:**
+  - Khi thiết kế Hero section chia 2 cột (cột trái văn bản, cột phải form audit) trên desktop, cột văn bản bị co hẹp lại chỉ còn ~500–550px.
+  - Hậu quả: Tiêu đề H1 cỡ chữ lớn bị ngắt từ vụn vỡ kỳ quặc (ví dụ: *"KHÁCH HỎI CHATGPT VỀ DỊCH"* ở dòng 1 và *"VỤ CỦA BẠN"* ở dòng 2), làm mất nhịp đọc tự nhiên và tạo cảm giác chật chội, thiếu uy lực.
+- **Giải pháp & Kỹ thuật triển khai:**
+  1. *Chuyển đổi sang Full-Width Centered Hero*:
+     - Thay vì ép 2 cột bên hông, đưa Tiêu đề H1 và đoạn thông điệp lên vị trí toàn chiều rộng (Full-Width / Container wide).
+     - Định nghĩa 2 dòng độc lập bằng `<span className="geo-title-line">` kết hợp `word-break: keep-all` và `text-wrap: balance` để giữ nguyên cụm từ tiếng Việt trọn vẹn, không ngắt đôi từ đơn.
+  2. *Thiết kế Form Audit dạng Centerpiece Card*:
+     - Đặt ngay bên dưới tiêu đề theo dạng thẻ trung tâm (max-width 860px - 880px), viền xanh thương hiệu `#0d7647`, bóng mờ tinh tế.
+     - 4 checklist được tổ chức thành 2 cột x 2 hàng trên desktop giúp form thoáng đãng và giảm chiều dài cuộn.
+     - 2 ô input (`[ Website của bạn ]` và `[ Số điện thoại / Zalo ]`) đặt song song 2 cột trên Desktop, tự động xếp chồng 1 cột trên Mobile.
+  3. *Tối ưu chuyển đổi Mobile Ads*:
+     - Tối giản hóa trường thông tin chỉ còn Website + SĐT/Zalo để đạt Zero Friction.
+     - Nút CTA to bản min-height 54px, dễ bấm bằng ngón cái.
+     - Hotline và Chat Zalo luôn sẵn sàng dưới chân form và thanh sticky bar.
+- **Nghiệm thu:**
+  - Trực quan màn hình desktop 1440x900 và mobile 390x844 hiển thị cân xứng, sang trọng, không lỗi typography.
+  - `npx tsc --noEmit` và `npm run build` hoàn thành với mã thoát 0.
+
+
 ## [2026-09-14] — Xây Dựng 3 Pillar Pages Tiếp Theo Chuẩn SEO & GEO: /google-ads, /content-marketing, /automation
 - **Yêu cầu & Thách thức:**
   - Hoàn thiện 3 trang Pillar Pages còn lại theo chuẩn Single Source of Truth (SSOT) `src/data/company.ts`:

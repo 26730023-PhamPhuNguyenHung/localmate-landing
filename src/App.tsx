@@ -23,6 +23,7 @@ import { HtmlSitemapPage } from './pages/HtmlSitemapPage';
 import { AdminPricingPage } from './pages/AdminPricingPage';
 import { AdvisorPage } from './pages/AdvisorPage';
 import { Landing490kPage } from './pages/Landing490kPage';
+import { GeoLandingPage } from './pages/GeoLandingPage';
 import { GeoServicePage } from './pages/GeoServicePage';
 import { AeoServicePage } from './pages/AeoServicePage';
 import { SeoAiServicePage } from './pages/SeoAiServicePage';
@@ -276,10 +277,18 @@ const MainContent: React.FC = () => {
     ) {
       return <OperationalCareClusterPage onOpenConsultForm={handleOpenLeadForm} />;
     }
+    // Dedicated Mobile Ads High-Converting Landing Page for /geo
+    if (
+      normalizedPath === '/geo' ||
+      normalizedPath === '/geo-ads' ||
+      normalizedPath === '/landing-geo'
+    ) {
+      return <GeoLandingPage onOpenConsultForm={handleOpenLeadForm} />;
+    }
+
     if (
       normalizedPath === '/dich-vu/geo' ||
       normalizedPath === '/dich-vu-geo' ||
-      normalizedPath === '/geo' ||
       normalizedPath.startsWith('/dich-vu/toi-uu-ai-geo') ||
       normalizedPath.startsWith('/dich-vu/geo') ||
       normalizedPath.startsWith('/dich-vu-geo')

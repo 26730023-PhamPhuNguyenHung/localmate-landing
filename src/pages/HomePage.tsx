@@ -1,63 +1,72 @@
 import React from 'react';
 import { SEOHead } from '../components/seo/SEOHead';
 import { HeroSection } from '../components/sections/HeroSection';
-import { TrustBar } from '../components/sections/TrustBar';
-import { CorePillarsSection } from '../components/sections/CorePillarsSection';
-import { FeaturedProjectsSection } from '../components/sections/FeaturedProjectsSection';
+import { ProblemMapperSection } from '../components/sections/ProblemMapperSection';
+import { ServiceHubSection } from '../components/sections/ServiceHubSection';
+import { SolutionJourneySection } from '../components/sections/SolutionJourneySection';
+import { PainPointsSection } from '../components/sections/PainPointsSection';
+import { StarterPackageSection } from '../components/sections/StarterPackageSection';
+import { ClientRequirementsSection } from '../components/sections/ClientRequirementsSection';
+import { ContentPackageSection } from '../components/sections/ContentPackageSection';
+import { DemoShowcaseSection } from '../components/sections/DemoShowcaseSection';
+import { ProcessSection } from '../components/sections/ProcessSection';
+import { PricingMatrixSection } from '../components/sections/PricingMatrixSection';
+import { DigitalCareSection } from '../components/sections/DigitalCareSection';
 import { TrustSection } from '../components/sections/TrustSection';
 import { FAQSection } from '../components/sections/FAQSection';
-import { FinalCTASection } from '../components/sections/FinalCTASection';
+import { KnowledgeHubSection } from '../components/sections/KnowledgeHubSection';
 
 interface HomePageProps {
-  onOpenConsultForm?: (serviceName?: string, businessInput?: string) => void;
+  onOpenConsultForm?: (serviceName?: string) => void;
 }
 
 export const HomePage: React.FC<HomePageProps> = ({ onOpenConsultForm }) => {
   return (
     <>
-      {/* 0. Dynamic SEO Meta for Homepage Entity Hub */}
+      {/* 1. Dynamic SEO Meta for Homepage (Optimized for Customer Search Intent) */}
       <SEOHead
-        title="LocalMate — Xây Hiện Diện Số Cho Hộ Kinh Doanh & Doanh Nghiệp Nhỏ"
-        description="LocalMate giúp hộ kinh doanh và doanh nghiệp nhỏ xây hiện diện số: website, Google Maps, quảng cáo và hệ thống nhận khách — triển khai nhanh, báo giá trước và bàn giao tài khoản cho khách."
+        title="LocalMate | Thiết kế Website, Google Maps, Google Ads cho Doanh nghiệp nhỏ"
+        description="LocalMate làm website, tối ưu Google Maps, Google Ads và nội dung cho doanh nghiệp nhỏ. Giá rõ ràng, triển khai nhanh, hỗ trợ toàn quốc."
         canonicalPath="/"
       />
 
-      {/* 1. Hero định vị thương hiệu + Instant Audit Hook */}
-      <HeroSection
-        onOpenDemoForm={(storeInput) =>
-          onOpenConsultForm && onOpenConsultForm('Tư vấn giải pháp hiện diện số LocalMate', storeInput)
-        }
-      />
+      {/* 1. Hero — Giúp doanh nghiệp nhỏ có website, lên Google và tìm thêm khách hàng */}
+      <HeroSection onOpenDemoForm={() => onOpenConsultForm && onOpenConsultForm('Tư vấn Web Demo 0đ')} />
 
-      {/* 2. 4 Cam kết vàng: Bàn giao mới thanh toán, 100% chính chủ, Báo giá trước không phí ẩn, Đồng hành 5 năm */}
-      <TrustBar />
+      {/* 2. Khách đang cần việc gì? — Phân nhóm theo lời khách hàng nói (Section 18) */}
+      <ProblemMapperSection />
 
-      {/* 3. 5 Nhóm Dịch Vụ Cốt Lõi (dẫn link trực tiếp sang 5 Pillar pages: /thiet-ke-website, /google-maps-local-seo, /google-ads, /content-marketing, /automation) và banner lớn dẫn tới /bang-gia */}
-      <CorePillarsSection
-        onOpenConsultForm={(serviceName) =>
-          onOpenConsultForm && onOpenConsultForm(serviceName)
-        }
-      />
+      {/* 3. Menu dịch vụ + Giá từ rõ ràng (Section 20) */}
+      <ServiceHubSection />
 
-      {/* 4. 3 Dự án thực tế tiêu biểu (link sang /du-an/xeo-restaurant, nam-phat, huong-sen) */}
-      <FeaturedProjectsSection
-        onOpenConsultForm={(serviceName) =>
-          onOpenConsultForm && onOpenConsultForm(serviceName)
-        }
-      />
+      {/* 4. Vì sao LocalMate phù hợp doanh nghiệp nhỏ — Lộ trình & Thấu hiểu nỗi lo */}
+      <SolutionJourneySection />
+      <PainPointsSection />
 
-      {/* 5. Thông tin thực thể minh bạch: CÔNG TY TNHH LOCALMATE, MST 4001337934, địa chỉ, hotline & 5 tài sản bàn giao */}
+      {/* 5. Gói Khởi tạo & Dịch vụ hoạt động thế nào — Website, Google Maps, Nội dung */}
+      <StarterPackageSection onOpenDemoForm={() => onOpenConsultForm && onOpenConsultForm('Gói Khởi Tạo Đầy Đủ 2.900.000đ')} />
+      <ClientRequirementsSection />
+      <ContentPackageSection />
+
+      {/* 6. Dự án thật & Trải nghiệm thực tế */}
+      <DemoShowcaseSection />
+
+      {/* 7. Quy trình làm việc 5 bước đơn giản & minh bạch */}
+      <ProcessSection />
+
+      {/* 8. Bảng giá toàn bộ dịch vụ niêm yết */}
+      <PricingMatrixSection onOpenLeadForm={(srvName) => onOpenConsultForm && onOpenConsultForm(srvName || 'Tư vấn Bảng giá dịch vụ')} />
+      <DigitalCareSection />
+
+      {/* 10. Pháp nhân CÔNG TY TNHH LOCALMATE & Cam kết minh bạch */}
       <TrustSection />
 
-      {/* 6. FAQ & Form đăng ký nhận demo 0đ */}
-      <FAQSection
-        onOpenDemoForm={() =>
-          onOpenConsultForm && onOpenConsultForm('Đăng ký nhận demo website 0đ')
-        }
-      />
-      <FinalCTASection />
+      {/* 11. FAQ Giải đáp thắc mắc thường gặp */}
+      <FAQSection onOpenDemoForm={() => onOpenConsultForm && onOpenConsultForm('Hỗ trợ trực tiếp 1-1')} />
+
+      {/* 12. Hướng dẫn tìm khách & Kiến thức Marketing thực chiến */}
+      <KnowledgeHubSection />
     </>
   );
 };
 
-export default HomePage;

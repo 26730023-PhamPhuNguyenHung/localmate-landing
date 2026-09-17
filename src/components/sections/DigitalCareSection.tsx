@@ -157,7 +157,7 @@ export const DigitalCareSection: React.FC = () => {
                     transition: 'all var(--transition-fast)'
                   }}
                 >
-                  <span>Nhận tư vấn {tier.name}</span>
+                  <span>Đăng ký {tier.name}</span>
                   <ArrowRight size={16} />
                 </button>
               </div>

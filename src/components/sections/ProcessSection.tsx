@@ -1,403 +1,203 @@
 import React from 'react';
 import { Container } from '../ui/Container';
-import { Sparkles, CheckCircle2, ArrowRight, ShieldCheck, Search, LayoutDashboard, Rocket, Headphones } from 'lucide-react';
+import { SectionHeader } from '../ui/SectionHeader';
+import { PROCESS_STEPS } from '../../data/landingContent';
+import { Send, PhoneCall, Layout, CheckSquare, ShieldCheck, CheckCircle2, ArrowRight } from 'lucide-react';
 
 export const ProcessSection: React.FC = () => {
-  const steps = [
-    {
-      num: '01',
-      tag: 'BƯỚC 01',
-      title: 'Khảo sát & Tư vấn',
-      lead: 'Lắng nghe nhu cầu thực tế',
-      desc: 'Trao đổi qua Zalo hoặc gặp trực tiếp tại cơ sở để nắm rõ mô hình kinh doanh, tệp khách địa phương và ngân sách thực tế. Tuyệt đối không vẽ thêm tính năng thừa.',
-      deliverable: 'Bản tư vấn định hướng 0đ',
-      icon: Search
-    },
-    {
-      num: '02',
-      tag: 'BƯỚC 02',
-      title: 'Lên khung Demo',
-      lead: 'Trải nghiệm trực quan',
-      desc: 'Dựng bản demo chạy trực tiếp trên điện thoại để bạn xem thử giao diện, menu sản phẩm và các nút bấm liên hệ trước khi quyết định ký hợp đồng.',
-      deliverable: 'Xem demo chạy thử 0đ',
-      icon: LayoutDashboard
-    },
-    {
-      num: '03',
-      tag: 'BƯỚC 03',
-      title: 'Tối ưu & Bàn giao',
-      lead: 'Chuẩn kỹ thuật & Chính chủ',
-      desc: 'Tối ưu tốc độ tải trang dưới 1.5s, chuẩn SEO địa phương, xác minh vị trí Google Maps và bàn giao 100% tài khoản quản trị tối cao vào Gmail của bạn.',
-      deliverable: 'Bàn giao 100% quyền quản trị',
-      icon: Rocket
-    },
-    {
-      num: '04',
-      tag: 'BƯỚC 04',
-      title: 'Đồng hành hỗ trợ kỹ thuật lâu dài',
-      lead: 'Hỗ trợ kỹ thuật 24/7',
-      desc: 'Kỹ thuật viên địa phương túc trực hỗ trợ dài lâu, gửi kèm video 2 phút hướng dẫn tự cập nhật nội dung dễ hiểu, bảo hành kỹ thuật không thu phí duy trì vô lý.',
-      deliverable: 'Đồng hành hỗ trợ kỹ thuật lâu dài',
-      icon: Headphones
-    }
+  const stepIcons = [
+    <Send key="1" size={20} />,
+    <PhoneCall key="2" size={20} />,
+    <Layout key="3" size={20} />,
+    <CheckSquare key="4" size={20} />,
+    <ShieldCheck key="5" size={22} />
   ];
 
   return (
-    <section className="section-component process-story-section" id="cach-lam-viec" aria-label="Quy trình và cách làm việc 4 bước">
-      <div id="quy-trinh" style={{ position: 'absolute', marginTop: '-90px' }} aria-hidden="true" />
-      <Container>
-        {/* Section Header */}
-        <div className="section-header">
-          <span className="section-eyebrow">
-            <Sparkles size={14} /> QUY TRÌNH LÀM VIỆC 4 BƯỚC
-          </span>
-          <h2 className="process-main-heading">Rõ ràng từng bước — Nghiệm thu mới thanh toán</h2>
-          <p className="subtitle">
-            Tham chiếu quy trình tinh gọn, minh bạch: từ khảo sát nhu cầu, xem trước demo thực tế đến bàn giao làm chủ 100% và đồng hành kỹ thuật lâu dài.
-          </p>
-        </div>
+    <section id="quy-trinh" style={{ padding: 'clamp(3.5rem, 5vw, 5rem) 0', backgroundColor: 'var(--color-surface)', borderBottom: '1px solid var(--color-border)' }}>
+      <Container size="lg">
+        <SectionHeader
+          eyebrow="QUY TRÌNH HỢP TÁC ĐƠN GIẢN"
+          title="Bạn không cần biết công nghệ. Chỉ cần kể cho LocalMate bạn đang làm gì."
+          subtitle="LocalMate sẽ gánh vác toàn bộ khâu kỹ thuật để bạn yên tâm tập trung làm nghề."
+        />
 
-        {/* Process Timeline Flow */}
-        <div className="process-timeline-wrapper">
-          {/* Connector Line for Desktop */}
-          <div className="process-track-line" aria-hidden="true" />
+        {/* 5 Step Process Grid */}
+        <div className="process-timeline-grid">
+          {PROCESS_STEPS.map((step, idx) => {
+            const isHighlight = step.highlight || idx === 4;
 
-          <div className="process-cards-grid">
-            {steps.map((step, idx) => {
-              const IconComponent = step.icon;
-              return (
-                <div key={step.num} className="process-step-card">
-                  {/* Step Header with Large Number Badge & Icon */}
-                  <div className="step-card-header">
-                    <div className="step-badge-cluster">
-                      <span className="step-number-display">{step.num}</span>
-                      <span className="step-tag-text">{step.tag}</span>
-                    </div>
-                    <div className="step-icon-bubble" aria-hidden="true">
-                      <IconComponent size={20} />
+            return (
+              <div
+                key={step.number}
+                style={{
+                  backgroundColor: isHighlight ? '#fff9f5' : '#ffffff',
+                  border: isHighlight ? '2px solid var(--color-orange)' : '1px solid var(--color-border)',
+                  borderTop: isHighlight ? '4px solid var(--color-orange)' : '4px solid var(--color-primary)',
+                  borderRadius: 'var(--radius-xl)',
+                  padding: '1.25rem 1.15rem',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  gap: '1rem',
+                  boxShadow: isHighlight ? '0 6px 18px rgba(255, 107, 0, 0.12)' : 'var(--shadow-sm)',
+                  transition: 'all var(--transition-base)',
+                  position: 'relative'
+                }}
+                className="interactive-card"
+              >
+                <div>
+                  {/* Top Step Number & Icon */}
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      marginBottom: '0.85rem'
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontSize: '1.25rem',
+                        fontWeight: 900,
+                        color: isHighlight ? 'var(--color-orange-dark)' : 'var(--color-primary-dark)',
+                        lineHeight: 1
+                      }}
+                    >
+                      {step.number}
+                    </span>
+
+                    <div
+                      style={{
+                        color: isHighlight ? '#ffffff' : 'var(--color-primary-dark)',
+                        backgroundColor: isHighlight ? 'var(--color-orange)' : 'var(--color-primary-soft)',
+                        padding: '0.5rem',
+                        borderRadius: 'var(--radius-md)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        boxShadow: isHighlight ? '0 4px 10px rgba(255, 107, 0, 0.25)' : 'none'
+                      }}
+                    >
+                      {stepIcons[idx]}
                     </div>
                   </div>
 
-                  {/* Step Content */}
-                  <div className="step-card-content">
-                    <span className="step-lead-micro">{step.lead}</span>
-                    <h3 className="step-card-title">{step.title}</h3>
-                    <p className="step-card-desc">{step.desc}</p>
-                  </div>
+                  <h4
+                    style={{
+                      fontSize: '1rem',
+                      fontWeight: 800,
+                      color: 'var(--color-text)',
+                      marginBottom: '0.4rem',
+                      lineHeight: 1.35
+                    }}
+                  >
+                    {step.title}
+                  </h4>
 
-                  {/* Step Deliverable Pill */}
-                  <div className="step-card-footer">
-                    <div className="step-deliverable-pill">
-                      <CheckCircle2 size={15} className="step-check-icon" />
-                      <span>{step.deliverable}</span>
-                    </div>
-                  </div>
+                  <p
+                    style={{
+                      fontSize: '0.85rem',
+                      color: 'var(--color-text-muted)',
+                      lineHeight: 1.55
+                    }}
+                  >
+                    {step.desc}
+                  </p>
+                </div>
 
-                  {/* Horizontal Arrow Indicator between steps (Desktop only) */}
-                  {idx < steps.length - 1 && (
-                    <div className="step-next-arrow" aria-hidden="true">
-                      <ArrowRight size={16} />
-                    </div>
+                {/* Bottom Step Indicator Tag — Clean & 1-line */}
+                <div
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.35rem',
+                    fontSize: '0.775rem',
+                    fontWeight: 700,
+                    color: isHighlight ? 'var(--color-orange-dark)' : 'var(--color-primary-dark)',
+                    backgroundColor: isHighlight ? '#ffefe5' : 'var(--color-bg)',
+                    padding: '0.35rem 0.65rem',
+                    borderRadius: 'var(--radius-sm)',
+                    width: 'fit-content',
+                    whiteSpace: 'nowrap'
+                  }}
+                >
+                  {isHighlight ? (
+                    <span>✓ Chỉ từ 490k</span>
+                  ) : (
+                    <>
+                      <span>Bước tiếp theo</span>
+                      <ArrowRight size={12} />
+                    </>
                   )}
                 </div>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
         </div>
 
-        {/* Reassurance Footer Banner */}
-        <div className="process-reassurance-card">
-          <div className="reassurance-icon-wrap" aria-hidden="true">
-            <ShieldCheck size={26} />
-          </div>
-          <div className="reassurance-text-wrap">
-            <h4 className="reassurance-title">Cam kết vàng từ LocalMate</h4>
-            <p className="reassurance-desc">
-              Bạn luôn được <strong>xem trước demo trực tiếp trên điện thoại</strong>. Chỉ khi trải nghiệm thực tế hài lòng và nghiệm thu từng tính năng, bạn mới tiến hành thanh toán. Không cọc trước rủi ro, không giam tài khoản.
-            </p>
-          </div>
+        {/* Short & Punchy Trust Callout Box */}
+        <div className="process-trust-box">
+          <CheckCircle2 size={22} color="var(--color-primary)" className="trust-box-icon" />
+          <p className="trust-box-text">
+            <strong>Báo giá rõ trước khi làm</strong> — Chi phí chỉ từ <strong>490.000đ</strong>, không phát sinh bất kỳ khoản nào khác.
+          </p>
         </div>
       </Container>
 
       <style>{`
-        .process-story-section {
-          background-color: var(--color-surface);
-          border-bottom: 1px solid var(--color-border);
-          padding-top: clamp(3rem, 5vw, 4.5rem);
-          padding-bottom: clamp(3rem, 5vw, 4.5rem);
-          scrollbar-gutter: stable;
-        }
-
-        .process-main-heading {
-          text-wrap: pretty;
-          font-size: var(--font-size-h2);
-          font-weight: 800;
-          color: var(--color-navy);
-          margin-top: 0.5rem;
-          margin-bottom: 0.5rem;
-        }
-
-        .process-timeline-wrapper {
-          position: relative;
-          margin-top: clamp(2.25rem, 4vw, 3.5rem);
-          margin-bottom: clamp(2.25rem, 4vw, 3.25rem);
-        }
-
-        /* Continuous Connector Line across Desktop */
-        .process-track-line {
-          display: none;
-        }
-
-        @media (min-width: 1024px) {
-          .process-track-line {
-            display: block;
-            position: absolute;
-            top: 46px;
-            left: calc(12.5% - 20px);
-            right: calc(12.5% - 20px);
-            height: 2px;
-            background: linear-gradient(90deg, var(--color-primary-border) 0%, var(--color-primary) 50%, var(--color-primary-border) 100%);
-            z-index: 1;
-          }
-        }
-
-        /* Responsive Grid: 1 col on mobile, 2 cols on tablet, 4 cols on desktop */
-        .process-cards-grid {
+        .process-timeline-grid {
           display: grid;
-          grid-template-columns: 1fr;
-          gap: 1.5rem;
-          position: relative;
-          z-index: 2;
+          grid-template-columns: repeat(1, 1fr);
+          gap: 1.15rem;
+          margin-bottom: 2.25rem;
         }
 
-        @media (min-width: 640px) and (max-width: 1023px) {
-          .process-cards-grid {
+        @media (min-width: 540px) {
+          .process-timeline-grid {
             grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
           }
         }
 
-        @media (min-width: 1024px) {
-          .process-cards-grid {
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.25rem;
+        @media (min-width: 992px) {
+          .process-timeline-grid {
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
           }
         }
 
-        /* Card Item */
-        .process-step-card {
-          background-color: var(--color-bg);
-          border: 1px solid var(--color-border);
-          border-radius: var(--radius-xl);
-          padding: 1.5rem;
-          display: flex;
-          flex-direction: column;
-          position: relative;
-          transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .process-step-card:hover {
-          transform: translateY(-3px);
-          border-color: var(--color-primary);
-          box-shadow: 0 8px 24px rgba(13, 118, 71, 0.08);
-          background-color: #ffffff;
-        }
-
-        /* Card Header: Big Number + Tag & Icon */
-        .step-card-header {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          margin-bottom: 1.25rem;
-        }
-
-        .step-badge-cluster {
-          display: flex;
-          align-items: baseline;
-          gap: 0.5rem;
-        }
-
-        .step-number-display {
-          font-size: 2.25rem;
-          font-weight: 900;
-          line-height: 1;
-          color: var(--color-primary);
-          font-variant-numeric: tabular-nums;
-          letter-spacing: -0.04em;
-        }
-
-        .step-tag-text {
-          font-size: 0.75rem;
-          font-weight: 800;
-          color: var(--color-primary-dark);
-          background-color: var(--color-primary-soft);
-          border: 1px solid var(--color-primary-border);
-          padding: 0.2rem 0.55rem;
-          border-radius: var(--radius-full);
-          letter-spacing: 0.05em;
-        }
-
-        .step-icon-bubble {
-          width: 42px;
-          height: 42px;
-          border-radius: var(--radius-full);
-          background-color: #ffffff;
-          border: 1px solid var(--color-border);
-          color: var(--color-primary);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
-          flex-shrink: 0;
-        }
-
-        .process-step-card:hover .step-icon-bubble {
-          background-color: var(--color-primary);
-          color: #ffffff;
-          border-color: var(--color-primary);
-          transition: all 0.2s ease;
-        }
-
-        /* Content Area */
-        .step-card-content {
-          display: flex;
-          flex-direction: column;
-          flex: 1;
-        }
-
-        .step-lead-micro {
-          font-size: 0.8125rem;
-          font-weight: 600;
-          color: var(--color-text-muted);
-          margin-bottom: 0.35rem;
-        }
-
-        .step-card-title {
-          font-size: 1.15rem;
-          font-weight: 800;
-          color: var(--color-navy);
-          margin: 0 0 0.65rem 0;
-          line-height: 1.35;
-          text-wrap: pretty;
-        }
-
-        .step-card-desc {
-          font-size: 0.875rem;
-          color: var(--ink-soft);
-          line-height: 1.6;
-          margin: 0 0 1.25rem 0;
-          text-wrap: pretty;
-        }
-
-        /* Deliverable Pill at Bottom */
-        .step-card-footer {
-          margin-top: auto;
-        }
-
-        .step-deliverable-pill {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.45rem;
-          font-size: 0.8125rem;
-          font-weight: 700;
-          color: var(--color-primary-dark);
-          background-color: var(--color-primary-soft);
-          border: 1px solid var(--color-primary-border);
-          padding: 0.45rem 0.75rem;
-          border-radius: var(--radius-md);
-          width: 100%;
-        }
-
-        .step-check-icon {
-          color: var(--color-primary);
-          flex-shrink: 0;
-        }
-
-        /* Desktop Next Arrow */
-        .step-next-arrow {
-          display: none;
-        }
-
-        @media (min-width: 1024px) {
-          .step-next-arrow {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: absolute;
-            right: -14px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 26px;
-            height: 26px;
-            border-radius: var(--radius-full);
-            background-color: #ffffff;
-            border: 1px solid var(--color-border);
-            color: var(--color-primary);
-            z-index: 3;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-          }
-        }
-
-        /* Reassurance Card */
-        .process-reassurance-card {
-          background-color: var(--color-bg);
-          border: 1px solid var(--color-primary-border);
-          border-left: 4px solid var(--color-primary);
-          border-radius: var(--radius-xl);
-          padding: 1.25rem 1.75rem;
-          display: flex;
-          align-items: center;
-          gap: 1.25rem;
-          max-width: 860px;
+        .process-trust-box {
+          max-width: 680px;
           margin: 0 auto;
-        }
-
-        @media (max-width: 639px) {
-          .process-reassurance-card {
-            flex-direction: column;
-            align-items: flex-start;
-            padding: 1.25rem;
-            gap: 0.85rem;
-          }
-        }
-
-        .reassurance-icon-wrap {
-          width: 48px;
-          height: 48px;
+          background-color: var(--color-primary-soft, #f4fbf7);
+          border: 1px solid var(--color-primary-border, #dcefe4);
           border-radius: var(--radius-full);
-          background-color: var(--color-primary-soft);
-          color: var(--color-primary);
+          padding: 0.85rem 1.75rem;
           display: flex;
           align-items: center;
           justify-content: center;
+          gap: 0.65rem;
+          text-align: center;
+        }
+
+        @media (max-width: 600px) {
+          .process-trust-box {
+            border-radius: var(--radius-lg);
+            padding: 0.85rem 1.25rem;
+          }
+        }
+
+        .trust-box-icon {
           flex-shrink: 0;
         }
 
-        .reassurance-text-wrap {
-          flex: 1;
-        }
-
-        .reassurance-title {
-          font-size: 0.95rem;
-          font-weight: 800;
+        .trust-box-text {
+          font-size: 0.9rem;
           color: var(--color-navy);
-          margin: 0 0 0.25rem 0;
-        }
-
-        .reassurance-desc {
-          font-size: 0.875rem;
-          color: var(--ink-soft);
-          line-height: 1.55;
           margin: 0;
-          text-wrap: pretty;
-        }
-
-        .reassurance-desc strong {
-          color: var(--color-primary-dark);
+          line-height: 1.45;
         }
       `}</style>
     </section>
   );
 };
-
-export default ProcessSection;

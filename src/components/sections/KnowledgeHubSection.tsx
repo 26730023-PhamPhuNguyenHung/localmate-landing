@@ -7,273 +7,151 @@ import { useRouter } from '../layout/Router';
 export const KnowledgeHubSection: React.FC = () => {
   const { navigate } = useRouter();
 
-  if (!KNOWLEDGE_ARTICLES || KNOWLEDGE_ARTICLES.length === 0) return null;
-
-  const featuredArticle = KNOWLEDGE_ARTICLES[0];
-  const sideArticles = KNOWLEDGE_ARTICLES.slice(1, 4);
-
   return (
-    <section className="section-component knowledge-editorial-section" id="kien-thuc" aria-label="Kiến thức thực tế">
-      <Container>
-        <div className="section-header">
-          <span className="section-eyebrow">
-            <BookOpen size={14} /> CẨM NANG THỰC TẾ
+    <section
+      style={{
+        padding: '5rem 0',
+        backgroundColor: '#ffffff',
+        borderBottom: '1px solid var(--color-border)'
+      }}
+      id="kien-thuc"
+    >
+      <Container size="lg">
+        {/* Section Header */}
+        <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 3.5rem auto' }}>
+          <span
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.4rem',
+              fontSize: '0.8rem',
+              fontWeight: 700,
+              textTransform: 'uppercase',
+              letterSpacing: '0.06em',
+              color: 'var(--color-primary-dark)',
+              backgroundColor: 'var(--color-primary-soft)',
+              padding: '0.4rem 0.9rem',
+              borderRadius: 'var(--radius-full)',
+              marginBottom: '0.75rem'
+            }}
+          >
+            <BookOpen size={14} /> HƯỚNG DẪN TÌM KHÁCH HÀNG
           </span>
-          <h2>Kinh Nghiệm Tránh Mất Tiền Oan Khi Số Hóa</h2>
-          <p className="subtitle">
-            Những lưu ý thực tế để bạn tự kiểm tra website, định vị Google Maps và bảo vệ 100% quyền làm chủ tài khoản số.
+          <h2 style={{ fontSize: 'var(--font-size-h2)', color: 'var(--color-text)', fontWeight: 800 }}>
+            Kiến Thức &amp; Hướng Dẫn Thực Tế Cho Doanh Nghiệp Nhỏ
+          </h2>
+          <p className="subtitle" style={{ marginTop: '0.5rem' }}>
+            Chia sẻ kinh nghiệm thực tế về cách chạy quảng cáo Google Ads tiết kiệm, tối ưu Google Maps, làm website rõ ràng và chăm sóc bài đăng Facebook.
           </p>
         </div>
 
-        <div className="knowledge-editorial-grid">
-          {/* LEFT: Featured Large Article */}
-          <article
-            className="featured-article-card"
-            onClick={() => navigate('/kien-thuc/' + featuredArticle.slug)}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                navigate('/kien-thuc/' + featuredArticle.slug);
-              }
-            }}
-          >
-            <div className="featured-content">
-              <div className="article-meta-row">
-                <span className="article-badge">{featuredArticle.category}</span>
-                <span className="article-time">
-                  <Clock size={14} /> {featuredArticle.readTime}
-                </span>
-                <span className="article-date">{featuredArticle.date}</span>
-              </div>
-              <h3 className="featured-article-title">{featuredArticle.title}</h3>
-              <p className="featured-excerpt">{featuredArticle.excerpt}</p>
-              <div className="read-more-link">
-                <span>Đọc toàn bộ bài viết</span>
-                <ArrowRight size={16} />
-              </div>
-            </div>
-          </article>
+        {/* Knowledge Articles Grid */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
+            gap: 'var(--space-gap)',
+            marginBottom: '3rem'
+          }}
+        >
+          {KNOWLEDGE_ARTICLES.map((art) => (
+            <div
+              key={art.id}
+              onClick={() => navigate(art.slug)}
+              className="interactive-card"
+              style={{
+                backgroundColor: '#ffffff',
+                border: '1px solid var(--color-border)',
+                borderRadius: 'var(--radius-xl)',
+                padding: '1.75rem',
+                cursor: 'pointer',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                gap: '1.25rem',
+                boxShadow: 'var(--shadow-sm)'
+              }}
+            >
+              <div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
+                  <span
+                    style={{
+                      fontSize: '0.725rem',
+                      fontWeight: 700,
+                      color: 'var(--color-primary-dark)',
+                      backgroundColor: 'var(--color-primary-soft)',
+                      padding: '0.25rem 0.65rem',
+                      borderRadius: 'var(--radius-full)'
+                    }}
+                  >
+                    {art.category}
+                  </span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', fontSize: '0.75rem', color: 'var(--color-text-muted)' }}>
+                    <Clock size={12} />
+                    <span>{art.readTime}</span>
+                  </div>
+                </div>
 
-          {/* RIGHT: Stacked Secondary Articles */}
-          <div className="side-articles-stack">
-            {sideArticles.map((art) => (
-              <article
-                key={art.id}
-                className="side-article-item"
-                onClick={() => navigate('/kien-thuc/' + art.slug)}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    navigate('/kien-thuc/' + art.slug);
-                  }
+                <h3
+                  style={{
+                    fontSize: '1.05rem',
+                    fontWeight: 800,
+                    color: 'var(--color-text)',
+                    marginBottom: '0.6rem',
+                    lineHeight: 1.4
+                  }}
+                >
+                  {art.title}
+                </h3>
+
+                <p style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)', lineHeight: 1.6 }}>
+                  {art.desc}
+                </p>
+              </div>
+
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  paddingTop: '0.75rem',
+                  borderTop: '1px dashed var(--color-border)',
+                  fontSize: '0.8rem',
+                  fontWeight: 700,
+                  color: 'var(--color-primary-dark)'
                 }}
               >
-                <div className="side-meta-row">
-                  <span className="side-badge">{art.category}</span>
-                  <span className="side-time">{art.readTime}</span>
-                </div>
-                <h4 className="side-article-title">{art.title}</h4>
-                <p className="side-excerpt">{art.excerpt}</p>
-                <div className="side-arrow-link">
-                  <span>Chi tiết</span> <ArrowRight size={14} />
-                </div>
-              </article>
-            ))}
-          </div>
+                <span>Đọc bài viết</span>
+                <ArrowRight size={15} />
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Hub Footer Link */}
+        <div style={{ textAlign: 'center' }}>
+          <button
+            onClick={() => navigate('/kien-thuc')}
+            style={{
+              padding: '0.75rem 1.8rem',
+              backgroundColor: 'var(--color-bg)',
+              color: 'var(--color-text)',
+              border: '1px solid var(--color-border)',
+              borderRadius: 'var(--radius-full)',
+              fontWeight: 700,
+              fontSize: '0.9rem',
+              cursor: 'pointer',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              transition: 'all var(--transition-fast)'
+            }}
+          >
+            <span>Khám phá toàn bộ bài viết hướng dẫn tìm khách</span>
+            <ArrowRight size={16} />
+          </button>
         </div>
       </Container>
-
-      <style>{`
-        .knowledge-editorial-section {
-          background-color: var(--color-surface);
-          border-bottom: 1px solid var(--color-border);
-        }
-
-        .knowledge-editorial-grid {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 2rem;
-        }
-
-        @media (min-width: 1024px) {
-          .knowledge-editorial-grid {
-            grid-template-columns: 1.35fr 1fr;
-            gap: 2.5rem;
-            align-items: stretch;
-          }
-        }
-
-        /* FEATURED ARTICLE */
-        .featured-article-card {
-          background-color: #ffffff;
-          border: 1px solid var(--color-border);
-          border-radius: var(--radius-xl);
-          overflow: hidden;
-          cursor: pointer;
-          display: flex;
-          flex-direction: column;
-          transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
-        }
-
-        .featured-article-card:hover {
-          transform: translateY(-2px);
-          border-color: var(--color-primary-border);
-          box-shadow: var(--shadow-card-hover);
-        }
-
-        .featured-img-wrap {
-          width: 100%;
-          height: 240px;
-          background-color: var(--color-surface-subtle);
-          overflow: hidden;
-        }
-
-        .featured-img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          transition: transform 0.4s ease;
-        }
-
-        .featured-article-card:hover .featured-img {
-          transform: scale(1.02);
-        }
-
-        .featured-content {
-          padding: clamp(1.5rem, 2.5vw, 2rem);
-          display: flex;
-          flex-direction: column;
-          flex: 1;
-          justify-content: space-between;
-        }
-
-        .article-meta-row {
-          display: flex;
-          align-items: center;
-          gap: 0.75rem;
-          margin-bottom: 0.75rem;
-        }
-
-        .article-badge {
-          font-size: 0.75rem;
-          font-weight: 700;
-          color: var(--color-primary-dark);
-          background-color: var(--color-primary-soft);
-          padding: 0.25rem 0.65rem;
-          border-radius: var(--radius-full);
-        }
-
-        .article-time {
-          font-size: 0.8125rem;
-          color: var(--ink-muted);
-          display: flex;
-          align-items: center;
-          gap: 0.35rem;
-        }
-
-        .featured-article-title {
-          font-size: 1.4rem;
-          font-weight: 800;
-          color: var(--ink);
-          margin: 0 0 0.65rem 0;
-          line-height: 1.25;
-        }
-
-        .featured-excerpt {
-          font-size: 0.9375rem;
-          color: var(--ink-soft);
-          line-height: 1.6;
-          margin: 0 0 1.5rem 0;
-        }
-
-        .read-more-link {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.5rem;
-          font-size: 0.9375rem;
-          font-weight: 700;
-          color: var(--color-primary);
-        }
-
-        /* SIDE STACK */
-        .side-articles-stack {
-          display: flex;
-          flex-direction: column;
-          gap: 1.25rem;
-        }
-
-        .side-article-item {
-          background-color: #ffffff;
-          border: 1px solid var(--color-border);
-          border-radius: var(--radius-lg);
-          padding: 1.25rem 1.5rem;
-          cursor: pointer;
-          transition: transform var(--transition-fast), border-color var(--transition-fast);
-          display: flex;
-          flex-direction: column;
-          gap: 0.4rem;
-        }
-
-        .side-article-item:hover {
-          transform: translateX(4px);
-          border-color: var(--color-primary-border);
-        }
-
-        .side-meta-row {
-          display: flex;
-          align-items: center;
-          gap: 0.65rem;
-        }
-
-        .side-badge {
-          font-size: 0.75rem;
-          font-weight: 700;
-          color: var(--color-primary-dark);
-          background-color: var(--color-primary-soft);
-          padding: 0.2rem 0.55rem;
-          border-radius: var(--radius-sm);
-        }
-
-        .side-time {
-          font-size: 0.75rem;
-          color: var(--ink-muted);
-        }
-
-        .side-article-title {
-          font-size: 1.0625rem;
-          font-weight: 700;
-          color: var(--ink);
-          margin: 0;
-          line-height: 1.35;
-        }
-
-        .side-excerpt {
-          font-size: 0.875rem;
-          color: var(--ink-soft);
-          line-height: 1.5;
-          margin: 0;
-          display: -webkit-box;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-        }
-
-        .side-arrow-link {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.35rem;
-          font-size: 0.8125rem;
-          font-weight: 700;
-          color: var(--color-primary);
-          margin-top: 0.25rem;
-        }
-      `}</style>
     </section>
   );
 };
-
-export default KnowledgeHubSection;

@@ -2,6 +2,27 @@
 
 Ghi nhận các mốc sự kiện, commit và trạng thái vận hành của dự án.
 
+## [2026-09-17] - Triển Khai Landing Page Chuyển Đổi Cao Cho Mobile Ads Tại /geo
+- **Mục tiêu**: Xây dựng trang Landing Page chuyên biệt phục vụ chiến dịch chạy quảng cáo (Ads traffic), tối ưu chuyển đổi cao trên mobile (Mobile First), layout Full-Width căn giữa sang trọng, chống rớt dòng vụn chữ tiếng Việt và tích hợp form audit trực tiếp.
+- **Các hạng mục đã hoàn thành**:
+  1. *Section 1 — Hero & Form Audit*:
+     - Headline 2 dòng chuẩn ngữ nghĩa không gãy từ: *"KHÁCH HỎI CHATGPT VỀ DỊCH VỤ CỦA BẠN. / AI CÓ NHẮC ĐẾN BẠN KHÔNG?"*.
+     - Bố cục Full-Width rộng rãi, cân xứng, tránh chia cột hẹp làm méo chữ.
+     - Form Audit trực tiếp: `[ Website của bạn ]` + `[ Số điện thoại / Zalo ]` đặt ngang hàng trên Desktop, dọc trên Mobile.
+     - Cam kết minh bạch: *"Không cam kết “ép ChatGPT lên top”. Chúng tôi đo lường hiện trạng và tối ưu những yếu tố có thể tác động."*
+  2. *Section 2 — Bảng Giá*:
+     - Gói **GEO SETUP**: 2.490.000đ thanh toán 1 lần, 10 quyền lợi kỹ thuật, CTA "BẮT ĐẦU GEO".
+     - Gói **GEO GROWTH**: Từ 2.990.000đ/tháng, 8 quyền lợi tăng trưởng, cam kết *"Không bắt buộc duy trì hàng tháng"*, CTA "XEM WEBSITE CỦA TÔI PHÙ HỢP GÓI NÀO".
+  3. *Section 3 — Mục Tiêu Là Xuất Hiện Đúng Lúc Khách Đang Chọn Nhà Cung Cấp*:
+     - 4 Prompt Cards minh họa câu hỏi AI thực tế của khách hàng khi chọn nhà cung cấp.
+     - 4 Khối giá trị 01 — 04: AI nói gì, Đối thủ nào được nhắc, Cần làm gì trước, Đo lường cải thiện.
+     - Khối chốt hạ chuyển đổi: *"KIỂM TRA WEBSITE TRƯỚC KHI QUYẾT ĐỊNH"* kèm form thu lead 0đ.
+  4. *Định tuyến & Nghiệm thu*:
+     - Định tuyến `/geo`, `/geo-ads`, `/landing-geo` trỏ về `GeoLandingPage.tsx` trong `src/App.tsx`.
+     - Tích hợp `submitLead` đồng bộ Google Sheets và theo dõi chuyển đổi.
+     - Đạt 0 lỗi TypeScript (`npx tsc --noEmit`), `npm run build` hoàn thành với mã thoát 0.
+
+
 ## [2026-09-14] - Xây Dựng 2 Pillar Pages Chuẩn SEO & GEO: /thiet-ke-website & /google-maps-local-seo
 - **Mục tiêu**: Xây dựng 2 trang Pillar chuyên sâu cho Trụ cột 1 (Thiết Kế Website Tốc Độ Cao) và Trụ cột 2 (Google Maps & Local SEO) dựa trên dữ liệu SSOT `src/data/company.ts`.
 - **Hạng mục hoàn thành**:

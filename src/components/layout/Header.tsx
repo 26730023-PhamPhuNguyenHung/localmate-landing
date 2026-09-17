@@ -1,24 +1,20 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Container } from '../ui/Container';
+import { Button } from '../ui/Button';
 import {
   Menu,
   X,
+  ArrowRight,
   ChevronDown,
   Sparkles,
   MapPin,
   Globe,
-  Phone,
-  TrendingUp,
-  ShieldCheck,
-  ArrowRight,
-  Cpu,
-  CheckCircle2,
-  LucideIcon,
-  ClipboardCheck,
-  BookOpen,
   FileText,
-  CheckSquare,
-  Compass
+  Phone,
+  Layout,
+  TrendingUp,
+  Briefcase,
+  CheckCircle2
 } from 'lucide-react';
 import { useRouter, Link } from './Router';
 import { CONTACT_INFO } from '../../data/landingContent';
@@ -27,91 +23,20 @@ interface HeaderProps {
   onOpenDemoForm?: () => void;
 }
 
-interface SolutionPillarItem {
-  id: string;
-  step: string;
-  title: string;
-  subtitle: string;
-  desc: string;
-  href: string;
-  badge: string;
-  icon: LucideIcon;
-  colorClass: string;
-}
-
-const SOLUTION_PILLARS: SolutionPillarItem[] = [
-  {
-    id: 'thiet-ke-website',
-    step: '01',
-    title: 'Thiết Kế Website',
-    subtitle: 'Tốc độ < 1s & Bán hàng',
-    desc: 'Website bán hàng, hồ sơ năng lực số chuẩn di động, bàn giao mới thanh toán.',
-    href: '/thiet-ke-website',
-    badge: 'Từ 490k',
-    icon: Globe,
-    colorClass: 'pillar-emerald'
-  },
-  {
-    id: 'google-maps-local-seo',
-    step: '02',
-    title: 'Google Maps & Local SEO',
-    subtitle: 'Xác minh GPS & Top 3',
-    desc: 'Xác minh Google Maps chính chủ, tối ưu lên Top 3 tìm kiếm quanh bán kính 3-10km.',
-    href: '/google-maps-local-seo',
-    badge: 'Từ 299k',
-    icon: MapPin,
-    colorClass: 'pillar-amber'
-  },
-  {
-    id: 'google-ads',
-    step: '03',
-    title: 'Google Ads & Tìm Kiếm',
-    subtitle: '0% kê giá & Ra cuộc gọi',
-    desc: 'Google Ads 0% kê giá, chặn click ảo, tối ưu chuyển đổi gọi Zalo & Hotline.',
-    href: '/google-ads',
-    badge: 'Từ 390k',
-    icon: TrendingUp,
-    colorClass: 'pillar-blue'
-  },
-  {
-    id: 'content-marketing',
-    step: '04',
-    title: 'Content & Chăm Sóc Số',
-    subtitle: 'Bảo trì & Bài viết SEO',
-    desc: 'Chăm sóc website, viết bài chuẩn SEO, bảo mật sao lưu và đồng hành 5 năm.',
-    href: '/content-marketing',
-    badge: 'Từ 290k/th',
-    icon: ShieldCheck,
-    colorClass: 'pillar-teal'
-  },
-  {
-    id: 'automation',
-    step: '05',
-    title: 'Phần Mềm & Tự Động Hóa',
-    subtitle: 'CRM & Báo đơn Telegram',
-    desc: 'Báo đơn Telegram tức thì, Google Sheets CRM, chatbot AI bán hàng 24/7.',
-    href: '/automation',
-    badge: 'Từ 299k',
-    icon: Cpu,
-    colorClass: 'pillar-purple'
-  }
-];
-
 export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [solutionsDropdownOpen, setSolutionsDropdownOpen] = useState(false);
-  const [resourcesDropdownOpen, setResourcesDropdownOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<'services' | 'knowledge' | null>(null);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(true);
+  const [mobileKnowledgeOpen, setMobileKnowledgeOpen] = useState(false);
 
-  const headerRef = useRef<HTMLElement>(null);
-  const dropdownTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const resourcesTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const { currentPath, navigate } = useRouter();
 
   // Scroll effect
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 12);
+      setScrolled(window.scrollY > 15);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -120,9 +45,8 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
   // Close dropdown on click outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (headerRef.current && !headerRef.current.contains(event.target as Node)) {
-        setSolutionsDropdownOpen(false);
-        setResourcesDropdownOpen(false);
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setActiveDropdown(null);
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
@@ -139,559 +63,656 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
     };
   }, [mobileMenuOpen]);
 
-  // Close drawer & dropdown on ESC key
+  // Close drawer on ESC key
   useEffect(() => {
+    if (!mobileMenuOpen) return;
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setMobileMenuOpen(false);
-        setSolutionsDropdownOpen(false);
-        setResourcesDropdownOpen(false);
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
-
-  const handleMouseEnterDropdown = () => {
-    if (dropdownTimeoutRef.current) {
-      clearTimeout(dropdownTimeoutRef.current);
-      dropdownTimeoutRef.current = null;
-    }
-    setSolutionsDropdownOpen(true);
-  };
-
-  const handleMouseLeaveDropdown = () => {
-    dropdownTimeoutRef.current = setTimeout(() => {
-      setSolutionsDropdownOpen(false);
-    }, 160);
-  };
-
-  const handleMouseEnterResources = () => {
-    if (resourcesTimeoutRef.current) {
-      clearTimeout(resourcesTimeoutRef.current);
-      resourcesTimeoutRef.current = null;
-    }
-    setResourcesDropdownOpen(true);
-  };
-
-  const handleMouseLeaveResources = () => {
-    resourcesTimeoutRef.current = setTimeout(() => {
-      setResourcesDropdownOpen(false);
-    }, 160);
-  };
-
-  const closeMenus = () => {
-    if (dropdownTimeoutRef.current) {
-      clearTimeout(dropdownTimeoutRef.current);
-      dropdownTimeoutRef.current = null;
-    }
-    if (resourcesTimeoutRef.current) {
-      clearTimeout(resourcesTimeoutRef.current);
-      resourcesTimeoutRef.current = null;
-    }
-    setSolutionsDropdownOpen(false);
-    setResourcesDropdownOpen(false);
-    setMobileMenuOpen(false);
-  };
+  }, [mobileMenuOpen]);
 
   const handleActionClick = () => {
-    closeMenus();
+    setMobileMenuOpen(false);
+    setActiveDropdown(null);
     if (onOpenDemoForm) {
       onOpenDemoForm();
     } else {
-      navigate('/khao-sat-du-an');
+      navigate('/lien-he');
     }
   };
 
-  const isSolutionsActive =
-    currentPath === '/thiet-ke-website' ||
-    currentPath === '/google-maps-local-seo' ||
-    currentPath === '/google-ads' ||
-    currentPath === '/content-marketing' ||
-    currentPath === '/automation' ||
-    currentPath.startsWith('/giai-phap') ||
-    currentPath.startsWith('/dich-vu') ||
-    currentPath.startsWith('/landing-490k');
-
-  const isResourcesActive =
-    currentPath.startsWith('/kien-thuc') ||
-    currentPath.startsWith('/chien-luoc-5-giai-doan') ||
-    currentPath.startsWith('/quy-trinh-geo') ||
-    currentPath.startsWith('/tieu-chuan-audit') ||
-    currentPath.startsWith('/quy-trinh-cham-soc') ||
-    currentPath.startsWith('/ho-so-nang-luc') ||
-    currentPath.startsWith('/khao-sat-du-an');
-
-  const isAboutActive =
-    currentPath.startsWith('/ve-localmate') ||
-    currentPath.startsWith('/gioi-thieu');
+  const closeMenus = () => {
+    setActiveDropdown(null);
+    setMobileMenuOpen(false);
+  };
 
   return (
     <>
       <header
-        ref={headerRef}
-        className={`site-header ${scrolled ? 'header-scrolled' : ''}`}
+        className={`main-site-header ${scrolled ? 'header-scrolled' : ''}`}
+        ref={dropdownRef}
       >
         <Container size="lg">
           <div className="header-inner">
-            {/* 1. Logo */}
+            {/* Logo */}
             <Link
               to="/"
               className="header-logo-wrap"
               onClick={closeMenus}
-              title="LocalMate - Người đồng hành số tại địa phương"
+              title="LocalMate - Website, Google Maps & Quảng cáo Doanh nghiệp nhỏ"
             >
               <img
                 src="/logo.png"
                 alt="LocalMate"
-                width="150"
-                height="38"
                 className="header-logo-img"
               />
             </Link>
 
-            {/* 2. Desktop Navigation: [Giải pháp] [Bảng giá] [Kiến thức] [Về Localmate] [Liên hệ] */}
-            <nav className="header-desktop-nav" aria-label="Điều hướng chính">
-              {/* Giải pháp Dropdown & Smart Mega Menu */}
+            {/* Desktop Navigation Links — Mona-style with Icons & Mega Menu */}
+            <nav className="header-nav-desktop" aria-label="Điều hướng chính">
+              {/* 1. Trang chủ */}
+              <Link
+                to="/"
+                onClick={closeMenus}
+                className={`nav-item-link ${currentPath === '/' ? 'active' : ''}`}
+              >
+                <span>Trang chủ</span>
+              </Link>
+
+              {/* 2. Dịch vụ (Mona Mega Menu 4-Column Dropdown) */}
               <div
-                className="nav-dropdown-wrapper"
-                onMouseEnter={handleMouseEnterDropdown}
-                onMouseLeave={handleMouseLeaveDropdown}
+                className="nav-dropdown-parent"
+                onMouseEnter={() => setActiveDropdown('services')}
               >
                 <button
                   type="button"
-                  onClick={() => setSolutionsDropdownOpen(!solutionsDropdownOpen)}
-                  className={`nav-link-btn ${isSolutionsActive ? 'active' : ''}`}
-                  aria-expanded={solutionsDropdownOpen}
-                  aria-haspopup="true"
+                  onClick={() => setActiveDropdown(activeDropdown === 'services' ? null : 'services')}
+                  className={`nav-item-link nav-item-btn ${currentPath.startsWith('/dich-vu') ? 'active' : ''}`}
+                  aria-expanded={activeDropdown === 'services'}
                 >
-                  <span>Giải pháp</span>
+                  <span>Dịch vụ</span>
                   <ChevronDown
                     size={14}
-                    className={`dropdown-caret ${solutionsDropdownOpen ? 'open' : ''}`}
+                    className={`dropdown-caret ${activeDropdown === 'services' ? 'open' : ''}`}
                   />
                 </button>
 
-                {/* Smart Mega Menu Panel: 5 Pillars */}
-                {solutionsDropdownOpen && (
+                {/* Mona-style Full-Width Mega Menu Panel */}
+                {activeDropdown === 'services' && (
                   <div
-                    className="mega-menu-wrapper"
-                    onMouseEnter={handleMouseEnterDropdown}
-                    onMouseLeave={handleMouseLeaveDropdown}
+                    className="mega-menu-overlay"
+                    onMouseLeave={() => setActiveDropdown(null)}
                   >
-                    <div className="mega-menu-card">
-                      {/* Mega Menu Top Header Banner */}
-                      <div className="mega-header-bar">
-                        <div className="mega-header-info">
-                          <span className="mega-kicker">HỆ THỐNG GIẢI PHÁP THEO NHU CẦU</span>
-                          <h3 className="mega-headline">5 Nhóm Giải Pháp Tăng Trưởng Dành Cho Hộ Kinh Doanh &amp; SME</h3>
-                        </div>
-                        <Link
-                          to="/giai-phap"
-                          onClick={closeMenus}
-                          className="mega-view-all-header-btn"
-                        >
-                          <span>Xem tất cả giải pháp</span>
-                          <ArrowRight size={14} />
-                        </Link>
-                      </div>
-
-                      {/* 5 Pillars Horizontal Grid */}
-                      <div className="mega-pillars-grid">
-                        {SOLUTION_PILLARS.map((pillar) => {
-                          const IconComp = pillar.icon;
-                          const isActivePillar = currentPath === pillar.href;
-                          return (
+                    <div className="mega-menu-container">
+                      {/* Left 3 Columns: Categorized Services */}
+                      <div className="mega-menu-main">
+                        {/* Col 1: Website & Landing Page */}
+                        <div className="mega-col">
+                          <div className="mega-col-header">
+                            <Globe size={15} color="var(--color-primary)" />
+                            <span>Website &amp; Bán Hàng</span>
+                          </div>
+                          <div className="mega-items-list">
                             <Link
-                              key={pillar.id}
-                              to={pillar.href}
+                              to="/landing-490k"
                               onClick={closeMenus}
-                              className={`mega-pillar-card ${pillar.colorClass} ${isActivePillar ? 'active-pillar' : ''}`}
+                              className="mega-card"
                             >
-                              <div className="pillar-card-header">
-                                <span className="pillar-step-number">{pillar.step}</span>
-                                <div className="pillar-icon-box">
-                                  <IconComp size={18} />
+                              <div className="mega-card-icon icon-green">
+                                <Layout size={16} />
+                              </div>
+                              <div className="mega-card-content">
+                                <div className="mega-card-title">
+                                  <span>Website 1 Trang</span>
+                                  <span className="mega-tag tag-hot">490k</span>
                                 </div>
-                                <span className="pillar-badge-pill">{pillar.badge}</span>
-                              </div>
-
-                              <div className="pillar-card-body">
-                                <h4 className="pillar-title">{pillar.title}</h4>
-                                <span className="pillar-subtitle">{pillar.subtitle}</span>
-                                <p className="pillar-desc">{pillar.desc}</p>
-                              </div>
-
-                              <div className="pillar-card-footer">
-                                <span className="pillar-link-text">Chi tiết giải pháp</span>
-                                <ArrowRight size={12} className="pillar-arrow" />
+                                <p className="mega-card-desc">Gọn gàng, rõ giá, có nút gọi/Zalo ngay.</p>
                               </div>
                             </Link>
-                          );
-                        })}
+
+                            <Link
+                              to="/dich-vu/website-landing-page"
+                              onClick={closeMenus}
+                              className="mega-card"
+                            >
+                              <div className="mega-card-icon icon-blue">
+                                <Globe size={16} />
+                              </div>
+                              <div className="mega-card-content">
+                                <div className="mega-card-title">
+                                  <span>Web Doanh Nghiệp</span>
+                                  <span className="mega-tag tag-standard">3–5 trang</span>
+                                </div>
+                                <p className="mega-card-desc">Đầy đủ giới thiệu, dịch vụ và dự án.</p>
+                              </div>
+                            </Link>
+
+                            <Link
+                              to="/dich-vu/website-landing-page"
+                              onClick={closeMenus}
+                              className="mega-card"
+                            >
+                              <div className="mega-card-icon icon-purple">
+                                <Sparkles size={16} />
+                              </div>
+                              <div className="mega-card-content">
+                                <div className="mega-card-title">
+                                  <span>Chỉnh Sửa &amp; Nâng Cấp Web</span>
+                                </div>
+                                <p className="mega-card-desc">Sửa lỗi, thêm banner, cập nhật giá nhanh.</p>
+                              </div>
+                            </Link>
+                          </div>
+                        </div>
+
+                        {/* Col 2: Google Presence & Maps */}
+                        <div className="mega-col">
+                          <div className="mega-col-header">
+                            <MapPin size={15} color="var(--color-primary)" />
+                            <span>Google Maps &amp; Tìm Kiếm</span>
+                          </div>
+                          <div className="mega-items-list">
+                            <Link
+                              to="/dich-vu/google-maps"
+                              onClick={closeMenus}
+                              className="mega-card"
+                            >
+                              <div className="mega-card-icon icon-orange">
+                                <MapPin size={16} />
+                              </div>
+                              <div className="mega-card-content">
+                                <div className="mega-card-title">
+                                  <span>Đưa Tiệm Lên Maps</span>
+                                  <span className="mega-tag tag-save">Từ 299k</span>
+                                </div>
+                                <p className="mega-card-desc">Khách tìm quanh khu vực thấy tiệm ngay.</p>
+                              </div>
+                            </Link>
+
+                            <Link
+                              to="/dich-vu/google-maps"
+                              onClick={closeMenus}
+                              className="mega-card"
+                            >
+                              <div className="mega-card-icon icon-green">
+                                <TrendingUp size={16} />
+                              </div>
+                              <div className="mega-card-content">
+                                <div className="mega-card-title">
+                                  <span>Tối Ưu &amp; SEO Local Maps</span>
+                                </div>
+                                <p className="mega-card-desc">Tăng thứ hạng hiển thị top tìm kiếm gần.</p>
+                              </div>
+                            </Link>
+
+                            <Link
+                              to="/dich-vu/google-maps"
+                              onClick={closeMenus}
+                              className="mega-card"
+                            >
+                              <div className="mega-card-icon icon-blue">
+                                <Sparkles size={16} />
+                              </div>
+                              <div className="mega-card-content">
+                                <div className="mega-card-title">
+                                  <span>Mã QR Đánh Giá 5 Sao</span>
+                                </div>
+                                <p className="mega-card-desc">In để bàn giúp khách quét đánh giá dễ dàng.</p>
+                              </div>
+                            </Link>
+                          </div>
+                        </div>
+
+                        {/* Col 3: Quảng Cáo & Bài Viết */}
+                        <div className="mega-col">
+                          <div className="mega-col-header">
+                            <Sparkles size={15} color="var(--color-primary)" />
+                            <span>Quảng Cáo &amp; Bài Viết</span>
+                          </div>
+                          <div className="mega-items-list">
+                            <Link
+                              to="/dich-vu/google-ads"
+                              onClick={closeMenus}
+                              className="mega-card"
+                            >
+                              <div className="mega-card-icon icon-orange">
+                                <Sparkles size={16} />
+                              </div>
+                              <div className="mega-card-content">
+                                <div className="mega-card-title">
+                                  <span>Quảng Cáo Google Ads</span>
+                                  <span className="mega-tag tag-hot">Từ 390k</span>
+                                </div>
+                                <p className="mega-card-desc">Nhắm đúng người đang cần mua, gọi ngay.</p>
+                              </div>
+                            </Link>
+
+                            <Link
+                              to="/dich-vu/content-marketing"
+                              onClick={closeMenus}
+                              className="mega-card"
+                            >
+                              <div className="mega-card-icon icon-pink">
+                                <FileText size={16} />
+                              </div>
+                              <div className="mega-card-content">
+                                <div className="mega-card-title">
+                                  <span>Chăm Sóc Facebook</span>
+                                  <span className="mega-tag tag-save">990k/th</span>
+                                </div>
+                                <p className="mega-card-desc">15 bài viết + thiết kế ảnh đẹp mắt.</p>
+                              </div>
+                            </Link>
+
+                            <Link
+                              to="/dich-vu/content-marketing"
+                              onClick={closeMenus}
+                              className="mega-card"
+                            >
+                              <div className="mega-card-icon icon-purple">
+                                <Briefcase size={16} />
+                              </div>
+                              <div className="mega-card-content">
+                                <div className="mega-card-title">
+                                  <span>Thiết Kế Banner &amp; Ảnh Lẻ</span>
+                                </div>
+                                <p className="mega-card-desc">Ảnh menu, banner khuyến mãi từ 99k/ảnh.</p>
+                              </div>
+                            </Link>
+                          </div>
+                        </div>
                       </div>
 
-                      {/* Mega Menu Bottom Bar */}
-                      <div className="mega-bottom-bar">
-                        <div className="mega-bottom-left">
-                          <div className="mega-recommend-pill">
-                            <Sparkles size={13} />
-                            <span>Gợi ý cho người mới:</span>
+                      {/* Right Promo Rail: Clean & Perfectly Contained Inside Card */}
+                      <div className="mega-promo-rail">
+                        <div className="mega-promo-box">
+                          <span className="promo-badge">GÓI NỔI BẬT KHUYÊN DÙNG</span>
+                          <h4 className="promo-title">Gói Khởi Tạo 490.000đ</h4>
+                          <p className="promo-desc">
+                            Website 1 trang chuẩn + Google Maps + Nút gọi Zalo.
+                          </p>
+                          <div className="promo-points">
+                            <div className="promo-point-item">
+                              <CheckCircle2 size={13} color="var(--color-primary-light)" />
+                              <span>Báo giá rõ, không phụ phí</span>
+                            </div>
+                            <div className="promo-point-item">
+                              <CheckCircle2 size={13} color="var(--color-primary-light)" />
+                              <span>Bàn giao 100% tài khoản</span>
+                            </div>
                           </div>
                           <Link
                             to="/landing-490k"
                             onClick={closeMenus}
-                            className="mega-recommend-link"
+                            className="promo-btn"
                           >
-                            <strong>Gói Website 1 Trang 490.000đ</strong> — Khởi tạo hiện diện số, có Zalo &amp; Maps ngay
+                            Xem chi tiết gói 490k →
                           </Link>
                         </div>
 
-                        <div className="mega-bottom-right">
-                          <a
-                            href={`tel:${CONTACT_INFO.phoneRaw}`}
-                            className="mega-direct-hotline"
-                            title="Gọi Hotline tư vấn nhanh"
-                          >
-                            <Phone size={13} className="mega-phone-icon" />
-                            <span>Hotline tư vấn: <strong>0834 422 439</strong></span>
-                          </a>
-                          <Link
-                            to="/giai-phap"
-                            onClick={closeMenus}
-                            className="mega-main-all-link"
-                          >
-                            <span>Xem tất cả giải pháp →</span>
-                          </Link>
-                        </div>
+                        {/* Compact Hotline Card */}
+                        <a
+                          href={`tel:${CONTACT_INFO.phoneRaw}`}
+                          className="mega-hotline-card"
+                          title="Gọi hotline tư vấn"
+                        >
+                          <div className="hotline-icon-box">
+                            <Phone size={15} color="#ffffff" />
+                          </div>
+                          <div className="hotline-meta">
+                            <span className="hotline-label">Tư vấn trực tiếp 24/7</span>
+                            <span className="hotline-num">0834.422.439</span>
+                          </div>
+                        </a>
                       </div>
                     </div>
                   </div>
                 )}
               </div>
 
-              {/* Cách làm việc */}
-              <Link
-                to="/#cach-lam-viec"
-                onClick={closeMenus}
-                className={`nav-link ${currentPath === '/cach-lam-viec' ? 'active' : ''}`}
-              >
-                <span>Cách làm việc</span>
-              </Link>
-
-              {/* Ví dụ & Demo */}
-              <Link
-                to="/du-an"
-                onClick={closeMenus}
-                className={`nav-link ${currentPath.startsWith('/du-an') ? 'active' : ''}`}
-              >
-                <span>Ví dụ &amp; Demo</span>
-              </Link>
-
-              {/* Bảng giá */}
+              {/* 3. Bảng Giá */}
               <Link
                 to="/bang-gia"
                 onClick={closeMenus}
-                className={`nav-link ${currentPath.startsWith('/bang-gia') ? 'active' : ''}`}
+                className={`nav-item-link ${currentPath.startsWith('/bang-gia') ? 'active' : ''}`}
               >
                 <span>Bảng giá</span>
               </Link>
 
-              {/* Về Localmate */}
+              {/* 4. Dự án đã làm */}
               <Link
-                to="/ve-localmate"
+                to="/du-an"
                 onClick={closeMenus}
-                className={`nav-link ${isAboutActive ? 'active' : ''}`}
+                className={`nav-item-link ${currentPath.startsWith('/du-an') ? 'active' : ''}`}
               >
-                <span>Về Localmate</span>
+                <span>Dự án</span>
+              </Link>
+
+              {/* 5. Kiến Thức Dropdown */}
+              <div
+                className="nav-dropdown-parent"
+                onMouseEnter={() => setActiveDropdown('knowledge')}
+              >
+                <button
+                  type="button"
+                  onClick={() => setActiveDropdown(activeDropdown === 'knowledge' ? null : 'knowledge')}
+                  className={`nav-item-link nav-item-btn ${currentPath.startsWith('/kien-thuc') ? 'active' : ''}`}
+                  aria-expanded={activeDropdown === 'knowledge'}
+                >
+                  <span>Kiến thức</span>
+                  <ChevronDown
+                    size={14}
+                    className={`dropdown-caret ${activeDropdown === 'knowledge' ? 'open' : ''}`}
+                  />
+                </button>
+
+                {activeDropdown === 'knowledge' && (
+                  <div
+                    className="dropdown-menu-simple"
+                    onMouseLeave={() => setActiveDropdown(null)}
+                  >
+                    <Link
+                      to="/kien-thuc"
+                      onClick={closeMenus}
+                      className="simple-dropdown-item"
+                    >
+                      <Globe size={16} color="var(--color-primary)" />
+                      <div>
+                        <div className="item-main-text">Kinh Nghiệm Làm Website</div>
+                        <div className="item-sub-text">Cấu trúc trang web chuyển đổi cao</div>
+                      </div>
+                    </Link>
+
+                    <Link
+                      to="/kien-thuc"
+                      onClick={closeMenus}
+                      className="simple-dropdown-item"
+                    >
+                      <MapPin size={16} color="var(--color-orange)" />
+                      <div>
+                        <div className="item-main-text">Tối Ưu Google Maps &amp; SEO</div>
+                        <div className="item-sub-text">Cách tăng đánh giá 5 sao và khách gần</div>
+                      </div>
+                    </Link>
+
+                    <Link
+                      to="/kien-thuc"
+                      onClick={closeMenus}
+                      className="simple-dropdown-item"
+                    >
+                      <Sparkles size={16} color="#2563eb" />
+                      <div>
+                        <div className="item-main-text">Chạy Quảng Cáo Google Ads</div>
+                        <div className="item-sub-text">Cách lọc từ khóa tránh lãng phí tiền</div>
+                      </div>
+                    </Link>
+
+                    <Link
+                      to="/kien-thuc"
+                      onClick={closeMenus}
+                      className="simple-dropdown-item"
+                    >
+                      <FileText size={16} color="#db2777" />
+                      <div>
+                        <div className="item-main-text">Viết Bài &amp; Nội Dung Kênh</div>
+                        <div className="item-sub-text">Mẫu bài đăng Facebook thu hút khách</div>
+                      </div>
+                    </Link>
+
+                    <div className="dropdown-divider-line">
+                      <Link
+                        to="/kien-thuc"
+                        onClick={closeMenus}
+                        className="dropdown-view-all"
+                      >
+                        <span>Xem tất cả bài hướng dẫn →</span>
+                      </Link>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* 6. Giới Thiệu */}
+              <Link
+                to="/gioi-thieu"
+                onClick={closeMenus}
+                className={`nav-item-link ${currentPath.startsWith('/gioi-thieu') ? 'active' : ''}`}
+              >
+                <span>Giới thiệu</span>
+              </Link>
+
+              {/* 7. Liên Hệ */}
+              <Link
+                to="/lien-he"
+                onClick={closeMenus}
+                className={`nav-item-link ${currentPath.startsWith('/lien-he') ? 'active' : ''}`}
+              >
+                <span>Liên hệ</span>
               </Link>
             </nav>
 
-            {/* 3. Desktop Actions: [Hotline] [Nút CTA Kể việc bạn đang cần] */}
-            <div className="header-desktop-actions">
+            {/* Desktop Action & Hotline */}
+            <div className="header-actions-desktop">
+              {/* Hotline Link */}
               <a
                 href={`tel:${CONTACT_INFO.phoneRaw}`}
-                className="header-hotline-link"
-                title="Gọi tư vấn 0834 422 439"
+                className="header-quick-hotline"
+                title="Gọi điện tư vấn trực tiếp"
               >
-                <div className="hotline-icon-wrap">
-                  <Phone size={16} className="header-hotline-icon" />
-                </div>
-                <div className="hotline-content">
-                  <span className="hotline-label">Gọi tư vấn</span>
-                  <span className="hotline-num">0834 422 439</span>
-                </div>
+                <Phone size={14} color="var(--color-orange-dark)" />
+                <span>0834.422.439</span>
               </a>
 
-              {/* Nút CTA chính: Kể việc bạn đang cần -> mở form khảo sát 0đ */}
-              <button
-                type="button"
+              {/* Primary Action Button */}
+              <Button
+                variant="primary"
+                size="md"
                 onClick={handleActionClick}
-                className="header-cta-button"
-                title="Kể việc bạn đang cần — Khảo sát & Dự toán 0đ"
+                className="header-cta-btn"
               >
-                <ClipboardCheck size={16} />
-                <span>Kể việc bạn đang cần</span>
-                <span className="cta-zero-badge">0đ</span>
-              </button>
+                <Sparkles size={15} />
+                <span>Báo giá nhanh</span>
+              </Button>
             </div>
 
-            {/* 4. Mobile Actions: [Hotline gọi nhanh] [CTA Khảo sát 0đ] [Menu Hamburger] */}
-            <div className="header-mobile-actions">
-              <a
-                href={`tel:${CONTACT_INFO.phoneRaw}`}
-                className="header-mobile-call-btn"
-                title="Gọi hotline 0834 422 439"
-                aria-label="Gọi hotline tư vấn"
-              >
-                <Phone size={15} />
-                <span className="mobile-call-text">Gọi ngay</span>
-              </a>
-
-              <button
-                type="button"
-                onClick={handleActionClick}
-                className="header-mobile-cta"
-                title="Kể việc bạn đang cần — Khảo sát 0đ"
-              >
-                <ClipboardCheck size={14} />
-                <span>Khảo sát 0đ</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                aria-label={mobileMenuOpen ? 'Đóng menu' : 'Mở menu điều hướng'}
-                aria-expanded={mobileMenuOpen}
-                className="mobile-hamburger-btn"
-              >
-                {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
-              </button>
-            </div>
+            {/* Mobile Hamburger Button */}
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Mở menu điều hướng"
+              aria-expanded={mobileMenuOpen}
+              className="mobile-menu-toggle-btn"
+            >
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
         </Container>
       </header>
 
-      {/* Mobile Drawer (Smooth Slide-In, Clear Flat Structure, Tap Target >= 44px) */}
+      {/* Mobile Drawer (Accordion Style) */}
       {mobileMenuOpen && (
         <div className="mobile-drawer-overlay">
-          <div className="mobile-drawer-backdrop" onClick={closeMenus} />
-          <div className="mobile-drawer-panel" role="dialog" aria-modal="true" aria-label="Menu điều hướng">
-            {/* Drawer Header */}
-            <div className="drawer-header">
-              <div className="drawer-brand">
-                <img src="/logo.png" alt="LocalMate" className="drawer-logo-img" />
-              </div>
-              <button
-                type="button"
+          <div className="mobile-drawer-body">
+            <div className="mobile-nav-links">
+              <Link
+                to="/"
                 onClick={closeMenus}
-                aria-label="Đóng menu"
-                className="drawer-close-btn"
+                className={`mobile-nav-item ${currentPath === '/' ? 'active' : ''}`}
               >
-                <X size={20} />
-              </button>
-            </div>
+                Trang chủ
+              </Link>
 
-            {/* Drawer Scroll Body */}
-            <div className="drawer-scroll-body">
-              {/* Card Nổi bật: Kể việc bạn đang cần (Khảo sát 0đ) */}
-              <button
-                type="button"
-                onClick={handleActionClick}
-                className="drawer-survey-card"
-                style={{ width: '100%', textAlign: 'left', border: '1.5px solid #86efac', background: '#f0fdf4', cursor: 'pointer' }}
-              >
-                <div className="drawer-survey-icon-wrap">
-                  <ClipboardCheck size={20} />
-                </div>
-                <div className="drawer-survey-info">
-                  <div className="drawer-survey-headline">
-                    <span className="drawer-survey-name">Kể việc bạn đang cần</span>
-                    <span className="drawer-survey-tag">0đ</span>
+              {/* Mobile Dịch Vụ Accordion */}
+              <div className="mobile-accordion">
+                <button
+                  type="button"
+                  onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                  className="mobile-accordion-toggle"
+                >
+                  <span style={{ fontWeight: 800 }}>Dịch vụ chính</span>
+                  <ChevronDown
+                    size={16}
+                    style={{ transform: mobileServicesOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}
+                  />
+                </button>
+
+                {mobileServicesOpen && (
+                  <div className="mobile-accordion-content">
+                    <Link
+                      to="/landing-490k"
+                      onClick={closeMenus}
+                      className="mobile-sub-link"
+                    >
+                      <Layout size={15} color="var(--color-primary)" />
+                      <span>Website 1 Trang (490k)</span>
+                    </Link>
+                    <Link
+                      to="/dich-vu/google-maps"
+                      onClick={closeMenus}
+                      className="mobile-sub-link"
+                    >
+                      <MapPin size={15} color="var(--color-orange-dark)" />
+                      <span>Đưa Tiệm Lên Google Maps (Từ 299k)</span>
+                    </Link>
+                    <Link
+                      to="/dich-vu/google-ads"
+                      onClick={closeMenus}
+                      className="mobile-sub-link"
+                    >
+                      <Sparkles size={15} color="#2563eb" />
+                      <span>Quảng Cáo Google Ads (Từ 390k)</span>
+                    </Link>
+                    <Link
+                      to="/dich-vu/content-marketing"
+                      onClick={closeMenus}
+                      className="mobile-sub-link"
+                    >
+                      <FileText size={15} color="#db2777" />
+                      <span>Chăm Sóc Facebook (990k/tháng)</span>
+                    </Link>
+                    <Link
+                      to="/dich-vu/website-landing-page"
+                      onClick={closeMenus}
+                      className="mobile-sub-link"
+                    >
+                      <Globe size={15} color="var(--color-primary-dark)" />
+                      <span>Website Doanh Nghiệp 3–5 Trang</span>
+                    </Link>
                   </div>
-                  <span className="drawer-survey-sub">Làm khảo sát 2 phút • Nhận dự toán &amp; giải pháp 0đ</span>
-                </div>
-                <ArrowRight size={15} className="drawer-survey-arrow" />
-              </button>
-
-              {/* Section 1: Giải pháp theo nhu cầu thực tế */}
-              <div className="drawer-section">
-                <div className="drawer-section-header">
-                  <span className="drawer-section-label">GIẢI PHÁP THEO NHU CẦU</span>
-                  <span className="drawer-section-sub">Dễ hiểu &amp; Thực tế</span>
-                </div>
-
-                <div className="drawer-pillars-list">
-                  {SOLUTION_PILLARS.map((pillar) => {
-                    const IconComp = pillar.icon;
-                    const isActive = currentPath === pillar.href;
-                    return (
-                      <Link
-                        key={pillar.id}
-                        to={pillar.href}
-                        onClick={closeMenus}
-                        className={`drawer-pillar-item ${pillar.colorClass} ${isActive ? 'active' : ''}`}
-                      >
-                        <div className="drawer-pillar-step">{pillar.step}</div>
-                        <div className="drawer-pillar-icon">
-                          <IconComp size={17} />
-                        </div>
-                        <div className="drawer-pillar-content">
-                          <div className="drawer-pillar-title-row">
-                            <span className="drawer-pillar-title">{pillar.title}</span>
-                            <span className="drawer-pillar-badge">{pillar.badge}</span>
-                          </div>
-                          <span className="drawer-pillar-desc">{pillar.subtitle}</span>
-                        </div>
-                        <ArrowRight size={14} className="drawer-pillar-arrow" />
-                      </Link>
-                    );
-                  })}
-
-                  <Link
-                    to="/giai-phap"
-                    onClick={closeMenus}
-                    className="drawer-all-solutions-link"
-                  >
-                    <span>Xem tất cả giải pháp &amp; dịch vụ</span>
-                    <ArrowRight size={15} />
-                  </Link>
-                </div>
+                )}
               </div>
 
-              {/* Section 2: Điều hướng chính (Menu thân thiện) */}
-              <div className="drawer-section">
-                <div className="drawer-section-header">
-                  <span className="drawer-section-label">ĐIỀU HƯỚNG CHÍNH</span>
-                </div>
+              <Link
+                to="/bang-gia"
+                onClick={closeMenus}
+                className={`mobile-nav-item ${currentPath.startsWith('/bang-gia') ? 'active' : ''}`}
+              >
+                Bảng giá niêm yết
+              </Link>
 
-                <div className="drawer-nav-list">
-                  <Link
-                    to="/"
-                    onClick={closeMenus}
-                    className={`drawer-nav-link ${currentPath === '/' ? 'active' : ''}`}
-                  >
-                    <div className="drawer-link-with-icon">
-                      <Globe size={16} className="drawer-item-icon" />
-                      <span>Trang chủ</span>
-                    </div>
-                  </Link>
-                  <Link
-                    to="/#cach-lam-viec"
-                    onClick={closeMenus}
-                    className={`drawer-nav-link ${currentPath === '/cach-lam-viec' ? 'active' : ''}`}
-                  >
-                    <div className="drawer-link-with-icon">
-                      <CheckCircle2 size={16} className="drawer-item-icon" />
-                      <span>Cách làm việc</span>
-                    </div>
-                    <span className="drawer-nav-badge">4 bước</span>
-                  </Link>
-                  <Link
-                    to="/du-an"
-                    onClick={closeMenus}
-                    className={`drawer-nav-link ${currentPath.startsWith('/du-an') ? 'active' : ''}`}
-                  >
-                    <div className="drawer-link-with-icon">
-                      <FileText size={16} className="drawer-item-icon" />
-                      <span>Ví dụ &amp; Demo</span>
-                    </div>
-                    <span className="drawer-nav-badge">Thực tế</span>
-                  </Link>
-                  <Link
-                    to="/bang-gia"
-                    onClick={closeMenus}
-                    className={`drawer-nav-link ${currentPath.startsWith('/bang-gia') ? 'active' : ''}`}
-                  >
-                    <div className="drawer-link-with-icon">
-                      <FileText size={16} className="drawer-item-icon" />
-                      <span>Bảng giá niêm yết</span>
-                    </div>
-                    <span className="drawer-nav-badge">Minh bạch</span>
-                  </Link>
-                  <Link
-                    to="/ve-localmate"
-                    onClick={closeMenus}
-                    className={`drawer-nav-link ${isAboutActive ? 'active' : ''}`}
-                  >
-                    <div className="drawer-link-with-icon">
-                      <Globe size={16} className="drawer-item-icon" />
-                      <span>Về Localmate</span>
-                    </div>
-                  </Link>
-                  <Link
-                    to="/lien-he"
-                    onClick={closeMenus}
-                    className={`drawer-nav-link ${currentPath.startsWith('/lien-he') ? 'active' : ''}`}
-                  >
-                    <div className="drawer-link-with-icon">
-                      <Phone size={16} className="drawer-item-icon" />
-                      <span>Liên hệ tư vấn</span>
-                    </div>
-                  </Link>
-                </div>
+              <Link
+                to="/du-an"
+                onClick={closeMenus}
+                className={`mobile-nav-item ${currentPath.startsWith('/du-an') ? 'active' : ''}`}
+              >
+                Dự án đã làm
+              </Link>
+
+              {/* Mobile Kiến Thức Accordion */}
+              <div className="mobile-accordion">
+                <button
+                  type="button"
+                  onClick={() => setMobileKnowledgeOpen(!mobileKnowledgeOpen)}
+                  className="mobile-accordion-toggle"
+                >
+                  <span style={{ fontWeight: 800 }}>Kiến thức &amp; Hướng dẫn</span>
+                  <ChevronDown
+                    size={16}
+                    style={{ transform: mobileKnowledgeOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}
+                  />
+                </button>
+
+                {mobileKnowledgeOpen && (
+                  <div className="mobile-accordion-content">
+                    <Link to="/kien-thuc" onClick={closeMenus} className="mobile-sub-link">
+                      → Hướng dẫn làm Website
+                    </Link>
+                    <Link to="/kien-thuc" onClick={closeMenus} className="mobile-sub-link">
+                      → Tối ưu Google Maps Local
+                    </Link>
+                    <Link to="/kien-thuc" onClick={closeMenus} className="mobile-sub-link">
+                      → Kinh nghiệm chạy Google Ads
+                    </Link>
+                    <Link to="/kien-thuc" onClick={closeMenus} className="mobile-sub-link">
+                      → Mẫu bài viết Facebook
+                    </Link>
+                  </div>
+                )}
               </div>
+
+              <Link
+                to="/gioi-thieu"
+                onClick={closeMenus}
+                className={`mobile-nav-item ${currentPath.startsWith('/gioi-thieu') ? 'active' : ''}`}
+              >
+                Giới thiệu LocalMate
+              </Link>
+
+              <Link
+                to="/lien-he"
+                onClick={closeMenus}
+                className={`mobile-nav-item ${currentPath.startsWith('/lien-he') ? 'active' : ''}`}
+              >
+                Liên hệ
+              </Link>
             </div>
 
-            {/* Drawer Footer Actions */}
-            <div className="drawer-footer">
-              <button
-                type="button"
+            {/* Mobile Footer CTAs */}
+            <div className="mobile-drawer-footer">
+              <Button
+                variant="primary"
+                size="lg"
                 onClick={handleActionClick}
-                className="drawer-primary-cta"
+                fullWidth
+                style={{ fontWeight: 700, minHeight: 46 }}
               >
-                <ClipboardCheck size={17} />
-                <span>Kể việc bạn đang cần (Khảo sát 0đ)</span>
-              </button>
-
+                <Sparkles size={16} /> Báo giá &amp; Tư vấn nhanh
+              </Button>
               <a
                 href={`tel:${CONTACT_INFO.phoneRaw}`}
-                className="drawer-hotline-card"
-                title="Gọi hotline tư vấn 0834 422 439"
+                className="mobile-drawer-hotline"
               >
-                <div className="drawer-hotline-icon">
-                  <Phone size={16} />
-                </div>
-                <div className="drawer-hotline-content">
-                  <span className="drawer-hotline-sub">Tư vấn trực tiếp 24/7</span>
-                  <span className="drawer-hotline-num">0834 422 439</span>
-                </div>
+                <Phone size={16} color="var(--color-orange-dark)" />
+                <span>Hotline: 0834.422.439</span>
               </a>
-
-              <p className="drawer-footer-note">
-                Tài nguyên chuyên sâu (Lộ trình, GEO, Audit, Hồ sơ năng lực) xem tại chân trang (Footer).
-              </p>
             </div>
           </div>
         </div>
       )}
 
       <style>{`
-        /* ==========================================================================
-           HEADER COMPONENT STYLES
-           Theme: MISA Light Theme, Crisp Contrast, Absolutely No Glassmorphism
-           ========================================================================== */
-        .site-header {
+        /* Header Base */
+        .main-site-header {
           position: sticky;
           top: 0;
           left: 0;
           right: 0;
-          z-index: 1000;
+          z-index: 100;
           height: 70px;
           background-color: #ffffff;
-          border-bottom: 1px solid #e2e8f0;
-          box-shadow: none;
-          transition: border-color 0.2s ease, box-shadow 0.2s ease;
+          border-bottom: 1px solid var(--color-border);
+          transition: all 0.2s ease;
           display: flex;
           align-items: center;
-          width: 100%;
-          box-sizing: border-box;
-          scrollbar-gutter: stable;
         }
 
-        .site-header.header-scrolled {
-          border-bottom: 1px solid #cbd5e1;
-          box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
+        .header-scrolled {
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+          height: 64px;
         }
 
         .header-inner {
@@ -701,7 +722,6 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           width: 100%;
         }
 
-        /* 1. Logo */
         .header-logo-wrap {
           display: flex;
           align-items: center;
@@ -710,1368 +730,560 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
         }
 
         .header-logo-img {
-          height: 38px;
-          max-height: 40px;
+          height: 42px;
           width: auto;
           object-fit: contain;
-          display: block;
+          transition: height 0.2s;
         }
 
-        /* 2. Desktop Nav */
-        .header-desktop-nav {
+        .header-scrolled .header-logo-img {
+          height: 38px;
+        }
+
+        /* Desktop Nav */
+        .header-nav-desktop {
           display: flex;
           align-items: center;
-          gap: 6px;
+          gap: 1.35rem;
         }
 
-        .nav-link,
-        .nav-link-btn {
-          font-size: 0.9375rem;
-          font-weight: 550;
-          color: #334155;
+        .nav-item-link {
+          font-size: 0.9rem;
+          font-weight: 700;
+          color: var(--color-navy);
           text-decoration: none;
-          padding: 8px 14px;
-          border-radius: 8px;
-          transition: color 0.15s ease, background-color 0.15s ease;
+          padding: 0.5rem 0.2rem;
+          transition: color var(--transition-fast);
           display: inline-flex;
           align-items: center;
-          gap: 5px;
+          gap: 0.3rem;
+          position: relative;
+        }
+
+        .nav-item-link:hover,
+        .nav-item-link.active {
+          color: var(--color-primary) !important;
+        }
+
+        .nav-item-btn {
           background: none;
           border: none;
           cursor: pointer;
           font-family: inherit;
-          white-space: nowrap;
-          box-sizing: border-box;
-          min-height: 40px;
-        }
-
-        .nav-link:hover,
-        .nav-link-btn:hover {
-          color: #0d7647;
-          background-color: #f0fdf4;
-        }
-
-        .nav-link.active,
-        .nav-link-btn.active {
-          color: #0d7647;
-          font-weight: 650;
-          background-color: #edf7f1;
-        }
-
-        .nav-dropdown-wrapper {
-          position: relative;
         }
 
         .dropdown-caret {
-          color: #64748b;
-          transition: transform 0.2s ease, color 0.15s ease;
+          transition: transform 0.2s ease;
+          color: var(--color-text-muted);
         }
 
         .dropdown-caret.open {
           transform: rotate(180deg);
-          color: #0d7647;
+          color: var(--color-primary);
         }
 
-        /* ==========================================================================
-           MEGA MENU PANEL (5 PILLARS ARCHITECTURE)
-           ========================================================================== */
-        .mega-menu-wrapper {
-          position: absolute;
-          top: calc(100% + 8px);
-          left: 50%;
-          transform: translateX(-50%);
-          width: min(1180px, 94vw);
-          z-index: 1050;
-          animation: headerFadeIn 0.18s ease-out;
+        .nav-dropdown-parent {
+          position: relative;
         }
 
-        @keyframes headerFadeIn {
+        /* Mona-style Full-Width Mega Menu Dropdown */
+        .mega-menu-overlay {
+          position: fixed;
+          top: 70px;
+          left: 0;
+          right: 0;
+          width: 100vw;
+          background-color: transparent;
+          pointer-events: none;
+          display: flex;
+          justify-content: center;
+          z-index: 120;
+          padding: 0.5rem 1.5rem 1.5rem 1.5rem;
+          box-sizing: border-box;
+        }
+
+        .header-scrolled .mega-menu-overlay {
+          top: 64px;
+        }
+
+        @keyframes megaFadeIn {
           from {
             opacity: 0;
-            transform: translate(-50%, 6px);
+            transform: translateY(6px);
           }
           to {
             opacity: 1;
-            transform: translate(-50%, 0);
+            transform: translateY(0);
           }
         }
 
-        .mega-menu-card {
+        .mega-menu-container {
+          pointer-events: auto;
+          width: 100%;
+          max-width: 1240px;
           background-color: #ffffff;
-          border: 1px solid #e2e8f0;
-          border-radius: 16px;
-          box-shadow: 0 20px 48px rgba(15, 23, 42, 0.1);
-          padding: 1.5rem;
-          display: flex;
-          flex-direction: column;
-          gap: 1.25rem;
-          box-sizing: border-box;
-        }
-
-        /* Mega Header Bar */
-        .mega-header-bar {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          border-bottom: 1px solid #f1f5f9;
-          padding-bottom: 0.85rem;
-        }
-
-        .mega-header-info {
-          display: flex;
-          flex-direction: column;
-          gap: 0.2rem;
-        }
-
-        .mega-kicker {
-          font-size: 0.6875rem;
-          font-weight: 750;
-          color: #0d7647;
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
-        }
-
-        .mega-headline {
-          font-size: 0.95rem;
-          font-weight: 700;
-          color: #0f172a;
-          margin: 0;
-          line-height: 1.3;
-        }
-
-        .mega-view-all-header-btn {
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-          font-size: 0.8125rem;
-          font-weight: 600;
-          color: #0d7647;
-          text-decoration: none;
-          padding: 6px 12px;
-          border-radius: 6px;
-          background-color: #f0fdf4;
-          border: 1px solid #bbf7d0;
-          transition: background-color 0.15s ease, color 0.15s ease;
-        }
-
-        .mega-view-all-header-btn:hover {
-          background-color: #0d7647;
-          color: #ffffff;
-        }
-
-        /* 5 Pillars Grid */
-        .mega-pillars-grid {
+          border: 1px solid var(--color-border);
+          border-radius: 20px;
+          box-shadow: 0 20px 50px rgba(0, 0, 0, 0.13);
+          padding: 1.5rem 1.75rem;
           display: grid;
-          grid-template-columns: repeat(5, 1fr);
-          gap: 0.9rem;
+          grid-template-columns: 1fr 280px;
+          gap: 1.75rem;
+          align-items: stretch;
+          box-sizing: border-box;
+          overflow: hidden;
+          animation: megaFadeIn 0.18s ease-out;
         }
 
-        .mega-pillar-card {
+        .mega-menu-main {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1.5rem;
+        }
+
+        .mega-col {
           display: flex;
           flex-direction: column;
-          justify-content: space-between;
-          padding: 1rem 0.9rem;
-          border-radius: 12px;
-          background-color: #f8fafc;
-          border: 1px solid #e2e8f0;
-          text-decoration: none;
-          transition: all 0.18s ease;
-          min-height: 195px;
-          box-sizing: border-box;
+          gap: 0.55rem;
         }
 
-        .mega-pillar-card:hover {
-          background-color: #ffffff;
-          transform: translateY(-2px);
-          box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
-        }
-
-        /* Color thematic accents for pillars */
-        .pillar-emerald:hover, .pillar-emerald.active-pillar {
-          border-color: #0d7647;
-        }
-        .pillar-emerald .pillar-icon-box {
-          background-color: #edf7f1;
-          color: #0d7647;
-        }
-        .pillar-emerald .pillar-step-number {
-          color: #0d7647;
-        }
-
-        .pillar-amber:hover, .pillar-amber.active-pillar {
-          border-color: #d97706;
-        }
-        .pillar-amber .pillar-icon-box {
-          background-color: #fef3c7;
-          color: #b45309;
-        }
-        .pillar-amber .pillar-step-number {
-          color: #b45309;
-        }
-
-        .pillar-blue:hover, .pillar-blue.active-pillar {
-          border-color: #2563eb;
-        }
-        .pillar-blue .pillar-icon-box {
-          background-color: #eff6ff;
-          color: #1d4ed8;
-        }
-        .pillar-blue .pillar-step-number {
-          color: #1d4ed8;
-        }
-
-        .pillar-purple:hover, .pillar-purple.active-pillar {
-          border-color: #7c3aed;
-        }
-        .pillar-purple .pillar-icon-box {
-          background-color: #f5f3ff;
-          color: #6d28d9;
-        }
-        .pillar-purple .pillar-step-number {
-          color: #6d28d9;
-        }
-
-        .pillar-teal:hover, .pillar-teal.active-pillar {
-          border-color: #0f766e;
-        }
-        .pillar-teal .pillar-icon-box {
-          background-color: #f0fdfa;
-          color: #0f766e;
-        }
-        .pillar-teal .pillar-step-number {
-          color: #0f766e;
-        }
-
-        .pillar-card-header {
+        .mega-col-header {
           display: flex;
           align-items: center;
-          justify-content: space-between;
-          margin-bottom: 0.65rem;
-        }
-
-        .pillar-step-number {
-          font-size: 0.8125rem;
+          gap: 0.45rem;
+          font-size: 0.8rem;
           font-weight: 800;
-          letter-spacing: 0.02em;
+          color: var(--color-primary-dark);
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          padding-bottom: 0.4rem;
+          border-bottom: 1px solid var(--color-border);
+          margin-bottom: 0.15rem;
         }
 
-        .pillar-icon-box {
-          width: 32px;
-          height: 32px;
+        .mega-items-list {
+          display: flex;
+          flex-direction: column;
+          gap: 0.35rem;
+        }
+
+        .mega-card {
+          display: flex;
+          align-items: flex-start;
+          gap: 0.75rem;
+          padding: 0.55rem 0.7rem;
+          border-radius: 10px;
+          text-decoration: none;
+          border: 1px solid transparent;
+          transition: all 0.15s ease;
+        }
+
+        .mega-card:hover {
+          background-color: var(--color-primary-soft, #f4fbf7);
+          border-color: var(--color-primary-border, #dcefe4);
+          transform: translateY(-1px);
+        }
+
+        .mega-card-icon {
+          width: 34px;
+          height: 34px;
           border-radius: 8px;
           display: flex;
           align-items: center;
           justify-content: center;
           flex-shrink: 0;
+          margin-top: 2px;
         }
 
-        .pillar-badge-pill {
-          font-size: 0.625rem;
-          font-weight: 700;
-          color: #475569;
-          background-color: #ffffff;
-          border: 1px solid #cbd5e1;
-          padding: 0.12rem 0.4rem;
-          border-radius: 999px;
-          white-space: nowrap;
-        }
+        .icon-green { background-color: var(--color-primary-soft); color: var(--color-primary); }
+        .icon-orange { background-color: #fff4eb; color: var(--color-orange); }
+        .icon-blue { background-color: #eff6ff; color: #2563eb; }
+        .icon-purple { background-color: #f5f3ff; color: #7c3aed; }
+        .icon-pink { background-color: #fdf2f8; color: #db2777; }
 
-        .pillar-card-body {
+        .mega-card-content {
           display: flex;
           flex-direction: column;
-          gap: 0.2rem;
-          flex: 1;
+          gap: 0.15rem;
+          min-width: 0;
         }
 
-        .pillar-title {
+        .mega-card-title {
           font-size: 0.875rem;
-          font-weight: 700;
-          color: #0f172a;
-          margin: 0;
-          line-height: 1.25;
-        }
-
-        .pillar-subtitle {
-          font-size: 0.725rem;
-          font-weight: 600;
-          color: #0d7647;
-          line-height: 1.25;
-        }
-
-        .pillar-desc {
-          font-size: 0.725rem;
-          color: #475569;
-          line-height: 1.4;
-          margin: 0.35rem 0 0 0;
-          text-wrap: pretty;
-        }
-
-        .pillar-card-footer {
+          font-weight: 800;
+          color: var(--color-navy);
           display: flex;
           align-items: center;
-          gap: 4px;
-          margin-top: 0.75rem;
-          font-size: 0.75rem;
-          font-weight: 650;
-          color: #0d7647;
-          border-top: 1px dashed #e2e8f0;
-          padding-top: 0.5rem;
-        }
-
-        .pillar-arrow {
-          transition: transform 0.15s ease;
-        }
-
-        .mega-pillar-card:hover .pillar-arrow {
-          transform: translateX(3px);
-        }
-
-        /* Mega Bottom Bar */
-        .mega-bottom-bar {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          border-top: 1px solid #f1f5f9;
-          padding-top: 0.85rem;
-          gap: 1rem;
-          flex-wrap: wrap;
-        }
-
-        .mega-bottom-left {
-          display: flex;
-          align-items: center;
-          gap: 0.6rem;
-          font-size: 0.8125rem;
-        }
-
-        .mega-recommend-pill {
-          display: inline-flex;
-          align-items: center;
-          gap: 4px;
-          font-size: 0.6875rem;
-          font-weight: 700;
-          color: #15803d;
-          background-color: #dcfce7;
-          padding: 0.2rem 0.55rem;
-          border-radius: 999px;
+          gap: 0.4rem;
           white-space: nowrap;
-        }
-
-        .mega-recommend-link {
-          color: #334155;
-          text-decoration: none;
           line-height: 1.3;
         }
 
-        .mega-recommend-link strong {
-          color: #0d7647;
+        .mega-card-desc {
+          font-size: 0.725rem;
+          color: var(--color-text-muted);
+          line-height: 1.35;
+          margin: 0;
         }
 
-        .mega-recommend-link:hover {
-          text-decoration: underline;
-        }
-
-        .mega-bottom-right {
-          display: flex;
-          align-items: center;
-          gap: 1.25rem;
-        }
-
-        .mega-direct-hotline {
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-          font-size: 0.8125rem;
-          color: #475569;
-          text-decoration: none;
-        }
-
-        .mega-direct-hotline strong {
-          color: #0d7647;
-          font-size: 0.875rem;
-        }
-
-        .mega-direct-hotline:hover {
-          color: #0d7647;
-        }
-
-        .mega-phone-icon {
-          color: #0d7647;
-        }
-
-        .mega-main-all-link {
-          font-size: 0.8125rem;
-          font-weight: 700;
-          color: #0d7647;
-          text-decoration: none;
-          padding: 6px 14px;
-          border-radius: 6px;
-          background-color: #edf7f1;
-          border: 1px solid #c6ebd4;
-          transition: background-color 0.15s ease, color 0.15s ease;
+        .mega-tag {
+          font-size: 0.65rem;
+          font-weight: 800;
+          padding: 0.1rem 0.4rem;
+          border-radius: 999px;
+          line-height: 1;
           white-space: nowrap;
         }
 
-        .mega-main-all-link:hover {
-          background-color: #0d7647;
+        .tag-hot { background-color: #fee2e2; color: #dc2626; }
+        .tag-save { background-color: var(--color-primary-soft); color: var(--color-primary-dark); }
+        .tag-standard { background-color: #f3f4f6; color: #4b5563; }
+
+        /* Right Promo Rail — Perfectly Fitted Inside Container */
+        .mega-promo-rail {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          gap: 0.65rem;
+          border-left: 1px solid var(--color-border);
+          padding-left: 1.5rem;
+        }
+
+        .mega-promo-box {
+          background: linear-gradient(145deg, #072e3b, #0d7647);
+          border-radius: 14px;
+          padding: 1rem 1.15rem;
           color: #ffffff;
-        }
-
-        /* ==========================================================================
-           RESOURCES & KNOWLEDGE DROPDOWN PANEL
-           ========================================================================== */
-        .resources-dropdown-wrapper {
-          position: absolute;
-          top: calc(100% + 8px);
-          left: 50%;
-          transform: translateX(-50%);
-          width: min(580px, 94vw);
-          z-index: 1050;
-          animation: headerFadeIn 0.18s ease-out;
-        }
-
-        .resources-dropdown-card {
-          background-color: #ffffff;
-          border: 1px solid #e2e8f0;
-          border-radius: 16px;
-          box-shadow: 0 16px 40px rgba(15, 23, 42, 0.09);
-          padding: 1.25rem;
           display: flex;
           flex-direction: column;
-          gap: 1rem;
-          box-sizing: border-box;
+          gap: 0.45rem;
+          flex: 1;
+          justify-content: space-between;
         }
 
-        .resources-dropdown-header {
-          display: flex;
-          flex-direction: column;
-          gap: 0.2rem;
-          border-bottom: 1px solid #f1f5f9;
-          padding-bottom: 0.65rem;
-        }
-
-        .resources-dropdown-kicker {
-          font-size: 0.6875rem;
-          font-weight: 750;
-          color: #0d7647;
+        .promo-badge {
+          font-size: 0.65rem;
+          font-weight: 800;
+          color: var(--color-primary-light);
           letter-spacing: 0.05em;
           text-transform: uppercase;
         }
 
-        .resources-dropdown-title {
-          font-size: 0.95rem;
-          font-weight: 700;
-          color: #0f172a;
+        .promo-title {
+          font-size: 1rem;
+          font-weight: 800;
+          color: #ffffff;
           margin: 0;
-          line-height: 1.3;
-        }
-
-        .resources-dropdown-grid {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 0.65rem;
-        }
-
-        .resource-item-card {
-          display: flex;
-          align-items: flex-start;
-          gap: 10px;
-          padding: 0.65rem 0.75rem;
-          border-radius: 10px;
-          background-color: #f8fafc;
-          border: 1px solid #e2e8f0;
-          text-decoration: none;
-          transition: all 0.15s ease;
-          box-sizing: border-box;
-        }
-
-        .resource-item-card:hover {
-          background-color: #f0fdf4;
-          border-color: #a7f3d0;
-          transform: translateY(-1px);
-        }
-
-        .resource-item-icon-box {
-          width: 32px;
-          height: 32px;
-          border-radius: 8px;
-          background-color: #ffffff;
-          border: 1px solid #e2e8f0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: #0d7647;
-          flex-shrink: 0;
-          margin-top: 1px;
-        }
-
-        .resource-item-icon-box.geo-box {
-          color: #d97706;
-          background-color: #fffbeb;
-          border-color: #fde68a;
-        }
-
-        .resource-item-icon-box.care-box {
-          color: #0f766e;
-          background-color: #f0fdfa;
-          border-color: #99f6e4;
-        }
-
-        .resource-item-content {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          gap: 2px;
-          min-width: 0;
-        }
-
-        .resource-item-heading {
-          display: flex;
-          align-items: center;
-          gap: 6px;
-        }
-
-        .resource-item-name {
-          font-size: 0.8125rem;
-          font-weight: 700;
-          color: #0f172a;
           line-height: 1.25;
         }
 
-        .resource-badge {
-          font-size: 0.5875rem;
-          font-weight: 700;
-          color: #475569;
-          background-color: #e2e8f0;
-          padding: 0.1rem 0.4rem;
-          border-radius: 999px;
-          white-space: nowrap;
-        }
-
-        .resource-badge.badge-hot {
-          color: #b45309;
-          background-color: #fef3c7;
-        }
-
-        .resource-badge.badge-teal {
-          color: #0f766e;
-          background-color: #ccfbf1;
-        }
-
-        .resource-badge.badge-primary {
-          color: #0d7647;
-          background-color: #edf7f1;
-        }
-
-        .resource-item-desc {
-          font-size: 0.7rem;
-          color: #64748b;
-          line-height: 1.35;
+        .promo-desc {
+          font-size: 0.75rem;
+          color: rgba(255, 255, 255, 0.9);
+          line-height: 1.4;
           margin: 0;
-          text-wrap: pretty;
         }
 
-        .resources-dropdown-bottom {
-          border-top: 1px solid #f1f5f9;
-          padding-top: 0.75rem;
-        }
-
-        .resources-survey-callout {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 12px;
-          padding: 0.65rem 0.85rem;
-          border-radius: 10px;
-          background-color: #f0fdf4;
-          border: 1px solid #bbf7d0;
-          text-decoration: none;
-          transition: all 0.15s ease;
-        }
-
-        .resources-survey-callout:hover {
-          background-color: #dcfce7;
-          border-color: #86efac;
-        }
-
-        .survey-callout-content {
+        .promo-points {
           display: flex;
           flex-direction: column;
-          gap: 2px;
-        }
-
-        .survey-callout-badge {
-          display: inline-flex;
-          align-items: center;
-          gap: 5px;
-          font-size: 0.775rem;
-          font-weight: 750;
-          color: #0d7647;
-        }
-
-        .survey-callout-text {
+          gap: 0.3rem;
           font-size: 0.725rem;
-          color: #334155;
-          line-height: 1.3;
+          color: rgba(255, 255, 255, 0.95);
         }
 
-        .survey-callout-action {
-          display: inline-flex;
+        .promo-point-item {
+          display: flex;
           align-items: center;
-          gap: 4px;
+          gap: 0.35rem;
+        }
+
+        .promo-btn {
+          margin-top: 0.25rem;
+          background-color: #ffffff;
+          color: var(--color-navy);
           font-size: 0.775rem;
-          font-weight: 700;
-          color: #0d7647;
-          white-space: nowrap;
-          flex-shrink: 0;
+          font-weight: 800;
+          text-align: center;
+          padding: 0.45rem 0.75rem;
+          border-radius: var(--radius-sm);
+          text-decoration: none;
+          transition: background-color var(--transition-fast);
         }
 
-        /* 3. Desktop Actions: Hotline, Survey & CTA */
-        .header-desktop-actions {
+        .promo-btn:hover {
+          background-color: var(--color-primary-light);
+        }
+
+        .mega-hotline-card {
+          background-color: #fafbfa;
+          border: 1px solid var(--color-border);
+          border-radius: 12px;
+          padding: 0.6rem 0.85rem;
           display: flex;
           align-items: center;
-          gap: 12px;
-        }
-
-        .header-survey-btn {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          gap: 6px;
-          background-color: #f0fdf4;
-          color: #0d7647;
-          border: 1.5px solid #86efac;
-          font-size: 0.84rem;
-          font-weight: 700;
-          height: 40px;
-          padding: 0 16px;
-          border-radius: 9999px;
+          gap: 0.65rem;
           text-decoration: none;
-          transition: all 0.15s ease;
-          white-space: nowrap;
-          font-family: inherit;
+          transition: all var(--transition-fast);
         }
 
-        .header-survey-btn:hover {
-          background-color: #dcfce7;
-          border-color: #16a34a;
-          color: #065f46;
-          box-shadow: 0 2px 8px rgba(13, 118, 71, 0.15);
-          transform: translateY(-1px);
+        .mega-hotline-card:hover {
+          border-color: var(--color-orange);
+          background-color: #fff9f5;
         }
 
-        .header-hotline-link {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          text-decoration: none;
-          padding: 4px 8px 4px 6px;
-          border-radius: 10px;
-          transition: all 0.15s ease;
-        }
-
-        .header-hotline-link:hover {
-          background-color: #f8fafc;
-        }
-
-        .hotline-icon-wrap {
-          width: 36px;
-          height: 36px;
+        .hotline-icon-box {
+          width: 32px;
+          height: 32px;
           border-radius: 50%;
-          background-color: #edf7f1;
-          border: 1px solid #c6ebd4;
+          background-color: var(--color-orange);
           display: flex;
           align-items: center;
           justify-content: center;
-          color: #0d7647;
           flex-shrink: 0;
-          transition: all 0.18s ease;
         }
 
-        .header-hotline-link:hover .hotline-icon-wrap {
-          background-color: #dcfce7;
-          border-color: #0d7647;
-          transform: scale(1.05);
-        }
-
-        .header-hotline-icon {
-          color: #0d7647;
-        }
-
-        .hotline-content {
+        .hotline-meta {
           display: flex;
           flex-direction: column;
-          text-align: left;
         }
 
         .hotline-label {
-          font-size: 0.6875rem;
+          font-size: 0.675rem;
+          color: var(--color-text-muted);
           font-weight: 600;
-          color: #64748b;
-          text-transform: uppercase;
-          letter-spacing: 0.04em;
-          line-height: 1.15;
+          line-height: 1.2;
         }
 
         .hotline-num {
           font-size: 0.95rem;
-          font-weight: 700;
-          color: #0f172a;
-          line-height: 1.25;
-          font-variant-numeric: tabular-nums;
-          transition: color 0.15s ease;
-        }
-
-        .header-hotline-link:hover .hotline-num {
-          color: #0d7647;
-        }
-
-        .header-cta-button {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          gap: 7px;
-          background-color: #0d7647;
-          color: #ffffff;
-          font-size: 0.875rem;
-          font-weight: 600;
-          height: 40px;
-          padding: 0 18px;
-          border-radius: 9999px;
-          border: none;
-          cursor: pointer;
-          box-shadow: 0 2px 8px rgba(13, 118, 71, 0.22);
-          transition: all 0.15s ease;
-          white-space: nowrap;
-          font-family: inherit;
-        }
-
-        .header-cta-button:hover {
-          background-color: #095935;
-          box-shadow: 0 4px 14px rgba(13, 118, 71, 0.32);
-          transform: translateY(-1px);
-        }
-
-        .cta-zero-badge {
-          background-color: #22c55e;
-          color: #ffffff;
-          font-size: 0.6875rem;
           font-weight: 800;
-          padding: 0.1rem 0.45rem;
-          border-radius: 9999px;
+          color: var(--color-navy);
           line-height: 1.2;
-          margin-left: 2px;
         }
 
-        /* 4. Mobile Actions inside Header Bar */
-        .header-mobile-actions {
-          display: none;
-          align-items: center;
-          gap: 8px;
-        }
-
-        .header-mobile-call-btn {
-          display: inline-flex;
-          align-items: center;
-          gap: 5px;
-          min-height: 40px;
-          padding: 0 12px;
-          background-color: #edf7f1;
-          border: 1px solid #c6ebd4;
-          border-radius: 9999px;
-          color: #0d7647;
-          font-size: 0.8125rem;
-          font-weight: 600;
-          text-decoration: none;
-          transition: all 0.15s ease;
-        }
-
-        .header-mobile-call-btn:hover {
-          background-color: #dcfce7;
-          border-color: #0d7647;
-        }
-
-        .header-mobile-cta {
-          display: inline-flex;
-          align-items: center;
-          gap: 5px;
-          background-color: #0d7647;
-          color: #ffffff;
-          font-size: 0.8125rem;
-          font-weight: 600;
-          padding: 0 14px;
-          border-radius: 9999px;
-          border: none;
-          cursor: pointer;
-          min-height: 40px;
-          white-space: nowrap;
-          font-family: inherit;
-          box-shadow: 0 2px 6px rgba(13, 118, 71, 0.2);
-          transition: all 0.15s ease;
-        }
-
-        .header-mobile-cta:hover {
-          background-color: #095935;
-        }
-
-        .mobile-hamburger-btn {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          min-width: 44px;
-          min-height: 44px;
-          padding: 8px;
-          background: transparent;
-          border: 1px solid #e2e8f0;
-          border-radius: 8px;
-          color: #0f172a;
-          cursor: pointer;
-          transition: background-color 0.15s ease;
-        }
-
-        .mobile-hamburger-btn:hover {
-          background-color: #f1f5f9;
-        }
-
-        @media (max-width: 400px) {
-          .mobile-call-text {
-            display: none;
-          }
-          .header-mobile-call-btn {
-            width: 40px;
-            height: 40px;
-            padding: 0;
-            justify-content: center;
-            border-radius: 50%;
-          }
-        }
-
-        /* Breakpoint 1024px: Switch to Mobile */
-        @media (max-width: 1024px) {
-          .header-desktop-nav,
-          .header-desktop-actions,
-          .mega-menu-wrapper,
-          .resources-dropdown-wrapper {
-            display: none !important;
-          }
-          .header-mobile-actions {
-            display: flex !important;
-          }
-        }
-
-        /* Laptop Zoom 125% adjustment (1025px - 1280px) */
-        @media (min-width: 1025px) and (max-width: 1280px) {
-          .header-desktop-nav {
-            gap: 2px;
-          }
-          .nav-link, .nav-link-btn {
-            padding: 6px 8px;
-            font-size: 0.8125rem;
-          }
-          .header-desktop-actions {
-            gap: 8px;
-          }
-          .header-survey-btn {
-            padding: 0 11px;
-            font-size: 0.775rem;
-            height: 38px;
-          }
-          .header-cta-button {
-            padding: 0 13px;
-            font-size: 0.8rem;
-            height: 38px;
-          }
-          .hotline-label {
-            display: none;
-          }
-          .hotline-num {
-            font-size: 0.85rem;
-          }
-          .hotline-icon-wrap {
-            width: 32px;
-            height: 32px;
-          }
-          .mega-pillars-grid {
-            gap: 0.55rem;
-          }
-          .mega-pillar-card {
-            padding: 0.8rem 0.65rem;
-            min-height: 180px;
-          }
-          .pillar-title {
-            font-size: 0.8rem;
-          }
-          .pillar-subtitle {
-            font-size: 0.675rem;
-          }
-          .pillar-desc {
-            font-size: 0.675rem;
-          }
-        }
-
-        /* ==========================================================================
-           MOBILE DRAWER (FULL ACCESSIBILITY, TOUCH TARGET >= 44PX)
-           ========================================================================== */
-        .mobile-drawer-overlay {
-          position: fixed;
-          inset: 0;
-          z-index: 1100;
-          display: flex;
-          justify-content: flex-end;
-        }
-
-        .mobile-drawer-backdrop {
+        /* Simple Dropdown for Knowledge */
+        .dropdown-menu-simple {
           position: absolute;
-          inset: 0;
-          background-color: rgba(15, 23, 42, 0.5);
-          animation: drawerBackdropFade 0.2s ease-out;
-        }
-
-        @keyframes drawerBackdropFade {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-
-        .mobile-drawer-panel {
-          position: relative;
-          width: min(390px, 92vw);
-          height: 100%;
+          top: 100%;
+          left: -30px;
+          width: 310px;
           background-color: #ffffff;
-          box-shadow: -4px 0 24px rgba(0, 0, 0, 0.14);
+          border: 1px solid var(--color-border);
+          border-radius: 14px;
+          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+          padding: 0.65rem;
+          z-index: 120;
+          margin-top: 0.5rem;
           display: flex;
           flex-direction: column;
-          z-index: 1110;
-          animation: drawerSlideIn 0.24s cubic-bezier(0.16, 1, 0.3, 1);
-          box-sizing: border-box;
+          gap: 0.25rem;
+          animation: megaFadeIn 0.18s ease-out;
         }
 
-        @keyframes drawerSlideIn {
-          from {
-            transform: translateX(100%);
-          }
-          to {
-            transform: translateX(0);
-          }
-        }
-
-        .drawer-header {
-          height: 64px;
-          padding: 0 16px;
+        .simple-dropdown-item {
           display: flex;
-          align-items: center;
-          justify-content: space-between;
-          border-bottom: 1px solid #f1f5f9;
-          flex-shrink: 0;
-        }
-
-        .drawer-brand {
-          display: flex;
-          align-items: center;
-        }
-
-        .drawer-logo-img {
-          height: 32px;
-          width: auto;
-          object-fit: contain;
-        }
-
-        .drawer-close-btn {
-          width: 44px;
-          height: 44px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border: none;
-          background: #f8fafc;
+          align-items: flex-start;
+          gap: 0.65rem;
+          padding: 0.55rem 0.65rem;
           border-radius: 8px;
-          color: #334155;
-          cursor: pointer;
-          transition: background-color 0.15s ease, color 0.15s ease;
-        }
-
-        .drawer-close-btn:hover {
-          background-color: #fee2e2;
-          color: #dc2626;
-        }
-
-        .drawer-scroll-body {
-          flex: 1;
-          overflow-y: auto;
-          padding: 16px;
-          scrollbar-gutter: stable;
-          display: flex;
-          flex-direction: column;
-          gap: 20px;
-          box-sizing: border-box;
-        }
-
-        .drawer-section {
-          display: flex;
-          flex-direction: column;
-          gap: 8px;
-        }
-
-        .drawer-section-header {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 0 4px;
-        }
-
-        .drawer-section-label {
-          font-size: 0.6875rem;
-          font-weight: 750;
-          color: #0d7647;
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
-        }
-
-        .drawer-section-sub {
-          font-size: 0.6875rem;
-          color: #64748b;
-          font-weight: 500;
-        }
-
-        /* Drawer Pillars List */
-        .drawer-pillars-list {
-          display: flex;
-          flex-direction: column;
-          gap: 6px;
-        }
-
-        .drawer-pillar-item {
-          min-height: 52px;
-          padding: 8px 12px;
-          border-radius: 10px;
-          background-color: #f8fafc;
-          border: 1px solid #e2e8f0;
           text-decoration: none;
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          transition: background-color 0.15s ease, border-color 0.15s ease;
-          box-sizing: border-box;
+          transition: background-color var(--transition-fast);
         }
 
-        .drawer-pillar-item:hover,
-        .drawer-pillar-item.active {
-          background-color: #f0fdf4;
-          border-color: #a7f3d0;
+        .simple-dropdown-item:hover {
+          background-color: var(--color-primary-soft);
         }
 
-        .drawer-pillar-step {
-          font-size: 0.75rem;
-          font-weight: 800;
-          color: #0d7647;
-          width: 20px;
-          flex-shrink: 0;
-        }
-
-        .drawer-pillar-icon {
-          width: 32px;
-          height: 32px;
-          border-radius: 8px;
-          background-color: #ffffff;
-          border: 1px solid #e2e8f0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: #0d7647;
-          flex-shrink: 0;
-        }
-
-        .drawer-pillar-content {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          gap: 1px;
-          min-width: 0;
-        }
-
-        .drawer-pillar-title-row {
-          display: flex;
-          align-items: center;
-          gap: 6px;
-        }
-
-        .drawer-pillar-title {
-          font-size: 0.875rem;
-          font-weight: 700;
-          color: #0f172a;
-          line-height: 1.25;
-        }
-
-        .drawer-pillar-badge {
-          font-size: 0.5875rem;
-          font-weight: 700;
-          color: #15803d;
-          background-color: #dcfce7;
-          padding: 0.1rem 0.4rem;
-          border-radius: 999px;
-          white-space: nowrap;
-        }
-
-        .drawer-pillar-desc {
-          font-size: 0.725rem;
-          color: #64748b;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-
-        .drawer-pillar-arrow {
-          color: #94a3b8;
-          flex-shrink: 0;
-        }
-
-        .drawer-all-solutions-link {
-          min-height: 44px;
-          padding: 10px 14px;
-          background-color: #edf7f1;
-          border: 1px solid #c6ebd4;
-          border-radius: 10px;
-          color: #0d7647;
+        .item-main-text {
           font-size: 0.85rem;
           font-weight: 700;
-          text-decoration: none;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          margin-top: 2px;
-          transition: background-color 0.15s ease;
+          color: var(--color-navy);
+          line-height: 1.25;
         }
 
-        .drawer-all-solutions-link:hover {
-          background-color: #dcfce7;
-        }
-
-        /* Drawer Survey Card 0d */
-        .drawer-survey-card {
-          min-height: 54px;
-          padding: 10px 12px;
-          border-radius: 12px;
-          background-color: #f0fdf4;
-          border: 1.5px solid #86efac;
-          text-decoration: none;
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          transition: all 0.15s ease;
-          box-sizing: border-box;
-          margin-bottom: 4px;
-        }
-
-        .drawer-survey-card:hover {
-          background-color: #dcfce7;
-          border-color: #16a34a;
-        }
-
-        .drawer-survey-icon-wrap {
-          width: 36px;
-          height: 36px;
-          border-radius: 10px;
-          background-color: #0d7647;
-          color: #ffffff;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-shrink: 0;
-        }
-
-        .drawer-survey-info {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          gap: 2px;
-          min-width: 0;
-        }
-
-        .drawer-survey-headline {
-          display: flex;
-          align-items: center;
-          gap: 6px;
-        }
-
-        .drawer-survey-name {
-          font-size: 0.875rem;
-          font-weight: 750;
-          color: #064e3b;
-        }
-
-        .drawer-survey-tag {
-          font-size: 0.625rem;
-          font-weight: 800;
-          color: #ffffff;
-          background-color: #0d7647;
-          padding: 0.1rem 0.45rem;
-          border-radius: 999px;
-        }
-
-        .drawer-survey-sub {
+        .item-sub-text {
           font-size: 0.725rem;
-          color: #047857;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
+          color: var(--color-text-muted);
+          line-height: 1.35;
+          margin-top: 2px;
         }
 
-        .drawer-survey-arrow {
-          color: #0d7647;
-          flex-shrink: 0;
+        .dropdown-divider-line {
+          border-top: 1px solid var(--color-border);
+          padding-top: 0.35rem;
+          margin-top: 0.25rem;
         }
 
-        .drawer-link-with-icon {
+        .dropdown-view-all {
+          display: block;
+          font-size: 0.775rem;
+          font-weight: 800;
+          color: var(--color-primary);
+          text-decoration: none;
+          padding: 0.35rem 0.65rem;
+        }
+
+        /* Desktop Actions */
+        .header-actions-desktop {
+          display: flex;
+          align-items: center;
+          gap: 0.85rem;
+        }
+
+        .header-quick-hotline {
           display: inline-flex;
           align-items: center;
-          gap: 9px;
+          gap: 0.35rem;
+          font-size: 0.85rem;
+          font-weight: 800;
+          color: var(--color-navy);
+          text-decoration: none;
+          padding: 0.45rem 0.75rem;
+          border-radius: var(--radius-full);
+          background-color: #fafbfa;
+          border: 1px solid var(--color-border);
+          transition: all var(--transition-fast);
         }
 
-        .drawer-item-icon {
-          color: #0d7647;
-          flex-shrink: 0;
+        .header-quick-hotline:hover {
+          border-color: var(--color-orange);
+          color: var(--color-orange-dark);
         }
 
-        /* Drawer Nav List */
-        .drawer-nav-list {
+        .header-cta-btn {
+          font-size: 0.875rem !important;
+          padding: 0.55rem 1.1rem !important;
+          font-weight: 800 !important;
+        }
+
+        /* Mobile Controls */
+        .mobile-menu-toggle-btn {
+          display: none;
+          background: none;
+          border: none;
+          padding: 0.4rem;
+          color: var(--color-navy);
+          cursor: pointer;
+        }
+
+        @media (max-width: 1024px) {
+          .header-nav-desktop,
+          .header-actions-desktop {
+            display: none !important;
+          }
+          .mobile-menu-toggle-btn {
+            display: block !important;
+          }
+        }
+
+        /* Mobile Drawer */
+        .mobile-drawer-overlay {
+          position: fixed;
+          top: 70px;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: #ffffff;
+          z-index: 99;
+          overflow-y: auto;
+          box-sizing: border-box;
+        }
+
+        .mobile-drawer-body {
+          padding: 1.25rem;
           display: flex;
           flex-direction: column;
-          gap: 3px;
+          min-height: calc(100vh - 70px);
+          justify-content: space-between;
+          box-sizing: border-box;
         }
 
-        .drawer-nav-link {
-          min-height: 46px;
-          padding: 10px 14px;
-          font-size: 0.9375rem;
-          font-weight: 600;
-          color: #0f172a;
+        .mobile-nav-links {
+          display: flex;
+          flex-direction: column;
+          gap: 0.35rem;
+        }
+
+        .mobile-nav-item {
+          padding: 0.75rem 0.85rem;
+          font-size: 1rem;
+          font-weight: 800;
+          color: var(--color-navy);
           text-decoration: none;
           border-radius: 8px;
+        }
+
+        .mobile-nav-item.active {
+          background-color: var(--color-primary-soft);
+          color: var(--color-primary-dark);
+        }
+
+        .mobile-accordion {
+          border-radius: 8px;
+          background-color: #f8faf8;
+          border: 1px solid var(--color-border);
+          overflow: hidden;
+          margin: 0.25rem 0;
+        }
+
+        .mobile-accordion-toggle {
+          width: 100%;
           display: flex;
           align-items: center;
           justify-content: space-between;
-          transition: background-color 0.15s ease, color 0.15s ease;
-        }
-
-        .drawer-nav-link:hover {
-          background-color: #f8fafc;
-          color: #0d7647;
-        }
-
-        .drawer-nav-link.active {
-          background-color: #edf7f1;
-          color: #0d7647;
-          font-weight: 700;
-        }
-
-        .drawer-nav-badge {
-          font-size: 0.65rem;
-          font-weight: 600;
-          background-color: #dcfce7;
-          color: #15803d;
-          padding: 0.15rem 0.5rem;
-          border-radius: 999px;
-        }
-
-        /* Drawer Footer */
-        .drawer-footer {
-          padding: 16px;
-          border-top: 1px solid #e2e8f0;
-          background-color: #ffffff;
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
-          flex-shrink: 0;
-        }
-
-        .drawer-primary-cta {
-          min-height: 48px;
-          width: 100%;
-          background-color: #0d7647;
-          color: #ffffff;
-          font-size: 0.9375rem;
-          font-weight: 650;
+          padding: 0.75rem 0.85rem;
+          background: none;
           border: none;
-          border-radius: 9999px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 8px;
+          font-size: 0.95rem;
+          color: var(--color-navy);
           cursor: pointer;
-          box-shadow: 0 2px 8px rgba(13, 118, 71, 0.25);
-          font-family: inherit;
-          transition: background-color 0.15s ease, transform 0.15s ease;
         }
 
-        .drawer-primary-cta:hover {
-          background-color: #095935;
-          transform: translateY(-1px);
-        }
-
-        .drawer-hotline-card {
-          min-height: 48px;
-          width: 100%;
-          background-color: #f0fdf4;
-          border: 1px solid #c6ebd4;
-          border-radius: 12px;
-          padding: 8px 14px;
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          text-decoration: none;
-          box-sizing: border-box;
-          transition: all 0.15s ease;
-        }
-
-        .drawer-hotline-card:hover {
-          background-color: #dcfce7;
-          border-color: #0d7647;
-        }
-
-        .drawer-hotline-icon {
-          width: 32px;
-          height: 32px;
-          border-radius: 50%;
-          background-color: #0d7647;
-          color: #ffffff;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-shrink: 0;
-        }
-
-        .drawer-hotline-content {
+        .mobile-accordion-content {
           display: flex;
           flex-direction: column;
-          text-align: left;
+          gap: 0.3rem;
+          padding: 0.4rem 0.85rem 0.75rem;
+          border-top: 1px solid var(--color-border);
+          background-color: #ffffff;
         }
 
-        .drawer-hotline-sub {
-          font-size: 0.6875rem;
-          font-weight: 600;
-          color: #065f46;
-          text-transform: uppercase;
-          letter-spacing: 0.04em;
-          line-height: 1.15;
-        }
-
-        .drawer-hotline-num {
-          font-size: 0.975rem;
+        .mobile-sub-link {
+          display: flex;
+          align-items: center;
+          gap: 0.45rem;
+          font-size: 0.875rem;
           font-weight: 700;
-          color: #063d24;
-          line-height: 1.25;
-          font-variant-numeric: tabular-nums;
+          color: var(--color-navy);
+          text-decoration: none;
+          padding: 0.45rem 0;
         }
 
-        .drawer-footer-note {
-          font-size: 0.725rem;
-          color: #64748b;
-          text-align: center;
-          margin: 0;
-          line-height: 1.35;
+        .mobile-drawer-footer {
+          display: flex;
+          flex-direction: column;
+          gap: 0.65rem;
+          margin-top: 1.5rem;
+          padding-top: 1.25rem;
+          border-top: 1px solid var(--color-border);
+        }
+
+        .mobile-drawer-hotline {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.45rem;
+          padding: 0.75rem;
+          background-color: #fafbfa;
+          border: 1px solid var(--color-border);
+          border-radius: var(--radius-md);
+          color: var(--color-navy);
+          font-weight: 800;
+          font-size: 0.875rem;
+          text-decoration: none;
         }
       `}</style>
     </>
   );
 };
-
-export default Header;

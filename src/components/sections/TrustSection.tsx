@@ -1,479 +1,320 @@
 import React from 'react';
 import { Container } from '../ui/Container';
-import { COMPANY_INFO, CONTACT_INFO } from '../../data/landingContent';
-import { ShieldCheck, Building2, CheckCircle2, Phone, Award, Users, Receipt, FileCheck } from 'lucide-react';
+import { CONTACT_INFO, COMPANY_INFO } from '../../data/landingContent';
+import { ShieldCheck, Eye, Key, Phone, Building2, MapPin, Mail, ExternalLink, Smartphone, CheckCircle, Headphones } from 'lucide-react';
 
 export const TrustSection: React.FC = () => {
-  const handoverItems = [
+  const trustPillars = [
     {
-      badge: 'Tài sản 01',
-      title: 'Tên miền & Máy chủ chính chủ 100%',
-      desc: 'Đăng ký bằng CCCD và số điện thoại của bạn. Bạn nắm chìa khóa gốc, không lo bị giữ quyền kiểm soát hay tống tiền chuộc tên miền.'
+      num: '01',
+      icon: Eye,
+      title: 'Xem demo trước khi quyết định',
+      desc: 'LocalMate dựng sẵn bản mẫu website 0đ để bạn xem trên điện thoại trước khi chốt làm.'
     },
     {
-      badge: 'Tài sản 02',
-      title: 'Google Business Profile (Google Maps)',
-      desc: 'Bàn giao quyền Chủ sở hữu chính (Primary Owner) vào Gmail của bạn ngay khi hoàn tất xác minh vị trí địa phương.'
+      num: '02',
+      icon: ShieldCheck,
+      title: 'Giá được chốt trước khi làm',
+      desc: 'Báo giá rõ ràng từng hạng mục, nghiệm thu hài lòng mới thanh toán, không phát sinh chi phí ẩn.'
     },
     {
-      badge: 'Tài sản 03',
-      title: 'Bộ mã QR đánh giá Google & Bảng giá để bàn',
-      desc: 'Tạo QR giúp khách hàng đã sử dụng dịch vụ để lại đánh giá chân thực trên Google, thiết kế chuẩn in ấn đặt tại quầy.'
+      num: '03',
+      icon: Smartphone,
+      title: 'Website tối ưu điện thoại',
+      desc: 'Bố cục chữ to rõ ràng, hình ảnh sắc nét, có nút bấm gọi điện và nhắn Zalo trực tiếp.'
     },
     {
-      badge: 'Tài sản 04',
-      title: 'Video hướng dẫn tự sửa chữ & ảnh 2 phút',
-      desc: 'Quay video màn hình thực tế trên chính trang web của bạn: tự sửa giá món, đổi số điện thoại hoặc thêm bài viết mới trong tích tắc.'
+      num: '04',
+      icon: Phone,
+      title: 'Hotline & Zalo hoạt động rõ ràng',
+      desc: 'Đội ngũ tư vấn trực tiếp, phản hồi nhanh chóng và có mặt khi bạn cần hỗ trợ.'
     },
     {
-      badge: 'Tài sản 05',
-      title: 'Hỗ trợ kỹ thuật viên Zalo 1-1 không giới hạn',
-      desc: 'Cần cập nhật hay trang web gặp sự cố, chỉ cần nhắn tin vào nhóm Zalo riêng, kỹ thuật viên địa phương xử lý nhanh trong ngày.'
-    }
-  ];
-
-  const socialStats = [
-    {
-      icon: Users,
-      value: '150+',
-      label: 'Cửa hàng & Tiệm địa phương tin tưởng'
+      num: '05',
+      icon: Key,
+      title: 'Bạn sở hữu tài khoản & dữ liệu',
+      desc: 'Bàn giao 100% quyền quản trị tên miền, tài khoản Google Maps, Google Ads và Fanpage chính chủ.'
     },
     {
-      icon: Award,
-      value: '100%',
-      label: 'Khách hàng toàn quyền sở hữu tài khoản'
-    },
-    {
-      icon: Receipt,
-      value: '0đ',
-      label: 'Chi phí phát sinh ngoài hợp đồng'
+      num: '06',
+      icon: Headphones,
+      title: 'Có người hỗ trợ sau bàn giao',
+      desc: 'Hướng dẫn sử dụng tận tình, hỗ trợ cập nhật nội dung và sửa lỗi kỹ thuật trọn đời dự án.'
     }
   ];
 
   return (
-    <section className="section-component trust-legal-section" id="cam-ket" aria-label="Pháp nhân và Bàn giao minh bạch">
+    <section id="cam-ket" style={{ padding: 'clamp(3rem, 5vw, 5rem) 0', backgroundColor: '#fafbfa', borderBottom: '1px solid var(--color-border)' }}>
       <Container size="lg">
         {/* Section Header */}
         <div className="section-header">
           <span className="section-eyebrow">
-            <ShieldCheck size={14} className="eyebrow-icon" /> BẢO CHỨNG MINH BẠCH &amp; PHÁP NHÂN
+            <ShieldCheck size={14} /> CAM KẾT &amp; PHÁP NHÂN MINH BẠCH
           </span>
-          <h2 className="section-title">Bạn Luôn Biết Mình Đang Trả Tiền Cho Gì</h2>
-          <p className="subtitle">
-            LocalMate hoạt động với tư cách pháp nhân doanh nghiệp đầy đủ. Hợp đồng kinh tế có giá trị pháp lý, nghiệm thu cầm tay chỉ việc và bàn giao 100% quyền kiểm soát cho bạn.
+          <h2 style={{ fontSize: 'var(--font-size-h2)', color: 'var(--color-navy)', fontWeight: 800 }}>
+            Rõ ràng từ đầu, yên tâm khi bàn giao
+          </h2>
+          <p className="subtitle" style={{ marginTop: '0.4rem' }}>
+            Sự minh bạch, giá cả rõ ràng và sự tôn trọng khách hàng là nền tảng để LocalMate đồng hành lâu dài cùng doanh nghiệp bạn.
           </p>
         </div>
 
-        {/* Social Proof Stats Bar */}
-        <div className="trust-stats-bar">
-          {socialStats.map((stat, idx) => {
-            const SIcon = stat.icon;
+        {/* 6 Clean Numbered Cards (3x2 Desktop, 2x3 Tablet, 1 col Mobile) */}
+        <div className="trust-grid-3x2">
+          {trustPillars.map((item) => {
+            const Icon = item.icon;
             return (
-              <div className="trust-stat-item" key={idx}>
-                <div className="stat-icon-wrapper" aria-hidden="true">
-                  <SIcon size={20} />
+              <div key={item.num} className="trust-numbered-card interactive-card">
+                <div className="trust-card-top">
+                  <span className="trust-num-badge">{item.num}</span>
+                  <div className="trust-icon-box">
+                    <Icon size={18} color="var(--color-primary)" />
+                  </div>
                 </div>
-                <div className="stat-text">
-                  <span className="stat-number">{stat.value}</span>
-                  <span className="stat-label">{stat.label}</span>
+
+                <div>
+                  <h3 style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--color-navy)', marginBottom: '0.35rem', lineHeight: 1.35 }}>
+                    {item.title}
+                  </h3>
+                  <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.55, margin: 0 }}>
+                    {item.desc}
+                  </p>
                 </div>
               </div>
             );
           })}
         </div>
 
-        <div className="trust-split-grid">
-          {/* LEFT: Handover Checklist */}
-          <div className="handover-checklist-card">
-            <div className="checklist-header">
-              <span className="checklist-badge">
-                <FileCheck size={13} /> NGHIỆM THU MINH BẠCH
-              </span>
-              <h3 className="checklist-title">5 Tài Sản Thực Tế Cầm Tay Khi Nghiệm Thu</h3>
-              <p className="checklist-subtitle">
-                Chúng tôi không bàn giao mã nguồn thô khó hiểu. Bạn nhận được toàn bộ tài sản số vận hành ngay:
-              </p>
+        {/* Company Legal & Direct Support 2-Column Grid */}
+        <div className="company-trust-grid" style={{ marginTop: '2.5rem' }}>
+          {/* Left Box: Legal Identity */}
+          <div className="legal-identity-card">
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+                <div className="legal-icon-box">
+                  <Building2 size={22} color="var(--color-primary)" />
+                </div>
+                <div>
+                  <span style={{ fontSize: '0.725rem', fontWeight: 800, color: 'var(--color-primary-dark)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                    PHÁP NHÂN DOANH NGHIỆP
+                  </span>
+                  <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--color-navy)', margin: 0 }}>
+                    {COMPANY_INFO.legalName}
+                  </h3>
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', fontSize: '0.875rem', color: 'var(--color-text-muted)' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <CheckCircle size={15} color="var(--color-primary)" style={{ flexShrink: 0 }} />
+                  <span><strong>Mã số thuế:</strong> {COMPANY_INFO.taxCode}</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem' }}>
+                  <MapPin size={15} color="var(--color-primary)" style={{ flexShrink: 0, marginTop: 3 }} />
+                  <span><strong>Trụ sở:</strong> {COMPANY_INFO.taxAddress}</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <Mail size={15} color="var(--color-primary)" style={{ flexShrink: 0 }} />
+                  <span><strong>Email:</strong> {CONTACT_INFO.email}</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <Phone size={15} color="var(--color-primary)" style={{ flexShrink: 0 }} />
+                  <span><strong>Hotline / Zalo:</strong> {CONTACT_INFO.phoneDisplay}</span>
+                </div>
+              </div>
             </div>
 
-            <div className="checklist-items-list">
-              {handoverItems.map((item, idx) => (
-                <div key={idx} className="checklist-item-row">
-                  <div className="item-check-icon-wrap" aria-hidden="true">
-                    <CheckCircle2 size={18} className="item-check-icon" />
-                  </div>
-                  <div className="item-content">
-                    <div className="item-header-meta">
-                      <span className="item-tag">{item.badge}</span>
-                      <h4 className="item-heading">{item.title}</h4>
-                    </div>
-                    <p className="item-detail">{item.desc}</p>
-                  </div>
-                </div>
-              ))}
+            <div className="legal-bottom-pill">
+              <span>Đồng hành cùng hộ kinh doanh và cửa hàng địa phương • Hợp đồng minh bạch &amp; xuất hóa đơn VAT đầy đủ.</span>
             </div>
           </div>
 
-          {/* RIGHT: Legal Identity Box & Direct Team */}
-          <div className="legal-identity-panel">
+          {/* Right Box: Direct Advisory */}
+          <div className="advisory-card">
             <div>
-              <div className="legal-panel-header">
-                <div className="legal-icon-wrap" aria-hidden="true">
-                  <Building2 size={24} />
-                </div>
-                <div>
-                  <span className="legal-eyebrow">PHÁP NHÂN DOANH NGHIỆP RÕ RÀNG</span>
-                  <h3 className="legal-company-name">{COMPANY_INFO.legalName}</h3>
-                </div>
-              </div>
-
-              <div className="legal-info-table">
-                <div className="legal-table-row">
-                  <span className="legal-table-label">Mã số thuế</span>
-                  <strong className="legal-table-value">{COMPANY_INFO.taxCode}</strong>
-                </div>
-                <div className="legal-table-row">
-                  <span className="legal-table-label">Tình trạng hoạt động</span>
-                  <span className="legal-table-value legal-badge-active">{COMPANY_INFO.status}</span>
-                </div>
-                <div className="legal-table-row">
-                  <span className="legal-table-label">Địa chỉ trụ sở</span>
-                  <span className="legal-table-value">{COMPANY_INFO.taxAddress}</span>
-                </div>
-                <div className="legal-table-row">
-                  <span className="legal-table-label">Hợp đồng &amp; Hóa đơn</span>
-                  <span className="legal-table-value legal-badge-highlight">Có xuất hóa đơn VAT điện tử</span>
-                </div>
-              </div>
+              <span style={{ fontSize: '0.725rem', fontWeight: 800, color: 'var(--color-primary-dark)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                TƯ VẤN &amp; HỖ TRỢ TRỰC TIẾP
+              </span>
+              <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--color-navy)', marginTop: '0.25rem', marginBottom: '0.5rem' }}>
+                Bạn đang cần tư vấn theo ngành nghề?
+              </h3>
+              <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.6, margin: 0 }}>
+                Không cần phải tự mày mò hay lo lắng phát sinh chi phí. Đội ngũ LocalMate luôn sẵn sàng lắng nghe và gửi bạn xem trước bản demo website 0đ phù hợp nhất.
+              </p>
             </div>
 
-            {/* Local Tech Hotline Box */}
-            <div className="legal-contact-callout">
-              <div className="callout-hotline-label">Đội ngũ kỹ thuật viên trực tiếp tại địa phương:</div>
-              <a href={`tel:${CONTACT_INFO.phoneRaw}`} className="callout-hotline-link">
-                <Phone size={18} /> {CONTACT_INFO.phoneDisplay}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+              <a
+                href={CONTACT_INFO.zaloUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="zalo-cta-btn"
+              >
+                <span>Nhắn tin Zalo tư vấn ngay</span>
+                <ExternalLink size={15} />
               </a>
-              <p className="callout-note">
-                Sẵn sàng trao đổi trực tiếp tại cửa hàng của bạn hoặc giải quyết sự cố kỹ thuật qua Zalo 24/7.
-              </p>
+
+              <a
+                href={`tel:${CONTACT_INFO.phoneRaw}`}
+                className="phone-cta-btn"
+              >
+                <Phone size={15} color="var(--color-primary)" />
+                <span>Gọi Hotline: {CONTACT_INFO.phoneDisplay}</span>
+              </a>
             </div>
           </div>
         </div>
       </Container>
 
       <style>{`
-        .trust-legal-section {
-          background-color: var(--color-surface-subtle);
-          border-bottom: 1px solid var(--color-border);
-          padding: clamp(3.5rem, 6vw, 5.5rem) 0;
-        }
-
-        /* Social Proof Stats Bar */
-        .trust-stats-bar {
+        .trust-grid-3x2 {
           display: grid;
           grid-template-columns: 1fr;
-          gap: 1rem;
-          background-color: #ffffff;
-          border: 1px solid var(--color-border);
-          border-radius: var(--radius-lg);
-          padding: 1.25rem 1.75rem;
-          margin-bottom: 2.5rem;
-        }
-
-        @media (min-width: 640px) {
-          .trust-stats-bar {
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-          }
-        }
-
-        .trust-stat-item {
-          display: flex;
-          align-items: center;
-          gap: 1rem;
-        }
-
-        .stat-icon-wrapper {
-          width: 44px;
-          height: 44px;
-          border-radius: 12px;
-          background-color: var(--color-primary-soft);
-          color: var(--color-primary);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-shrink: 0;
-        }
-
-        .stat-text {
-          display: flex;
-          flex-direction: column;
-        }
-
-        .stat-number {
-          font-size: 1.25rem;
-          font-weight: 800;
-          color: var(--ink);
-          line-height: 1.2;
-        }
-
-        .stat-label {
-          font-size: 0.8125rem;
-          color: var(--ink-soft);
-          line-height: 1.35;
-          text-wrap: pretty;
-        }
-
-        /* Split Grid */
-        .trust-split-grid {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 2rem;
-          align-items: stretch;
-        }
-
-        @media (min-width: 1024px) {
-          .trust-split-grid {
-            grid-template-columns: 1.35fr 1fr;
-            gap: 2.5rem;
-          }
-        }
-
-        /* LEFT HANDOVER CARD */
-        .handover-checklist-card {
-          background-color: #ffffff;
-          border: 1px solid var(--color-border);
-          border-radius: var(--radius-xl);
-          padding: clamp(1.5rem, 3vw, 2.25rem);
-          display: flex;
-          flex-direction: column;
-          gap: 1.75rem;
-        }
-
-        .checklist-badge {
-          font-size: 0.75rem;
-          font-weight: 800;
-          color: var(--color-primary-dark);
-          background-color: var(--color-primary-soft);
-          border: 1px solid var(--color-primary-border);
-          padding: 0.25rem 0.65rem;
-          border-radius: var(--radius-full);
-          display: inline-flex;
-          align-items: center;
-          gap: 0.35rem;
-          margin-bottom: 0.5rem;
-        }
-
-        .checklist-title {
-          font-size: 1.35rem;
-          font-weight: 800;
-          color: var(--ink);
-          margin: 0 0 0.4rem 0;
-          line-height: 1.3;
-          text-wrap: pretty;
-        }
-
-        .checklist-subtitle {
-          font-size: 0.875rem;
-          color: var(--ink-muted);
-          margin: 0;
-          line-height: 1.45;
-          text-wrap: pretty;
-        }
-
-        .checklist-items-list {
-          display: flex;
-          flex-direction: column;
           gap: 1.25rem;
         }
 
-        .checklist-item-row {
-          display: flex;
-          align-items: flex-start;
-          gap: 1rem;
+        @media (min-width: 640px) {
+          .trust-grid-3x2 {
+            grid-template-columns: repeat(2, 1fr);
+          }
         }
 
-        .item-check-icon-wrap {
-          width: 32px;
-          height: 32px;
-          border-radius: var(--radius-full);
+        @media (min-width: 1024px) {
+          .trust-grid-3x2 {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+          }
+        }
+
+        .trust-numbered-card {
+          padding: 1.35rem;
+          display: flex;
+          flex-direction: column;
+          gap: 0.85rem;
+          background-color: #ffffff;
+          box-sizing: border-box;
+        }
+
+        .trust-card-top {
+          display: flex;
+          justifyContent: space-between;
+          align-items: center;
+        }
+
+        .trust-num-badge {
+          font-size: 0.85rem;
+          font-weight: 900;
+          color: var(--color-primary);
           background-color: var(--color-primary-soft);
+          padding: 0.2rem 0.55rem;
+          border-radius: var(--radius-sm);
+          font-variant-numeric: tabular-nums;
+        }
+
+        .trust-icon-box {
+          width: 34px;
+          height: 34px;
+          background-color: var(--color-primary-soft);
+          border-radius: var(--radius-sm);
           display: flex;
           align-items: center;
           justify-content: center;
-          flex-shrink: 0;
-          margin-top: 2px;
         }
 
-        .item-check-icon {
-          color: var(--color-primary);
+        .company-trust-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
         }
 
-        .item-content {
-          display: flex;
-          flex-direction: column;
-          gap: 0.2rem;
+        @media (min-width: 860px) {
+          .company-trust-grid {
+            grid-template-columns: 1fr 1fr;
+          }
         }
 
-        .item-header-meta {
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-          flex-wrap: wrap;
-        }
-
-        .item-tag {
-          font-size: 0.6875rem;
-          font-weight: 700;
-          color: var(--color-primary-dark);
-          background-color: var(--color-primary-soft);
-          padding: 0.1rem 0.45rem;
-          border-radius: 4px;
-        }
-
-        .item-heading {
-          font-size: 0.95rem;
-          font-weight: 700;
-          color: var(--ink);
-          margin: 0;
-          text-wrap: pretty;
-        }
-
-        .item-detail {
-          font-size: 0.8125rem;
-          color: var(--ink-soft);
-          line-height: 1.5;
-          margin: 0;
-          text-wrap: pretty;
-        }
-
-        /* RIGHT LEGAL PANEL */
-        .legal-identity-panel {
+        .legal-identity-card, .advisory-card {
           background-color: #ffffff;
           border: 1px solid var(--color-border);
           border-radius: var(--radius-xl);
-          padding: clamp(1.5rem, 3vw, 2.25rem);
+          padding: clamp(1.25rem, 3vw, 1.75rem);
+          box-shadow: var(--shadow-sm);
           display: flex;
           flex-direction: column;
-          justify-content: space-between;
-          gap: 1.75rem;
+          justifyContent: space-between;
+          gap: 1.5rem;
+          box-sizing: border-box;
         }
 
-        .legal-panel-header {
-          display: flex;
-          align-items: center;
-          gap: 1rem;
+        .legal-identity-card {
+          border-left: 4px solid var(--color-primary);
         }
 
-        .legal-icon-wrap {
-          width: 48px;
-          height: 48px;
-          border-radius: var(--radius-lg);
+        .advisory-card {
+          border-left: 4px solid var(--color-primary-light);
+        }
+
+        .legal-icon-box {
+          width: 40px;
+          height: 40px;
+          border-radius: var(--radius-md);
           background-color: var(--color-primary-soft);
-          color: var(--color-primary);
           display: flex;
           align-items: center;
           justify-content: center;
           flex-shrink: 0;
         }
 
-        .legal-eyebrow {
-          font-size: 0.75rem;
-          font-weight: 700;
-          color: var(--color-primary-dark);
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
-        }
-
-        .legal-company-name {
-          font-size: 1.15rem;
-          font-weight: 800;
-          color: var(--ink);
-          margin: 0.2rem 0 0 0;
-          line-height: 1.3;
-          text-wrap: pretty;
-        }
-
-        .legal-info-table {
-          display: flex;
-          flex-direction: column;
-          gap: 0.9rem;
-          border-top: 1px solid var(--color-border-subtle);
-          border-bottom: 1px solid var(--color-border-subtle);
-          padding: 1.25rem 0;
-          margin-top: 1.25rem;
-        }
-
-        .legal-table-row {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-start;
-          gap: 1rem;
-          font-size: 0.875rem;
-        }
-
-        .legal-table-label {
-          color: var(--ink-muted);
-          flex-shrink: 0;
-        }
-
-        .legal-table-value {
-          color: var(--ink);
-          text-align: right;
-          font-weight: 600;
-        }
-
-        .legal-badge-active {
-          color: var(--color-primary);
+        .legal-bottom-pill {
           background-color: var(--color-primary-soft);
-          padding: 0.15rem 0.5rem;
-          border-radius: var(--radius-full);
-          font-size: 0.75rem;
-        }
-
-        .legal-badge-highlight {
+          border: 1px solid var(--color-primary-border);
+          padding: 0.65rem 0.85rem;
+          border-radius: var(--radius-md);
+          font-size: 0.8rem;
           color: var(--color-primary-dark);
-          font-weight: 700;
+          font-weight: 600;
+          line-height: 1.4;
         }
 
-        .legal-contact-callout {
-          background-color: var(--color-surface-subtle);
-          border: 1px solid var(--color-border-subtle);
-          border-radius: var(--radius-lg);
-          padding: 1.25rem;
+        .zalo-cta-btn {
           display: flex;
-          flex-direction: column;
-          gap: 0.5rem;
-        }
-
-        .callout-hotline-label {
-          font-size: 0.8125rem;
-          color: var(--ink-muted);
-        }
-
-        .callout-hotline-link {
-          display: inline-flex;
           align-items: center;
-          gap: 0.5rem;
-          font-size: 1.15rem;
-          font-weight: 800;
-          color: var(--color-primary);
+          justify-content: center;
+          gap: 0.45rem;
+          background-color: var(--color-primary);
+          color: #ffffff;
+          padding: 0.75rem 1.25rem;
+          border-radius: var(--radius-md);
+          font-weight: 700;
+          font-size: 0.9rem;
           text-decoration: none;
+          transition: all var(--transition-fast);
         }
 
-        .callout-hotline-link:hover {
-          text-decoration: underline;
+        .zalo-cta-btn:hover {
+          background-color: var(--color-primary-hover);
         }
 
-        .callout-note {
-          font-size: 0.8125rem;
-          color: var(--ink-soft);
-          margin: 0;
-          line-height: 1.45;
-          text-wrap: pretty;
+        .phone-cta-btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.45rem;
+          background-color: #f8fafc;
+          border: 1px solid var(--color-border);
+          color: var(--color-navy);
+          padding: 0.65rem 1.25rem;
+          border-radius: var(--radius-md);
+          font-weight: 700;
+          font-size: 0.85rem;
+          text-decoration: none;
+          transition: all var(--transition-fast);
+        }
+
+        .phone-cta-btn:hover {
+          background-color: var(--color-primary-soft);
         }
       `}</style>
     </section>
   );
 };
-
-export default TrustSection;
