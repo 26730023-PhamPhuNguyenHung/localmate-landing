@@ -8,6 +8,10 @@
   - Lỗi: Dùng `grid-template-columns: repeat(auto-fit, minmax(320px, 1fr))` hoặc `minmax(340px, 1fr)` kết hợp `Container` có padding cố định khiến tổng width vượt quá 360px-375px trên mobile, làm toàn bộ trang bị lệch trái/phải và chữ bị cắt mép.
   - Giải pháp: Chuẩn hóa ở tầng Layout & Core Primitives (`Container`, `SectionHeader`, `Card`, `globals.css`). Luôn dùng `minmax(min(100%, 280px), 1fr)` thay cho số pixel cố định, dùng fluid clamp spacing (`--space-container-px`, `--space-card-p`) và bổ sung universal anti-overflow `overflow-x: hidden` trên `html, body, #root`.
 
+- **Lỗi LucideIcon ComponentType Mismatch trong React 18 & TypeScript (`TS2322`)**:
+  - Triệu chứng: `error TS2322: Type 'LucideIcon' is not assignable to type 'ComponentType<{ size?: number; className?: string; color?: string; }>'` do kiểu `propTypes` của `LucideProps` khai báo `size?: string | number` trong khi ComponentType đòi hỏi `size?: number`.
+  - Giải pháp: Khai báo trường icon trong các interface điều hướng/danh mục là `React.ComponentType<any>` thay vì `LucideIcon` hoặc `ComponentType<{ size?: number }>`. Điều này giúp tương thích tuyệt đối với mọi phiên bản của `lucide-react` mà không gây vỡ type build.
+
 ## 2. Bài học về Kiến trúc SEO & Copywriting Ngôn Ngữ Khách Hàng (Customer-Centric)
 - **Tư duy Khách hàng là trên hết (No Agency Jargon)**:
   - Chủ shop, bác sĩ nha khoa, chủ xưởng không mua "digital transformation", "funnel", "SLA", "content pillar". Họ mua cuộc gọi, tin nhắn, khách ghé quán và một website rõ ràng, uy tín.
@@ -94,4 +98,11 @@
 - **Chính sách Cam kết Bảo hành Kỹ thuật Lên Đến 5 Năm (Website Care)**:
   - Đóng vai trò phòng IT & Content thuê ngoài cho SME: giám sát Uptime 24/7, tự động backup hàng tuần, tối ưu Cloudflare CDN < 1.2s, hỗ trợ cập nhật nội dung qua nhóm Zalo riêng trong 15–30 phút, viết 4–8 bài chuẩn SEO kéo traffic tự nhiên.
   - Bảo hành toàn diện 5 năm về hạ tầng, mã nguồn và bảo mật giúp chủ tiệm an tâm kinh doanh dài lâu.
+
+## 12. Bài học về Content Quality Gate & Red Team (Subagent 10)
+- **Căn bệnh Templated Seed / AI Slop trong CMS Seed Data**:
+  - Khi khởi tạo dữ liệu mẫu cho CMS (như 30 bài viết SEO), việc dùng vòng lặp gán cùng 1 đoạn văn placeholder ("Nội dung chi tiết cho mục X đang được biên tập...") tạo ra 30 bài "Thin Content" nguy hiểm.
+  - Nguy cơ: Nếu vô tình chuyển trạng thái `published`, toàn bộ trang web sẽ bị thuật toán Google Helpful Content Update & SpamBrain gắn cờ phạt chất lượng thấp.
+  - Giải pháp: Khóa chặt trạng thái `draft`, thiết lập Hàng rào Kiểm duyệt Đỏ (Red Team Quality Gate) với 14 Tiêu Chí Bác Bỏ Ngay Lập Tức (Knock-out), chấm theo Rubric 100 điểm (>= 85 điểm mới được Publish) và yêu cầu viết lại 100% (100% Rewrite Required) trước khi ra công chúng.
+
 

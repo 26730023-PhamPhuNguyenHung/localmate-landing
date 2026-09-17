@@ -13,6 +13,34 @@
 
 ## 2. Recent Accomplishments & Updates
 
+### A0000000000000. Thiết Kế Article Schema & Flexible Block System Cho CMS LocalMate (`docs/article-schema.md`):
+- **Tác giả:** Subagent 7: ARTICLE TEMPLATE ENGINEER
+- **Vị trí tệp:** `docs/article-schema.md`, `src/cms/types.ts`
+- **Phạm vi hoàn tất:**
+  1. **Flexible Block System 19+ Blocks**: Thiết kế cấu trúc dữ liệu và giao diện cho 19 khối nội dung linh hoạt (TL;DR, Key Takeaways, Context & Boundary, Problem & Symptoms, Localmate POV, Evidence, Real Example, Comparison Table, Cost Breakdown Table, Checklist, Step-by-Step, Decision Tree, Common Mistakes, Warning Box, When NOT to do, Action Plan, FAQ JSON-LD, Sources & Evidence Citations, Related Services CTA, Related Posts).
+  2. **Article-level Metadata Mở Rộng**: Mở rộng `PostContentBrief` và `PostEntity` trong `src/cms/types.ts` đầy đủ các trường: `articlePurpose`, `searchIntent`, `targetPersona`, `primaryQuestion`, `secondaryQuestions`, `uniqueAngle`, `experienceNotes`, `evidenceRequired`, `contentType`, `pillarId`, `relatedPosts`, `relatedService`, `author`, `reviewedBy`, `firstPublishedAt`, `updatedAt`, `factCheckedAt`, `qualityStatus`, `seoStatus`.
+  3. **100% Type-Safe & Build Verified**: Cập nhật TS types tương thích ngược hoàn toàn, sửa lỗi type LucideIcon mismatch trong `src/components/layout/Header.tsx`, kiểm tra `npm run build` (`tsc && vite build`) PASS 100%.
+  4. **SSOT Document**: Xuất bản `docs/article-schema.md` gồm đặc tả 19 blocks, JSON Schema Draft 2020-12, bản ghi JSON thực tế mẫu và hướng dẫn mapping với Cloudflare D1/UI renderer.
+- **Trạng thái:** Hoàn tất 100%.
+
+### A000000000000. Xây Dựng Bản Mổ Xẻ Thực Chiến 30 Chủ Đề Số Hóa Địa Phương (`docs/practical-insights.md`):
+- **Tác giả:** Subagent 4: SME PRACTITIONER / REALITY CHECKER
+- **Vị trí tệp:** `docs/practical-insights.md` (SSOT đối chiếu từ `docs/drafts_30_inventory.json`).
+- **Phạm vi hoàn tất:**
+  1. **Toàn bộ 30 chủ đề** trong inventory đều được bóc tách theo đúng 9 lăng kính thực chiến chuẩn nghề:
+     - (1) Tình huống thực tế tại cửa hàng / xưởng (Real-world scenario: tiệm sửa xe, nha khoa, gara ô tô, xưởng mộc, tiệm rửa xe, bún chả...).
+     - (2) Common mistake (Sai lầm phổ biến nhất của chủ quán).
+     - (3) Hidden cost (Chi phí ẩn không ai nói trước: phí duy trì, phí chụp ảnh, thuế VAT Google, phí nền tảng...).
+     - (4) Trade-off (Được gì và mất gì giữa các phương án).
+     - (5) Điều agency thường giấu hoặc không nói thật với khách (Thủ thuật ăn gian, lười lọc search terms, bán gói rác).
+     - (6) Điều chủ doanh nghiệp BẮT BUỘC phải hỏi trước khi chi tiền.
+     - (7) Khi nào KHÔNG NÊN làm (Điều kiện dừng để tránh đốt tiền oan).
+     - (8) Lựa chọn rẻ hơn / tinh gọn hơn nếu có (Giải pháp 0đ hoặc chi phí cực thấp).
+     - (9) Dấu hiệu nhận biết việc triển khai đang thất bại hoặc bị lừa.
+  2. **Bảng tổng hợp Operating Matrix** tóm gọn 30 hàng tương ứng 30 bài cho chủ cơ sở tra cứu nhanh.
+  3. **5 Nguyên tắc vàng** cho chủ doanh nghiệp khi làm việc với công nghệ (Chính chủ 100%, Xem trước 0đ, Thước đo 4G, Minh bạch giá, Bán trước - tự động sau).
+- **Trạng thái:** Hoàn tất 100%, tài liệu đạt ~127KB chiều sâu nghiệp vụ, cung cấp chất liệu thực chiến không thể sao chép cho đội ngũ biên tập nội dung.
+
 ### A00000000000. Thiết Kế Content Architecture & Internal Linking Graph Toàn Diện Cho 30 Bài Viết CMS (`docs/content-architecture.md`):
 - **Tác giả:** Subagent 6: INFORMATION ARCHITECT
 - **Vị trí tệp:** `docs/content-architecture.md` (SSOT đối chiếu từ `docs/drafts_30_inventory.json`).

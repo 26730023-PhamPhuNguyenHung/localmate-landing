@@ -2,6 +2,81 @@
 
 Ghi nhận các mốc sự kiện, commit và trạng thái vận hành của dự án.
 
+## [2026-09-17] - Thiết Kế Article Schema & Flexible Block System Cho CMS LocalMate (Subagent 7)
+- **Bối cảnh & Mục tiêu**:
+  - Thiết kế kiến trúc dữ liệu và hệ thống khối nội dung linh hoạt (Flexible Content Blocks) cho LocalMate CMS.
+  - Chuyển đổi từ mô hình bài viết văn bản dài thông thường sang các tài sản nội dung chuyển đổi (Conversion Content Assets) chuẩn E-E-A-T và Answer-First (tối ưu Google AI Overviews & Helpful Content).
+  - Tích hợp 19+ content blocks có cấu trúc chặt chẽ và mở rộng Metadata cấp bài viết (Article-level Metadata) trong `src/cms/types.ts`.
+- **Thực thi Kỹ thuật**:
+  1. *Khảo sát Codebase Hiện Tại*:
+     - `src/cms/types.ts`: Tìm hiểu các interface thực thể `PostEntity`, `PostContentBrief`, `CategoryEntity`, `TagEntity`.
+     - `src/admin/editor/PostEditorPage.tsx`: Phân tích cách lưu trữ metadata và tương tác với Tiptap Editor.
+     - `scripts/generate-seeds.js`: Kiểm tra cấu trúc seed data và phương thức render tài liệu.
+  2. *Thiết kế Hệ thống 19+ Content Blocks Linh Hoạt*:
+     - Định nghĩa `ContentBlockType` và `BaseContentBlock<TType, TData>` cùng 19 data interfaces chuyên dụng:
+       1. `tldr_answer_first`: Tóm tắt trực diện trong 30 giây.
+       2. `key_takeaways`: Điểm cốt lõi cần nhớ có nhãn phân loại.
+       3. `context_boundary`: Phạm vi áp dụng (cho ai / không cho ai / ngân sách / điều kiện).
+       4. `problem_symptoms`: Thấu cảm nỗi đau & triệu chứng thực tế của chủ tiệm.
+       5. `localmate_pov`: Góc nhìn độc quyền, bóc trần sự thật thị trường.
+       6. `evidence_verification`: Bằng chứng số liệu Before/After đo đạc thực tế.
+       7. `real_example_scenario`: Tình huống thực tế (case study mini).
+       8. `comparison_table`: Bảng so sánh đa phương án có khuyến nghị.
+       9. `cost_breakdown_table`: Bảng bóc tách chi phí minh bạch từng khoản.
+       10. `checklist`: Danh sách kiểm tra có tương tác checkbox.
+       11. `step_by_step`: Hướng dẫn từng bước (How-To) chuẩn SEO.
+       12. `decision_tree`: Cây quyết định Yes/No phân nhánh logic.
+       13. `common_mistakes`: Sai lầm thường gặp & giải pháp phòng tránh.
+       14. `warning_box`: Cảnh báo rủi ro cao & bẫy lừa đảo.
+       15. `when_not_to_do`: Những trường hợp tuyệt đối không nên làm.
+       16. `action_plan`: Kế hoạch hành động 24h / 7 ngày / 30 ngày.
+       17. `faq`: Câu hỏi thường gặp chuẩn FAQPage JSON-LD.
+       18. `sources_citations`: Trích dẫn tài liệu tham khảo chính thống E-E-A-T.
+       19. `related_services_cta`: Cầu nối thương mại dẫn về dịch vụ LocalMate tương ứng.
+       20. `related_posts`: Lưới bài viết liên quan giữ chân độc giả.
+       21. `rich_text`: Khối văn bản tự do hỗ trợ Tiptap HTML/JSON fallback.
+  3. *Mở rộng Article-level Metadata*:
+     - Bổ sung vào `PostContentBrief` và `PostEntity`: `articlePurpose`, `searchIntent`, `targetPersona`, `primaryQuestion`, `secondaryQuestions`, `uniqueAngle`, `experienceNotes`, `evidenceRequired`, `contentType`, `pillarId`, `relatedPosts`, `relatedService`, `author`, `reviewedBy`, `firstPublishedAt`, `updatedAt`, `factCheckedAt`, `qualityStatus`, `seoStatus`.
+     - Hỗ trợ cả `camelCase` và `snake_case` aliases giúp tương thích 100% với D1 database (`brief_json`, `schema_json`, `content_json`).
+  4. *Đảm bảo 100% Type-Safe & Build Pass*:
+     - Cập nhật trực tiếp `src/cms/types.ts`.
+     - Sửa lỗi component type LucideIcon mismatch trong `src/components/layout/Header.tsx`.
+     - Chạy `npm run build` (`tsc && vite build`) PASS 100% trong 13.02s.
+  5. *Xuất bản Tài liệu SSOT*:
+     - Biên soạn toàn diện tài liệu `docs/article-schema.md` gồm 7 phần: Triết lý, Metadata, 19 Blocks, JSON Schema chuẩn (Draft 2020-12), Bản ghi JSON mẫu thực tế, Hướng dẫn tích hợp D1/UI và Definition of Done.
+- **Nghiệm thu**:
+  - `src/cms/types.ts` đầy đủ types, 100% backward compatible.
+  - `docs/article-schema.md` hoàn thành xuất sắc.
+  - Type-check và Vite build PASS hoàn toàn.
+- **Bối cảnh & Mục tiêu**:
+  - Đóng vai trò Red Team kiểm duyệt chất lượng khắt khe nhất, bảo vệ độc giả khỏi AI Slop, bài viết generic, nội dung sáo rỗng.
+  - Xây dựng Bộ 14 Tiêu Chí Đỏ (Knock-out criteria) bị loại ngay lập tức.
+  - Audit sơ bộ 30 bài draft hiện tại, đưa ra kết luận bác bỏ (100% REWRITE REQUIRED) cho từng bài.
+  - Thiết kế Rubric 100 điểm và Phiếu kiểm duyệt nghiệm thu (Quality Gate Inspection Sheet) phục vụ Bước 4.
+- **Thực thi Kỹ thuật**:
+  1. *Bộ 14 Tiêu Chí Đỏ (C1 - C14)*: Định nghĩa chi tiết các lỗi knock-out: Generic, Filler, Số liệu bịa, Lời khuyên mơ hồ thiếu công thức, Review/Case study ảo, Mở bài vòng vo, Salesy CTA, AI phrasing mẫu, Khoe thuật ngữ hàn lâm, Công kích đối thủ, Lý thuyết suông, Tự xưng số 1, Câu văn dịch máy và Xa rời thực tế tiệm nhỏ.
+  2. *Red Team Audit 30 Bài Draft*: Rà soát trực tiếp `content/seeds/drafts_30_articles.json` và `docs/drafts_30_inventory.json`. Kết luận: Cả 30 bài hiện là placeholder template lặp lại văn mẫu, mầm mống Thin Content vi phạm nặng nề các tiêu chí C1, C2, C6, C11. Quyết định: **REJECT 30/30 (100% REWRITE REQUIRED)** kèm chỉ đạo viết lại cụ thể từng bài.
+  3. *Rubric Nghiệm Thu 100 Điểm*: 5 trụ cột (Local Domain Depth 30đ, Actionability 25đ, Brand Voice 20đ, Readability 15đ, Technical SEO 10đ), ngưỡng pass >= 85 điểm và 0 lỗi đỏ.
+  4. *Phiếu Kiểm Duyệt Chuẩn Hóa (Quality Gate Inspection Sheet)*: Tạo template biểu mẫu Markdown kiểm tra 3 vòng sẵn sàng áp dụng cho người duyệt bài ở Bước 4.
+  5. *Tài liệu SSOT*: Xuất bản `docs/content-quality-report.md`.
+- **Nghiệm thu**:
+  - `docs/content-quality-report.md` hoàn thành xuất sắc, đầy đủ 7 phần chi tiết.
+  - Cập nhật bài học kinh nghiệm vào `.agents/lessons_learned.md` và `.agents/memorybank/bugMemory.md`.
+
+
+## [2026-09-17] - Thiết Lập Tiêu Chuẩn & Ma Trận Tối Ưu Hóa SEO & GEO Cho 30 Bài Viết LocalMate (Subagent 9)
+- **Bối cảnh & Mục tiêu**:
+  - Chuẩn bị nền tảng tối ưu hóa SEO On-Page và GEO (Generative Engine Optimization / AI Search Visibility: Google AI Overview, ChatGPT Search, Perplexity) cho toàn bộ 30 bài viết kiến thức của LocalMate.
+  - Phân tích hiện trạng kho bản thảo `docs/drafts_30_inventory.json` và chuẩn hóa theo `docs/localmate-brand-voice-v2.md`.
+- **Thực thi Kỹ thuật & Nghiên cứu**:
+  1. *Thiết lập Tiêu chuẩn SEO On-Page*: Chuẩn hóa công thức Title Tag (50-60 ký tự), Meta Description hành động (140-155 ký tự), cấu trúc Semantic Headings (H1->H2->H3), Entity Mapping, Schema.org JSON-LD (Article, LocalBusiness, FAQPage, BreadcrumbList), Alt Text và OpenGraph.
+  2. *Thiết lập Tiêu chuẩn GEO*: Chuẩn hóa Khung Answer-First 40-60 từ trực diện, định nghĩa có phạm vi (Scoping Claims), bảng biểu Markdown và checklist có cấu trúc, minh bạch E-E-A-T, loại bỏ 100% 30 cụm từ cấm kỵ và PR sáo rỗng.
+  3. *Ma trận kiểm định 30 bài*: Soát xét toàn diện 30 bài nháp, phát hiện các lỗ hổng (Thin content placeholder, thiếu H3, thiếu bảng biểu, vi phạm từ cấm "cắt cổ" ở bài 3).
+  4. *Khắc phục Vi Phạm Brand Voice*: Loại bỏ ngay cụm từ "cắt cổ" trong `docs/drafts_30_inventory.json` và `content/seeds/drafts_30_articles.json` (sửa thành "bất hợp lý").
+  5. *Đặc tả chi tiết 30 bài viết*: Biên soạn tài liệu SSOT `docs/seo-geo-audit.md` gồm đầy đủ đề xuất Title, Meta Desc, Semantic Headings, Answer-First block mẫu, bảng biểu/checklist bắt buộc, Entity Mapping và Internal Link Anchors trỏ về 5 Trụ Cột Giải Pháp Cốt Lõi.
+- **Nghiệm thu**:
+  - Tài liệu SSOT: `docs/seo-geo-audit.md` hoàn thành đầy đủ, chi tiết, sẵn sàng làm cẩm nang hướng dẫn cho đội ngũ Content Writer và Kỹ sư CMS.
+
 ## [2026-09-17] - Chuẩn Hóa Toàn Diện Header/Footer Mới, Tích Hợp Mega Menu & Deploy Admin CMS Lên Production (localmate.vn)
 - **Bối cảnh & Vấn đề**:
   - Giao diện bị trùng 2 header và 2 footer (header cũ từ layout và header mới từ homepage).
@@ -567,3 +642,22 @@ Ghi nhận các mốc sự kiện, commit và trạng thái vận hành của d�
     - `has_overflow: false` 100% trên tất cả các breakpoint (`scrollWidth <= innerWidth`).
   - `npx tsc --noEmit`: PASS (0 errors).
   - `npm run build`: PASS (Vite bundle built in 6.16s).
+
+---
+
+## [2026-09-17] - Xây Dựng Hệ Thống Quan Điểm Biên Tập LocalMate (Editorial POV System)
+- **Người thực hiện**: Subagent 3 (LocalMate POV Editor).
+- **Tài liệu bàn giao**: `docs/editorial-pov.md` (SSOT về góc nhìn biên tập và bản sắc ngòi bút LocalMate).
+- **Nội dung hoàn thành**:
+  - **Bản tuyên ngôn biên tập (The Editorial Manifesto)**: Loại bỏ triệt để các câu sáo rỗng vô thưởng vô phạt ("Thời đại 4.0...", "Website đóng vai trò quan trọng...", "SEO giúp tăng nhận diện...").
+  - **Khung Job-To-Be-Done & Phân tích giá trị kinh doanh**: Đối chiếu 3 mô hình (Agency thành thị vs Web 500k vs LocalMate), làm rõ bản chất "Công nghệ không cần phức tạp, quan trọng là công việc được hoàn thành".
+  - **6 Domain nghiệp vụ chính (42 luận điểm sắc bén & bảng đối chiếu tương phản)**:
+    1. *Website & Landing Page cho SME địa phương*: Web là nhân viên trực ca đêm, sticky call bar, bảng giá minh bạch, cấm bẫy web 500k.
+    2. *Local Search & Google Business Profile*: Mặt tiền số 0đ đắt giá, cấm nhồi từ khóa, nghệ thuật trả lời review 1 sao, ghim tọa độ thực tế.
+    3. *SEO & GEO (AI Search) thực chiến*: SEO theo quận huyện, GEO là nói sự thật có cấu trúc cho AI hiểu, chuẩn hóa NAP 100%, đo bằng cuộc gọi thật.
+    4. *Quảng cáo Google Ads & Facebook Ads*: Đón khách cấp bách vs nhắc nhớ thương hiệu, phủ định từ khóa là sống còn, minh bạch tài khoản 100%.
+    5. *CRM & Automation tinh gọn*: Cuốn sổ nhớ khách không bao giờ quên, quy tắc 60 giây, phản hồi sau 5 phút là mất khách, gom tin về 1 nhóm Zalo.
+    6. *Content Marketing & Chuyển đổi số*: Bằng chứng tay nghề thật, lấy 20 câu hỏi tại tiệm làm bài viết, chuyển đổi số bắt đầu từ 5 việc 0đ.
+  - **Bảng đối chiếu 1-1 cho toàn bộ 30 bài viết** trong `docs/drafts_30_inventory.json`.
+  - **Quy trình 5 bước thẩm định nghiệm thu nội dung (Acceptance Test Checklist)**: Test Bác Thợ, Zero-Hype Scan, Actionability, Tôn trọng thị trường, và Đo lường việc thật.
+  - Khởi tạo `.agents/lessons_learned.md` lưu trữ bài học và quy chuẩn biên tập cho hệ thống Agent.

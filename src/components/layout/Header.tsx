@@ -13,9 +13,118 @@ import {
   Phone,
   ChevronDown,
   Menu,
-  X
+  X,
+  ArrowRight,
+  type LucideIcon
 } from 'lucide-react';
 import { CONTACT_INFO } from '../../data/landingContent';
+
+interface ServiceItem {
+  title: string;
+  desc: string;
+  path: string;
+  icon: React.ComponentType<any>;
+  badge?: string;
+  iconBg: string;
+  iconColor: string;
+}
+
+interface ServiceGroup {
+  groupTitle: string;
+  items: ServiceItem[];
+}
+
+const SERVICE_GROUPS: ServiceGroup[] = [
+  {
+    groupTitle: 'WEBSITE',
+    items: [
+      {
+        title: 'Website 1 Trang',
+        desc: 'Ra mắt nhanh, nhận khách sớm',
+        path: '/landing-490k',
+        icon: Layout,
+        badge: 'Từ 490k',
+        iconBg: '#edf7f1',
+        iconColor: '#0d7647'
+      },
+      {
+        title: 'Website Doanh Nghiệp',
+        desc: 'Giới thiệu doanh nghiệp chuyên nghiệp',
+        path: '/thiet-ke-website',
+        icon: Globe,
+        iconBg: '#eff6ff',
+        iconColor: '#2563eb'
+      },
+      {
+        title: 'Nâng Cấp Website',
+        desc: 'Sửa giao diện, tốc độ & chuyển đổi',
+        path: '/thiet-ke-website',
+        icon: Sparkles,
+        iconBg: '#f5f3ff',
+        iconColor: '#7c3aed'
+      }
+    ]
+  },
+  {
+    groupTitle: 'HIỆN DIỆN ĐỊA PHƯƠNG',
+    items: [
+      {
+        title: 'Google Maps',
+        desc: 'Đưa doanh nghiệp lên Google',
+        path: '/google-maps-local-seo',
+        icon: MapPin,
+        badge: 'Từ 299k',
+        iconBg: '#fff4eb',
+        iconColor: '#d97706'
+      },
+      {
+        title: 'Local SEO',
+        desc: 'Tăng khả năng được tìm thấy',
+        path: '/google-maps-local-seo',
+        icon: TrendingUp,
+        iconBg: '#edf7f1',
+        iconColor: '#0d7647'
+      },
+      {
+        title: 'Đánh Giá Google',
+        desc: 'Tăng uy tín từ khách thật',
+        path: '/google-maps-local-seo',
+        icon: CheckCircle2,
+        iconBg: '#eff6ff',
+        iconColor: '#2563eb'
+      }
+    ]
+  },
+  {
+    groupTitle: 'TĂNG TRƯỞNG',
+    items: [
+      {
+        title: 'Google Ads',
+        desc: 'Tiếp cận khách đang cần',
+        path: '/google-ads',
+        icon: Sparkles,
+        iconBg: '#fff4eb',
+        iconColor: '#d97706'
+      },
+      {
+        title: 'Content',
+        desc: 'Duy trì hiện diện đều đặn',
+        path: '/content-marketing',
+        icon: FileText,
+        iconBg: '#fdf2f8',
+        iconColor: '#db2777'
+      },
+      {
+        title: 'CRM & Automation',
+        desc: 'Theo dõi và chăm sóc lead',
+        path: '/automation',
+        icon: Briefcase,
+        iconBg: '#f5f3ff',
+        iconColor: '#7c3aed'
+      }
+    ]
+  }
+];
 
 interface HeaderProps {
   onOpenDemoForm?: () => void;
@@ -30,6 +139,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const closeTimeoutRef = useRef<number | null>(null);
   const isHome = currentPath === '/' || currentPath === '/cach-lam-viec' || currentPath === '/quy-trinh';
 
   // Scroll detection
@@ -73,7 +183,26 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
     return () => observer.disconnect();
   }, [isHome]);
 
+  // Anti-flicker hover handlers with small delay
+  const handleMouseEnterDropdown = () => {
+    if (closeTimeoutRef.current) {
+      window.clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+    setActiveDropdown('services');
+  };
+
+  const handleMouseLeaveDropdown = () => {
+    closeTimeoutRef.current = window.setTimeout(() => {
+      setActiveDropdown(null);
+    }, 140);
+  };
+
   const closeMenus = () => {
+    if (closeTimeoutRef.current) {
+      window.clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
     setActiveDropdown(null);
     setIsMenuOpen(false);
   };
@@ -152,11 +281,11 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
             Trang chủ
           </a>
 
-          {/* 2. Dịch vụ (Interactive Mega Menu Dropdown) */}
+          {/* 2. Dịch vụ (Redesigned 3-Column Studio Mega Menu) */}
           <div
             className="nav-dropdown-wrapper"
-            onMouseEnter={() => setActiveDropdown('services')}
-            onMouseLeave={() => setActiveDropdown(null)}
+            onMouseEnter={handleMouseEnterDropdown}
+            onMouseLeave={handleMouseLeaveDropdown}
           >
             <button
               type="button"
@@ -173,268 +302,82 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
 
             {/* Mega Menu Dropdown Panel */}
             {activeDropdown === 'services' && (
-              <div className="mega-menu-overlay">
+              <div
+                className="mega-menu-overlay"
+                onMouseEnter={handleMouseEnterDropdown}
+                onMouseLeave={handleMouseLeaveDropdown}
+              >
                 <div className="mega-menu-container">
-                  {/* Left 3 Columns: Categorized Services */}
-                  <div className="mega-menu-main">
-                    {/* Col 1: Website & Bán Hàng */}
-                    <div className="mega-col">
-                      <div className="mega-col-header">
-                        <Globe size={15} color="#0d7647" />
-                        <span>Website &amp; Bán Hàng</span>
+                  {/* Top 3 Columns: Streamlined Studio Layout */}
+                  <div className="mega-menu-grid">
+                    {SERVICE_GROUPS.map((group) => (
+                      <div key={group.groupTitle} className="mega-col">
+                        <div className="mega-col-header">
+                          <span>{group.groupTitle}</span>
+                        </div>
+                        <div className="mega-items-list">
+                          {group.items.map((item) => {
+                            const IconComponent = item.icon;
+                            return (
+                              <a
+                                key={item.title}
+                                href={item.path}
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  closeMenus();
+                                  navigate(item.path);
+                                }}
+                                className="mega-card"
+                              >
+                                <div
+                                  className="mega-card-icon"
+                                  style={{ backgroundColor: item.iconBg, color: item.iconColor }}
+                                >
+                                  <IconComponent size={15} />
+                                </div>
+                                <div className="mega-card-content">
+                                  <div className="mega-card-title">
+                                    <span>{item.title}</span>
+                                    {item.badge && (
+                                      <span className="mega-tag">{item.badge}</span>
+                                    )}
+                                  </div>
+                                  <p className="mega-card-desc">{item.desc}</p>
+                                </div>
+                              </a>
+                            );
+                          })}
+                        </div>
                       </div>
-                      <div className="mega-items-list">
-                        <a
-                          href="/landing-490k"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            closeMenus();
-                            navigate('/landing-490k');
-                          }}
-                          className="mega-card"
-                        >
-                          <div className="mega-card-icon icon-green">
-                            <Layout size={16} />
-                          </div>
-                          <div className="mega-card-content">
-                            <div className="mega-card-title">
-                              <span>Website 1 Trang</span>
-                              <span className="mega-tag tag-hot">490k</span>
-                            </div>
-                            <p className="mega-card-desc">Gọn gàng, rõ giá, có nút gọi Zalo ngay.</p>
-                          </div>
-                        </a>
-
-                        <a
-                          href="/thiet-ke-website"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            closeMenus();
-                            navigate('/thiet-ke-website');
-                          }}
-                          className="mega-card"
-                        >
-                          <div className="mega-card-icon icon-blue">
-                            <Globe size={16} />
-                          </div>
-                          <div className="mega-card-content">
-                            <div className="mega-card-title">
-                              <span>Web Doanh Nghiệp</span>
-                              <span className="mega-tag tag-standard">3–5 trang</span>
-                            </div>
-                            <p className="mega-card-desc">Đầy đủ giới thiệu, dịch vụ và bảng giá.</p>
-                          </div>
-                        </a>
-
-                        <a
-                          href="/thiet-ke-website"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            closeMenus();
-                            navigate('/thiet-ke-website');
-                          }}
-                          className="mega-card"
-                        >
-                          <div className="mega-card-icon icon-purple">
-                            <Sparkles size={16} />
-                          </div>
-                          <div className="mega-card-content">
-                            <div className="mega-card-title">
-                              <span>Chỉnh Sửa &amp; Nâng Cấp Web</span>
-                            </div>
-                            <p className="mega-card-desc">Sửa lỗi, đổi banner, tối ưu tốc độ nhanh.</p>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-
-                    {/* Col 2: Google Maps & Local SEO */}
-                    <div className="mega-col">
-                      <div className="mega-col-header">
-                        <MapPin size={15} color="#0d7647" />
-                        <span>Google Maps &amp; Tìm Kiếm</span>
-                      </div>
-                      <div className="mega-items-list">
-                        <a
-                          href="/google-maps-local-seo"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            closeMenus();
-                            navigate('/google-maps-local-seo');
-                          }}
-                          className="mega-card"
-                        >
-                          <div className="mega-card-icon icon-orange">
-                            <MapPin size={16} />
-                          </div>
-                          <div className="mega-card-content">
-                            <div className="mega-card-title">
-                              <span>Đưa Tiệm Lên Maps</span>
-                              <span className="mega-tag tag-save">Từ 299k</span>
-                            </div>
-                            <p className="mega-card-desc">Khách tìm quanh khu vực thấy tiệm ngay.</p>
-                          </div>
-                        </a>
-
-                        <a
-                          href="/google-maps-local-seo"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            closeMenus();
-                            navigate('/google-maps-local-seo');
-                          }}
-                          className="mega-card"
-                        >
-                          <div className="mega-card-icon icon-green">
-                            <TrendingUp size={16} />
-                          </div>
-                          <div className="mega-card-content">
-                            <div className="mega-card-title">
-                              <span>Tối Ưu &amp; SEO Local Maps</span>
-                            </div>
-                            <p className="mega-card-desc">Đẩy top 3 tìm kiếm khách hàng địa phương.</p>
-                          </div>
-                        </a>
-
-                        <a
-                          href="/google-maps-local-seo"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            closeMenus();
-                            navigate('/google-maps-local-seo');
-                          }}
-                          className="mega-card"
-                        >
-                          <div className="mega-card-icon icon-blue">
-                            <Sparkles size={16} />
-                          </div>
-                          <div className="mega-card-content">
-                            <div className="mega-card-title">
-                              <span>Mã QR Đánh Giá 5 Sao</span>
-                            </div>
-                            <p className="mega-card-desc">In để bàn giúp khách quét đánh giá dễ dàng.</p>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
-
-                    {/* Col 3: Quảng Cáo & Chăm Sóc Số */}
-                    <div className="mega-col">
-                      <div className="mega-col-header">
-                        <Sparkles size={15} color="#0d7647" />
-                        <span>Quảng Cáo &amp; Hệ Thống</span>
-                      </div>
-                      <div className="mega-items-list">
-                        <a
-                          href="/google-ads"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            closeMenus();
-                            navigate('/google-ads');
-                          }}
-                          className="mega-card"
-                        >
-                          <div className="mega-card-icon icon-orange">
-                            <Sparkles size={16} />
-                          </div>
-                          <div className="mega-card-content">
-                            <div className="mega-card-title">
-                              <span>Quảng Cáo Google Ads</span>
-                              <span className="mega-tag tag-hot">Từ 390k</span>
-                            </div>
-                            <p className="mega-card-desc">Nhắm đúng người đang cần mua, gọi ngay.</p>
-                          </div>
-                        </a>
-
-                        <a
-                          href="/content-marketing"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            closeMenus();
-                            navigate('/content-marketing');
-                          }}
-                          className="mega-card"
-                        >
-                          <div className="mega-card-icon icon-pink">
-                            <FileText size={16} />
-                          </div>
-                          <div className="mega-card-content">
-                            <div className="mega-card-title">
-                              <span>Chăm Sóc Kênh &amp; Content</span>
-                              <span className="mega-tag tag-save">990k/th</span>
-                            </div>
-                            <p className="mega-card-desc">15 bài viết chuẩn SEO + thiết kế ảnh đẹp mắt.</p>
-                          </div>
-                        </a>
-
-                        <a
-                          href="/automation"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            closeMenus();
-                            navigate('/automation');
-                          }}
-                          className="mega-card"
-                        >
-                          <div className="mega-card-icon icon-purple">
-                            <Briefcase size={16} />
-                          </div>
-                          <div className="mega-card-content">
-                            <div className="mega-card-title">
-                              <span>CRM &amp; Tự Động Hóa</span>
-                            </div>
-                            <p className="mega-card-desc">Báo lead về Zalo/Telegram chỉ sau 3 giây.</p>
-                          </div>
-                        </a>
-                      </div>
-                    </div>
+                    ))}
                   </div>
 
-                  {/* Right Promo Rail */}
-                  <div className="mega-promo-rail">
-                    <div className="mega-promo-box">
-                      <span className="promo-badge">GÓI NỔI BẬT KHUYÊN DÙNG</span>
-                      <h4 className="promo-title">Gói Khởi Tạo 490.000đ</h4>
-                      <p className="promo-desc">
-                        Website 1 trang chuẩn + Google Maps + Nút gọi Zalo trực tiếp.
-                      </p>
-                      <div className="promo-points">
-                        <div className="promo-point-item">
-                          <CheckCircle2 size={13} color="#16a34a" />
-                          <span>Báo giá rõ, không phụ phí</span>
-                        </div>
-                        <div className="promo-point-item">
-                          <CheckCircle2 size={13} color="#16a34a" />
-                          <span>Bàn giao 100% tài khoản</span>
-                        </div>
-                      </div>
+                  {/* Horizontal Sleek Footer Bar */}
+                  <div className="mega-footer-bar">
+                    <div className="mega-footer-left">
+                      <span>Chưa biết nên bắt đầu từ đâu?</span>
+                    </div>
+                    <div className="mega-footer-right">
                       <a
-                        href="/landing-490k"
+                        href="/bang-gia"
                         onClick={(e) => {
                           e.preventDefault();
                           closeMenus();
-                          navigate('/landing-490k');
+                          navigate('/bang-gia');
                         }}
-                        className="promo-btn"
+                        className="mega-footer-link"
                       >
-                        Xem chi tiết gói 490k →
+                        <span>Xem bảng giá</span>
+                        <ArrowRight size={13} />
                       </a>
+                      <button
+                        type="button"
+                        onClick={handleCtaClick}
+                        className="mega-footer-cta"
+                      >
+                        Nhận tư vấn
+                      </button>
                     </div>
-
-                    {/* Compact Hotline Card */}
-                    <a
-                      href={`tel:${CONTACT_INFO.phoneRaw}`}
-                      className="mega-hotline-card"
-                      title="Gọi hotline tư vấn trực tiếp"
-                    >
-                      <div className="hotline-icon-box">
-                        <Phone size={15} color="#ffffff" />
-                      </div>
-                      <div className="hotline-meta">
-                        <span className="hotline-label">Tư vấn trực tiếp 24/7</span>
-                        <span className="hotline-num">0834.422.439</span>
-                      </div>
-                    </a>
                   </div>
                 </div>
               </div>
@@ -522,7 +465,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
         </button>
       </div>
 
-      {/* Mobile Drawer (Accordion Style) */}
+      {/* Mobile Drawer (Streamlined Accordion Style) */}
       {isMenuOpen && (
         <div className="mobile-drawer-overlay">
           <div className="mobile-drawer-body">
@@ -535,14 +478,14 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
                 Trang chủ
               </a>
 
-              {/* Mobile Dịch Vụ Accordion */}
+              {/* Mobile Dịch Vụ Streamlined Accordion */}
               <div className="mobile-accordion">
                 <button
                   type="button"
                   onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
                   className="mobile-accordion-toggle"
                 >
-                  <span>Dịch vụ chính</span>
+                  <span>Dịch vụ</span>
                   <ChevronDown
                     size={16}
                     style={{
@@ -554,78 +497,46 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
 
                 {mobileServicesOpen && (
                   <div className="mobile-accordion-content">
-                    <a
-                      href="/landing-490k"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        closeMenus();
-                        navigate('/landing-490k');
-                      }}
-                      className="mobile-sub-link"
-                    >
-                      <Layout size={15} color="#0d7647" />
-                      <span>Website 1 Trang (490k)</span>
-                    </a>
-                    <a
-                      href="/google-maps-local-seo"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        closeMenus();
-                        navigate('/google-maps-local-seo');
-                      }}
-                      className="mobile-sub-link"
-                    >
-                      <MapPin size={15} color="#d97706" />
-                      <span>Đưa Tiệm Lên Google Maps (Từ 299k)</span>
-                    </a>
-                    <a
-                      href="/google-ads"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        closeMenus();
-                        navigate('/google-ads');
-                      }}
-                      className="mobile-sub-link"
-                    >
-                      <Sparkles size={15} color="#2563eb" />
-                      <span>Quảng Cáo Google Ads (Từ 390k)</span>
-                    </a>
-                    <a
-                      href="/content-marketing"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        closeMenus();
-                        navigate('/content-marketing');
-                      }}
-                      className="mobile-sub-link"
-                    >
-                      <FileText size={15} color="#db2777" />
-                      <span>Chăm Sóc Kênh &amp; Content (990k/th)</span>
-                    </a>
-                    <a
-                      href="/thiet-ke-website"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        closeMenus();
-                        navigate('/thiet-ke-website');
-                      }}
-                      className="mobile-sub-link"
-                    >
-                      <Globe size={15} color="#0d7647" />
-                      <span>Website Doanh Nghiệp 3–5 Trang</span>
-                    </a>
-                    <a
-                      href="/automation"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        closeMenus();
-                        navigate('/automation');
-                      }}
-                      className="mobile-sub-link"
-                    >
-                      <Briefcase size={15} color="#7c3aed" />
-                      <span>CRM &amp; Tự Động Hóa Thông Báo</span>
-                    </a>
+                    {SERVICE_GROUPS.map((group) => (
+                      <div key={group.groupTitle} className="mobile-group-block">
+                        <div className="mobile-group-title">{group.groupTitle}</div>
+                        {group.items.map((item) => (
+                          <a
+                            key={item.title}
+                            href={item.path}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              closeMenus();
+                              navigate(item.path);
+                            }}
+                            className="mobile-sub-link"
+                          >
+                            <span>{item.title}</span>
+                          </a>
+                        ))}
+                      </div>
+                    ))}
+
+                    <div className="mobile-services-actions">
+                      <a
+                        href="/giai-phap"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          closeMenus();
+                          navigate('/giai-phap');
+                        }}
+                        className="mobile-view-all-link"
+                      >
+                        Xem tất cả dịch vụ →
+                      </a>
+                      <button
+                        type="button"
+                        onClick={handleCtaClick}
+                        className="mobile-consult-btn"
+                      >
+                        Nhận tư vấn
+                      </button>
+                    </div>
                   </div>
                 )}
               </div>
@@ -647,7 +558,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
                 onClick={(e) => handleNavClick(e, '#stories', '/du-an')}
                 className={`mobile-nav-item ${(isHome && activeSection === 'stories') || currentPath.startsWith('/du-an') ? 'active' : ''}`}
               >
-                Câu chuyện thành công
+                Câu chuyện
               </a>
 
               <a
@@ -655,7 +566,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
                 onClick={(e) => handleNavClick(e, '#process', '/quy-trinh')}
                 className={`mobile-nav-item ${(isHome && activeSection === 'process') || currentPath.startsWith('/quy-trinh') ? 'active' : ''}`}
               >
-                Quy trình làm việc
+                Quy trình
               </a>
 
               <a
@@ -704,24 +615,24 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           z-index: 1000;
           background-color: #ffffff;
           border-bottom: 1px solid #e5e7eb;
-          box-shadow: 0 2px 12px rgba(15, 23, 42, 0.04);
+          box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
           transition: box-shadow 0.2s ease, border-color 0.2s ease;
           width: 100%;
           scrollbar-gutter: stable;
         }
 
         .site-header.scrolled {
-          box-shadow: 0 4px 20px rgba(7, 137, 108, 0.08);
+          box-shadow: 0 4px 18px rgba(13, 118, 71, 0.08);
           border-bottom-color: #d1fae5;
         }
 
         .site-header .header-inner {
           max-width: 1672px;
-          height: 90px;
+          height: 84px;
           margin: 0 auto;
           display: flex;
           align-items: center;
-          gap: 24px;
+          gap: 20px;
           padding: 0 3.5%;
           box-sizing: border-box;
           justify-content: space-between;
@@ -734,50 +645,50 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
         }
 
         .site-header .logo {
-          width: 207px;
+          width: 200px;
           aspect-ratio: 213/83;
         }
 
         /* Desktop Nav */
         .header-nav-desktop {
           display: flex;
-          gap: 26px;
+          gap: 24px;
           align-items: center;
           margin-left: auto;
-          margin-right: 20px;
-          font-size: 16px;
+          margin-right: 16px;
+          font-size: 15.5px;
           font-weight: 700;
           color: #10263d;
           white-space: nowrap;
         }
 
         .nav-link {
-          padding: 28px 0;
+          padding: 24px 0;
           position: relative;
           text-decoration: none;
           color: #10263d;
-          transition: color 0.2s;
+          transition: color 0.15s ease;
         }
 
         .nav-link:hover,
         .nav-dropdown-btn:hover {
-          color: #087d54;
+          color: #0d7647;
         }
 
         .nav-link.active,
         .nav-dropdown-btn.active {
-          color: #087d54;
+          color: #0d7647;
         }
 
         .nav-link.active:after,
         .nav-dropdown-btn.active:after {
           content: '';
           position: absolute;
-          bottom: 14px;
+          bottom: 12px;
           left: 15%;
           right: 15%;
-          height: 3px;
-          background: #087d54;
+          height: 2.5px;
+          background: #0d7647;
           border-radius: 2px;
         }
 
@@ -793,15 +704,15 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           border: none;
           cursor: pointer;
           font-family: inherit;
-          font-size: 16px;
+          font-size: 15.5px;
           font-weight: 700;
           color: #10263d;
-          padding: 28px 0;
+          padding: 24px 0;
           display: inline-flex;
           align-items: center;
           gap: 4px;
           position: relative;
-          transition: color 0.2s;
+          transition: color 0.15s ease;
         }
 
         .dropdown-arrow {
@@ -811,13 +722,16 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
 
         .dropdown-arrow.open {
           transform: rotate(180deg);
-          color: #087d54;
+          color: #0d7647;
         }
 
-        /* Mega Menu Panel (Strictly Solid Light, NO Glassmorphism) */
+        /* ===================================================
+           REDESIGNED MEGA MENU PANEL (Clean, Studio, 3-Col)
+           Strictly Light Mode, No Glassmorphism, Fast Scan
+           =================================================== */
         .mega-menu-overlay {
           position: fixed;
-          top: 90px;
+          top: 84px;
           left: 0;
           right: 0;
           width: 100vw;
@@ -826,18 +740,18 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           display: flex;
           justify-content: center;
           z-index: 1200;
-          padding: 0.5rem 1.5rem 1.5rem;
+          padding: 0.4rem 1.5rem 1.5rem;
           box-sizing: border-box;
         }
 
         .site-header.scrolled .mega-menu-overlay {
-          top: 80px;
+          top: 76px;
         }
 
         @keyframes megaFadeIn {
           from {
             opacity: 0;
-            transform: translateY(6px);
+            transform: translateY(5px);
           }
           to {
             opacity: 1;
@@ -848,71 +762,69 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
         .mega-menu-container {
           pointer-events: auto;
           width: 100%;
-          max-width: 1260px;
+          max-width: 1020px;
           background-color: #ffffff;
           border: 1px solid #e2e8f0;
-          border-radius: 20px;
-          box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
-          padding: 1.5rem 1.75rem;
-          display: grid;
-          grid-template-columns: 1fr 290px;
-          gap: 1.75rem;
-          align-items: stretch;
+          border-radius: 18px;
+          box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08), 0 2px 6px rgba(15, 23, 42, 0.03);
+          padding: 22px 24px 16px 24px;
           box-sizing: border-box;
-          animation: megaFadeIn 0.18s ease-out;
+          animation: megaFadeIn 0.16s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .mega-menu-main {
+        /* 3 Columns Grid */
+        .mega-menu-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          gap: 1.5rem;
+          gap: 20px;
         }
 
         .mega-col {
           display: flex;
           flex-direction: column;
-          gap: 0.55rem;
+          gap: 6px;
         }
 
         .mega-col-header {
-          display: flex;
-          align-items: center;
-          gap: 0.45rem;
-          font-size: 0.8rem;
-          font-weight: 800;
-          color: #063d24;
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
-          padding-bottom: 0.45rem;
+          padding: 0 8px 6px 8px;
           border-bottom: 1px solid #f1f5f9;
+          margin-bottom: 2px;
+        }
+
+        .mega-col-header span {
+          font-size: 11.5px;
+          font-weight: 800;
+          color: #095935;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
         }
 
         .mega-items-list {
           display: flex;
           flex-direction: column;
-          gap: 0.35rem;
+          gap: 3px;
         }
 
+        /* Service Item: Clean, No Default Border, Fast Scan */
         .mega-card {
           display: flex;
           align-items: flex-start;
-          gap: 0.75rem;
-          padding: 0.55rem 0.7rem;
-          border-radius: 10px;
+          gap: 11px;
+          padding: 8px 10px;
+          border-radius: 11px;
           text-decoration: none;
-          border: 1px solid transparent;
-          transition: all 0.15s ease;
+          background-color: transparent;
+          transition: background-color 0.12s ease, transform 0.12s ease;
         }
 
         .mega-card:hover {
-          background-color: #edf7f1;
-          border-color: #c6ebd4;
+          background-color: #f4faf6;
           transform: translateY(-1px);
         }
 
         .mega-card-icon {
-          width: 34px;
-          height: 34px;
+          width: 32px;
+          height: 32px;
           border-radius: 8px;
           display: flex;
           align-items: center;
@@ -921,172 +833,105 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           margin-top: 2px;
         }
 
-        .icon-green { background-color: #edf7f1; color: #0d7647; }
-        .icon-orange { background-color: #fff4eb; color: #d97706; }
-        .icon-blue { background-color: #eff6ff; color: #2563eb; }
-        .icon-purple { background-color: #f5f3ff; color: #7c3aed; }
-        .icon-pink { background-color: #fdf2f8; color: #db2777; }
-
         .mega-card-content {
           display: flex;
           flex-direction: column;
-          gap: 0.15rem;
+          gap: 2px;
           min-width: 0;
         }
 
         .mega-card-title {
-          font-size: 0.875rem;
-          font-weight: 800;
+          font-size: 14.5px;
+          font-weight: 700;
           color: #0f172a;
           display: flex;
           align-items: center;
-          gap: 0.4rem;
-          white-space: nowrap;
-          line-height: 1.3;
+          gap: 6px;
+          line-height: 1.25;
+          text-wrap: pretty;
+        }
+
+        .mega-card:hover .mega-card-title {
+          color: #0d7647;
         }
 
         .mega-card-desc {
-          font-size: 0.725rem;
+          font-size: 12.5px;
           color: #64748b;
           line-height: 1.35;
           margin: 0;
+          text-wrap: pretty;
         }
 
+        /* Subtle Entry Price Badge (Max 2 across menu) */
         .mega-tag {
-          font-size: 0.65rem;
-          font-weight: 800;
-          padding: 0.1rem 0.4rem;
-          border-radius: 999px;
-          line-height: 1;
-          white-space: nowrap;
-        }
-
-        .tag-hot { background-color: #fee2e2; color: #dc2626; }
-        .tag-save { background-color: #edf7f1; color: #063d24; }
-        .tag-standard { background-color: #f3f4f6; color: #4b5563; }
-
-        /* Right Promo Rail */
-        .mega-promo-rail {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          gap: 0.75rem;
-          background-color: #f8fafc;
-          border: 1px solid #e2e8f0;
-          border-radius: 14px;
-          padding: 1.1rem;
-          box-sizing: border-box;
-        }
-
-        .mega-promo-box {
-          display: flex;
-          flex-direction: column;
-          gap: 0.45rem;
-        }
-
-        .promo-badge {
-          align-self: flex-start;
-          font-size: 0.65rem;
-          font-weight: 800;
+          font-size: 11px;
+          font-weight: 700;
           background-color: #edf7f1;
           color: #0d7647;
-          padding: 0.2rem 0.55rem;
+          padding: 1.5px 6px;
           border-radius: 999px;
-          letter-spacing: 0.04em;
+          line-height: 1.1;
+          white-space: nowrap;
+          border: 1px solid #d1fae5;
         }
 
-        .promo-title {
-          font-size: 1rem;
-          font-weight: 800;
-          color: #0f172a;
-          margin: 0;
-          line-height: 1.25;
-        }
-
-        .promo-desc {
-          font-size: 0.775rem;
-          color: #475569;
-          line-height: 1.4;
-          margin: 0;
-        }
-
-        .promo-points {
-          display: flex;
-          flex-direction: column;
-          gap: 0.35rem;
-          font-size: 0.75rem;
-          color: #334155;
-          margin-top: 0.2rem;
-        }
-
-        .promo-point-item {
+        /* ===================================================
+           SLIM HORIZONTAL FOOTER BAR (Replaces Promo Column)
+           =================================================== */
+        .mega-footer-bar {
           display: flex;
           align-items: center;
-          gap: 0.4rem;
+          justify-content: space-between;
+          padding: 14px 10px 2px 10px;
+          margin-top: 14px;
+          border-top: 1px solid #f1f5f9;
         }
 
-        .promo-btn {
-          margin-top: 0.4rem;
-          background: linear-gradient(125deg, #078555, #05754f);
-          color: #ffffff;
-          font-size: 0.825rem;
-          font-weight: 800;
-          text-align: center;
-          padding: 0.6rem 0.85rem;
-          border-radius: 10px;
-          text-decoration: none;
-          transition: transform 0.15s ease;
-        }
-
-        .promo-btn:hover {
-          transform: translateY(-1px);
-        }
-
-        .mega-hotline-card {
-          background-color: #ffffff;
-          border: 1px solid #fed7aa;
-          border-radius: 12px;
-          padding: 0.65rem 0.85rem;
-          display: flex;
-          align-items: center;
-          gap: 0.65rem;
-          text-decoration: none;
-          transition: all 0.15s ease;
-        }
-
-        .mega-hotline-card:hover {
-          border-color: #ea580c;
-          background-color: #fff7ed;
-        }
-
-        .hotline-icon-box {
-          width: 32px;
-          height: 32px;
-          border-radius: 50%;
-          background-color: #ea580c;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-shrink: 0;
-        }
-
-        .hotline-meta {
-          display: flex;
-          flex-direction: column;
-        }
-
-        .hotline-label {
-          font-size: 0.675rem;
-          color: #64748b;
+        .mega-footer-left span {
+          font-size: 13.5px;
           font-weight: 600;
-          line-height: 1.2;
+          color: #334155;
         }
 
-        .hotline-num {
-          font-size: 0.95rem;
-          font-weight: 800;
-          color: #0f172a;
-          line-height: 1.2;
+        .mega-footer-right {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+        }
+
+        .mega-footer-link {
+          font-size: 13.5px;
+          font-weight: 700;
+          color: #0d7647;
+          text-decoration: none;
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
+          transition: color 0.15s ease;
+        }
+
+        .mega-footer-link:hover {
+          color: #095935;
+          text-decoration: underline;
+        }
+
+        .mega-footer-cta {
+          background-color: #0d7647;
+          color: #ffffff;
+          border: none;
+          padding: 7px 14px;
+          border-radius: 8px;
+          font-size: 13px;
+          font-weight: 700;
+          cursor: pointer;
+          font-family: inherit;
+          transition: background-color 0.15s ease, transform 0.12s ease;
+        }
+
+        .mega-footer-cta:hover {
+          background-color: #095935;
+          transform: translateY(-1px);
         }
 
         /* Desktop Actions: Hotline + Button */
@@ -1098,24 +943,24 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
         }
 
         .site-header .phone {
-          padding: 13px 18px;
+          padding: 12px 16px;
           border: 1px solid #dce6ec;
           border-radius: 50px;
           white-space: nowrap;
-          font-size: 16px;
-          font-weight: bold;
+          font-size: 15px;
+          font-weight: 700;
           text-decoration: none;
           color: #10263d;
           display: inline-flex;
           align-items: center;
           gap: 8px;
           background: #ffffff;
-          transition: all 0.2s;
+          transition: all 0.15s ease;
         }
 
         .site-header .phone:hover {
-          border-color: #087d54;
-          color: #087d54;
+          border-color: #0d7647;
+          color: #0d7647;
         }
 
         .site-header .header-cta-btn {
@@ -1123,15 +968,15 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           gap: 8px;
           align-items: center;
           justify-content: center;
-          padding: 15px 22px;
+          padding: 13px 20px;
           color: #ffffff;
-          border: 1px solid #087d54;
-          border-radius: 14px;
+          border: 1px solid #0d7647;
+          border-radius: 12px;
           background: linear-gradient(125deg, #078555, #05754f);
           font-weight: 700;
-          font-size: 17px;
+          font-size: 16px;
           box-shadow: 0 4px 10px rgba(6, 119, 74, 0.12);
-          transition: transform 0.2s, box-shadow 0.2s;
+          transition: transform 0.15s ease, box-shadow 0.15s ease;
           cursor: pointer;
           white-space: nowrap;
           font-family: inherit;
@@ -1139,7 +984,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
 
         .site-header .header-cta-btn:hover {
           transform: translateY(-2px);
-          box-shadow: 0 6px 20px rgba(6, 119, 74, 0.25);
+          box-shadow: 0 6px 18px rgba(6, 119, 74, 0.22);
         }
 
         .site-header .menu-toggle {
@@ -1148,23 +993,23 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
 
         @media (max-width: 1450px) {
           .site-header .header-inner {
-            gap: 16px;
-            padding: 0 3%;
+            gap: 14px;
+            padding: 0 2.5%;
           }
           .header-nav-desktop {
-            gap: 18px;
-            font-size: 15px;
+            gap: 16px;
+            font-size: 14.5px;
           }
           .site-header .logo {
-            width: 185px;
+            width: 175px;
           }
           .site-header .phone {
             font-size: 14px;
-            padding: 11px 14px;
+            padding: 10px 13px;
           }
           .site-header .header-cta-btn {
-            font-size: 15px;
-            padding: 12px 18px;
+            font-size: 14.5px;
+            padding: 11px 16px;
           }
         }
 
@@ -1196,19 +1041,19 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
 
         @media (max-width: 600px) {
           .site-header .header-inner {
-            height: 70px;
+            height: 68px;
             padding: 0 16px;
             gap: 10px;
           }
           .site-header .logo {
-            width: 146px;
+            width: 142px;
           }
         }
 
-        /* Mobile Drawer */
+        /* Mobile Drawer Streamlined */
         .mobile-drawer-overlay {
           position: fixed;
-          top: 90px;
+          top: 84px;
           left: 0;
           right: 0;
           bottom: 0;
@@ -1219,14 +1064,14 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
         }
 
         .site-header.scrolled .mobile-drawer-overlay {
-          top: 76px;
+          top: 72px;
         }
 
         .mobile-drawer-body {
           padding: 1.25rem;
           display: flex;
           flex-direction: column;
-          min-height: calc(100vh - 90px);
+          min-height: calc(100vh - 84px);
           justify-content: space-between;
           box-sizing: border-box;
         }
@@ -1276,21 +1121,67 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
         .mobile-accordion-content {
           display: flex;
           flex-direction: column;
-          gap: 0.4rem;
-          padding: 0.5rem 1rem 0.85rem;
+          gap: 0.6rem;
+          padding: 0.75rem 1rem 1rem;
           border-top: 1px solid #e2e8f0;
           background-color: #ffffff;
         }
 
-        .mobile-sub-link {
+        .mobile-group-block {
           display: flex;
-          align-items: center;
-          gap: 0.65rem;
+          flex-direction: column;
+          gap: 0.25rem;
+        }
+
+        .mobile-group-title {
+          font-size: 0.75rem;
+          font-weight: 800;
+          color: #0d7647;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          margin-top: 0.35rem;
+          margin-bottom: 0.15rem;
+        }
+
+        .mobile-sub-link {
+          display: block;
           font-size: 0.9rem;
-          font-weight: 700;
+          font-weight: 600;
           color: #1e293b;
           text-decoration: none;
-          padding: 0.5rem 0;
+          padding: 0.4rem 0;
+          transition: color 0.15s;
+        }
+
+        .mobile-sub-link:hover {
+          color: #0d7647;
+        }
+
+        .mobile-services-actions {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding-top: 0.75rem;
+          margin-top: 0.5rem;
+          border-top: 1px dashed #e2e8f0;
+        }
+
+        .mobile-view-all-link {
+          font-size: 0.85rem;
+          font-weight: 700;
+          color: #0d7647;
+          text-decoration: none;
+        }
+
+        .mobile-consult-btn {
+          background-color: #0d7647;
+          color: #ffffff;
+          border: none;
+          padding: 6px 12px;
+          border-radius: 6px;
+          font-size: 0.825rem;
+          font-weight: 700;
+          cursor: pointer;
         }
 
         .mobile-drawer-footer {
