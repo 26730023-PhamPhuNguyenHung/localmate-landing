@@ -2,6 +2,15 @@
 
 Ghi nhận các mốc sự kiện, commit và trạng thái vận hành của dự án.
 
+## [2026-09-17] - Hoàn Tất Chuẩn Hóa 30 Bài Viết SEO/GEO (100/100) & Dọn Dẹp Codebase
+- **Commit**: `feat(content): complete rewrite and standardization of all 30 articles to 100/100 quality score` & `chore: remove temporary sql query file`
+- **Kết quả**:
+  - Viết lại và nâng cấp toàn diện 30/30 bài viết theo chuẩn SEO Top 1 + GEO (AI Overviews/ChatGPT Search) + Anti-AI Slop.
+  - Tổng số từ: **86.367 từ** chuyên sâu thực chiến (trung bình 2.879 từ/bài).
+  - 100% bài viết vượt qua Quality Gate (`validate-content.cjs`) đạt điểm tuyệt đối 100/100.
+  - Đồng bộ tự động toàn bộ 30 bài viết sang file seed `content/seeds/drafts_30_articles.json` và sinh `article.json` có cấu trúc cho CMS.
+  - Dọn dẹp sạch sẽ các file tạm (`temp_verify_query.sql`), kiểm tra toàn hệ thống với `npm run build` PASS 100% trong 4.38s.
+
 ## [2026-09-17] - Audit & Dọn Dẹp Toàn Bộ Codebase Website (Clean Unused Code & Assets)
 - **Commit**: `chore: clean unused code assets and audit website gaps`
 - **Bối cảnh & Mục tiêu**:
