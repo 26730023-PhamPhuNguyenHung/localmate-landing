@@ -2,11 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { Container } from '../components/ui/Container';
 import { Breadcrumbs } from '../components/ui/Breadcrumbs';
 import { SEOHead } from '../components/seo/SEOHead';
+import { buildArticleSeoBundle } from '../components/seo/articleSchemaGenerator';
+import { TopicClusterNav } from '../components/seo/TopicClusterNav';
 import { cmsClient } from '../cms/services/cmsClient';
 import { PostEntity } from '../cms/types';
 import { useRouter } from '../components/layout/Router';
-import { Clock, Calendar, User, BookOpen, AlertTriangle, ArrowLeft, CheckCircle2, HelpCircle } from 'lucide-react';
 import { Button } from '../components/ui/Button';
+import { AlertTriangle, Clock, Calendar, User, CheckCircle2, HelpCircle } from 'lucide-react';
+import { TableOfContents } from '../components/article';
+import { InArticleCallout, CalloutTopic } from '../components/conversion/InArticleCallout';
+import { MobileFloatingCTA } from '../components/layout/MobileFloatingCTA';
+import { LeadModal } from '../components/conversion/LeadModal';
 
 interface PostPreviewPageProps {
   postId: number;
@@ -17,6 +23,32 @@ export const PostPreviewPage: React.FC<PostPreviewPageProps> = ({ postId }) => {
   const [post, setPost] = useState<PostEntity | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [errorMsg, setErrorMsg] = useState('');
+
+  // Lead capture modal state
+  const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState('Tư vấn giải pháp Website & Marketing');
+  const [leadNote, setLeadNote] = useState('');
+
+  const handleOpenLeadModal = (serviceName?: string, initialNote?: string) => {
+    if (serviceName) setSelectedService(serviceName);
+    if (initialNote) setLeadNote(initialNote);
+    setIsLeadModalOpen(true);
+  };
+
+  const getDetectedTopic = (): CalloutTopic => {
+    if (!post) return 'web-demo';
+    const text = `${post.category_name || ''} ${post.title || ''} ${post.related_service || ''}`.toLowerCase();
+    if (text.includes('map') || text.includes('địa điểm') || text.includes('bản đồ') || text.includes('local seo')) {
+      return 'maps-audit';
+    }
+    if (text.includes('ads') || text.includes('quảng cáo') || text.includes('facebook') || text.includes('google ads')) {
+      return 'ads-optimization';
+    }
+    if (text.includes('crm') || text.includes('khách hàng') || text.includes('chăm sóc') || text.includes('tin nhắn')) {
+      return 'crm-setup';
+    }
+    return 'web-demo';
+  };
 
   useEffect(() => {
     loadPreview();
@@ -71,6 +103,35 @@ export const PostPreviewPage: React.FC<PostPreviewPageProps> = ({ postId }) => {
     );
   }
 
+  // Tự động sinh Structured Data Bundle cho bài viết
+  const seoBundle = React.useMemo(() => {
+    if (!post) return null;
+    let parsedFaqs: Array<{ question: string; answer: string }> | undefined = undefined;
+    if (post.geo_faq_json) {
+      try {
+        parsedFaqs = JSON.parse(post.geo_faq_json);
+      } catch {}
+    }
+    return buildArticleSeoBundle({
+      title: post.title,
+      slug: post.slug,
+      description: post.seo_description || post.excerpt || post.title,
+      canonicalUrl: `/kien-thuc/${post.slug}`,
+      featuredImageUrl: post.featured_image_url || undefined,
+      datePublished: post.published_at || post.created_at,
+      dateModified: post.updated_at || post.created_at,
+      authorName: post.author_name || post.author_details?.name || 'LocalMate Team',
+      authorRole: post.author_details?.role,
+      categoryName: post.category_name,
+      categorySlug: post.category_slug,
+      tags: post.tags,
+      rawMarkdownOrHtml: post.rendered_html,
+      predefinedFaqs: parsedFaqs,
+      entities: post.geo_entities ? post.geo_entities.split(',').map(s => s.trim()) : undefined,
+      wordCount: post.word_count
+    });
+  }, [post]);
+
   return (
     <div>
       {/* Draft Preview Warning Banner */}
@@ -115,7 +176,14 @@ export const PostPreviewPage: React.FC<PostPreviewPageProps> = ({ postId }) => {
       <SEOHead
         title={`[XEM TRƯỚC] ${post.seo_title || post.title}`}
         description={post.seo_description || post.excerpt}
-        canonicalPath={`/kien-thuc/${post.slug}`}
+        canonicalPath={seoBundle ? seoBundle.canonicalPath : `/kien-thuc/${post.slug}`}
+        ogImage={seoBundle?.ogImage}
+        ogType="article"
+        breadcrumbs={seoBundle?.breadcrumbs}
+        schemaType="Article"
+        schemaData={seoBundle?.articleSchema}
+        extraSchemas={seoBundle?.extraSchemas}
+        articleMeta={seoBundle?.articleMeta}
         noIndex={true}
       />
 
@@ -245,6 +313,16 @@ export const PostPreviewPage: React.FC<PostPreviewPageProps> = ({ postId }) => {
               </div>
             )}
 
+            {/* Table of Contents & Reading Progress Bar */}
+            <TableOfContents
+              contentSelector=".article-rendered-body"
+              htmlContent={post.rendered_html}
+              title="Mục lục bài viết"
+              headerOffset={88}
+              showProgressBar={true}
+              collapsible={true}
+            />
+
             {/* Article Rendered Body */}
             <div
               className="article-rendered-body"
@@ -288,50 +366,74 @@ export const PostPreviewPage: React.FC<PostPreviewPageProps> = ({ postId }) => {
               return null;
             })()}
 
-            {/* Contextual CTA */}
+            {/* Topic Cluster & Internal Linking Navigation (Anti-Orphan Pages) */}
+            <TopicClusterNav currentPostId={post.id} currentSlug={post.slug} />
+
+            {/* In-Article Conversion Callout Box */}
             {(() => {
               const cta = post.cta_details;
-              const hasCustomCta = !!cta;
-              return (
-                <div
-                  style={{
-                    backgroundColor: '#f8fbfa',
-                    border: '2px solid var(--color-primary)',
-                    borderRadius: 'var(--radius-xl)',
-                    padding: '2rem',
-                    marginTop: '3.5rem',
-                    textAlign: 'center'
-                  }}
-                >
-                  <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: 'var(--color-text)', marginBottom: '0.5rem' }}>
-                    {hasCustomCta ? cta.headline : 'Cần Triển Khai Cho Doanh Nghiệp Của Bạn?'}
-                  </h3>
-                  <p style={{ fontSize: '0.925rem', color: 'var(--color-text-muted)', maxWidth: '600px', margin: '0 auto 1.5rem auto', lineHeight: 1.6 }}>
-                    {hasCustomCta ? cta.description : 'Đội ngũ LocalMate hỗ trợ tư vấn giải pháp thực tế, lên kế hoạch chi tiết và bàn giao trọn gói không phát sinh chi phí.'}
-                  </p>
-                  <Button
-                    variant="primary"
-                    size="lg"
-                    onClick={() => {
-                      if (hasCustomCta && cta.destination_url) {
-                        if (cta.destination_url.startsWith('http')) {
-                          window.open(cta.destination_url, '_blank');
-                        } else {
-                          navigate(cta.destination_url);
-                        }
+              const topic = getDetectedTopic();
+              if (cta) {
+                return (
+                  <InArticleCallout
+                    topic="custom"
+                    title={cta.headline}
+                    subtitle={cta.description}
+                    ctaLabel={cta.button_label}
+                    onOpenLeadModal={() => {
+                      if (cta.destination_url?.startsWith('http')) {
+                        window.open(cta.destination_url, '_blank');
+                      } else if (cta.destination_url && cta.destination_url !== '/lien-he') {
+                        navigate(cta.destination_url);
                       } else {
-                        navigate('/lien-he');
+                        handleOpenLeadModal(undefined, `Đăng ký từ bài viết: ${post.title}`);
                       }
                     }}
-                  >
-                    {hasCustomCta ? cta.button_label : 'Nhận Tư Vấn Miễn Phí Ngay'}
-                  </Button>
-                </div>
+                  />
+                );
+              }
+              return (
+                <InArticleCallout
+                  topic={topic}
+                  onOpenLeadModal={(srv, note) => handleOpenLeadModal(srv, note)}
+                />
               );
             })()}
           </article>
         </Container>
       </div>
+
+      {/* Mobile Floating Sticky Quick CTA Bar */}
+      <MobileFloatingCTA
+        ctaText={
+          getDetectedTopic() === 'maps-audit'
+            ? 'Kiểm tra Maps 0đ'
+            : getDetectedTopic() === 'web-demo'
+            ? 'Web Demo 490k'
+            : getDetectedTopic() === 'ads-optimization'
+            ? 'Rà soát Ads 0đ'
+            : 'Tư vấn CRM 0đ'
+        }
+        serviceName={
+          getDetectedTopic() === 'maps-audit'
+            ? 'Xác minh & Tối ưu Google Maps (Local SEO)'
+            : getDetectedTopic() === 'web-demo'
+            ? 'Thiết kế Website & Landing Page theo ngành'
+            : getDetectedTopic() === 'ads-optimization'
+            ? 'Chạy quảng cáo Google / Facebook chuyển đổi'
+            : 'Gói số hóa & Marketing tổng thể cho tiệm'
+        }
+        sourceContext={`mobile_floating_article_${post.id}`}
+        onOpenConsultForm={(srv) => handleOpenLeadModal(srv, `Đăng ký từ thanh liên hệ nhanh bài viết: ${post.title}`)}
+      />
+
+      {/* Global Lead Capture Modal */}
+      <LeadModal
+        isOpen={isLeadModalOpen}
+        onClose={() => setIsLeadModalOpen(false)}
+        defaultServiceName={selectedService}
+        initialNote={leadNote}
+      />
     </div>
   );
 };

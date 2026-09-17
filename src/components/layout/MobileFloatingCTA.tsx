@@ -4,21 +4,29 @@ import { CONTACT_INFO } from '../../data/landingContent';
 import { trackPhoneClick, trackZaloClick, trackCTAClick } from '../../analytics/tracker';
 
 interface MobileFloatingCTAProps {
-  onOpenConsultForm: () => void;
+  onOpenConsultForm: (serviceName?: string) => void;
+  ctaText?: string;
+  serviceName?: string;
+  sourceContext?: string;
 }
 
-export const MobileFloatingCTA: React.FC<MobileFloatingCTAProps> = ({ onOpenConsultForm }) => {
+export const MobileFloatingCTA: React.FC<MobileFloatingCTAProps> = ({
+  onOpenConsultForm,
+  ctaText = 'Kể việc cần làm',
+  serviceName = 'Tư vấn giải pháp Website & Marketing',
+  sourceContext = 'mobile_floating_bar'
+}) => {
   const handleCallClick = () => {
-    trackPhoneClick('mobile_floating_bar');
+    trackPhoneClick(sourceContext);
   };
 
   const handleZaloClick = () => {
-    trackZaloClick('mobile_floating_bar');
+    trackZaloClick(sourceContext);
   };
 
   const handleConsultClick = () => {
-    trackCTAClick('Đăng ký tư vấn', 'mobile_floating_bar');
-    onOpenConsultForm();
+    trackCTAClick(ctaText, sourceContext);
+    onOpenConsultForm(serviceName);
   };
 
   return (
@@ -27,12 +35,12 @@ export const MobileFloatingCTA: React.FC<MobileFloatingCTAProps> = ({ onOpenCons
       aria-label="Thanh liên hệ nhanh di động"
       role="navigation"
     >
-      {/* 1. Nút Gọi điện */}
+      {/* 1. Nút Gọi điện khẩn cấp */}
       <a
         href={`tel:${CONTACT_INFO.phoneRaw}`}
         onClick={handleCallClick}
         className="floating-btn floating-btn-call"
-        aria-label={`Gọi điện thoại tư vấn ngay: ${CONTACT_INFO.phoneRaw}`}
+        aria-label={`Gọi điện thoại tư vấn khẩn cấp: ${CONTACT_INFO.phoneRaw}`}
       >
         <span className="floating-btn-icon-wrapper call-icon-bg">
           <PhoneCall size={16} className="floating-btn-icon" />
@@ -40,7 +48,7 @@ export const MobileFloatingCTA: React.FC<MobileFloatingCTAProps> = ({ onOpenCons
         <span className="floating-btn-text">Gọi điện</span>
       </a>
 
-      {/* 2. Nút Nhắn Zalo */}
+      {/* 2. Nút Nhắn Zalo tư vấn */}
       <a
         href={CONTACT_INFO.zaloUrl}
         target="_blank"
@@ -55,15 +63,15 @@ export const MobileFloatingCTA: React.FC<MobileFloatingCTAProps> = ({ onOpenCons
         <span className="floating-btn-text">Nhắn Zalo</span>
       </a>
 
-      {/* 3. Nút Kể việc cần làm (Primary CTA tự nhiên, không ép buộc) */}
+      {/* 3. Nút Kêu gọi hành động ngữ cảnh (Tự nhiên, không ép buộc) */}
       <button
         type="button"
         onClick={handleConsultClick}
         className="floating-btn floating-btn-primary"
-        aria-label="Kể việc bạn đang cần để nhận tư vấn 0đ từ kỹ thuật viên"
+        aria-label={`${ctaText} - Nhận tư vấn 0đ từ kỹ thuật viên`}
       >
         <Sparkles size={16} className="floating-btn-icon" />
-        <span className="floating-btn-text">Kể việc cần làm</span>
+        <span className="floating-btn-text">{ctaText}</span>
       </button>
 
       <style>{`
