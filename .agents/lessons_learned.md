@@ -290,3 +290,15 @@
   - Hệ thống `markdown-to-cms.cjs` sử dụng regex `/##.*(FAQ|câu hỏi thường gặp|thắc mắc)[\s\S]*$/i` để trích xuất mục FAQ.
   - Vì `##` là tiền tố của `###`, nếu một thẻ `###` ở phần trên bài viết (ví dụ: `### Nhóm 1: Giải đáp thắc mắc...`) vô tình chứa chữ "thắc mắc", regex sẽ khớp ngay từ thẻ `###` đó và gom toàn bộ các heading con của bài viết vào mảng `faqs`.
   - **Quy tắc thực chiến**: Đảm bảo từ khóa `FAQ / câu hỏi thường gặp / thắc mắc` chỉ xuất hiện duy nhất ở thẻ `##` cấp 2 cuối cùng của bài viết để parser phân tách dữ liệu chuẩn xác 100%.
+
+---
+
+## 50. [2026-09-17] Quy Chuẩn Production Deployment & Post-Deployment Verification (Cloudflare Pages & PowerShell)
+- **Cơ Chế Đóng Gói Cloudflare Pages Functions**:
+  - Khi chạy `npx wrangler pages deploy dist --project-name=localmate-vn`, Wrangler tự động gom toàn bộ thư mục tĩnh `dist` và thư mục backend `functions/` tại root repo.
+  - Public route của Hono API trong `functions/api/[[route]].ts` được prefix là `/api/public/...` (ví dụ: `/api/public/categories`, `/api/public/posts`), tránh nhầm với `/api/content/...`.
+- **Cơ Chế Dynamic Sitemap & Trạng Thái D1**:
+  - `functions/sitemap.xml.ts` truy vấn D1 với điều kiện `WHERE status = 'published'`. Dữ liệu mới seed từ SQL ở trạng thái `draft` sẽ không hiển thị trên sitemap cho đến khi được duyệt xuất bản qua CMS Admin (`/admin/posts`). Sitemap luôn tự động phản ánh 11 trang tĩnh + 7 danh mục D1 + các bài viết đã public.
+- **Bẫy Biến Tự Động Trong PowerShell Khi Viết Script Test**:
+  - Trong PowerShell, `$HOME` là biến tự động chỉ định thư mục người dùng (`C:\Users\...`) được bảo vệ quyền ghi (`read-only`). Cấm gán biến `$home = ...` trong script kiểm thử; thay vào đó sử dụng `$pageHtml` hoặc `$htmlContent`.
+
