@@ -1,6 +1,13 @@
 # BÀI HỌC VÀ LƯU Ý KỸ THUẬT (LESSONS LEARNED & BUG MEMORY)
 
-## [2026-09-17] — Tối Ưu Bố Cục Full-Width Cho Landing Page Chạy Ads & Chống Ngắt Dòng Vụn Chữ Tiếng Việt
+## [2026-09-17] — Giữ Trang Chủ Tinh Gọn & Tuyệt Đối Không Dùng Dropdown Tự Mở Tràn Màn Hình
+- **Vấn đề phát sinh:**
+  - Việc tự ý thêm mega menu dropdown bung mở tự động khi hover (`onMouseEnter`) khiến giao diện bị che khuất nghiêm trọng, gây ức chế cho người dùng khi chỉ muốn lướt xem trang.
+  - Nhồi nhét quá nhiều khối nội dung trung gian (conversion journey phức tạp, form chẩn đoán cồng kềnh) vào trang chủ làm mất đi thông điệp cốt lõi đơn giản, trực diện của LocalMate.
+- **Quy tắc đúc kết:**
+  1. Header điều hướng phải gọn gàng, drop-down chỉ mở khi có chủ đích rõ ràng, click ra ngoài phải tự đóng (`handleClickOutside`).
+  2. Trang chủ luôn theo tôn chỉ: *"Đơn giản, thực tế, giải quyết trực tiếp vấn đề mà không làm phức tạp hóa mọi thứ lên"*. Nền sáng, chữ đậm, tương phản cao, người dùng dễ hiểu ngay dịch vụ và giá cả trong 5 giây đầu tiên.
+
 - **Bối cảnh & Vấn đề phát hiện:**
   - Khi thiết kế Hero section chia 2 cột (cột trái văn bản, cột phải form audit) trên desktop, cột văn bản bị co hẹp lại chỉ còn ~500–550px.
   - Hậu quả: Tiêu đề H1 cỡ chữ lớn bị ngắt từ vụn vỡ kỳ quặc (ví dụ: *"KHÁCH HỎI CHATGPT VỀ DỊCH"* ở dòng 1 và *"VỤ CỦA BẠN"* ở dòng 2), làm mất nhịp đọc tự nhiên và tạo cảm giác chật chội, thiếu uy lực.

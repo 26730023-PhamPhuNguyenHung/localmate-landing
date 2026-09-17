@@ -2,6 +2,17 @@
 
 Ghi nhận các mốc sự kiện, commit và trạng thái vận hành của dự án.
 
+## [2026-09-17] - Khôi Phục Trang Chủ (HomePage & Header) Về Chuẩn Bản Production Deploy Trên Wrangler
+- **Bối cảnh & Yêu cầu**: Bản localhost gần đây bị nhồi nhét mega-menu tự bung che khuất màn hình và các khối giao diện phức tạp làm mất tính tinh gọn. Khôi phục lại toàn bộ Trang chủ (`HomePage.tsx`, `Header.tsx` và 15 sections trực thuộc) về chính xác phiên bản đang deploy ổn định trên Wrangler (`localmate.vn` - commit `914fa97`).
+- **Các thành phần được đồng bộ chuẩn xác**:
+  1. *Header & Navigation*: Khôi phục thanh menu điều hướng gọn nhẹ (Trang chủ, Dịch vụ, Bảng giá, Dự án, Kiến thức, Giới thiệu, Liên hệ, Hotline 0834.422.439, Báo giá nhanh). Loại bỏ hoàn toàn popover mega-menu tự động bung khi rê chuột.
+  2. *Hero Section*: Tiêu đề chuẩn *"Giúp doanh nghiệp nhỏ có website, lên Google và tìm thêm khách"*, 2 nút CTA rõ ràng ("Nhận website demo 0đ" & "Xem dịch vụ & giá"), dải 4 cam kết vàng minh bạch.
+  3. *Các khối cốt lõi*: 6 thẻ nhu cầu khách hàng (`ProblemMapperSection`), menu dịch vụ linh hoạt (`ServiceHubSection`), lộ trình thấu hiểu (`SolutionJourneySection`), gói khởi tạo 2.9M (`StarterPackageSection`), bảng giá niêm yết, dự án thực tế, quy trình, FAQ và Kiến thức.
+- **Nghiệm thu**:
+  - `npm run build` (`tsc && vite build`) PASS 100% không một lỗi type.
+  - Kiểm tra trực quan bằng `agent-browser` trên `http://localhost:3000`: Giao diện Light Mode sáng sủa, sạch sẽ, chuẩn xác 100% so với trang live `https://localmate.vn`.
+
+
 ## [2026-09-17] - Triển Khai Landing Page Chuyển Đổi Cao Cho Mobile Ads Tại /geo
 - **Mục tiêu**: Xây dựng trang Landing Page chuyên biệt phục vụ chiến dịch chạy quảng cáo (Ads traffic), tối ưu chuyển đổi cao trên mobile (Mobile First), layout Full-Width căn giữa sang trọng, chống rớt dòng vụn chữ tiếng Việt và tích hợp form audit trực tiếp.
 - **Các hạng mục đã hoàn thành**:
