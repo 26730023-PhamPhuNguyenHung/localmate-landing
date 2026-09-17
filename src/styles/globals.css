@@ -79,6 +79,21 @@ body {
   box-sizing: border-box;
 }
 
+/* Knowledge Base Unified Content Container (SSOT: 1440px desktop, 32px padding) */
+.knowledge-container {
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: 32px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .knowledge-container {
+    padding-inline: 16px;
+  }
+}
+
 /* SSOT Section Spacing — Nhịp điệu mạnh - nhẹ rõ rệt */
 .section-component,
 section[data-section] {

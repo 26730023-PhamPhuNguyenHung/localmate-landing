@@ -330,13 +330,22 @@ Tài liệu này ghi nhận dòng thời gian các mốc cam kết (commits), s�
   - Tích hợp và đồng bộ quy tắc Typography vào `src/styles/globals.css` làm SSOT toàn cục cho các class `.article-body`, `.article-rendered-content`, `.article-rendered-body`.
   - Kiểm thử TypeScript và build Vite pass 100% không lỗi.
 
+### Mốc 24: Chuẩn Hóa Hệ Thống Layout Container Thống Nhất Trang /kien-thuc
+- **Mã sự kiện**: `fix(layout): unify knowledge page content container to 1440px max-width`
+- **Chi tiết**:
+  - Audit và loại bỏ toàn bộ cấu trúc wrapper lồng nhau (nested 860px/620px wrapper) gây hiện tượng "2 lớp container" và lệch trục giữa Header website, Breadcrumbs, Search area, Filter bar và Article Grid.
+  - Chuẩn hóa SSOT cho toàn bộ trang `/kien-thuc` với hệ thống content container duy nhất `.knowledge-container` (`max-width: 1440px; margin-inline: auto; padding-inline: 32px;` trên desktop; `padding-inline: 16px` trên mobile <= 768px).
+  - Dóng thẳng hàng 100% các thành phần: Breadcrumbs, Search Toolbar, Quick Metrics Stats, Topic Filters Bar, Dòng thông tin bài viết ("Hiển thị 30 bài viết"), Article Grid 3-4 cột và Bottom Conversion Banner.
+  - Giữ nguyên 100% Article Card UI và logic filter/search.
+  - Kiểm thử TypeScript và visual verification bằng Playwright/agent-browser pass 100% không overflow (`hasOverflow: false`).
+
 ---
 
 ## Trạng Thái Hệ Thống Hiện Tại (Current System State)
 - **Local D1 Database**: Đã chạy đầy đủ 4 migrations (`0001`, `0002`, `0003`, `0004`), 30 bài viết, 3 mẫu CTA chuyển đổi, 7 chuyên mục.
 - **Production Build**: Pass 100% (`tsc && vite build` hoàn tất không lỗi).
+- **Trang Kiến Thức (/kien-thuc)**: Layout container 1440px thống nhất hoàn hảo, dóng thẳng hàng toàn bộ khối nội dung từ trên xuống dưới.
 - **Typography & Prose**: Hệ thống Typography bài viết chuẩn mực đã hoàn thiện và kết nối đồng bộ giữa ArticleDetailPage, TableOfContents và ArticleBody.
 - **Giao diện Quản trị & Độc giả**: Light mode hoàn chỉnh, màu nhận diện `#0d7647`, tuyệt đối không dùng glassmorphism, responsive mượt mà trên laptop 14" 125% scaling.
 - **Hệ thống API**: 100% endpoints backend trên Hono/Cloudflare Pages Functions hoạt động ổn định với thời gian phản hồi < 50ms.
-- **Bài viết đã chuẩn hóa Markdown Pipeline**: ID 1, ID 2, ID 4, ID 5, ID 6, ID 7, ID 9, ID 13, ID 15, ID 16, ID 18, ID 19, ID 21, ID 22, ID 23, ID 25, ID 26, ID 27, ID 29.
 

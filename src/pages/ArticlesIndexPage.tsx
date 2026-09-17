@@ -1,5 +1,4 @@
 import React, { useState, useMemo } from 'react';
-import { Container } from '../components/ui/Container';
 import { Breadcrumbs } from '../components/ui/Breadcrumbs';
 import { SEOHead } from '../components/seo/SEOHead';
 import { Link, useRouter } from '../components/layout/Router';
@@ -216,10 +215,10 @@ export const ArticlesIndexPage: React.FC<ArticlesIndexPageProps> = ({ onOpenCons
           padding: '3rem 0 2.5rem 0'
         }}
       >
-        <Container size="lg">
+        <div className="knowledge-container">
           <Breadcrumbs items={[{ name: 'Kiến thức kinh doanh', url: '/kien-thuc' }]} />
 
-          <div style={{ maxWidth: '860px', margin: '0 auto', textAlign: 'center' }}>
+          <div style={{ textAlign: 'center', margin: '0 auto' }}>
             {/* Top Pill Tag */}
             <div
               style={{
@@ -250,7 +249,10 @@ export const ArticlesIndexPage: React.FC<ArticlesIndexPageProps> = ({ onOpenCons
                 lineHeight: 1.25,
                 letterSpacing: '-0.02em',
                 marginBottom: '1rem',
-                textWrap: 'pretty'
+                textWrap: 'pretty',
+                maxWidth: '960px',
+                marginLeft: 'auto',
+                marginRight: 'auto'
               }}
             >
               Kiến Thức Tăng Trưởng Số Thực Tế Cho Doanh Nghiệp Địa Phương
@@ -262,7 +264,7 @@ export const ArticlesIndexPage: React.FC<ArticlesIndexPageProps> = ({ onOpenCons
                 fontSize: 'clamp(0.95rem, 1.8vw, 1.125rem)',
                 color: '#475569',
                 lineHeight: 1.65,
-                maxWidth: '740px',
+                maxWidth: '780px',
                 margin: '0 auto 2rem auto',
                 textWrap: 'pretty'
               }}
@@ -274,7 +276,8 @@ export const ArticlesIndexPage: React.FC<ArticlesIndexPageProps> = ({ onOpenCons
             <div
               style={{
                 position: 'relative',
-                maxWidth: '620px',
+                maxWidth: '680px',
+                width: '100%',
                 margin: '0 auto 1.5rem auto'
               }}
             >
@@ -369,7 +372,7 @@ export const ArticlesIndexPage: React.FC<ArticlesIndexPageProps> = ({ onOpenCons
               </span>
             </div>
           </div>
-        </Container>
+        </div>
       </section>
 
       {/* 5 Topic Clusters Filter Bar */}
@@ -383,7 +386,7 @@ export const ArticlesIndexPage: React.FC<ArticlesIndexPageProps> = ({ onOpenCons
           boxShadow: '0 2px 8px rgba(15, 23, 42, 0.03)'
         }}
       >
-        <Container size="lg">
+        <div className="knowledge-container">
           <div
             style={{
               display: 'flex',
@@ -469,12 +472,12 @@ export const ArticlesIndexPage: React.FC<ArticlesIndexPageProps> = ({ onOpenCons
               );
             })}
           </div>
-        </Container>
+        </div>
       </section>
 
       {/* Articles Grid Content */}
       <section style={{ padding: '2.5rem 0' }}>
-        <Container size="lg">
+        <div className="knowledge-container">
           {/* Header row with count & clear */}
           <div
             style={{
@@ -768,12 +771,12 @@ export const ArticlesIndexPage: React.FC<ArticlesIndexPageProps> = ({ onOpenCons
               );
             })}
           </div>
-        </Container>
+        </div>
       </section>
 
       {/* Bottom Conversion Banner Section */}
       <section style={{ marginTop: '2rem' }}>
-        <Container size="lg">
+        <div className="knowledge-container">
           <div
             style={{
               backgroundColor: '#f8fafc',
@@ -852,7 +855,7 @@ export const ArticlesIndexPage: React.FC<ArticlesIndexPageProps> = ({ onOpenCons
               </Button>
             </div>
           </div>
-        </Container>
+        </div>
       </section>
     </div>
   );

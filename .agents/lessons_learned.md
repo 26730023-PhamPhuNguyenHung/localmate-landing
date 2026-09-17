@@ -1,6 +1,30 @@
 # 📚 LOCALMATE AGENTS LESSONS LEARNED & EDITORIAL RULES
 
-## 22. Bài Học Về Redesign Table of Contents (TOC) Chuẩn Editorial Rail & Triệt Tiêu Bug Tự Động Cuộn Lên (Heading Auto-Scroll Trap)
+## 23. Bài Học Về Layout Container SSOT Trang Danh Mục (/kien-thuc) — Khử Bỏ Bẫy Wrapper Lồng Nhau (Nested Container Trap)
+- **Căn nguyên Bệnh "2 Lớp Container" và Lệch Trục (Misalignment)**:
+  - Khi trang danh mục sử dụng chung component `<Container size="lg">` vốn bị giới hạn ở `var(--container-max) = 1240px`, trong khi Header trang dùng `max-width: 1672px`, Article Grid bị bó chặt và để lộ khoảng trắng khổng lồ hai bên màn hình desktop rộng.
+  - Tệ hơn, trong phần Hero Header, nội dung lại bị lồng thêm các wrapper con mang chiều rộng cứng: thẻ `<div>` bọc tiêu đề `maxWidth: 860px` và bên trong ô tìm kiếm lại bị bọc thêm `maxWidth: 620px`.
+  - Kết quả tạo thành 4 bậc max-width hỗn loạn: 1672px (Header website) $\rightarrow$ 1240px (Container) $\rightarrow$ 860px (Hero) $\rightarrow$ 620px (Search input). Khối tìm kiếm bị co cụm lại, lệch hoàn toàn so với mép dóng của Breadcrumbs (1240px), Filter bar (1240px) và Header website (1672px).
+- **Giải pháp Chuẩn Hóa Content Width SSOT (Desktop 1440px / 32px padding)**:
+  - Khai báo quy tắc CSS toàn cục `.knowledge-container`:
+    ```css
+    .knowledge-container {
+      width: 100%;
+      max-width: 1440px;
+      margin-inline: auto;
+      padding-inline: 32px;
+      box-sizing: border-box;
+    }
+    @media (max-width: 768px) {
+      .knowledge-container {
+        padding-inline: 16px;
+      }
+    }
+    ```
+  - Triệt tiêu hoàn toàn các wrapper lồng nhau thừa thãi (`maxWidth: 860px`). Thả các khối Breadcrumbs, Hero Header, Search toolbar, Quick Metrics Stats, Topic Filters, Count row ("Hiển thị 30 bài viết"), Article Grid và Bottom Conversion Banner vào cùng một hệ thống trục dóng chung.
+  - Trên màn hình lớn 1440px+, Article Grid tự động dàn trải cân đối 3-4 cột đẹp mắt, giải phóng hoàn toàn không gian hiển thị bài viết mà không cần sửa đổi bất kỳ logic search hay cấu trúc Article Card nào.
+  - Kiểm thử `scrollWidth > clientWidth` trả về `false`, chống 100% horizontal overflow trên mọi kích thước màn hình từ di động 390px đến màn ảnh rộng 1920px.
+
 - **Căn nguyên Bug Tự Động Cuộn Lên (Auto-Scroll Trap)**:
   - Hàm W3C `element.scrollIntoView()` cuộn đệ quy toàn bộ ancestor containers cho tới tận `window`. Khi ScrollSpy gọi `scrollIntoView()` trên active item bên trong TOC, nó kéo giật toàn bộ viewport trình duyệt (window) về phía container TOC!
   - **Dual Mounting trong React Tree**: Render 2 TOC component song song (mobile ở đầu bài, desktop ở sidebar). Dù mobile TOC bị ẩn bằng `display: none !important` trên desktop, React vẫn mount nó và gọi `scrollIntoView()` trên phần tử ẩn ở đầu trang $\rightarrow$ Kéo giật cửa sổ lên đầu trang ngay khi vừa cuộn xuống.
