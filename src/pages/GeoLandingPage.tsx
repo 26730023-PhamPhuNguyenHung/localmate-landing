@@ -3,6 +3,7 @@ import { SEOHead } from '../components/seo/SEOHead';
 import { GeoHeroSection } from '../components/geo/landing/GeoHeroSection';
 import { GeoPricingSection } from '../components/geo/landing/GeoPricingSection';
 import { GeoValueSection } from '../components/geo/landing/GeoValueSection';
+import { GeoFooter } from '../components/geo/landing/GeoFooter';
 
 interface GeoLandingPageProps {
   onOpenConsultForm?: (serviceName?: string) => void;
@@ -45,6 +46,9 @@ export const GeoLandingPage: React.FC<GeoLandingPageProps> = () => {
 
       {/* SECTION 3 — VALUE & PROOF (Khít viewport desktop, 4 câu hỏi AI + form chốt cuối) */}
       <GeoValueSection selectedPackage={selectedPackage} />
+
+      {/* Dedicated Clean Ads Footer for /geo */}
+      <GeoFooter />
 
       <style>{`
         .geo-landing-container {

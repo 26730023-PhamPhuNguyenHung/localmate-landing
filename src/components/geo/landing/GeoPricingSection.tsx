@@ -99,9 +99,10 @@ export const GeoPricingSection: React.FC<GeoPricingSectionProps> = ({ onSelectPl
           justify-content: center;
           background-color: #f8fafc;
           border-bottom: 1px solid #e2e8f0;
-          padding-top: clamp(28px, 4vh, 56px);
-          padding-bottom: clamp(28px, 4vh, 56px);
+          padding-top: clamp(16px, 2.5vh, 36px);
+          padding-bottom: clamp(16px, 2.5vh, 36px);
           box-sizing: border-box;
+          font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         .gp-wrapper {
@@ -109,67 +110,68 @@ export const GeoPricingSection: React.FC<GeoPricingSectionProps> = ({ onSelectPl
           flex-direction: column;
           align-items: center;
           width: 100%;
-          gap: clamp(18px, 2.5vh, 28px);
+          gap: clamp(12px, 1.8vh, 22px);
         }
 
         .gp-header {
           text-align: center;
-          max-width: 960px;
+          max-width: 920px;
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 8px;
+          gap: 6px;
         }
 
         .gp-pre-badge {
           display: inline-flex;
           align-items: center;
           gap: 6px;
-          font-size: 11.5px;
-          font-weight: 800;
+          font-size: 11px;
+          font-weight: 700;
           color: #0d7647;
           background-color: #edf7f1;
           border: 1px solid #c6ebd4;
-          padding: 4px 12px;
+          padding: 3px 10px;
           border-radius: 9999px;
-          letter-spacing: 0.04em;
+          letter-spacing: 0.03em;
           text-transform: uppercase;
         }
 
         .gp-title {
-          font-size: clamp(21px, 2.2vw, 32px);
-          font-weight: 900;
+          font-size: clamp(20px, 2.1vw, 30px);
+          font-weight: 800;
           color: #0f172a;
           line-height: 1.25;
           margin: 0;
-          letter-spacing: -0.02em;
+          letter-spacing: -0.01em;
           word-break: keep-all;
           text-wrap: balance;
+          font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         .gp-desc {
-          font-size: clamp(14px, 1.1vw, 16px);
+          font-size: clamp(13px, 1.05vw, 15px);
           color: #475569;
-          line-height: 1.55;
+          line-height: 1.5;
           margin: 0;
-          max-width: 780px;
+          max-width: 760px;
           text-wrap: pretty;
         }
 
         .gp-cards-grid {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
-          gap: clamp(20px, 2.5vw, 32px);
+          gap: clamp(16px, 2vw, 28px);
           align-items: stretch;
-          max-width: 1060px;
+          max-width: 1080px;
           width: 100%;
         }
 
-        @media (max-width: 840px) {
+        @media (max-width: 860px) {
           .geo-pricing-viewport {
             min-height: auto;
-            padding-top: 40px;
-            padding-bottom: 48px;
+            padding-top: 36px;
+            padding-bottom: 44px;
           }
           .gp-cards-grid {
             grid-template-columns: 1fr;
@@ -182,12 +184,12 @@ export const GeoPricingSection: React.FC<GeoPricingSectionProps> = ({ onSelectPl
           align-items: center;
           justify-content: center;
           flex-wrap: wrap;
-          gap: 16px 28px;
+          gap: 12px 24px;
           background-color: #ffffff;
           border: 1px solid #cbd5e1;
-          border-radius: 12px;
-          padding: 10px 20px;
-          max-width: 1060px;
+          border-radius: 10px;
+          padding: 8px 18px;
+          max-width: 1080px;
           width: 100%;
           box-sizing: border-box;
         }
@@ -195,11 +197,11 @@ export const GeoPricingSection: React.FC<GeoPricingSectionProps> = ({ onSelectPl
         .gp-transparency-item {
           display: flex;
           align-items: center;
-          gap: 8px;
-          font-size: 12.5px;
+          gap: 7px;
+          font-size: 12px;
           color: #475569;
-          line-height: 1.4;
-          font-weight: 550;
+          line-height: 1.35;
+          font-weight: 500;
         }
 
         .gp-transparency-icon {

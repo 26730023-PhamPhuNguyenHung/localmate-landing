@@ -190,13 +190,14 @@ export const GeoHeroSection: React.FC<GeoHeroSectionProps> = ({ onScrollToPricin
 
         .gh-title {
           font-size: clamp(21px, 2.25vw, 33px);
-          font-weight: 900;
+          font-weight: 800;
           line-height: 1.25;
-          letter-spacing: -0.025em;
+          letter-spacing: -0.015em;
           margin: 0;
           display: flex;
           flex-direction: column;
           gap: 4px;
+          font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         .gh-line {

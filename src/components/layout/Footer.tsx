@@ -1,24 +1,6 @@
 import React from 'react';
 import { Container } from '../ui/Container';
-import {
-  ShieldCheck,
-  Phone,
-  Mail,
-  MapPin,
-  Globe,
-  CheckCircle2,
-  Lock,
-  Clock,
-  ArrowRight,
-  Building2,
-  Users,
-  FileText,
-  Sparkles,
-  BookOpen,
-  ClipboardCheck,
-  Compass,
-  CheckSquare
-} from 'lucide-react';
+import { Phone, Mail } from 'lucide-react';
 import { COMPANY_DATA } from '../../data/company';
 import { Link } from './Router';
 
@@ -27,613 +9,202 @@ export const Footer: React.FC = () => {
   const { entity } = COMPANY_DATA;
 
   return (
-    <footer className="localmate-footer" aria-label="Thông tin cuối trang LocalMate">
+    <footer className="localmate-footer" aria-label="Thông tin chân trang LocalMate">
       <Container size="lg">
-        {/* TOP BRAND & LOCAL COMMITMENT BANNER */}
-        <div className="footer-header-banner">
-          <div className="footer-header-brand">
-            <Link to="/" className="footer-logo-link" title="LocalMate Việt Nam">
+        {/* TẦNG 1: MAIN FOOTER (GRID 4 COLUMNS) */}
+        <div className="footer-main-grid">
+          {/* CỘT 1: BRAND (32-35% CHIỀU NGANG) */}
+          <div className="footer-col footer-col-brand">
+            <Link to="/" className="footer-logo-link" title="LocalMate Việt Nam - Trang chủ">
               <img
                 src="/logo.png"
-                alt="LocalMate - Giải pháp chuyển đổi số và website thực chiến"
-                width="170"
-                height="44"
+                alt="LocalMate - Hệ thống số cho hộ kinh doanh & SME"
+                width="160"
+                height="42"
                 className="footer-logo-img"
                 loading="lazy"
               />
             </Link>
-            <div className="footer-brand-pill">
-              <Building2 size={14} className="pill-icon" />
-              <span>Đối tác số hóa tin cậy cho hộ kinh doanh &amp; SME</span>
-            </div>
-          </div>
 
-          <div className="footer-header-cta">
-            <div className="footer-local-badge">
-              <span className="live-dot" aria-hidden="true"></span>
-              <span>Hỗ trợ kỹ thuật 1-1 tại Đà Nẵng, Hội An, TP.HCM &amp; Toàn quốc</span>
-            </div>
-            <a
-              href={`tel:${entity.contact.hotlineTel}`}
-              className="footer-quick-phone-btn"
-              title="Gọi Hotline tư vấn nhanh"
-            >
-              <Phone size={15} />
-              <span>{entity.contact.hotlineDisplay}</span>
-            </a>
-          </div>
-        </div>
-
-        {/* MAIN CONTENT GRID: 5 COLUMNS */}
-        <div className="footer-main-grid">
-          {/* CỘT 1: HỒ SƠ PHÁP NHÂN & ĐỊA BÀN PHỤC VỤ (LOCAL IDENTITY) */}
-          <div className="footer-col col-identity">
-            <h3 className="footer-heading-legal">
-              {entity.legalName}
-            </h3>
-
-            <p className="footer-intro-desc">
-              {entity.shortDescription}
+            <p className="footer-brand-desc">
+              Website, Google Maps, quảng cáo và hệ thống số cho hộ kinh doanh &amp; SME.
             </p>
 
-            <div className="footer-contact-list">
-              {/* Trụ sở đăng ký kinh doanh */}
-              <div className="contact-item">
-                <Building2 size={16} className="contact-icon highlight-icon" />
-                <div className="contact-text">
-                  <strong>Trụ sở chính:</strong>
-                  <span>{entity.headquarters.streetAddress}, {entity.headquarters.addressLocality}</span>
-                  <span className="local-tag">Hỗ trợ khảo sát &amp; demo 1-1 tận nơi</span>
-                </div>
-              </div>
-
-              {/* Hotline & Zalo */}
-              <div className="contact-item">
-                <Phone size={16} className="contact-icon" />
-                <div className="contact-text">
-                  <strong>Hotline / Zalo tư vấn:</strong>
-                  <a href={`tel:${entity.contact.hotlineTel}`} className="footer-hotline-link">
-                    {entity.contact.hotlineDisplay}
-                  </a>
-                  <span className="sub-note">(Hỗ trợ nhanh 24/7)</span>
-                </div>
-              </div>
-
-              {/* Email */}
-              <div className="contact-item">
-                <Mail size={16} className="contact-icon" />
-                <div className="contact-text">
-                  <strong>Hộp thư điện tử:</strong>
-                  <a href={`mailto:${entity.contact.email}`} className="footer-link-inline">
-                    {entity.contact.email}
-                  </a>
-                </div>
-              </div>
-
-              {/* Giờ làm việc chuẩn mực */}
-              <div className="contact-item">
-                <Clock size={16} className="contact-icon" />
-                <div className="contact-text">
-                  <strong>Giờ làm việc:</strong>
-                  <span className="working-hours-tag">
-                    {entity.contact.workingHours}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Thông tin thuế & thành lập */}
-            <div className="footer-tax-box">
-              <span>Mã số thuế: <strong>{entity.taxId}</strong></span>
-              <span className="divider-tax">•</span>
-              <span>Đại diện pháp luật: <strong>{entity.founder}</strong></span>
+            <div className="footer-brand-location">
+              Đà Nẵng · Hội An · TP.HCM · Toàn quốc
             </div>
           </div>
 
-          {/* CỘT 2: 5 TRỤ CỘT GIẢI PHÁP CANONICAL */}
-          <div className="footer-col col-solutions">
-            <h4 className="footer-col-title">5 Trụ Cột Dịch Vụ Cốt Lõi</h4>
-            
-            <div className="footer-pillars-list">
-              {/* 01. Thiết kế Website */}
-              <div className="footer-pillar-block">
-                <Link to="/thiet-ke-website" className="pillar-link-primary">
-                  <span className="pillar-num-badge">01</span>
-                  <span className="pillar-link-title">Thiết Kế Website Tốc Độ Cao</span>
-                </Link>
-                <div className="pillar-sublinks-row">
-                  <Link to="/thiet-ke-website" className="pillar-sub-link">
-                    Web Doanh Nghiệp
-                  </Link>
-                  <span className="sublink-divider">•</span>
-                  <Link to="/landing-490k" className="pillar-sub-link">
-                    Web 1 Trang 490k
-                  </Link>
-                </div>
-              </div>
-
-              {/* 02. Google Maps & Local SEO */}
-              <div className="footer-pillar-block">
-                <Link to="/google-maps-local-seo" className="pillar-link-primary">
-                  <span className="pillar-num-badge">02</span>
-                  <span className="pillar-link-title">Google Maps &amp; Local SEO</span>
-                </Link>
-                <div className="pillar-sublinks-row">
-                  <Link to="/google-maps-local-seo" className="pillar-sub-link">
-                    Top 3 Bán Kính
-                  </Link>
-                  <span className="sublink-divider">•</span>
-                  <Link to="/google-maps-local-seo" className="pillar-sub-link">
-                    GPS Chính Chủ
-                  </Link>
-                </div>
-              </div>
-
-              {/* 03. Google Ads & Tìm Kiếm */}
-              <div className="footer-pillar-block">
-                <Link to="/google-ads" className="pillar-link-primary">
-                  <span className="pillar-num-badge">03</span>
-                  <span className="pillar-link-title">Google Ads &amp; Tìm Kiếm</span>
-                </Link>
-                <div className="pillar-sublinks-row">
-                  <Link to="/google-ads" className="pillar-sub-link">
-                    0% Kê Giá
-                  </Link>
-                  <span className="sublink-divider">•</span>
-                  <Link to="/google-ads" className="pillar-sub-link">
-                    Chặn Click Ảo
-                  </Link>
-                </div>
-              </div>
-
-              {/* 04. Content Marketing & Chăm Sóc Số */}
-              <div className="footer-pillar-block">
-                <Link to="/content-marketing" className="pillar-link-primary">
-                  <span className="pillar-num-badge">04</span>
-                  <span className="pillar-link-title">Content &amp; Chăm Sóc Số</span>
-                </Link>
-                <div className="pillar-sublinks-row">
-                  <Link to="/content-marketing" className="pillar-sub-link">
-                    Digital Care
-                  </Link>
-                  <span className="sublink-divider">•</span>
-                  <Link to="/quy-trinh-cham-soc" className="pillar-sub-link">
-                    Bảo Hành 5 Năm
-                  </Link>
-                </div>
-              </div>
-
-              {/* 05. Phần Mềm & Tự Động Hóa */}
-              <div className="footer-pillar-block">
-                <Link to="/automation" className="pillar-link-primary">
-                  <span className="pillar-num-badge">05</span>
-                  <span className="pillar-link-title">Phần Mềm &amp; Tự Động Hóa</span>
-                </Link>
-                <div className="pillar-sublinks-row">
-                  <Link to="/automation" className="pillar-sub-link">
-                    Telegram Báo Đơn
-                  </Link>
-                  <span className="sublink-divider">•</span>
-                  <Link to="/automation" className="pillar-sub-link">
-                    Google Sheets CRM
-                  </Link>
-                </div>
-              </div>
-
-              {/* Link Xem tất cả bảng giá & catalog */}
-              <div className="pillar-all-wrapper">
-                <Link to="/bang-gia" className="footer-view-all-btn">
-                  <span>Xem Bảng giá &amp; Catalog 41+ dịch vụ</span>
-                  <ArrowRight size={13} />
-                </Link>
-              </div>
-            </div>
+          {/* CỘT 2: DỊCH VỤ */}
+          <div className="footer-col footer-col-services">
+            <h3 className="footer-col-title">Dịch vụ</h3>
+            <nav className="footer-nav-list" aria-label="Danh mục dịch vụ">
+              <Link to="/thiet-ke-website" className="footer-nav-link">
+                Thiết kế website
+              </Link>
+              <Link to="/google-maps-local-seo" className="footer-nav-link">
+                Google Maps &amp; Local SEO
+              </Link>
+              <Link to="/google-ads" className="footer-nav-link">
+                Google Ads
+              </Link>
+              <Link to="/content-marketing" className="footer-nav-link">
+                Content &amp; chăm sóc số
+              </Link>
+              <Link to="/automation" className="footer-nav-link">
+                CRM &amp; Automation
+              </Link>
+            </nav>
           </div>
 
-          {/* CỘT 3: TÀI NGUYÊN CHUYÊN SÂU (RESOURCE NAVIGATION) */}
-          <div className="footer-col col-resources">
-            <h4 className="footer-col-title">Tài Nguyên Chuyên Sâu</h4>
-            <ul className="footer-nav-list">
-              <li>
-                <Link to="/khao-sat-du-an" className="nav-item-link highlight-survey-link">
-                  <ClipboardCheck size={14} className="nav-arrow nav-survey-icon" />
-                  <span className="survey-link-label">Khảo sát dự án 0đ</span>
-                  <span className="footer-pill-mini">0đ</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/chien-luoc-5-giai-doan" className="nav-item-link">
-                  <Compass size={14} className="nav-arrow" />
-                  <span>Lộ trình 5 giai đoạn</span>
-                  <span className="footer-pill-mini">Lộ trình</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/quy-trinh-geo" className="nav-item-link">
-                  <MapPin size={14} className="nav-arrow" />
-                  <span>Quy trình GEO &amp; AI</span>
-                  <span className="footer-pill-mini hot">2026</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/tieu-chuan-audit" className="nav-item-link">
-                  <CheckSquare size={14} className="nav-arrow" />
-                  <span>Tiêu chuẩn Audit 2026</span>
-                  <span className="footer-pill-mini">Kỹ thuật</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/quy-trinh-cham-soc" className="nav-item-link">
-                  <ShieldCheck size={14} className="nav-arrow" />
-                  <span>Quy trình chăm sóc số</span>
-                  <span className="footer-pill-mini teal">5 năm</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/ho-so-nang-luc" className="nav-item-link">
-                  <FileText size={14} className="nav-arrow" />
-                  <span style={{ fontWeight: 650 }}>Hồ sơ năng lực 2026</span>
-                  <span className="footer-pill-mini">40 Slide</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/kien-thuc" className="nav-item-link">
-                  <BookOpen size={14} className="nav-arrow" />
-                  <span>Trung tâm kiến thức</span>
-                </Link>
-              </li>
-            </ul>
+          {/* CỘT 3: THÔNG TIN */}
+          <div className="footer-col footer-col-info">
+            <h3 className="footer-col-title">Thông tin</h3>
+            <nav className="footer-nav-list" aria-label="Thông tin doanh nghiệp">
+              <Link to="/#cach-lam-viec" className="footer-nav-link">
+                Cách làm việc
+              </Link>
+              <Link to="/bang-gia" className="footer-nav-link">
+                Bảng giá
+              </Link>
+              <Link to="/du-an" className="footer-nav-link">
+                Dự án / Demo
+              </Link>
+              <Link to="/ve-localmate" className="footer-nav-link">
+                Về LocalMate
+              </Link>
+              <Link to="/chinh-sach-bao-mat" className="footer-nav-link">
+                Chính sách bảo mật
+              </Link>
+            </nav>
           </div>
 
-          {/* CỘT 4: ĐIỀU HƯỚNG & MINH BẠCH */}
-          <div className="footer-col col-policies">
-            <h4 className="footer-col-title">Điều Hướng &amp; Minh Bạch</h4>
-            <ul className="footer-nav-list">
-              <li>
-                <Link to="/#cach-lam-viec" className="nav-item-link">
-                  <CheckCircle2 size={13} className="nav-arrow" />
-                  <span>Cách làm việc 4 bước</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/du-an" className="nav-item-link">
-                  <FileText size={13} className="nav-arrow" />
-                  <span>Ví dụ &amp; Demo thực tế</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/bang-gia" className="nav-item-link">
-                  <FileText size={13} className="nav-arrow" />
-                  <span>Bảng giá niêm yết rõ ràng</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/ve-localmate" className="nav-item-link">
-                  <Users size={13} className="nav-arrow" />
-                  <span>Về Localmate &amp; Tầm nhìn</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/chinh-sach-bao-mat" className="nav-item-link">
-                  <ShieldCheck size={13} className="nav-arrow" />
-                  <span>Chính sách bảo mật thông tin</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/dieu-khoan" className="nav-item-link">
-                  <FileText size={13} className="nav-arrow" />
-                  <span>Điều khoản sử dụng dịch vụ</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/chinh-sach-dich-vu" className="nav-item-link">
-                  <Lock size={13} className="nav-arrow" />
-                  <span>Quy định hỗ trợ &amp; Bảo hành 5 năm</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/sitemap" className="nav-item-link">
-                  <Globe size={13} className="nav-arrow" />
-                  <span>Sơ đồ trang web (Sitemap)</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/lien-he" className="nav-item-link">
-                  <Phone size={13} className="nav-arrow" />
-                  <span>Liên hệ tư vấn trực tiếp</span>
-                </Link>
-              </li>
-            </ul>
-          </div>
+          {/* CỘT 4: CONTACT / CTA */}
+          <div className="footer-col footer-col-contact">
+            <h3 className="footer-col-title">Cần hỗ trợ?</h3>
+            <p className="footer-contact-desc">
+              Trao đổi trực tiếp với LocalMate về nhu cầu của bạn.
+            </p>
 
-          {/* CỘT 5: ĐẶC QUYỀN ĐỊA PHƯƠNG & KẾT NỐI TRỰC TIẾP */}
-          <div className="footer-col col-local-support">
-            <h4 className="footer-col-title">Đặc Quyền Địa Phương</h4>
-
-            {/* Local Support Card */}
-            <div className="local-support-card">
-              <div className="local-card-badge">Tư Vấn 1-1 Tận Nơi</div>
-              <p className="local-card-desc">
-                Bạn ở <strong>Đà Nẵng, Hội An, TP.HCM hoặc khu vực lân cận</strong>? Chuyên viên LocalMate sẵn sàng mang máy tính đến tận cửa hàng để khảo sát, tư vấn giải pháp và lên bản demo website miễn phí.
-              </p>
-              <div className="local-action-buttons">
-                <a
-                  href={entity.contact.zaloUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-local-zalo"
-                  title="Nhắn Zalo hẹn lịch tư vấn"
-                >
-                  Nhắn Zalo Đặt Hẹn
-                </a>
-                <Link to="/lien-he" className="btn-local-contact">
-                  Gửi Yêu Cầu →
-                </Link>
-              </div>
-            </div>
-
-            {/* Social channels */}
-            <div className="footer-social-wrapper">
-              <span className="social-label">Kênh kết nối:</span>
-              <div className="social-icons-group">
-                <a
-                  href={entity.socialProfiles.facebook}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="footer-social-circle"
-                  aria-label="Fanpage Facebook LocalMate"
-                >
-                  <span>f</span>
-                </a>
-                <a
-                  href={entity.contact.zaloUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="footer-social-circle"
-                  aria-label="Kênh Zalo LocalMate"
-                >
-                  <span>Z</span>
-                </a>
-                <a
-                  href={`tel:${entity.contact.hotlineTel}`}
-                  className="footer-social-circle"
-                  aria-label="Gọi Hotline LocalMate"
-                >
-                  <Phone size={13} />
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* TRUST CERTIFICATIONS & BADGES STRIP */}
-        <div className="footer-trust-strip">
-          <div className="trust-pills-list">
-            <div className="trust-pill-badge">
-              <Clock size={14} className="trust-icon" />
-              <span>{entity.contact.workingHours}</span>
-            </div>
-
-            <div className="trust-pill-badge">
-              <CheckCircle2 size={14} className="trust-icon" />
-              <span>Tư vấn trực tiếp 1-1 tại Đà Nẵng, Hội An &amp; Toàn quốc</span>
-            </div>
-
-            <div className="trust-pill-badge">
-              <Lock size={14} className="trust-icon" />
-              <span>Bảo mật SSL 256-bit chuẩn quốc tế</span>
-            </div>
-
-            <div className="trust-pill-badge">
-              <ShieldCheck size={14} className="trust-icon" />
-              <span>Báo giá trước khi làm – Không phát sinh</span>
-            </div>
-          </div>
-
-          {/* Huy hiệu Bộ Công Thương */}
-          <div className="trust-bct-wrapper">
             <a
-              href="http://online.gov.vn"
+              href={entity.contact.zaloUrl}
               target="_blank"
               rel="noopener noreferrer"
-              title="Website đã thông báo với Bộ Công Thương"
-              className="bct-badge-link"
+              className="footer-cta-btn"
+              title="Nhắn Zalo với chuyên viên LocalMate"
             >
-              <img
-                src="/logo-da-thong-bao-bct.png"
-                alt="Website đã đăng ký thông báo với Bộ Công Thương"
-                width="145"
-                height="45"
-                className="bct-badge-img"
-                loading="lazy"
-              />
+              Nhắn Zalo
             </a>
+
+            <div className="footer-contact-links">
+              <a
+                href={`tel:${entity.contact.hotlineTel}`}
+                className="footer-direct-link"
+                title="Gọi Hotline tư vấn trực tiếp"
+              >
+                <Phone size={15} className="contact-link-icon" aria-hidden="true" />
+                <span className="contact-phone-num">0834 422 439</span>
+              </a>
+
+              <a
+                href={`mailto:${entity.contact.email}`}
+                className="footer-direct-link"
+                title="Gửi email cho LocalMate"
+              >
+                <Mail size={15} className="contact-link-icon" aria-hidden="true" />
+                <span>{entity.contact.email}</span>
+              </a>
+            </div>
+
+            {/* Social Icons phẳng, tinh gọn */}
+            <div className="footer-social-row" aria-label="Kênh mạng xã hội">
+              <a
+                href={entity.socialProfiles.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-social-btn"
+                aria-label="Facebook LocalMate"
+                title="Fanpage Facebook LocalMate"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                </svg>
+              </a>
+              <a
+                href={entity.contact.zaloUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-social-btn footer-social-zalo"
+                aria-label="Zalo LocalMate"
+                title="Tư vấn Zalo LocalMate"
+              >
+                <span className="zalo-symbol" aria-hidden="true">Z</span>
+              </a>
+              <a
+                href={`tel:${entity.contact.hotlineTel}`}
+                className="footer-social-btn"
+                aria-label="Hotline LocalMate"
+                title="Gọi Hotline 0834 422 439"
+              >
+                <Phone size={15} aria-hidden="true" />
+              </a>
+            </div>
           </div>
         </div>
 
-        {/* BOTTOM COPYRIGHT & MISSION STATEMENT */}
+        {/* TẦNG 2: BOTTOM BAR */}
         <div className="footer-bottom-bar">
-          <div className="footer-mission-statement">
-            <strong>Sứ mệnh LocalMate:</strong> Đồng hành cùng hộ kinh doanh và doanh nghiệp SME địa phương xây dựng hiện diện số uy tín, tinh gọn, chi phí hợp lý và ra đơn thực tế.
+          <div className="footer-copyright">
+            © {currentYear} LocalMate. All rights reserved.
           </div>
 
-          <div className="footer-sub-links-row">
-            <div className="copyright-text">
-              © {currentYear} <strong>{entity.legalName}</strong>. Toàn quyền bảo lưu.
-            </div>
-
-            <div className="policy-quick-nav">
-              <Link to="/bang-gia">Bảng giá</Link>
-              <span className="dot-sep">•</span>
-              <Link to="/ve-localmate">Về Localmate</Link>
-              <span className="dot-sep">•</span>
-              <Link to="/chinh-sach-bao-mat">Bảo mật</Link>
-              <span className="dot-sep">•</span>
-              <Link to="/dieu-khoan">Điều khoản</Link>
-              <span className="dot-sep">•</span>
-              <Link to="/chinh-sach-dich-vu">Bảo hành</Link>
-              <span className="dot-sep">•</span>
-              <Link to="/sitemap">Sơ đồ website</Link>
-            </div>
+          <div className="footer-bottom-legal">
+            <Link to="/dieu-khoan" className="footer-legal-link">
+              Điều khoản
+            </Link>
+            <span className="footer-legal-dot" aria-hidden="true">·</span>
+            <Link to="/chinh-sach-bao-mat" className="footer-legal-link">
+              Bảo mật
+            </Link>
           </div>
         </div>
       </Container>
 
       <style>{`
         /* ==========================================================================
-           LOCALMATE FOOTER COMPONENT STYLES
-           Design Language: MISA Light Theme, high contrast, strict no glassmorphism
+           LOCALMATE FOOTER COMPONENT (REDESIGNED 2026)
+           Style: Clean, Minimalist, High Contrast, Strict No Glassmorphism
+           Height: 400 - 500px on Desktop
            ========================================================================== */
         .localmate-footer {
           background-color: #ffffff;
-          color: #334155;
-          border-top: 1px solid #e2e8f0;
-          padding: 3rem 0 2rem 0;
+          border-top: 1px solid #e9edf2;
+          padding: 72px 0 0 0;
           font-family: inherit;
           scrollbar-gutter: stable;
+          color: #667085;
         }
 
-        /* 1. Header Banner */
-        .footer-header-banner {
-          display: flex;
-          flex-direction: column;
-          gap: 1.25rem;
-          padding-bottom: 1.75rem;
-          border-bottom: 1px solid #f1f5f9;
-          margin-bottom: 2.25rem;
-        }
-
-        @media (min-width: 768px) {
-          .footer-header-banner {
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-          }
-        }
-
-        .footer-header-brand {
-          display: flex;
-          flex-direction: column;
-          gap: 0.5rem;
-          align-items: flex-start;
-        }
-
-        @media (min-width: 640px) {
-          .footer-header-brand {
-            flex-direction: row;
-            align-items: center;
-            gap: 1rem;
-          }
-        }
-
-        .footer-logo-link {
-          display: inline-flex;
-          align-items: center;
-          text-decoration: none;
-        }
-
-        .footer-logo-img {
-          height: 38px;
-          width: auto;
-          object-fit: contain;
-        }
-
-        .footer-brand-pill {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.4rem;
-          background-color: #f0fdf4;
-          border: 1px solid #bbf7d0;
-          color: #166534;
-          font-size: 0.8rem;
-          font-weight: 600;
-          padding: 0.3rem 0.75rem;
-          border-radius: 9999px;
-        }
-
-        .pill-icon {
-          color: #15803d;
-          flex-shrink: 0;
-        }
-
-        .footer-header-cta {
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-          gap: 0.75rem;
-        }
-
-        .footer-local-badge {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.45rem;
-          font-size: 0.825rem;
-          color: #0f172a;
-          font-weight: 600;
-          background-color: #f8fafc;
-          border: 1px solid #e2e8f0;
-          padding: 0.4rem 0.85rem;
-          border-radius: 9999px;
-        }
-
-        .live-dot {
-          width: 8px;
-          height: 8px;
-          border-radius: 50%;
-          background-color: #22c55e;
-          display: inline-block;
-          box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2);
-        }
-
-        .footer-quick-phone-btn {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.45rem;
-          background-color: #0d7647;
-          color: #ffffff;
-          font-weight: 800;
-          font-size: 0.85rem;
-          padding: 0.45rem 1rem;
-          border-radius: 9999px;
-          text-decoration: none;
-          transition: background-color 0.2s ease, transform 0.15s ease;
-        }
-
-        .footer-quick-phone-btn:hover {
-          background-color: #0a5c37;
-          color: #ffffff;
-          transform: translateY(-1px);
-        }
-
-        /* 2. Main Content Grid (5 Columns on Desktop) */
+        /* 1. Main Grid (4 Columns) */
         .footer-main-grid {
           display: grid;
           grid-template-columns: 1fr;
-          gap: 2.25rem;
-          margin-bottom: 2.5rem;
+          gap: 36px;
+          padding-bottom: 56px;
         }
 
-        @media (min-width: 640px) and (max-width: 1023px) {
+        @media (min-width: 768px) and (max-width: 1199px) {
           .footer-main-grid {
             grid-template-columns: repeat(2, 1fr);
-            gap: 2.5rem 1.75rem;
+            gap: 40px 32px;
           }
         }
 
-        @media (min-width: 1024px) and (max-width: 1279px) {
+        @media (min-width: 1200px) {
           .footer-main-grid {
-            grid-template-columns: 1.25fr 1.15fr 1fr 1fr;
-            gap: 1.75rem;
-          }
-          .col-local-support {
-            grid-column: span 2;
-          }
-        }
-
-        @media (min-width: 1280px) {
-          .footer-main-grid {
-            grid-template-columns: 1.3fr 1.1fr 1fr 0.9fr 1.1fr;
-            gap: 1.75rem;
+            grid-template-columns: 34% 1fr 1fr 1.2fr;
+            column-gap: 56px;
+            row-gap: 0;
           }
         }
 
@@ -642,576 +213,252 @@ export const Footer: React.FC = () => {
           flex-direction: column;
         }
 
-        /* Heading Styles */
-        .footer-heading-legal {
-          font-size: 1rem;
-          font-weight: 800;
-          color: #0f172a;
-          margin: 0 0 0.65rem 0;
-          letter-spacing: 0.01em;
-          text-transform: uppercase;
+        /* Mobile ordering per user requirement:
+           1. Brand, 2. CTA/Contact, 3. Dịch vụ, 4. Thông tin */
+        @media (max-width: 767px) {
+          .footer-col-brand { order: 1; }
+          .footer-col-contact { order: 2; }
+          .footer-col-services { order: 3; }
+          .footer-col-info { order: 4; }
         }
 
+        /* Column Titles */
         .footer-col-title {
-          font-size: 0.95rem;
-          font-weight: 800;
-          color: #0f172a;
-          margin: 0 0 1rem 0;
-          position: relative;
-          padding-bottom: 0.45rem;
+          font-size: 16px;
+          font-weight: 700;
+          color: #111827;
+          margin: 0 0 18px 0;
+          line-height: 1.3;
+          letter-spacing: -0.01em;
         }
 
-        .footer-col-title::after {
-          content: '';
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          width: 32px;
-          height: 2px;
-          background-color: #0d7647;
-          border-radius: 2px;
+        /* Column 1: Brand */
+        .footer-logo-link {
+          display: inline-flex;
+          align-items: center;
+          text-decoration: none;
+          margin-bottom: 16px;
+          width: fit-content;
         }
 
-        .footer-intro-desc {
-          font-size: 0.85rem;
-          line-height: 1.55;
+        .footer-logo-img {
+          height: 40px;
+          width: auto;
+          object-fit: contain;
+          display: block;
+        }
+
+        .footer-brand-desc {
+          font-size: 15px;
+          line-height: 1.6;
           color: #475569;
-          margin: 0 0 1.15rem 0;
+          margin: 0 0 14px 0;
+          max-width: 320px;
           text-wrap: pretty;
         }
 
-        /* Column 1: Contact Items */
-        .footer-contact-list {
-          display: flex;
-          flex-direction: column;
-          gap: 0.75rem;
-          font-size: 0.85rem;
-          color: #334155;
-        }
-
-        .contact-item {
-          display: flex;
-          align-items: flex-start;
-          gap: 0.6rem;
-          line-height: 1.45;
-        }
-
-        .contact-icon {
-          color: #0d7647;
-          flex-shrink: 0;
-          margin-top: 3px;
-        }
-
-        .contact-icon.highlight-icon {
-          color: #059669;
-        }
-
-        .contact-text {
-          display: flex;
-          flex-direction: column;
-          gap: 0.15rem;
-        }
-
-        .contact-text strong {
-          color: #0f172a;
-          font-weight: 700;
-        }
-
-        .local-tag {
-          display: inline-block;
-          font-size: 0.75rem;
-          font-weight: 700;
-          color: #065f46;
-          background-color: #ecfdf5;
-          padding: 0.15rem 0.5rem;
-          border-radius: 4px;
-          margin-top: 0.2rem;
-          width: fit-content;
-          border: 1px solid #a7f3d0;
-        }
-
-        .working-hours-tag {
-          display: inline-block;
-          font-size: 0.8rem;
-          font-weight: 700;
-          color: #92400e;
-          background-color: #fef3c7;
-          padding: 0.15rem 0.55rem;
-          border-radius: 4px;
-          margin-top: 0.2rem;
-          width: fit-content;
-          border: 1px solid #fde68a;
-        }
-
-        .footer-hotline-link {
-          font-weight: 800;
-          color: #0d7647;
-          font-size: 0.95rem;
-          text-decoration: none;
-        }
-
-        .footer-hotline-link:hover {
-          text-decoration: underline;
-        }
-
-        .sub-note {
-          font-size: 0.75rem;
-          color: #64748b;
-          font-weight: 500;
-          margin-left: 0.25rem;
-        }
-
-        .footer-link-inline {
-          color: #0d7647;
-          font-weight: 600;
-          text-decoration: none;
-        }
-
-        .footer-link-inline:hover {
-          text-decoration: underline;
-        }
-
-        .footer-tax-box {
-          margin-top: 1.15rem;
-          padding-top: 0.75rem;
-          border-top: 1px dashed #cbd5e1;
-          font-size: 0.775rem;
-          color: #64748b;
+        .footer-brand-location {
+          font-size: 14px;
           line-height: 1.5;
+          color: #667085;
+          font-weight: 500;
         }
 
-        .divider-tax {
-          margin: 0 0.4rem;
-          color: #94a3b8;
-        }
-
-        /* Column 2: 5 Pillars Solution Structure */
-        .footer-pillars-list {
-          display: flex;
-          flex-direction: column;
-          gap: 0.85rem;
-        }
-
-        .footer-pillar-block {
-          display: flex;
-          flex-direction: column;
-          gap: 0.2rem;
-          padding-bottom: 0.65rem;
-          border-bottom: 1px solid #f1f5f9;
-        }
-
-        .footer-pillar-block:last-of-type {
-          border-bottom: none;
-          padding-bottom: 0;
-        }
-
-        .pillar-link-primary {
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-          text-decoration: none;
-          color: #0f172a;
-          font-size: 0.875rem;
-          font-weight: 700;
-          transition: color 0.15s ease;
-        }
-
-        .pillar-link-primary:hover {
-          color: #0d7647;
-        }
-
-        .pillar-num-badge {
-          font-size: 0.6875rem;
-          font-weight: 800;
-          color: #0d7647;
-          background-color: #edf7f1;
-          padding: 0.1rem 0.4rem;
-          border-radius: 4px;
-        }
-
-        .pillar-link-title {
-          font-size: 0.875rem;
-          font-weight: 700;
-        }
-
-        .pillar-sublinks-row {
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-          gap: 0.35rem 0.45rem;
-          padding-left: 1.75rem;
-          font-size: 0.775rem;
-        }
-
-        .pillar-sub-link {
-          color: #64748b;
-          text-decoration: none;
-          transition: color 0.15s ease;
-        }
-
-        .pillar-sub-link:hover {
-          color: #0d7647;
-          text-decoration: underline;
-        }
-
-        .sublink-divider {
-          color: #cbd5e1;
-          font-size: 0.65rem;
-        }
-
-        .pillar-sub-text {
-          color: #64748b;
-          font-size: 0.75rem;
-        }
-
-        .pillar-all-wrapper {
-          padding-top: 0.45rem;
-        }
-
-        .footer-view-all-btn {
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-          font-size: 0.8125rem;
-          font-weight: 700;
-          color: #0d7647;
-          text-decoration: none;
-          padding: 6px 12px;
-          border-radius: 6px;
-          background-color: #edf7f1;
-          border: 1px solid #c6ebd4;
-          transition: all 0.15s ease;
-          width: fit-content;
-        }
-
-        .footer-view-all-btn:hover {
-          background-color: #0d7647;
-          color: #ffffff;
-        }
-
-        /* Column 3: Navigation Links */
+        /* Columns 2 & 3: Navigation Lists */
         .footer-nav-list {
-          list-style: none;
-          padding: 0;
-          margin: 0;
           display: flex;
           flex-direction: column;
-          gap: 0.65rem;
-          font-size: 0.85rem;
+          gap: 13px;
         }
 
-        .nav-item-link {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.45rem;
-          color: #475569;
+        .footer-nav-link {
+          font-size: 15px;
+          line-height: 1.5;
+          color: #667085;
           text-decoration: none;
           transition: color 0.15s ease, transform 0.15s ease;
-          line-height: 1.4;
+          width: fit-content;
         }
 
-        .nav-item-link:hover {
+        .footer-nav-link:hover {
           color: #0d7647;
           transform: translateX(2px);
           text-decoration: underline;
         }
 
-        .nav-arrow {
-          color: #94a3b8;
-          flex-shrink: 0;
-          transition: color 0.15s ease;
-        }
-
-        .nav-item-link:hover .nav-arrow {
-          color: #0d7647;
-        }
-
-        .highlight-survey-link {
-          background-color: #f0fdf4;
-          border: 1px solid #bbf7d0;
-          padding: 0.35rem 0.65rem;
-          border-radius: 6px;
-          margin-bottom: 0.15rem;
-          display: flex;
-          align-items: center;
-          gap: 0.45rem;
-          text-decoration: none;
-        }
-
-        .highlight-survey-link:hover {
-          background-color: #dcfce7;
-          border-color: #86efac;
-          text-decoration: none;
-          transform: translateX(2px);
-        }
-
-        .survey-link-label {
-          font-weight: 750;
-          color: #0d7647;
-          font-size: 0.85rem;
-        }
-
-        .nav-survey-icon {
-          color: #0d7647 !important;
-        }
-
-        .footer-pill-mini {
-          font-size: 0.625rem;
-          font-weight: 700;
-          padding: 0.1rem 0.45rem;
-          border-radius: 999px;
-          background-color: #edf7f1;
-          color: #0d7647;
-          margin-left: auto;
-          white-space: nowrap;
-        }
-
-        .footer-pill-mini.hot {
-          background-color: #fef3c7;
-          color: #b45309;
-        }
-
-        .footer-pill-mini.teal {
-          background-color: #ccfbf1;
-          color: #0f766e;
-        }
-
-        /* Column 4: Local Support Card & Social */
-        .local-support-card {
-          background-color: #f8fafc;
-          border: 1px solid #e2e8f0;
-          border-radius: 12px;
-          padding: 1.15rem;
-          margin-bottom: 1.25rem;
-        }
-
-        .local-card-badge {
-          display: inline-block;
-          font-size: 0.725rem;
-          font-weight: 800;
-          text-transform: uppercase;
-          letter-spacing: 0.04em;
-          color: #0d7647;
-          background-color: #ecfdf5;
-          border: 1px solid #a7f3d0;
-          padding: 0.2rem 0.55rem;
-          border-radius: 4px;
-          margin-bottom: 0.65rem;
-        }
-
-        .local-card-desc {
-          font-size: 0.8rem;
-          line-height: 1.5;
-          color: #475569;
-          margin: 0 0 0.85rem 0;
+        /* Column 4: Contact / CTA */
+        .footer-contact-desc {
+          font-size: 15px;
+          line-height: 1.55;
+          color: #667085;
+          margin: 0 0 16px 0;
           text-wrap: pretty;
         }
 
-        .local-action-buttons {
-          display: flex;
-          gap: 0.5rem;
-          flex-wrap: wrap;
-        }
-
-        .btn-local-zalo {
+        .footer-cta-btn {
           display: inline-flex;
           align-items: center;
           justify-content: center;
+          height: 46px;
+          padding: 0 24px;
           background-color: #0d7647;
           color: #ffffff;
-          font-size: 0.775rem;
+          font-size: 15px;
           font-weight: 700;
-          padding: 0.45rem 0.85rem;
-          border-radius: 6px;
+          border-radius: 8px;
           text-decoration: none;
-          transition: background-color 0.15s ease;
+          transition: background-color 0.15s ease, transform 0.1s ease;
+          width: fit-content;
+          box-shadow: 0 1px 2px rgba(13, 118, 71, 0.12);
         }
 
-        .btn-local-zalo:hover {
+        .footer-cta-btn:hover {
           background-color: #0a5c37;
           color: #ffffff;
+          transform: translateY(-1px);
         }
 
-        .btn-local-contact {
+        .footer-contact-links {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          margin-top: 16px;
+        }
+
+        .footer-direct-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 14px;
+          line-height: 1.5;
+          color: #475569;
+          text-decoration: none;
+          transition: color 0.15s ease;
+          width: fit-content;
+        }
+
+        .footer-direct-link:hover {
+          color: #0d7647;
+          text-decoration: underline;
+        }
+
+        .contact-link-icon {
+          color: #0d7647;
+          flex-shrink: 0;
+        }
+
+        .contact-phone-num {
+          font-weight: 700;
+          color: #111827;
+        }
+
+        .footer-direct-link:hover .contact-phone-num {
+          color: #0d7647;
+        }
+
+        /* Social Icons Group */
+        .footer-social-row {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-top: 18px;
+        }
+
+        .footer-social-btn {
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+          background-color: #f8fafc;
+          border: 1px solid #e2e8f0;
+          color: #475569;
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          background-color: #ffffff;
-          color: #0f172a;
-          border: 1px solid #cbd5e1;
-          font-size: 0.775rem;
-          font-weight: 600;
-          padding: 0.45rem 0.85rem;
-          border-radius: 6px;
           text-decoration: none;
-          transition: background-color 0.15s ease;
-        }
-
-        .btn-local-contact:hover {
-          background-color: #f1f5f9;
-        }
-
-        .footer-social-wrapper {
-          display: flex;
-          align-items: center;
-          gap: 0.75rem;
-        }
-
-        .social-label {
-          font-size: 0.8rem;
-          color: #64748b;
-          font-weight: 600;
-        }
-
-        .social-icons-group {
-          display: flex;
-          align-items: center;
-          gap: 0.45rem;
-        }
-
-        .footer-social-circle {
-          width: 32px;
-          height: 32px;
-          border-radius: 50%;
-          background-color: #f1f5f9;
-          border: 1px solid #e2e8f0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: #334155;
-          text-decoration: none;
-          font-size: 0.8rem;
-          font-weight: 800;
           transition: all 0.15s ease;
         }
 
-        .footer-social-circle:hover {
+        .footer-social-btn:hover {
           background-color: #0d7647;
           border-color: #0d7647;
           color: #ffffff;
           transform: translateY(-2px);
         }
 
-        /* 3. Trust Strip */
-        .footer-trust-strip {
-          display: flex;
-          flex-direction: column;
-          gap: 1.25rem;
-          padding: 1.5rem 0;
-          border-top: 1px solid #f1f5f9;
-          border-bottom: 1px solid #f1f5f9;
-          margin-bottom: 1.5rem;
+        .zalo-symbol {
+          font-size: 14px;
+          font-weight: 800;
+          line-height: 1;
+          letter-spacing: -0.02em;
         }
 
-        @media (min-width: 1024px) {
-          .footer-trust-strip {
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-          }
-        }
-
-        .trust-pills-list {
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-          gap: 0.65rem;
-        }
-
-        .trust-pill-badge {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.4rem;
-          background-color: #f8fafc;
-          border: 1px solid #e2e8f0;
-          padding: 0.35rem 0.75rem;
-          border-radius: 9999px;
-          font-size: 0.775rem;
-          color: #334155;
-          font-weight: 600;
-        }
-
-        .trust-icon {
-          color: #0d7647;
-          flex-shrink: 0;
-        }
-
-        .trust-bct-wrapper {
-          display: flex;
-          align-items: center;
-        }
-
-        .bct-badge-link {
-          display: inline-block;
-          text-decoration: none;
-        }
-
-        .bct-badge-img {
-          height: 48px;
-          width: auto;
-          max-width: 175px;
-          object-fit: contain;
-          display: block;
-          filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.06));
-        }
-
-        /* 4. Bottom Bar */
+        /* 2. Bottom Bar */
         .footer-bottom-bar {
+          border-top: 1px solid #e5e7eb;
+          padding: 24px 0;
           display: flex;
           flex-direction: column;
-          gap: 0.85rem;
-          padding-top: 0.5rem;
-          font-size: 0.8rem;
-          color: #64748b;
-        }
-
-        .footer-mission-statement {
+          gap: 12px;
+          align-items: flex-start;
+          font-size: 14px;
+          color: #667085;
           line-height: 1.5;
-          text-wrap: pretty;
-        }
-
-        .footer-mission-statement strong {
-          color: #0f172a;
-        }
-
-        .footer-sub-links-row {
-          display: flex;
-          flex-direction: column;
-          gap: 0.5rem;
         }
 
         @media (min-width: 768px) {
-          .footer-sub-links-row {
+          .footer-bottom-bar {
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
+            height: 64px;
+            padding: 0;
           }
         }
 
-        .copyright-text strong {
-          color: #334155;
+        .footer-copyright {
+          color: #667085;
         }
 
-        .policy-quick-nav {
-          display: flex;
-          flex-wrap: wrap;
+        .footer-bottom-legal {
+          display: inline-flex;
           align-items: center;
-          gap: 0.4rem;
+          gap: 8px;
         }
 
-        .policy-quick-nav a {
-          color: #64748b;
+        .footer-legal-link {
+          color: #667085;
           text-decoration: none;
           transition: color 0.15s ease;
         }
 
-        .policy-quick-nav a:hover {
+        .footer-legal-link:hover {
           color: #0d7647;
           text-decoration: underline;
         }
 
-        .dot-sep {
-          color: #cbd5e1;
+        .footer-legal-dot {
+          color: #9ca3af;
+          font-weight: 700;
+        }
+
+        /* Mobile specific adjustments */
+        @media (max-width: 767px) {
+          .localmate-footer {
+            padding: 40px 0 0 0;
+          }
+
+          .footer-main-grid {
+            gap: 32px;
+            padding-bottom: 36px;
+          }
+
+          .footer-cta-btn {
+            width: 100%;
+          }
+
+          .footer-bottom-bar {
+            padding: 20px 0 28px 0;
+          }
         }
       `}</style>
     </footer>

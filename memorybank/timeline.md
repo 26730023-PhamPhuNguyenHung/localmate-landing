@@ -2,7 +2,26 @@
 
 Ghi nhận các mốc sự kiện, commit và trạng thái vận hành của dự án.
 
-## [2026-09-17] - Redesign Toàn Diện Landing Page GEO / SEO ChatGPT (/geo) Chuẩn Ads Full-Screen
+## [2026-09-17] - Fix Lỗi Font Dấu Tiếng Việt, Tối Ưu Pricing Section Fit Màn Hình Desktop & Tinh Gọn Footer /geo
+- **Bối cảnh & Vấn đề**:
+  1. *Lỗi Font*: Google Fonts `Be Vietnam Pro` trên một số trình duyệt Chromium bị fallback sang Segoe UI khi gặp các ký tự tiếng Việt in hoa có dấu (`Ắ, Ầ, Ỏ, Ậ, Ộ, Ờ...`) do thiếu tham số `&subset=vietnamese` và việc sử dụng các font-weight không chuẩn (`900`, `850`, `750`).
+  2. *Lỗi Tràn Màn Hình Section Pricing*: 10 dòng checklist xếp dọc 1 cột làm thẻ giá cao ~700px, khiến nút CTA và ghi chú giá bị đẩy tụt khỏi màn hình laptop (1366x768 / 1440x900).
+  3. *Footer Quá Tải*: `App.tsx` render Footer chung 5 cột khổng lồ của công ty khiến trang `/geo` bị loãng, không phù hợp với trang đích chạy quảng cáo.
+- **Giải pháp & Thành phẩm**:
+  1. *Fix Triệt Để Lỗi Font*:
+     - Cập nhật Google Fonts URL trong `index.html` với `&subset=vietnamese&display=swap`.
+     - Chuẩn hóa toàn bộ tiêu đề về `font-weight: 800; font-family: 'Be Vietnam Pro', sans-serif; letter-spacing: -0.01em;`. Chữ tiếng Việt có dấu và không dấu hoàn toàn đồng nhất 100% về phông và độ đậm.
+  2. *Section Pricing Fit Màn Hình*:
+     - Thiết kế lại header card: Đặt Tên gói (`GEO SETUP`) và Giá (`2.490.000 đ/lần`) trên cùng hàng ngang.
+     - Checklist triển khai chuyển thành **Lưới 2 cột** (`grid-template-columns: 1fr 1fr; gap: 4px 12px;`) giúp giảm chiều cao card từ 700px xuống còn ~350px.
+     - Dùng `clamp()` và flex responsive để toàn bộ Section 2 (gồm Tiêu đề, 2 Thẻ giá, Nút CTA và Thanh cam kết) hiển thị trọn vẹn trong một màn hình desktop mà không bị tràn hay phải cuộn dở dang.
+  3. *Dedicated Clean Ads Footer (`GeoFooter.tsx`)*:
+     - Ẩn Footer chung 5 cột trong `App.tsx` khi vào `/geo` (`isGeoLandingView`).
+     - Tích hợp `GeoFooter`: Logo, Slogan, Hotline/Zalo, Email, Địa chỉ, MST Công ty (4001337934), Cam kết minh bạch tài khoản chính chủ, và các liên kết pháp lý (Bảo mật, Điều khoản, Quy trình GEO, Bảng giá) đạt chuẩn phê duyệt quảng cáo Google/Meta.
+- **Nghiệm thu**:
+  - `npm run build` hoàn thành với mã thoát 0 (pass 100%).
+  - Kiểm tra trực quan bằng `agent-browser` (full page screenshot): Font hiển thị sắc nét đồng đều, Section Pricing fit trọn vẹn, Footer tinh gọn, sang trọng.
+
 - **Mục tiêu**: Tái thiết kế toàn bộ trang Landing Page dịch vụ GEO / SEO ChatGPT (`/geo`) theo chuẩn Ads Direct-Response cao cấp, định dạng **3 Section khít màn hình desktop** (`min-height: 100svh`), nhịp điệu thị giác mạnh mẽ và tách module sạch sẽ.
 - **Các thành phần được cấu trúc lại hoàn toàn**:
   1. *Section 1 — Hero Full-Screen* (`GeoHeroSection.tsx`):

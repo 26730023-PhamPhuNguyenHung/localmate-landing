@@ -423,16 +423,22 @@ const MainContent: React.FC = () => {
     normalizedPath.startsWith('/ho-so-nang-luc') ||
     normalizedPath.startsWith('/credential');
 
+  const isGeoLandingView =
+    normalizedPath === '/geo' ||
+    normalizedPath === '/geo-ads' ||
+    normalizedPath === '/landing-geo' ||
+    normalizedPath.startsWith('/geo');
+
   return (
     <div className="localmate-app">
       {!isCredentialView && (
         <Header onOpenDemoForm={() => handleOpenLeadForm('Tư vấn Web Demo 0đ')} />
       )}
       <main id="main-content">{renderPage()}</main>
-      {!isCredentialView && <Footer />}
+      {!isCredentialView && !isGeoLandingView && <Footer />}
 
       {/* Mobile Floating Sticky CTA */}
-      {!isCredentialView && (
+      {!isCredentialView && !isGeoLandingView && (
         <MobileFloatingCTA onOpenConsultForm={() => handleOpenLeadForm('Tư vấn Web Demo 0đ')} />
       )}
 

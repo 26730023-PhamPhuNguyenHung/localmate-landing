@@ -1,12 +1,16 @@
 # BÀI HỌC VÀ LƯU Ý KỸ THUẬT (LESSONS LEARNED & BUG MEMORY)
 
-## [2026-09-17] — Giữ Trang Chủ Tinh Gọn & Tuyệt Đối Không Dùng Dropdown Tự Mở Tràn Màn Hình
+## [2026-09-17] — Khắc Phục Lỗi Font Ký Tự Tiếng Việt In Hoa Có Dấu & Layout Viewport-Fit Cho Landing Page Ads
 - **Vấn đề phát sinh:**
-  - Việc tự ý thêm mega menu dropdown bung mở tự động khi hover (`onMouseEnter`) khiến giao diện bị che khuất nghiêm trọng, gây ức chế cho người dùng khi chỉ muốn lướt xem trang.
-  - Nhồi nhét quá nhiều khối nội dung trung gian (conversion journey phức tạp, form chẩn đoán cồng kềnh) vào trang chủ làm mất đi thông điệp cốt lõi đơn giản, trực diện của LocalMate.
-- **Quy tắc đúc kết:**
-  1. Header điều hướng phải gọn gàng, drop-down chỉ mở khi có chủ đích rõ ràng, click ra ngoài phải tự đóng (`handleClickOutside`).
-  2. Trang chủ luôn theo tôn chỉ: *"Đơn giản, thực tế, giải quyết trực tiếp vấn đề mà không làm phức tạp hóa mọi thứ lên"*. Nền sáng, chữ đậm, tương phản cao, người dùng dễ hiểu ngay dịch vụ và giá cả trong 5 giây đầu tiên.
+  1. *Lỗi Font Ký Tự Có Dấu*: Khi viết in hoa tiếng Việt có dấu (`Ắ, Ầ, Ỏ, Ậ, Ộ, Ờ...`) với font-weight nặng như `900` hoặc các số lẻ (`850`, `750`), trình duyệt Chromium trên Windows bị thiếu glyphs tiếng Việt nên tự động fallback sang font hệ thống (Segoe UI / Arial), làm cho chữ có dấu bị lệch phông, nét mỏng/dày bất thường so với chữ không dấu.
+  2. *Lỗi Tràn Màn Hình Thẻ Giá*: Khi danh sách checklist gồm 8–10 hạng mục xếp dọc thành 1 cột, chiều cao thẻ bị phình to tới ~700px, khiến người dùng laptop không thấy được nút CTA và ghi chú giá dưới đáy màn hình mà không cuộn chuột.
+  3. *Lỗi Footer Quá Tải*: Trang landing page chạy Ads chuyển đổi cao không được hiển thị Footer tập đoàn 5 cột với hàng chục link liên kết rườm rà.
+- **Quy tắc & Giải pháp kỹ thuật đúc kết:**
+  1. *Google Fonts URL*: Luôn thêm `&subset=vietnamese&display=swap` vào link Google Fonts trong `index.html`.
+  2. *Font-weight tiêu chuẩn*: Tuyệt đối không dùng các trọng số font tự bịa (`550`, `650`, `750`, `850`, `900`). Hãy dùng các trọng số chuẩn `400`, `500`, `600`, `700`, `800`. Đối với tiêu đề in hoa tiếng Việt, dùng `font-weight: 800; font-family: 'Be Vietnam Pro', sans-serif; letter-spacing: -0.01em;` để đảm bảo 100% ký tự có dấu hiển thị đồng nhất tuyệt đối.
+  3. *Lưới Checklist 2 Cột (Compact Viewport-Fit)*: Trên desktop, chia danh sách checklist thành grid 2 cột (`grid-template-columns: 1fr 1fr; gap: 4px 12px;`). Kết hợp đặt Tên gói và Giá trên cùng một hàng ngang (`display: flex; justify-content: space-between;`). Điều này giảm 50% chiều cao thẻ (từ 700px xuống ~350px), giúp toàn bộ section nằm vừa khít màn hình desktop không cần cuộn.
+  4. *Dedicated Clean Ads Footer*: Trên các trang landing page chạy Ads (`/geo`, `/geo-ads`), tạo Footer riêng (`GeoFooter.tsx`) tinh gọn: Logo, Hotline/Zalo, Email, Địa chỉ, MST công ty và các liên kết chính sách bảo mật/điều khoản để đáp ứng 100% chính sách Ads mà không gây xao nhãng.
+
 
 - **Bối cảnh & Vấn đề phát hiện:**
   - Khi thiết kế Hero section chia 2 cột (cột trái văn bản, cột phải form audit) trên desktop, cột văn bản bị co hẹp lại chỉ còn ~500–550px.

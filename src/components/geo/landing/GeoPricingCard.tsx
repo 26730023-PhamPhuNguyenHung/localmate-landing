@@ -30,44 +30,48 @@ export const GeoPricingCard: React.FC<GeoPricingCardProps> = ({
 }) => {
   return (
     <div className={`geo-pricing-card ${isFeatured ? 'featured' : 'standard'}`}>
-      {/* Top Badge */}
-      <div className={`gpc-top-tag ${isFeatured ? 'featured-tag' : 'neutral-tag'}`}>
-        <span>{badge}</span>
+      {/* Top Header info */}
+      <div className="gpc-header-row">
+        <div>
+          <div className={`gpc-top-tag ${isFeatured ? 'featured-tag' : 'neutral-tag'}`}>
+            {badge}
+          </div>
+          <h3 className="gpc-name">{name}</h3>
+        </div>
+        <div className="gpc-price-wrap">
+          <span className="gpc-price">{price}</span>
+          <span className="gpc-unit">{unit}</span>
+        </div>
       </div>
 
-      {/* Main Info */}
-      <div className="gpc-main-info">
-        <h3 className="gpc-name">{name}</h3>
-        <div className="gpc-price">
-          {price} <span className="gpc-unit">{unit}</span>
-        </div>
-        <p className="gpc-audience">{audience}</p>
-      </div>
+      <p className="gpc-audience">{audience}</p>
 
       <div className="gpc-divider" />
 
-      {/* Deliverables Checklist */}
+      {/* Deliverables Checklist — 2 Columns on Desktop to fit viewport without overflow */}
       <div className="gpc-features-box">
-        <div className="gpc-features-title">Bao gồm:</div>
-        <ul className="gpc-features-list">
+        <div className="gpc-features-title">Hạng mục triển khai:</div>
+        <ul className="gpc-features-grid">
           {features.map((item, idx) => (
-            <li key={idx}>
-              <Check size={16} className="gpc-check-icon" />
+            <li key={idx} className="gpc-feature-item">
+              <Check size={15} className="gpc-check-icon" />
               <span>{item}</span>
             </li>
           ))}
         </ul>
       </div>
 
-      {/* Footer Actions */}
+      {/* Footer Actions & CTA */}
       <div className="gpc-footer">
-        {priceNote && <div className="gpc-price-note">{priceNote}</div>}
-        {footerBadge && (
-          <div className="gpc-footer-badge">
-            <ShieldCheck size={15} />
-            <span>{footerBadge}</span>
-          </div>
-        )}
+        <div className="gpc-footer-meta">
+          {priceNote && <span className="gpc-price-note">{priceNote}</span>}
+          {footerBadge && (
+            <span className="gpc-footer-badge">
+              <ShieldCheck size={14} />
+              <span>{footerBadge}</span>
+            </span>
+          )}
+        </div>
 
         <button
           type="button"
@@ -75,25 +79,25 @@ export const GeoPricingCard: React.FC<GeoPricingCardProps> = ({
           className={`gpc-cta-btn ${isFeatured ? 'primary' : 'secondary'}`}
         >
           <span>{ctaText}</span>
-          {isFeatured ? <ArrowRight size={17} /> : <ChevronRight size={17} />}
+          {isFeatured ? <ArrowRight size={16} /> : <ChevronRight size={16} />}
         </button>
       </div>
 
       <style>{`
         .geo-pricing-card {
           background-color: #ffffff;
-          border-radius: 20px;
-          padding: clamp(22px, 3vw, 32px);
+          border-radius: 18px;
+          padding: clamp(14px, 1.8vh, 22px);
           display: flex;
           flex-direction: column;
-          position: relative;
           box-sizing: border-box;
+          font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
           transition: transform 0.15s ease, box-shadow 0.15s ease;
         }
 
         .geo-pricing-card.featured {
           border: 2px solid #0d7647;
-          box-shadow: 0 16px 36px -8px rgba(13, 118, 71, 0.18), 0 4px 10px -2px rgba(13, 118, 71, 0.06);
+          box-shadow: 0 12px 28px -6px rgba(13, 118, 71, 0.16), 0 4px 10px -2px rgba(13, 118, 71, 0.05);
         }
 
         .geo-pricing-card.standard {
@@ -105,13 +109,21 @@ export const GeoPricingCard: React.FC<GeoPricingCardProps> = ({
           transform: translateY(-2px);
         }
 
+        .gpc-header-row {
+          display: flex;
+          align-items: flex-start;
+          justify-content: space-between;
+          gap: 12px;
+          margin-bottom: 6px;
+        }
+
         .gpc-top-tag {
-          align-self: flex-start;
-          font-size: 11.5px;
-          font-weight: 800;
-          padding: 4px 10px;
+          font-size: 11px;
+          font-weight: 700;
+          padding: 3px 8px;
           border-radius: 6px;
-          margin-bottom: 14px;
+          display: inline-block;
+          margin-bottom: 4px;
           letter-spacing: 0.02em;
           text-transform: uppercase;
         }
@@ -129,122 +141,145 @@ export const GeoPricingCard: React.FC<GeoPricingCardProps> = ({
         }
 
         .gpc-name {
-          font-size: 24px;
-          font-weight: 900;
+          font-size: clamp(20px, 1.6vw, 24px);
+          font-weight: 800;
           color: #0f172a;
-          margin: 0 0 6px 0;
-          letter-spacing: -0.01em;
+          margin: 0;
+          line-height: 1.2;
+        }
+
+        .gpc-price-wrap {
+          text-align: right;
+          flex-shrink: 0;
         }
 
         .gpc-price {
-          font-size: clamp(28px, 3vw, 36px);
-          font-weight: 900;
+          font-size: clamp(22px, 2vw, 30px);
+          font-weight: 800;
           color: #0d7647;
-          line-height: 1.15;
-          margin-bottom: 10px;
+          line-height: 1.1;
+          display: block;
         }
 
         .gpc-unit {
-          font-size: 15px;
+          font-size: 13px;
           font-weight: 600;
           color: #64748b;
+          display: block;
         }
 
         .gpc-audience {
-          font-size: 14px;
-          line-height: 1.5;
+          font-size: 13px;
+          line-height: 1.45;
           color: #334155;
-          margin: 0;
-          min-height: 42px;
+          margin: 0 0 10px 0;
         }
 
         .gpc-divider {
           height: 1px;
           background-color: #e2e8f0;
-          margin: 18px 0;
+          margin-bottom: 12px;
         }
 
         .gpc-features-box {
           flex-grow: 1;
-          margin-bottom: 20px;
+          margin-bottom: 14px;
         }
 
         .gpc-features-title {
-          font-size: 13px;
-          font-weight: 800;
+          font-size: 12px;
+          font-weight: 700;
           color: #0f172a;
           text-transform: uppercase;
           letter-spacing: 0.04em;
-          margin-bottom: 12px;
+          margin-bottom: 8px;
         }
 
-        .gpc-features-list {
+        /* 2 Columns Checklist — Compact & Screen Fitting */
+        .gpc-features-grid {
           list-style: none;
           padding: 0;
           margin: 0;
-          display: flex;
-          flex-direction: column;
-          gap: 9px;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 6px 14px;
         }
 
-        .gpc-features-list li {
+        @media (max-width: 640px) {
+          .gpc-features-grid {
+            grid-template-columns: 1fr;
+            gap: 7px;
+          }
+        }
+
+        .gpc-feature-item {
           display: flex;
           align-items: flex-start;
-          gap: 8px;
-          font-size: 13.5px;
-          line-height: 1.4;
+          gap: 7px;
+          font-size: 12.5px;
+          line-height: 1.35;
           color: #1e293b;
         }
 
         .gpc-check-icon {
           color: #0d7647;
           flex-shrink: 0;
-          margin-top: 2px;
+          margin-top: 1px;
         }
 
         .gpc-footer {
           display: flex;
           flex-direction: column;
-          gap: 10px;
+          gap: 8px;
           margin-top: auto;
+          padding-top: 10px;
+          border-top: 1px solid #f1f5f9;
+        }
+
+        .gpc-footer-meta {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          gap: 6px;
+          min-height: 24px;
         }
 
         .gpc-price-note {
-          font-size: 13px;
-          font-weight: 750;
+          font-size: 12px;
+          font-weight: 700;
           color: #0d7647;
           background-color: #edf7f1;
-          border-radius: 8px;
-          padding: 6px 10px;
-          text-align: center;
+          border-radius: 6px;
+          padding: 3px 8px;
         }
 
         .gpc-footer-badge {
-          display: flex;
+          display: inline-flex;
           align-items: center;
-          justify-content: center;
-          gap: 6px;
-          font-size: 12.5px;
-          font-weight: 650;
+          gap: 5px;
+          font-size: 12px;
+          font-weight: 600;
           color: #047857;
           background-color: #ecfdf5;
           border-radius: 6px;
-          padding: 6px 10px;
+          padding: 3px 8px;
         }
 
         .gpc-cta-btn {
           width: 100%;
-          min-height: 48px;
+          min-height: 44px;
           display: inline-flex;
           align-items: center;
           justify-content: center;
           gap: 8px;
-          border-radius: 12px;
-          font-size: 14.5px;
-          font-weight: 850;
+          border-radius: 10px;
+          font-size: 14px;
+          font-weight: 700;
+          font-family: inherit;
           cursor: pointer;
           transition: all 0.15s ease;
-          padding: 10px 18px;
+          padding: 10px 16px;
           box-sizing: border-box;
           border: none;
         }
@@ -252,24 +287,22 @@ export const GeoPricingCard: React.FC<GeoPricingCardProps> = ({
         .gpc-cta-btn.primary {
           background-color: #0d7647;
           color: #ffffff;
-          box-shadow: 0 4px 12px rgba(13, 118, 71, 0.22);
+          box-shadow: 0 4px 10px rgba(13, 118, 71, 0.2);
         }
 
         .gpc-cta-btn.primary:hover {
           background-color: #095935;
-          transform: translateY(-1px);
         }
 
         .gpc-cta-btn.secondary {
           background-color: #ffffff;
           color: #0f172a;
-          border: 2px solid #0f172a;
+          border: 1.5px solid #0f172a;
         }
 
         .gpc-cta-btn.secondary:hover {
           background-color: #0f172a;
           color: #ffffff;
-          transform: translateY(-1px);
         }
       `}</style>
     </div>

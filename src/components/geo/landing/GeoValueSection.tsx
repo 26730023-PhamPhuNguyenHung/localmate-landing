@@ -174,12 +174,13 @@ export const GeoValueSection: React.FC<GeoValueSectionProps> = ({
 
         .gv-title {
           font-size: clamp(22px, 2.8vw, 36px);
-          font-weight: 900;
+          font-weight: 800;
           color: #0f172a;
           line-height: 1.25;
           margin: 0;
-          letter-spacing: -0.02em;
+          letter-spacing: -0.01em;
           word-break: keep-all;
+          font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         .gv-desc {
