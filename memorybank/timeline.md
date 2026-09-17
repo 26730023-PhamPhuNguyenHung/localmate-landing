@@ -2,6 +2,23 @@
 
 Ghi nhận các mốc sự kiện, commit và trạng thái vận hành của dự án.
 
+## [2026-09-17] - Chuyển Đổi Sang Kiến Trúc Code-First & Deploy Hoàn Tất 30 Bài Viết Lên localmate.vn
+- **Commits**:
+  - `3095414`: `feat(content): implement code-first architecture for 30 articles with ssg and 0ms latency`
+  - `60db4e9`: `feat(ssg): add static route generator for 30 article HTML shells`
+  - `671ee26`: `feat(ssg): generate both flat .html and index.html for zero-redirect routes`
+- **Bối cảnh & Quyết định kỹ thuật**:
+  - Khắc phục sự phụ thuộc cồng kềnh, độ trễ và rủi ro truy vấn cold-start của CMS D1 API runtime.
+  - Chuyển toàn bộ 30 bài viết chuẩn SEO/GEO (86.367 từ) sang kiến trúc **Code-First Two-Tier Split**:
+    - `src/data/articles/metadata.ts`: Danh sách siêu dữ liệu siêu nhẹ (10KB gzip) cho trang index và search.
+    - `src/data/articles/content/*.ts`: 30 dynamic chunk được nạp lười (lazy loading) chỉ khi người dùng vào đọc bài viết.
+  - Tích hợp bộ sinh static route tự động (`scripts/generate-static-routes.js`) tạo song song cả `dist/kien-thuc/<slug>/index.html` và `dist/kien-thuc/<slug>.html`.
+  - Tách triệt để gói thư viện soạn thảo Tiptap Admin (589KB) khỏi bundle người dùng, giữ bundle JS trang chủ ở mức 93KB (gzip 25KB).
+- **Kết quả nghiệm thu Live Production (`https://localmate.vn/`)**:
+  - Deploy thành công qua `npx wrangler pages deploy dist --project-name=localmate-vn`.
+  - Toàn bộ 30 bài viết tại `https://localmate.vn/kien-thuc/:slug` trả về HTTP **200 OK** trực tiếp, 0 redirect thừa, 0 phụ thuộc CMS runtime.
+  - Sitemaps (`/sitemap.xml`) chứa đầy đủ 54 URL tối ưu chỉ số bot và `/robots.txt` mở rộng quyền cho GPTBot, ClaudeBot, PerplexityBot.
+
 ## [2026-09-17] - Tinh Giản Toàn Diện Kiến Trúc Codebase & Xóa Thư Mục Artifacts
 - **Commit**: `chore: purge artifacts and reorganize docs and scripts into clean modular structure`
 - **Kết quả thực thi**:

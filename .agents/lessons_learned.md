@@ -1,5 +1,16 @@
 # 📚 LOCALMATE AGENTS LESSONS LEARNED & EDITORIAL RULES
 
+## 19. Bài Học Về Cloudflare Pages SSG Dual-Targeting: Chống 308 Redirect & 404 Bằng Cách Tạo Cả .html và /index.html
+- **Hiện tượng & Bẫy Kỹ Thuật trên Cloudflare Pages**:
+  - Khi deploy trang tĩnh lên Cloudflare Pages kết hợp với Cloudflare Pages Functions (`functions/` directory), rewrite `/* /index.html 200` trong `_redirects` không áp dụng cho các route deep nếu không có file tĩnh tương ứng.
+  - Nếu chỉ tạo thư mục chứa `index.html` (ví dụ: `dist/kien-thuc/slug/index.html`), khi người dùng hoặc bot truy cập URL không có trailing slash (`/kien-thuc/slug`), Cloudflare Pages sẽ trả về mã `308 Permanent Redirect` để chuyển hướng sang `/kien-thuc/slug/`.
+  - Mặc dù 308 là hợp lệ, nhiều crawler (bao gồm bot AI, công cụ kiểm thử curl hoặc thư viện HTTP cũ) có thể bị chậm lại hoặc báo lỗi.
+- **Giải pháp SSG Dual-Targeting Đỉnh Cao**:
+  - Trong script tạo static routes (`scripts/generate-static-routes.js`), với mỗi route (ví dụ `/kien-thuc`, `/geo`, 30 bài viết), luôn ghi file **song song ở 2 vị trí**:
+    1. Flat file: `dist/kien-thuc/${slug}.html` $\rightarrow$ Match lập tức với URL sạch không có slash (`/kien-thuc/${slug}`) với HTTP **200 OK** (0ms redirect).
+    2. Directory file: `dist/kien-thuc/${slug}/index.html` $\rightarrow$ Match lập tức với URL có slash (`/kien-thuc/${slug}/`) với HTTP **200 OK**.
+  - Kết quả: Bất kể người dùng gõ URL có hay không có dấu gạch chéo cuối, cả người dùng lẫn bot Google, GPTBot, ClaudeBot đều nhận về trang HTML đầy đủ tiêu đề, meta tags và canonical URL với HTTP **200 OK** trực tiếp.
+
 ## 18. Bài Học Về Public Routes & Trải Nghiệm Đọc Kiến Thức Thực Chiến (/kien-thuc & /kien-thuc/:slug)
 - **Tổ chức 5 cụm chủ đề trực diện, dễ hiểu**: Thay vì chia danh mục theo thuật ngữ kỹ thuật khó hiểu, cấu trúc 5 cụm chủ đề theo bài toán thực tế của chủ tiệm (*Nền Tảng Website, Google Maps & GBP, SEO Địa Phương, Quảng Cáo Google Ads, CRM & Tự Động Hóa*).
 - **Bộ lọc tức thời kết hợp tìm kiếm Fulltext Client-Side**: Người dùng tìm kiếm trên điện thoại cần kết quả ngay lập tức mà không phải chờ reload trang. Kết hợp `input` tìm kiếm thời gian thực với các thẻ Pill buttons chọn cụm chủ đề giúp độc giả tiếp cận bài viết cần tìm trong 2 giây.
