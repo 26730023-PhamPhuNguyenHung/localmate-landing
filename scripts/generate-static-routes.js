@@ -58,6 +58,7 @@ export function generateStaticRoutes() {
     ogType: 'website'
   });
   fs.writeFileSync(path.join(kienThucDir, 'index.html'), kienThucHtml, 'utf-8');
+  fs.writeFileSync(path.join(distDir, 'kien-thuc.html'), kienThucHtml, 'utf-8');
 
   // 2. 30 Articles /kien-thuc/:slug
   let generatedCount = 0;
@@ -77,7 +78,9 @@ export function generateStaticRoutes() {
       ogType: 'article'
     });
 
+    // Write both directory/index.html and flat .html for 100% 200 OK matching without redirects
     fs.writeFileSync(path.join(articleDir, 'index.html'), articleHtml, 'utf-8');
+    fs.writeFileSync(path.join(kienThucDir, `${slug}.html`), articleHtml, 'utf-8');
     generatedCount++;
   }
 
@@ -109,21 +112,25 @@ export function generateStaticRoutes() {
     }
   ];
 
-  for (const r of staticRoutes) {
-    const routeDir = path.join(distDir, r.dir);
+  for (const route of staticRoutes) {
+    const routeDir = path.join(distDir, route.dir);
     if (!fs.existsSync(routeDir)) fs.mkdirSync(routeDir, { recursive: true });
-    const rHtml = customizeHtml(baseHtml, {
-      title: r.title,
-      description: r.description,
-      canonicalUrl: r.url,
+
+    const routeHtml = customizeHtml(baseHtml, {
+      title: route.title,
+      description: route.description,
+      canonicalUrl: route.url,
       ogType: 'website'
     });
-    fs.writeFileSync(path.join(routeDir, 'index.html'), rHtml, 'utf-8');
+
+    fs.writeFileSync(path.join(routeDir, 'index.html'), routeHtml, 'utf-8');
+    fs.writeFileSync(path.join(distDir, `${route.dir}.html`), routeHtml, 'utf-8');
   }
 
-  console.log(`✅ Successfully generated HTML shells for ${generatedCount} articles + ${staticRoutes.length + 1} static pages!`);
+  console.log(`✅ Successfully generated HTML shells for ${generatedCount} articles + ${staticRoutes.length + 1} static pages (both flat .html and /index.html)!`);
 }
 
+// Auto-run when executed directly
 if (process.argv[1] && process.argv[1].endsWith('generate-static-routes.js')) {
   generateStaticRoutes();
 }
