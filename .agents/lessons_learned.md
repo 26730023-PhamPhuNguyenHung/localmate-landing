@@ -1,5 +1,14 @@
 # 📚 LOCALMATE AGENTS LESSONS LEARNED & EDITORIAL RULES
 
+## 12. Bài Học Về Tối Giản Hóa Codebase & Chống Over-Engineering Giai Đoạn Đầu (Cleanup Pass)
+- **Bẫy "Code để đó có thể dùng sau" (YAGNI Violation)**: Tạo hàng loạt trang skeleton, mock data, fake case study hay các cluster ngách (`/advisor`, `/solutions/*`, `/cluster/*`) khi chưa có nhu cầu kinh doanh thực tế chỉ làm phình to codebase, gây chậm build, dễ nảy sinh broken links và tăng chi phí bảo trì.
+- **Quy tắc điều hướng tinh gọn (Anchor First + In-Context Lead Capture)**:
+  - Khi website mới ở giai đoạn đầu (chỉ có Homepage + GEO Landing), các menu Dịch vụ trên Header và Footer nên được ánh xạ mượt mà về đúng các anchor tương ứng trên Trang chủ (`#services`, `#stories`, `#process`, `#about`, `#contact`).
+  - Khi click vào bất kỳ micro-service nào từ Mega Menu, hệ thống đồng thời kích hoạt mở LeadModal với tên dịch vụ đã được điền sẵn $\rightarrow$ Không tạo trang skeleton rỗng, không gây 404, tăng tối đa tỷ lệ chuyển đổi khách hàng.
+- **Phát hiện Dead Code bằng Reachability Tree**: Quét từng file riêng lẻ theo "0 importers" chỉ tìm được bề nổi. Bắt buộc phải dựng đồ thị duyệt cây (Reachability Graph) từ các Entry Points thực tế (`src/main.tsx`, `functions/`) để bóc tách tận gốc các cụm component, data files và services mồ côi tự tham chiếu lẫn nhau.
+- **Dọn Asset theo Reference Graph**: Không xóa thủ công. Luôn dùng script so khớp tên file và đường dẫn tương đối với toàn bộ codebase (kể cả template string dynamic `artwork-${image}.png`) để bảo vệ 100% tài sản thương hiệu đang dùng, đồng thời dọn sạch hàng chục MB file ảnh screenshot/test rác.
+
+
 ## 9. Bài Học Về Search Intent, SERP Fit & Kiểm Soát Cannibalization (Subagent 2)
 - **Bẫy định dạng một màu (Static Blog Trap)**: Người dùng tìm kiếm từ khóa BOFU/Commercial Investigation (như "chi phí làm web", "ngân sách chạy ads ngày") không chỉ muốn đọc văn bản; họ mong muốn công cụ tính toán (Calculator), bảng trượt ngân sách và so sánh gói dịch vụ. Nếu chỉ cung cấp bài viết blog văn bản tĩnh, tỷ lệ thoát trang sẽ cao và SERP ranking sẽ bị các đối thủ có interactive widget vượt mặt.
 - **Phân định ranh giới giữa Blog Post và Service / Landing Pages**:

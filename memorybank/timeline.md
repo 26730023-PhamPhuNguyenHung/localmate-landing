@@ -2,6 +2,20 @@
 
 Ghi nhận các mốc sự kiện, commit và trạng thái vận hành của dự án.
 
+## [2026-09-17] - Audit & Dọn Dẹp Toàn Bộ Codebase Website (Clean Unused Code & Assets)
+- **Commit**: `chore: clean unused code assets and audit website gaps`
+- **Bối cảnh & Mục tiêu**:
+  - Giai đoạn đầu website chỉ tập trung vào: Header, Footer, Menu/navigation, Trang chủ (HomePage), Trang GEO (GeoLandingPage `/geo`) và Hệ thống CMS Quản trị.
+  - Loại bỏ hoàn toàn các trang skeleton, mock data, fake stats, fake case studies, các layer kiến trúc over-engineering và 25MB assets rác không được sử dụng.
+  - Tuyệt đối bảo toàn giao diện đang hoạt động (Light Mode) và 0 broken links.
+- **Thực thi Kỹ thuật**:
+  - **Dọn Assets**: Xóa 32 files (8 file screenshot/test rác ở root, 24 file ảnh/video/report thừa trong `public/assets/`, `public/geo/`, `public/images/`), giải phóng **24.24 MB**.
+  - **Dọn Code & Components**: Xóa 140 files code chết và unreachable trong `src/` (toàn bộ `components/home/`, `components/audit/`, `components/sections/`, `components/solutions/`, `components/credential/`, `components/services/`, `components/advisor/`, `components/concept/`, `components/pricing/`, các trang skeleton trong `src/pages/solutions/` và `src/pages/`, các data files cũ).
+  - **Giảm tải dòng mã**: Loại bỏ hơn **72,000 dòng mã** dead code và generic abstractions.
+  - **Chuẩn hóa Header & Footer**: Đồng bộ toàn bộ liên kết trên Header Mega Menu, Mobile Drawer và Footer về anchor mượt mà trên Trang chủ (`#services`, `#stories`, `#process`, `#about`, `#contact`) kết hợp mở form tư vấn với tên dịch vụ tương ứng. 100% link hoạt động, 0 route chết.
+  - **Kiểm thử & Nghiệm thu**: `tsc && vite build` PASS 100% trong 4.62s. Bundle JS công khai giảm còn 121 kB (gzip 34 kB). Playwright verification xác nhận DOM render hoàn hảo, 0 console error, responsive 390x844 không tràn ngang (0 overflow).
+
+
 ## [2026-09-17] - Subagent 6: Audit Kiến Trúc Thông Tin, Đồ Thị Liên Kết & Thẩm Quyền Chủ Đề (30 Bài Viết)
 - **Tài liệu bàn giao**: `docs/audit-v2/06-topical-authority-link-graph.md`
 - **Phạm vi kiểm định**: Toàn bộ 30 bài viết trong `content/seeds/drafts_30_articles.json`, `src/data/articlesData.ts`, `src/App.tsx` và `docs/content-architecture.md`.
