@@ -688,7 +688,21 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenConsultForm }) => {
             )}
           </form>
 
-          <p className="handwritten contact-note">
+          <p
+            className="handwritten contact-note"
+            style={{
+              fontSize: '15px',
+              top: '150px',
+              right: '3.5%',
+              transform: 'rotate(-8deg)',
+              color: '#064e3b',
+              fontWeight: 600,
+              textShadow: '0 1px 3px rgba(255, 255, 255, 0.75)',
+              lineHeight: 1.35,
+              pointerEvents: 'none',
+              zIndex: 2
+            }}
+          >
             Bắt đầu hành trình<br />
             chuyển đổi số ngay hôm nay!
           </p>
