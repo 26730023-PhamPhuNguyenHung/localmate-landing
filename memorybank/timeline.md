@@ -49,6 +49,19 @@ Ghi nhận các mốc sự kiện, commit và trạng thái vận hành của d�
   4. *Cảnh báo đỏ Doorway Pages*: Cảnh báo rủi ro clone trang location page theo quận/huyện; đưa ra quy tắc 4 KHÔNG - 4 CÓ để bảo vệ website khỏi Google Spam Update.
   5. *Đề xuất*: Thiết lập Hệ thống CTA Đa Tầng (Multi-tier CTA) 5 cấp độ và lộ trình nâng cấp dữ liệu + giao diện.
 
+## [2026-09-17] - Tối Ưu Vị Trí & Tương Phản Dòng Chữ Viết Tay "Bắt đầu hành trình..." (#contact)
+- **Commit**: `32b3360` (`fix(landing): reposition and resize contact note onto umbrella for high contrast`)
+- **Bối cảnh & Vấn đề**:
+  - Dòng chữ viết tay `.contact-note` *"Bắt đầu hành trình chuyển đổi số ngay hôm nay!"* ở section Liên hệ trước đó đặt ở `top: 46px; right: 5%; font-size: 19px; transform: rotate(-12deg)`.
+  - Vị trí này nằm tít trên cao, bị lấn sang trái đè lên mép card form màu trắng ("Nhận báo giá nhanh") và nằm trên vùng nền trời/lá cây sáng màu, kém tương phản và khó đọc.
+- **Thực thi Kỹ thuật**:
+  - `src/pages/HomePage.tsx` & `src/styles/reference-landing.css`:
+    - Dịch chuyển toạ độ xuống: `top: 150px`, `right: 3.5%`, đặt trúng vị trí chiếc dù (mái hiên sọc vàng trắng của phố cổ Hội An).
+    - Thu nhỏ cỡ chữ: `font-size: 15px`, `line-height: 1.35` giúp khối chữ gọn gàng, tách biệt hẳn khỏi card form.
+    - Tăng độ tương phản (High Contrast): dùng màu xanh rừng đậm thương hiệu Localmate `#064e3b`, `font-weight: 600`, góc nghiêng `-8deg` uốn lượn theo mái dù, đổ bóng nhẹ `text-shadow: 0 1px 3px rgba(255, 255, 255, 0.75)`.
+  - Build `npm run build` (`tsc && vite build`) PASS 100% trong 9.00s.
+  - Deploy thành công lên Cloudflare Pages production (`localmate.vn` / `f673f1b6.localmate-vn.pages.dev`).
+
 ## [2026-09-17] - Fix Căn Giữa Subtitle Section "Quy Trình Làm Việc" & "Dịch Vụ" (HomePage)
 - **Commit**: `d74d19c` (`fix(landing): center align process and services section subtitles`)
 - **Bối cảnh & Vấn đề**:
