@@ -279,3 +279,14 @@
 - **Thước Đo Sống Còn Là Chi Phí Trên Mỗi Cuộc Gọi Thật (Cost per Call)**:
   - Không nhìn vào số lượt hiển thị hay số lượt click ảo. Lấy tổng ngân sách chia cho số cuộc gọi/tin nhắn Zalo thực tế phát sinh.
   - Nếu tiêu 300.000đ - 500.000đ mà không có cuộc gọi nào, phải tạm dừng chiến dịch ngay để kiểm tra báo cáo Search Terms và kiểm tra kỹ thuật trang đích.
+
+## 23. Bài Học Về Content Marketing Cho Doanh Nghiệp Địa Phương & Bẫy Regex Parser (Article ID 29)
+- **Triết Lý "Nói Thực - Làm Thực - Chụp Ảnh Thật" Cho Thợ Nghề & Chủ Tiệm**:
+  - Khách hàng địa phương cần bằng chứng xác thực hơn là câu chữ hoa mỹ. Họ chỉ tìm kiếm 3 điều: Cơ sở có thật không, tay nghề có vững không, và báo giá có minh bạch không.
+  - 4 nhóm chủ đề khách tin nhất: (1) Công khai giá sàn và bóc tách vật tư phụ tùng; (2) Ảnh cận cảnh đồ nghề và thao tác kỹ thuật tại xưởng; (3) Khách hàng thật kèm hình ảnh đối chiếu trước - sau; (4) Mẹo tự xử lý lỗi vặt tại nhà miễn phí (xây dựng uy tín thợ quen có tâm).
+  - Lịch 4 tuần tối giản: 2 bài/tuần, 10 phút/bài với công thức 3 bước (Hiện tượng khách gặp -> Cách thợ xử lý -> Giá trọn gói & Hotline/Zalo).
+  - 3 điều cấm kỵ: Cấm ảnh stock nước ngoài giả tạo, cấm giấu giá "inbox nhận giá", cấm khẩu hiệu sáo rỗng thiếu bằng chứng vật lý.
+- **Bài Học Kỹ Thuật: Bẫy Khớp Tiền Tố Regex Trong Trích Xuất FAQ (CMS Pipeline)**:
+  - Hệ thống `markdown-to-cms.cjs` sử dụng regex `/##.*(FAQ|câu hỏi thường gặp|thắc mắc)[\s\S]*$/i` để trích xuất mục FAQ.
+  - Vì `##` là tiền tố của `###`, nếu một thẻ `###` ở phần trên bài viết (ví dụ: `### Nhóm 1: Giải đáp thắc mắc...`) vô tình chứa chữ "thắc mắc", regex sẽ khớp ngay từ thẻ `###` đó và gom toàn bộ các heading con của bài viết vào mảng `faqs`.
+  - **Quy tắc thực chiến**: Đảm bảo từ khóa `FAQ / câu hỏi thường gặp / thắc mắc` chỉ xuất hiện duy nhất ở thẻ `##` cấp 2 cuối cùng của bài viết để parser phân tách dữ liệu chuẩn xác 100%.

@@ -213,7 +213,15 @@ Tài liệu này ghi nhận dòng thời gian các mốc cam kết (commits), s�
   - Tích hợp liên kết nội bộ tự nhiên trỏ về `/thiet-ke-website` và bài pillar `/kien-thuc/crm-la-gi-doanh-nghiep-nho-co-can-crm-khong`.
   - Tuân thủ 100% quy chuẩn chống AI slop, quy chuẩn GEO và phong cách ngôn ngữ thực tế cho hộ kinh doanh.
   - Chạy `validate-content.cjs` đạt điểm tuyệt đối **100/100** (Pass Quality Gate).
-  - Chạy `markdown-to-cms.cjs` sinh tự động `article.json` và đồng bộ an toàn vào `content/seeds/drafts_30_articles.json` với trạng thái draft.
+### Mốc 22: Chuẩn Hóa & Hoàn Thiện Bài Viết ID 29 (Content marketing cho doanh nghiệp địa phương: Bắt đầu từ đâu mà không cần viết văn hoa?)
+- **Mã sự kiện**: `content: standardize article 29 content-marketing-cho-doanh-nghiep-dia-phuong-bat-dau-tu-dau`
+- **Chi tiết**:
+  - Tạo cấu trúc thư mục chuẩn tại `content/articles/content-marketing-cho-doanh-nghiep-dia-phuong-bat-dau-tu-dau/`.
+  - Biên soạn `draft.md` đạt chuẩn cấu trúc (2.390 từ, nằm trọn trong dải 1600 - 2400 từ, 1 H1, đúng 6 H2, bảng lịch nội dung 4 tuần thực chiến mỗi tuần 2 bài 10 phút, 4 nhóm chủ đề khách tin nhất, 3 nguyên tắc cấm kỵ trong content địa phương, 3 kênh phân phối bài viết, và 6 câu hỏi FAQ chuẩn H3).
+  - Tích hợp các liên kết nội bộ tự nhiên trỏ về `/thiet-ke-website`, `/google-maps-local-seo`, và `/kien-thuc/website-doanh-nghiep-la-gi`.
+  - Tuân thủ 100% quy chuẩn chống AI slop, quy chuẩn GEO và phong cách "bác thợ hiểu được".
+  - Chạy `validate-content.cjs` đạt điểm tuyệt đối **100/100** (Pass Quality Gate).
+  - Chạy `markdown-to-cms.cjs` sinh tự động `article.json` với 6 mục FAQ được bóc tách chuẩn xác và đồng bộ an toàn vào `content/seeds/drafts_30_articles.json` với trạng thái draft.
 
 ---
 
@@ -222,4 +230,4 @@ Tài liệu này ghi nhận dòng thời gian các mốc cam kết (commits), s�
 - **Production Build**: Pass 100% (`tsc && vite build` hoàn tất không lỗi).
 - **Giao diện Quản trị**: Light mode hoàn chỉnh, màu nhận diện `#0d7647`, tuyệt đối không dùng glassmorphism, responsive mượt mà trên laptop 14" 125% scaling.
 - **Hệ thống API**: 100% endpoints backend trên Hono/Cloudflare Pages Functions hoạt động ổn định với thời gian phản hồi < 50ms.
-- **Bài viết đã chuẩn hóa Markdown Pipeline**: ID 1, ID 2, ID 4, ID 5, ID 6, ID 7, ID 9, ID 13, ID 15, ID 16, ID 18, ID 19, ID 21, ID 22, ID 25, ID 26, ID 27.
+- **Bài viết đã chuẩn hóa Markdown Pipeline**: ID 1, ID 2, ID 4, ID 5, ID 6, ID 7, ID 9, ID 13, ID 15, ID 16, ID 18, ID 19, ID 21, ID 22, ID 23, ID 25, ID 26, ID 27, ID 29.
