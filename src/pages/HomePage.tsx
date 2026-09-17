@@ -414,7 +414,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenConsultForm }) => {
             <h2>
               Mỗi ngành nghề, một câu chuyện <em>tăng trưởng riêng</em>
             </h2>
-            <p>
+            <p style={{ textAlign: 'center', marginLeft: 'auto', marginRight: 'auto', maxWidth: '820px' }}>
               Localmate thấu hiểu đặc thù từng ngành nghề, từ đó thiết kế giải pháp phù hợp giúp bạn<br className="desktop" /> hiện diện đúng nơi, tiếp cận đúng khách hàng và phát triển bền vững.
             </p>
           </div>
