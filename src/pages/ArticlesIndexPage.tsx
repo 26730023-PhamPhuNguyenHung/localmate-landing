@@ -577,8 +577,8 @@ export const ArticlesIndexPage: React.FC<ArticlesIndexPageProps> = ({ onOpenCons
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
-              gap: '1.75rem'
+              gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 300px), 1fr))',
+              gap: '1.5rem'
             }}
           >
             {filteredArticles.map((article, idx) => {

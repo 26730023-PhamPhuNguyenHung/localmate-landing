@@ -323,6 +323,8 @@ export const Footer: React.FC = () => {
           display: flex;
           justify-content: space-between;
           align-items: center;
+          flex-wrap: wrap;
+          gap: 12px;
           padding-top: 18px;
           border-top: 1px solid #cddfdf;
           margin-top: 32px;
