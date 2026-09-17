@@ -200,21 +200,21 @@ export const Footer: React.FC = () => {
         }
 
         .footer-container {
-          max-width: 1672px;
+          max-width: 1440px;
           margin: 0 auto;
-          padding: 0 3.5%;
+          padding: 0 clamp(16px, 2.5vw, 32px);
           box-sizing: border-box;
         }
 
         .footer-grid {
           display: grid;
-          grid-template-columns: 1.4fr 1fr 1fr 1.25fr;
-          gap: 4%;
+          grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+          gap: clamp(16px, 2.5vw, 32px);
         }
 
         .footer-grid > .footer-col + .footer-col {
           border-left: 1px solid #e3eeed;
-          padding-left: 12%;
+          padding-left: clamp(14px, 2vw, 24px);
         }
 
         .brand-col .logo {
@@ -234,6 +234,7 @@ export const Footer: React.FC = () => {
           font-size: 14px;
           color: #586e89;
           margin: 8px 0;
+          text-wrap: pretty;
         }
 
         .slogan {
@@ -280,7 +281,7 @@ export const Footer: React.FC = () => {
           border: 1px solid #087d54;
           border-radius: 12px;
           text-align: center;
-          width: 170px;
+          width: min(170px, 100%);
           padding: 11px 16px;
           font-size: 15px;
           font-weight: 700;
@@ -339,19 +340,10 @@ export const Footer: React.FC = () => {
           color: #087d54;
         }
 
-        @media (max-width: 1150px) {
-          .footer-grid {
-            gap: 3%;
-          }
-          .footer-grid > .footer-col + .footer-col {
-            padding-left: 8%;
-          }
-        }
-
-        @media (max-width: 900px) {
+        @media (max-width: 1100px) {
           .footer-grid {
             grid-template-columns: repeat(2, 1fr);
-            gap: 28px;
+            gap: 28px 24px;
           }
           .footer-grid > .footer-col + .footer-col {
             border-left: none;

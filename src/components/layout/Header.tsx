@@ -450,10 +450,10 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
         {/* Right Desktop Actions: Phone + CTA Button */}
         <div className="header-actions-desktop">
           <a className="phone" href="tel:0834422439" aria-label="Gọi 0834 422 439">
-            <span>
+            <span className="phone-icon">
               <Phone size={15} color="#ed8506" />
-            </span>{' '}
-            0834.422.439
+            </span>
+            <span className="phone-text">0834.422.439</span>
           </a>
 
           <button
@@ -655,13 +655,13 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
         }
 
         .site-header .header-inner {
-          max-width: 1672px;
-          height: 84px;
+          max-width: 1440px;
+          height: clamp(68px, 6vw, 82px);
           margin: 0 auto;
           display: flex;
           align-items: center;
-          gap: 20px;
-          padding: 0 3.5%;
+          gap: clamp(10px, 1.2vw, 20px);
+          padding: 0 clamp(16px, 2vw, 32px);
           box-sizing: border-box;
           justify-content: space-between;
         }
@@ -673,25 +673,25 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
         }
 
         .site-header .logo {
-          width: 200px;
+          width: clamp(148px, 11vw, 185px);
           aspect-ratio: 213/83;
         }
 
         /* Desktop Nav */
         .header-nav-desktop {
           display: flex;
-          gap: 24px;
+          gap: clamp(10px, 1.2vw, 22px);
           align-items: center;
           margin-left: auto;
-          margin-right: 16px;
-          font-size: 15.5px;
+          margin-right: clamp(8px, 1vw, 16px);
+          font-size: clamp(13.5px, 0.95vw, 15px);
           font-weight: 700;
           color: #10263d;
           white-space: nowrap;
         }
 
         .nav-link {
-          padding: 24px 0;
+          padding: 16px 0;
           position: relative;
           text-decoration: none;
           color: #10263d;
@@ -712,9 +712,9 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
         .nav-dropdown-btn.active:after {
           content: '';
           position: absolute;
-          bottom: 12px;
-          left: 15%;
-          right: 15%;
+          bottom: 6px;
+          left: 10%;
+          right: 10%;
           height: 2.5px;
           background: #0d7647;
           border-radius: 2px;
@@ -732,10 +732,10 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           border: none;
           cursor: pointer;
           font-family: inherit;
-          font-size: 15.5px;
+          font-size: inherit;
           font-weight: 700;
           color: #10263d;
-          padding: 24px 0;
+          padding: 16px 0;
           display: inline-flex;
           align-items: center;
           gap: 4px;
@@ -762,7 +762,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           top: 84px;
           left: 0;
           right: 0;
-          width: 100vw;
+          width: 100%;
           background-color: transparent;
           pointer-events: none;
           display: flex;
@@ -966,24 +966,25 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
         .header-actions-desktop {
           display: flex;
           align-items: center;
-          gap: 12px;
+          gap: clamp(8px, 1vw, 12px);
           flex-shrink: 0;
         }
 
         .site-header .phone {
-          padding: 12px 16px;
+          padding: 9px 15px;
           border: 1px solid #dce6ec;
           border-radius: 50px;
           white-space: nowrap;
-          font-size: 15px;
+          font-size: 14px;
           font-weight: 700;
           text-decoration: none;
           color: #10263d;
           display: inline-flex;
           align-items: center;
-          gap: 8px;
+          gap: 7px;
           background: #ffffff;
           transition: all 0.15s ease;
+          flex-shrink: 0;
         }
 
         .site-header .phone:hover {
@@ -991,23 +992,30 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           color: #0d7647;
         }
 
-        .site-header .header-cta-btn {
+        .site-header .phone-icon {
           display: inline-flex;
-          gap: 8px;
           align-items: center;
           justify-content: center;
-          padding: 13px 20px;
+        }
+
+        .site-header .header-cta-btn {
+          display: inline-flex;
+          gap: 6px;
+          align-items: center;
+          justify-content: center;
+          padding: clamp(9px, 1vw, 12px) clamp(12px, 1.2vw, 18px);
           color: #ffffff;
           border: 1px solid #0d7647;
           border-radius: 12px;
           background: linear-gradient(125deg, #078555, #05754f);
           font-weight: 700;
-          font-size: 16px;
+          font-size: clamp(13.5px, 0.95vw, 15px);
           box-shadow: 0 4px 10px rgba(6, 119, 74, 0.12);
           transition: transform 0.15s ease, box-shadow 0.15s ease;
           cursor: pointer;
           white-space: nowrap;
           font-family: inherit;
+          flex-shrink: 0;
         }
 
         .site-header .header-cta-btn:hover {
@@ -1019,35 +1027,17 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           display: none;
         }
 
-        @media (max-width: 1450px) {
-          .site-header .header-inner {
-            gap: 14px;
-            padding: 0 2.5%;
+        @media (max-width: 1366px) {
+          .site-header .phone {
+            display: none !important;
           }
           .header-nav-desktop {
-            gap: 16px;
-            font-size: 14.5px;
-          }
-          .site-header .logo {
-            width: 175px;
-          }
-          .site-header .phone {
-            font-size: 14px;
-            padding: 10px 13px;
-          }
-          .site-header .header-cta-btn {
-            font-size: 14.5px;
-            padding: 11px 16px;
+            gap: 12px;
+            margin-right: 10px;
           }
         }
 
-        @media (max-width: 1180px) {
-          .site-header .phone {
-            display: none;
-          }
-        }
-
-        @media (max-width: 1024px) {
+        @media (max-width: 1120px) {
           .header-nav-desktop,
           .header-actions-desktop {
             display: none !important;
@@ -1071,12 +1061,12 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
 
         @media (max-width: 600px) {
           .site-header .header-inner {
-            height: 68px;
+            height: 64px;
             padding: 0 16px;
             gap: 10px;
           }
           .site-header .logo {
-            width: 142px;
+            width: 140px;
           }
         }
 

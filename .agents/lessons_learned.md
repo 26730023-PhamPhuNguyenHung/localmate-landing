@@ -1,6 +1,30 @@
 # 📚 LOCALMATE AGENTS LESSONS LEARNED & EDITORIAL RULES
 
-## 23. Bài Học Về Layout Container SSOT Trang Danh Mục (/kien-thuc) — Khử Bỏ Bẫy Wrapper Lồng Nhau (Nested Container Trap)
+## 24. Bài Học Về Tối Ưu Responsive Trên Laptop Windows Scale 125% — Căn Nguyên & Khắc Phục Triệt Để Bằng CSS Chuẩn
+- **Bối cảnh thực tế của thị trường laptop Windows**:
+  - Hầu hết laptop 13" - 15.6" độ phân giải Full HD (1920x1080) được Windows đặt mặc định Display Scaling = 125%.
+  - Khi đó, viewport CSS khả dụng của trình duyệt chỉ còn **1536x864**, và khi trừ đi thanh cuộn dọc (scrollbar 15-17px), chiều rộng khả dụng còn khoảng **1519px - 1521px**.
+  - Các dòng laptop 14" phổ thông HD/HD+ (1366x768) khi scale 125% co xuống dải **1092px - 1280px**.
+  - Website thiết kế chuẩn 100% (1440px hay 1920px) thường gặp hàng loạt tai nạn nếu dùng kích thước cứng:
+    1. **Nút CTA Header bị ép tràn ra ngoài lề**: Header có logo, 7-8 navigation links và số hotline dài (`157px`). Khi co về 1200px - 1280px, tổng chiều rộng vượt quá container, đẩy nút CTA tràn ra ngoài mép phải.
+    2. **Thẻ h3/h4 bị overflow do `white-space: nowrap`**: Tiêu đề "Google Maps & Local SEO" cố định 1 dòng sẽ phá vỡ thẻ card khi cột co hẹp dưới 240px.
+    3. **Card bị clipping văn bản do fixed `height`**: Card câu chuyện thực tế đặt `height: 130px; overflow: hidden;` sẽ cắt mất dòng chữ khi text rớt dòng ở tỷ lệ zoom 125%.
+    4. **Hero illustration đè lên nội dung (Overlap)**: Ảnh vector hoặc mockup dùng vị trí tuyệt đối (`absolute`) hoặc kích thước cố định đè lên text copy khi viewport hẹp lại.
+- **Quy tắc vàng Khắc phục (TUYỆT ĐỐI KHÔNG DÙNG HACK ZOOM/SCALE)**:
+  - **1. Header**:
+    - Sử dụng `clamp()` cho padding và gap: `padding: 0 clamp(16px, 2vw, 32px); gap: clamp(10px, 1.2vw, 22px);`.
+    - Hotline adaptive: bọc số điện thoại vào `.phone-text`, khi viewport `<= 1320px` tự động ẩn text để biến thành icon button tròn 38px (tiết kiệm ngay ~120px không gian quý giá), ẩn hoàn toàn khi `<= 1100px`.
+    - Thu hẹp padding nút CTA: `padding: clamp(9px, 1vw, 12px) clamp(12px, 1.2vw, 18px); flex-shrink: 0;`.
+  - **2. Card & Grid**:
+    - Tuyệt đối cấm `white-space: nowrap` trên tiêu đề card; luôn dùng `text-wrap: pretty; min-height: 2.7em;`.
+    - Tuyệt đối cấm `height: xxxpx` cố định trên khối chứa văn bản; luôn dùng `min-height: xxxpx; height: auto;`.
+    - Dùng `repeat(auto-fit, minmax(230px, 1fr))` thay vì hardcode 5 cột.
+  - **3. Container Thống Nhất SSOT**:
+    - Dùng `--container-max: 1440px` và `--space-container-px: clamp(1rem, 2.5vw, 2rem)`.
+    - Bật `scrollbar-gutter: stable` để chống giật khung hình và sai lệch viewport giữa trang có cuộn và không cuộn.
+  - **4. Kiểm thử tự động**:
+    - Luôn duy trì script audit ma trận 6 viewports (`1280x720`, `1280x800`, `1366x768`, `1440x900`, `1536x864`, `1600x900`) trên tất cả các trang trọng yếu, kiểm tra `scrollWidth <= innerWidth` và `ctaMargin >= 0`.
+
 - **Căn nguyên Bệnh "2 Lớp Container" và Lệch Trục (Misalignment)**:
   - Khi trang danh mục sử dụng chung component `<Container size="lg">` vốn bị giới hạn ở `var(--container-max) = 1240px`, trong khi Header trang dùng `max-width: 1672px`, Article Grid bị bó chặt và để lộ khoảng trắng khổng lồ hai bên màn hình desktop rộng.
   - Tệ hơn, trong phần Hero Header, nội dung lại bị lồng thêm các wrapper con mang chiều rộng cứng: thẻ `<div>` bọc tiêu đề `maxWidth: 860px` và bên trong ô tìm kiếm lại bị bọc thêm `maxWidth: 620px`.

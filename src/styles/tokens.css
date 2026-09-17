@@ -146,24 +146,25 @@
   --shadow-card: 0 1px 3px rgba(15, 23, 42, 0.04), 0 0 0 1px var(--color-border);
   --shadow-card-hover: 0 8px 24px rgba(13, 118, 71, 0.08), 0 0 0 1px var(--color-primary-border);
 
-  /* Container SSOT: 3 tầng chuẩn mực */
-  --container-max: 1240px;      /* Chuẩn cho 14" laptop 125% (~1228px) & desktop */
-  --container-wide: 1360px;     /* Bảng giá, Showcase rộng rãi */
+  /* Container SSOT: 3 tầng chuẩn mực - Tối ưu cho Laptop Windows 125% Scale & Desktop */
+  --container-max: 1440px;      /* Desktop lớn & chuẩn hiển thị thoáng đãng */
+  --container-wide: 1440px;     /* Bảng giá, Showcase rộng rãi */
   --container-narrow: 860px;    /* FAQ, Bài viết, Form CTA */
 
   /* Responsive Horizontal Padding SSOT */
-  --space-container-px-mobile: 1.25rem;  /* 20px */
-  --space-container-px-tablet: 1.75rem;  /* 28px */
-  --space-container-px-desktop: 2.25rem; /* 36px */
-  --space-container-px: var(--space-container-px-mobile);
+  --space-container-px-mobile: 1rem;     /* 16px */
+  --space-container-px-tablet: 1.5rem;   /* 24px */
+  --space-container-px-desktop: 2rem;    /* 32px */
+  --space-container-px: clamp(1rem, 2.5vw, 2rem);
+  --container-px: var(--space-container-px);
 
   /* Section Spacing: Thoáng đãng, nhịp điệu mạnh - nhẹ rõ rệt */
   --space-section-py-mobile: clamp(3.5rem, 6vw, 4.5rem);   /* 56px - 72px */
-  --space-section-py-desktop: clamp(5.5rem, 7vw, 8rem);    /* 88px - 128px */
+  --space-section-py-desktop: clamp(5rem, 6.5vw, 7.5rem);  /* 80px - 120px */
   --space-section-py: var(--space-section-py-mobile);
 
-  --space-card-p: clamp(1.5rem, 2.5vw, 2.25rem);
-  --space-gap: clamp(1.25rem, 2vw, 2rem);
+  --space-card-p: clamp(1.25rem, 2vw, 2rem);
+  --space-gap: clamp(1rem, 1.8vw, 1.75rem);
 
   /* Spacing Scale */
   --space-1: 4px;
@@ -189,13 +190,13 @@
 @media (min-width: 768px) {
   :root {
     --space-container-px: var(--space-container-px-tablet);
-    --space-section-py: clamp(4.5rem, 6vw, 6rem); /* 72px - 96px */
+    --space-section-py: clamp(4rem, 5.5vw, 5.5rem);
   }
 }
 
 @media (min-width: 1024px) {
   :root {
     --space-container-px: var(--space-container-px-desktop);
-    --space-section-py: var(--space-section-py-desktop); /* 88px - 128px */
+    --space-section-py: var(--space-section-py-desktop);
   }
 }

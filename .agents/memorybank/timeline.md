@@ -341,9 +341,35 @@ Tài liệu này ghi nhận dòng thời gian các mốc cam kết (commits), s�
 
 ---
 
+### Mốc 25: Audit & Chuẩn Hóa Responsive Toàn Diện Cho Laptop Windows Scale 125%
+- **Mã sự kiện**: `fix(responsive): optimize site layout across 6 viewports for windows 125% display scaling`
+- **Chi tiết**:
+  - Audit ma trận 6 viewports chuẩn laptop Windows 125% (`1280x720`, `1280x800`, `1366x768`, `1440x900`, `1536x864`, `1600x900`) trên 4 routes trọng yếu (`/`, `/geo`, `/kien-thuc`, `/kien-thuc/entity-seo-la-gi-co-can-thiet-cho-doanh-nghiep-nho`).
+  - **Header Refactor**:
+    - Chuẩn hóa container về `max-width: 1440px`, padding fluid `clamp(16px, 2vw, 32px)`, height `clamp(68px, 6vw, 82px)`.
+    - Xử lý Hotline: bọc text vào `.phone-text`, tự động ẩn text khi màn hình `<= 1320px` để chuyển thành icon button tròn 38px, ẩn hoàn toàn khi `<= 1100px`.
+    - Điều chỉnh nav links gap `clamp(10px, 1.2vw, 22px)` và CTA padding `clamp(9px, 1vw, 12px) clamp(12px, 1.2vw, 18px)`.
+    - Kết quả: Triệt tiêu hoàn toàn lỗi tràn nút CTA ra ngoài mép header (từ tràn +56px thành lề trong an toàn +0px đến +32px).
+  - **Homepage Sections**:
+    - `.hero`: Cân đối `.hero-copy` (max-width 640px) và `.hero-art` (`clamp(38%, 44vw, 50%)`), mask gradient mới -> triệt tiêu hoàn toàn overlap 261px tại 1280px.
+    - `.values`: Đổi sang responsive grid `repeat(auto-fit, minmax(220px, 1fr))`, bỏ divider cứng cố định vị trí.
+    - `.service-card h3`: Bỏ `white-space: nowrap`, chuyển sang `text-wrap: pretty; min-height: 2.7em` -> hết tràn ngang 100%. Responsive grid 5 cột tại >= 1320px, 3-4 cột tại 1080px-1319px.
+    - `.story-card`: Bỏ fixed `height: 130px`, chuyển sang `min-height: 110px; height: auto;` -> hết tràn dọc và clipping text 100%. Grid 2 cột rộng rãi ở 900px-1320px.
+    - `.contact`: Bỏ cột rác 89px thừa thãi, tái cấu trúc layout 2 cột `1.1fr 1fr` cân đối.
+  - **Footer Refactor**:
+    - Chuẩn hóa container `max-width: 1440px`, padding fluid, bỏ `padding-left: 12%` thừa, responsive 2 cột khi `<= 1100px`.
+  - **Container SSOT**:
+    - Đồng bộ hóa các token `--container-max: 1440px` và `--space-container-px: clamp(1rem, 2.5vw, 2rem)` trên toàn bộ hệ thống (`tokens.css`, `globals.css`, `reference-landing.css`, `geo-landing.css`).
+  - **Kết quả nghiệm thu tự động**:
+    - Chạy script kiểm thử Playwright/agent-browser quét qua toàn bộ 24 test cases (6 viewports x 4 routes) đạt **24/24 PASS (100%)**.
+    - Build test `tsc && vite build` hoàn thành 100% không lỗi.
+
+---
+
 ## Trạng Thái Hệ Thống Hiện Tại (Current System State)
 - **Local D1 Database**: Đã chạy đầy đủ 4 migrations (`0001`, `0002`, `0003`, `0004`), 30 bài viết, 3 mẫu CTA chuyển đổi, 7 chuyên mục.
-- **Production Build**: Pass 100% (`tsc && vite build` hoàn tất không lỗi).
+- **Production Build**: Pass 100% (`tsc && vite build && node scripts/generate-static-routes.js` hoàn tất không lỗi).
+- **Responsive Matrix 125% Scaling**: Đạt 100% chuẩn trên toàn bộ các kích thước màn hình laptop Windows 13" - 15.6" (`1280x720`, `1280x800`, `1366x768`, `1440x900`, `1536x864`, `1600x900`).
 - **Trang Kiến Thức (/kien-thuc)**: Layout container 1440px thống nhất hoàn hảo, dóng thẳng hàng toàn bộ khối nội dung từ trên xuống dưới.
 - **Typography & Prose**: Hệ thống Typography bài viết chuẩn mực đã hoàn thiện và kết nối đồng bộ giữa ArticleDetailPage, TableOfContents và ArticleBody.
 - **Giao diện Quản trị & Độc giả**: Light mode hoàn chỉnh, màu nhận diện `#0d7647`, tuyệt đối không dùng glassmorphism, responsive mượt mà trên laptop 14" 125% scaling.

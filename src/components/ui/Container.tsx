@@ -16,8 +16,8 @@ export const Container: React.FC<ContainerProps> = ({
   const maxWidths: Record<string, string> = {
     sm: '800px',
     md: '1020px',
-    lg: 'var(--container-max, 1220px)',
-    wide: 'var(--container-wide, 1360px)',
+    lg: 'var(--container-max, 1440px)',
+    wide: 'var(--container-wide, 1440px)',
     full: '100%'
   };
 
@@ -26,9 +26,8 @@ export const Container: React.FC<ContainerProps> = ({
       style={{
         maxWidth: maxWidths[size] || maxWidths.lg,
         width: '100%',
-        margin: '0 auto',
-        paddingLeft: 'var(--space-container-px, 1.25rem)',
-        paddingRight: 'var(--space-container-px, 1.25rem)',
+        marginInline: 'auto',
+        paddingInline: 'var(--space-container-px, 32px)',
         boxSizing: 'border-box',
         ...style
       }}
