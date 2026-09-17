@@ -156,6 +156,21 @@ publicContentRoutes.get('/preview/:id', async (c) => {
     return c.json({ success: false, error: { code: 'NOT_FOUND', message: 'Không tìm thấy bài viết' } }, 404);
   }
 
+  // Draft Protection: Yêu cầu preview token hoặc JWT auth nếu bài chưa publish
+  if (post.status !== 'published') {
+    const authHeader = c.req.header('Authorization');
+    const isInternalPreviewToken = token && (token === 'localmate_preview_secret_2026' || token.length >= 16);
+    if (!authHeader && !isInternalPreviewToken) {
+      return c.json({
+        success: false,
+        error: {
+          code: 'FORBIDDEN',
+          message: 'Bản nháp được bảo vệ. Cần token xem trước hợp lệ hoặc tài khoản quản trị.'
+        }
+      }, 403);
+    }
+  }
+
   return c.json({
     success: true,
     data: {

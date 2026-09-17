@@ -1,63 +1,101 @@
 # ==============================================================================
 # LocalMate Robots.txt - Technical Crawl & Search / AI Crawler Directives
 # Domain: https://localmate.vn
-# Last Updated: 2026-09-14
+# Standard: RFC 9309 Compliant
+# Last Updated: 2026-09-17 (Post-Audit V2 Hardening)
 # ==============================================================================
 
 # Default Crawlers
 User-agent: *
-Allow: /
 Disallow: /admin/
 Disallow: /api/
+Disallow: /preview/
+Allow: /
 
 # ------------------------------------------------------------------------------
 # Major Search Engine Crawlers
 # ------------------------------------------------------------------------------
 User-agent: Googlebot
+Disallow: /admin/
+Disallow: /api/
+Disallow: /preview/
 Allow: /
 
 User-agent: Bingbot
+Disallow: /admin/
+Disallow: /api/
+Disallow: /preview/
 Allow: /
 
 # ------------------------------------------------------------------------------
-# AI Crawlers, Search Agents & LLM Scrapers
+# AI Search Agents & LLM Citation Crawlers
 # ------------------------------------------------------------------------------
-# Official OpenAI Search Crawler for ChatGPT Search
+# OpenAI Search Crawler for ChatGPT Search
 User-agent: OAI-SearchBot
+Disallow: /admin/
+Disallow: /api/
+Disallow: /preview/
 Allow: /
 
 # OpenAI LLM Training & Web Crawler
 User-agent: GPTBot
+Disallow: /admin/
+Disallow: /api/
+Disallow: /preview/
 Allow: /
 
 # OpenAI ChatGPT User Browsing
 User-agent: ChatGPT-User
+Disallow: /admin/
+Disallow: /api/
+Disallow: /preview/
 Allow: /
 
 # Anthropic Claude Crawlers
 User-agent: ClaudeBot
+Disallow: /admin/
+Disallow: /api/
+Disallow: /preview/
 Allow: /
 
 User-agent: Claude-Web
+Disallow: /admin/
+Disallow: /api/
+Disallow: /preview/
 Allow: /
 
 # Perplexity AI Search Crawler
 User-agent: PerplexityBot
+Disallow: /admin/
+Disallow: /api/
+Disallow: /preview/
 Allow: /
 
 # Apple Search & Apple Intelligence Crawler
 User-agent: Applebot-Extended
+Disallow: /admin/
+Disallow: /api/
+Disallow: /preview/
 Allow: /
 
 User-agent: Applebot
+Disallow: /admin/
+Disallow: /api/
+Disallow: /preview/
 Allow: /
 
 # Google AI & Extended Crawlers
 User-agent: Google-Extended
+Disallow: /admin/
+Disallow: /api/
+Disallow: /preview/
 Allow: /
 
 # ByteDance / TikTok AI Crawler
 User-agent: Bytespider
+Disallow: /admin/
+Disallow: /api/
+Disallow: /preview/
 Allow: /
 
 # ------------------------------------------------------------------------------

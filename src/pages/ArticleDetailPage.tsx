@@ -88,8 +88,10 @@ export const ArticleDetailPage: React.FC<ArticleDetailPageProps> = ({ slug, onOp
   const summary = isCms ? (cmsPost!.excerpt || '') : article!.summary;
   const categoryName = isCms ? (cmsPost!.category_name || 'Kiến thức') : article!.category;
   const readTime = isCms ? cmsPost!.reading_time : article!.readTime;
-  const updatedAt = isCms ? (cmsPost!.updated_at || cmsPost!.published_at || '').split(' ')[0] : article!.updatedAt;
-  const publishedAt = isCms ? (cmsPost!.published_at || '').split(' ')[0] : article!.publishedAt;
+  const rawUpdated = isCms ? (cmsPost?.updated_at || cmsPost?.published_at) : article?.updatedAt;
+  const updatedAt = rawUpdated ? rawUpdated.split(' ')[0] : '2026-09-17';
+  const rawPublished = isCms ? cmsPost?.published_at : article?.publishedAt;
+  const publishedAt = rawPublished ? rawPublished.split(' ')[0] : '2026-09-14';
   const authorName = isCms ? (cmsPost!.author_name || 'Ban biên tập LocalMate') : article!.author.name;
   const authorRole = isCms ? 'Chuyên gia tư vấn LocalMate' : article!.author.role;
   const heroImage = isCms ? (cmsPost!.featured_image_url || '/logo.png') : article!.heroImage;
@@ -112,8 +114,22 @@ export const ArticleDetailPage: React.FC<ArticleDetailPageProps> = ({ slug, onOp
     tocItems = article.tableOfContents;
   }
 
-  // Related Services
-  const targetService = !isCms && article?.cta?.targetServiceSlug ? getServiceBySlug(article.cta.targetServiceSlug) : undefined;
+  // Related Services Mapping (Hỗ trợ cả CMS và Static bài viết)
+  const getCmsTargetServiceSlug = (catSlug?: string): string => {
+    switch (catSlug) {
+      case 'website': return 'thiet-ke-website';
+      case 'google-maps': return 'google-maps-seo';
+      case 'local-seo': return 'google-maps-seo';
+      case 'google-ads': return 'quang-cao-google-ads';
+      case 'crm-automation': return 'crm-automation';
+      default: return 'thiet-ke-website';
+    }
+  };
+
+  const targetServiceSlug = isCms 
+    ? getCmsTargetServiceSlug(cmsPost?.category_slug) 
+    : article?.cta?.targetServiceSlug;
+  const targetService = targetServiceSlug ? getServiceBySlug(targetServiceSlug) : undefined;
 
   const handleCTAClick = () => {
     if (onOpenConsultForm) {
@@ -127,9 +143,10 @@ export const ArticleDetailPage: React.FC<ArticleDetailPageProps> = ({ slug, onOp
     <div style={{ backgroundColor: '#ffffff', padding: '2rem 0 5rem 0' }}>
       {/* SEO & Structured Data */}
       <SEOHead
-        title={`${isCms && cmsPost!.seo_title ? cmsPost!.seo_title : title} | LocalMate`}
+        title={isCms && cmsPost!.seo_title ? cmsPost!.seo_title : title}
         description={isCms && cmsPost!.seo_description ? cmsPost!.seo_description : summary}
         canonicalPath={`/kien-thuc/${slug}`}
+        ogImage={heroImage}
         ogType="article"
         breadcrumbs={[
           { name: 'Kiến thức', url: '/kien-thuc' },
@@ -140,6 +157,7 @@ export const ArticleDetailPage: React.FC<ArticleDetailPageProps> = ({ slug, onOp
         schemaData={{
           headline: title,
           description: summary,
+          image: [heroImage.startsWith('http') ? heroImage : `https://localmate.vn${heroImage}`],
           datePublished: publishedAt,
           dateModified: updatedAt,
           author: {
@@ -363,26 +381,94 @@ export const ArticleDetailPage: React.FC<ArticleDetailPageProps> = ({ slug, onOp
               </div>
             )}
 
-            {/* Contextual CTA Box */}
+            {/* Multi-tier Conversion Action Box */}
             <div
               style={{
                 backgroundColor: '#f8fbfa',
                 border: '2px solid var(--color-primary)',
                 borderRadius: 'var(--radius-xl)',
-                padding: '2rem',
+                padding: '2.5rem 2rem',
                 marginTop: '3.5rem',
-                textAlign: 'center'
+                textAlign: 'center',
+                boxShadow: '0 4px 20px -2px rgba(13, 118, 71, 0.08)'
               }}
             >
-              <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: 'var(--color-text)', marginBottom: '0.5rem' }}>
-                Cần Triển Khai Cho Doanh Nghiệp Của Bạn?
+              <span
+                style={{
+                  display: 'inline-block',
+                  fontSize: '0.8rem',
+                  fontWeight: 800,
+                  color: 'var(--color-primary-dark)',
+                  backgroundColor: 'var(--color-primary-soft)',
+                  padding: '0.3rem 0.85rem',
+                  borderRadius: '9999px',
+                  marginBottom: '0.85rem',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.04em'
+                }}
+              >
+                Hỗ trợ trực tiếp cho chủ cơ sở kinh doanh
+              </span>
+
+              <h3 style={{ fontSize: '1.45rem', fontWeight: 800, color: 'var(--color-text)', marginBottom: '0.65rem' }}>
+                Cần Triển Khai Thực Tế Cho Cơ Sở Của Bạn?
               </h3>
-              <p style={{ fontSize: '0.925rem', color: 'var(--color-text-muted)', maxWidth: '600px', margin: '0 auto 1.5rem auto', lineHeight: 1.6 }}>
-                LocalMate hỗ trợ dựng demo xem trước 0đ, cam kết bàn giao toàn quyền và không phát sinh chi phí.
+              <p style={{ fontSize: '0.975rem', color: 'var(--color-text-muted)', maxWidth: '580px', margin: '0 auto 1.75rem auto', lineHeight: 1.65 }}>
+                Đội ngũ LocalMate hỗ trợ dựng bản demo thực tế 0đ, khảo sát trực tiếp tại cửa hàng và tư vấn giải pháp sát với ngân sách thực tế của bạn.
               </p>
-              <Button variant="primary" size="lg" onClick={handleCTAClick} style={{ fontWeight: 700 }}>
-                Nhận Tư Vấn 0đ Ngay
-              </Button>
+
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center', alignItems: 'center', marginBottom: '1.5rem' }}>
+                <Button variant="primary" size="lg" onClick={handleCTAClick} style={{ fontWeight: 700, padding: '0.85rem 1.75rem' }}>
+                  Nhận Bản Demo 0đ Ngay
+                </Button>
+                
+                <a
+                  href="https://zalo.me/0834422439"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    padding: '0.8rem 1.5rem',
+                    backgroundColor: '#ffffff',
+                    border: '1.5px solid var(--color-primary)',
+                    borderRadius: 'var(--radius-md)',
+                    color: 'var(--color-primary-dark)',
+                    fontWeight: 700,
+                    fontSize: '0.95rem',
+                    textDecoration: 'none',
+                    transition: 'all 0.2s ease'
+                  }}
+                >
+                  Nhắn Zalo Trực Tiếp
+                </a>
+
+                <a
+                  href="tel:+84834422439"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    padding: '0.8rem 1.25rem',
+                    backgroundColor: 'transparent',
+                    border: '1px solid #cbd5e1',
+                    borderRadius: 'var(--radius-md)',
+                    color: '#475569',
+                    fontWeight: 600,
+                    fontSize: '0.9rem',
+                    textDecoration: 'none'
+                  }}
+                >
+                  Hotline: 0834 422 439
+                </a>
+              </div>
+
+              <div style={{ fontSize: '0.8rem', color: '#64748b', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1.25rem' }}>
+                <span>✓ Bàn giao xem trước 0đ</span>
+                <span>✓ Minh bạch chi phí 100%</span>
+                <span>✓ Không phát sinh phụ phí</span>
+              </div>
             </div>
           </article>
 

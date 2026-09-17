@@ -20,6 +20,7 @@ import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
 import { LegalPage } from './pages/LegalPage';
 import { HtmlSitemapPage } from './pages/HtmlSitemapPage';
+import { NotFoundPage } from './pages/NotFoundPage';
 import { AdminPricingPage } from './pages/AdminPricingPage';
 import { AdvisorPage } from './pages/AdvisorPage';
 import { Landing490kPage } from './pages/Landing490kPage';
@@ -464,8 +465,8 @@ const MainContent: React.FC = () => {
       return <HtmlSitemapPage />;
     }
 
-    // Fallback to HomePage
-    return <HomePage onOpenConsultForm={handleOpenLeadForm} />;
+    // Fallback to NotFoundPage (Eliminates Soft-404 penalty)
+    return <NotFoundPage />;
   };
 
   const normalizedPath = currentPath.replace(/\/$/, '') || '/';

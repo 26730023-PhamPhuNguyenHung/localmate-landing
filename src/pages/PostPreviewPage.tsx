@@ -116,6 +116,7 @@ export const PostPreviewPage: React.FC<PostPreviewPageProps> = ({ postId }) => {
         title={`[XEM TRƯỚC] ${post.seo_title || post.title}`}
         description={post.seo_description || post.excerpt}
         canonicalPath={`/kien-thuc/${post.slug}`}
+        noIndex={true}
       />
 
       <div style={{ backgroundColor: '#ffffff', padding: '2rem 0 5rem 0' }}>
