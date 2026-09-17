@@ -64,47 +64,32 @@ export const Footer: React.FC = () => {
             <h4>Dịch vụ</h4>
             <nav className="footer-links" aria-label="Danh mục dịch vụ">
               <a
-                href="/thiet-ke-website"
-                onClick={(e) => {
-                  e.preventDefault();
-                  navigate('/thiet-ke-website');
-                }}
+                href="#services"
+                onClick={(e) => handleLinkClick(e, '#services', '/#services')}
               >
                 Thiết kế website
               </a>
               <a
-                href="/google-maps-local-seo"
-                onClick={(e) => {
-                  e.preventDefault();
-                  navigate('/google-maps-local-seo');
-                }}
+                href="#services"
+                onClick={(e) => handleLinkClick(e, '#services', '/#services')}
               >
                 Google Maps &amp; Local SEO
               </a>
               <a
-                href="/google-ads"
-                onClick={(e) => {
-                  e.preventDefault();
-                  navigate('/google-ads');
-                }}
+                href="#services"
+                onClick={(e) => handleLinkClick(e, '#services', '/#services')}
               >
                 Google Ads
               </a>
               <a
-                href="/content-marketing"
-                onClick={(e) => {
-                  e.preventDefault();
-                  navigate('/content-marketing');
-                }}
+                href="#services"
+                onClick={(e) => handleLinkClick(e, '#services', '/#services')}
               >
                 Content &amp; chăm sóc số
               </a>
               <a
-                href="/automation"
-                onClick={(e) => {
-                  e.preventDefault();
-                  navigate('/automation');
-                }}
+                href="#services"
+                onClick={(e) => handleLinkClick(e, '#services', '/#services')}
               >
                 CRM &amp; Automation
               </a>
@@ -116,34 +101,28 @@ export const Footer: React.FC = () => {
             <h4>Thông tin</h4>
             <nav className="footer-links" aria-label="Thông tin LocalMate">
               <a
-                href="/quy-trinh"
-                onClick={(e) => handleLinkClick(e, '#process', '/quy-trinh')}
+                href="#process"
+                onClick={(e) => handleLinkClick(e, '#process', '/#process')}
               >
                 Cách làm việc
               </a>
               <a
-                href="/bang-gia"
-                onClick={(e) => {
-                  e.preventDefault();
-                  navigate('/bang-gia');
-                }}
+                href="#services"
+                onClick={(e) => handleLinkClick(e, '#services', '/#services')}
               >
                 Bảng giá niêm yết
               </a>
               <a
-                href="/du-an"
-                onClick={(e) => handleLinkClick(e, '#stories', '/du-an')}
+                href="#stories"
+                onClick={(e) => handleLinkClick(e, '#stories', '/#stories')}
               >
                 Dự án / Demo
               </a>
               <a
-                href="/ho-so-nang-luc"
-                onClick={(e) => {
-                  e.preventDefault();
-                  navigate('/ho-so-nang-luc');
-                }}
+                href="#contact"
+                onClick={(e) => handleLinkClick(e, '#contact', '/#contact')}
               >
-                Hồ sơ năng lực
+                Nhận tư vấn 0đ
               </a>
               <a
                 href="/chinh-sach-bao-mat"

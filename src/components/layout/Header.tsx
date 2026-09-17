@@ -128,7 +128,7 @@ const SERVICE_GROUPS: ServiceGroup[] = [
 ];
 
 interface HeaderProps {
-  onOpenDemoForm?: () => void;
+  onOpenDemoForm?: (service?: string) => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
@@ -322,11 +322,14 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
                             return (
                               <a
                                 key={item.title}
-                                href={item.path}
+                                href="#services"
                                 onClick={(e) => {
                                   e.preventDefault();
                                   closeMenus();
-                                  navigate(item.path);
+                                  handleNavClick(e, '#services', '/#services');
+                                  if (onOpenDemoForm) {
+                                    onOpenDemoForm(item.title);
+                                  }
                                 }}
                                 className="mega-card"
                               >
@@ -360,15 +363,15 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
                     </div>
                     <div className="mega-footer-right">
                       <a
-                        href="/bang-gia"
+                        href="#services"
                         onClick={(e) => {
                           e.preventDefault();
                           closeMenus();
-                          navigate('/bang-gia');
+                          handleNavClick(e, '#services', '/#services');
                         }}
                         className="mega-footer-link"
                       >
-                        <span>Xem bảng giá</span>
+                        <span>Xem chi tiết dịch vụ</span>
                         <ArrowRight size={13} />
                       </a>
                       <button
@@ -387,49 +390,45 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
 
           {/* 3. Bảng giá */}
           <a
-            className={`nav-link ${currentPath.startsWith('/bang-gia') ? 'active' : ''}`}
-            href="/bang-gia"
-            onClick={(e) => {
-              e.preventDefault();
-              closeMenus();
-              navigate('/bang-gia');
-            }}
+            className="nav-link"
+            href="#services"
+            onClick={(e) => handleNavClick(e, '#services', '/#services')}
           >
             Bảng giá
           </a>
 
           {/* 4. Câu chuyện */}
           <a
-            className={`nav-link ${(isHome && activeSection === 'stories') || currentPath.startsWith('/du-an') ? 'active' : ''}`}
-            href="/du-an"
-            onClick={(e) => handleNavClick(e, '#stories', '/du-an')}
+            className={`nav-link ${isHome && activeSection === 'stories' ? 'active' : ''}`}
+            href="#stories"
+            onClick={(e) => handleNavClick(e, '#stories', '/#stories')}
           >
             Câu chuyện
           </a>
 
           {/* 5. Quy trình */}
           <a
-            className={`nav-link ${(isHome && activeSection === 'process') || currentPath.startsWith('/quy-trinh') ? 'active' : ''}`}
-            href="/quy-trinh"
-            onClick={(e) => handleNavClick(e, '#process', '/quy-trinh')}
+            className={`nav-link ${isHome && activeSection === 'process' ? 'active' : ''}`}
+            href="#process"
+            onClick={(e) => handleNavClick(e, '#process', '/#process')}
           >
             Quy trình
           </a>
 
           {/* 6. Về Localmate */}
           <a
-            className={`nav-link ${currentPath.startsWith('/gioi-thieu') ? 'active' : ''}`}
-            href="/gioi-thieu"
-            onClick={(e) => handleNavClick(e, '#about', '/gioi-thieu')}
+            className="nav-link"
+            href="#about"
+            onClick={(e) => handleNavClick(e, '#about', '/#about')}
           >
             Về Localmate
           </a>
 
           {/* 7. Liên hệ */}
           <a
-            className={`nav-link ${(isHome && activeSection === 'contact') || currentPath.startsWith('/lien-he') ? 'active' : ''}`}
-            href="/lien-he"
-            onClick={(e) => handleNavClick(e, '#contact', '/lien-he')}
+            className={`nav-link ${isHome && activeSection === 'contact' ? 'active' : ''}`}
+            href="#contact"
+            onClick={(e) => handleNavClick(e, '#contact', '/#contact')}
           >
             Liên hệ
           </a>
@@ -504,11 +503,14 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
                         {group.items.map((item) => (
                           <a
                             key={item.title}
-                            href={item.path}
+                            href="#services"
                             onClick={(e) => {
                               e.preventDefault();
                               closeMenus();
-                              navigate(item.path);
+                              handleNavClick(e, '#services', '/#services');
+                              if (onOpenDemoForm) {
+                                onOpenDemoForm(item.title);
+                              }
                             }}
                             className="mobile-sub-link"
                           >
@@ -520,11 +522,11 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
 
                     <div className="mobile-services-actions">
                       <a
-                        href="/giai-phap"
+                        href="#services"
                         onClick={(e) => {
                           e.preventDefault();
                           closeMenus();
-                          navigate('/giai-phap');
+                          handleNavClick(e, '#services', '/#services');
                         }}
                         className="mobile-view-all-link"
                       >
@@ -543,45 +545,45 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
               </div>
 
               <a
-                href="/bang-gia"
+                href="#services"
                 onClick={(e) => {
                   e.preventDefault();
                   closeMenus();
-                  navigate('/bang-gia');
+                  handleNavClick(e, '#services', '/#services');
                 }}
-                className={`mobile-nav-item ${currentPath.startsWith('/bang-gia') ? 'active' : ''}`}
+                className="mobile-nav-item"
               >
                 Bảng giá niêm yết
               </a>
 
               <a
-                href="/du-an"
-                onClick={(e) => handleNavClick(e, '#stories', '/du-an')}
-                className={`mobile-nav-item ${(isHome && activeSection === 'stories') || currentPath.startsWith('/du-an') ? 'active' : ''}`}
+                href="#stories"
+                onClick={(e) => handleNavClick(e, '#stories', '/#stories')}
+                className={`mobile-nav-item ${isHome && activeSection === 'stories' ? 'active' : ''}`}
               >
                 Câu chuyện
               </a>
 
               <a
-                href="/quy-trinh"
-                onClick={(e) => handleNavClick(e, '#process', '/quy-trinh')}
-                className={`mobile-nav-item ${(isHome && activeSection === 'process') || currentPath.startsWith('/quy-trinh') ? 'active' : ''}`}
+                href="#process"
+                onClick={(e) => handleNavClick(e, '#process', '/#process')}
+                className={`mobile-nav-item ${isHome && activeSection === 'process' ? 'active' : ''}`}
               >
                 Quy trình
               </a>
 
               <a
-                href="/gioi-thieu"
-                onClick={(e) => handleNavClick(e, '#about', '/gioi-thieu')}
-                className={`mobile-nav-item ${currentPath.startsWith('/gioi-thieu') ? 'active' : ''}`}
+                href="#about"
+                onClick={(e) => handleNavClick(e, '#about', '/#about')}
+                className="mobile-nav-item"
               >
                 Về Localmate
               </a>
 
               <a
-                href="/lien-he"
-                onClick={(e) => handleNavClick(e, '#contact', '/lien-he')}
-                className={`mobile-nav-item ${currentPath.startsWith('/lien-he') ? 'active' : ''}`}
+                href="#contact"
+                onClick={(e) => handleNavClick(e, '#contact', '/#contact')}
+                className={`mobile-nav-item ${isHome && activeSection === 'contact' ? 'active' : ''}`}
               >
                 Liên hệ
               </a>

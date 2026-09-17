@@ -169,7 +169,7 @@ function importMarkdownToCms(articleDir, options = { syncD1: false }) {
   const seedsFile = path.resolve('content/seeds/drafts_30_articles.json');
   if (fs.existsSync(seedsFile)) {
     const seeds = JSON.parse(fs.readFileSync(seedsFile, 'utf-8'));
-    const targetIdx = seeds.findIndex(p => p.slug === frontmatter.slug || p.id === 1);
+    const targetIdx = seeds.findIndex(p => p.slug === frontmatter.slug || (frontmatter.post_id && p.id === parseInt(frontmatter.post_id, 10)));
     if (targetIdx !== -1) {
       seeds[targetIdx].title = articleJson.title;
       seeds[targetIdx].slug = articleJson.slug;

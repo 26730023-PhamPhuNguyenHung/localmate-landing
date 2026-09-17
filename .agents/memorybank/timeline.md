@@ -67,6 +67,118 @@ Tài liệu này ghi nhận dòng thời gian các mốc cam kết (commits), s�
   - **Frontend Rendering**: Tích hợp hiển thị GEO Answer-First Card, FAQ Accordion, Dynamic CTA tracking trong `src/pages/ArticleDetailPage.tsx` và `src/pages/PostPreviewPage.tsx`.
   - **Verification**: `npm run build` PASS 100% (7.86s). Kiểm thử giao diện trực quan qua Chrome DevTools & Agent Browser PASS 100% trên các độ phân giải 1366x768 và 1280x800 (Zero horizontal overflow).
 
+### Mốc 7: Chuẩn Hóa & Hoàn Thiện Bài Viết ID 9 (Tối Ưu Google Business Profile)
+- **Mã sự kiện**: `content: standardize article 9 cach-toi-uu-google-business-profile-de-khach-de-tim-thay`
+- **Chi tiết**:
+  - Tạo cấu trúc thư mục chuẩn tại `content/articles/cach-toi-uu-google-business-profile-de-khach-de-tim-thay/`.
+  - Biên soạn `draft.md` (3411 words, 1 H1, đúng 6 H2, 4 bảng Markdown, 6 internal links, FAQ chi tiết, TL;DR Answer First) tuân thủ nghiêm ngặt quy chuẩn chống AI slop và quy chuẩn GEO.
+  - Chạy `validate-content.cjs` đạt điểm tuyệt đối 100/100 (Pass Quality Gate).
+  - Chạy `markdown-to-cms.cjs` tự động tạo `article.json` và đồng bộ vào `content/seeds/drafts_30_articles.json` với trạng thái draft.
+
+### Mốc 8: Chuẩn Hóa & Hoàn Thiện Bài Viết ID 4 (Cấu Trúc Website Giới Thiệu Công Ty)
+- **Mã sự kiện**: `content: standardize article 4 website-gioi-thieu-cong-ty-nen-co-nhung-trang-nao`
+- **Chi tiết**:
+  - Tạo cấu trúc thư mục chuẩn tại `content/articles/website-gioi-thieu-cong-ty-nen-co-nhung-trang-nao/`.
+  - Biên soạn `draft.md` (3405 words, 1 H1, đúng 7 H2, H3 chi tiết, 2 bảng Markdown đối chiếu trang cần vs thừa thãi, 6 internal links, checklist 16 tiêu chí, FAQ 5 câu hỏi chuyên sâu, TL;DR Answer First) tuân thủ 100% quy chuẩn chống AI slop và triết lý ngôn ngữ thực chiến.
+  - Chạy `validate-content.cjs` đạt điểm tuyệt đối 100/100 (Pass Quality Gate).
+  - Chạy `markdown-to-cms.cjs` tự động sinh `article.json` và đồng bộ vào `content/seeds/drafts_30_articles.json` với trạng thái draft.
+
+### Mốc 9: Chuẩn Hóa & Hoàn Thiện Bài Viết ID 2 (Làm Website Doanh Nghiệp Nhỏ Cần Chuẩn Bị Những Gì)
+- **Mã sự kiện**: `content: standardize article 2 lam-website-cho-doanh-nghiep-nho-can-chuan-bi-nhung-gi`
+- **Chi tiết**:
+  - Tạo cấu trúc thư mục `content/articles/lam-website-cho-doanh-nghiep-nho-can-chuan-bi-nhung-gi/`.
+  - Biên soạn `draft.md` (2695 words, 1 H1, đúng 7 H2, H3 chi tiết, bảng checklist markdown, case study thực tế xưởng nhôm kính Đông Hưng Thuận Quận 12, 4 câu hỏi FAQ chuẩn H3, 4 internal links trỏ về `/bang-gia`, `/thiet-ke-website`, `/kien-thuc/website-doanh-nghiep-la-gi`, TL;DR Answer First) tuân thủ 100% quy chuẩn chống AI slop và quy chuẩn GEO.
+  - Chạy `validate-content.cjs` đạt điểm tuyệt đối 100/100 (Pass Quality Gate).
+  - Chạy `markdown-to-cms.cjs` tự động sinh `article.json` và đồng bộ vào `content/seeds/drafts_30_articles.json` với trạng thái draft an toàn.
+
+### Mốc 9: Chuẩn Hóa & Hoàn Thiện Bài Viết Trụ Cột ID 7 (Google Maps Cho Doanh Nghiệp Từ A Đến Z)
+- **Mã sự kiện**: `content: standardize pillar article 7 google-maps-cho-doanh-nghiep-huong-dan-tu-a-den-z`
+- **Chi tiết**:
+  - Tạo cấu trúc thư mục chuẩn tại `content/articles/google-maps-cho-doanh-nghiep-huong-dan-tu-a-den-z/`.
+  - Biên soạn `draft.md` (2.696 words, nằm chuẩn trong khoảng 1800 - 2800 từ, 1 H1, đúng 7 H2, bảng đối chiếu 8 tiêu chí hồ sơ chuẩn vs hồ sơ rác, 3 internal links trỏ về `/google-maps-local-seo`, `/thiet-ke-website`, `/bang-gia`, FAQ 5 câu hỏi thực chiến, Answer First trong 1000 ký tự đầu tiên).
+  - Tuân thủ 100% quy chuẩn chống AI slop, quy chuẩn GEO và phong cách ngôn ngữ thực tế cho hộ kinh doanh.
+  - Chạy `validate-content.cjs` đạt điểm tuyệt đối **100/100** (Pass Quality Gate).
+  - Chạy `markdown-to-cms.cjs` sinh tự động `article.json` và đồng bộ vào `content/seeds/drafts_30_articles.json` với trạng thái draft.
+
+### Mốc 10: Chuẩn Hóa & Hoàn Thiện Bài Viết ID 5 (So Sánh Website Bán Hàng vs Website Giới Thiệu)
+- **Mã sự kiện**: `content: standardize article 5 website-ban-hang-va-website-gioi-thieu-khac-nhau-nhu-the-nao`
+- **Chi tiết**:
+  - Tạo cấu trúc thư mục chuẩn tại `content/articles/website-ban-hang-va-website-gioi-thieu-khac-nhau-nhu-the-nao/`.
+  - Biên soạn `draft.md` (2.393 words, nằm chuẩn trong khoảng 1500 - 2400 từ, 1 H1, đúng 6 H2, bảng đối chiếu 7 tiêu chí cốt lõi, ma trận quyết định 3 nhóm rạch ròi, case study xưởng rèm cửa Thủ Đức, 3 internal links trỏ về `/landing-490k`, `/bang-gia`, `/thiet-ke-website`, 4 câu hỏi FAQ chuẩn H3, TL;DR Answer First trong 1000 ký tự đầu tiên).
+  - Phân tích sâu sắc bản chất vì sao thợ nghề và hộ kinh doanh dịch vụ không nên làm giỏ hàng phức tạp làm giảm tỷ lệ chốt đơn (chi phí hiện trường biến động, rào cản thao tác nhiều bước, nhu cầu trao đổi qua Zalo/Hotline, gánh nặng tải trang 4G).
+  - Tuân thủ 100% quy chuẩn chống AI slop, quy chuẩn GEO và văn phong thực chiến cho hộ kinh doanh.
+  - Chạy `validate-content.cjs` đạt điểm tuyệt đối **100/100** (Pass Quality Gate).
+  - Chạy `markdown-to-cms.cjs` sinh tự động `article.json` và đồng bộ vào `content/seeds/drafts_30_articles.json` với trạng thái draft.
+
+### Mốc 11: Chuẩn Hóa & Hoàn Thiện Bài Viết ID 6 (10 Lỗi Khiến Website Doanh Nghiệp Không Có Khách)
+- **Mã sự kiện**: `content: standardize article 6 10-loi-pho-bien-khien-website-doanh-nghiep-khong-co-khach`
+- **Chi tiết**:
+  - Tạo cấu trúc thư mục chuẩn tại `content/articles/10-loi-pho-bien-khien-website-doanh-nghiep-khong-co-khach/`.
+  - Biên soạn `draft.md` (2.568 words, nằm chuẩn xác trong khoảng 1700 - 2600 từ, 1 H1, đúng 13 H2, 2 bảng Markdown tổng hợp mức độ nghiêm trọng & giải pháp, checklist 4 bước tự kiểm toán di động trong 5 phút, 4 câu hỏi FAQ chuyên sâu, 4 internal links trỏ về `/thiet-ke-website`, `/bang-gia`, `/kien-thuc/website-doanh-nghiep-la-gi`, Answer First trong 1000 ký tự đầu tiên).
+  - Điểm mặt 10 lỗi chí mạng: Web tải chậm 3G/4G, thiếu nút gọi khẩn cấp nổi, giấu giá/bắt khách inbox, dùng ảnh mạng copy, không tối ưu di động, thiếu chứng thực khách cũ, không có Google Maps/địa chỉ thực, bỏ quên SEO địa phương, nội dung sáo rỗng viết cho máy, bỏ bê bảo trì web.
+  - Tuân thủ 100% quy chuẩn chống AI slop, quy chuẩn GEO và văn phong "bác thợ hiểu được" của LocalMate.
+  - Chạy `validate-content.cjs` đạt điểm tuyệt đối **100/100** (Pass Quality Gate).
+  - Chạy `markdown-to-cms.cjs` sinh tự động `article.json` và đồng bộ an toàn vào `content/seeds/drafts_30_articles.json` với trạng thái draft.
+
+### Mốc 12: Chuẩn Hóa & Hoàn Thiện Bài Viết ID 15 (SEO Doanh Nghiệp Địa Phương - Cẩm Nang Location Pages)
+- **Mã sự kiện**: `content: standardize article 15 cach-seo-doanh-nghiep-len-google-tai-khu-vuc-dia-phuong`
+- **Chi tiết**:
+  - Tạo cấu trúc thư mục chuẩn tại `content/articles/cach-seo-doanh-nghiep-len-google-tai-khu-vuc-dia-phuong/`.
+  - Biên soạn `draft.md` (2.042 words, nằm chuẩn xác trong khoảng 1600 - 2400 từ, 1 H1, đúng 6 H2, bảng đối chiếu 7 thành phần cấu trúc Location Page, checklist 5 bước chống spam địa danh và bẫy Doorway Pages, 4 câu hỏi FAQ chuyên sâu, 3 internal links trỏ về `/google-maps-local-seo`, `/thiet-ke-website`, `/kien-thuc/local-seo-la-gi-vi-sao-doanh-nghiep-dia-phuong-nen-lam`, Answer First trong 1000 ký tự đầu tiên).
+  - Phân tích chuyên sâu kỹ thuật Location Pages: bản chất thuật toán 3 trụ cột (Khoảng cách, Sự liên quan, Độ nổi bật), phân tầng từ khóa 3 cấp (Thành phố -> Quận/Huyện -> Tuyến đường/Khu dân cư), nhúng bản đồ Google Maps chuẩn NAP, tiêu chuẩn ảnh hiện trường chụp thợ thật việc thật, cảnh báo thuật toán SpamBrain và cơ chế tự trỏ Canonical chống duplicate content.
+  - Tuân thủ 100% quy chuẩn chống AI slop, quy chuẩn GEO và văn phong "bác thợ hiểu được" của LocalMate.
+  - Chạy `validate-content.cjs` đạt điểm tuyệt đối **100/100** (Pass Quality Gate).
+  - Chạy `markdown-to-cms.cjs` sinh tự động `article.json` và đồng bộ an toàn vào `content/seeds/drafts_30_articles.json` với trạng thái draft.
+
+### Mốc 13: Chuẩn Hóa & Hoàn Thiện Bài Viết ID 21 (Chạy Google Ads Bao Nhiêu Tiền Một Ngày Là Hợp Lý)
+- **Mã sự kiện**: `content: standardize article 21 chay-google-ads-bao-nhieu-tien-mot-ngay-la-hop-ly`
+- **Chi tiết**:
+  - Tạo cấu trúc thư mục chuẩn tại `content/articles/chay-google-ads-bao-nhieu-tien-mot-ngay-la-hop-ly/`.
+  - Biên soạn `draft.md` chuẩn cấu trúc (Frontmatter, TL;DR Answer First trong 1000 ký tự đầu, 1 H1, đúng 6 H2, bảng dự toán chi phí theo ngày cho 5 ngành phổ biến: điện lạnh, nhôm kính, hút hầm cầu, sửa xe, nha khoa; công thức tính điểm hòa vốn ROAS, công thức phễu 2 bước tính số click cần thiết ra đơn hàng; chiến thuật thắt chặt bán kính 3-8km; 5 câu hỏi FAQ chuyên sâu dạng H3; 3 internal links trỏ về `/bang-gia`, `/landing-490k`, `/kien-thuc/google-ads-cho-doanh-nghiep-nho-bat-dau-tu-dau`).
+  - Đập tan quan niệm sai lầm "phải có 10-20 triệu mới chạy được Google Ads", hướng dẫn nạp vốn an toàn từ 50.000đ - 150.000đ/ngày dựa trên nguyên tắc bảo toàn vốn: ngân sách ngày không vượt quá lãi ròng 01 đơn hàng.
+  - Tuân thủ 100% quy chuẩn chống AI slop, quy chuẩn SEO và phong cách "bác thợ hiểu được".
+  - Chạy `validate-content.cjs` đạt điểm tuyệt đối **100/100** (Pass Quality Gate).
+  - Chạy `markdown-to-cms.cjs` sinh tự động `article.json` và đồng bộ an toàn vào `content/seeds/drafts_30_articles.json` với trạng thái draft.
+
+### Mốc 14: Chuẩn Hóa & Hoàn Thiện Bài Viết ID 13 (Local SEO Là Gì? Vì Sao Doanh Nghiệp Địa Phương Nên Làm)
+- **Mã sự kiện**: `content: standardize article 13 local-seo-la-gi-vi-sao-doanh-nghiep-dia-phuong-nen-lam`
+- **Chi tiết**:
+  - Tạo cấu trúc thư mục chuẩn tại `content/articles/local-seo-la-gi-vi-sao-doanh-nghiep-dia-phuong-nen-lam/`.
+  - Biên soạn `draft.md` (2.589 words, nằm chuẩn xác trong khoảng 1800 - 2600 từ, 1 H1, đúng 7 H2, bảng đối chiếu 3 kênh Local SEO vs SEO truyền thống vs Google Ads với 8 tiêu chí, bảng phân tích 3 trụ cột thuật toán Google, quy trình 5 bước thực chiến, 4 sai lầm thường gặp, 5 câu hỏi FAQ chuyên sâu chuẩn H3, 7 internal links trong đó có các link bắt buộc trỏ về `/google-maps-local-seo`, `/thiet-ke-website`, `/bang-gia`, Answer First trong 1000 ký tự đầu tiên).
+  - Phân tích bản chất kinh tế của Local SEO cho các hộ kinh doanh và tiệm dịch vụ nhỏ: tập trung tệp khách trong bán kính 2-10km có nhu cầu khẩn cấp và tỷ lệ chốt đơn cao nhất, chi phí cố định vừa phải, tạo dựng tài sản số tích lũy lâu dài thay vì đốt tiền theo lượt nhấp rủi ro.
+  - Tuân thủ 100% quy chuẩn chống AI slop, quy chuẩn GEO và phong cách "bác thợ hiểu được".
+  - Chạy `validate-content.cjs` đạt điểm tuyệt đối **100/100** (Pass Quality Gate).
+  - Chạy `markdown-to-cms.cjs` sinh tự động `article.json` và đồng bộ an toàn vào `content/seeds/drafts_30_articles.json` với trạng thái draft.
+
+### Mốc 15: Chuẩn Hóa & Hoàn Thiện Bài Viết ID 18 (Checklist Local SEO 2026: 20 Việc Chủ Tiệm Tự Làm Để Lên Top Tìm Kiếm)
+- **Mã sự kiện**: `content: standardize article 18 checklist-local-seo-cho-doanh-nghiep-dia-phuong`
+- **Chi tiết**:
+  - Tạo thư mục chuẩn tại `content/articles/checklist-local-seo-cho-doanh-nghiep-dia-phuong/`.
+  - Biên soạn `draft.md` (2.694 words, nằm chuẩn xác trong khoảng 1800 - 2700 từ, 1 H1, 6 H2, bảng checklist 20 tiêu chuẩn vàng với các cột Hành động - Tần suất - Độ ưu tiên - Tác động thực tế, phân bổ thành 3 chu kỳ: 8 việc làm 1 lần khi khởi tạo, 6 việc hàng tuần nuôi dưỡng tín hiệu thực địa, 6 việc hàng tháng rà soát duy trì thứ hạng; bổ sung khung quyết định tự làm DIY vs thuê dịch vụ chuyên nghiệp, 4 câu hỏi FAQ chuẩn H3).
+  - Khai báo mẫu JSON-LD Schema LocalBusiness trực tiếp trong nội dung cho phép chủ cơ sở copy dùng ngay.
+  - Tích hợp 4 liên kết nội bộ tự nhiên, chất lượng: trỏ về `/google-maps-local-seo`, `/thiet-ke-website`, `/bang-gia` và bài pillar `/kien-thuc/local-seo-la-gi-vi-sao-doanh-nghiep-dia-phuong-nen-lam`.
+  - Tuân thủ 100% quy chuẩn chống AI slop, quy chuẩn GEO và phong cách "bác thợ hiểu được".
+### Mốc 16: Chuẩn Hóa & Hoàn Thiện Bài Viết ID 19 (Google Ads Cho Doanh Nghiệp Nhỏ: Bắt Đầu Từ Đâu Để Không Bị Đốt Tiền Oan?)
+- **Mã sự kiện**: `content: standardize article 19 google-ads-cho-doanh-nghiep-nho-bat-dau-tu-dau`
+- **Chi tiết**:
+  - Tạo cấu trúc thư mục chuẩn tại `content/articles/google-ads-cho-doanh-nghiep-nho-bat-dau-tu-dau/`.
+  - Biên soạn `brief.md`, `outline.md` và `draft.md` (2.691 words, nằm chính xác trong khoảng 1800 - 2700 từ theo yêu cầu; 1 H1, đúng 7 H2, bảng đối chiếu 3 dạng đối sánh từ khóa Rộng vs Cụm từ vs Chính xác với 6 tiêu chí, phân tích 4 điều kiện sẵn sàng trước khi nạp tiền, vạch trần bẫy Broad Match, hướng dẫn chiến lược bắn tỉa từ khóa bán kính 10km, ví dụ tính toán hiệu quả kinh tế thực tế và 5 câu hỏi FAQ chuẩn H3).
+  - Tích hợp liên kết nội bộ tự nhiên, chất lượng cao trỏ về `/thiet-ke-website`, `/bang-gia` và `/landing-490k`.
+  - Tuân thủ 100% quy chuẩn chống AI slop, quy chuẩn GEO và phong cách "bác thợ hiểu được".
+  - Chạy `validate-content.cjs` đạt điểm tuyệt đối **100/100** (Pass Quality Gate).
+  - Chạy `markdown-to-cms.cjs` sinh tự động `article.json` và đồng bộ an toàn vào `content/seeds/drafts_30_articles.json` với trạng thái draft.
+
+### Mốc 17: Chuẩn Hóa & Hoàn Thiện Bài Viết ID 16 (Entity SEO Là Gì? Doanh Nghiệp Nhỏ Có Cần Bỏ Tiền Mua Gói Entity Không?)
+- **Mã sự kiện**: `content: standardize article 16 entity-seo-la-gi-co-can-thiet-cho-doanh-nghiep-nho`
+- **Chi tiết**:
+  - Tạo cấu trúc thư mục chuẩn tại `content/articles/entity-seo-la-gi-co-can-thiet-cho-doanh-nghiep-nho/`.
+  - Biên soạn `draft.md` chuẩn cấu trúc: 1 H1, đúng 6 H2, bảng đối chiếu 8 tiêu chí giữa Entity tự nhiên chuẩn chỉ vs Dịch vụ Entity spam, mẫu code Schema LocalBusiness JSON-LD hoàn chỉnh, 6 câu hỏi FAQ chuyên sâu chuẩn H3, và các liên kết nội bộ tự nhiên trỏ về `/google-maps-local-seo`, `/thiet-ke-website`, `/kien-thuc/local-seo-la-gi-vi-sao-doanh-nghiep-dia-phuong-nen-lam`, `/kien-thuc/citation-trong-local-seo-la-gi`, `/bang-gia`.
+  - Phân tích bản chất kỹ thuật của Entity SEO (Things, not strings trong Sơ đồ tri thức Google Knowledge Graph) cho các hộ kinh doanh và tiệm dịch vụ nhỏ; bóc trần chiêu trò bán gói 300 - 500 backlink rác nước ngoài (5 - 10 triệu) gây nguy cơ bị thuật toán Google SpamBrain phạt nặng.
+  - Hướng dẫn lộ trình 4 bước tự xây dựng thực thể chi phí 0đ: Chuẩn hóa bộ dữ liệu NAP, lập 10-15 tài khoản chính thống tại Việt Nam, khai báo pháp lý và mã số thuế, nhúng mã Schema LocalBusiness JSON-LD.
+  - Tuân thủ 100% quy chuẩn chống AI slop, quy chuẩn GEO và phong cách "bác thợ hiểu được".
+  - Chạy `validate-content.cjs` đạt điểm tuyệt đối **100/100** (Pass Quality Gate).
+  - Chạy `markdown-to-cms.cjs` sinh tự động `article.json` và đồng bộ an toàn vào `content/seeds/drafts_30_articles.json` với trạng thái draft.
+
 ---
 
 ## Trạng Thái Hệ Thống Hiện Tại (Current System State)
@@ -74,3 +186,4 @@ Tài liệu này ghi nhận dòng thời gian các mốc cam kết (commits), s�
 - **Production Build**: Pass 100% (`tsc && vite build` hoàn tất không lỗi).
 - **Giao diện Quản trị**: Light mode hoàn chỉnh, màu nhận diện `#0d7647`, tuyệt đối không dùng glassmorphism, responsive mượt mà trên laptop 14" 125% scaling.
 - **Hệ thống API**: 100% endpoints backend trên Hono/Cloudflare Pages Functions hoạt động ổn định với thời gian phản hồi < 50ms.
+- **Bài viết đã chuẩn hóa Markdown Pipeline**: ID 1, ID 2, ID 4, ID 5, ID 6, ID 7, ID 9, ID 13, ID 15, ID 16, ID 18, ID 19, ID 21.
