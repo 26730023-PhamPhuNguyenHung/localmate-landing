@@ -2,6 +2,16 @@
 
 Ghi nhận các mốc sự kiện, commit và trạng thái vận hành của dự án.
 
+## [2026-09-17] - Tinh Giản Toàn Diện Kiến Trúc Codebase & Xóa Thư Mục Artifacts
+- **Commit**: `chore: purge artifacts and reorganize docs and scripts into clean modular structure`
+- **Kết quả thực thi**:
+  - **Xóa vĩnh viễn thư mục `artifacts/`**: Giải phóng hơn 30MB bao gồm 104 file screenshot cũ, file test crop và audit report tạm thời.
+  - **Xóa thư mục `.playwright-cli/`** rỗng.
+  - **Dọn dẹp thư mục gốc (Root)**: Di chuyển toàn bộ các file markdown lập kế hoạch, prompt và audit lẻ tẻ (`AUDIT_REPORT.md`, `CMS_IMPLEMENTATION_PLAN.md`, `IMPLEMENTATION-SUMMARY.md`, `content.md`) vào thư mục `docs/reports/`.
+  - **Quy hoạch tài liệu trong `docs/`**: Gom 25 file markdown rải rác vào 6 nhóm module có cấu trúc (`content/`, `seo/`, `reports/`, `mockups/`, `services/`, `audit-v2/`).
+  - **Chuẩn hóa thư mục `scripts/`**: Gom toàn bộ 26 file batch cũ và script one-off vào `scripts/archive/`; chỉ giữ lại 4 script hạt nhân phục vụ CMS và IndexNow (`generate-seeds.js`, `seed-cms.js`, `submit-indexnow.js`, `verify-cms-flow.cjs`).
+  - **Kiểm định bản build**: `npm run build` (`tsc && vite build`) PASS 100% trong 4.61s. Thư mục gốc chỉ còn đúng 9 file cấu hình chuẩn.
+
 ## [2026-09-17] - Hoàn Tất Chuẩn Hóa 30 Bài Viết SEO/GEO (100/100) & Dọn Dẹp Codebase
 - **Commit**: `feat(content): complete rewrite and standardization of all 30 articles to 100/100 quality score` & `chore: remove temporary sql query file`
 - **Kết quả**:
