@@ -394,3 +394,21 @@
     - Trên mobile (< 768px), stack 1 column theo thứ tự tâm lý chuyển đổi: `Brand (1) -> Cần hỗ trợ / CTA (2) -> Dịch vụ (3) -> Thông tin (4) -> Bottom bar`. Người dùng di động vừa lướt hết trang sẽ thấy ngay nút Zalo và Hotline trước khi cần tra cứu các link sitemap phụ.
   - **Đo lường & Kiểm thử thực tế**:
     - Dùng Playwright Python script với `page.set_viewport_size()` để kiểm tra ma trận 6 viewports (`1920x1080`, `1440x900`, `1366x768`, `1024x768`, `768x1024`, `390x844`). Xác nhận `has_overflow: false` trên toàn bộ thiết bị và lưu ảnh chụp visual proof vào `artifacts/screenshots/`.
+
+---
+
+### A00000000000. Tích Hợp Giao Diện localmate.html Làm Trang Chủ, Sửa Triệt Để Lỗi Font Handwriting & Tối Ưu 30MB -> 26KB:
+- **Tác giả:** Antigravity System Specialist
+- **Vấn đề phát sinh (Root Cause)**:
+  1. *Lỗi font handwriting tiếng Việt*: File gốc `localmate.html` nhúng font `Caveat`. Font Caveat trên Google Fonts hoàn toàn không hỗ trợ tập ký tự tiếng Việt mở rộng (*Latin Extended Additional* - thiếu `ả, ế, ỗ, ệ, ộ, ơ, ắ, ầ, ể, ổ, ố, ự...`). Khi hiển thị trên trình duyệt, các chữ có dấu bị rớt về font hệ thống (`Segoe Print` / `Times`), gây hiện tượng nhảy font, chữ nghiêng chữ đứng nham nhở, vỡ thẩm mỹ nghiêm trọng.
+  2. *Dung lượng phình to 30.7 MB*: File tham chiếu lặp lại ảnh texture nền 8 lần dạng base64 (mỗi lần 2.28 MB) và 5 tranh minh họa khổ lớn 1672px base64 (11.2 MB). Tải trực tiếp sẽ mất hàng chục giây trên mạng di động.
+  3. *Lỗi kí tự lạ ngoài thẻ meta*: Trong `index.html`, xuất hiện một chữ `w` sau `<meta property="og:type" content="website" />w`, khiến parser của trình duyệt tự động ngắt thẻ `<head>` và mở thẻ `<body>` sớm.
+- **Giải pháp triệt để**:
+  1. *Font Handwriting*: Thay thế bằng font **Mali (Italic 500)** kết hợp **Patrick Hand**. Cả hai font này đều là font viết tay bút dạ tự nhiên từ Google Fonts, hỗ trợ **100% đầy đủ dải Unicode tiếng Việt**, dấu thanh kết hợp mượt mà, đồng đều nét bút và góc nghiêng.
+  2. *Tách Asset Tĩnh*: Trích xuất toàn bộ ảnh minh họa và texture ra `public/images/landing/` (`artwork-1.png` đến `artwork-5.png`, `bg-texture.png`). CSS chuyển từ 19.4 MB base64 xuống còn **26 KB** (giảm **99.87%** dung lượng).
+  3. *Tích hợp React chuẩn mực*: Chuyển đổi toàn bộ cấu trúc sang [HomePage.tsx](file:///d:/03-Startups-Products\localmate\new\src\pages\HomePage.tsx) và [reference-landing.css](file:///d:/03-Startups-Products\localmate\new\src\styles\reference-landing.css). Kết nối form Báo giá nhanh với luồng `submitLead` đồng bộ Google Sheets và đo lường chuyển đổi.
+  4. *Xử lý triệt để thẻ head*: Xóa ký tự `w` thừa trong `index.html`.
+- **Nghiệm thu thực tế**:
+  - `npx tsc --noEmit`: 0 lỗi type.
+  - `npm run build`: Build Vite thành công trong 4.38s.
+  - Playwright visual audit: 100% các đoạn text handwriting hiển thị đúng font `Mali (italic 500)`, không lỗi rớt font; modal dialog và responsive 390x844 & 1440x900 pass hoàn hảo.

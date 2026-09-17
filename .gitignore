@@ -6,4 +6,8 @@ dist
 .env.local
 DGcom/
 *.exe
+artifacts/
+.playwright-cli/
+*.bak
+
 
