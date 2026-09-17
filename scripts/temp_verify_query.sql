@@ -1,1 +1,0 @@
-SELECT COUNT(*) as total, status FROM cms_posts GROUP BY status;
