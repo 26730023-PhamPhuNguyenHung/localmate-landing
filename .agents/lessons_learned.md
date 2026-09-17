@@ -1,5 +1,24 @@
 # 📚 LOCALMATE AGENTS LESSONS LEARNED & EDITORIAL RULES
 
+## 22. Bài Học Về Redesign Table of Contents (TOC) Chuẩn Editorial Rail & Triệt Tiêu Bug Tự Động Cuộn Lên (Heading Auto-Scroll Trap)
+- **Căn nguyên Bug Tự Động Cuộn Lên (Auto-Scroll Trap)**:
+  - Hàm W3C `element.scrollIntoView()` cuộn đệ quy toàn bộ ancestor containers cho tới tận `window`. Khi ScrollSpy gọi `scrollIntoView()` trên active item bên trong TOC, nó kéo giật toàn bộ viewport trình duyệt (window) về phía container TOC!
+  - **Dual Mounting trong React Tree**: Render 2 TOC component song song (mobile ở đầu bài, desktop ở sidebar). Dù mobile TOC bị ẩn bằng `display: none !important` trên desktop, React vẫn mount nó và gọi `scrollIntoView()` trên phần tử ẩn ở đầu trang $\rightarrow$ Kéo giật cửa sổ lên đầu trang ngay khi vừa cuộn xuống.
+  - **Giải pháp**:
+    1. Tuyệt đối cấm dùng `scrollIntoView()` cho TOC nội bộ. Chỉ điều chỉnh `container.scrollTop` nội bộ khi TOC dài.
+    2. Phân lập Conditional Mounting: Sử dụng hook `useIsDesktop(1080)` để chỉ mount Desktop Sidebar TOC trên màn hình lớn và chỉ mount Mobile Inline Accordion TOC trên màn hình nhỏ.
+    3. Thêm `isInstanceVisible()` guard để component bỏ qua ScrollSpy nếu đang bị CSS ẩn.
+    4. Tạm khóa ScrollSpy 650ms khi click vào mục lục và cập nhật URL hash qua `window.history.replaceState`.
+- **Redesign Table of Contents Chuẩn Tài Liệu Hiện Đại (Linear, Stripe, Vercel Docs)**:
+  - Loại bỏ hoàn toàn badge đếm mục ("16 mục"), icon lớn List nền xanh, nút "Lên đầu trang" bên trong card, viền card dày và active background pill lớn.
+  - Thiết kế trục ray dẫn hướng mảnh 1px (`#e2e8f0`). Active item có `border-left: 2px solid #0d7647`, text xanh thương hiệu font-weight 600.
+  - H2 (14px, weight 500-600), H3 (13px, indent 14px, bỏ ký tự `↳`).
+  - Mobile: Accordion siêu mỏng nhẹ, default collapsed, tự động đóng lại khi người dùng chọn mục để bài viết hiển thị trọn vẹn tức thì.
+- **Xử Lý Layout Table Responsive Chống Horizontal Page Overflow**:
+  - `overflow-x: auto` trên trực tiếp thẻ `<table>` vô hiệu hoàn toàn theo chuẩn CSS W3C vì `table` không phải block container. Kết hợp với `min-width: 580px`, bảng phá vỡ toàn bộ độ rộng màn hình di động (375px/390px).
+  - Tiêu đề cột `<th>` có `white-space: nowrap` cấm ngắt dòng, kéo dãn bảng lên 1000px khiến người đọc mobile phải vuốt quá dài.
+  - Giải pháp: Tiền xử lý HTML tự động wrap tất cả bảng trong `<div class="table-scroll-wrapper"><div class="table-scroll-hint">...</div><div class="table-responsive"><table>...</table></div></div>`, thay `white-space: nowrap` bằng `white-space: normal; text-wrap: balance;`, thêm chỉ báo cuộn "Vuốt ngang để xem đầy đủ bảng" và custom scrollbar Light Mode.
+
 ## 21. Bài Học Về Tối Ưu Hóa Trải Nghiệm Đọc Bài Viết (Editorial UX Refactor & Asymmetric 2-Column Responsive Layout)
 - **Khử bỏ Breadcrumb Banner cồng kềnh**:
   - Dải nền xám cao ~85px với padding lớn và `marginBottom` 1.5rem hardcoded chiếm quá nhiều vertical space, đẩy tiêu đề và phần mở đầu xuống dưới nếp gấp màn hình (below the fold) trên laptop 1366x768 và 1440x900.

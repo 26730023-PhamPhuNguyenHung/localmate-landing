@@ -6,6 +6,28 @@ Tài liệu này ghi nhận dòng thời gian các mốc cam kết (commits), s�
 
 ## Mốc Sự Kiện & Commits Gần Nhất
 
+### Mốc: Redesign Table of Contents (TOC) Chuẩn Editorial Rail, Triệt Tiêu Bug Tự Động Cuộn Lên & Xử Lý Layout Table Responsive
+- **Mã commit**: `f992f69`
+- **Nội dung**: `fix(article): redesign TableOfContents to editorial rail, fix auto-scroll bug, and resolve table responsive overflow`
+- **Chi tiết**:
+  - `src/components/article/TableOfContents.tsx`:
+    - Redesign toàn diện theo phong cách tài liệu hiện đại (Linear, Stripe, Vercel docs): loại bỏ card thô xám, badge đếm mục, icon nền xanh và footer "Lên đầu trang" trong card.
+    - Xây dựng trục ray dẫn hướng mảnh 1px (`#e2e8f0`), active item có chỉ báo `border-left: 2px solid #0d7647`, text xanh thương hiệu font-weight 600.
+    - Hỗ trợ 2 biến thể: `variant="sidebar"` (desktop guide rail, sticky, ẩn thanh cuộn) và `variant="inline-accordion"` (mobile/inline, default collapsed, tự động đóng khi chọn mục).
+    - **Khắc phục triệt để lỗi Tự động cuộn lên (Auto-Scroll Bug)**: Bỏ hoàn toàn `scrollIntoView()` trên window; chỉ cập nhật `container.scrollTop` nội bộ khi TOC overflow; bổ sung `isInstanceVisible()` guard chặn ScrollSpy khi component bị ẩn.
+    - Click heading mượt mà, trừ header offset 88px, cập nhật URL hash qua `window.history.replaceState` không gây giật trang.
+  - `src/components/article/ArticleBody.tsx`:
+    - Bổ sung hàm tiền xử lý HTML tự động wrap tất cả bảng dữ liệu trong `<div class="table-scroll-wrapper"><div class="table-scroll-hint">...</div><div class="table-responsive"><table>...</table></div></div>`.
+    - Thêm chỉ báo cuộn di động "Vuốt ngang để xem đầy đủ bảng" kèm SVG icon.
+    - Xóa bỏ `white-space: nowrap` trên `th` (thay bằng `white-space: normal; text-wrap: balance;`) ngăn chặn việc kéo dãn bảng lên 1000px.
+    - Đặt `min-width: 520px` thoáng đãng, triệt tiêu 100% Horizontal Page Overflow trên màn hình mobile 375px/390px.
+  - `src/pages/ArticleDetailPage.tsx`:
+    - Tích hợp hook `useIsDesktop(1080)` phân lập Desktop Sidebar TOC vs Mobile Inline Accordion TOC, đảm bảo chỉ có đúng 1 instance mount tại một thời điểm, triệt tiêu race condition và duplicate scroll listeners.
+  - `src/styles/globals.css`:
+    - Thiết lập khoảng cách 2 cột `gap: clamp(2.5rem, 3.5vw, 3.5rem)` (40px - 56px), sidebar sticky top 96px, main column max-width 760px.
+  - **Kiểm thử tự động**: Script Playwright trên 5 viewports (1440x900, 1366x768, 1920x1080, 390x844, 375x812) PASS 100% tất cả các tiêu chí (Zero Horizontal Overflow, Zero Auto-Scroll Bug, Mobile Accordion Auto-Close, Click Smooth Scroll, URL Hash).
+  - `npm run build` PASS 100% trong 6.13s (0 warning, 0 error).
+
 ### Mốc: Article UX Audit & Refactor — Editorial Layout, Slim Navigation & Asymmetric 2-Column Grid
 - **Mã commit**: Pending
 - **Nội dung**: `refactor(article-ux): implement editorial layout, slim breadcrumb bar, byline metadata, and responsive sticky sidebar TOC`

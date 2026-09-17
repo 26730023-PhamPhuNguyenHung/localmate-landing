@@ -143,3 +143,24 @@
   5. *Tính toán Reading Time từ thực tế*: Tuyệt đối không dùng chuỗi hardcode (như 18 phút đọc). Tính chuẩn theo công thức tiếng Việt: `readingTime = Math.max(1, Math.ceil(wordCount / 230)) + ' phút đọc'`.
   6. *Tách biệt Public Data và Internal Strategy*: Các trường `searchIntent`, `targetCustomer`, `contentGoal`, `outline`, `brief` thuộc về chiến lược SEO nội bộ, phải lưu tách biệt sang `internalSeo.ts` và dùng mapper `toPublicArticle()`, tuyệt đối không để rò rỉ ra client bundle của người đọc.
 
+## 16. Bài học về TOC ScrollSpy Giật Cửa Sổ (Auto-Scroll Bug) & Bảng Dữ Liệu Tràn Màn Hình Mobile
+- **Căn nguyên Bug Tự Động Cuộn Lên (Heading Auto-Scroll Trap)**:
+  - *Bản chất của `element.scrollIntoView()`*: Theo W3C CSSOM View, hàm này cuộn đệ quy toàn bộ các scrolling ancestor cho tới tận `window`. Khi ScrollSpy cập nhật `activeId`, gọi `scrollIntoView()` sẽ kéo giật cả cửa sổ trình duyệt (window) về phía container TOC!
+  - *Nguy hiểm từ Dual Mounting*: Trang bài viết render 2 instance TOC cùng lúc trong DOM (1 ở đầu bài viết cho mobile, 1 ở sidebar cho desktop). Dù mobile TOC bị ẩn bằng `display: none !important` trên desktop, React vẫn mount nó. Cả hai cùng nghe `window.scroll`, cùng tính toán và mobile TOC ở đầu trang gọi `scrollIntoView()` trên phần tử ẩn -> Kéo window của người dùng giật ngược lên đầu trang ngay khi vừa cuộn xuống!
+  - *Giải pháp triệt để*:
+    1. **Tuyệt đối cấm dùng `scrollIntoView()` cho TOC nội bộ**: Thay bằng điều chỉnh `container.scrollTop` nội bộ (`listEl.scrollTop += delta`), chỉ di chuyển nội dung bên trong rail, zero side-effect lên window.
+    2. **Phân lập Conditional Mounting theo Breakpoint**: Dùng hook `useIsDesktop(1080)` để chỉ mount Desktop Sidebar TOC trên màn hình lớn và chỉ mount Mobile Inline Accordion TOC trên màn hình nhỏ. Không còn ghost scroll listeners, không duplicate DOM query.
+    3. **Visibility Guard**: Kiểm tra `offsetParent !== null` trước khi chạy ScrollSpy.
+    4. **Scroll Lock khi click**: Tạm khóa ScrollSpy trong 650ms khi người dùng click vào mục lục, cập nhật URL hash qua `window.history.replaceState`.
+- **Căn nguyên Bug Layout Table Tràn Màn Hình Mobile (Horizontal Page Overflow)**:
+  - *Lỗi đặt `overflow-x: auto` trên thẻ `<table>`*: Thẻ `<table>` có `display: table`, không phải block container nên thuộc tính `overflow-x: auto` trực tiếp trên nó bị vô hiệu hoàn toàn theo CSS spec. Kết hợp với `min-width: 580px`, bảng phá vỡ toàn bộ độ rộng viewport trên mobile (375px/390px), gây lỗi cuộn ngang toàn trang.
+  - *Lỗi `white-space: nowrap` trên `<th>`*: Khi tiêu đề cột tiếng Việt dài, `nowrap` cấm ngắt dòng làm bảng bị kéo dãn tới 900px - 1000px, người dùng mobile phải vuốt một quãng đường quá dài.
+  - *Giải pháp triệt để*:
+    1. Tiền xử lý HTML tự động wrap tất cả bảng trong `<div class="table-scroll-wrapper"><div class="table-scroll-hint">...</div><div class="table-responsive" tabindex="0" role="region" aria-label="Bảng dữ liệu"><table>...</table></div></div>`.
+    2. Thay `white-space: nowrap` bằng `white-space: normal; text-wrap: balance;`, giảm `min-width: 520px`.
+    3. Bổ sung chỉ báo cuộn trực quan "Vuốt ngang để xem đầy đủ bảng" kèm custom thin scrollbar chuẩn Light Mode.
+- **Redesign Table of Contents Chuẩn Editorial Guide Rail (Linear / Stripe Docs)**:
+  - Loại bỏ toàn bộ badge đếm số lượng mục, icon nền xanh to, footer "Lên đầu trang" trong card, viền card thô và active background pill lớn.
+  - Header: Chỉ "Mục lục" thanh thoát (14px, font-weight 600, màu `#0f172a`).
+  - Trục ray dẫn hướng bên trái mỏng 1px (`#e2e8f0`). Active item có chỉ báo `border-left: 2px solid #0d7647`, text xanh thương hiệu font-weight 600.
+  - Mobile: Thu gọn thành accordion siêu nhẹ ở đầu bài, tự động đóng lại khi người dùng chọn mục để bài viết được đọc trọn vẹn ngay tức thì.
