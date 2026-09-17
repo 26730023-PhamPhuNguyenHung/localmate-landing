@@ -2,6 +2,35 @@
 
 Ghi nhận các mốc sự kiện, commit và trạng thái vận hành của dự án.
 
+## [2026-09-17] - Audit & Redesign Mega Menu Dịch Vụ Chuẩn Digital Studio / SaaS 3 Cột (LocalMate)
+- **Bối cảnh & Vấn đề**:
+  - Mega menu cũ chia 4 cột với cột thứ 4 là Promo card lớn ("Gói Khởi Tạo 490k" + Hotline) chiếm diện tích và làm mất cân đối thị giác.
+  - Quá nhiều badge giá rải rác (490k, Từ 299k, Từ 390k, 990k/th) biến navigation thành bảng giá gây nhiễu và phân tán mắt người dùng.
+  - Mô tả dài dòng, chiều cao menu lớn (~540px) che khuất hơn nửa màn hình hero trên laptop 1366x768.
+- **Thực thi Kỹ thuật**:
+  1. *Kiến Trúc Dữ Liệu `SERVICE_GROUPS`*:
+     - Chuẩn hóa 3 nhóm danh mục đều nhau: `WEBSITE`, `HIỆN DIỆN ĐỊA PHƯƠNG`, `TĂNG TRƯỞNG` gồm 9 dịch vụ cốt lõi.
+     - Cắt giảm >40% lượng chữ; áp dụng triệt để quy tắc: Title (2–4 từ) + Mô tả cốt lõi (4–8 từ). Scan xong trong 1–2 giây.
+     - Định tuyến chuẩn xác: các path `/landing-490k`, `/thiet-ke-website`, `/google-maps-local-seo`, `/google-ads`, `/content-marketing`, `/automation`.
+  2. *Tinh Chỉnh Visual Hierarchy & Tối Giản Badge*:
+     - Loại bỏ toàn bộ badge giá thừa, chỉ giữ tối đa 2 badge entry-level: "Từ 490k" (Website 1 Trang) và "Từ 299k" (Google Maps) với nền xanh pastel dịu mát (`#edf7f1`), chữ xanh đậm (`#0d7647`), viền `#d1fae5`.
+     - Thay thế Promo Card cồng kềnh bằng thanh Footer ngang siêu nhẹ cao 54px: *"Chưa biết nên bắt đầu từ đâu? Xem bảng giá → [Nhận tư vấn]"*.
+     - Giữ vững 100% Light Mode, tương phản cao, **TUYỆT ĐỐI KHÔNG DÙNG GLASSMORPHISM**.
+  3. *Trải Nghiệm Tương Tác & Chống Flicker*:
+     - Bổ sung bộ đệm delay 140ms khi hover giữa header link và dropdown panel.
+     - Hỗ trợ đầy đủ Click Outside, Escape key, Keyboard Navigation và ARIA attributes.
+     - Card hover tinh tế với nền `#f4faf6`, border-radius 11px, dịch nhẹ 1px, không đổ shadow nặng.
+  4. *Responsive Mobile Tinh Gọn*:
+     - Chuyển đổi sang dạng Accordion phân cấp 3 nhóm trên Drawer di động.
+     - Mỗi dịch vụ hiển thị thuần tên (bỏ mô tả dài và badge), kèm 2 nút hành động nhanh *"Xem tất cả dịch vụ →"* và *"Nhận tư vấn"*.
+  5. *Visual QA Đa Màn Hình & Deploy Live*:
+     - Build `tsc && vite build` PASS 100% trong 6.87s.
+     - Deploy thành công lên Cloudflare Pages production (`localmate-vn`).
+     - Nghiệm thu thực tế trên `1440x900`, `1366x768` (chiều cao menu chỉ ~310px, giảm 43%) và Mobile `390x844`.
+- **Nghiệm thu**:
+  - Live production: `https://localmate.vn/` & `https://50c73086.localmate-vn.pages.dev/`.
+  - Screenshot QA: `megamenu_final_desktop.png`, `megamenu_1366x768.png`, `mobile_menu.png`.
+
 ## [2026-09-17] - Thiết Kế Article Schema & Flexible Block System Cho CMS LocalMate (Subagent 7)
 - **Bối cảnh & Mục tiêu**:
   - Thiết kế kiến trúc dữ liệu và hệ thống khối nội dung linh hoạt (Flexible Content Blocks) cho LocalMate CMS.

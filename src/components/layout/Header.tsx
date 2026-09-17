@@ -9,7 +9,8 @@ import {
   Layout,
   TrendingUp,
   Briefcase,
-  CheckCircle2,
+  Star,
+  Target,
   Phone,
   ChevronDown,
   Menu,
@@ -23,7 +24,7 @@ interface ServiceItem {
   title: string;
   desc: string;
   path: string;
-  icon: React.ComponentType<any>;
+  icon: LucideIcon;
   badge?: string;
   iconBg: string;
   iconColor: string;
@@ -89,7 +90,7 @@ const SERVICE_GROUPS: ServiceGroup[] = [
         title: 'Đánh Giá Google',
         desc: 'Tăng uy tín từ khách thật',
         path: '/google-maps-local-seo',
-        icon: CheckCircle2,
+        icon: Star,
         iconBg: '#eff6ff',
         iconColor: '#2563eb'
       }
@@ -102,7 +103,7 @@ const SERVICE_GROUPS: ServiceGroup[] = [
         title: 'Google Ads',
         desc: 'Tiếp cận khách đang cần',
         path: '/google-ads',
-        icon: Sparkles,
+        icon: Target,
         iconBg: '#fff4eb',
         iconColor: '#d97706'
       },

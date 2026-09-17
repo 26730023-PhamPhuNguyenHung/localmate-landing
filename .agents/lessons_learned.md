@@ -30,3 +30,11 @@
 - **Answer-First là tiêu chuẩn bắt buộc số 1**: Khối `tldr_answer_first` bắt buộc phải đứng ngay vị trí đầu tiên của nội dung bài viết. Không giấu câu trả lời ở cuối bài để kéo time-on-site giả tạo; tính hữu ích trực diện mới là chìa khóa xếp hạng bền vững theo tiêu chuẩn Google Helpful Content.
 - **Minh bạch hóa chi phí đến từng đồng**: Khối `cost_breakdown_table` bóc tách chi phí cố định (domain, hosting) và chi phí dịch vụ giúp phá tan rào cản nghi ngại về "phí ẩn" của chủ doanh nghiệp nhỏ.
 
+## 7. Bài Học Về Thiết Kế Navigation & Mega Menu (Studio / SaaS Navigation)
+- **Mega Menu là Điều Hướng (Navigation), Không Phải Bảng Giá (Pricing Table)**: Mục tiêu duy nhất của Mega menu là giúp người dùng trả lời nhanh trong 2–3 giây: *"Tôi muốn tìm hiểu việc gì?"*. Việc nhồi nhét mô tả dài dòng, quá nhiều badge giá hay promo card cồng kềnh biến menu thành bảng danh mục dịch vụ nặng nề.
+- **Cấu Trúc 3 Cột Studio Đều Nhau**: Chia 3 nhóm danh mục (`WEBSITE`, `HIỆN DIỆN ĐỊA PHƯƠNG`, `TĂNG TRƯỞNG`) với 9 dịch vụ trọng tâm. Mỗi item tuân thủ nghiêm ngặt: Tên dịch vụ (2–4 từ) + Mô tả cốt lõi (4–8 từ). Scan xong toàn bộ menu trong dưới 1 giây.
+- **Tiết Chế Badge Giá Tối Đa**: Chỉ gắn badge cho tối đa 1–2 dịch vụ phễu nhập môn ("Từ 490k" cho Website 1 Trang, "Từ 299k" cho Google Maps) với tone màu xanh nhạt (`#edf7f1`), chữ xanh đậm (`#0d7647`), viền mảnh `#d1fae5`. Không cạnh tranh thị giác với tên dịch vụ.
+- **Chống Flicker Hover (140ms Buffer Timer)**: Trải nghiệm rê chuột từ button Header xuống Dropdown Panel cần có timeout delay 140ms để tránh tình trạng menu bị chớp nháy hoặc đóng đột ngột khi người dùng di chuột qua khoảng đệm padding.
+- **Thanh Footer Ngang Tinh Tế Thay Thế Promo Rail**: Bỏ hoàn toàn Promo Card chiếm cột 4 cồng kềnh; thay bằng 1 thanh ngang thanh mảnh (~54px) dưới chân 3 cột: *"Chưa biết nên bắt đầu từ đâu? Xem bảng giá → [Nhận tư vấn]"*. Giảm chiều cao menu từ ~540px xuống ~310px, hiển thị trọn vẹn và thoáng đãng ngay cả trên màn hình laptop 1366x768.
+- **Mobile Accordion Tinh Gọn**: Trên di động, menu dịch vụ hiển thị dạng accordion chỉ gồm tiêu đề các nhóm và tên dịch vụ (bỏ mô tả dài), kèm 2 nút *"Xem tất cả dịch vụ →"* và *"Nhận tư vấn"*, giúp thao tác một tay mượt mà.
+
