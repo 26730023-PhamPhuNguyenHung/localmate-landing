@@ -40,6 +40,19 @@ Tài liệu này ghi nhận dòng thời gian các mốc cam kết (commits), s�
   - Đồng bộ thành công vào SQLite local D1 database.
   - Kiểm thử `npm run build` PASS 100%.
 
+### Mốc 5: Thiết Lập Kiến Trúc Markdown-First Content Pipeline & Quality Gate CLI
+- **Mã commit**: `13f809f`
+- **Nội dung**: `feat(pipeline): establish markdown-first content pipeline with multi-role gates and automated validator`
+- **Chi tiết**:
+  - Tách rời hoàn toàn khâu sản xuất nội dung ra ngoài CMS: `research -> brief.md -> research.md -> outline.md -> draft.md -> review.md -> automated quality gate -> approved markdown -> parser -> structured article.json -> CMS Draft -> Human preview -> Publish`.
+  - Thiết lập thư mục `content/templates/` (3 templates: brief, draft, review).
+  - Thiết lập thư mục `content/rules/` (6 bộ quy chuẩn: writing style, seo, geo, anti-ai-slop, internal linking, fact-checking).
+  - Triển khai 4 công cụ CLI độc lập trong `content/scripts/`: `validate-content.cjs` (chặn rác, kiểm tra cấu trúc, knockout < 80 điểm), `markdown-to-cms.cjs` (chuyển đổi và sync an toàn sang CMS/D1 ở trạng thái draft), `check-links.cjs` (kiểm tra đồ thị liên kết), `generate-schema.cjs` (sinh JSON-LD Article/Breadcrumbs/FAQPage).
+  - Khởi tạo đầy đủ bộ 6 files chuẩn cho bài viết ID 1 (`content/articles/website-doanh-nghiep-la-gi/`). Chạy `validate-content.cjs` đạt điểm tuyệt đối 100/100.
+  - Mở rộng lifecycle status trong CMS types: `draft | editorial_ready | seo_ready | publish_ready | review | scheduled | published | archived`.
+  - Agent tuyệt đối không có quyền gọi API publish; chỉ người thật duyệt mới bấm publish.
+  - `npm run build` PASS 100%.
+
 ---
 
 ## Trạng Thái Hệ Thống Hiện Tại (Current System State)
