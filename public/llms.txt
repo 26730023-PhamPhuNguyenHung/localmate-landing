@@ -69,6 +69,7 @@
 ## 5. Danh Mục Canonical URLs (Index Liên Kết Trang)
 
 - Trang chủ: https://localmate.vn/
+- Giải pháp mầm non: https://localmate.vn/mam-non
 - Thiết kế website: https://localmate.vn/thiet-ke-website
 - Google Maps & Local SEO: https://localmate.vn/google-maps-local-seo
 - Google Ads: https://localmate.vn/google-ads

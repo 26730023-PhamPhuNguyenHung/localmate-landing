@@ -6,6 +6,23 @@ Tài liệu này ghi nhận dòng thời gian các mốc cam kết (commits), s�
 
 ## Mốc Sự Kiện & Commits Gần Nhất
 
+### Mốc: Tích Hợp MamNonPricing & MamNonFAQ (Localmate Mầm Non)
+- **Mã commit**: Pending
+- **Nội dung**: `feat(mam-non): implement MamNonPricing and MamNonFAQ components with full interactive state and JSON-LD schema`
+- **Chi tiết**:
+  - `src/components/mam-non/MamNonPricing.tsx`:
+    - Tích hợp ảnh nền `section-backdrop` (`pricing-background.png`), typography copy chuẩn "Giá rõ ràng để các cô dễ bắt đầu. ♡".
+    - 8 tính năng cần thiết (`included-features`) ánh xạ từ `PRICING_INCLUDED_FEATURES` với các icon SVG chuyên biệt.
+    - Card giá đầy đủ (`full-price-card`): Gói 30 ngày đầu 0đ, sau dùng thử từ 3.000đ/ngày kèm so sánh tách cà phê.
+    - Hai nút CTA ("Dùng thử trước, chưa cần quyết định" & "Trao đổi với Localmate") liên kết callback `onOpenContact`.
+    - Đầy đủ doodle sun, hand notes và `Waves` divider.
+  - `src/components/mam-non/MamNonFAQ.tsx`:
+    - Minh họa `faq-art` (`faq-support-cropped.png`) kết hợp hand `faq-bubble` "Cô cứ hỏi, bên em luôn ở đây ạ! ♡".
+    - 6 câu hỏi FAQ accordion điều khiển bằng React state (`openItems`), đồng bộ hoàn hảo với CSS `.faq-grid details[open] summary:after`.
+    - Tích hợp nút CTA "Nhắn hỏi Localmate" gọi `onOpenContact`.
+    - Tích hợp nhúng cấu trúc dữ liệu chuẩn Google Schema.org `FAQPage` JSON-LD tự động sinh từ dữ liệu 6 câu hỏi thật.
+  - **Kiểm thử**: `tsc --noEmit` PASS 100%, `npm run build` Vite PASS 100% trong 9.52s (sinh đầy đủ 30 bài viết và 6 static pages).
+
 ### Mốc: Audit & Chuẩn Hóa Responsive Toàn Diện Cho Laptop Windows Display Scale 125%
 - **Mã commit**: `4a749ec`
 - **Nội dung**: `fix(responsive): refine footer wrapping and article grid minmax for Windows 125% scale`

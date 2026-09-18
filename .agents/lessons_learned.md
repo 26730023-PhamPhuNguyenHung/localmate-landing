@@ -1,5 +1,15 @@
 # 📚 LOCALMATE AGENTS LESSONS LEARNED & EDITORIAL RULES
 
+## 26. Component Hóa Landing Page Mầm Non — Kỹ Thuật Đồng Bộ React State Với Native Details & JSON-LD SEO
+- **Tương thích Native `<details>` & React State**:
+  - CSS của bản mẫu HTML sử dụng các selector `.faq-grid details[open] summary:after` để điều khiển mũi tên xoay 45 độ khi câu hỏi được mở.
+  - Khi chuyển đổi sang React, việc điều khiển trạng thái mở/đóng độc lập của từng câu hỏi bằng state `Record<number, boolean>` kết hợp truyền thuộc tính `open={isOpen}` vào thẻ `<details>` đảm bảo vừa kích hoạt đúng 100% CSS animation sẵn có, vừa mang lại trải nghiệm tương tác mượt mà.
+  - Sự kiện `onClick` kèm `e.preventDefault()` trên thẻ `<summary>` giúp chặn hành vi reload/co giật mặc định của trình duyệt và chuyển giao hoàn toàn quyền kiểm soát cho React.
+- **Tối Ưu SEO Cấu Trúc Dữ Liệu Schema.org Cho FAQ**:
+  - Nhúng trực tiếp thẻ `<script type="application/ld+json">` chứa `@type: "FAQPage"` với dữ liệu các câu hỏi và câu trả lời thực tế (được chuẩn hóa sạch ký tự HTML/`<br>`). Điều này giúp trang mầm non sẵn sàng nhận Rich Snippets câu hỏi thường gặp ngay khi Google lập chỉ mục.
+- **Asset Fallback & Zero-Locking Build**:
+  - Luôn cấu hình đường dẫn tài nguyên tĩnh (`/assets/mam-non/...`) kèm `onError` chuyển đổi sang thư mục song song (`/preschool/...`) giúp ảnh minh họa luôn hiển thị trọn vẹn trong mọi môi trường triển khai.
+
 ## 25. Chiến Dịch Localmate Mầm Non (3.000đ/ngày) — Vai Trò Public Landing Page & Quan Hệ Với Hệ Thống Ops
 - **Bối cảnh & Phân Định Vai Trò Kiến Trúc**:
   - **Codebase này (`D:\03-Startups-Products\localmate\new`)**: Là **Public Client-Facing Website / Landing Page** chạy trên nền tảng Cloudflare Pages.

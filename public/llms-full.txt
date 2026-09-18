@@ -284,7 +284,8 @@
 
 ## 7. Toàn Bộ Danh Mục Canonical URLs (Full Route Directory)
 
-- Trang chủ: https://localmate.vn/
+- Trang Chủ: https://localmate.vn/
+- Giải Pháp Mầm Non: https://localmate.vn/mam-non
 - Thiết Kế Website: https://localmate.vn/thiet-ke-website
 - Google Maps & Local SEO: https://localmate.vn/google-maps-local-seo
 - Dịch Vụ Google Ads: https://localmate.vn/google-ads

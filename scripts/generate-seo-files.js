@@ -102,6 +102,14 @@ const CORE_PAGES = [
     priority: '0.95',
     title: 'GEO - Tối Ưu Hóa Tìm Kiếm Bằng Trí Tuệ Nhân Tạo (Generative Engine Optimization)'
   },
+  // Mầm non Vertical Solution
+  {
+    loc: `${BASE_URL}/mam-non`,
+    lastmod: TODAY_ISO,
+    changefreq: 'daily',
+    priority: '0.95',
+    title: 'Localmate Mầm non — Thêm thời gian cho các bé'
+  },
   {
     loc: `${BASE_URL}/dich-vu/geo`,
     lastmod: TODAY_ISO,
@@ -464,6 +472,7 @@ async function main() {
   const urlCloseCount = (sitemapXml.match(/<\/url>/g) || []).length;
   const hasRoot = sitemapXml.includes('<loc>https://localmate.vn/</loc>');
   const hasGeo = sitemapXml.includes('<loc>https://localmate.vn/geo</loc>');
+  const hasMamNon = sitemapXml.includes('<loc>https://localmate.vn/mam-non</loc>');
   const hasPrivacy = sitemapXml.includes('<loc>https://localmate.vn/chinh-sach-bao-mat</loc>');
   const hasTerms = sitemapXml.includes('<loc>https://localmate.vn/dieu-khoan</loc>');
   const hasServicePolicy = sitemapXml.includes('<loc>https://localmate.vn/chinh-sach-dich-vu</loc>');
@@ -472,6 +481,7 @@ async function main() {
   console.log(`  - Closing </url> count:        ${urlCloseCount} -> ${urlCloseCount === allUrls.length ? 'PASS' : 'FAIL'}`);
   console.log(`  - Root URL included:           ${hasRoot ? 'PASS' : 'FAIL'}`);
   console.log(`  - /geo URL included:           ${hasGeo ? 'PASS' : 'FAIL'}`);
+  console.log(`  - /mam-non URL included:       ${hasMamNon ? 'PASS' : 'FAIL'}`);
   console.log(`  - Privacy policy included:     ${hasPrivacy ? 'PASS' : 'FAIL'}`);
   console.log(`  - Terms of service included:   ${hasTerms ? 'PASS' : 'FAIL'}`);
   console.log(`  - Service policy included:     ${hasServicePolicy ? 'PASS' : 'FAIL'}`);

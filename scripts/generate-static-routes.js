@@ -87,6 +87,12 @@ export function generateStaticRoutes() {
   // 3. Core Static Policy & Geo Pages
   const staticRoutes = [
     {
+      dir: 'mam-non',
+      title: 'Localmate Mầm non — Thêm thời gian cho các bé',
+      description: 'Giải pháp quản lý lớp và trường mầm non tinh gọn từ Localmate: Điểm danh, hồ sơ bé, nghỉ học, học phí và việc hằng ngày đơn giản, chi phí chỉ từ 3.000đ/ngày.',
+      url: 'https://localmate.vn/mam-non'
+    },
+    {
       dir: 'geo',
       title: 'GEO — Tối Ưu Tìm Kiếm AI (ChatGPT, Perplexity, Gemini) | LocalMate',
       description: 'Đưa doanh nghiệp của bạn vào câu trả lời của AI. Giải pháp Generative Engine Optimization đón đầu kỷ nguyên tìm kiếm không click.',

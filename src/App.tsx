@@ -10,6 +10,7 @@ import { initAttribution, trackPageView } from './analytics/tracker';
 import { HomePage } from './pages/HomePage';
 
 // Secondary Public Pages (Lazy Loaded to protect homepage bundle size)
+const MamNonPage = React.lazy(() => import('./pages/mam-non/MamNonPage').then(m => ({ default: m.MamNonPage })));
 const GeoLandingPage = React.lazy(() => import('./pages/GeoLandingPage').then(m => ({ default: m.GeoLandingPage })));
 const LegalPage = React.lazy(() => import('./pages/LegalPage').then(m => ({ default: m.LegalPage })));
 const NotFoundPage = React.lazy(() => import('./pages/NotFoundPage').then(m => ({ default: m.NotFoundPage })));
@@ -70,7 +71,12 @@ const MainContent: React.FC = () => {
       return <HomePage onOpenConsultForm={handleOpenLeadForm} />;
     }
 
-    // 2. High-Converting Landing Page for GEO / AI Visibility (/geo)
+    // 2. Mam Non Preschool Vertical Landing Page (/mam-non)
+    if (normalizedPath === '/mam-non' || normalizedPath === '/mam-non/') {
+      return <MamNonPage onOpenConsultForm={handleOpenLeadForm} />;
+    }
+
+    // 3. High-Converting Landing Page for GEO / AI Visibility (/geo)
     if (
       normalizedPath === '/geo' ||
       normalizedPath === '/geo-ads' ||
