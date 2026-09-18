@@ -1,5 +1,36 @@
 # 📚 LOCALMATE AGENTS LESSONS LEARNED & EDITORIAL RULES
 
+## 25. Chiến Dịch Localmate Mầm Non (3.000đ/ngày) — Vai Trò Public Landing Page & Quan Hệ Với Hệ Thống Ops
+- **Bối cảnh & Phân Định Vai Trò Kiến Trúc**:
+  - **Codebase này (`D:\03-Startups-Products\localmate\new`)**: Là **Public Client-Facing Website / Landing Page** chạy trên nền tảng Cloudflare Pages.
+    + Đây là nơi **lưu trữ toàn bộ tài nguyên asset hình ảnh** (từ 5 mockup thiết kế ChatGPT) và **mã nguồn code HTML/React** phục vụ trực tiếp khách hàng (cô giáo, chủ lớp, chủ trường mầm non bấm vào từ Facebook Ads).
+    + Chịu trách nhiệm về: Giao diện thẩm mỹ cao (Light Mode, ấm áp, thân thiện), tốc độ tải trang LCP < 1.2s, form thu thập thông tin dùng thử 1 tháng (`LeadModal`), và các script đo lường chuyển đổi (Meta Pixel, Google Tag GA4).
+  - **Codebase Quản Trị Vận Hành (`D:\01-Life-Operations\localmate-ops`)**: Là **Hệ điều hành nội bộ của Founder (Ops)**.
+    + Quản lý chiến dịch, DoR/DoD, phân bổ công việc (cho AI, Freelancer, hoặc giao Xuân QA kịch bản tư vấn).
+    + Theo dõi ngân sách chi phí Ads, quản lý các Leads đổ về từ form và đối soát doanh thu/dòng tiền.
+- **Cấu Trúc 5 Blocks Nội Dung Chuẩn Mực Cần Triển Khai (Dựa Trên 5 Mockup Ảnh)**:
+  1. **Block 1 — Hero Section**:
+     - *Headline*: *"Một chút công nghệ, để các cô có thêm thời gian cho các bé."*
+     - *Sub-headline*: *"Localmate giúp lớp mầm non và trường mầm non quản lý điểm danh, hồ sơ bé, nghỉ học, học phí và những việc hằng ngày trong một nơi thật đơn giản."*
+     - *Offer & CTA*: Dùng thử miễn phí 1 tháng. Chi phí từ ~3.000đ/ngày (chưa bằng 1 cốc cà phê/tuần). Hotline: 0834.422.439.
+  2. **Block 2 — Features Grid**:
+     - *Headline*: *"Sổ sách ít đi. Thông tin về bé lại rõ hơn."* (Gom việc hàng ngày khỏi file Excel, sổ giấy, tin nhắn Zalo).
+     - *6 Thẻ tính năng*: (1) Điểm danh bé; (2) Hồ sơ của từng bé; (3) Xin nghỉ & thông báo; (4) Theo dõi học phí; (5) Theo dõi sự phát triển (chiều cao, cân nặng); (6) Báo cáo cho quản lý.
+  3. **Block 3 — Role-based Experience & 1-day Timeline**:
+     - *Headline*: *"Cô giáo dùng dễ. Quản lý nắm được. Phụ huynh yên tâm."*
+     - *3 Cột trải nghiệm*: Với cô giáo (chạm điểm danh, cập nhật ăn ngủ học); Với chủ lớp/hiệu trưởng (theo dõi sĩ số, đối soát học phí, báo cáo trực quan); Với phụ huynh (xem hoạt động trong ngày, gửi xin nghỉ dễ dàng).
+     - *Timeline 1 ngày*: 07:15 Bé đến lớp $\to$ 08:00 Cô điểm danh $\to$ Trong ngày Cập nhật khi cần $\to$ Cuối ngày Dữ liệu đã sẵn sàng.
+  4. **Block 4 — Scale Fit (Phù Hợp Mọi Quy Mô)**:
+     - *Headline*: *"Lớp nhỏ cũng xứng đáng có một hệ thống tử tế."*
+     - *3 Cấp độ*: (01) Nhóm trẻ / lớp mầm non độc lập; (02) Trường mầm non nhỏ; (03) Trường đang có cách làm riêng (linh hoạt điều chỉnh theo nhu cầu thực tế).
+  5. **Block 5 — Pricing, Guarantee & Final CTA**:
+     - *Headline*: *"Một tháng để các cô thử thật với lớp của mình."* (Không cần thẻ tín dụng, dễ đăng ký, hỗ trợ tận tình).
+     - *Cam kết chất lượng*: Bảo hành 5 năm, Hỗ trợ kỹ thuật các ngày trong tuần, Hướng dẫn cô giáo và quản lý tận nơi, Nhận bổ sung & điều chỉnh theo nhu cầu.
+- **Quy Chuẩn Kỹ Thuật Khi Code**:
+  - Giao diện sáng màu (Light Mode), tông xanh lá cây hiền hòa (`emerald`/`forest green`), viền bo tròn mềm mại, hình minh họa ấm áp thân thiện với giáo dục mầm non.
+  - Tối ưu responsive chuẩn xác trên Windows scaling 125% (1366x768, 1536x864) và mobile 390px (chống text clipping, touch target nút $\ge 44\text{px}$).
+  - Nén ảnh sang định dạng WebP chất lượng cao, giữ ảnh trong thư mục `public/images/mam-non/` hoặc `src/assets/`.
+
 ## 24. Bài Học Về Tối Ưu Responsive Trên Laptop Windows Scale 125% — Căn Nguyên & Khắc Phục Triệt Để Bằng CSS Chuẩn
 - **Bối cảnh thực tế của thị trường laptop Windows**:
   - Hầu hết laptop 13" - 15.6" độ phân giải Full HD (1920x1080) được Windows đặt mặc định Display Scaling = 125%.

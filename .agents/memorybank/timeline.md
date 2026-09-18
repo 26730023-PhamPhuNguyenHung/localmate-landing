@@ -6,8 +6,30 @@ Tài liệu này ghi nhận dòng thời gian các mốc cam kết (commits), s�
 
 ## Mốc Sự Kiện & Commits Gần Nhất
 
-### Mốc: Redesign Table of Contents (TOC) Chuẩn Editorial Rail, Triệt Tiêu Bug Tự Động Cuộn Lên & Xử Lý Layout Table Responsive
-- **Mã commit**: `f992f69`
+### Mốc: Audit & Chuẩn Hóa Responsive Toàn Diện Cho Laptop Windows Display Scale 125%
+- **Mã commit**: `4a749ec`
+- **Nội dung**: `fix(responsive): refine footer wrapping and article grid minmax for Windows 125% scale`
+- **Chi tiết**:
+  - **Audit 6 Viewports chuẩn**: `1280x720`, `1280x800`, `1366x768`, `1440x900`, `1536x864`, `1600x900` trên tất cả các trang (`/`, `/geo`, `/kien-thuc`, `/kien-thuc/:slug`).
+  - **Chuẩn hóa Container System SSOT**:
+    - `max-width: 1440px; margin-inline: auto; padding-inline: clamp(16px, 2.5vw, 32px);`
+    - Cập nhật đồng bộ trong `tokens.css`, `globals.css`, `Container.tsx`, `geo-landing.css`, `reference-landing.css`.
+  - **Header (`Header.tsx`)**:
+    - Ẩn nút hotline `.phone` trên header khi màn hình `<= 1366px` để 8 menu link và nút CTA không bị ép nghẹt.
+    - Điều chỉnh breakpoint chuyển sang hamburger menu toggle tại `<= 1120px` triệt tiêu xung đột va chạm.
+    - Thay thế `100vw` thành `100%` trong Mega Menu overlay tránh sinh thanh cuộn ngang rác trên Windows.
+  - **Homepage Sections (`reference-landing.css`)**:
+    - Services Grid: Linh hoạt `repeat(auto-fit, minmax(230px, 1fr))` trên dải laptop 1280-1366px, 5 cột khi `>= 1320px`.
+    - Stories Grid: `repeat(auto-fit, minmax(280px, 1fr))` tránh ép bẹp nội dung card.
+    - Values Grid: `repeat(auto-fit, minmax(220px, 1fr))` co giãn linh hoạt.
+    - Contact Section: Đổi từ 3 cột bị lệch sang 2 cột cân đối `1.1fr 1fr`, quote form căn giữa tự nhiên.
+  - **Footer (`Footer.tsx`)**:
+    - Bổ sung `flex-wrap: wrap; gap: 12px;` vào `.footer-bottom` chống rớt chữ đơn lẻ hay tràn dòng MST/địa chỉ.
+  - **Knowledge & Articles (`ArticlesIndexPage.tsx`, `globals.css`)**:
+    - Grid bài viết: `minmax(min(100%, 300px), 1fr)` co giãn an toàn.
+  - **Kiểm thử**: Tất cả 6 viewports trên cả 4 route đều đạt `hasOverflow: false` (Zero horizontal overflow). Build Vite PASS 100% (5.16s).
+  - **Deploy Cloudflare Pages**: Đã deploy thành công qua Wrangler CLI lên `https://94ad824f.localmate-vn.pages.dev` và production `https://localmate-vn.pages.dev`. HTTP 200 OK.
+
 - **Nội dung**: `fix(article): redesign TableOfContents to editorial rail, fix auto-scroll bug, and resolve table responsive overflow`
 - **Chi tiết**:
   - `src/components/article/TableOfContents.tsx`:
