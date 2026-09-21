@@ -15,6 +15,11 @@ Tài liệu này ghi nhận dòng thời gian các mốc cam kết (commits), s�
   - Cập nhật `src/styles/reference-landing.css`: Căn chỉnh tỷ lệ aspect-ratio `1448/1086`, loại bỏ mask-image cắt viền cứng cũ do hình mới đã có nền trong suốt (alpha channel) hoàn hảo, căn chỉnh vị trí trên desktop và mobile mượt mà, không vỡ layout.
   - Phạm vi: Chỉ thay duy nhất cho trang chủ (`HomePage.tsx`), không ảnh hưởng các trang con khác.
   - Kiểm thử: Build Vite và SSR route generator PASS 100% (7.54s), verify trực quan thành công trên desktop (1440px) và mobile (390px).
+  - **Triển khai Live Production**:
+    - Push git commit `a1c4c7d` và `d3c7132` lên GitHub remote (`main`).
+    - Deploy thành công qua `npx wrangler pages deploy dist --project-name=localmate-vn`.
+    - Preview URL: `https://165ffac4.localmate-vn.pages.dev`
+    - Live Production: `https://localmate.vn/` (Xác thực HTTP 200 OK cho cả trang chủ và asset WebP mới).
 
 ### Mốc: Tích Hợp MamNonPricing & MamNonFAQ (Localmate Mầm Non)
 - **Mã commit**: Pending
