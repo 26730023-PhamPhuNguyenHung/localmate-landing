@@ -7,7 +7,7 @@ Tài liệu này ghi nhận dòng thời gian các mốc cam kết (commits), s�
 ## Mốc Sự Kiện & Commits Gần Nhất
 
 ### Mốc: Thay Ảnh Minh Họa Hero Section Trang Chủ (`HomePage.tsx`)
-- **Mã commit**: Pending
+- **Mã commit**: `a1c4c7d`
 - **Nội dung**: `feat(home): replace hero section artwork with standalone high-res illustration`
 - **Chi tiết**:
   - Tích hợp hình ảnh minh họa Hero mới độc lập (`hero-illustration.png` & bản nén `hero-illustration.webp` chất lượng cao 259KB, giảm từ 1.49MB) thay thế cho kỹ thuật cắt ghép `ArtCrop` từ mockup sheet cũ.
