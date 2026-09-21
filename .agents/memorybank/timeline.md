@@ -6,6 +6,16 @@ Tài liệu này ghi nhận dòng thời gian các mốc cam kết (commits), s�
 
 ## Mốc Sự Kiện & Commits Gần Nhất
 
+### Mốc: Thay Ảnh Minh Họa Hero Section Trang Chủ (`HomePage.tsx`)
+- **Mã commit**: Pending
+- **Nội dung**: `feat(home): replace hero section artwork with standalone high-res illustration`
+- **Chi tiết**:
+  - Tích hợp hình ảnh minh họa Hero mới độc lập (`hero-illustration.png` & bản nén `hero-illustration.webp` chất lượng cao 259KB, giảm từ 1.49MB) thay thế cho kỹ thuật cắt ghép `ArtCrop` từ mockup sheet cũ.
+  - Cập nhật `src/pages/HomePage.tsx`: Sử dụng thẻ `<picture>` hỗ trợ WebP ưu tiên kết hợp PNG fallback, tải `eager` phục vụ tức thì LCP.
+  - Cập nhật `src/styles/reference-landing.css`: Căn chỉnh tỷ lệ aspect-ratio `1448/1086`, loại bỏ mask-image cắt viền cứng cũ do hình mới đã có nền trong suốt (alpha channel) hoàn hảo, căn chỉnh vị trí trên desktop và mobile mượt mà, không vỡ layout.
+  - Phạm vi: Chỉ thay duy nhất cho trang chủ (`HomePage.tsx`), không ảnh hưởng các trang con khác.
+  - Kiểm thử: Build Vite và SSR route generator PASS 100% (7.54s), verify trực quan thành công trên desktop (1440px) và mobile (390px).
+
 ### Mốc: Tích Hợp MamNonPricing & MamNonFAQ (Localmate Mầm Non)
 - **Mã commit**: Pending
 - **Nội dung**: `feat(mam-non): implement MamNonPricing and MamNonFAQ components with full interactive state and JSON-LD schema`

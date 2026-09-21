@@ -263,13 +263,17 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenConsultForm }) => {
       <main id="main">
         {/* SECTION 1: HERO */}
         <section id="home" className="hero section">
-          <ArtCrop
-            image={1}
-            box={[700, 94, 972, 695]}
-            className="hero-art"
-            role="img"
-            ariaLabel="Website và Google Maps của doanh nghiệp địa phương trên laptop, điện thoại"
-          />
+          <picture className="hero-art">
+            <source srcSet="/images/landing/hero-illustration.webp" type="image/webp" />
+            <img
+              src="/images/landing/hero-illustration.png"
+              alt="Website và Google Maps của doanh nghiệp địa phương trên laptop, điện thoại"
+              width="1448"
+              height="1086"
+              decoding="async"
+              loading="eager"
+            />
+          </picture>
 
           <div className="hero-copy">
             <div className="eyebrow-row">
