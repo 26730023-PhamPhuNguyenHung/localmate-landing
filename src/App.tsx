@@ -7,7 +7,7 @@ import { LeadModal } from './components/conversion/LeadModal';
 import { initAttribution, trackPageView } from './analytics/tracker';
 
 // Core Public Page (Eager for instant LCP)
-import { HomePage } from './pages/HomePage';
+import { HomePage } from './pages/HomeReferencePage';
 
 // Secondary Public Pages (Lazy Loaded to protect homepage bundle size)
 const MamNonPage = React.lazy(() => import('./pages/mam-non/MamNonPage').then(m => ({ default: m.MamNonPage })));
@@ -165,7 +165,8 @@ const MainContent: React.FC = () => {
   const isAdminView = normalizedPath.startsWith('/admin');
   const isPreviewView = normalizedPath.startsWith('/preview');
 
-  const hideDefaultLayout = isGeoLandingView || isAdminView || isPreviewView;
+  const isReferenceHome = ['/', '/cach-lam-viec', '/quy-trinh'].includes(normalizedPath);
+  const hideDefaultLayout = isReferenceHome || isGeoLandingView || isAdminView || isPreviewView;
 
   return (
     <div className="localmate-app">
