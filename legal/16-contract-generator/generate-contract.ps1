@@ -137,6 +137,11 @@ if ($Pack -eq "PackB" -or $Pack -eq "All") {
     Process-File "03-google-maps\06_PHU_LUC_GOOGLE_MAPS_LOCAL_SEO.md" "PackB-Standard"
     Process-File "04-google-ads\07_HOP_DONG_PHU_LUC_GOOGLE_ADS.md" "PackB-Standard"
     Process-File "04-google-ads\22_CUSTOMER_LEGAL_CONTENT_DECLARATION.md" "PackB-Standard"
+    Process-File "05-content\08_PHU_LUC_CONTENT_SOCIAL.md" "PackB-Standard"
+    Process-File "06-crm-automation\09_PHU_LUC_CRM_AUTOMATION.md" "PackB-Standard"
+    Process-File "10-payment\20_PAYMENT_SCHEDULE_APPENDIX.md" "PackB-Standard"
+    Process-File "11-acceptance-handover\14_SLA_MAINTENANCE_SUPPORT.md" "PackB-Standard"
+    Process-File "11-acceptance-handover\15_CHANGE_REQUEST_FORM.md" "PackB-Standard"
     Process-File "11-acceptance-handover\16_BIEN_BAN_NGHIEM_THU.md" "PackB-Standard"
 }
 
@@ -146,7 +151,13 @@ if ($Pack -eq "PackC" -or $Pack -eq "All") {
     Process-File "01-core\04_STATEMENT_OF_WORK_SOW.md" "PackC-Enterprise"
     Process-File "07-data-protection\10_DATA_PROCESSING_AGREEMENT_DPA.md" "PackC-Enterprise"
     Process-File "08-security\11_NDA_MUTUAL.md" "PackC-Enterprise"
+    Process-File "08-security\13_DIGITAL_ACCOUNT_OWNERSHIP_HANDOVER.md" "PackC-Enterprise"
+    Process-File "08-security\21_THIRD_PARTY_SERVICE_APPENDIX.md" "PackC-Enterprise"
+    Process-File "08-security\23_INFORMATION_SECURITY_APPENDIX.md" "PackC-Enterprise"
     Process-File "09-ip\12_IP_AND_DIGITAL_ASSET_APPENDIX.md" "PackC-Enterprise"
+    Process-File "10-payment\20_PAYMENT_SCHEDULE_APPENDIX.md" "PackC-Enterprise"
+    Process-File "11-acceptance-handover\14_SLA_MAINTENANCE_SUPPORT.md" "PackC-Enterprise"
+    Process-File "11-acceptance-handover\15_CHANGE_REQUEST_FORM.md" "PackC-Enterprise"
     Process-File "11-acceptance-handover\16_BIEN_BAN_NGHIEM_THU.md" "PackC-Enterprise"
     Process-File "12-termination\18_BIEN_BAN_THANH_LY.md" "PackC-Enterprise"
 }

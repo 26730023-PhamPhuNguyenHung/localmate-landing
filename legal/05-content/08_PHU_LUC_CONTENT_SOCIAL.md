@@ -1,7 +1,13 @@
-# PHỤ LỤC DỊCH VỤ SẢN XUẤT NỘI DUNG & CHĂM SÓC KÊNH SỐ LOCALMATE
-**(CONTENT MARKETING & SOCIAL MEDIA CARE APPENDIX)**  
-**Số hiệu Phụ lục:** [MÃ_ĐƠN]/PL-CONTENT-LM/[NĂM]  
-*(Kèm theo Hợp đồng Dịch vụ Khung số: [MÃ_HỢP_ĐỒNG] ký ngày [NGÀY_KÝ])*
+| **ĐƠN VỊ CUNG CẤP DỊCH VỤ**<br>**LOCALMATE VIỆT NAM**<br>Số: [MÃ_ĐƠN]/PL-CONTENT-LM/[NĂM] | **CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM**<br>**Độc lập - Tự do - Hạnh phúc**<br>----------------o0o----------------<br>*Hà Nội, ngày [NGÀY] tháng [THÁNG] năm 202[NĂM]* |
+| :---: | :---: |
+
+# PHỤ LỤC DỊCH VỤ SẢN XUẤT NỘI DUNG & CHĂM SÓC KÊNH SỐ
+**(CONTENT MARKETING & SOCIAL MEDIA CARE APPENDIX)**
+
+- *Căn cứ Luật Thương mại số 36/2005/QH11 ngày 14 tháng 06 năm 2005;*
+- *Căn cứ Luật Sở hữu trí tuệ số 50/2005/QH11 đã được sửa đổi, bổ sung theo Luật số 07/2022/QH15;*
+- *Căn cứ Luật An ninh mạng số 24/2018/QH14 ngày 12 tháng 06 năm 2018;*
+- *Căn cứ Hợp đồng Dịch vụ Khung số: [MÃ_HỢP_ĐỒNG] ký giữa Hai Bên.*
 
 ---
 
@@ -75,9 +81,9 @@ Hai Bên thống nhất rằng một số hình ảnh minh họa bối cảnh ho
 
 ---
 
-### ĐẠI DIỆN CÁC BÊN KÝ TÊN
+| ĐẠI DIỆN BÊN A (KHÁCH HÀNG) | ĐẠI DIỆN BÊN B (LOCALMATE) |
+| :---: | :---: |
+| *(Ký tên, ghi rõ họ tên và đóng dấu)* | *(Ký tên, ghi rõ họ tên và đóng dấu)* |
+| <br><br><br><br> | <br><br><br><br> |
+| **[NGƯỜI_ĐẠI_DIỆN_A]** | **[NGƯỜI_ĐẠI_DIỆN_B]** |
 
-```
-             ĐẠI DIỆN BÊN A                                   ĐẠI DIỆN BÊN B
-  (Ký tên, đóng dấu hoặc Ký số điện tử)             (Ký tên, đóng dấu hoặc Ký số điện tử)
-```

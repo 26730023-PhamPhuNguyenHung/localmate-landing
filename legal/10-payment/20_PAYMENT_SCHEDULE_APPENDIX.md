@@ -1,20 +1,17 @@
-# PHỤ LỤC TIẾN ĐỘ THANH TOÁN VÀ ĐIỀU KIỆN TÀI CHÍNH CHUẨN HÓA
-## (PAYMENT SCHEDULE & FINANCIAL TERMS APPENDIX)
-**Mã hiệu văn bản:** `LM-ACC-SCH-20`  
-*(Đính kèm Hợp đồng Dịch vụ Khung số: [SO_HOP_DONG_MSA]/LM-MSA hoặc Đơn đặt hàng tương ứng)*  
-**Căn cứ pháp lý:**  
-- *Bộ luật Dân sự số 91/2015/QH13 (Điều 328 về Đặt cọc, Điều 357, Điều 468 về Lãi suất chậm trả);*  
-- *Án lệ số 25/2018/AL về việc xác định tiền đặt cọc và tiền trả trước;*  
-- *Luật Quản lý thuế số 38/2019/QH14 và Nghị định số 123/2020/NĐ-CP về hóa đơn, chứng từ;*  
-- *Thông tư số 219/2013/TT-BTC (Điểm d Khoản 7 Điều 5 về các khoản thu hộ, chi hộ không chịu thuế).*
+| **ĐƠN VỊ CUNG CẤP DỊCH VỤ**<br>**LOCALMATE VIỆT NAM**<br>Số: [MÃ_ĐƠN]/PL-TT-LM/[NĂM] | **CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM**<br>**Độc lập - Tự do - Hạnh phúc**<br>----------------o0o----------------<br>*Hà Nội, ngày [NGÀY] tháng [THÁNG] năm 202[NĂM]* |
+| :---: | :---: |
 
----
+# PHỤ LỤC TIẾN ĐỘ THANH TOÁN VÀ ĐIỀU KIỆN TÀI CHÍNH
+**(PAYMENT SCHEDULE & FINANCIAL TERMS APPENDIX)**
 
-Phụ lục này được lập vào ngày [NGAY] tháng [THANG] năm 202[X] giữa:
-- **BÊN A (KHÁCH HÀNG):** [TEN_KHACH_HANG] (Đại diện: [NGUOI_DAI_DIEN_A])
-- **BÊN B (LOCALMATE):** [LOCALMATE_LEGAL_NAME] (Đại diện: [REPRESENTATIVE])
+- *Căn cứ Bộ luật Dân sự số 91/2015/QH13 (Điều 328 về Đặt cọc, Điều 357, Điều 468 về Lãi suất chậm trả);*
+- *Căn cứ Án lệ số 25/2018/AL về việc xác định tiền đặt cọc và tiền trả trước;*
+- *Căn cứ Luật Quản lý thuế số 38/2019/QH14 và Nghị định số 123/2020/NĐ-CP về hóa đơn, chứng từ;*
+- *Căn cứ Thông tư số 219/2013/TT-BTC (Điểm d Khoản 7 Điều 5 về các khoản thu hộ, chi hộ không chịu thuế);*
+- *Căn cứ Hợp đồng Dịch vụ Khung số: [MÃ_HỢP_ĐỒNG] ký giữa Hai Bên.*
 
-Hai Bên thống nhất áp dụng một trong các mô hình tiến độ thanh toán và điều kiện tài chính dưới đây cho từng loại hình dịch vụ:
+Hai Bên thống nhất áp dụng các mô hình tiến độ thanh toán và điều kiện tài chính dưới đây cho từng loại hình dịch vụ:
+
 
 ---
 
@@ -69,9 +66,10 @@ Trường hợp Bên A chậm thanh toán bất kỳ khoản tiền nào quá h�
 Phụ lục này có hiệu lực kể từ ngày ký và là căn cứ tài chính bắt buộc áp dụng trong suốt quá trình Hai Bên giao kết và thực hiện dịch vụ.
 
 | ĐẠI DIỆN BÊN A (KHÁCH HÀNG) | ĐẠI DIỆN BÊN B (LOCALMATE) |
-| :--- | :--- |
+| :---: | :---: |
 | *(Ký tên, ghi rõ họ tên và đóng dấu)* | *(Ký tên, ghi rõ họ tên và đóng dấu)* |
-| <br><br><br> | <br><br><br> |
-| **Họ và tên:** [NGUOI_DAI_DIEN_A] | **Họ và tên:** [REPRESENTATIVE] |
-| **Chức vụ:** [CHUC_VU_A] | **Chức vụ:** [TITLE] |
-| **Ngày ký:** ____/____/202[X] | **Ngày ký:** ____/____/202[X] |
+| <br><br><br><br> | <br><br><br><br> |
+| **[NGƯỜI_ĐẠI_DIỆN_A]** | **[REPRESENTATIVE]** |
+| Chức vụ: [CHỨC_VỤ_A] | Chức vụ: [TITLE] |
+| Ngày ký: ..... / ..... / 202[NĂM] | Ngày ký: ..... / ..... / 202[NĂM] |
+

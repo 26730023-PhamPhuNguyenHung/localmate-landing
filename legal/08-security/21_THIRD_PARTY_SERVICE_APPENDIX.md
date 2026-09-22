@@ -1,20 +1,16 @@
-# PHỤ LỤC DỊCH VỤ VÀ NỀN TẢNG BÊN THỨ BA
-## (THIRD-PARTY PLATFORMS & INFRASTRUCTURE APPENDIX)
-**Mã hiệu văn bản:** `LM-SEC-3RD-21`  
-*(Đính kèm Hợp đồng Dịch vụ Khung số: [SO_HOP_DONG_MSA]/LM-MSA hoặc Đơn đặt hàng tương ứng)*  
-**Căn cứ pháp lý:**  
-- *Bộ luật Dân sự số 91/2015/QH13 (Điều 156, Điều 351 về sự kiện bất khả kháng và miễn trừ nghĩa vụ);*  
-- *Luật Thương mại số 36/2005/QH11 (Điều 294 về các trường hợp miễn trách nhiệm);*  
-- *Luật An toàn thông tin mạng số 86/2015/QH13;*  
-- *Điều khoản Dịch vụ tiêu chuẩn của các nhà cung cấp nền tảng toàn cầu (Google Terms of Service, Meta Business Terms, Cloudflare Terms, Vercel, Supabase, OpenAI, Zalo Platform).*
+| **ĐƠN VỊ CUNG CẤP DỊCH VỤ**<br>**LOCALMATE VIỆT NAM**<br>Số: [MÃ_ĐƠN]/PL-3RD-LM/[NĂM] | **CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM**<br>**Độc lập - Tự do - Hạnh phúc**<br>----------------o0o----------------<br>*Hà Nội, ngày [NGÀY] tháng [THÁNG] năm 202[NĂM]* |
+| :---: | :---: |
 
----
+# PHỤ LỤC DỊCH VỤ VÀ HẠ TẦNG NỀN TẢNG BÊN THỨ BA
+**(THIRD-PARTY PLATFORMS & INFRASTRUCTURE APPENDIX)**
 
-Phụ lục này được lập và có hiệu lực kể từ ngày [NGAY] tháng [THANG] năm 202[X] giữa:
-- **BÊN A (KHÁCH HÀNG):** [TEN_KHACH_HANG] (Đại diện: [NGUOI_DAI_DIEN_A])
-- **BÊN B (LOCALMATE):** [LOCALMATE_LEGAL_NAME] (Đại diện: [REPRESENTATIVE])
+- *Căn cứ Bộ luật Dân sự số 91/2015/QH13 (Điều 156, Điều 351 về sự kiện bất khả kháng và miễn trừ nghĩa vụ);*
+- *Căn cứ Luật Thương mại số 36/2005/QH11 (Điều 294 về các trường hợp miễn trách nhiệm trong thương mại);*
+- *Căn cứ Luật An toàn thông tin mạng số 86/2015/QH13 và Luật An ninh mạng số 24/2018/QH14;*
+- *Căn cứ Hợp đồng Dịch vụ Khung số: [MÃ_HỢP_ĐỒNG] ký giữa Hai Bên.*
 
-Hai Bên thống nhất xác lập các nguyên tắc vận hành, phân định ranh giới trách nhiệm pháp lý và kỹ thuật liên quan đến việc sử dụng các công cụ, dịch vụ, nền tảng điện toán đám mây và hạ tầng mạng của Bên Thứ Ba trong suốt quá trình triển khai dự án theo các điều khoản sau:
+Hai Bên thống nhất xác lập các nguyên tắc vận hành, phân định ranh giới trách nhiệm pháp lý và kỹ thuật liên quan đến việc sử dụng các công cụ, dịch vụ, nền tảng điện toán đám mây và hạ tầng mạng của Bên Thứ Ba theo các điều khoản sau:
+
 
 ---
 
@@ -86,9 +82,10 @@ Mặc dù được miễn trừ trách nhiệm pháp lý theo Điều 3, LocalMa
 Phụ lục này có hiệu lực đồng thời với Hợp đồng Dịch vụ Khung (MSA) và là căn cứ pháp lý vững chắc để giải quyết mọi khiếu nại liên quan đến hạ tầng kỹ thuật và nền tảng bên thứ ba giữa Hai Bên.
 
 | ĐẠI DIỆN BÊN A (KHÁCH HÀNG) | ĐẠI DIỆN BÊN B (LOCALMATE) |
-| :--- | :--- |
+| :---: | :---: |
 | *(Ký tên, ghi rõ họ tên và đóng dấu)* | *(Ký tên, ghi rõ họ tên và đóng dấu)* |
-| <br><br><br> | <br><br><br> |
-| **Họ và tên:** [NGUOI_DAI_DIEN_A] | **Họ và tên:** [REPRESENTATIVE] |
-| **Chức vụ:** [CHUC_VU_A] | **Chức vụ:** [TITLE] |
-| **Ngày ký:** ____/____/202[X] | **Ngày ký:** ____/____/202[X] |
+| <br><br><br><br> | <br><br><br><br> |
+| **[NGƯỜI_ĐẠI_DIỆN_A]** | **[REPRESENTATIVE]** |
+| Chức vụ: [CHỨC_VỤ_A] | Chức vụ: [TITLE] |
+| Ngày ký: ..... / ..... / 202[NĂM] | Ngày ký: ..... / ..... / 202[NĂM] |
+

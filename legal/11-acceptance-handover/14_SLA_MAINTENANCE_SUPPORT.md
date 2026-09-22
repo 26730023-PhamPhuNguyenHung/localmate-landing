@@ -1,19 +1,15 @@
+| **ĐƠN VỊ CUNG CẤP DỊCH VỤ**<br>**LOCALMATE VIỆT NAM**<br>Số: [MÃ_ĐƠN]/SLA-LM/[NĂM] | **CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM**<br>**Độc lập - Tự do - Hạnh phúc**<br>----------------o0o----------------<br>*Hà Nội, ngày [NGÀY] tháng [THÁNG] năm 202[NĂM]* |
+| :---: | :---: |
+
 # THỎA THUẬN MỨC ĐỘ DỊCH VỤ VÀ CAM KẾT BẢO TRÌ KỸ THUẬT
-## (SERVICE LEVEL AGREEMENT - SLA & TECHNICAL MAINTENANCE)
-**Mã hiệu văn bản:** `LM-OPS-SLA-14`  
-*(Đính kèm Hợp đồng Dịch vụ Khung số: [SO_HOP_DONG_MSA]/LM-MSA hoặc Đơn đặt hàng tương ứng)*  
-**Căn cứ áp dụng:**  
-- *Bộ luật Dân sự số 91/2015/QH13 (Điều 513, Điều 517 về nghĩa vụ bảo hành dịch vụ);*  
-- *Luật Thương mại số 36/2005/QH11 (Điều 74, Điều 81);*  
-- *Quy chuẩn dịch vụ hỗ trợ kỹ thuật tiêu chuẩn của LocalMate.*
+**(SERVICE LEVEL AGREEMENT - SLA & TECHNICAL MAINTENANCE)**
 
----
+- *Căn cứ Bộ luật Dân sự số 91/2015/QH13 (Điều 513, Điều 517 về nghĩa vụ bảo hành dịch vụ);*
+- *Căn cứ Luật Thương mại số 36/2005/QH11 (Điều 74, Điều 81 về trách nhiệm bảo hành dịch vụ);*
+- *Căn cứ Hợp đồng Dịch vụ Khung số: [MÃ_HỢP_ĐỒNG] ký giữa Hai Bên.*
 
-Phụ lục Thỏa thuận Mức độ Dịch vụ (SLA) này được xác lập giữa:
-- **BÊN A (KHÁCH HÀNG):** [TEN_KHACH_HANG] (Đại diện: [NGUOI_DAI_DIEN_A])
-- **BÊN B (LOCALMATE):** [LOCALMATE_LEGAL_NAME] (Đại diện: [REPRESENTATIVE])
-
-Thỏa thuận này quy định cụ thể về thời gian tiếp nhận, thời hạn khắc phục sự cố, phạm vi bảo hành và các kênh hỗ trợ kỹ thuật áp dụng cho các sản phẩm kỹ thuật số do LocalMate bàn giao.
+Thỏa thuận này quy định cụ thể về thời gian tiếp nhận, thời hạn khắc phục sự cố, phạm vi bảo hành và các kênh hỗ trợ kỹ thuật áp dụng cho các sản phẩm kỹ thuật số do LocalMate bàn giao:
+.
 
 ---
 
@@ -78,9 +74,10 @@ Sau khi kết thúc thời hạn 30 ngày bảo hành miễn phí, Khách hàng 
 Thỏa thuận SLA này là căn cứ cam kết chất lượng dịch vụ vận hành của LocalMate, được lập thành 02 (hai) bản gốc có giá trị pháp lý như nhau, mỗi Bên giữ 01 (một) bản để giám sát thực hiện.
 
 | ĐẠI DIỆN BÊN A (KHÁCH HÀNG) | ĐẠI DIỆN BÊN B (LOCALMATE) |
-| :--- | :--- |
+| :---: | :---: |
 | *(Ký tên, ghi rõ họ tên và đóng dấu)* | *(Ký tên, ghi rõ họ tên và đóng dấu)* |
-| <br><br><br> | <br><br><br> |
-| **Họ và tên:** [NGUOI_DAI_DIEN_A] | **Họ và tên:** [REPRESENTATIVE] |
-| **Chức vụ:** [CHUC_VU_A] | **Chức vụ:** [TITLE] |
-| **Ngày ký:** ____/____/202[X] | **Ngày ký:** ____/____/202[X] |
+| <br><br><br><br> | <br><br><br><br> |
+| **[NGƯỜI_ĐẠI_DIỆN_A]** | **[REPRESENTATIVE]** |
+| Chức vụ: [CHỨC_VỤ_A] | Chức vụ: [TITLE] |
+| Ngày ký: ..... / ..... / 202[NĂM] | Ngày ký: ..... / ..... / 202[NĂM] |
+

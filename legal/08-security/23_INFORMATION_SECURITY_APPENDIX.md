@@ -1,21 +1,17 @@
+| **ĐƠN VỊ CUNG CẤP DỊCH VỤ**<br>**LOCALMATE VIỆT NAM**<br>Số: [MÃ_ĐƠN]/PL-ATTT-LM/[NĂM] | **CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM**<br>**Độc lập - Tự do - Hạnh phúc**<br>----------------o0o----------------<br>*Hà Nội, ngày [NGÀY] tháng [THÁNG] năm 202[NĂM]* |
+| :---: | :---: |
+
 # PHỤ LỤC AN TOÀN THÔNG TIN MẠNG VÀ BẢO ĐẢM AN NINH KỸ THUẬT
-## (INFORMATION SECURITY & ANTI-SPAM COMPLIANCE APPENDIX)
-**Mã hiệu văn bản:** `LM-SEC-APP-23`  
-*(Đính kèm Hợp đồng Dịch vụ Khung số: [SO_HOP_DONG_MSA]/LM-MSA hoặc Đơn đặt hàng tương ứng)*  
-**Căn cứ pháp lý:**  
-- *Luật An toàn thông tin mạng số 86/2015/QH13 (Điều 16, Điều 17, Điều 20 về bảo vệ thông tin cá nhân trên mạng và chống thư rác);*  
-- *Luật An ninh mạng số 24/2018/QH14 và Nghị định số 53/2022/NĐ-CP;*  
-- *Nghị định số 330/2026/NĐ-CP quy định xử phạt vi phạm hành chính trong lĩnh vực an ninh mạng và dữ liệu cá nhân;*  
-- *Luật Dữ liệu số 60/2024/QH15 (có hiệu lực từ 01/07/2025);*  
-- *Nghị định số 91/2020/NĐ-CP về chống tin nhắn rác, thư rác, cuộc gọi rác và quy định về gửi tin nhắn quảng cáo.*
+**(INFORMATION SECURITY & ANTI-SPAM COMPLIANCE APPENDIX)**
 
----
-
-Phụ lục này được lập vào ngày [NGAY] tháng [THANG] năm 202[X] giữa:
-- **BÊN A (KHÁCH HÀNG):** [TEN_KHACH_HANG] (Đại diện: [NGUOI_DAI_DIEN_A])
-- **BÊN B (LOCALMATE):** [LOCALMATE_LEGAL_NAME] (Đại diện: [REPRESENTATIVE])
+- *Căn cứ Luật An toàn thông tin mạng số 86/2015/QH13 (Điều 16, Điều 17, Điều 20 về bảo vệ thông tin cá nhân và chống thư rác);*
+- *Căn cứ Luật An ninh mạng số 24/2018/QH14 và Nghị định số 53/2022/NĐ-CP;*
+- *Căn cứ Nghị định số 13/2023/NĐ-CP ngày 17 tháng 04 năm 2023 về bảo vệ dữ liệu cá nhân;*
+- *Căn cứ Nghị định số 91/2020/NĐ-CP về chống tin nhắn rác, thư rác, cuộc gọi rác và quy định về gửi tin nhắn quảng cáo;*
+- *Căn cứ Hợp đồng Dịch vụ Khung số: [MÃ_HỢP_ĐỒNG] ký giữa Hai Bên.*
 
 Hai Bên thống nhất các tiêu chuẩn kỹ thuật, quy định an toàn thông tin và cam kết phòng chống thư rác/tin nhắn rác áp dụng cho toàn bộ hạ tầng Website, phần mềm CRM, hệ thống tự động hóa và các kênh kết nối dữ liệu như sau:
+
 
 ---
 
@@ -104,9 +100,10 @@ Ngay khi phát hiện có dấu hiệu bị tấn công mạng, rò rỉ dữ li
 Phụ lục này là một bộ phận không thể tách rời của Hợp đồng Dịch vụ Khung (MSA), được lập thành 02 (hai) bản gốc có giá trị pháp lý như nhau, mỗi Bên giữ 01 (một) bản để thực thi.
 
 | ĐẠI DIỆN BÊN A (KHÁCH HÀNG) | ĐẠI DIỆN BÊN B (LOCALMATE) |
-| :--- | :--- |
+| :---: | :---: |
 | *(Ký tên, ghi rõ họ tên và đóng dấu)* | *(Ký tên, ghi rõ họ tên và đóng dấu)* |
-| <br><br><br> | <br><br><br> |
-| **Họ và tên:** [NGUOI_DAI_DIEN_A] | **Họ và tên:** [REPRESENTATIVE] |
-| **Chức vụ:** [CHUC_VU_A] | **Chức vụ:** [TITLE] |
-| **Ngày ký:** ____/____/202[X] | **Ngày ký:** ____/____/202[X] |
+| <br><br><br><br> | <br><br><br><br> |
+| **[NGƯỜI_ĐẠI_DIỆN_A]** | **[REPRESENTATIVE]** |
+| Chức vụ: [CHỨC_VỤ_A] | Chức vụ: [TITLE] |
+| Ngày ký: ..... / ..... / 202[NĂM] | Ngày ký: ..... / ..... / 202[NĂM] |
+

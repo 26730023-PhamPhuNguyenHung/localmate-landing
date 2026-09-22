@@ -6,7 +6,19 @@ Tài liệu này ghi nhận dòng thời gian các mốc cam kết (commits), s�
 
 ## Mốc Sự Kiện & Commits Gần Nhất
 
-### Mốc: Rebuild Trang Chủ, Tinh Chỉnh Hero Layout & Deploy Cloudflare Pages
+### Mốc: Chuẩn Hóa Toàn Diện Bộ Hợp Đồng Pháp Lý B2B, HĐLĐ Kèm IP & Hợp Đồng Đại Lý Agency
+- **Mã commit**: `2a9d8b6` + Pending
+- **Nội dung**: `feat(legal): standardize all legal contracts with vietnam header format, agency partnership and employee IP assignment`
+- **Chi tiết**:
+  - **Chuẩn hóa Quốc hiệu - Tiêu ngữ**: 100% tài liệu pháp lý tuân thủ thể thức Việt Nam với bảng 2 cột Quốc hiệu - Tiêu ngữ borderless, căn cứ Bộ luật Dân sự 2015, Luật Thương mại 2005, Luật SHTT 2022, Bộ luật Lao động 2019, Nghị định 13/2023/NĐ-CP.
+  - **Công cụ DOCX Builder chuẩn từng file**: `scripts/build_single_contract_docx.py` tự động nhận diện header borderless, căn chỉnh bảng dữ liệu theo khổ A4 (Margins 0.8 in, body 6.77 in), chống rớt chữ vụn, thêm thuộc tính `w:cantSplit` cho table row.
+  - **Bổ sung Bộ tài liệu Đại lý & Chuyển nhượng Agency (`legal/17-agency-partner/`)**: `32_LOCALMATE_AGENCY_PARTNERSHIP_AGREEMENT.md` & `.docx` quy định chiết khấu sỉ 35-36%, cấp quyền White-label/Co-branded, Sub-licensing, điều khoản Non-circumvention bảo vệ khách của agency trong 24 tháng.
+  - **Bổ sung Điều khoản IP trong Hợp đồng Lao động & PIIA (`legal/18-hr-ip/`)**:
+    - `33_EMPLOYEE_LABOR_CONTRACT_WITH_IP.md` & `.docx`: Hợp đồng lao động tích hợp Điều 39 Luật SHTT (Work Made for Hire) 100% thuộc LocalMate ngay từ khi hình thành, thù lao bản quyền trọn gói trong lương; kỷ luật bảo mật mã nguồn nghiêm cấm fork/clone về repo cá nhân; cam kết Non-compete 12 tháng và Non-solicitation 18 tháng.
+    - `34_IP_ASSIGNMENT_AND_CONFIDENTIALITY_AGREEMENT.md` & `.docx`: Thỏa thuận PIIA độc lập cho Freelancer/Nhân viên/Cộng tác viên.
+  - **Chuẩn hóa toàn bộ 15 phụ lục chuyên sâu**: Website, Google Maps, Google Ads, Content & Social, CRM Automation, DPA, NDA, IP Appendix, Bàn giao tài khoản số, Nền tảng bên thứ ba, An toàn thông tin mạng, Tiến độ thanh toán & Đặt cọc theo Án lệ 25/2018/AL, SLA bảo trì 4 cấp (P0-P3), Change Request Form (CR), Biên bản Nghiệm thu, Biên bản Bàn giao, Biên bản Thanh lý.
+  - **Tự động hóa Generator**: `legal/16-contract-generator/generate-contract.ps1` hỗ trợ sinh tự động theo gói: `PackA`, `PackB`, `PackC`, `Agency`, `HR`, `All`.
+
 - **Mã commit**: `4e26bf8`
 - **Nội dung**: `feat(ui): refine homepage hero layout, fix mobile eyebrow text, and update seo preloads`
 - **Chi tiết**:

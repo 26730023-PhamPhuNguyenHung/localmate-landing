@@ -1,23 +1,28 @@
+| **ĐƠN VỊ THỰC HIỆN DỊCH VỤ**<br>**LOCALMATE VIỆT NAM**<br>Số: [MÃ_PHIẾU]/CR-LM/[NĂM] | **CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM**<br>**Độc lập - Tự do - Hạnh phúc**<br>----------------o0o----------------<br>*Hà Nội, ngày [NGÀY] tháng [THÁNG] năm 202[NĂM]* |
+| :---: | :---: |
+
 # PHIẾU YÊU CẦU THAY ĐỔI PHẠM VI CÔNG VIỆC
-## (CHANGE REQUEST FORM - CR)
-**Mã số phiếu:** `LM-OPS-CR-[NAM][THANG]-[STT]`  
-*(Căn cứ theo Hợp đồng Dịch vụ Khung số: [SO_HOP_DONG_MSA]/LM-MSA và Bản SOW số: [SO_SOW])*  
-**Tên dự án:** [TEN_DU_AN]  
-**Khách hàng (Bên A):** [TEN_KHACH_HANG] | **Người yêu cầu:** [NGUOI_YEU_CAU_A]  
-**Đơn vị thực hiện (Bên B):** [LOCALMATE_LEGAL_NAME] | **Chuyên viên tiếp nhận:** [KY_SU_TIEP_NHAN_B]  
-**Ngày lập yêu cầu:** Ngày [NGAY] tháng [THANG] năm 202[X]
+**(CHANGE REQUEST FORM - CR)**
+
+- *Căn cứ Bộ luật Dân sự số 91/2015/QH13 ngày 24 tháng 11 năm 2015;*
+- *Căn cứ Luật Thương mại số 36/2005/QH11 ngày 14 tháng 06 năm 2005;*
+- *Căn cứ Hợp đồng Dịch vụ Khung số: [MÃ_HỢP_ĐỒNG] và Bản SOW số: [MÃ_SOW].*
+
+- **Tên dự án:** [TÊN_DỰ_ÁN]
+- **Khách hàng (Bên A):** [TÊN_KHÁCH_HÀNG] | **Người yêu cầu:** [NGƯỜI_YÊU_CẦU_A]
+- **Đơn vị thực hiện (Bên B):** [LOCALMATE_LEGAL_NAME] | **Kỹ sư tiếp nhận:** [KỸ_SƯ_TIẾP_NHẬN_B]
 
 ---
 
 ### PHẦN I: MÔ TẢ YÊU CẦU THAY ĐỔI TỪ PHÍA KHÁCH HÀNG
 *Khách hàng mô tả cụ thể tính năng, trang nội dung hoặc điều chỉnh muốn thực hiện so với bản SOW đã ký kết:*
 
-- **Tên yêu cầu thay đổi:** [TEN_YEU_CAU_THAY_DOI] (Ví dụ: Tích hợp cổng thanh toán VNPay QR, Lập trình thêm trang Blog chuyên sâu, Thiết kế thêm 05 banner...)
-- **Lý do thay đổi:** [LY_DO_THAY_DOI]
+- **Tên yêu cầu thay đổi:** [TÊN_YÊU_CẦU_THAY_ĐỔI] *(Ví dụ: Tích hợp cổng thanh toán VNPay QR, Lập trình thêm trang chuyên mục riêng, Thiết kế thêm 05 banner...)*
+- **Lý do thay đổi:** [LÝ_DO_THAY_ĐỔI]
 - **Mô tả chi tiết kỹ thuật/giao diện mong muốn:**
-  - 1. [MO_TA_CHI_TIET_1]
-  - 2. [MO_TA_CHI_TIET_2]
-  - 3. [MO_TA_CHI_TIET_3]
+  - 1. [MÔ_TẢ_CHI_TIẾT_1]
+  - 2. [MÔ_TẢ_CHI_TIẾT_2]
+  - 3. [MÔ_TẢ_CHI_TIẾT_3]
 
 ---
 
@@ -30,21 +35,22 @@
    - [ ] Thay đổi lớn về cấu trúc cơ sở dữ liệu / luồng nghiệp vụ (Major Architectural Change)
 
 2. **Đánh giá tác động đến tiến độ dự án:**
-   - Kéo dài thời gian bàn giao dự kiến ban đầu thêm: **[SO_NGAY_GIA_HAN]** ngày làm việc.
-   - Ngày hoàn thành mới sau điều chỉnh: Ngày **[NGAY_HOAN_THANH_MOI]**.
+   - Kéo dài thời gian bàn giao dự kiến ban đầu thêm: **[SỐ_NGÀY_GIA_HẠN]** ngày làm việc.
+   - Ngày hoàn thành mới sau điều chỉnh: Ngày **[NGÀY_HOÀN_THÀNH_MỚI]**.
 
 3. **Bảng dự toán chi phí phát sinh:**
 
-| STT | HẠNG MỤC CÔNG VIỆC PHÁT SINH | ĐƠN VỊ TÍNH | SỐ LƯỢNG | ĐƠN GIÁ (VND) | THÀNH TIỀN (VND) |
-| :---: | :--- | :---: | :---: | :---: | :---: |
-| 1 | Phí thiết kế giao diện UI/UX bổ sung | Trang/Màn hình | [SL_UI] | [DON_GIA_UI] | [TIEN_UI] |
-| 2 | Phí lập trình tính năng & Tích hợp API mới | Tính năng/Giờ | [SL_DEV] | [DON_GIA_DEV] | [TIEN_DEV] |
-| 3 | Phí kiểm thử (Testing & QA) và cấu hình | Gói | 01 | [DON_GIA_QA] | [TIEN_QA] |
-| **TỔNG CHI PHÍ PHÁT SINH (CHƯA VAT):** | | | | | **[TONG_PHAT_SINH_CHUA_VAT]** |
-| **Thuế Giá trị gia tăng (VAT nếu có):** | | | | | **[VAT_PHAT_SINH]** |
-| **TỔNG GIÁ TRỊ PHÁT SINH THANH TOÁN:** | | | | | **[TONG_PHAT_SINH]** |
+| STT | HẠNG MỤC CÔNG VIỆC PHÁT SINH | KHỐI LƯỢNG | ĐƠN GIÁ (VNĐ) | THÀNH TIỀN (VNĐ) |
+| :---: | :--- | :---: | :---: | :---: |
+| 1 | **Thiết kế giao diện UI/UX bổ sung** | [SL_UI] màn hình | [ĐƠN_GIÁ_UI] | [TIỀN_UI] |
+| 2 | **Lập trình tính năng & Tích hợp API mới** | [SL_DEV] giờ/tính năng | [ĐƠN_GIÁ_DEV] | [TIỀN_DEV] |
+| 3 | **Kiểm thử (Testing & QA) và cấu hình hệ thống** | 01 gói | [ĐƠN_GIÁ_QA] | [TIỀN_QA] |
+| | **TỔNG CHI PHÍ PHÁT SINH (CHƯA VAT):** | | | **[TỔNG_CHƯA_VAT]** |
+| | **Thuế Giá trị gia tăng (VAT nếu có):** | | | **[TIỀN_VAT]** |
+| | **TỔNG GIÁ TRỊ PHÁT SINH THANH TOÁN:** | | | **[TỔNG_THANH_TOÁN]** |
 
-*(Số tiền bằng chữ: [SO_TIEN_BANG_CHU] đồng).*
+*(Số tiền bằng chữ: [SỐ_TIỀN_BẰNG_CHỮ] đồng).*
+
 
 ---
 
@@ -67,9 +73,10 @@ Phiếu này được lập thành 02 (hai) bản gốc có giá trị pháp lý
 ### KÝ XÁC NHẬN CỦA ĐẠI DIỆN HAI BÊN:
 
 | ĐẠI DIỆN BÊN YÊU CẦU (KHÁCH HÀNG) | ĐẠI DIỆN BÊN THỰC HIỆN (LOCALMATE) |
-| :--- | :--- |
+| :---: | :---: |
 | *(Ký tên, ghi rõ họ tên và đóng dấu)* | *(Ký tên, ghi rõ họ tên và đóng dấu)* |
-| <br><br><br> | <br><br><br> |
-| **Họ và tên:** [NGUOI_YEU_CAU_A] | **Họ và tên:** [REPRESENTATIVE] |
-| **Chức vụ:** [CHUC_VU_A] | **Chức vụ:** [TITLE] |
-| **Thời điểm duyệt:** ____:____ ngày ____/____/202[X] | **Ngày tiếp nhận:** Ngày ____/____/202[X] |
+| <br><br><br><br> | <br><br><br><br> |
+| **[NGƯỜI_YÊU_CẦU_A]** | **[REPRESENTATIVE]** |
+| Chức vụ: [CHỨC_VỤ_A] | Chức vụ: [TITLE] |
+| Ngày duyệt: ..... / ..... / 202[NĂM] | Ngày tiếp nhận: ..... / ..... / 202[NĂM] |
+
