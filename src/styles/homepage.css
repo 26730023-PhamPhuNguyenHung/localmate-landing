@@ -66,17 +66,34 @@
 .lm-home .lm-grid-icon { font-size:31px; line-height:1; }
 .lm-home .lm-hero-note { margin:35px 0 0 98px; display:inline-block; transform:rotate(-3deg); font-size:23px; }
 .lm-home .lm-hero-aside { position:absolute; right:4%; top:26px; transform:rotate(-14deg); text-align:center; color:#355e67; background:#ffffffcc; padding:8px 15px; border-radius:20px; }
-.lm-home .lm-device-label { position:absolute; display:flex; align-items:center; justify-content:center; gap:.6cqw; font-size:1.1cqw; color:#102b39; line-height:1.4; }
-.lm-home .lm-device-label svg { width:2.4cqw; height:2.4cqw; color:#0c8b63; }
-.lm-home .lm-device-label small { display:block; font-size:.85cqw; white-space:nowrap; }
-.lm-home .lm-label-web { left:49%; top:29%; width:13%; transform:rotate(6deg); }
-.lm-home .lm-label-ads { left:65%; top:32%; width:16%; transform:rotate(7deg); }
-.lm-home .lm-label-maps { left:31.5%; top:47%; width:10%; transform:rotate(-5deg); font-size:.85cqw; }
-.lm-home .lm-label-maps svg { width:1.6cqw; }
-.lm-home .lm-label-maps small { font-size:.65cqw; }
-.lm-home .lm-label-content { left:82%; top:52%; width:10%; transform:rotate(9deg); }
-.lm-home .lm-label-crm { left:81%; top:61%; width:12%; transform:rotate(9deg); font-size:.9cqw; }
-.lm-home .lm-label-crm small { font-size:.75cqw; }
+.lm-home .lm-device-label {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: .7cqw;
+  font-size: 1.05cqw;
+  color: #102b39;
+  line-height: 1.3;
+  background: #ffffff;
+  padding: .65cqw 1.3cqw;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(12, 139, 99, 0.12), 0 2px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(13, 118, 71, 0.16);
+  box-sizing: border-box;
+  pointer-events: none;
+  z-index: 2;
+}
+.lm-home .lm-device-label svg { width: 2.2cqw; height: 2.2cqw; color: #0c8b63; flex-shrink: 0; }
+.lm-home .lm-device-label b { display: block; font-weight: 700; white-space: nowrap; }
+.lm-home .lm-device-label small { display: block; font-size: .82cqw; color: #55707d; white-space: nowrap; }
+.lm-home .lm-label-web { left: 48.2%; top: 26.2%; transform: rotate(4deg); min-width: 13.5cqw; }
+.lm-home .lm-label-ads { left: 63.8%; top: 30.2%; transform: rotate(6deg); min-width: 17cqw; }
+.lm-home .lm-label-maps { left: 29.6%; top: 44.2%; transform: rotate(-3.5deg); font-size: .88cqw; padding: .55cqw 1.1cqw; border-radius: 11px; min-width: 11.5cqw; }
+.lm-home .lm-label-maps svg { width: 1.8cqw; height: 1.8cqw; }
+.lm-home .lm-label-maps small { font-size: .7cqw; }
+.lm-home .lm-label-content { left: 80.2%; top: 51%; transform: rotate(8deg); min-width: 11cqw; }
+.lm-home .lm-label-crm { left: 79.4%; top: 60%; transform: rotate(8deg); font-size: .95cqw; padding: .55cqw 1.1cqw; min-width: 13cqw; }
+.lm-home .lm-label-crm small { font-size: .76cqw; }
 .lm-home .lm-wave { position:absolute; bottom:0; left:0; width:100%; height:130px; z-index:-1; pointer-events:none; }
 .lm-home .lm-hero > .lm-wave { height:260px; }
 .lm-home .lm-hero-values { margin-top:70px; padding-inline:54px; padding-bottom:38px; }
