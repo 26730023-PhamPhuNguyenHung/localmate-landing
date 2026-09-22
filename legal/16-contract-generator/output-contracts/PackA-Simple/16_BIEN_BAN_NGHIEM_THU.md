@@ -1,15 +1,18 @@
-﻿# BIÊN BẢN NGHIỆM THU DỊCH VỤ HOÀN THÀNH
-## (SERVICE ACCEPTANCE CERTIFICATE)
-**Mã hiệu văn bản:** `LM-OPS-ACC-16`  
-*(Căn cứ theo Hợp đồng Dịch vụ Khung số: LM-MSA-2026-088/LM-MSA và Bản SOW số: LM-SOW-2026-088)*  
-**Căn cứ pháp lý:**  
-- *Bộ luật Dân sự số 91/2015/QH13 (Điều 513, Điều 518 về kiểm tra và tiếp nhận kết quả dịch vụ);*  
-- *Luật Thương mại số 36/2005/QH11 (Điều 74, Điều 79 về quyền và nghĩa vụ của bên thuê dịch vụ);*  
-- *Nghị định số 123/2020/NĐ-CP (Khoản 2 Điều 9 về thời điểm lập hóa đơn khi hoàn thành dịch vụ hoặc từng giai đoạn nghiệm thu).*
+﻿| **ĐƠN VỊ CUNG CẤP DỊCH VỤ**<br>**LOCALMATE VIỆT NAM**<br>Số: [SO_NGHIEM_THU]/BBNT-LM/[NAM] | **CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM**<br>**Độc lập - Tự do - Hạnh phúc**<br>----------------o0o----------------<br>*Hà Nội, ngày [NGAY] tháng [THANG] năm 202[X]* |
+| :---: | :---: |
+
+# BIÊN BẢN NGHIỆM THU HOÀN THÀNH DỊCH VỤ
+**(SERVICE ACCEPTANCE CERTIFICATE)**
+
+- *Căn cứ Bộ luật Dân sự số 91/2015/QH13 ngày 24/11/2015 (Điều 513, Điều 518 về kiểm tra và tiếp nhận kết quả dịch vụ);*
+- *Căn cứ Luật Thương mại số 36/2005/QH11 ngày 14/06/2005 (Điều 74, Điều 79 về quyền và nghĩa vụ của các bên trong hợp đồng dịch vụ);*
+- *Căn cứ Nghị định số 123/2020/NĐ-CP ngày 19/10/2020 của Chính phủ quy định về hóa đơn, chứng từ;*
+- *Căn cứ Hợp đồng Dịch vụ số: LM-MSA-2026-088 ký ngày [NGAY_KY_HD] giữa Hai Bên;*
+- *Căn cứ Bản đặc tả phạm vi công việc (SOW) số: LM-SOW-2026-088 và kết quả triển khai thực tế.*
 
 ---
 
-Hôm nay, ngày [NGAY] tháng [THANG] năm 202[X], tại [DIA_DIEM], Hai Bên tiến hành kiểm tra, đánh giá và lập Biên bản nghiệm thu đối với các sản phẩm dịch vụ kỹ thuật số theo hợp đồng đã ký kết:
+Hôm nay, ngày [NGAY] tháng [THANG] năm 202[X], tại trụ sở các bên, Hai Bên tiến hành kiểm tra, đánh giá và lập Biên bản nghiệm thu đối với các sản phẩm dịch vụ kỹ thuật số đã hoàn thành như sau:
 
 ### ĐƠN VỊ SỬ DỤNG DỊCH VỤ (BÊN A - KHÁCH HÀNG):
 - **Tên doanh nghiệp / Hộ kinh doanh:** CÔNG TY TNHH THỜI TRANG ĐỊA PHƯƠNG SÀI GÒN

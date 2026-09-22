@@ -1,13 +1,20 @@
+| **ĐƠN VỊ CUNG CẤP DỊCH VỤ**<br>**LOCALMATE VIỆT NAM**<br>Số: [SO_BAN_GIAO]/BBBG-LM/[NAM] | **CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM**<br>**Độc lập - Tự do - Hạnh phúc**<br>----------------o0o----------------<br>*Hà Nội, ngày [NGAY] tháng [THANG] năm 202[X]* |
+| :---: | :---: |
+
 # BIÊN BẢN BÀN GIAO SẢN PHẨM VÀ TÀI NGUYÊN KỸ THUẬT SỐ
-## (DELIVERABLES & DIGITAL ASSETS HANDOVER RECORD)
-**Mã hiệu văn bản:** `LM-OPS-HND-17`  
-*(Căn cứ theo Hợp đồng Dịch vụ Khung số: [SO_HOP_DONG_MSA]/LM-MSA và Phụ lục SHTT số: `LM-IP-APP-12`)*  
+**(DELIVERABLES & DIGITAL ASSETS HANDOVER RECORD)**
+
+- *Căn cứ Bộ luật Dân sự số 91/2015/QH13 ngày 24 tháng 11 năm 2015;*
+- *Căn cứ Luật Thương mại số 36/2005/QH11 ngày 14 tháng 06 năm 2005;*
+- *Căn cứ Luật Công nghệ thông tin số 67/2006/QH11 ngày 29 tháng 06 năm 2006;*
+- *Căn cứ Luật Giao dịch điện tử số 20/2023/QH15 ngày 22 tháng 06 năm 2023;*
+- *Căn cứ Hợp đồng Dịch vụ số: [SO_HOP_DONG_MSA] ký ngày [NGAY_KY_HD] giữa Hai Bên.*
+
+---
+
 **Dự án:** [TEN_DU_AN]  
 **Khách hàng (Bên Tiếp Nhận - Bên A):** [TEN_KHACH_HANG] (Đại diện: [NGUOI_DAI_DIEN_A])  
 **Đơn vị thực hiện (Bên Bàn Giao - Bên B):** [LOCALMATE_LEGAL_NAME] (Đại diện: [REPRESENTATIVE])  
-**Ngày bàn giao:** Ngày [NGAY] tháng [THANG] năm 202[X]
-
----
 
 ### PHẦN I: DANH MỤC SẢN PHẨM VÀ TÀI NGUYÊN BÀN GIAO THỰC TẾ
 

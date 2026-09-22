@@ -1,12 +1,13 @@
+| **ĐƠN VỊ CUNG CẤP DỊCH VỤ**<br>**LOCALMATE VIỆT NAM**<br>Số: [SO_DOI_CHIEU]/BBDC-LM/[NAM] | **CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM**<br>**Độc lập - Tự do - Hạnh phúc**<br>----------------o0o----------------<br>*Hà Nội, ngày [NGAY] tháng [THANG] năm 202[X]* |
+| :---: | :---: |
+
 # BIÊN BẢN ĐỐI CHIẾU CÔNG NỢ VÀ XÁC NHẬN THANH TOÁN
-## (DEBT RECONCILIATION & PAYMENT CONFIRMATION STATEMENT)
-**Mã hiệu văn bản:** `LM-ACC-REC-19`  
-*(Căn cứ theo Hợp đồng Dịch vụ Khung số: [SO_HOP_DONG_MSA]/LM-MSA hoặc Đơn đặt hàng số: [SO_DON_HANG])*  
-**Kỳ đối chiếu:** Đến hết ngày [NGAY] tháng [THANG] năm 202[X]  
-**Căn cứ pháp lý:**  
-- *Luật Kế toán số 88/2015/QH13;*  
-- *Luật Thương mại số 36/2005/QH11 (Điều 306 về quyền yêu cầu trả tiền lãi do chậm thanh toán);*  
-- *Bộ luật Dân sự số 91/2015/QH13 (Điều 357 và Điều 468 về trách nhiệm do chậm thực hiện nghĩa vụ trả tiền).*
+**(DEBT RECONCILIATION & PAYMENT CONFIRMATION STATEMENT)**
+
+- *Căn cứ Luật Kế toán số 88/2015/QH13 ngày 20 tháng 11 năm 2015;*
+- *Căn cứ Luật Thương mại số 36/2005/QH11 ngày 14 tháng 06 năm 2005 (Điều 306);*
+- *Căn cứ Bộ luật Dân sự số 91/2015/QH13 ngày 24 tháng 11 năm 2015 (Điều 357 và Điều 468);*
+- *Căn cứ Hợp đồng Dịch vụ số: [SO_HOP_DONG_MSA] ký giữa Hai Bên.*
 
 ---
 

@@ -1,19 +1,18 @@
+| **ĐƠN VỊ CUNG CẤP DỊCH VỤ**<br>**LOCALMATE VIỆT NAM**<br>Số: [MÃ_ĐƠN]/DPA-LM/[NĂM] | **CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM**<br>**Độc lập - Tự do - Hạnh phúc**<br>----------------o0o----------------<br>*Hà Nội, ngày [NGÀY] tháng [THÁNG] năm 202[NĂM]* |
+| :---: | :---: |
+
 # THỎA THUẬN XỬ LÝ DỮ LIỆU CÁ NHÂN (DPA)
-**(DATA PROCESSING AGREEMENT - LOCALMATE ENTERPRISE STANDARD)**  
-**Số hiệu Văn bản:** [MÃ_ĐƠN]/DPA-LM/[NĂM]  
-*(Ban hành kèm theo Hợp đồng Dịch vụ Khung số: [MÃ_HỢP_ĐỒNG] ký ngày [NGÀY_KÝ])*
+**(DATA PROCESSING AGREEMENT - DPA)**
+
+- *Căn cứ Bộ luật Dân sự số 91/2015/QH13 ngày 24 tháng 11 năm 2015;*
+- *Căn cứ Luật An toàn thông tin mạng số 86/2015/QH13 ngày 19 tháng 11 năm 2015;*
+- *Căn cứ Luật An ninh mạng số 24/2018/QH14 ngày 12 tháng 06 năm 2018 và Nghị định số 53/2022/NĐ-CP;*
+- *Căn cứ Nghị định số 13/2023/NĐ-CP ngày 17 tháng 04 năm 2023 của Chính phủ về bảo vệ dữ liệu cá nhân;*
+- *Căn cứ Hợp đồng Dịch vụ số: [MÃ_HỢP_ĐỒNG] ký ngày [NGÀY_KÝ] giữa Hai Bên.*
 
 ---
 
-### CĂN CỨ PHÁP LUẬT BẮT BUỘC
-- **Luật Bảo vệ dữ liệu cá nhân 2025** (Luật số 91/2025/QH15, có hiệu lực từ **01/01/2026**).
-- **Nghị định số 13/2023/NĐ-CP** ngày 17/04/2023 của Chính phủ về bảo vệ dữ liệu cá nhân (và Nghị định 356/2025/NĐ-CP hướng dẫn thi hành).
-- **Luật An ninh mạng 2018**, **Luật An toàn thông tin mạng 2015**, **Luật Dữ liệu 2024**.
-- **Nghị định số 330/2026/NĐ-CP** (hiệu lực từ 19/08/2026) về xử phạt vi phạm hành chính an ninh mạng và dữ liệu cá nhân (mức phạt lên tới 5% doanh thu hoặc 03 tỷ đồng).
-
----
-
-Hôm nay, ngày [NGÀY] tháng [THÁNG] năm 202[NĂM], Thỏa thuận này được ký kết giữa:
+Hôm nay, ngày [NGÀY] tháng [THÁNG] năm 202[NĂM], tại trụ sở các bên, Thỏa thuận xử lý dữ liệu cá nhân này ("Thỏa thuận DPA") được ký kết giữa:
 
 **BÊN KIỂM SOÁT DỮ LIỆU CÁ NHÂN (BÊN A / KHÁCH HÀNG):**
 - Tên Doanh nghiệp / Hộ kinh doanh: **[TÊN_DOANH_NGHIỆP_KHÁCH_HÀNG]**
@@ -109,8 +108,12 @@ c) Bên B ký và cấp **Biên Bản Xác Nhận Hoàn Tất Xóa Dữ Liệu (
 ---
 
 ### ĐẠI DIỆN HỢP PHÁP CÁC BÊN KÝ TÊN
+*(Ký, ghi rõ họ tên và đóng dấu)*
 
-```
-             ĐẠI DIỆN BÊN A                                   ĐẠI DIỆN BÊN B
-  (Ký tên, đóng dấu hoặc Ký số điện tử)             (Ký tên, đóng dấu hoặc Ký số điện tử)
-```
+| ĐẠI DIỆN BÊN A (BÊN KIỂM SOÁT DỮ LIỆU) | ĐẠI DIỆN BÊN B (BÊN XỬ LÝ DỮ LIỆU) |
+| :---: | :---: |
+| **[TÊN_DOANH_NGHIỆP_KHÁCH_HÀNG]** | **[LOCALMATE_LEGAL_NAME]** |
+| *(Ký tên, đóng dấu hoặc Ký số điện tử)* | *(Ký tên, đóng dấu hoặc Ký số điện tử)* |
+| <br><br><br><br> | <br><br><br><br> |
+| **[ĐẠI_DIỆN_KHÁCH_HÀNG]** | **[REPRESENTATIVE]** |
+| Chức vụ: [CHỨC_VỤ_KHÁCH_HÀNG] | Chức vụ: [TITLE] |

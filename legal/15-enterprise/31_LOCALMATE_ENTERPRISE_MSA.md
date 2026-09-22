@@ -1,6 +1,18 @@
+| **ĐƠN VỊ CUNG CẤP GIẢI PHÁP SỐ**<br>**LOCALMATE ENTERPRISE VIỆT NAM**<br>Số: [MÃ_HỢP_ĐỒNG]/ENT-MSA-LM/[NĂM] | **CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM**<br>**Độc lập - Tự do - Hạnh phúc**<br>----------------o0o----------------<br>*Hà Nội, ngày [NGÀY] tháng [THÁNG] năm 202[NĂM]* |
+| :---: | :---: |
+
 # HỢP ĐỒNG KHUNG CUNG CẤP DỊCH VỤ CÔNG NGHỆ & CHUYỂN ĐỔI SỐ DOANH NGHIỆP
-**(LOCALMATE ENTERPRISE MASTER SERVICES AGREEMENT - ENTERPRISE MSA)**  
-**Số hiệu Hợp đồng:** [MÃ_HỢP_ĐỒNG]/ENT-MSA-LM/[NĂM]
+**(LOCALMATE ENTERPRISE MASTER SERVICES AGREEMENT - ENTERPRISE MSA)**
+
+- *Căn cứ Bộ luật Dân sự số 91/2015/QH13 ngày 24 tháng 11 năm 2015 và các văn bản hướng dẫn thi hành;*
+- *Căn cứ Luật Thương mại số 36/2005/QH11 ngày 14 tháng 06 năm 2005;*
+- *Căn cứ Luật Công nghệ thông tin số 67/2006/QH11 ngày 29 tháng 06 năm 2006;*
+- *Căn cứ Luật Giao dịch điện tử số 20/2023/QH15 ngày 22 tháng 06 năm 2023;*
+- *Căn cứ Luật Sở hữu trí tuệ số 50/2005/QH11 đã được sửa đổi, bổ sung theo Luật số 07/2022/QH15;*
+- *Căn cứ Luật Trọng tài thương mại số 54/2010/QH12 ngày 17 tháng 06 năm 2010;*
+- *Căn cứ Luật An ninh mạng số 24/2018/QH14 ngày 12 tháng 06 năm 2018;*
+- *Căn cứ Nghị định số 13/2023/NĐ-CP ngày 17 tháng 04 năm 2023 của Chính phủ về bảo vệ dữ liệu cá nhân;*
+- *Căn cứ vào nhu cầu và năng lực thực tế của Hai Bên.*
 
 *(Phiên bản Doanh nghiệp Toàn diện dành cho Khách hàng Chuỗi, Doanh nghiệp SME quy mô vừa và lớn, Hợp đồng Tích hợp Đa dịch vụ, Ngân sách Quảng cáo lớn và Thuê bao Định kỳ Retainer)*
 
@@ -14,7 +26,7 @@
 
 ---
 
-Hôm nay, ngày [NGÀY] tháng [THÁNG] năm 202[NĂM], Hợp đồng Khung Doanh Nghiệp này được ký kết giữa:
+Hôm nay, ngày [NGÀY] tháng [THÁNG] năm 202[NĂM], tại trụ sở các bên, Hợp đồng Khung Doanh Nghiệp này được ký kết giữa:
 
 ### BÊN A (BÊN KHÁCH HÀNG DOANH NGHIỆP):
 - Tên Doanh nghiệp: **[TÊN_DOANH_NGHIỆP_BÊN_A]**
@@ -174,16 +186,12 @@ Hợp đồng có hiệu lực 12 tháng kể từ ngày ký, tự động gia h
 ---
 
 ### ĐẠI DIỆN HỢP PHÁP CÁC BÊN KÝ TÊN
+*(Ký, ghi rõ họ tên và đóng dấu pháp nhân)*
 
-```
-             ĐẠI DIỆN BÊN A                                   ĐẠI DIỆN BÊN B
-      [TÊN_DOANH_NGHIỆP_BÊN_A]                            [LOCALMATE_LEGAL_NAME]
-
-
-
-
-_________________________________________         _________________________________________
-  [ĐẠI_DIỆN_BÊN_A]                                  [REPRESENTATIVE]
-  Chức vụ: [CHỨC_VỤ_BÊN_A]                          Chức vụ: [TITLE]
-  (Ký số điện tử hoặc Ký tên, đóng dấu)             (Ký số điện tử hoặc Ký tên, đóng dấu)
-```
+| ĐẠI DIỆN BÊN A | ĐẠI DIỆN BÊN B |
+| :---: | :---: |
+| **[TÊN_DOANH_NGHIỆP_BÊN_A]** | **[LOCALMATE_LEGAL_NAME]** |
+| *(Ký số điện tử hoặc Ký tên, đóng dấu)* | *(Ký số điện tử hoặc Ký tên, đóng dấu)* |
+| <br><br><br><br> | <br><br><br><br> |
+| **[ĐẠI_DIỆN_BÊN_A]** | **[REPRESENTATIVE]** |
+| Chức vụ: [CHỨC_VỤ_BÊN_A] | Chức vụ: [TITLE] |

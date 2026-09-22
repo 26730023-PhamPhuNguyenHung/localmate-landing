@@ -1,16 +1,19 @@
+| **ĐƠN VỊ CUNG CẤP DỊCH VỤ**<br>**LOCALMATE VIỆT NAM**<br>Số: [SO_NDA]/NDA-LM/[NAM] | **CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM**<br>**Độc lập - Tự do - Hạnh phúc**<br>----------------o0o----------------<br>*Hà Nội, ngày [NGAY] tháng [THANG] năm 202[X]* |
+| :---: | :---: |
+
 # THỎA THUẬN BẢO MẬT THÔNG TIN SONG PHƯƠNG
-## (MUTUAL NON-DISCLOSURE AGREEMENT - NDA)
-**Mã hiệu văn bản:** `LM-SEC-NDA-01`  
-**Căn cứ pháp lý:**  
-- *Bộ luật Dân sự số 91/2015/QH13 (Điều 385, Điều 401, Điều 513);*  
-- *Luật Thương mại số 36/2005/QH11 (Điều 74, Điều 301, Điều 302);*  
-- *Luật Sở hữu trí tuệ số 50/2005/QH11, sửa đổi bổ sung năm 2009, 2019, 2022 (Điều 84, Điều 85 về bí mật kinh doanh);*  
-- *Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 & Nghị định số 356/2025/NĐ-CP;*  
-- *Luật An ninh mạng số 24/2018/QH14 và Nghị định số 330/2026/NĐ-CP.*
+**(MUTUAL NON-DISCLOSURE AGREEMENT - NDA)**
+
+- *Căn cứ Bộ luật Dân sự số 91/2015/QH13 ngày 24 tháng 11 năm 2015 (Điều 385, Điều 401, Điều 513);*
+- *Căn cứ Luật Thương mại số 36/2005/QH11 ngày 14 tháng 06 năm 2005 (Điều 74, Điều 301, Điều 302);*
+- *Căn cứ Luật Sở hữu trí tuệ số 50/2005/QH11 đã được sửa đổi, bổ sung theo Luật số 07/2022/QH15 (Điều 84, Điều 85 về bảo vệ bí mật kinh doanh);*
+- *Căn cứ Luật An toàn thông tin mạng số 86/2015/QH13 và Luật An ninh mạng số 24/2018/QH14;*
+- *Căn cứ Nghị định số 13/2023/NĐ-CP ngày 17 tháng 04 năm 2023 của Chính phủ về bảo vệ dữ liệu cá nhân;*
+- *Căn cứ vào nhu cầu và khả năng thực tế của Hai Bên.*
 
 ---
 
-Hôm nay, ngày [NGAY] tháng [THANG] năm 202[X], tại [DIA_DIEM], Thỏa thuận bảo mật thông tin song phương này ("Thỏa thuận") được ký kết giữa và bởi:
+Hôm nay, ngày [NGAY] tháng [THANG] năm 202[X], tại trụ sở các bên, Thỏa thuận bảo mật thông tin song phương này ("Thỏa thuận") được ký kết giữa và bởi:
 
 ### BÊN TIẾP NHẬN / BÊN TIẾT LỘ (BÊN A):
 - **Tên doanh nghiệp / Hộ kinh doanh:** [TEN_KHACH_HANG]

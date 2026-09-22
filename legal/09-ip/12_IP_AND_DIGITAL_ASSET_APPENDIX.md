@@ -1,15 +1,17 @@
+| **ĐƠN VỊ CUNG CẤP DỊCH VỤ**<br>**LOCALMATE VIỆT NAM**<br>Số: [SO_PHU_LUC]/PLIP-LM/[NAM] | **CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM**<br>**Độc lập - Tự do - Hạnh phúc**<br>----------------o0o----------------<br>*Hà Nội, ngày [NGÀY] tháng [THANG] năm 202[X]* |
+| :---: | :---: |
+
 # PHỤ LỤC SỞ HỮU TRÍ TUỆ VÀ PHÂN ĐỊNH TÀI SẢN KỸ THUẬT SỐ
-## (INTELLECTUAL PROPERTY & DIGITAL ASSETS APPENDIX)
-**Mã hiệu văn bản:** `LM-IP-APP-12`  
-*(Đính kèm Hợp đồng Dịch vụ Khung số: [SO_HOP_DONG_MSA]/LM-MSA hoặc Đơn đặt hàng tương ứng)*  
-**Căn cứ pháp lý:**  
-- *Bộ luật Dân sự số 91/2015/QH13 (Điều 105 về tài sản, Điều 331 về bảo lưu quyền sở hữu);*  
-- *Luật Sở hữu trí tuệ số 50/2005/QH11, sửa đổi bổ sung năm 2009, 2019, 2022 (Điều 18, 19, 20, 21, 22 về quyền tác giả chương trình máy tính và mỹ thuật ứng dụng);*  
-- *Nghị định số 17/2023/NĐ-CP quy định chi tiết một số điều và biện pháp thi hành Luật Sở hữu trí tuệ về quyền tác giả, quyền liên quan.*
+**(INTELLECTUAL PROPERTY & DIGITAL ASSETS APPENDIX)**
+
+- *Căn cứ Bộ luật Dân sự số 91/2015/QH13 ngày 24 tháng 11 năm 2015;*
+- *Căn cứ Luật Sở hữu trí tuệ số 50/2005/QH11 đã được sửa đổi, bổ sung theo Luật số 07/2022/QH15;*
+- *Căn cứ Nghị định số 17/2023/NĐ-CP ngày 26 tháng 04 năm 2023 của Chính phủ quy định chi tiết về quyền tác giả, quyền liên quan;*
+- *Căn cứ Hợp đồng Dịch vụ Khung số: [SO_HOP_DONG_MSA] ký giữa Hai Bên.*
 
 ---
 
-Phụ lục này được lập vào ngày [NGAY] tháng [THANG] năm 202[X] giữa:
+Phụ lục này được lập vào ngày [NGÀY] tháng [THANG] năm 202[X], tại trụ sở các bên, giữa:
 - **BÊN A (KHÁCH HÀNG):** [TEN_KHACH_HANG] (Đại diện: [NGUOI_DAI_DIEN_A])
 - **BÊN B (LOCALMATE):** [LOCALMATE_LEGAL_NAME] (Đại diện: [REPRESENTATIVE])
 

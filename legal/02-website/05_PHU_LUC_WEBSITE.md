@@ -1,7 +1,13 @@
-# PHỤ LỤC DỊCH VỤ THIẾT KẾ & PHÁT TRIỂN WEBSITE LOCALMATE
-**(WEBSITE DEVELOPMENT & DEPLOYMENT APPENDIX)**  
-**Số hiệu Phụ lục:** [MÃ_ĐƠN]/PL-WEB-LM/[NĂM]  
-*(Kèm theo Hợp đồng Dịch vụ Khung số: [MÃ_HỢP_ĐỒNG] ký ngày [NGÀY_KÝ])*
+| **ĐƠN VỊ CUNG CẤP DỊCH VỤ**<br>**LOCALMATE VIỆT NAM**<br>Số: [MÃ_ĐƠN]/PL-WEB-LM/[NĂM] | **CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM**<br>**Độc lập - Tự do - Hạnh phúc**<br>----------------o0o----------------<br>*Hà Nội, ngày [NGÀY] tháng [THÁNG] năm 202[NĂM]* |
+| :---: | :---: |
+
+# PHỤ LỤC DỊCH VỤ THIẾT KẾ & PHÁT TRIỂN WEBSITE
+**(WEBSITE DEVELOPMENT & DEPLOYMENT APPENDIX)**
+
+- *Căn cứ Luật Công nghệ thông tin số 67/2006/QH11 ngày 29 tháng 06 năm 2006;*
+- *Căn cứ Luật Giao dịch điện tử số 20/2023/QH15 ngày 22 tháng 06 năm 2023;*
+- *Căn cứ Luật An toàn thông tin mạng số 86/2015/QH13 và Luật An ninh mạng số 24/2018/QH14;*
+- *Căn cứ Hợp đồng Dịch vụ Khung số: [MÃ_HỢP_ĐỒNG] ký ngày [NGÀY_KÝ] giữa Hai Bên.*
 
 ---
 
@@ -103,8 +109,12 @@ Nhằm bảo vệ tối đa tài sản của Khách hàng đồng thời bảo v
 ---
 
 ### ĐẠI DIỆN CÁC BÊN KÝ TÊN
+*(Ký, ghi rõ họ tên và đóng dấu)*
 
-```
-             ĐẠI DIỆN BÊN A                                   ĐẠI DIỆN BÊN B
-  (Ký tên, đóng dấu hoặc Ký số điện tử)             (Ký tên, đóng dấu hoặc Ký số điện tử)
-```
+| ĐẠI DIỆN BÊN A (KHÁCH HÀNG) | ĐẠI DIỆN BÊN B (LOCALMATE) |
+| :---: | :---: |
+| **[TÊN_DOANH_NGHIỆP_KHÁCH_HÀNG]** | **[LOCALMATE_LEGAL_NAME]** |
+| *(Ký tên, đóng dấu hoặc Ký số điện tử)* | *(Ký tên, đóng dấu hoặc Ký số điện tử)* |
+| <br><br><br><br> | <br><br><br><br> |
+| **[ĐẠI_DIỆN_KHÁCH_HÀNG]** | **[REPRESENTATIVE]** |
+| Chức vụ: [CHỨC_VỤ_KHÁCH_HÀNG] | Chức vụ: [TITLE] |

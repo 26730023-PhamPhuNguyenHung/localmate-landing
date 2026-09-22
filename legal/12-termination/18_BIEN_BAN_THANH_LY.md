@@ -1,15 +1,17 @@
+| **ĐƠN VỊ CUNG CẤP DỊCH VỤ**<br>**LOCALMATE VIỆT NAM**<br>Số: [SO_THANH_LY]/BBTL-LM/[NAM] | **CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM**<br>**Độc lập - Tự do - Hạnh phúc**<br>----------------o0o----------------<br>*Hà Nội, ngày [NGAY] tháng [THANG] năm 202[X]* |
+| :---: | :---: |
+
 # BIÊN BẢN THANH LÝ HỢP ĐỒNG VÀ QUYẾT TOÁN TÀI CHÍNH
-## (CONTRACT LIQUIDATION & FINAL FINANCIAL SETTLEMENT)
-**Mã hiệu văn bản:** `LM-OPS-LIQ-18`  
-*(Căn cứ theo Hợp đồng Dịch vụ Khung số: [SO_HOP_DONG_MSA]/LM-MSA hoặc Đơn đặt hàng số: [SO_DON_HANG])*  
-**Căn cứ pháp lý:**  
-- *Bộ luật Dân sự số 91/2015/QH13 (Điều 422 về các trường hợp chấm dứt hợp đồng);*  
-- *Luật Thương mại số 36/2005/QH11 (Điều 74, Điều 310 - 314);*  
-- *Biên bản nghiệm thu hoàn thành số: `LM-OPS-ACC-16` ký ngày [NGAY_KY_NGHIEM_THU].*
+**(CONTRACT LIQUIDATION & FINAL FINANCIAL SETTLEMENT)**
+
+- *Căn cứ Bộ luật Dân sự số 91/2015/QH13 ngày 24/11/2015 (Điều 422 về các trường hợp chấm dứt hợp đồng);*
+- *Căn cứ Luật Thương mại số 36/2005/QH11 ngày 14/06/2005 (Điều 74, Điều 310 - 314);*
+- *Căn cứ Hợp đồng Dịch vụ số: [SO_HOP_DONG_MSA] ký ngày [NGAY_KY_HD] giữa Hai Bên;*
+- *Căn cứ Biên bản nghiệm thu hoàn thành số: [SO_NGHIEM_THU]/BBNT-LM ký ngày [NGAY_KY_NGHIEM_THU].*
 
 ---
 
-Hôm nay, ngày [NGAY] tháng [THANG] năm 202[X], tại [DIA_DIEM], Hai Bên tiến hành lập và ký Biên bản thanh lý hợp đồng đối với dự án: **[TEN_DU_AN]** giữa:
+Hôm nay, ngày [NGAY] tháng [THANG] năm 202[X], tại trụ sở các bên, Hai Bên tiến hành lập và ký Biên bản thanh lý hợp đồng đối với dự án: **[TEN_DU_AN]** giữa:
 
 ### BÊN SỬ DỤNG DỊCH VỤ (BÊN A - KHÁCH HÀNG):
 - **Tên doanh nghiệp / Hộ kinh doanh:** [TEN_KHACH_HANG]

@@ -1,7 +1,14 @@
+| **ĐƠN VỊ CUNG CẤP DỊCH VỤ**<br>**LOCALMATE VIỆT NAM**<br>Số: LM-SOW-[NAM][THANG]-[STT] | **CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM**<br>**Độc lập - Tự do - Hạnh phúc**<br>----------------o0o----------------<br>*Hà Nội, ngày [NGAY] tháng [THANG] năm 202[X]* |
+| :---: | :---: |
+
 # BẢN ĐẶC TẢ PHẠM VI CÔNG VIỆC CHI TIẾT
-## (STATEMENT OF WORK - SOW)
-**Mã số văn bản:** `LM-SOW-[NAM][THANG]-[STT]`  
-*(Ban hành kèm theo Hợp đồng Dịch vụ Khung số: [SO_HOP_DONG_MSA]/LM-MSA hoặc Đơn đặt hàng số: [SO_DON_HANG])*  
+**(STATEMENT OF WORK - SOW)**
+
+- *Căn cứ Hợp đồng Dịch vụ Khung số: [SO_HOP_DONG_MSA]/LM-MSA ký ngày [NGAY_KY_MSA] giữa Hai Bên;*
+- *Căn cứ Đơn đặt hàng số: [SO_DON_HANG] và yêu cầu kỹ thuật của Dự án.*
+
+---
+
 **Tên dự án:** [TEN_DU_AN]  
 **Khách hàng (Bên A):** [TEN_KHACH_HANG] (Đại diện: [NGUOI_DAI_DIEN_A])  
 **Đơn vị thực hiện (Bên B):** [LOCALMATE_LEGAL_NAME] (Đại diện: [REPRESENTATIVE])  

@@ -1,6 +1,18 @@
-# HỢP ĐỒNG KHUNG CUNG CẤP DỊCH VỤ SỐ & CÔNG NGHỆ LOCALMATE
-**(MASTER SERVICES AGREEMENT - MSA)**  
-**Số hiệu Hợp đồng:** [MÃ_HỢP_ĐỒNG]/MSA-LM/[NĂM]
+| **ĐƠN VỊ CUNG CẤP DỊCH VỤ**<br>**LOCALMATE VIỆT NAM**<br>Số: [MÃ_HỢP_ĐỒNG]/MSA-LM/[NĂM] | **CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM**<br>**Độc lập - Tự do - Hạnh phúc**<br>----------------o0o----------------<br>*Hà Nội, ngày [NGÀY] tháng [THÁNG] năm 202[NĂM]* |
+| :---: | :---: |
+
+# HỢP ĐỒNG KHUNG CUNG CẤP DỊCH VỤ CÔNG NGHỆ & MARKETING SỐ
+**(MASTER SERVICES AGREEMENT - MSA)**
+
+- *Căn cứ Bộ luật Dân sự số 91/2015/QH13 ngày 24 tháng 11 năm 2015 và các văn bản hướng dẫn thi hành;*
+- *Căn cứ Luật Thương mại số 36/2005/QH11 ngày 14 tháng 06 năm 2005;*
+- *Căn cứ Luật Công nghệ thông tin số 67/2006/QH11 ngày 29 tháng 06 năm 2006;*
+- *Căn cứ Luật Giao dịch điện tử số 20/2023/QH15 ngày 22 tháng 06 năm 2023;*
+- *Căn cứ Luật Sở hữu trí tuệ số 50/2005/QH11 đã được sửa đổi, bổ sung theo Luật số 07/2022/QH15;*
+- *Căn cứ Luật Quảng cáo số 16/2012/QH13 ngày 21 tháng 06 năm 2012;*
+- *Căn cứ Luật An ninh mạng số 24/2018/QH14 ngày 12 tháng 06 năm 2018;*
+- *Căn cứ Nghị định số 13/2023/NĐ-CP ngày 17 tháng 04 năm 2023 của Chính phủ về bảo vệ dữ liệu cá nhân;*
+- *Căn cứ vào nhu cầu và năng lực thực tế của Hai Bên.*
 
 ---
 
@@ -35,7 +47,7 @@ Hôm nay, ngày [NGÀY] tháng [THÁNG] năm 202[NĂM], tại trụ sở các b�
 - Người đại diện theo pháp luật: **[REPRESENTATIVE]** — Chức vụ: **[TITLE]**
 - Số điện thoại Hotline: **[PHONE]** (0834.422.439)
 - Email giao dịch chính thức: **[EMAIL]** (contact@localmate.vn)
-- Tài khoản ngân hàng: **[ACCOUNT_NUMBER]** mở tại Ngân hàng: **[BANK]**
+- Tài khoản ngân hàng: **[ACCOUNT_NUMBER]** mở tại Ngân hàng: **[BANK]** - Chi nhánh: **[BANK_BRANCH]**
 
 *(Bên A và Bên B sau đây gọi riêng là "Bên" và gọi chung là "Hai Bên" hoặc "Các Bên")*
 
@@ -44,7 +56,6 @@ Hôm nay, ngày [NGÀY] tháng [THÁNG] năm 202[NĂM], tại trụ sở các b�
 ### LỜI NÓI ĐẦU
 - Xét thấy Bên B là đơn vị hoạt động chuyên nghiệp trong lĩnh vực công nghệ thông tin, phát triển website, tối ưu hóa vị trí hiển thị Google Maps, quản trị chiến dịch quảng cáo trực tuyến, sản xuất nội dung số và tự động hóa quy trình khách hàng (CRM & Automation);
 - Xét thấy Bên A có nhu cầu thuê Bên B cung ứng các dịch vụ số nêu trên phục vụ hoạt động sản xuất, kinh doanh, xúc tiến thương mại của Bên A theo các Đơn Đặt Hàng (Service Order) và Bảng Đặc Tả Công Việc (SOW) phát sinh từng thời kỳ;
-- Căn cứ Bộ luật Dân sự 2015, Luật Thương mại 2005, Luật Giao dịch điện tử 2023, Luật Sở hữu trí tuệ sửa đổi 2022, Luật Quảng cáo và Luật Bảo vệ dữ liệu cá nhân 2025;
 
 Hai Bên tự nguyện thỏa thuận và thống nhất ký kết Hợp đồng Khung này với các điều khoản và điều kiện sau đây:
 
@@ -307,16 +318,13 @@ c) Một Bên vi phạm cơ bản nghĩa vụ hợp đồng (như chậm thanh t
 ---
 
 ### ĐẠI DIỆN CÁC BÊN KÝ TÊN
+*(Ký, ghi rõ họ tên và đóng dấu pháp nhân)*
 
-```
-             ĐẠI DIỆN BÊN A                                   ĐẠI DIỆN BÊN B
-  [TÊN_DOANH_NGHIỆP_KHÁCH_HÀNG]                           [LOCALMATE_LEGAL_NAME]
+| ĐẠI DIỆN BÊN A | ĐẠI DIỆN BÊN B |
+| :---: | :---: |
+| **[TÊN_DOANH_NGHIỆP_KHÁCH_HÀNG]** | **[LOCALMATE_LEGAL_NAME]** |
+| *(Ký tên, đóng dấu hoặc Ký số điện tử)* | *(Ký tên, đóng dấu hoặc Ký số điện tử)* |
+| <br><br><br><br> | <br><br><br><br> |
+| **[ĐẠI_DIỆN_KHÁCH_HÀNG]** | **[REPRESENTATIVE]** |
+| Chức vụ: [CHỨC_VỤ_KHÁCH_HÀNG] | Chức vụ: [TITLE] |
 
-
-
-
-_________________________________________         _________________________________________
-  [ĐẠI_DIỆN_KHÁCH_HÀNG]                             [REPRESENTATIVE]
-  Chức vụ: [CHỨC_VỤ_KHÁCH_HÀNG]                     Chức vụ: [TITLE]
-  (Ký tên, đóng dấu hoặc Ký số điện tử)             (Ký tên, đóng dấu hoặc Ký số điện tử)
-```

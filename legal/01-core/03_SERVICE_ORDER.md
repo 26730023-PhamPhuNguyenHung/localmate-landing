@@ -1,8 +1,11 @@
-# ĐƠN ĐẶT HÀNG DỊCH VỤ
-## (SERVICE ORDER - SO)
-**Số hiệu Đơn hàng:** `LM-SO-[NAM][THANG]-[STT]`  
-*(Căn cứ theo Hợp đồng Dịch vụ Khung số: [SO_HOP_DONG_MSA]/LM-MSA ký ngày [NGAY_KY_MSA])*  
-**Ngày phát hành:** Ngày [NGAY] tháng [THANG] năm 202[X]  
+| **ĐƠN VỊ CUNG CẤP DỊCH VỤ**<br>**LOCALMATE VIỆT NAM**<br>Số: LM-SO-[NAM][THANG]-[STT] | **CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM**<br>**Độc lập - Tự do - Hạnh phúc**<br>----------------o0o----------------<br>*Hà Nội, ngày [NGAY] tháng [THANG] năm 202[X]* |
+| :---: | :---: |
+
+# ĐƠN ĐẶT HÀNG DỊCH VỤ CÔNG NGHỆ SỐ
+**(SERVICE ORDER - SO)**
+
+- *Căn cứ Hợp đồng Dịch vụ Khung số: [SO_HOP_DONG_MSA]/LM-MSA ký ngày [NGAY_KY_MSA] giữa Hai Bên;*
+- *Căn cứ nhu cầu sử dụng dịch vụ của Bên A và khả năng cung ứng dịch vụ của Bên B.*
 
 ---
 
@@ -29,16 +32,16 @@
 
 Bên A đồng ý đặt hàng và Bên B đồng ý cung cấp các hạng mục dịch vụ kỹ thuật số theo bảng chi tiết dưới đây:
 
-| STT | MÃ DỊCH VỤ | TÊN GÓI DỊCH VỤ ĐẶT HÀNG | MÔ TẢ PHẠM VI CHÍNH | SỐ LƯỢNG | ĐƠN VỊ | THỜI GIAN THỰC HIỆN | THÀNH TIỀN (VND) |
-| :---: | :---: | :--- | :--- | :---: | :---: | :---: | :---: |
-| **01** | `WEB-PRO` | Thiết kế Website LocalMate Chuẩn | 01 Landing page chính + 03 trang con, tích hợp form lead, chuẩn SEO, responsive. | 01 | Gói | 15 ngày làm việc | [GIA_WEB] |
-| **02** | `MAPS-OPT` | Tối ưu & Chăm sóc Google Maps | Tối ưu Profile, SEO Local từ khóa khu vực, quy trình thu thập review 5 sao. | 01 | Địa điểm | 10 ngày làm việc | [GIA_MAPS] |
-| **03** | `ADS-MGT` | Quản trị Quảng cáo Google Ads | Nghiên cứu từ khóa, setup chiến dịch Search, tối ưu hàng tuần (Chưa gồm ngân sách nạp). | 01 | Tháng | Tháng thứ [X] | [GIA_ADS] |
-| **04** | `CON-SOC` | Sản xuất Nội dung & Fanpage | 12 bài viết chuẩn SEO + 12 ảnh thiết kế banner + đăng bài lịch trình. | 01 | Tháng | Tháng thứ [X] | [GIA_CONTENT] |
-| **05** | `CRM-AUTO` | Tích hợp CRM & Automation | Đồng bộ lead tự động về Telegram/Zalo, kịch bản tin nhắn chăm sóc tự động. | 01 | Hệ thống | 10 ngày làm việc | [GIA_CRM] |
-| **TỔNG CỘNG GIÁ TRỊ DỊCH VỤ (CHƯA VAT):** | | | | | | | **[TONG_TIEN_CHUA_VAT]** |
-| **Thuế Giá trị gia tăng (VAT nếu xuất hóa đơn GTGT):** | | | | | | | **[TIEN_VAT]** |
-| **TỔNG GIÁ TRỊ THANH TOÁN QUYẾT TOÁN:** | | | | | | | **[TONG_THANH_TOAN]** |
+| STT | Hạng Mục Dịch Vụ & Phạm Vi Triển Khai | Số Lượng | Thời Gian Hoàn Thành | Thành Tiền (VNĐ) |
+| :---: | :--- | :---: | :---: | :---: |
+| **01** | **Thiết kế Website LocalMate Chuẩn SEO**<br>- 01 Trang chính + 03 trang con, giao diện responsive mượt mà.<br>- Cấu hình bảo mật Cloudflare SSL, form lead đẩy về Zalo/Email. | 01 Gói | 15 ngày làm việc | [GIA_WEB] |
+| **02** | **Tối ưu & Chuẩn Hóa Google Maps (Local SEO)**<br>- Xác minh và tối ưu hồ sơ chuẩn Google Business Profile.<br>- Tối ưu bộ từ khóa tìm kiếm địa phương, quy trình lấy đánh giá 5 sao. | 01 Địa điểm | 10 ngày làm việc | [GIA_MAPS] |
+| **03** | **Quản Trị Chiến Dịch Quảng Cáo Google Ads**<br>- Nghiên cứu bộ 50 từ khóa chuyển đổi, viết mẫu quảng cáo chuẩn RSA.<br>- Cài đặt chuyển đổi GA4/GTM và tối ưu hóa hàng tuần (chưa gồm ngân sách nạp). | 01 Tháng | Tháng thứ [X] | [GIA_ADS] |
+| **04** | **Sản Xuất Nội Dung & Quản Trị Mạng Xã Hội**<br>- 12 bài viết chuyên sâu chuẩn SEO + 12 ảnh banner thiết kế nhận diện.<br>- Lập kế hoạch đăng tải và tối ưu tương tác fanpage. | 01 Tháng | Tháng thứ [X] | [GIA_CONTENT] |
+| **05** | **Tích Hợp Tự Động Hóa CRM & Dữ Liệu Khách Hàng**<br>- Đồng bộ lead tự động vào Google Sheets bảo mật phân quyền.<br>- Gửi thông báo có khách đặt hẹn mới tức thì về Telegram hoặc Zalo OA. | 01 Hệ thống | 10 ngày làm việc | [GIA_CRM] |
+| **TỔNG CỘNG GIÁ TRỊ DỊCH VỤ (CHƯA VAT):** | | | | **[TONG_TIEN_CHUA_VAT]** |
+| **Thuế Giá trị gia tăng (VAT nếu Bên A yêu cầu hóa đơn GTGT):** | | | | **[TIEN_VAT]** |
+| **TỔNG GIÁ TRỊ THANH TOÁN ĐƠN HÀNG:** | | | | **[TONG_THANH_TOAN]** |
 
 *(Bằng chữ: [SO_TIEN_BANG_CHU] đồng).*
 

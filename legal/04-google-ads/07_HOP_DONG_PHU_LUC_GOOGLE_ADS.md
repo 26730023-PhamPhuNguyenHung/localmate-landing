@@ -1,15 +1,14 @@
-# HỢP ĐỒNG / PHỤ LỤC DỊCH VỤ QUẢNG CÁO GOOGLE ADS CHUYÊN SÂU
-**(GOOGLE ADS MANAGEMENT & PERFORMANCE APPENDIX)**  
-**Số hiệu Văn bản:** [MÃ_ĐƠN]/HĐQC-ADS-LM/[NĂM]  
-*(Kèm theo Hợp đồng Dịch vụ Khung số: [MÃ_HỢP_ĐỒNG] ký ngày [NGÀY_KÝ])*
+| **ĐƠN VỊ CUNG CẤP DỊCH VỤ**<br>**LOCALMATE VIỆT NAM**<br>Số: [MÃ_ĐƠN]/PLQC-LM/[NĂM] | **CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM**<br>**Độc lập - Tự do - Hạnh phúc**<br>----------------o0o----------------<br>*Hà Nội, ngày [NGÀY] tháng [THÁNG] năm 202[NĂM]* |
+| :---: | :---: |
 
----
+# PHỤ LỤC DỊCH VỤ QUẢNG CÁO TRỰC TUYẾN GOOGLE ADS
+**(GOOGLE ADS MANAGEMENT & PERFORMANCE APPENDIX)**
 
-### CĂN CỨ PHÁP LUẬT BẮT BUỘC ÁP DỤNG
-- **Luật Quảng cáo số 16/2012/QH13** và **Luật số 75/2025/QH15** (sửa đổi, bổ sung một số điều của Luật Quảng cáo, có hiệu lực từ **01/01/2026**).
-- **Nghị định 181/2013/NĐ-CP** và **Nghị định 70/2021/NĐ-CP** về quản lý quảng cáo trên không gian mạng và dịch vụ quảng cáo xuyên biên giới tại Việt Nam.
-- **Nghị định 38/2021/NĐ-CP** (sửa đổi bởi NĐ 128/2022/NĐ-CP) về xử phạt vi phạm hành chính trong hoạt động văn hóa và quảng cáo.
-- **Thông tư 80/2021/TT-BTC** & **Thông tư 219/2013/TT-BTC** của Bộ Tài chính về hóa đơn, thuế GTGT và thuế nhà thầu nước ngoài (FCT) của Google tại Việt Nam.
+- *Căn cứ Luật Thương mại số 36/2005/QH11 ngày 14 tháng 06 năm 2005;*
+- *Căn cứ Luật Quảng cáo số 16/2012/QH13 ngày 21 tháng 06 năm 2012;*
+- *Căn cứ Nghị định số 181/2013/NĐ-CP và Nghị định số 70/2021/NĐ-CP về quản lý dịch vụ quảng cáo xuyên biên giới tại Việt Nam;*
+- *Căn cứ Thông tư số 80/2021/TT-BTC của Bộ Tài chính hướng dẫn về thuế nhà thầu đối với các nền tảng xuyên biên giới;*
+- *Căn cứ Hợp đồng Dịch vụ Khung số: [MÃ_HỢP_ĐỒNG] ký ngày [NGÀY_KÝ] giữa Hai Bên.*
 
 ---
 
@@ -88,8 +87,12 @@ b) Bồi hoàn ngay lập tức 100% số tiền phạt vi phạm hành chính v
 ---
 
 ### ĐẠI DIỆN CÁC BÊN KÝ TÊN
+*(Ký, ghi rõ họ tên và đóng dấu)*
 
-```
-             ĐẠI DIỆN BÊN A                                   ĐẠI DIỆN BÊN B
-  (Ký tên, đóng dấu hoặc Ký số điện tử)             (Ký tên, đóng dấu hoặc Ký số điện tử)
-```
+| ĐẠI DIỆN BÊN A (NGƯỜI QUẢNG CÁO) | ĐẠI DIỆN BÊN B (LOCALMATE) |
+| :---: | :---: |
+| **[TÊN_DOANH_NGHIỆP_KHÁCH_HÀNG]** | **[LOCALMATE_LEGAL_NAME]** |
+| *(Ký tên, đóng dấu hoặc Ký số điện tử)* | *(Ký tên, đóng dấu hoặc Ký số điện tử)* |
+| <br><br><br><br> | <br><br><br><br> |
+| **[ĐẠI_DIỆN_KHÁCH_HÀNG]** | **[REPRESENTATIVE]** |
+| Chức vụ: [CHỨC_VỤ_KHÁCH_HÀNG] | Chức vụ: [TITLE] |

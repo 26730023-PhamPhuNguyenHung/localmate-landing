@@ -1,16 +1,18 @@
-# BẢN CAM KẾT PHÁP LÝ VỀ TÍNH HỢP PHÁP CỦA SẢN PHẨM, DỊCH VỤ VÀ NỘI DUNG QUẢNG CÁO
-## (CUSTOMER LEGAL DECLARATION & ADVERTISING CONTENT INDEMNITY)
-**Mã hiệu văn bản:** `LM-MKT-DEC-22`  
-*(Bắt buộc áp dụng cho dịch vụ Quảng cáo Google Ads, Meta Ads, Sản xuất Content và Đăng tin mạng xã hội)*  
-**Căn cứ pháp lý:**  
-- *Luật Quảng cáo số 16/2012/QH13 và Luật sửa đổi, bổ sung một số điều của Luật Quảng cáo số 75/2025/QH15 (có hiệu lực từ 01/01/2026) - Điều 12, Điều 13, Điều 20 về điều kiện quảng cáo và trách nhiệm kiểm tra tài liệu của người kinh doanh dịch vụ quảng cáo;*  
-- *Nghị định số 181/2013/NĐ-CP và Nghị định số 70/2021/NĐ-CP sửa đổi về quảng cáo trên mạng và dịch vụ quảng cáo xuyên biên giới;*  
-- *Nghị định số 38/2021/NĐ-CP (sửa đổi bởi Nghị định số 129/2021/NĐ-CP) về xử phạt vi phạm hành chính trong lĩnh vực văn hóa và quảng cáo;*  
-- *Bộ luật Dân sự số 91/2015/QH13 (Điều 401, Điều 513) và Luật Thương mại số 36/2005/QH11 (Điều 102 - 116).*
+| **ĐƠN VỊ CUNG CẤP DỊCH VỤ**<br>**LOCALMATE VIỆT NAM**<br>Số: [SO_CAM_KET]/CKQC-LM/[NAM] | **CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM**<br>**Độc lập - Tự do - Hạnh phúc**<br>----------------o0o----------------<br>*Hà Nội, ngày [NGAY] tháng [THANG] năm 202[X]* |
+| :---: | :---: |
+
+# BẢN CAM KẾT PHÁP LÝ VỀ TÍNH HỢP PHÁP CỦA SẢN PHẨM & NỘI DUNG QUẢNG CÁO
+**(CUSTOMER LEGAL DECLARATION & ADVERTISING CONTENT INDEMNITY)**
+
+- *Căn cứ Luật Quảng cáo số 16/2012/QH13 ngày 21 tháng 06 năm 2012;*
+- *Căn cứ Nghị định số 181/2013/NĐ-CP và Nghị định số 70/2021/NĐ-CP về quản lý dịch vụ quảng cáo trên không gian mạng;*
+- *Căn cứ Nghị định số 38/2021/NĐ-CP về xử phạt vi phạm hành chính trong lĩnh vực văn hóa và quảng cáo;*
+- *Căn cứ Bộ luật Dân sự số 91/2015/QH13 và Luật Thương mại số 36/2005/QH11;*
+- *Căn cứ Hợp đồng Dịch vụ Khung số: [SO_HOP_DONG_MSA] ký giữa Hai Bên.*
 
 ---
 
-Hôm nay, ngày [NGAY] tháng [THANG] năm 202[X], tại [DIA_DIEM], Bên yêu cầu quảng cáo ("Khách hàng") lập bản cam kết pháp lý này gửi cho **[LOCALMATE_LEGAL_NAME]** ("LocalMate") với các nội dung chi tiết sau:
+Hôm nay, ngày [NGAY] tháng [THANG] năm 202[X], tại trụ sở các bên, Bên yêu cầu quảng cáo ("Khách hàng") lập bản cam kết pháp lý này gửi cho **[LOCALMATE_LEGAL_NAME]** ("LocalMate") với các nội dung chi tiết sau:
 
 ### THÔNG TIN BÊN CAM KẾT (KHÁCH HÀNG / NGƯỜI QUẢNG CÁO):
 - **Tên doanh nghiệp / Hộ kinh doanh:** [TEN_KHACH_HANG]

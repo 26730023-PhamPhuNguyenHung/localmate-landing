@@ -101,7 +101,19 @@ function Process-File {
     }
 
     [System.IO.File]::WriteAllText($target, $text, [System.Text.Encoding]::UTF8)
-    Write-Host "  -> Generated: [$SubFolder] $fName" -ForegroundColor Green
+    Write-Host "  -> Generated MD:   [$SubFolder] $fName" -ForegroundColor Green
+
+    # Build từng file DOCX riêng lẻ chuẩn thể thức Việt Nam
+    $singleDocxScript = Join-Path -Path (Split-Path -Path $legalRoot -Parent) -ChildPath "scripts\build_single_contract_docx.py"
+    $targetDocx = [System.IO.Path]::ChangeExtension($target, ".docx")
+    if (Test-Path -Path $singleDocxScript) {
+        try {
+            & python $singleDocxScript $target $targetDocx
+            Write-Host "  -> Generated DOCX: [$SubFolder] $(Split-Path $targetDocx -Leaf)" -ForegroundColor Cyan
+        } catch {
+            Write-Warning "Could not generate DOCX for $target : $_"
+        }
+    }
 }
 
 Write-Host "[2/4] Generating files for Pack: $Pack" -ForegroundColor Yellow
@@ -114,7 +126,7 @@ if ($Pack -eq "PackA" -or $Pack -eq "All") {
 }
 
 if ($Pack -eq "PackB" -or $Pack -eq "All") {
-    Write-Host "`n--- PACK B: STANDARD MODULAR MSA ---" -ForegroundColor Cyan
+    Write-Host "`n--- PACK B: STANDARD GROWTH AGREEMENT ---" -ForegroundColor Cyan
     Process-File "01-core\01_MASTER_SERVICE_AGREEMENT_LOCALMATE.md" "PackB-Standard"
     Process-File "01-core\03_SERVICE_ORDER.md" "PackB-Standard"
     Process-File "01-core\04_STATEMENT_OF_WORK_SOW.md" "PackB-Standard"
@@ -133,29 +145,23 @@ if ($Pack -eq "PackC" -or $Pack -eq "All") {
     Process-File "15-enterprise\31_LOCALMATE_ENTERPRISE_MSA.md" "PackC-Enterprise"
     Process-File "01-core\04_STATEMENT_OF_WORK_SOW.md" "PackC-Enterprise"
     Process-File "07-data-protection\10_DATA_PROCESSING_AGREEMENT_DPA.md" "PackC-Enterprise"
-    Process-File "07-data-protection\10A_DATA_PROCESSING_INVENTORY.md" "PackC-Enterprise"
-    Process-File "07-data-protection\10B_SUBPROCESSOR_REGISTER.md" "PackC-Enterprise"
     Process-File "08-security\11_NDA_MUTUAL.md" "PackC-Enterprise"
     Process-File "09-ip\12_IP_AND_DIGITAL_ASSET_APPENDIX.md" "PackC-Enterprise"
-    Process-File "11-acceptance-handover\14_SLA_MAINTENANCE_SUPPORT.md" "PackC-Enterprise"
-    Process-File "08-security\21_THIRD_PARTY_SERVICE_APPENDIX.md" "PackC-Enterprise"
-    Process-File "08-security\23_INFORMATION_SECURITY_APPENDIX.md" "PackC-Enterprise"
     Process-File "11-acceptance-handover\16_BIEN_BAN_NGHIEM_THU.md" "PackC-Enterprise"
     Process-File "12-termination\18_BIEN_BAN_THANH_LY.md" "PackC-Enterprise"
 }
 
-Write-Host "`n[3/4] Successfully processed and replaced all placeholders!" -ForegroundColor Green
-
-# Automatically trigger python docx converter
-$converterScript = Join-Path -Path (Split-Path -Path $legalRoot -Parent) -ChildPath "scripts\convert_legal_to_docx.py"
-if (Test-Path -Path $converterScript) {
-    Write-Host "`n[3.5/4] Generating Word DOCX and Excel XLSX files via Python..." -ForegroundColor Cyan
-    try {
-        & python $converterScript
-    } catch {
-        Write-Warning "Could not run python converter: $_"
-    }
+if ($Pack -eq "Agency" -or $Pack -eq "All") {
+    Write-Host "`n--- PACK AGENCY: RESELLER & PARTNER AGREEMENT ---" -ForegroundColor Cyan
+    Process-File "17-agency-partner\32_LOCALMATE_AGENCY_PARTNERSHIP_AGREEMENT.md" "Pack-Agency"
 }
 
-Write-Host "`n[4/4] Output files (both .MD and .DOCX) saved at: $OutputDir" -ForegroundColor Yellow
+if ($Pack -eq "HR" -or $Pack -eq "All") {
+    Write-Host "`n--- PACK HR: LABOR CONTRACT & IP ASSIGNMENT ---" -ForegroundColor Cyan
+    Process-File "18-hr-ip\33_EMPLOYEE_LABOR_CONTRACT_WITH_IP.md" "Pack-HR"
+    Process-File "18-hr-ip\34_IP_ASSIGNMENT_AND_CONFIDENTIALITY_AGREEMENT.md" "Pack-HR"
+}
+
+Write-Host "`n[3/4] Successfully processed and built clean DOCX for all selected contracts!" -ForegroundColor Green
+Write-Host "`n[4/4] Output files saved at: $OutputDir" -ForegroundColor Yellow
 Write-Host "==========================================================" -ForegroundColor Cyan

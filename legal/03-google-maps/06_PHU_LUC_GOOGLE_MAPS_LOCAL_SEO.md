@@ -1,7 +1,12 @@
-# PHỤ LỤC DỊCH VỤ GOOGLE MAPS & LOCAL SEO LOCALMATE
-**(GOOGLE BUSINESS PROFILE & LOCAL SEO APPENDIX)**  
-**Số hiệu Phụ lục:** [MÃ_ĐƠN]/PL-MAPS-LM/[NĂM]  
-*(Kèm theo Hợp đồng Dịch vụ Khung số: [MÃ_HỢP_ĐỒNG] ký ngày [NGÀY_KÝ])*
+| **ĐƠN VỊ CUNG CẤP DỊCH VỤ**<br>**LOCALMATE VIỆT NAM**<br>Số: [MÃ_ĐƠN]/PL-MAPS-LM/[NĂM] | **CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM**<br>**Độc lập - Tự do - Hạnh phúc**<br>----------------o0o----------------<br>*Hà Nội, ngày [NGÀY] tháng [THÁNG] năm 202[NĂM]* |
+| :---: | :---: |
+
+# PHỤ LỤC DỊCH VỤ GOOGLE MAPS & LOCAL SEO
+**(GOOGLE BUSINESS PROFILE & LOCAL SEO APPENDIX)**
+
+- *Căn cứ Luật Thương mại số 36/2005/QH11 ngày 14 tháng 06 năm 2005;*
+- *Căn cứ Luật Công nghệ thông tin số 67/2006/QH11 ngày 29 tháng 06 năm 2006;*
+- *Căn cứ Hợp đồng Dịch vụ Khung số: [MÃ_HỢP_ĐỒNG] ký ngày [NGÀY_KÝ] giữa Hai Bên.*
 
 ---
 
@@ -74,8 +79,12 @@ Biên bản bàn giao GBP được Các Bên nghiệm thu đầy đủ theo 6 ti
 ---
 
 ### ĐẠI DIỆN CÁC BÊN KÝ TÊN
+*(Ký, ghi rõ họ tên và đóng dấu)*
 
-```
-             ĐẠI DIỆN BÊN A                                   ĐẠI DIỆN BÊN B
-  (Ký tên, đóng dấu hoặc Ký số điện tử)             (Ký tên, đóng dấu hoặc Ký số điện tử)
-```
+| ĐẠI DIỆN BÊN A (KHÁCH HÀNG) | ĐẠI DIỆN BÊN B (LOCALMATE) |
+| :---: | :---: |
+| **[TÊN_DOANH_NGHIỆP_KHÁCH_HÀNG]** | **[LOCALMATE_LEGAL_NAME]** |
+| *(Ký tên, đóng dấu hoặc Ký số điện tử)* | *(Ký tên, đóng dấu hoặc Ký số điện tử)* |
+| <br><br><br><br> | <br><br><br><br> |
+| **[ĐẠI_DIỆN_KHÁCH_HÀNG]** | **[REPRESENTATIVE]** |
+| Chức vụ: [CHỨC_VỤ_KHÁCH_HÀNG] | Chức vụ: [TITLE] |
