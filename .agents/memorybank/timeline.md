@@ -6,6 +6,18 @@ Tài liệu này ghi nhận dòng thời gian các mốc cam kết (commits), s�
 
 ## Mốc Sự Kiện & Commits Gần Nhất
 
+### Mốc: Rebuild Trang Chủ, Tinh Chỉnh Hero Layout & Deploy Cloudflare Pages
+- **Mã commit**: `4e26bf8`
+- **Nội dung**: `feat(ui): refine homepage hero layout, fix mobile eyebrow text, and update seo preloads`
+- **Chi tiết**:
+  - Tinh chỉnh Hero visual `lm-hero-visual`: Mở rộng kích thước và điều chỉnh `right` offset tại 3 breakpoint (Desktop 1260px/-50px, ≤1500px 1080px/-60px, ≤1200px 850px/-30px) để triệt tiêu khoảng trắng thừa.
+  - Mobile Eyebrow text: Rút gọn trên màn hình hẹp (<600px) thành "— Người đồng hành số" để chống rớt dòng cụt chữ.
+  - Tối ưu SEO/LCP: Cập nhật preload trong `index.html` trỏ tới `/images/home/hero.webp` chuẩn xác.
+  - Triển khai Cloudflare Pages (`localmate-vn`):
+    - Deployment URL: `https://b4fc9254.localmate-vn.pages.dev`
+    - Branch Alias URL: `https://fix-localmate-responsive-per.localmate-vn.pages.dev`
+    - Toàn bộ 30 bài viết tĩnh + 6 static pages được đóng gói và deploy thành công.
+
 ### Mốc: Thay Ảnh Minh Họa Hero Section Trang Chủ (`HomePage.tsx`)
 - **Mã commit**: `a1c4c7d`
 - **Nội dung**: `feat(home): replace hero section artwork with standalone high-res illustration`
