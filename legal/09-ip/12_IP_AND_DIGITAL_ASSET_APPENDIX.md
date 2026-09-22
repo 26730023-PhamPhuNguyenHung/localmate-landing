@@ -1,114 +1,107 @@
-| **ĐƠN VỊ CUNG CẤP DỊCH VỤ**<br>**LOCALMATE VIỆT NAM**<br>Số: [SO_PHU_LUC]/PLIP-LM/[NAM] | **CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM**<br>**Độc lập - Tự do - Hạnh phúc**<br>----------------o0o----------------<br>*Hà Nội, ngày [NGÀY] tháng [THANG] năm 202[X]* |
+| **ĐƠN VỊ CUNG CẤP DỊCH VỤ**<br>**LOCALMATE VIỆT NAM**<br>Số: [MÃ_ĐƠN]/PL-IP-LM/[NĂM] | **CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM**<br>**Độc lập - Tự do - Hạnh phúc**<br>----------------o0o----------------<br>*Hà Nội, ngày [NGÀY] tháng [THÁNG] năm 202[NĂM]* |
 | :---: | :---: |
 
-# PHỤ LỤC SỞ HỮU TRÍ TUỆ VÀ PHÂN ĐỊNH TÀI SẢN KỸ THUẬT SỐ
-**(INTELLECTUAL PROPERTY & DIGITAL ASSETS APPENDIX)**
+# PHỤ LỤC SỞ HỮU TRÍ TUỆ, PHÂN ĐỊNH TÀI NGUYÊN VÀ BẢO ĐẢM QUYỀN KIỂM SOÁT DỮ LIỆU
+**(INTELLECTUAL PROPERTY, DATA OWNERSHIP & BUSINESS CONTINUITY APPENDIX)**
 
 - *Căn cứ Bộ luật Dân sự số 91/2015/QH13 ngày 24 tháng 11 năm 2015;*
-- *Căn cứ Luật Sở hữu trí tuệ số 50/2005/QH11 đã được sửa đổi, bổ sung theo Luật số 07/2022/QH15;*
-- *Căn cứ Nghị định số 17/2023/NĐ-CP ngày 26 tháng 04 năm 2023 của Chính phủ quy định chi tiết về quyền tác giả, quyền liên quan;*
-- *Căn cứ Hợp đồng Dịch vụ Khung số: [SO_HOP_DONG_MSA] ký giữa Hai Bên.*
+- *Căn cứ Luật Sở hữu trí tuệ số 50/2005/QH11 đã được sửa đổi, bổ sung theo Luật số 07/2022/QH15 và Văn bản hợp nhất Luật Sở hữu trí tuệ;*
+- *Căn cứ Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 (áp dụng từ ngày 01/01/2026) và Nghị định số 13/2023/NĐ-CP;*
+- *Căn cứ Luật Giao dịch điện tử số 20/2023/QH15 (Văn bản hợp nhất năm 2026);*
+- *Căn cứ Hợp đồng Dịch vụ Khung số: [MÃ_HỢP_ĐỒNG] ký giữa Hai Bên.*
+
+Hôm nay, ngày [NGÀY] tháng [THÁNG] năm 202[NĂM], Phụ lục này được ký kết giữa:
+- **BÊN A (KHÁCH HÀNG):** **[TÊN_KHÁCH_HÀNG]** (Đại diện: [NGƯỜI_ĐẠI_DIỆN_A])
+- **BÊN B (LOCALMATE):** **[LOCALMATE_LEGAL_NAME]** (Đại diện: [REPRESENTATIVE])
 
 ---
 
-Phụ lục này được lập vào ngày [NGÀY] tháng [THANG] năm 202[X], tại trụ sở các bên, giữa:
-- **BÊN A (KHÁCH HÀNG):** [TEN_KHACH_HANG] (Đại diện: [NGUOI_DAI_DIEN_A])
-- **BÊN B (LOCALMATE):** [LOCALMATE_LEGAL_NAME] (Đại diện: [REPRESENTATIVE])
-
-Hai Bên thống nhất xác lập cơ chế phân định, bảo hộ và chuyển giao quyền sở hữu trí tuệ đối với toàn bộ các sản phẩm bàn giao kỹ thuật số (Deliverables) trong các dự án công nghệ và tiếp thị số của LocalMate theo các điều khoản chi tiết dưới đây:
-
----
-
-### ĐIỀU 1. MA TRẬN 5 NHÓM TÀI SẢN TRÍ TUỆ (IP MATRIX)
-Tất cả các sản phẩm, mã nguồn, nội dung, thiết kế và tài nguyên kỹ thuật số phát sinh hoặc được sử dụng trong quá trình thực hiện dịch vụ được phân loại và quản trị theo 05 (năm) nhóm độc lập sau:
-
-| STT | NHÓM TÀI SẢN | MÔ TẢ & PHẠM VI KỸ THUẬT | CHỦ SỞ HỮU GỐC (ORIGINAL OWNER) | QUY CHẾ CHUYỂN GIAO / SỬ DỤNG CHO KHÁCH HÀNG |
-| :---: | :--- | :--- | :--- | :--- |
-| **01** | **Tài liệu do Khách hàng cung cấp** *(Client Materials)* | Logo, bộ nhận diện thương hiệu, hình ảnh sản phẩm, video gốc, bảng giá, tài liệu kỹ thuật, danh sách khách hàng do Bên A cung cấp. | **Khách hàng (Bên A)** sở hữu 100%. | Cấp quyền cho LocalMate sử dụng phi độc quyền trong suốt thời gian thực hiện dịch vụ để hoàn thành dự án. |
-| **02** | **Sản phẩm tạo riêng theo yêu cầu** *(Custom Deliverables)* | Giao diện website thiết kế riêng (Figma/Tailwind code riêng biệt cho Bên A), bài viết content sản xuất riêng, kịch bản video riêng, landing page độc quyền. | **LocalMate (Bên B)** sáng tạo ban đầu. | **Chuyển nhượng 100% Quyền tài sản** (Khoản 1 Điều 20 Luật SHTT) cho Bên A **SAU KHI Bên A thanh toán đủ 100%** giá trị hợp đồng/giai đoạn. |
-| **03** | **Tài sản nền tảng có sẵn của LocalMate** *(Pre-existing Core Framework)* | Thư viện mã nguồn dùng chung (Core framework, UI component library, utility scripts, automation blueprints, mã nguồn kết nối API chuẩn của LocalMate). | **LocalMate (Bên B)** sở hữu độc quyền 100% vĩnh viễn. | **CẤM CHUYỂN NHƯỢNG QUYỀN SỞ HỮU**. LocalMate cấp cho Bên A một **Giấy phép sử dụng không độc quyền, vĩnh viễn (Non-exclusive, Perpetual License)** tích hợp sẵn trong sản phẩm bàn giao, không được bán lại độc lập. |
-| **04** | **Tài nguyên Mã nguồn mở** *(Open-Source Software - OSS)* | Các framework, thư viện mã nguồn mở bên thứ ba (React, Vite, Tailwind CSS, Python packages, Node.js modules...). | Các tác giả/Tổ chức mã nguồn mở toàn cầu. | Bên A được quyền sử dụng theo các điều khoản giấy phép mã nguồn mở tương ứng (MIT, Apache 2.0, BSD...). LocalMate bảo đảm không nhúng mã nguồn Copyleft độc hại (GPL v3...) làm lây nhiễm mã nguồn riêng của Bên A. |
-| **05** | **Tài sản thương mại bên thứ ba** *(Third-Party Licensed Assets)* | Stock photos có bản quyền (Freepik, Shutterstock, Envato), phông chữ thương mại (Commercial Fonts), icon packs trả phí, dịch vụ SaaS (Vercel, Supabase, Cloudflare, Resend, Zalo ZNS). | Nhà cung cấp bên thứ ba. | Bên A chịu trách nhiệm duy trì giấy phép sử dụng hợp pháp. LocalMate hỗ trợ bàn giao link bản quyền hoặc chỉ định danh mục cần mua bản quyền. |
+### NGUYÊN TẮC CỐT LÕI: "YOUR DATA. YOUR BUSINESS. YOUR CONTROL."
+Hai Bên cam kết xây dựng mối quan hệ hợp tác minh bạch, tôn trọng tuyệt đối quyền kiểm soát kinh doanh của Khách hàng, loại trừ triệt để nguy cơ trói buộc công nghệ bất hợp lý (No Vendor Lock-in). LocalMate cam kết thực thi **05 Bảo Đảm Vàng Cho Doanh Nghiệp**:
+1. **Dữ liệu thuộc về Khách hàng:** Toàn bộ dữ liệu kinh doanh, danh bạ học sinh, phụ huynh, khách hàng, doanh thu và nhật ký CRM thuộc quyền sở hữu độc quyền của Bên A.
+2. **Tài khoản nền tảng đứng tên Khách hàng:** Tên miền (Domain), tài khoản Google Business Profile (Maps), tài khoản quảng cáo Google Ads/Meta Ads bắt buộc được đăng ký chính chủ đứng tên Bên A.
+3. **Quyền xuất dữ liệu định dạng chuẩn:** Bên A có toàn quyền yêu cầu trích xuất dữ liệu của mình bất cứ lúc nào theo các định dạng tiêu chuẩn (Excel, CSV, JSON).
+4. **Cam kết lối thoát an toàn (Exit Guarantee):** Khi dừng dịch vụ, toàn bộ dữ liệu được bàn giao đầy đủ theo quy trình minh bạch trong thời hạn quy định.
+5. **Không giữ tài sản làm con tin:** LocalMate tuyệt đối không giữ tài khoản, không khóa dữ liệu của khách hàng để ép buộc tái ký hợp đồng.
 
 ---
 
-### ĐIỀU 2. ĐIỀU KIỆN TIÊN QUYẾT ĐỂ CHUYỂN GIAO QUYỀN SỞ HỮU (CONDITION PRECEDENT)
-2.1. **Bảo lưu quyền sở hữu theo Điều 331 Bộ luật Dân sự 2015:**
-LocalMate bảo lưu toàn bộ quyền sở hữu trí tuệ đối với các Sản phẩm tạo riêng (Custom Deliverables) cho đến thời điểm Bên A hoàn thành đầy đủ 100% nghĩa vụ thanh toán chi phí dịch vụ theo Hợp đồng và Đơn đặt hàng tương ứng.
+### ĐIỀU 1. PHÂN ĐỊNH BA LỚP TÀI SẢN TRÍ TUỆ (THREE-TIER IP ARCHITECTURE)
+Căn cứ các quy định của Luật Sở hữu trí tuệ về hợp đồng chuyển nhượng quyền tài sản và hợp đồng cấp quyền sử dụng tác phẩm/chương trình máy tính, toàn bộ tài sản kỹ thuật số trong dự án được phân định thành 03 (ba) lớp độc lập:
 
-2.2. **Hành vi chuyển giao thực tế:**
-Ngay khi Bên A thanh toán đủ 100% giá trị quyết toán của dự án (hoặc từng giai đoạn đã thỏa thuận nghiệm thu dứt điểm) và Hai Bên ký kết "Biên bản nghiệm thu và bàn giao tài sản số" (Mẫu `LM-OPS-HND-17`):
-- Toàn bộ quyền tài sản đối với các Sản phẩm tạo riêng (gồm quyền làm tác phẩm phái sinh, sao chép, phân phối, truyền đạt đến công chúng theo Điều 20 Luật Sở hữu trí tuệ sửa đổi 2022) tự động chuyển nhượng hoàn toàn sang cho Bên A;
-- LocalMate từ bỏ mọi yêu cầu thù lao bản quyền bổ sung đối với việc khai thác kinh doanh các Sản phẩm tạo riêng này của Bên A;
-- Các quyền nhân thân không thể chuyển giao (gồm quyền đứng tên tác giả, quyền bảo vệ sự toàn vẹn của tác phẩm theo Điều 19 Luật Sở hữu trí tuệ) thuộc về các cá nhân tác giả trực tiếp của LocalMate. LocalMate cam kết tác giả sẽ không sử dụng quyền nhân thân để cản trở Bên A khai thác thương mại bình thường.
-
-2.3. **Hệ quả của việc chậm thanh toán hoặc không thanh toán:**
-Trường hợp Bên A đưa Sản phẩm bàn giao vào sử dụng, khai thác thương mại công khai (như trỏ tên miền chính thức, chạy quảng cáo kéo traffic, kinh doanh bán hàng) khi **chưa thanh toán đủ 100% chi phí** mà không được sự đồng ý bằng văn bản của LocalMate:
-- Hành vi này cấu thành hành vi xâm phạm quyền tác giả theo Điều 28 Luật Sở hữu trí tuệ và vi phạm nghĩa vụ thanh toán theo Hợp đồng;
-- LocalMate có toàn quyền thực hiện các biện pháp kỹ thuật hợp pháp (như ngắt kết nối API, thu hồi quyền truy cập quản trị hệ thống trung gian, đưa giao diện về trạng thái bảo trì kỹ thuật tạm thời) mà không bị coi là vi phạm hợp đồng;
-- LocalMate có quyền yêu cầu Bên A bồi thường thiệt hại và thanh toán tiền bản quyền phát sinh trong thời gian khai thác trái phép.
+| LỚP TÀI SẢN | PHẠM VI KỸ THUẬT & THÀNH PHẦN | CHỦ THỂ SỞ HỮU | QUY CHẾ KHAI THÁC & CẤP QUYỀN |
+| :--- | :--- | :---: | :--- |
+| **1. TÀI SẢN KHÁCH HÀNG**<br>*(Customer IP & Data)* | - Dữ liệu kinh doanh, CRM, học sinh, phụ huynh, đơn hàng.<br>- Tên miền, tài khoản Google Maps, Ads, Fanpage.<br>- Logo, nhãn hiệu, hình ảnh, tài liệu do Bên A cung cấp. | **BÊN A (KHÁCH HÀNG)<br>Sở hữu 100%** | LocalMate chỉ được cấp quyền sử dụng tạm thời, phi độc quyền để thực hiện dịch vụ. Khi hợp đồng chấm dứt, quyền này tự động kết thúc. |
+| **2. TÀI SẢN CÔNG NGHỆ LÕI**<br>*(LocalMate Background IP)* | - LocalMate Core, framework, UI kit component library.<br>- Kiến trúc Database abstraction, auth module, engine tự động hóa.<br>- CI/CD deployment scripts, công cụ nội bộ, quy trình know-how. | **LOCALMATE<br>Sở hữu 100% vĩnh viễn** | LocalMate cấp Giấy phép sử dụng (License) tích hợp sẵn trong sản phẩm bàn giao. **Cấm chuyển nhượng quyền sở hữu, cấm trích xuất bán lẻ độc lập.** |
+| **3. SẢN PHẨM RIÊNG CỦA DỰ ÁN**<br>*(Project Deliverables)* | - Giao diện thiết kế riêng (Figma UI custom cho Bên A).<br>- Landing page, nội dung bài viết, kịch bản video riêng.<br>- Cấu hình luồng tự động hóa CRM chuyên biệt cho Bên A. | **Theo Cấp Độ Thương Mại<br>(Điều 2 Phụ lục)** | Phân định rõ quyền sử dụng (License), quyền tiếp quản (Continuity) hoặc chuyển nhượng quyền tài sản (Transfer) tùy theo gói đã mua. |
 
 ---
 
-### ĐIỀU 3. QUY CHẾ CẤP PHÉP SỬ DỤNG MÃ NGUỒN CỐT LÕI (CORE FRAMEWORK LICENSE)
-3.1. Đối với các thư viện mã nguồn nền tảng, boilerplate, components UI và các luồng tự động hóa do LocalMate sở hữu trước hoặc phát triển độc lập không sử dụng chi phí riêng của Bên A (Nhóm 03):
-- LocalMate cấp cho Bên A một giấy phép sử dụng: **Không độc quyền (Non-exclusive), có phạm vi toàn cầu (Worldwide), miễn phí bản quyền phát sinh sau bàn giao (Royalty-free) và có hiệu lực vĩnh viễn (Perpetual)**;
-- Mục đích cấp phép: Chỉ nhằm phục vụ việc vận hành, bảo trì, nâng cấp duy nhất cho website, hệ thống hoặc ứng dụng của chính Bên A;
-- Giới hạn nghiêm ngặt: Bên A **tuyệt đối không được phép** trích xuất riêng biệt mã nguồn lõi này để: (a) Bán lại, đóng gói thương mại hoặc cho thuê lại như một sản phẩm phần mềm độc lập cho bên thứ ba; (b) Dịch ngược (reverse engineer), decompile mã nguồn độc quyền của LocalMate nhằm mục đích cạnh tranh trực tiếp.
+### ĐIỀU 2. CÁC CẤP ĐỘ QUYỀN THƯƠNG MẠI CHO SẢN PHẨM RIÊNG (COMMERCIAL TIERS)
+Tùy thuộc vào gói dịch vụ được lựa chọn và ghi nhận tại Đơn Đặt Hàng (Service Order), Bên A được hưởng quyền hạn đối với Sản phẩm riêng của dự án (Project Deliverables) theo một trong các cấp độ sau:
+
+#### CẤP ĐỘ 1: DỊCH VỤ VẬN HÀNH TIÊU CHUẨN (MANAGED SERVICE — MẶC ĐỊNH CHO SME)
+- **Bản chất:** Bên A mua quyền sử dụng dịch vụ và giải pháp được vận hành hoàn chỉnh trên hạ tầng đám mây.
+- **Quyền của Bên A:** Toàn quyền sở hữu dữ liệu, tài khoản, nội dung thương hiệu; được cấp quyền sử dụng hệ thống liên tục trong thời hạn hợp đồng/chu kỳ thanh toán.
+- **Phạm vi mã nguồn:** Không bao gồm việc bàn giao mã nguồn (source code) hay tài liệu kiến trúc phần mềm.
+
+#### CẤP ĐỘ 2: BẢO ĐẢM VẬN HÀNH LIÊN TỤC (BUSINESS CONTINUITY LICENSE — GIẢI QUYẾT NỖI LO KHÓA DỊCH VỤ)
+- **Bản chất:** Dành cho doanh nghiệp cần sự bảo đảm an toàn kinh doanh mà không phải chi trả chi phí mua đứt mã nguồn cao.
+- **Quyền bổ sung của Bên A:**
+  - Được quyền xuất toàn bộ dữ liệu có cấu trúc định kỳ hoặc khi có yêu cầu;
+  - Được bàn giao toàn bộ file cấu hình riêng (configuration files) và tài liệu hướng dẫn quy trình vận hành hệ thống;
+  - Trường hợp LocalMate chấm dứt kinh doanh hoặc ngừng hỗ trợ sản phẩm: Bên A được tự động kích hoạt quyền cấp phép sử dụng vĩnh viễn đối với phiên bản hệ thống hiện hữu và **được toàn quyền thuê bên thứ ba tiếp quản vận hành** mà không bị coi là vi phạm quyền tác giả của LocalMate.
+
+#### CẤP ĐỘ 3: BÀN GIAO MÃ NGUỒN & HẠ TẦNG TRIỂN KHAI (SOURCE & DEPLOYMENT HANDOVER)
+- **Bản chất:** Dành cho khách hàng có đội ngũ kỹ thuật nội bộ cần kiểm soát toàn diện mã nguồn và tự host hệ thống.
+- **Phạm vi bàn giao:**
+  - Bàn giao kho lưu trữ mã nguồn (Git Repository) chứa toàn bộ code giao diện và module riêng của dự án;
+  - Bàn giao tài liệu hướng dẫn triển khai (Deployment Docs), sơ đồ cơ sở dữ liệu và cấu hình hạ tầng đám mây (Cloudflare Workers/Pages/Supabase/VPS);
+  - Bên A được quyền sửa đổi, nâng cấp mã nguồn phục vụ duy nhất hoạt động kinh doanh nội bộ của Bên A.
+- **Điều khoản loại trừ bắt buộc (Carve-out):** Việc bàn giao này **không bao gồm quyền sở hữu đối với LocalMate Core**, thư viện dùng chung, công cụ phát triển nội bộ hoặc know-how nền tảng của LocalMate.
+
+#### TÙY CHỌN BỔ SUNG: CHUYỂN NHƯỢNG ĐỘC QUYỀN QUYỀN TÀI SẢN (EXCLUSIVE IP ASSIGNMENT)
+- Trường hợp Bên A yêu cầu tính độc quyền tuyệt đối (LocalMate cam kết không tái sử dụng giao diện hay module tính năng này cho bất kỳ khách hàng nào khác), Hai Bên sẽ xác lập một hợp đồng chuyển nhượng quyền tài sản độc quyền riêng biệt với chi phí gia tăng phản ánh đúng giá trị thương mại của tính độc quyền (+100% đến +300% phí phát triển).
 
 ---
 
-### ĐIỀU 4. TÀI KHOẢN KỸ THUẬT SỐ VÀ QUYỀN TRUY CẬP (DIGITAL ACCOUNTS & CREDENTIALS)
-4.1. **Tài sản đứng tên Khách hàng (Bên A):**
-Các tài sản kỹ thuật số cốt lõi sau đây **bắt buộc phải đứng tên pháp nhân hoặc email chính chủ của Bên A** (hoặc người được Bên A ủy quyền bằng văn bản), LocalMate chỉ đóng vai trò cấu hình kỹ thuật:
-- Tên miền website (Domain Name - đăng ký tại VNNIC hoặc Registrar quốc tế);
-- Tài khoản Google Business Profile (Google Maps) - Bên A phải là **Chủ sở hữu chính (Primary Owner)**;
-- Tài khoản Google Ads, Google Tag Manager, Google Analytics (GA4), Google Search Console;
-- Tài khoản Fanpage, Zalo Doanh nghiệp (Zalo OA), Meta Business Suite;
-- Tài khoản lưu trữ dữ liệu CRM / Database trực tiếp của khách hàng.
+### ĐIỀU 3. HAI ĐIỀU KHOẢN NGUYÊN TẮC BẤT BIẾN (THE GOLDEN CLAUSES)
+Để bảo đảm tính minh bạch và công bằng tối cao, Hai Bên xác nhận hai nguyên tắc pháp lý bất biến sau:
 
-4.2. **Bàn giao quyền quản trị cao nhất:**
-Sau khi dự án nghiệm thu và Bên A hoàn tất thanh toán:
-- LocalMate có nghĩa vụ cấp quyền Quản trị viên cao nhất (Primary Owner / Admin / Organization Owner) cho Bên A đối với tất cả các tài khoản nêu trên;
-- LocalMate phải hạ quyền của mình xuống mức nhân sự hỗ trợ hoặc rời khỏi tài khoản theo yêu cầu bằng văn bản của Bên A;
-- Toàn bộ thông tin xác thực (mật khẩu, API keys, mã secret) phải được bàn giao qua kênh mã hóa an toàn (như Bitwarden Send / 1Password) theo quy trình tại Phụ lục `LM-SEC-ACC-13`. Tuyệt đối cấm gửi mật khẩu thô qua tin nhắn không mã hóa.
+> **3.1. NGUYÊN TẮC BẢO VỆ TÀI SẢN CÔNG NGHỆ LOCALMATE:**  
+> *"Việc chuyển giao sản phẩm bàn giao, tài liệu kỹ thuật hoặc mã nguồn cho Bên A theo bất kỳ gói dịch vụ nào đều không được hiểu là chuyển giao quyền sở hữu đối với LocalMate Core, framework, thư viện, UI components, template, module dùng chung, công cụ phát triển, quy trình triển khai, bí quyết kỹ thuật hoặc bất kỳ tài sản trí tuệ có trước nào của LocalMate, trừ khi Phụ lục chuyển giao bằng văn bản có quy định rõ ràng khác đi."*
+
+> **3.2. NGUYÊN TẮC BẢO VỆ DỮ LIỆU VÀ TÀI SẢN DOANH NGHIỆP KHÁCH HÀNG:**  
+> *"LocalMate không có bất kỳ quyền sở hữu nào và cam kết không bao giờ xác lập quyền sở hữu đối với dữ liệu kinh doanh, dữ liệu khách hàng, danh sách học sinh - phụ huynh, thông tin doanh thu, nhãn hiệu, tên miền và toàn bộ tài sản số do Khách hàng cung cấp hoặc phát sinh trong quá trình Khách hàng sử dụng dịch vụ."*
 
 ---
 
-### ĐIỀU 5. QUY ĐỊNH VỀ TÀI SẢN TẠO BỞI TRÍ TUỆ NHÂN TẠO (AI-GENERATED ASSETS)
-5.1. Hai Bên thừa nhận rằng trong quá trình sản xuất nội dung, đồ họa hoặc tối ưu mã nguồn, LocalMate có thể ứng dụng các công cụ Trí tuệ nhân tạo (AI Tools như ChatGPT, Midjourney, Claude, Gemini, GitHub Copilot) như một công cụ hỗ trợ tăng năng suất lao động sáng tạo.
-
-5.2. **Cam kết kiểm duyệt của LocalMate:**
-- LocalMate cam kết mọi sản phẩm bàn giao có yếu tố AI đều đã qua khâu biên tập, tinh chỉnh, kiểm tra lỗi logic, rà soát đạo văn và đánh giá đạo đức/pháp lý bởi chuyên viên con người của LocalMate;
-- LocalMate bảo đảm nội dung tạo ra không cố ý sao chép nguyên bản hoặc xâm phạm nhãn hiệu, bản quyền của bất kỳ bên thứ ba nào;
-- Tình trạng pháp lý về bản quyền đối với các tác phẩm thuần túy do AI tạo ra sẽ được giải thích và áp dụng theo quy định hiện hành của pháp luật Việt Nam tại thời điểm có hiệu lực.
-
----
-
-### ĐIỀU 6. CAM KẾT VÀ BỒI HOÀN VỀ XÂM PHẠM QUYỀN SỞ HỮU TRÍ TUỆ (IP INDEMNITY)
-6.1. **Cam kết của Bên A (Khách hàng):**
-- Bên A cam kết và bảo đảm rằng toàn bộ hình ảnh, nhãn hiệu, logo, văn bản, video, âm thanh và dữ liệu do Bên A cung cấp cho LocalMate để đưa lên website, mạng xã hội hoặc chiến dịch quảng cáo đều thuộc quyền sở hữu hợp pháp của Bên A hoặc Bên A đã có đầy đủ văn bản đồng ý/li-xăng hợp pháp từ chủ sở hữu quyền;
-- Bên A cam kết chịu toàn bộ trách nhiệm và giữ cho LocalMate không bị tổn hại, bồi hoàn cho LocalMate 100% toàn bộ thiệt hại, chi phí kiện tụng, tiền phạt hành chính nếu bất kỳ bên thứ ba nào khởi kiện hoặc cơ quan nhà nước xử phạt LocalMate do việc sử dụng các tài liệu vi phạm bản quyền do Bên A cung cấp.
-
-6.2. **Cam kết của Bên B (LocalMate):**
-- LocalMate cam kết các Sản phẩm tạo riêng do LocalMate trực tiếp sáng tạo và bàn giao cho Bên A không vi phạm bản quyền hoặc bí mật kinh doanh của bất kỳ bên thứ ba nào;
-- Trường hợp có tranh chấp phát sinh do mã nguồn hoặc nội dung do chính nhân sự LocalMate sáng tạo mà không phải do Bên A chỉ đạo sao chép: LocalMate có nghĩa vụ phối hợp bảo vệ quyền lợi cho Bên A, tự chịu chi phí chỉnh sửa/thay thế bằng sản phẩm tương đương không vi phạm, hoặc bồi thường thiệt hại trực tiếp cho Bên A theo giới hạn trách nhiệm tại MSA.
+### ĐIỀU 4. CAM KẾT LỐI THOÁT AN TOÀN VÀ XÓA DỮ LIỆU (EXIT GUARANTEE)
+Căn cứ Luật Bảo vệ dữ liệu cá nhân 2025/2026 và nguyên tắc kết thúc dịch vụ văn minh, minh bạch:
+4.1. **Trích xuất dữ liệu khi kết thúc hợp đồng:** Khi hợp đồng chấm dứt vì bất kỳ lý do gì, trong vòng **15 (mười lăm) ngày làm việc** kể từ ngày nhận được yêu cầu bằng văn bản/email của Bên A, LocalMate có nghĩa vụ bàn giao cho Bên A ít nhất một bản trích xuất dữ liệu hoàn chỉnh ở định dạng tiêu chuẩn (CSV, Excel hoặc JSON dump).  
+4.2. **Thời hạn duy trì tải dữ liệu:** LocalMate duy trì cổng tải dữ liệu an toàn cho Bên A trong thời hạn **30 (ba mươi) ngày** kể từ ngày cung cấp liên kết.  
+4.3. **Chấm dứt nghĩa vụ lưu trữ & Tiêu hủy an toàn:**
+- Sau thời hạn 30 ngày nêu trên, LocalMate sẽ tiến hành xóa bỏ an toàn, hủy kích hoạt hoặc ẩn danh hóa toàn bộ bản sao dữ liệu của Bên A trên hệ thống lưu trữ chính thức, ngoại trừ các dữ liệu nhật ký hệ thống (logs) và hóa đơn kế toán bắt buộc phải lưu trữ theo quy định của pháp luật thuế và an ninh mạng;
+- Thao tác này chính thức giải phóng hoàn toàn LocalMate khỏi mọi nghĩa vụ bảo quản dữ liệu và trách nhiệm pháp lý liên quan đến việc lưu trữ dữ liệu của Bên A sau thời điểm bàn giao.
 
 ---
 
-### ĐIỀU 7. QUYỀN SỬ DỤNG LÀM HỒ SƠ NĂNG LỰC (PORTFOLIO RIGHTS)
-Trừ khi Bên A có yêu cầu bảo mật nghiêm ngặt bằng văn bản trước ngày ký nghiệm thu, Bên A đồng ý cấp quyền cho LocalMate được:
-- Đặt một dòng chữ nhỏ hoặc biểu tượng tinh tế ở chân trang website: *"Được phát triển bởi LocalMate"* (kèm liên kết trỏ về `localmate.vn`);
-- Trưng bày hình ảnh chụp màn hình dự án, logo của Bên A và các chỉ số tăng trưởng đạt được trên trang web, tài liệu hồ sơ năng lực (Portfolio/Case Study) của LocalMate nhằm mục đích giới thiệu năng lực thực tế. LocalMate cam kết không tiết lộ các thông tin tài chính mật hoặc số liệu nhạy cảm của Bên A.
+### ĐIỀU 5. QUYỀN SỬ DỤNG HỒ SƠ NĂNG LỰC (PORTFOLIO RIGHTS)
+Trừ khi Bên A có yêu cầu bảo mật bằng văn bản trước ngày nghiệm thu, Bên A đồng ý cho phép LocalMate được đặt dòng chữ nhỏ tinh tế *"Phát triển bởi LocalMate"* (kèm link) ở chân website và được đưa hình ảnh giao diện dự án vào hồ sơ năng lực (Portfolio/Case Study) để minh chứng năng lực thực tế. LocalMate cam kết tuyệt đối không công bố các số liệu doanh thu, số liệu tài chính hay danh sách khách hàng mật của Bên A.
 
 ---
 
-Phụ lục này là một bộ phận không thể tách rời của Hợp đồng Dịch vụ Khung (MSA) giữa Hai Bên, có hiệu lực kể từ ngày ký và ràng buộc quyền lợi, nghĩa vụ của Hai Bên.
+### ĐIỀU 6. ĐIỀU KHOẢN THI HÀNH
+Phụ lục này có hiệu lực kể từ ngày ký, gắn liền với Hợp đồng Khung và Đơn đặt hàng tương ứng. Mọi tranh chấp liên quan đến quyền sở hữu trí tuệ hoặc dữ liệu sẽ được giải quyết trên tinh thần thương lượng thiện chí, hoặc đưa ra Tòa án nhân dân có thẩm quyền tại Việt Nam theo luật định.
+
+Phụ lục được lập thành 02 (hai) bản gốc có giá trị pháp lý như nhau, mỗi Bên giữ 01 (một) bản để thực hiện.
+
+---
 
 | ĐẠI DIỆN BÊN A (KHÁCH HÀNG) | ĐẠI DIỆN BÊN B (LOCALMATE) |
-| :--- | :--- |
+| :---: | :---: |
 | *(Ký tên, ghi rõ họ tên và đóng dấu)* | *(Ký tên, ghi rõ họ tên và đóng dấu)* |
-| <br><br><br> | <br><br><br> |
-| **Họ và tên:** [NGUOI_DAI_DIEN_A] | **Họ và tên:** [REPRESENTATIVE] |
-| **Chức vụ:** [CHUC_VU_A] | **Chức vụ:** [TITLE] |
-| **Ngày ký:** ____/____/202[X] | **Ngày ký:** ____/____/202[X] |
+| <br><br><br><br> | <br><br><br><br> |
+| **[NGƯỜI_ĐẠI_DIỆN_A]** | **[REPRESENTATIVE]** |
+| Chức vụ: [CHỨC_VỤ_A] | Chức vụ: [TITLE] |
+| Ngày ký: ..... / ..... / 202[NĂM] | Ngày ký: ..... / ..... / 202[NĂM] |

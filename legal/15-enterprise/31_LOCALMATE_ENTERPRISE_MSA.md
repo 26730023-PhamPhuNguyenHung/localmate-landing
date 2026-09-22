@@ -120,11 +120,26 @@ Mọi tính năng, module hoặc yêu cầu mở rộng ngoài SOW ban đầu b�
 7.2. **Quy trình Thông báo 2 Tầng:** Hết 07 ngày UAT lần 1, Bên B gửi Thông báo Nhắc nhở Lần 2 (gia hạn 03 ngày). Nếu Bên A tiếp tục im lặng, sản phẩm **MẶC NHIÊN ĐƯỢC COI LÀ ĐÃ NGHIỆM THU ĐẠT CHUẨN 100%** theo Khoản 2 Điều 393 BLDS 2015.  
 7.3. **Nghiệm Thu Thực Tế (Fact-based Acceptance):** Bất kể có biên bản ký tay hay chưa, nếu Bên A trỏ tên miền chính thức, nhập dữ liệu khách hàng thật hoặc chạy ads bán hàng thì sản phẩm mặc nhiên được pháp luật công nhận là đã nghiệm thu hoàn tất.
 
-#### ĐIỀU 8: MA TRẬN BẢN QUYỀN SỞ HỮU TRÍ TUỆ
-8.1. Căn cứ Luật SHTT sửa đổi 2022 và Nghị định 17/2023/NĐ-CP:
-- **Tài sản tạo riêng (Custom Deliverables):** Chuyển nhượng quyền tài sản cho Bên A **sau khi Bên A thanh toán đủ 100% giá trị hợp đồng**.
-- **Tài sản nền tảng LocalMate (Core Framework):** 100% thuộc quyền sở hữu vĩnh viễn của LocalMate. Bên A được cấp **Giấy phép sử dụng vĩnh viễn, không độc quyền (Non-exclusive Perpetual License)** để vận hành sản phẩm. Cấm Bên A trích xuất, bán lại mã nguồn framework cho bên thứ ba.  
-8.2. **Bảo Lưu Quyền Sở Hữu (Điều 331 BLDS):** Trong thời gian chưa thanh toán đủ, Bên A chỉ có quyền sử dụng thử nghiệm tạm thời.
+#### ĐIỀU 8: QUYỀN SỞ HỮU TRÍ TUỆ, BẢO ĐẢM KIỂM SOÁT DỮ LIỆU & LỐI THOÁT AN TOÀN
+8.1. **Nguyên Tắc Thương Mại Cốt Lõi ("Your Data. Your Business. Your Control"):**  
+Hai Bên thống nhất nguyên tắc tôn trọng quyền tự chủ của Doanh nghiệp, loại trừ triệt để nguy cơ trói buộc nhà cung cấp (No Vendor Lock-in):
+- Toàn bộ dữ liệu khách hàng, học sinh, phụ huynh, đơn hàng, CRM, tài khoản nền tảng số và tên miền **thuộc quyền sở hữu tuyệt đối 100% của Bên A**.
+- LocalMate chỉ giữ quyền sở hữu đối với nền tảng công nghệ lõi và thành phần dùng chung để phục vụ vận hành, bảo mật và phát triển liên tục.
+
+8.2. **Phân Định Ba Tầng Tài Sản Trí Tuệ (IP Architecture):**
+- **Tài sản Khách hàng (Customer IP & Data):** Cơ sở dữ liệu kinh doanh, thương hiệu, tên miền và tài liệu do Bên A cung cấp thuộc quyền sở hữu độc quyền của Bên A.
+- **Tài sản Công nghệ Lõi LocalMate (Background IP):** Nền tảng LocalMate Core, component library, template, UI kit, engine tự động hóa, CI/CD và bí quyết công nghệ thuộc quyền sở hữu vĩnh viễn của LocalMate. LocalMate cấp Giấy phép sử dụng (License) tích hợp sẵn trong sản phẩm, nghiêm cấm trích xuất sao chép hoặc bán lại cho bên thứ ba.
+- **Sản phẩm Riêng của Dự án (Project Deliverables):** Áp dụng theo Cấp độ thương mại lựa chọn tại Đơn Đặt Hàng:
+  - *Cấp độ 1 (Managed Service):* Bên A mua quyền sử dụng hệ thống trên hạ tầng đám mây;
+  - *Cấp độ 2 (Business Continuity License):* Bên A được xuất full dữ liệu, bàn giao cấu hình riêng, tài liệu vận hành và được quyền thuê bên thứ ba tiếp quản nếu Bên B dừng dịch vụ;
+  - *Cấp độ 3 (Source & Deployment Handover):* Bàn giao Git Repository mã nguồn riêng của dự án và tài liệu triển khai hạ tầng sau khi Bên A thanh toán đủ 100%.
+
+8.3. **Hai Điều Khoản Nguyên Tắc Bất Biến (Golden Clauses):**
+- *Bảo vệ công nghệ LocalMate:* Việc chuyển giao sản phẩm, tài liệu kỹ thuật hoặc mã nguồn cho Bên A không được hiểu là chuyển giao quyền sở hữu đối với LocalMate Core, framework, thư viện, template dùng chung hoặc bí quyết kỹ thuật có trước của LocalMate.
+- *Bảo vệ dữ liệu Bên A:* LocalMate không có bất kỳ quyền sở hữu nào đối với dữ liệu kinh doanh, dữ liệu khách hàng, thương hiệu, tên miền và tài sản do Bên A cung cấp.
+
+8.4. **Cam Kết Lối Thoát An Toàn (Exit Guarantee):** Khi chấm dứt hợp đồng, trong vòng **15 ngày làm việc**, Bên B xuất toàn bộ dữ liệu của Bên A ở định dạng tiêu chuẩn (CSV/JSON/Excel) và duy trì liên kết tải an toàn trong **30 ngày**. Hết thời hạn này, Bên B tiến hành tiêu hủy an toàn bản sao dữ liệu trên hệ thống, chính thức hoàn tất nghĩa vụ lưu trữ.
+
 
 #### ĐIỀU 9: THỎA THUẬN XỬ LÝ DỮ LIỆU CÁ NHÂN (ENTERPRISE DPA)
 9.1. Xác lập tư cách pháp lý theo **Luật Bảo vệ dữ liệu cá nhân 2025** và **Nghị định 13/2023/NĐ-CP**:

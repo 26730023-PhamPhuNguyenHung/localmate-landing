@@ -176,17 +176,29 @@ thì sản phẩm được coi là **ĐÃ ĐƯỢC BÊN A CHẤP THUẬN NGHIỆ
 
 ---
 
-### ĐIỀU 10: QUYỀN SỞ HỮU TRÍ TUỆ VÀ BẢN QUYỀN TÀI SẢN SỐ
-10.1. **Phân Định 5 Nhóm Tài Sản Số (IP Matrix):** Căn cứ Luật Sở hữu trí tuệ 2005 (sửa đổi 2022) và Nghị định 17/2023/NĐ-CP, toàn bộ tài sản phát sinh từ Hợp đồng này được phân loại và quản trị như sau:
-- **Nhóm 1: Sản phẩm tạo riêng cho Khách hàng (Custom Deliverables):** Nội dung bài viết viết riêng, ảnh chụp độc quyền cơ sở, video quảng cáo dựng riêng, layout tùy biến mang nhận diện thương hiệu của Bên A. Quyền tài sản (Economic Rights) đối với nhóm này sẽ được **Chuyển nhượng cho Bên A sau khi hoàn tất thanh toán 100%**.
-- **Nhóm 2: Tài sản nền tảng có sẵn của LocalMate (Pre-existing Materials / Core Framework):** Kiến trúc hệ thống, mã nguồn nền tảng, boilerplate, theme tokens, UI component library, mã nguồn tự động hóa và các scripts công cụ thuộc **QUYỀN SỞ HỮU DUY NHẤT VÀ VĨNH VIỄN CỦA LOCALMATE**. Bên B cấp cho Bên A một **Giấy phép sử dụng vĩnh viễn, không độc quyền, phạm vi toàn cầu, không thể chuyển nhượng lại và không thể cấp phép thứ cấp (Non-exclusive, Perpetual, Worldwide, Non-transferable License)** để vận hành duy nhất sản phẩm bàn giao. Cấm Bên A trích xuất, sao chép, phân phối lại hoặc bán lại mã nguồn nền tảng này cho bất kỳ bên thứ ba nào.
-- **Nhóm 3: Tài sản Mã nguồn mở (Open Source Software - OSS):** React, Tailwind CSS, Lucide icons, Vite plugins... tuân thủ giấy phép nguồn mở tương ứng (MIT, Apache 2.0). Được bàn giao theo nguyên trạng ("AS IS").
-- **Nhóm 4: Tài sản Bên thứ ba có bản quyền (Third-Party Licensed Assets):** Fonts thương mại, Stock photos, API services... sử dụng theo Điều khoản dịch vụ (EULA/ToS) của bên thứ ba.
-- **Nhóm 5: Tài sản của Khách hàng (Client Materials):** Logo, nhãn hiệu, slogan, ảnh do Bên A cung cấp thuộc quyền sở hữu của Bên A. Bên A cấp cho Bên B quyền sử dụng miễn phí có thời hạn để thực hiện hợp đồng.  
-10.2. **Điều Kiện Tiên Quyết Chuyển Giao Quyền Sở Hữu (Condition Precedent):**
-Quyền sở hữu trí tuệ đối với Nhóm 1 CHỈ CHÍNH THỨC ĐƯỢC CHUYỂN GIAO sang Bên A **KHI VÀ CHỈ KHI Bên A đã hoàn thành đầy đủ một trăm phần trăm (100%) nghĩa vụ thanh toán** tổng giá trị Hợp đồng và các chi phí phát sinh. Cho đến thời điểm thanh toán đủ, Bên A chỉ được cấp quyền sử dụng tạm thời có thể bị thu hồi nhằm phục vụ kiểm thử nội bộ.  
-10.3. **Quy chế Tài sản Hỗ trợ bởi Trí tuệ Nhân tạo (AI-Assisted Assets):**
-Hai Bên xác nhận rằng một số thành phần hình ảnh hoặc dàn ý nội dung có thể được tạo ra với sự hỗ trợ của các công cụ Trí tuệ Nhân tạo trả phí thương mại. Quyền tác giả được bảo hộ trên phần đóng góp sáng tạo, biên tập chuyên sâu trực tiếp của con người (theo Điều 12a Luật SHTT). Bên B được miễn trừ trách nhiệm pháp lý phái sinh liên quan đến thuật toán huấn luyện dữ liệu gốc của các hãng AI quốc tế.
+### ĐIỀU 10: QUYỀN SỞ HỮU TRÍ TUỆ, BẢO ĐẢM KIỂM SOÁT DỮ LIỆU & LỐI THOÁT AN TOÀN
+10.1. **Nguyên Tắc Thương Mại Cốt Lõi ("Your Data. Your Business. Your Control"):**  
+Hai Bên xác lập nguyên tắc tôn trọng tối đa quyền tự chủ của Khách hàng, loại trừ triệt để nguy cơ trói buộc công nghệ (Vendor Lock-in):
+- Dữ liệu kinh doanh, danh bạ khách hàng, CRM, tài khoản quảng cáo, Google Maps và tên miền **luôn thuộc quyền sở hữu tuyệt đối của Bên A**.
+- LocalMate chỉ giữ quyền sở hữu đối với nền tảng, công nghệ lõi và thành phần dùng chung để duy trì, bảo trì và tiếp tục phát triển sản phẩm.
+
+10.2. **Phân Định Ba Tầng Tài Sản Trí Tuệ:** Căn cứ Luật Sở hữu trí tuệ và các văn bản hướng dẫn thi hành:
+- **(A) Tài sản của Khách hàng (Customer IP & Data):** Toàn bộ dữ liệu kinh doanh, cơ sở dữ liệu khách hàng/học sinh, tên miền, tài khoản nền tảng số, logo, nhãn hiệu và tài liệu do Bên A cung cấp thuộc quyền sở hữu độc quyền 100% của Bên A. Bên B không có bất kỳ quyền sở hữu nào đối với nhóm tài sản này.
+- **(B) Tài sản Công nghệ Lõi của LocalMate (Background IP):** Nền tảng LocalMate Core, component library, UI kit, template, database abstraction, luồng tự động hóa, CI/CD scripts và bí quyết công nghệ (know-how) thuộc **QUYỀN SỞ HỮU DUY NHẤT VÀ VĨNH VIỄN CỦA LOCALMATE**. Bên B cấp cho Bên A quyền sử dụng (License) tích hợp sẵn trong sản phẩm, nghiêm cấm trích xuất bán lẻ độc lập hoặc sao chép để cạnh tranh trực tiếp.
+- **(C) Sản phẩm Tạo riêng của Dự án (Project Deliverables):** Giao diện tùy biến riêng, landing page, cấu hình automation riêng được xác định quyền hạn theo Cấp độ thương mại lựa chọn tại Đơn Đặt Hàng:
+  - *Cấp độ 1 (Managed Service):* Bên A mua quyền sử dụng dịch vụ vận hành hoàn chỉnh trên cloud, không chuyển giao mã nguồn;
+  - *Cấp độ 2 (Business Continuity License):* Bên A được xuất full dữ liệu, bàn giao cấu hình riêng, tài liệu vận hành và được quyền thuê bên thứ ba tiếp quản nếu Bên B dừng dịch vụ (Bảo đảm vận hành liên tục);
+  - *Cấp độ 3 (Source & Deployment Handover):* Bên B bàn giao Git Repository mã nguồn riêng của dự án và tài liệu triển khai hạ tầng sau khi Bên A thanh toán đủ 100%.
+
+10.3. **Hai Điều Khoản Nguyên Tắc Bất Biến (Golden Clauses):**
+- *Quy định bảo vệ công nghệ LocalMate:* Việc chuyển giao sản phẩm, tài liệu kỹ thuật hoặc mã nguồn cho Bên A theo bất kỳ gói dịch vụ nào đều không được hiểu là chuyển giao quyền sở hữu đối với LocalMate Core, framework, thư viện, UI component, template dùng chung, công cụ nội bộ hoặc bí quyết kỹ thuật có trước của LocalMate, trừ khi có phụ lục bằng văn bản quy định rõ khác đi.
+- *Quy định bảo vệ dữ liệu Bên A:* LocalMate không có bất kỳ quyền sở hữu nào và cam kết không bao giờ xác lập quyền sở hữu đối với dữ liệu kinh doanh, dữ liệu khách hàng, thương hiệu, tên miền và tài sản do Bên A cung cấp hoặc hình thành trong quá trình sử dụng dịch vụ.
+
+10.4. **Cam Kết Lối Thoát An Toàn (Exit Guarantee):** Khi hợp đồng chấm dứt vì bất kỳ lý do gì:
+- Trong vòng **15 (mười lăm) ngày làm việc**, Bên B có nghĩa vụ cung cấp cho Bên A một bản trích xuất dữ liệu hoàn chỉnh ở định dạng tiêu chuẩn (CSV, Excel hoặc JSON);
+- Bên B duy trì liên kết tải dữ liệu an toàn trong vòng **30 (ba mươi) ngày**;
+- Hết thời hạn 30 ngày nêu trên, Bên B tiến hành tiêu hủy an toàn bản sao dữ liệu trên hệ thống lưu trữ chính thức (trừ nhật ký hệ thống bắt buộc lưu theo luật an ninh mạng và thuế), qua đó chính thức kết thúc nghĩa vụ lưu trữ dữ liệu của Bên B.
+
 
 ---
 

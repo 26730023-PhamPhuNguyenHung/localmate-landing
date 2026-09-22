@@ -47,15 +47,33 @@ Bên A đồng ý đặt hàng và Bên B đồng ý cung cấp các hạng mụ
 
 ---
 
-### ĐIỀU 2. TIẾN ĐỘ THANH TOÁN (PAYMENT SCHEDULE)
+### ĐIỀU 2. CẤP ĐỘ QUYỀN SỞ HỮU TRÍ TUỆ VÀ BẢO ĐẢM KIỂM SOÁT DỮ LIỆU (IP TIER)
+Theo nguyên tắc *"Your Data. Your Business. Your Control"*, Bên A lựa chọn Cấp độ quyền sở hữu trí tuệ và kiểm soát công nghệ áp dụng cho Đơn hàng này:
+
+- [ ] **CẤP ĐỘ 1: DỊCH VỤ VẬN HÀNH TIÊU CHUẨN (MANAGED SERVICE — MẶC ĐỊNH)**  
+  Bên A sở hữu 100% Dữ liệu kinh doanh (học sinh, khách hàng, CRM), Tên miền, Tài khoản quảng cáo/Maps và Nội dung thương hiệu. LocalMate sở hữu mã nguồn lõi (LocalMate Core). Bên A được cấp quyền sử dụng hệ thống đầy đủ trong suốt chu kỳ dịch vụ.
+
+- [ ] **CẤP ĐỘ 2: BẢO ĐẢM VẬN HÀNH LIÊN TỤC (BUSINESS CONTINUITY LICENSE)**  
+  Bao gồm toàn bộ quyền của Cấp độ 1, kèm thêm: Quyền trích xuất dữ liệu định kỳ, bàn giao file cấu hình riêng và tài liệu vận hành; cam kết tự động cấp quyền cho Bên A thuê bên thứ ba tiếp quản hệ thống nếu LocalMate ngừng cung cấp dịch vụ (chống Vendor Lock-in).
+
+- [ ] **CẤP ĐỘ 3: BÀN GIAO MÃ NGUỒN VÀ HẠ TẦNG (SOURCE & DEPLOYMENT HANDOVER)**  
+  Bao gồm toàn bộ quyền của Cấp độ 2, kèm thêm: Bàn giao Git Repository mã nguồn giao diện/module riêng của dự án, tài liệu cấu hình hạ tầng triển khai đám mây (Cloudflare/Vercel/Supabase). Loại trừ LocalMate Core và framework dùng chung.
+
+- [ ] **TÙY CHỌN: CHUYỂN NHƯỢNG ĐỘC QUYỀN QUYỀN TÀI SẢN (EXCLUSIVE IP ASSIGNMENT)**  
+  Chuyển nhượng quyền tài sản độc quyền đối với các module phát triển riêng (LocalMate cam kết không tái sử dụng cho đối thủ cạnh tranh cùng ngành). Chi phí phát sinh tính theo phụ lục riêng.
+
+---
+
+### ĐIỀU 3. TIẾN ĐỘ THANH TOÁN (PAYMENT SCHEDULE)
 Hai Bên thống nhất lịch thanh toán cho Đơn hàng này như sau:
 1. **Đợt 1 (Đặt cọc bảo đảm hợp đồng):** Bên A thanh toán **50%** tổng giá trị đơn hàng, tương đương số tiền: **[TIEN_DOT_1] VND** ngay sau khi ký Đơn hàng này.
 2. **Đợt 2 (Thanh toán hoàn tất khi nghiệm thu):** Bên A thanh toán **50%** còn lại, tương đương số tiền: **[TIEN_DOT_2] VND** trong vòng **03 (ba) ngày làm việc** kể từ ngày ký Biên bản nghiệm thu và bàn giao tài khoản.
 3. **Hình thức thanh toán:** Chuyển khoản ngân hàng vào tài khoản của Bên B ghi tại phần đầu Đơn hàng.
 
+
 ---
 
-### ĐIỀU 3. TÀI LIỆU VÀ ĐIỀU KIỆN TIÊN QUYẾT TỪ BÊN A
+### ĐIỀU 4. TÀI LIỆU VÀ ĐIỀU KIỆN TIÊN QUYẾT TỪ BÊN A
 Để Bên B có thể bắt đầu triển khai đúng tiến độ, Bên A có nghĩa vụ bàn giao đầy đủ các thông tin sau trong vòng 03 ngày kể từ ngày ký Đơn hàng:
 - Logo gốc, bảng màu nhận diện thương hiệu, thông tin giới thiệu công ty;
 - Quyền truy cập quản trị viên tên miền, Google Business Profile (nếu đã có sẵn);
@@ -64,21 +82,20 @@ Hai Bên thống nhất lịch thanh toán cho Đơn hàng này như sau:
 
 ---
 
-### ĐIỀU 4. ĐIỀU KHOẢN RÀNG BUỘC VÀ HIỆU LỰC
-1. Đơn Đặt Hàng này là một phụ lục thực thi gắn liền và chịu sự điều chỉnh của các điều khoản, điều kiện chung trong **Hợp đồng Dịch vụ Khung (MSA) số: [SO_HOP_DONG_MSA]/LM-MSA**. Trường hợp có mâu thuẫn giữa Đơn hàng này và MSA, các điều khoản thương mại cụ thể tại Đơn hàng này sẽ được ưu tiên áp dụng.
+### ĐIỀU 5. ĐIỀU KHOẢN RÀNG BUỘC VÀ HIỆU LỰC
+1. Đơn Đặt Hàng này là một phụ lục thực thi gắn liền và chịu sự điều chỉnh của các điều khoản, điều kiện chung trong **Hợp đồng Dịch vụ Khung (MSA) số: [MÃ_HỢP_ĐỒNG]**. Trường hợp có mâu thuẫn giữa Đơn hàng này và MSA, các điều khoản thương mại cụ thể tại Đơn hàng này sẽ được ưu tiên áp dụng.
 2. Hai Bên cam kết thực hiện đúng, đầy đủ các nghĩa vụ đã thỏa thuận. Mọi sửa đổi, bổ sung về phạm vi hoặc chi phí phải được lập thành Phiếu yêu cầu thay đổi (Change Request - Mẫu `LM-OPS-CR-15`).
-3. Đơn hàng này có thể được ký bằng văn bản giấy hoặc ký bằng chữ ký số/chữ ký điện tử hoặc xác nhận chấp thuận thông qua email chính thức của Hai Bên theo quy định của Luật Giao dịch điện tử 2023.
+3. Đơn hàng này có thể được ký bằng văn bản giấy hoặc ký bằng chữ ký số/chữ ký điện tử hoặc xác nhận chấp thuận thông qua email chính thức của Hai Bên theo quy định của Luật Giao dịch điện tử.
 
 Đơn hàng được lập thành 02 (hai) bản gốc có giá trị pháp lý như nhau, mỗi Bên giữ 01 (một) bản để thực hiện.
 
 ---
 
-### KÝ XÁC NHẬN CỦA ĐẠI DIỆN CÁC BÊN:
-
 | ĐẠI DIỆN BÊN A (KHÁCH HÀNG) | ĐẠI DIỆN BÊN B (LOCALMATE) |
-| :--- | :--- |
+| :---: | :---: |
 | *(Ký tên, ghi rõ họ tên và đóng dấu)* | *(Ký tên, ghi rõ họ tên và đóng dấu)* |
-| <br><br><br> | <br><br><br> |
-| **Họ và tên:** [NGUOI_DAI_DIEN_A] | **Họ và tên:** [REPRESENTATIVE] |
-| **Chức vụ:** [CHUC_VU_A] | **Chức vụ:** [TITLE] |
-| **Ngày ký:** ____/____/202[X] | **Ngày ký:** ____/____/202[X] |
+| <br><br><br><br> | <br><br><br><br> |
+| **[NGƯỜI_ĐẠI_DIỆN_A]** | **[REPRESENTATIVE]** |
+| Chức vụ: [CHỨC_VỤ_A] | Chức vụ: [TITLE] |
+| Ngày ký: ..... / ..... / 202[NĂM] | Ngày ký: ..... / ..... / 202[NĂM] |
+

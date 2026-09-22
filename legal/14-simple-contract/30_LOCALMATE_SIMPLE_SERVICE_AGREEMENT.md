@@ -112,10 +112,14 @@ Căn cứ Điều 328 Bộ luật Dân sự 2015, tiến độ thanh toán đư�
 
 ---
 
-### ĐIỀU 7: QUYỀN SỞ HỮU TRÍ TUỆ VÀ TÀI SẢN SỐ
-1. **Tài Sản Thuộc Quyền Sở Hữu Của Bên A:** Toàn bộ tên miền do Bên A đứng tên, logo, hình ảnh, nhãn hiệu thương mại và mã nguồn giao diện tùy biến (Custom Frontend/CSS) thuộc quyền sở hữu của Bên A **ngay sau khi Bên A hoàn tất nghĩa vụ thanh toán 100% giá trị Hợp đồng này**.
-2. **Tài Sản Nền Tảng Của Bên B:** Các thư viện mã nguồn dùng chung, framework lõi, công cụ tự động hóa và giải pháp công nghệ do Bên B tự nghiên cứu phát triển thuộc quyền sở hữu trí tuệ duy nhất của Bên B. Bên B cấp cho Bên A quyền sử dụng vĩnh viễn, không độc quyền để vận hành hệ thống này. Bên A không được sao chép, trích xuất hoặc bán lại mã nguồn lõi cho bên thứ ba.
-3. **Bàn Giao Tài Khoản Chính Chủ:** Tên miền, Google Maps, tài khoản Google Ads được đăng ký và bàn giao quyền quản trị cao nhất (Primary Owner / Admin) trực tiếp cho tài khoản định danh của Bên A qua kênh chuyển giao an toàn.
+### ĐIỀU 7: QUYỀN SỞ HỮU TRÍ TUỆ, BẢO ĐẢM DỮ LIỆU & LỐI THOÁT AN TOÀN
+1. **Cam Kết "Your Data. Your Business. Your Control":** Hai Bên xác lập nguyên tắc tôn trọng quyền kiểm soát kinh doanh của Khách hàng, loại trừ triệt để trói buộc công nghệ (No Vendor Lock-in). Toàn bộ dữ liệu khách hàng, học sinh, CRM, tên miền, tài khoản Google Maps và tài khoản Google Ads **thuộc quyền sở hữu tuyệt đối 100% của Bên A**.
+2. **Tài Sản Công Nghệ Của Bên B:** Nền tảng công nghệ lõi (LocalMate Core), framework, component library và bí quyết kỹ thuật dùng chung thuộc quyền sở hữu độc quyền của Bên B. Bên B cấp cho Bên A giấy phép sử dụng (License) tích hợp sẵn trong sản phẩm bàn giao.
+3. **Hai Điều Khoản Nguyên Tắc:**
+   - *Bảo vệ công nghệ Bên B:* Việc chuyển giao sản phẩm cho Bên A không được hiểu là chuyển giao quyền sở hữu đối với LocalMate Core, framework, thư viện dùng chung, công cụ nội bộ hay bí quyết kỹ thuật có trước của Bên B.
+   - *Bảo vệ dữ liệu Bên A:* Bên B không có bất kỳ quyền sở hữu nào đối với dữ liệu kinh doanh, danh sách khách hàng, thương hiệu và tài sản do Bên A cung cấp.
+4. **Cam Kết Lối Thoát An Toàn (Exit Guarantee):** Khi hợp đồng chấm dứt, Bên B có nghĩa vụ xuất toàn bộ dữ liệu của Bên A ở định dạng tiêu chuẩn (Excel/CSV/JSON) trong vòng 15 ngày làm việc và duy trì link tải an toàn trong 30 ngày. Hết thời hạn này, Bên B tiến hành xóa sạch bản sao dữ liệu trên hệ thống, chính thức hoàn thành nghĩa vụ lưu trữ.
+
 
 ---
 
