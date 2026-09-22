@@ -2,6 +2,23 @@
 
 Ghi nhận các mốc sự kiện, commit và trạng thái vận hành của dự án.
 
+## [2026-09-22] - Thiết Lập & Bàn Giao Toàn Diện Hệ Thống Pháp Lý Số (LegalOps SSOT 2026) Cho LocalMate
+- **Bối cảnh & Yêu cầu cốt lõi**:
+  - Xây dựng trọn bộ khung pháp lý, hợp đồng dịch vụ và quy trình kiểm soát rủi ro toàn diện cho LocalMate (`localmate.vn`, hotline: `0834.422.439`, email: `contact@localmate.vn`).
+  - Áp dụng mô hình **1 Hợp đồng Khung (MSA) + Phụ lục / SOW theo từng dịch vụ** thay vì 5-6 hợp đồng rời rạc.
+  - Cập nhật 100% theo bối cảnh luật thực định mới nhất năm 2026: Luật Bảo vệ dữ liệu cá nhân 2025 (Luật số 91/2025/QH15) & Nghị định 356/2025/NĐ-CP; Nghị định 330/2026/NĐ-CP về xử phạt an ninh mạng & dữ liệu cá nhân; Luật Dữ liệu số 60/2024/QH15; Luật sửa đổi, bổ sung Luật Quảng cáo 2025 (Luật số 75/2025/QH15); Luật Giao dịch điện tử 2023 (số 20/2023/QH15); Luật Sở hữu trí tuệ sửa đổi 2022.
+- **Thực thi Kỹ thuật & Bàn giao 31 Văn bản**:
+  1. *Phase 1 (Research)*: 10 Subagents nghiên cứu chuyên sâu, xuất bản `applicable-laws.md`, `source-links.md` và `legal-risk-matrix.md` (Ma trận 20 rủi ro thực tế có Contract Control & Operational Control).
+  2. *Phase 2 (Architecture & Gap Analysis)*: Lập `LEGAL_ARCHITECTURE_REPORT.md` (Phân bổ 31 tài liệu & 3 Signing Packs) và `LOCALMATE_LEGAL_GAP_ANALYSIS.md`.
+  3. *Phase 4 (Core Contracts)*: Hoàn thành `01_MASTER_SERVICE_AGREEMENT_LOCALMATE.md` (MSA chuẩn 22 điều khoản), `30_LOCALMATE_SIMPLE_SERVICE_AGREEMENT.md` (Bản tinh gọn 5 trang cho gói nhỏ < 10 triệu) và `31_LOCALMATE_ENTERPRISE_MSA.md` (Bản Doanh nghiệp lớn).
+  4. *Phase 5 (Service Appendices)*: Hoàn thành 5 phụ lục chuyên ngành: `05_PHU_LUC_WEBSITE.md`, `06_PHU_LUC_GOOGLE_MAPS_LOCAL_SEO.md`, `07_HOP_DONG_PHU_LUC_GOOGLE_ADS.md`, `08_PHU_LUC_CONTENT_SOCIAL.md`, `09_PHU_LUC_CRM_AUTOMATION.md`.
+  5. *Phase 6 (Security, PDP & IP)*: Hoàn thành Thỏa thuận DPA (`10_DPA.md`), RoPA (`10A`), Subprocessors (`10B`), DSR Deletion Form (`10C`), Incident Form A05 (`10D`), Confirmation (`10E`), NDA song phương (`11_NDA_MUTUAL.md`), Bảng phân định 5 nhóm tài sản SHTT (`12_IP_AND_DIGITAL_ASSET_APPENDIX.md`), Quy trình bàn giao tài khoản RBAC/Bitwarden Send (`13`), Phụ lục bên thứ ba (`21`), Cam kết điều kiện quảng cáo `22_CUSTOMER_LEGAL_CONTENT_DECLARATION.md` và Phụ lục An toàn thông tin (`23`).
+  6. *Phase 7 (Operational Forms)*: Báo giá (`02`), Đơn đặt hàng SO (`03`), Đặc tả phạm vi SOW định lượng (`04`), Phiếu duyệt content (`CONTENT_APPROVAL_FORM.md`), Cam kết SLA bảo trì P0-P3 (`14`), Phiếu Change Request (`15`), Biên bản nghiệm thu UAT (`16`), Biên bản bàn giao (`17`), Biên bản thanh lý (`18`), Đối chiếu công nợ (`19`), Phụ lục tiến độ thanh toán (`20`).
+  7. *Phase 8 (Website Legal Pages)*: Điều khoản sử dụng web (`24`), Chính sách bảo vệ dữ liệu (`25`), Thông báo Cookie (`26`), Quy trình dịch vụ 5 bước (`27`), Chính sách hủy & hoàn tiền (`28`), Hướng dẫn cổng DSR tiếp nhận trong 72h (`29`).
+  8. *Phase 9 (Red Team Audit)*: Hoàn thành `FINAL_LEGAL_AUDIT.md` rà soát đối kháng, bịt kín 5 kẽ hở (Nghiệm thu mặc nhiên 2 tầng, Giới hạn trách nhiệm, Bồi hoàn quảng cáo vô điều kiện, DPA/TOMs, và Chống hình sự hóa tranh chấp theo Điều 287 BLHS).
+  9. *Phase 10 (Contract Generator CLI & Signing Packs)*: Xây dựng `contract-config.json`, script tự động hóa PowerShell `generate-contract.ps1` (chạy test `All` sinh 100% file thành công) và Sổ tay hướng dẫn `SIGNING_PACKS_GUIDE.md` cho đội ngũ Sales/Ops.
+- **Nghiệm thu**: Toàn bộ hệ thống 31 tài liệu pháp lý lưu trữ tại `legal/` đạt trạng thái SSOT hoàn chỉnh, bảo vệ thép cho LocalMate trong môi trường số 2026.
+
 ## [2026-09-17] - Audit & Refactor Toàn Diện Giao Diện Article Detail Chuẩn Editorial / SME Friendly
 - **Bối cảnh & Mục tiêu**:
   - Khắc phục giao diện bài viết trước đó mang cảm giác SEO tool / AI-generated / Dashboard kỹ thuật cồng kềnh.

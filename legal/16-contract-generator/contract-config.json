@@ -1,0 +1,51 @@
+{
+  "localmate": {
+    "legal_name": "CÔNG TY TNHH CÔNG NGHỆ VÀ TRUYỀN THÔNG LOCALMATE",
+    "mst": "0318999999",
+    "address": "Tầng 5, Tòa nhà Innovation, Phường Bến Nghé, Quận 1, TP. Hồ Chí Minh",
+    "representative": "PHẠM NGUYÊN VŨ",
+    "title": "Giám Đốc",
+    "phone": "0834422439",
+    "email": "contact@localmate.vn",
+    "bank_name": "Ngân hàng TMCP Ngoại Thương Việt Nam (Vietcombank)",
+    "bank_branch": "Chi nhánh TP. Hồ Chí Minh",
+    "account_number": "10184422439"
+  },
+  "customer": {
+    "legal_name": "CÔNG TY TNHH THỜI TRANG ĐỊA PHƯƠNG SÀI GÒN",
+    "mst": "0317888888",
+    "address": "123 Đường Nguyễn Trãi, Phường Bến Thành, Quận 1, TP. Hồ Chí Minh",
+    "representative": "NGUYỄN VĂN AN",
+    "title": "Tổng Giám Đốc",
+    "phone": "0909123456",
+    "email": "an.nguyen@localfashion.vn",
+    "ops_contact_name": "TRẦN THỊ BÍCH",
+    "ops_contact_phone": "0918654321",
+    "ops_contact_email": "bich.tran@localfashion.vn",
+    "business_sector": "Thời trang thiết kế & Bán lẻ may mặc"
+  },
+  "project": {
+    "project_name": "DỰ ÁN SỐ HÓA THƯƠNG HIỆU & LOCAL SEO LOCAL FASHION",
+    "domain_name": "localfashion.vn",
+    "gbp_name": "Local Fashion Sài Gòn - Thời Trang Thiết Kế",
+    "contract_code": "LM-MSA-2026-088",
+    "order_code": "LM-SO-2026-088",
+    "sow_code": "LM-SOW-2026-088",
+    "effective_date": "22/09/2026",
+    "start_date": "25/09/2026",
+    "target_end_date": "15/10/2026",
+    "warranty_days": "30",
+    "currency": "VND"
+  },
+  "pricing": {
+    "service_fee_website": "15000000",
+    "service_fee_maps": "5000000",
+    "service_fee_ads": "5000000",
+    "service_fee_content": "6000000",
+    "service_fee_crm": "4000000",
+    "total_contract_value": "20000000",
+    "deposit_amount": "10000000",
+    "final_payment_amount": "10000000",
+    "total_value_in_words": "Hai mươi triệu đồng chẵn"
+  }
+}

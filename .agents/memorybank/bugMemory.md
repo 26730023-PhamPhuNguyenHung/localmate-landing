@@ -164,3 +164,21 @@
   - Header: Chỉ "Mục lục" thanh thoát (14px, font-weight 600, màu `#0f172a`).
   - Trục ray dẫn hướng bên trái mỏng 1px (`#e2e8f0`). Active item có chỉ báo `border-left: 2px solid #0d7647`, text xanh thương hiệu font-weight 600.
   - Mobile: Thu gọn thành accordion siêu nhẹ ở đầu bài, tự động đóng lại khi người dùng chọn mục để bài viết được đọc trọn vẹn ngay tức thì.
+
+## 17. Bài học về Pháp Lý Số 2026 (LegalOps SSOT): Hợp Đồng Khung, PDP 2025, Quảng Cáo, SHTT và Chống Hình Sự Hóa
+- **Mô hình Hợp đồng Khung (MSA) + Phụ lục SOW thay vì hợp đồng rời rạc**:
+  - Không ký 5-6 hợp đồng độc lập với cùng một khách hàng. Áp dụng 1 Master Service Agreement (MSA) chứa điều khoản pháp lý chung (Bảo mật, SHTT, DPA, Giới hạn trách nhiệm, Tranh chấp), đi kèm Đơn hàng (SO) và Bản đặc tả phạm vi (SOW) định lượng cho từng dịch vụ (Web, Maps, Ads, Content, CRM).
+- **Cập nhật Pháp lý Thực định 2026 (Tuyệt đối không dùng mẫu luật cũ)**:
+  - *Bảo vệ dữ liệu cá nhân*: Phải viện dẫn Luật Bảo vệ dữ liệu cá nhân 2025 (Luật số 91/2025/QH15) & Nghị định 356/2025/NĐ-CP (hiệu lực 01/01/2026) thay cho việc chỉ viện dẫn Nghị định 13/2023. Tích hợp Nghị định 330/2026/NĐ-CP về xử phạt an ninh mạng/DLCN (phạt tới 5% doanh thu).
+  - *Quảng cáo*: Tuân thủ Luật Quảng cáo sửa đổi 2025 (Luật số 75/2025/QH15) hiệu lực 01/01/2026; bắt buộc ký cam kết điều kiện quảng cáo `LM-MKT-DEC-22` để chuyển 100% rủi ro phạt sang khách hàng.
+  - *Giao dịch điện tử*: Tuân thủ Luật Giao dịch điện tử 2023 (số 20/2023/QH15) công nhận giá trị pháp lý của email/Zalo và chữ ký số.
+- **Bóc tách dòng tiền Media Spend (Thuế GTGT & Thu nhập)**:
+  - Tuyệt đối khuyến khích khách hàng tự add thẻ thanh toán trực tiếp vào Google/Meta để Google xuất hóa đơn có mã số thuế nhà thầu cho khách.
+  - Nếu nhận nạp hộ, phải ghi rõ là khoản "Thu hộ, chi hộ theo Điểm d Khoản 7 Điều 5 Thông tư 219/2013/TT-BTC" không tính vào doanh thu của LocalMate để tránh bị truy thu thuế.
+- **Xử lý Khách chậm tiền: Chống hình sự hóa tranh chấp dân sự (Điều 287 BLHS)**:
+  - Tuyệt đối cấm đổi mật khẩu, cấm đổi DNS, cấm xóa cơ sở dữ liệu của khách khi khách nợ tiền. Hành vi này có nguy cơ cấu thành Tội cản trở hoạt động mạng máy tính theo Điều 287 BLHS.
+  - Thay vào đó: Áp dụng cơ chế **Bảo lưu quyền sở hữu mã nguồn (Điều 331 BLDS 2015)** + **Quyền tạm ngừng dịch vụ (Điều 308 LTM & Điều 411 BLDS)** bằng cách hiển thị màn hình thông báo bảo trì kỹ thuật trung tính.
+- **Tiền Đặt Cọc (Điều 328 BLDS & Án lệ 25/2018/AL)**:
+  - Dùng thuật ngữ "Tiền đặt cọc", tuyệt đối không dùng "tiền tạm ứng/trả trước" để không bị ép xuất hóa đơn ngay và được giữ lại 100% cọc khi khách tự ý hủy hợp đồng.
+- **Encoding trên Windows PowerShell CLI**:
+  - Tránh hardcode chuỗi ký tự tiếng Việt có dấu trực tiếp trong mã script `.ps1` nếu không có UTF-8 BOM, vì PowerShell 5.1 mặc định parse theo Windows-1252 gây lỗi cú pháp. Dùng tiếng Anh/ASCII cho console logs của script tự động hóa.
