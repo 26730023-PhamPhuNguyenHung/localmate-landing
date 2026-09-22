@@ -3,8 +3,10 @@ import { RouterProvider, useRouter } from './components/layout/Router';
 import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
 import { MobileFloatingCTA } from './components/layout/MobileFloatingCTA';
-import { LeadModal } from './components/conversion/LeadModal';
 import { initAttribution, trackPageView } from './analytics/tracker';
+
+// Lazy load LeadModal on demand
+const LeadModal = React.lazy(() => import('./components/conversion/LeadModal').then(m => ({ default: m.LeadModal })));
 
 // Core Public Page (Eager for instant LCP)
 import { HomePage } from './pages/HomeReferencePage';
@@ -191,13 +193,17 @@ const MainContent: React.FC = () => {
         <MobileFloatingCTA onOpenConsultForm={() => handleOpenLeadForm('Tư vấn Web Demo 0đ')} />
       )}
 
-      {/* Global Lead Form Modal */}
-      <LeadModal
-        isOpen={isLeadModalOpen}
-        onClose={() => setIsLeadModalOpen(false)}
-        defaultServiceName={selectedServiceName}
-        initialBusinessInput={leadBusinessInput}
-      />
+      {/* Global Lead Form Modal (Lazy loaded on demand) */}
+      {isLeadModalOpen && (
+        <React.Suspense fallback={null}>
+          <LeadModal
+            isOpen={isLeadModalOpen}
+            onClose={() => setIsLeadModalOpen(false)}
+            defaultServiceName={selectedServiceName}
+            initialBusinessInput={leadBusinessInput}
+          />
+        </React.Suspense>
+      )}
     </div>
   );
 };

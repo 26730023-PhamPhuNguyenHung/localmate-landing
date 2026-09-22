@@ -21,7 +21,7 @@ authRoutes.get('/me', async (c) => {
     return c.json({ success: false, error: { code: 'UNAUTHORIZED', message: 'Chưa đăng nhập' } }, 401);
   }
 
-  const payload = verifyToken(token);
+  const payload = await verifyToken(token);
   if (!payload) {
     return c.json({ success: false, error: { code: 'INVALID_TOKEN', message: 'Phiên làm việc hết hạn' } }, 401);
   }
@@ -58,7 +58,7 @@ authRoutes.post('/login', async (c) => {
     return c.json({ success: false, error: { code: 'INVALID_CREDENTIALS', message: 'Tên đăng nhập hoặc mật khẩu không chính xác' } }, 401);
   }
 
-  const token = generateToken(user.id, user.username);
+  const token = await generateToken(user.id, user.username);
 
   // Set HttpOnly session cookie
   c.header('Set-Cookie', `lm_session=${token}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${7 * 24 * 3600}`);

@@ -1,5 +1,22 @@
 # 📚 LOCALMATE AGENTS LESSONS LEARNED & EDITORIAL RULES
 
+## 27. Bài Học Audit Runtime React, Vite Chunking & Tree-Shaking (Subagent 7 Audit)
+- **Cạm bẫy gom nhóm icon trong `vite.config.ts` (`manualChunks`)**:
+  - Khi cấu hình `if (id.includes('lucide-react')) return 'icons'`, toàn bộ >85 icons được import rải rác từ Admin CMS (Bold, Italic, Table, Trash2, FolderTree...) bị gom cứng vào 1 chunk `icons.js` (~36.4 KB). Do `App.tsx` (Header, CTA) có dùng một vài icon cơ bản, trình duyệt buộc phải nạp và pre-load toàn bộ chunk này ngay trên trang chủ, phá hỏng tree-shaking tự nhiên của Rollup giữa Admin và Public.
+  - Khắc phục: Để Rollup tự động phân bổ chunk cho icon hoặc tách icon trang chủ thành SVG inline siêu nhẹ.
+- **Thừa package `@tiptap/html` trong `package.json`**:
+  - `@tiptap/html` hoàn toàn không có bất kỳ lệnh import nào trong toàn bộ dự án (`src/`, `scripts/`, `functions/`). Có thể gỡ bỏ an toàn.
+- **Vấn đề CSS-in-JS dạng String trong Component (`<style>{...}</style>`)**:
+  - `Header.tsx` (gần 600 dòng CSS), `LeadModal.tsx` (~380 dòng CSS), `Footer.tsx` (~190 dòng CSS) nhúng thẳng chuỗi CSS lớn vào JSX. Chuỗi này làm phình JS bundle `index.js` (~93.7 KB), tăng Total Blocking Time (TBT) do JS engine phải parse chuỗi và inject thẻ `<style>` vào DOM thay vì để trình duyệt tải/cache file `.css` độc lập.
+- **Tối ưu Lazy Loading cho Modal chuyển đổi (`LeadModal`)**:
+  - `LeadModal` được import tĩnh trong `App.tsx` dù 95%+ người dùng không mở ngay khi vào trang chủ. Nên chuyển sang `React.lazy` và render có điều kiện `{isOpen && <Suspense><LeadModal ... /></Suspense>}` để giải phóng 23 KB source code và 10 icons khỏi critical initial bundle.
+- **Tránh warning React 18 với DOM attributes (`fetchPriority` vs `fetchpriority`)**:
+  - React 18 không nhận diện thuộc tính viết theo kiểu camelCase `fetchPriority` trên thẻ `<img>` và quăng warning ra console. Phải dùng chữ thường `fetchpriority="high"` hoặc thuộc tính chuẩn.
+- **Chống Layout Shift (CLS) cho ảnh Lazy Loading**:
+  - Thẻ `<img>` trong component `ArtCrop` thiếu `width` và `height`, kích hoạt warning Chrome DevTools: `Lazy-loaded images should have explicit dimensions`. Khắc phục: Khai báo kích thước gốc `width="1672" height="1169"` trên thẻ ảnh.
+- **Deduplication Analytics Tracking trong React StrictMode**:
+  - `trackPageView` được gọi trong `useEffect` của `App.tsx`. Ở môi trường phát triển (StrictMode), effect chạy 2 lần gây nhân đôi log page_view. Cần cơ chế throttle hoặc deduplication nếu cần độ chính xác tracking tuyệt đối.
+
 ## 26. Component Hóa Landing Page Mầm Non — Kỹ Thuật Đồng Bộ React State Với Native Details & JSON-LD SEO
 - **Tương thích Native `<details>` & React State**:
   - CSS của bản mẫu HTML sử dụng các selector `.faq-grid details[open] summary:after` để điều khiển mũi tên xoay 45 độ khi câu hỏi được mở.
@@ -497,4 +514,20 @@
   - `functions/sitemap.xml.ts` truy vấn D1 với điều kiện `WHERE status = 'published'`. Dữ liệu mới seed từ SQL ở trạng thái `draft` sẽ không hiển thị trên sitemap cho đến khi được duyệt xuất bản qua CMS Admin (`/admin/posts`). Sitemap luôn tự động phản ánh 11 trang tĩnh + 7 danh mục D1 + các bài viết đã public.
 - **Bẫy Biến Tự Động Trong PowerShell Khi Viết Script Test**:
   - Trong PowerShell, `$HOME` là biến tự động chỉ định thư mục người dùng (`C:\Users\...`) được bảo vệ quyền ghi (`read-only`). Cấm gán biến `$home = ...` trong script kiểm thử; thay vào đó sử dụng `$pageHtml` hoặc `$htmlContent`.
+
+---
+
+## 51. [2026-09-21] Tối Ưu Viewport Above-The-Fold Cho Hero Section Trên Laptop Scale 125% - 150%
+- **Bối Cảnh & Vấn Đề**:
+  - Trên các màn hình laptop phổ biến (Full HD 1920x1080 đặt Windows Display Scale 125% hoặc 150%, và laptop 1366x768):
+    Chiều cao viewport CSS thực tế khả dụng chỉ từ `650px - 760px` sau khi trừ Windows Taskbar và Chrome/Edge UI (Tabs, Address Bar, Bookmarks).
+  - Trước đây, Hero section dùng `padding-top/bottom: clamp(36px, 4.5vw, 64px)`, H1 quá lớn, ảnh artwork không giới hạn `max-height`, khoảng cách dồn lại khiến tổng chiều cao Hero > 830px.
+  - Hậu quả: Dải nút CTA ("Nhận tư vấn", "Xem dịch vụ") và cụm thẻ 4 giá trị (`.hero-values`) bị đẩy xuống dưới nếp gấp màn hình (below the fold), buộc người dùng phải cuộn chuột.
+- **Giải Pháp Thực Chiến**:
+  1. Giảm chiều cao Header xuống `clamp(58px, 4.5vw, 68px)` (và `56px` khi `max-height: 820px`).
+  2. Hero Section dùng vertical padding theo `vh`: `clamp(14px, 2vh, 20px)`.
+  3. Áp dụng giới hạn 2 chiều cho ảnh minh hoạ `.hero-art`: `max-width: min(500px, 38vw); max-height: min(42vh, 350px);` và `img { max-height: min(42vh, 350px); object-fit: contain; }`.
+  4. Bổ sung height-aware breakpoint `@media (min-width: 961px) and (max-height: 820px)` tinh chỉnh H1, description, CTA buttons và `.hero-values` (card 4 giá trị cao ~62px).
+  5. Đạt mục tiêu: 100% nội dung Hero (Header + H1 + Description + Nút CTA + Note chữ viết tay + Ảnh Art + Card 4 giá trị) nằm trọn vẹn trong 1 màn hình laptop đầu tiên (`fitsInViewport: true`), mép dưới hé lộ nhẹ nhàng tiêu đề Section tiếp theo.
+
 

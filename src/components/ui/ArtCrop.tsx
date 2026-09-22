@@ -34,22 +34,27 @@ export const ArtCrop: React.FC<ArtCropProps> = ({
       role={role}
       aria-label={ariaLabel}
     >
-      <img
-        src={`/images/landing/artwork-${image}.png`}
-        alt={alt}
-        decoding="async"
-        loading={image === 1 ? 'eager' : 'lazy'}
-        style={{
-          position: 'absolute',
-          width: `${(1672 / w) * 100}%`,
-          left: `${(-x / w) * 100}%`,
-          top: `${(-y / h) * 100}%`,
-          maxWidth: 'none',
-          height: 'auto',
-          pointerEvents: 'none',
-          userSelect: 'none'
-        }}
-      />
+      <picture>
+        <source srcSet={`/images/landing/artwork-${image}.webp`} type="image/webp" />
+        <img
+          src={`/images/landing/artwork-${image}.png`}
+          alt={alt}
+          width="1672"
+          height="941"
+          decoding="async"
+          loading={image === 1 ? 'eager' : 'lazy'}
+          style={{
+            position: 'absolute',
+            width: `${(1672 / w) * 100}%`,
+            left: `${(-x / w) * 100}%`,
+            top: `${(-y / h) * 100}%`,
+            maxWidth: 'none',
+            height: 'auto',
+            pointerEvents: 'none',
+            userSelect: 'none'
+          }}
+        />
+      </picture>
     </div>
   );
 };

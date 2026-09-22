@@ -58,20 +58,25 @@ const ArtCrop: React.FC<ArtCropProps> = ({ image, box, className = '', role, ari
       role={role}
       aria-label={ariaLabel}
     >
-      <img
-        src={`/images/landing/artwork-${image}.png`}
-        alt={alt}
-        decoding="async"
-        loading={image === 1 ? 'eager' : 'lazy'}
-        style={{
-          position: 'absolute',
-          width: `${(1672 / w) * 100}%`,
-          left: `${(-x / w) * 100}%`,
-          top: `${(-y / h) * 100}%`,
-          maxWidth: 'none',
-          pointerEvents: 'none'
-        }}
-      />
+      <picture>
+        <source srcSet={`/images/landing/artwork-${image}.webp`} type="image/webp" />
+        <img
+          src={`/images/landing/artwork-${image}.png`}
+          alt={alt}
+          width="1672"
+          height="941"
+          decoding="async"
+          loading={image === 1 ? 'eager' : 'lazy'}
+          style={{
+            position: 'absolute',
+            width: `${(1672 / w) * 100}%`,
+            left: `${(-x / w) * 100}%`,
+            top: `${(-y / h) * 100}%`,
+            maxWidth: 'none',
+            pointerEvents: 'none'
+          }}
+        />
+      </picture>
     </div>
   );
 };
@@ -232,7 +237,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenConsultForm }) => {
         serviceInterest: `Báo giá nhanh: ${formData.industry || 'Chung'}`,
         message: formData.message,
         sourcePage: '/'
-      });
+      }, { requireNetworkDelivery: true });
 
       setFormStatus({
         type: 'success',
@@ -262,454 +267,448 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenConsultForm }) => {
       {/* Main Content Sections */}
       <main id="main">
         {/* SECTION 1: HERO */}
-        <section id="home" className="hero section">
-          <picture className="hero-art">
-            <source srcSet="/images/landing/hero-illustration.webp" type="image/webp" />
-            <img
-              src="/images/landing/hero-illustration.png"
-              alt="Website và Google Maps của doanh nghiệp địa phương trên laptop, điện thoại"
-              width="1448"
-              height="1086"
-              decoding="async"
-              loading="eager"
-            />
-          </picture>
+        <section id="home" className="hero-section full-bleed-section">
+          <div className="inner-container hero-container">
+            <div className="hero-grid">
+              <div className="hero-copy">
+                <div className="eyebrow-row">
+                  <span className="eyebrow">LOCALMATE</span>
+                  <span>— &nbsp;Người đồng hành số cho doanh nghiệp địa phương</span>
+                </div>
 
-          <div className="hero-copy">
-            <div className="eyebrow-row">
-              <span className="eyebrow">LOCALMATE</span>
-              <span>— &nbsp;Người đồng hành số cho doanh nghiệp địa phương</span>
-            </div>
+                <h1>
+                  Đồng hành số cho<br />
+                  <em>doanh nghiệp địa phương</em>
+                </h1>
 
-            <h1>
-              Đồng hành số cho<br />
-              <em>doanh nghiệp địa phương</em>
-            </h1>
+                <p className="hero-description">
+                  Website, Google Maps / Local SEO, Google Ads, content &amp; chăm sóc số, CRM automation – giải pháp toàn diện cho hộ kinh doanh &amp; SME, giúp bạn hiện diện chuyên nghiệp và phát triển bền vững trên môi trường số.
+                </p>
 
-            <p className="hero-description">
-              Website, Google Maps / Local SEO, Google Ads, content &amp; chăm sóc số, CRM automation – giải pháp toàn diện cho hộ kinh doanh &amp; SME, giúp bạn hiện diện chuyên nghiệp và phát triển bền vững trên môi trường số.
-            </p>
+                <div className="hero-actions">
+                  <a className="button" href="#contact">
+                    <span>
+                      <Icon name="chat" />
+                    </span>{' '}
+                    Nhận tư vấn <span>→</span>
+                  </a>
+                  <a className="button outline" href="#services">
+                    <span>▦</span> Xem dịch vụ
+                  </a>
+                </div>
 
-            <div className="hero-actions">
-              <a className="button" href="#contact">
-                <span>
-                  <Icon name="chat" />
-                </span>{' '}
-                Nhận tư vấn <span>→</span>
-              </a>
-              <a className="button outline" href="#services">
-                <span>▦</span> Xem dịch vụ
-              </a>
-            </div>
-
-            <p className="handwritten hero-note">
-              Cùng doanh nghiệp địa phương vươn xa hơn<span className="swoosh"></span>
-            </p>
-          </div>
-
-          <div className="values hero-values" id="hero-values">
-            <div className="value">
-              <span className="round" aria-hidden="true">
-                <Icon name="leaf" />
-              </span>
-              <div>
-                <strong>Dễ bắt đầu</strong>
-                <p>Quy trình đơn giản, rõ ràng</p>
+                <p className="handwritten hero-note">
+                  Cùng doanh nghiệp địa phương vươn xa hơn<span className="swoosh"></span>
+                </p>
               </div>
+
+              <picture className="hero-art">
+                <source srcSet="/images/landing/hero-illustration.webp" type="image/webp" />
+                <img
+                  src="/images/landing/hero-illustration.png"
+                  alt="Website và Google Maps của doanh nghiệp địa phương trên laptop, điện thoại"
+                  width="1448"
+                  height="1086"
+                  decoding="async"
+                  loading="eager"
+                  {...({ fetchpriority: 'high' } as any)}
+                />
+              </picture>
             </div>
-            <div className="value">
-              <span className="round orange" aria-hidden="true">
-                <Icon name="target" />
-              </span>
-              <div>
-                <strong>Rõ nhu cầu</strong>
-                <p>Tư vấn đúng, làm đúng</p>
+
+            <div className="values hero-values" id="hero-values">
+              <div className="value">
+                <span className="round" aria-hidden="true">
+                  <Icon name="leaf" />
+                </span>
+                <div>
+                  <strong>Dễ bắt đầu</strong>
+                  <p>Quy trình đơn giản, rõ ràng</p>
+                </div>
               </div>
-            </div>
-            <div className="value">
-              <span className="round" aria-hidden="true">
-                <Icon name="gear" />
-              </span>
-              <div>
-                <strong>Triển khai thực tế</strong>
-                <p>Giải pháp phù hợp, dễ áp dụng</p>
+              <div className="value">
+                <span className="round orange" aria-hidden="true">
+                  <Icon name="target" />
+                </span>
+                <div>
+                  <strong>Rõ nhu cầu</strong>
+                  <p>Tư vấn đúng, làm đúng</p>
+                </div>
               </div>
-            </div>
-            <div className="value">
-              <span className="round orange" aria-hidden="true">
-                <Icon name="heart" />
-              </span>
-              <div>
-                <strong>Đồng hành dài hạn</strong>
-                <p>Luôn bên bạn trên hành trình phát triển</p>
+              <div className="value">
+                <span className="round" aria-hidden="true">
+                  <Icon name="gear" />
+                </span>
+                <div>
+                  <strong>Triển khai thực tế</strong>
+                  <p>Giải pháp phù hợp, dễ áp dụng</p>
+                </div>
+              </div>
+              <div className="value">
+                <span className="round orange" aria-hidden="true">
+                  <Icon name="heart" />
+                </span>
+                <div>
+                  <strong>Đồng hành dài hạn</strong>
+                  <p>Luôn bên bạn trên hành trình phát triển</p>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
         {/* SECTION 2: SERVICES */}
-        <section id="services" className="services section">
-          <p className="handwritten side-note left">
-            Giải pháp thực tế<br />
-            cho doanh nghiệp địa phương<br />
-            vươn xa cùng công nghệ<span className="swoosh"></span>
-          </p>
-
-          <div className="section-heading">
-            <span className="eyebrow">DỊCH VỤ CỦA LOCALMATE</span>
-            <h2>
-              Dịch vụ phù hợp cho<br />
-              <em>doanh nghiệp địa phương</em>
-            </h2>
-            <p style={{ textAlign: 'center', marginLeft: 'auto', marginRight: 'auto', maxWidth: '820px' }}>
-              Giúp hộ kinh doanh &amp; SME xây dựng hiện diện số chuyên nghiệp,<br className="desktop" /> tiếp cận đúng khách hàng và phát triển bền vững trên môi trường số.
+        <section id="services" className="services-section full-bleed-section">
+          <div className="inner-container">
+            <p className="handwritten side-note left">
+              Giải pháp thực tế<br />
+              cho doanh nghiệp địa phương<br />
+              vươn xa cùng công nghệ<span className="swoosh"></span>
             </p>
-          </div>
 
-          <div className="service-grid" id="service-grid">
-            {servicesData.map((s) => (
-              <article key={s.id} className="service-card">
-                <ArtCrop image={2} box={s.box} className="service-art" ariaLabel={s.title} />
-                <h3>{s.title}</h3>
-                <p>{s.shortDesc}</p>
-                <button
-                  className="learn-more"
-                  aria-label={`Tìm hiểu ${s.title}`}
-                  onClick={() => setModalService(s)}
-                >
-                  Tìm hiểu thêm <span aria-hidden="true">→</span>
-                </button>
-              </article>
-            ))}
-          </div>
-
-          <aside className="service-note">
-            <span className="round orange">
-              <Icon name="bulb" />
-            </span>
-            <div>
-              <strong>Bạn có thể bắt đầu từ một dịch vụ hoặc kết hợp nhiều dịch vụ</strong>
-              <p>Localmate luôn đồng hành và tư vấn giải pháp phù hợp nhất với nhu cầu và ngân sách doanh nghiệp bạn.</p>
+            <div className="section-heading">
+              <span className="eyebrow">DỊCH VỤ CỦA LOCALMATE</span>
+              <h2>
+                Dịch vụ phù hợp cho<br />
+                <em>doanh nghiệp địa phương</em>
+              </h2>
+              <p style={{ textAlign: 'center', marginLeft: 'auto', marginRight: 'auto', maxWidth: '820px' }}>
+                Giúp hộ kinh doanh &amp; SME xây dựng hiện diện số chuyên nghiệp,<br className="desktop" /> tiếp cận đúng khách hàng và phát triển bền vững trên môi trường số.
+              </p>
             </div>
-            <a className="button outline" href="#contact">
-              <span>
-                <Icon name="chat" />
-              </span>{' '}
-              &nbsp; Nhận tư vấn ngay &nbsp; →
-            </a>
-          </aside>
+
+            <div className="service-grid" id="service-grid">
+              {servicesData.map((s) => (
+                <article key={s.id} className="service-card">
+                  <ArtCrop image={2} box={s.box} className="service-art" ariaLabel={s.title} />
+                  <h3>{s.title}</h3>
+                  <p>{s.shortDesc}</p>
+                  <button
+                    className="learn-more"
+                    aria-label={`Tìm hiểu ${s.title}`}
+                    onClick={() => setModalService(s)}
+                  >
+                    Tìm hiểu thêm <span aria-hidden="true">→</span>
+                  </button>
+                </article>
+              ))}
+            </div>
+
+            <aside className="service-note">
+              <span className="round orange">
+                <Icon name="bulb" />
+              </span>
+              <div>
+                <strong>Bạn có thể bắt đầu từ một dịch vụ hoặc kết hợp nhiều dịch vụ</strong>
+                <p>Localmate luôn đồng hành và tư vấn giải pháp phù hợp nhất với nhu cầu và ngân sách doanh nghiệp bạn.</p>
+              </div>
+              <a className="button outline" href="#contact">
+                <span>
+                  <Icon name="chat" />
+                </span>{' '}
+                &nbsp; Nhận tư vấn ngay &nbsp; →
+              </a>
+            </aside>
+          </div>
         </section>
 
         {/* SECTION 3: STORIES */}
-        <section id="stories" className="stories section">
-          <p className="handwritten side-note left">
-            Mỗi doanh nghiệp<br />
-            đều có một hành trình<br />
-            đáng kể ♡
-          </p>
-          <p className="handwritten side-note right">
-            Cùng viết nên<br />
-            câu chuyện thành công<br />
-            của bạn ♡
-          </p>
-
-          <div className="section-heading">
-            <span className="eyebrow">CÂU CHUYỆN KHÁCH HÀNG</span>
-            <h2>
-              Mỗi ngành nghề, một câu chuyện <em>tăng trưởng riêng</em>
-            </h2>
-            <p style={{ textAlign: 'center', marginLeft: 'auto', marginRight: 'auto', maxWidth: '820px' }}>
-              Localmate thấu hiểu đặc thù từng ngành nghề, từ đó thiết kế giải pháp phù hợp giúp bạn<br className="desktop" /> hiện diện đúng nơi, tiếp cận đúng khách hàng và phát triển bền vững.
+        <section id="stories" className="stories-section full-bleed-section">
+          <div className="inner-container">
+            <p className="handwritten side-note left">
+              Mỗi doanh nghiệp<br />
+              đều có một hành trình<br />
+              đáng kể ♡
             </p>
-          </div>
+            <p className="handwritten side-note right">
+              Cùng viết nên<br />
+              câu chuyện thành công<br />
+              của bạn ♡
+            </p>
 
-          <div className="story-grid" id="story-grid">
-            {storiesData.map((st, i) => (
-              <article key={i} className="story-card">
-                <div className="story-header">
-                  <span className="story-icon" aria-hidden="true">
-                    <Icon name={st.icon} />
-                  </span>
-                  <div>
-                    <small>{st.category}</small>
-                    <h3>{st.business}</h3>
-                    <p>{st.goal}</p>
-                  </div>
-                </div>
+            <div className="section-heading">
+              <span className="eyebrow">CÂU CHUYỆN KHÁCH HÀNG</span>
+              <h2>
+                Mỗi ngành nghề, một câu chuyện <em>tăng trưởng riêng</em>
+              </h2>
+              <p style={{ textAlign: 'center', marginLeft: 'auto', marginRight: 'auto', maxWidth: '820px' }}>
+                Localmate thấu hiểu đặc thù từng ngành nghề, từ đó thiết kế giải pháp phù hợp giúp bạn<br className="desktop" /> hiện diện đúng nơi, tiếp cận đúng khách hàng và phát triển bền vững.
+              </p>
+            </div>
 
-                <ArtCrop image={3} box={st.box} className="story-art" ariaLabel={st.business} />
-
-                <div className="story-body">
-                  <div className="story-detail">
-                    <span className="status-icon" aria-hidden="true">!</span>
+            <div className="story-grid" id="story-grid">
+              {storiesData.map((st, i) => (
+                <article key={i} className="story-card">
+                  <div className="story-header">
+                    <span className="story-icon" aria-hidden="true">
+                      <Icon name={st.icon} />
+                    </span>
                     <div>
-                      <strong>Thách thức</strong>
-                      <p>{st.challenge}</p>
+                      <small>{st.category}</small>
+                      <h3>{st.business}</h3>
+                      <p>{st.goal}</p>
                     </div>
                   </div>
 
-                  <div className="story-detail solution">
-                    <span className="status-icon" aria-hidden="true">✓</span>
-                    <div>
-                      <strong>Giải pháp cùng Localmate</strong>
-                      <p>{st.solution}</p>
+                  <ArtCrop image={3} box={st.box} className="story-art" ariaLabel={st.business} />
+
+                  <div className="story-body">
+                    <div className="story-detail">
+                      <span className="status-icon" aria-hidden="true">!</span>
+                      <div>
+                        <strong>Thách thức</strong>
+                        <p>{st.challenge}</p>
+                      </div>
+                    </div>
+
+                    <div className="story-detail solution">
+                      <span className="status-icon" aria-hidden="true">✓</span>
+                      <div>
+                        <strong>Giải pháp cùng Localmate</strong>
+                        <p>{st.solution}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </article>
-            ))}
-          </div>
+                </article>
+              ))}
+            </div>
 
-          <a className="button story-cta" href="#contact">
-            <span>
-              <Icon name="chat" />
-            </span>{' '}
-            &nbsp; Trao đổi câu chuyện của bạn với Localmate &nbsp; →
-          </a>
+            <a className="button story-cta" href="#contact">
+              <span>
+                <Icon name="chat" />
+              </span>{' '}
+              &nbsp; Trao đổi câu chuyện của bạn với Localmate &nbsp; →
+            </a>
+          </div>
         </section>
 
         {/* SECTION 4: PROCESS */}
-        <section id="process" className="process section">
-          <p className="handwritten side-note left">
-            Đơn giản hơn<br />
-            Hiệu quả hơn<br />
-            Cùng phát triển<span className="swoosh"></span>
-          </p>
-          <p className="handwritten side-note right">
-            Từ nhu cầu thực tế<br />
-            đến kết quả thực tế ♡
-          </p>
-
-          <div className="section-heading">
-            <span className="eyebrow">QUY TRÌNH LÀM VIỆC</span>
-            <h2>
-              Cách Localmate <em>đồng hành cùng bạn</em>
-            </h2>
-            <p style={{ textAlign: 'center', marginLeft: 'auto', marginRight: 'auto', maxWidth: '820px' }}>
-              Biến hành trình chuyển đổi số trở nên đơn giản, rõ ràng và hiệu quả hơn<br className="desktop" /> cho mọi doanh nghiệp địa phương.
+        <section id="process" className="process-section full-bleed-section">
+          <div className="inner-container">
+            <p className="handwritten side-note left">
+              Đơn giản hơn<br />
+              Hiệu quả hơn<br />
+              Cùng phát triển<span className="swoosh"></span>
             </p>
-          </div>
+            <p className="handwritten side-note right">
+              Từ nhu cầu thực tế<br />
+              đến kết quả thực tế ♡
+            </p>
 
-          <div className="process-grid" id="process-grid">
-            {stepsData.map((step, idx) => (
-              <article key={idx} className="process-card">
-                <div className="step-title">
-                  <span className="step-number">{idx + 1}</span>
-                  <h3>{step.title}</h3>
+            <div className="section-heading">
+              <span className="eyebrow">QUY TRÌNH LÀM VIỆC</span>
+              <h2>
+                Cách Localmate <em>đồng hành cùng bạn</em>
+              </h2>
+              <p style={{ textAlign: 'center', marginLeft: 'auto', marginRight: 'auto', maxWidth: '820px' }}>
+                Biến hành trình chuyển đổi số trở nên đơn giản, rõ ràng và hiệu quả hơn<br className="desktop" /> cho mọi doanh nghiệp địa phương.
+              </p>
+            </div>
+
+            <div className="process-grid" id="process-grid">
+              {stepsData.map((step, idx) => (
+                <article key={idx} className="process-card">
+                  <div className="step-title">
+                    <span className="step-number">{idx + 1}</span>
+                    <h3>{step.title}</h3>
+                  </div>
+                  <p>{step.desc}</p>
+                  <ArtCrop image={4} box={step.box} className="process-art" ariaLabel={step.title} />
+                </article>
+              ))}
+            </div>
+
+            <div className="values" id="process-values">
+              <div className="value">
+                <span className="round" aria-hidden="true">
+                  <Icon name="leaf" />
+                </span>
+                <div>
+                  <strong>Dễ hiểu</strong>
+                  <p>Ngôn ngữ đơn giản, rõ ràng</p>
                 </div>
-                <p>{step.desc}</p>
-                <ArtCrop image={4} box={step.box} className="process-art" ariaLabel={step.title} />
-              </article>
-            ))}
-          </div>
-
-          <div className="values" id="process-values">
-            <div className="value">
-              <span className="round" aria-hidden="true">
-                <Icon name="leaf" />
-              </span>
-              <div>
-                <strong>Dễ hiểu</strong>
-                <p>Ngôn ngữ đơn giản, rõ ràng</p>
               </div>
-            </div>
-            <div className="value">
-              <span className="round orange" aria-hidden="true">
-                <Icon name="target" />
-              </span>
-              <div>
-                <strong>Rõ đầu việc</strong>
-                <p>Minh bạch, thống nhất ngay từ đầu</p>
+              <div className="value">
+                <span className="round orange" aria-hidden="true">
+                  <Icon name="target" />
+                </span>
+                <div>
+                  <strong>Rõ đầu việc</strong>
+                  <p>Minh bạch, thống nhất ngay từ đầu</p>
+                </div>
               </div>
-            </div>
-            <div className="value">
-              <span className="round" aria-hidden="true">
-                <Icon name="gear" />
-              </span>
-              <div>
-                <strong>Làm thực tế</strong>
-                <p>Tập trung vào kết quả, hiệu quả</p>
+              <div className="value">
+                <span className="round" aria-hidden="true">
+                  <Icon name="gear" />
+                </span>
+                <div>
+                  <strong>Làm thực tế</strong>
+                  <p>Tập trung vào kết quả, hiệu quả</p>
+                </div>
               </div>
-            </div>
-            <div className="value">
-              <span className="round orange" aria-hidden="true">
-                <Icon name="heart" />
-              </span>
-              <div>
-                <strong>Hỗ trợ lâu dài</strong>
-                <p>Luôn bên bạn trên hành trình phát triển</p>
+              <div className="value">
+                <span className="round orange" aria-hidden="true">
+                  <Icon name="heart" />
+                </span>
+                <div>
+                  <strong>Hỗ trợ lâu dài</strong>
+                  <p>Luôn bên bạn trên hành trình phát triển</p>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
         {/* SECTION 5: CONTACT & FAST QUOTE */}
-        <section id="contact" className="contact section">
-          <div className="contact-copy">
-            <p className="handwritten">
-              Cùng doanh nghiệp địa phương<br />
-              vươn xa hơn<span className="swoosh"></span>
-            </p>
-            <h2>
-              Sẵn sàng bắt đầu<br />
-              <em>cùng Localmate?</em>
-            </h2>
-            <p className="intro">
-              Hãy chia sẻ nhu cầu của bạn, đội ngũ Localmate sẽ tư vấn miễn phí và đề xuất giải pháp phù hợp nhất cho doanh nghiệp của bạn.
-            </p>
-
-            <div className="benefits" id="benefits">
-              <div className="benefit">
-                <span className="round" aria-hidden="true">
-                  <Icon name="chat" />
-                </span>
-                <div>
-                  <strong>Trao đổi rõ nhu cầu</strong>
-                  <p>Lắng nghe và tư vấn tận tâm</p>
-                </div>
-              </div>
-              <div className="benefit">
-                <span className="round" aria-hidden="true">
-                  <Icon name="shield" />
-                </span>
-                <div>
-                  <strong>Không ép gói</strong>
-                  <p>Chỉ đề xuất khi thật sự phù hợp</p>
-                </div>
-              </div>
-              <div className="benefit">
-                <span className="round orange" aria-hidden="true">
-                  <Icon name="target" />
-                </span>
-                <div>
-                  <strong>Chọn đúng giải pháp</strong>
-                  <p>Tối ưu theo mục tiêu thực tế</p>
-                </div>
-              </div>
-              <div className="benefit">
-                <span className="round" aria-hidden="true">
-                  <Icon name="people" />
-                </span>
-                <div>
-                  <strong>Phù hợp hộ kinh doanh &amp; SME</strong>
-                  <p>Giải pháp linh hoạt, dễ triển khai</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <form className="quote-form" onSubmit={handleFormSubmit}>
-            <div className="form-title">
-              <span className="round">
-                <Icon name="mail" />
-              </span>
-              <div>
-                <h3>Nhận báo giá nhanh</h3>
-                <p>Điền thông tin, Localmate sẽ liên hệ ngay cho bạn!</p>
-              </div>
-            </div>
-
-            <label>
-              <span className="sr-only">Họ và tên</span>
-              <input
-                name="name"
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                placeholder="Họ và tên *"
-                autoComplete="name"
-                required
-                maxLength={100}
-              />
-            </label>
-
-            <label>
-              <span className="sr-only">Số điện thoại</span>
-              <input
-                name="phone"
-                type="tel"
-                value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                placeholder="Số điện thoại *"
-                autoComplete="tel"
-                required
-                pattern="[+0-9 ().-]{9,20}"
-                title="Nhập số điện thoại từ 9 đến 20 ký tự"
-              />
-            </label>
-
-            <label>
-              <span className="sr-only">Lĩnh vực kinh doanh</span>
-              <select
-                name="industry"
-                value={formData.industry}
-                onChange={(e) => setFormData({ ...formData, industry: e.target.value })}
-                required
-              >
-                <option value="">Lĩnh vực kinh doanh *</option>
-                <option value="Ẩm thực & F&B">Ẩm thực &amp; F&amp;B</option>
-                <option value="Du lịch & lưu trú">Du lịch &amp; lưu trú</option>
-                <option value="Dịch vụ địa phương">Dịch vụ địa phương</option>
-                <option value="Bán lẻ & SME">Bán lẻ &amp; SME</option>
-                <option value="Lĩnh vực khác">Lĩnh vực khác</option>
-              </select>
-            </label>
-
-            <label>
-              <span className="sr-only">Nhu cầu của bạn</span>
-              <textarea
-                name="message"
-                value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                placeholder="Chia sẻ thêm nhu cầu của bạn (nếu có)"
-                rows={3}
-                maxLength={2000}
-              />
-            </label>
-
-            <button className="button" type="submit" disabled={formStatus.type === 'loading'}>
-              <span>
-                <Icon name="chat" />
-              </span>{' '}
-              &nbsp; {formStatus.type === 'loading' ? 'Đang gửi...' : 'Nhận báo giá nhanh'}
-            </button>
-
-            <p className="form-note">
-              Thông tin của bạn được bảo mật tuyệt đối và chỉ dùng để tư vấn giải pháp.
-            </p>
-
-            {formStatus.text && (
-              <p
-                className="form-status"
-                role="status"
-                style={{
-                  color: formStatus.type === 'success' ? '#0d7647' : '#b91c1c',
-                  fontWeight: 500,
-                  marginTop: '10px'
-                }}
-              >
-                {formStatus.text}
+        <section id="contact" className="contact-section full-bleed-section">
+          <div className="inner-container contact-container">
+            <div className="contact-copy">
+              <p className="handwritten">
+                Cùng doanh nghiệp địa phương<br />
+                vươn xa hơn<span className="swoosh"></span>
               </p>
-            )}
-          </form>
+              <h2>
+                Sẵn sàng bắt đầu<br />
+                <em>cùng Localmate?</em>
+              </h2>
+              <p className="intro">
+                Hãy chia sẻ nhu cầu của bạn, đội ngũ Localmate sẽ tư vấn miễn phí và đề xuất giải pháp phù hợp nhất cho doanh nghiệp của bạn.
+              </p>
 
-          <p
-            className="handwritten contact-note"
-            style={{
-              fontSize: '15px',
-              top: '150px',
-              right: '3.5%',
-              transform: 'rotate(-8deg)',
-              color: '#064e3b',
-              fontWeight: 600,
-              textShadow: '0 1px 3px rgba(255, 255, 255, 0.75)',
-              lineHeight: 1.35,
-              pointerEvents: 'none',
-              zIndex: 2
-            }}
-          >
-            Bắt đầu hành trình<br />
-            chuyển đổi số ngay hôm nay!
-          </p>
+              <div className="benefits" id="benefits">
+                <div className="benefit">
+                  <span className="round" aria-hidden="true">
+                    <Icon name="chat" />
+                  </span>
+                  <div>
+                    <strong>Trao đổi rõ nhu cầu</strong>
+                    <p>Lắng nghe và tư vấn tận tâm</p>
+                  </div>
+                </div>
+                <div className="benefit">
+                  <span className="round" aria-hidden="true">
+                    <Icon name="shield" />
+                  </span>
+                  <div>
+                    <strong>Không ép gói</strong>
+                    <p>Chỉ đề xuất khi thật sự phù hợp</p>
+                  </div>
+                </div>
+                <div className="benefit">
+                  <span className="round orange" aria-hidden="true">
+                    <Icon name="target" />
+                  </span>
+                  <div>
+                    <strong>Chọn đúng giải pháp</strong>
+                    <p>Tối ưu theo mục tiêu thực tế</p>
+                  </div>
+                </div>
+                <div className="benefit">
+                  <span className="round" aria-hidden="true">
+                    <Icon name="people" />
+                  </span>
+                  <div>
+                    <strong>Phù hợp hộ kinh doanh &amp; SME</strong>
+                    <p>Giải pháp linh hoạt, dễ triển khai</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <form className="quote-form" onSubmit={handleFormSubmit}>
+              <div className="form-title">
+                <span className="round">
+                  <Icon name="mail" />
+                </span>
+                <div>
+                  <h3>Nhận báo giá nhanh</h3>
+                  <p>Điền thông tin, Localmate sẽ liên hệ ngay cho bạn!</p>
+                </div>
+              </div>
+
+              <label>
+                <span className="sr-only">Họ và tên</span>
+                <input
+                  name="name"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  placeholder="Họ và tên *"
+                  autoComplete="name"
+                  required
+                  maxLength={100}
+                />
+              </label>
+
+              <label>
+                <span className="sr-only">Số điện thoại</span>
+                <input
+                  name="phone"
+                  type="tel"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  placeholder="Số điện thoại *"
+                  autoComplete="tel"
+                  required
+                  pattern="[+0-9 ().-]{9,20}"
+                  title="Nhập số điện thoại từ 9 đến 20 ký tự"
+                />
+              </label>
+
+              <label>
+                <span className="sr-only">Lĩnh vực kinh doanh</span>
+                <select
+                  name="industry"
+                  value={formData.industry}
+                  onChange={(e) => setFormData({ ...formData, industry: e.target.value })}
+                  required
+                >
+                  <option value="">Lĩnh vực kinh doanh *</option>
+                  <option value="Ẩm thực & F&B">Ẩm thực &amp; F&amp;B</option>
+                  <option value="Du lịch & lưu trú">Du lịch &amp; lưu trú</option>
+                  <option value="Dịch vụ địa phương">Dịch vụ địa phương</option>
+                  <option value="Bán lẻ & SME">Bán lẻ &amp; SME</option>
+                  <option value="Lĩnh vực khác">Lĩnh vực khác</option>
+                </select>
+              </label>
+
+              <label>
+                <span className="sr-only">Nhu cầu của bạn</span>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  placeholder="Chia sẻ thêm nhu cầu của bạn (nếu có)"
+                  rows={3}
+                  maxLength={2000}
+                />
+              </label>
+
+              <button className="button" type="submit" disabled={formStatus.type === 'loading'}>
+                <span>
+                  <Icon name="chat" />
+                </span>{' '}
+                &nbsp; {formStatus.type === 'loading' ? 'Đang gửi...' : 'Nhận báo giá nhanh'}
+              </button>
+
+              <p className="form-note">
+                Thông tin của bạn được bảo mật tuyệt đối và chỉ dùng để tư vấn giải pháp.
+              </p>
+
+              {formStatus.text && (
+                <p
+                  className="form-status"
+                  role="status"
+                  style={{
+                    color: formStatus.type === 'success' ? '#0d7647' : '#b91c1c',
+                    fontWeight: 500,
+                    marginTop: '10px'
+                  }}
+                >
+                  {formStatus.text}
+                </p>
+              )}
+            </form>
+          </div>
         </section>
       </main>
 

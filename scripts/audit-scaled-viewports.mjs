@@ -16,7 +16,7 @@ const viewports = [
   { w: 1600, h: 900, label: '1600x900 (HD+ 125%)' }
 ];
 
-const baseUrl = 'http://localhost:3001';
+const baseUrl = 'http://localhost:3002';
 
 console.log('='.repeat(70));
 console.log('AUDIT MA TRẬN VIEWPORT DISPLAY SCALE 125% CHO LOCALMATE');

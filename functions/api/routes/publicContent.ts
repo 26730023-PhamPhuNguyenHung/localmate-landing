@@ -10,14 +10,7 @@ publicContentRoutes.get('/posts', async (c) => {
   const limit = Math.min(50, Math.max(1, parseInt(c.req.query('limit') || '12', 10)));
   const offset = (page - 1) * limit;
 
-  // Auto-publish eligible scheduled posts if their time has passed
-  await c.env.DB.prepare(`
-    UPDATE cms_posts 
-    SET status = 'published', published_at = scheduled_at 
-    WHERE status = 'scheduled' AND scheduled_at IS NOT NULL AND scheduled_at <= datetime('now')
-  `).run();
-
-  let whereClauses: string[] = ["p.status = 'published'"];
+  let whereClauses: string[] = ["(p.status = 'published' OR (p.status = 'scheduled' AND p.scheduled_at IS NOT NULL AND p.scheduled_at <= datetime('now')))"];
   let params: any[] = [];
 
   if (categorySlug && categorySlug !== 'all') {
@@ -58,6 +51,8 @@ publicContentRoutes.get('/posts', async (c) => {
     LIMIT ? OFFSET ?
   `).bind(...params, limit, offset).all();
 
+  c.header('Cache-Control', 'public, max-age=60, s-maxage=300, stale-while-revalidate=600');
+
   return c.json({
     success: true,
     data: {
@@ -76,13 +71,6 @@ publicContentRoutes.get('/posts', async (c) => {
 publicContentRoutes.get('/posts/:slug', async (c) => {
   const slug = c.req.param('slug');
 
-  // Auto-publish eligible scheduled posts
-  await c.env.DB.prepare(`
-    UPDATE cms_posts 
-    SET status = 'published', published_at = scheduled_at 
-    WHERE status = 'scheduled' AND scheduled_at IS NOT NULL AND scheduled_at <= datetime('now')
-  `).run();
-
   const post: any = await c.env.DB.prepare(`
     SELECT 
       p.*,
@@ -93,7 +81,7 @@ publicContentRoutes.get('/posts/:slug', async (c) => {
     LEFT JOIN cms_categories cat ON p.category_id = cat.id
     LEFT JOIN cms_users u ON p.author_id = u.id
     LEFT JOIN cms_media m ON p.featured_image_id = m.id
-    WHERE p.slug = ? AND p.status = 'published'
+    WHERE p.slug = ? AND (p.status = 'published' OR (p.status = 'scheduled' AND p.scheduled_at IS NOT NULL AND p.scheduled_at <= datetime('now')))
   `).bind(slug).first();
 
   if (!post) {
@@ -139,10 +127,12 @@ publicContentRoutes.get('/posts/:slug', async (c) => {
   const relatedRows = await c.env.DB.prepare(`
     SELECT id, title, slug, excerpt, reading_time, published_at
     FROM cms_posts
-    WHERE category_id = ? AND id != ? AND status = 'published'
+    WHERE category_id = ? AND id != ? AND (status = 'published' OR (status = 'scheduled' AND scheduled_at IS NOT NULL AND scheduled_at <= datetime('now')))
     ORDER BY published_at DESC
     LIMIT 4
   `).bind(post.category_id, post.id).all();
+
+  c.header('Cache-Control', 'public, max-age=60, s-maxage=300, stale-while-revalidate=600');
 
   return c.json({
     success: true,
@@ -226,6 +216,8 @@ publicContentRoutes.get('/categories', async (c) => {
     GROUP BY c.id
     ORDER BY c.id ASC
   `).all();
+
+  c.header('Cache-Control', 'public, max-age=300, s-maxage=600, stale-while-revalidate=1200');
 
   return c.json({ success: true, data: rows.results });
 });

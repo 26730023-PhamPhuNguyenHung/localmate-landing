@@ -420,12 +420,27 @@ Tài liệu này ghi nhận dòng thời gian các mốc cam kết (commits), s�
 
 ---
 
+### [2026-09-21 15:25] Tối Ưu Section Hero Above-The-Fold Trên Laptop Scale 125% - 150%
+- **Vấn đề**:
+  - Trên màn hình laptop Full HD 1920x1080 cài đặt display scale 125% (viewport khả dụng `1536x720` - `1536x750`) hoặc laptop 1366x768, Hero section trước đây quá dài (> 830px) khiến dải nút CTA ("Nhận tư vấn", "Xem dịch vụ") và card 4 giá trị (`.hero-values`) bị rớt xuống dưới nếp gấp màn hình (below the fold).
+- **Giải pháp triển khai**:
+  - Header: Thu gọn chiều cao xuống `clamp(58px, 4.5vw, 68px)` (và `56px` khi viewport height <= 820px).
+  - Hero Section: Chuyển vertical padding sang dynamic `vh`: `clamp(14px, 2vh, 20px)`.
+  - Hero Art Mockup: Khóa kích thước 2 chiều `max-width: min(500px, 38vw); max-height: min(42vh, 350px);` và `img { max-height: min(42vh, 350px); object-fit: contain; }`.
+  - Thêm Height-Aware Breakpoint `@media (min-width: 961px) and (max-height: 820px)` tinh chỉnh H1, description, CTA buttons và card 4 giá trị.
+- **Kết quả kiểm chứng trực quan bằng `agent-browser`**:
+  - 100% nội dung Hero (Header, Tiêu đề H1, Mô tả, Nút CTA, Ghi chú, Ảnh Art, Card 4 giá trị) nằm trọn vẹn trong màn hình laptop đầu tiên (`fitsInViewport: true`).
+  - Đã chụp ảnh minh chứng tại `artifacts/hero-1536x720-perfect.png`.
+  - Build `npm run build` PASS 100%.
+
+---
+
 ## Trạng Thái Hệ Thống Hiện Tại (Current System State)
 - **Local D1 Database**: Đã chạy đầy đủ 4 migrations (`0001`, `0002`, `0003`, `0004`), 30 bài viết, 3 mẫu CTA chuyển đổi, 7 chuyên mục.
 - **Production Build**: Pass 100% (`tsc && vite build && node scripts/generate-static-routes.js` hoàn tất không lỗi).
 - **Responsive Matrix 125% Scaling**: Đạt 100% chuẩn trên toàn bộ các kích thước màn hình laptop Windows 13" - 15.6" (`1280x720`, `1280x800`, `1366x768`, `1440x900`, `1536x864`, `1600x900`).
-- **Trang Kiến Thức (/kien-thuc)**: Layout container 1440px thống nhất hoàn hảo, dóng thẳng hàng toàn bộ khối nội dung từ trên xuống dưới.
-- **Typography & Prose**: Hệ thống Typography bài viết chuẩn mực đã hoàn thiện và kết nối đồng bộ giữa ArticleDetailPage, TableOfContents và ArticleBody.
-- **Giao diện Quản trị & Độc giả**: Light mode hoàn chỉnh, màu nhận diện `#0d7647`, tuyệt đối không dùng glassmorphism, responsive mượt mà trên laptop 14" 125% scaling.
+- **Hero Section Above-The-Fold**: 100% nằm gọn gàng, thoáng đãng trong 1 màn hình đầu tiên trên tất cả tỷ lệ scale của laptop.
+- **Giao diện Quản trị & Độc giả**: Light mode hoàn chỉnh, màu nhận diện `#0d7647`, tuyệt đối không dùng glassmorphism.
 - **Hệ thống API**: 100% endpoints backend trên Hono/Cloudflare Pages Functions hoạt động ổn định với thời gian phản hồi < 50ms.
+
 

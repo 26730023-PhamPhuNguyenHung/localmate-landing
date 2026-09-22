@@ -44,7 +44,7 @@ export const MamNonHero: React.FC<MamNonHeroProps> = ({
         className="scene-photo hero-photo"
         src="/assets/mam-non/hero.png"
         alt="Cô giáo cùng các bé vui vẻ khám phá máy tính bảng trong lớp mầm non"
-        fetchPriority="high"
+        {...({ fetchpriority: 'high' } as any)}
       />
       <div className="photo-fade" />
 

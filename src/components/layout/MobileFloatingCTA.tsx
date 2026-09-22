@@ -191,6 +191,7 @@ export const MobileFloatingCTA: React.FC<MobileFloatingCTAProps> = ({
         /* 3. Nút Đăng ký tư vấn - Màu xanh thương hiệu Primary Green nổi bật nhất */
         .floating-btn-primary {
           flex: 1 1 auto;
+          min-width: 0;
           padding: 0 12px;
           background-color: #0d7647;
           border: 1px solid #095935;

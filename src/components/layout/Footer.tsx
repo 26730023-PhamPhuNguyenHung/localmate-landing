@@ -275,14 +275,17 @@ export const Footer: React.FC = () => {
         }
 
         .zalo-btn {
-          display: block;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
           color: #ffffff;
           background: linear-gradient(125deg, #078555, #05754f);
           border: 1px solid #087d54;
           border-radius: 12px;
           text-align: center;
           width: min(170px, 100%);
-          padding: 11px 16px;
+          min-height: 44px;
+          padding: 10px 16px;
           font-size: 15px;
           font-weight: 700;
           text-decoration: none;

@@ -57,7 +57,7 @@ app.use('/admin/*', async (c, next) => {
     return c.json({ success: false, error: { code: 'UNAUTHORIZED', message: 'Yêu cầu đăng nhập quản trị' } }, 401);
   }
 
-  const payload = verifyToken(token);
+  const payload = await verifyToken(token);
   if (!payload) {
     return c.json({ success: false, error: { code: 'INVALID_TOKEN', message: 'Phiên đăng nhập không hợp lệ hoặc đã hết hạn' } }, 401);
   }

@@ -107,12 +107,13 @@ export const LeadModal: React.FC<LeadModalProps> = ({
         serviceInterest: formData.service,
         message: formData.message || `Đăng ký từ Modal tư vấn: ${formData.service}`,
         sourcePage: typeof window !== 'undefined' ? window.location.pathname : '/'
-      });
+      }, { requireNetworkDelivery: true });
+      setIsSubmitted(true);
     } catch (err) {
-      console.debug('Lead submission catch:', err);
+      console.error('Lead submission error:', err);
+      setErrorMsg('Chưa thể gửi thông tin qua mạng. Bạn vui lòng thử lại hoặc bấm gọi hotline/nhắn Zalo trực tiếp.');
     } finally {
       setIsSubmitting(false);
-      setIsSubmitted(true);
     }
   };
 
@@ -409,11 +410,15 @@ export const LeadModal: React.FC<LeadModalProps> = ({
           position: absolute;
           top: 1.15rem;
           right: 1.15rem;
+          width: 44px;
+          height: 44px;
+          min-width: 44px;
+          min-height: 44px;
           background: none;
           border: none;
           cursor: pointer;
           color: #64748b;
-          padding: 0.35rem;
+          padding: 0;
           border-radius: 8px;
           display: flex;
           align-items: center;

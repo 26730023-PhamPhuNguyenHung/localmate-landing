@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback, useMemo } from 'react';
 
 interface RouterContextType {
   currentPath: string;
@@ -26,7 +26,7 @@ export const RouterProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
-  const navigate = (to: string) => {
+  const navigate = useCallback((to: string) => {
     if (to.startsWith('#')) {
       const el = document.querySelector(to);
       if (el) {
@@ -63,10 +63,12 @@ export const RouterProvider: React.FC<{ children: React.ReactNode }> = ({ childr
       setCurrentPath(to);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-  };
+  }, []);
+
+  const contextValue = useMemo(() => ({ currentPath, navigate }), [currentPath, navigate]);
 
   return (
-    <RouterContext.Provider value={{ currentPath, navigate }}>
+    <RouterContext.Provider value={contextValue}>
       {children}
     </RouterContext.Provider>
   );

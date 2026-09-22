@@ -656,7 +656,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
 
         .site-header .header-inner {
           max-width: 1440px;
-          height: clamp(68px, 6vw, 82px);
+          height: clamp(58px, 4.5vw, 68px);
           margin: 0 auto;
           display: flex;
           align-items: center;
@@ -673,7 +673,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
         }
 
         .site-header .logo {
-          width: clamp(148px, 11vw, 185px);
+          width: clamp(136px, 9.5vw, 168px);
           aspect-ratio: 213/83;
         }
 
@@ -691,7 +691,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
         }
 
         .nav-link {
-          padding: 16px 0;
+          padding: 10px 0;
           position: relative;
           text-decoration: none;
           color: #10263d;
@@ -1027,6 +1027,27 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           display: none;
         }
 
+        @media (max-height: 820px) {
+          .site-header .header-inner {
+            height: 56px;
+          }
+          .nav-link {
+            padding: 6px 0;
+          }
+          .site-header .logo {
+            width: 132px;
+          }
+          .site-header .phone {
+            padding: 7px 12px;
+            font-size: 13px;
+          }
+          .site-header .header-cta-btn {
+            padding: 7px 14px;
+            font-size: 13.5px;
+            min-height: 38px;
+          }
+        }
+
         @media (max-width: 1366px) {
           .site-header .phone {
             display: none !important;
@@ -1067,6 +1088,15 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
           }
           .site-header .logo {
             width: 140px;
+          }
+          .mobile-drawer-overlay {
+            top: 64px !important;
+          }
+          .site-header.scrolled .mobile-drawer-overlay {
+            top: 64px !important;
+          }
+          .mobile-drawer-body {
+            min-height: calc(100vh - 64px) !important;
           }
         }
 
@@ -1164,12 +1194,13 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
         }
 
         .mobile-sub-link {
-          display: block;
-          font-size: 0.9rem;
-          font-weight: 600;
+          font-size: 0.95rem;
           color: #1e293b;
           text-decoration: none;
-          padding: 0.4rem 0;
+          min-height: 44px;
+          display: inline-flex;
+          align-items: center;
+          padding: 0.25rem 0;
           transition: color 0.15s;
         }
 
@@ -1187,21 +1218,28 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoForm }) => {
         }
 
         .mobile-view-all-link {
-          font-size: 0.85rem;
+          font-size: 0.9rem;
           font-weight: 700;
           color: #0d7647;
           text-decoration: none;
+          min-height: 44px;
+          display: inline-flex;
+          align-items: center;
         }
 
         .mobile-consult-btn {
           background-color: #0d7647;
           color: #ffffff;
           border: none;
-          padding: 6px 12px;
-          border-radius: 6px;
-          font-size: 0.825rem;
+          min-height: 44px;
+          padding: 8px 14px;
+          border-radius: 8px;
+          font-size: 0.875rem;
           font-weight: 700;
           cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
         }
 
         .mobile-drawer-footer {

@@ -16,9 +16,6 @@ export default defineConfig({
             if (id.includes('@tiptap') || id.includes('prosemirror')) {
               return 'tiptap';
             }
-            if (id.includes('lucide-react')) {
-              return 'icons';
-            }
             if (id.includes('react') || id.includes('scheduler')) {
               return 'vendor';
             }

@@ -31,10 +31,13 @@
     <meta property="twitter:description" content="Xây website, SEO Google Maps, chạy quảng cáo và quản trị website trọn gói cho doanh nghiệp nhỏ." />
     <meta property="twitter:image" content="https://localmate.vn/logo.png" />
 
-    <!-- Google Fonts: Be Vietnam Pro, Mali (Handwriting), Patrick Hand -->
+    <!-- Preload Critical LCP Assets -->
+    <link rel="preload" as="image" href="/images/home/hero.webp" type="image/webp" fetchpriority="high">
+
+    <!-- Optimized Google Fonts: Be Vietnam Pro (400, 500, 600, 700) & Mali (Italic 500, 600) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Mali:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Patrick+Hand&subset=vietnamese&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Mali:ital,wght@1,500;1,600&subset=vietnamese&display=swap" rel="stylesheet">
 
     <!-- Design System Baseline & Layout Shift Prevention -->
     <style>
@@ -75,18 +78,36 @@
       function gtag(){dataLayer.push(arguments);}
       window.gtag = gtag;
 
-      // Meta Pixel Base Code
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-      // Initialize with Meta Pixel ID (default or env-injected)
-      if (window.VITE_FB_PIXEL_ID) {
-        fbq('init', window.VITE_FB_PIXEL_ID);
+      // Meta Pixel Base Code (Non-blocking Deferred Execution)
+      window._fbq = window._fbq || [];
+      window.fbq = window.fbq || function() {
+        if (window.fbq.callMethod) {
+          window.fbq.callMethod.apply(window.fbq, arguments);
+        } else {
+          window.fbq.queue.push(arguments);
+        }
+      };
+      window.fbq.queue = window.fbq.queue || [];
+      window.fbq.loaded = true;
+      window.fbq.version = '2.0';
+
+      function loadMetaPixel() {
+        if (window._fbPixelLoaded) return;
+        window._fbPixelLoaded = true;
+        var t = document.createElement('script');
+        t.async = true;
+        t.src = 'https://connect.facebook.net/en_US/fbevents.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(t, s);
+        if (window.VITE_FB_PIXEL_ID) {
+          window.fbq('init', window.VITE_FB_PIXEL_ID);
+        }
+      }
+
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(function() { setTimeout(loadMetaPixel, 2000); });
+      } else {
+        window.addEventListener('load', function() { setTimeout(loadMetaPixel, 2000); });
       }
     </script>
 

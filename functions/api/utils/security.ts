@@ -17,18 +17,52 @@ export async function verifyPassword(password: string, storedHash: string): Prom
   return calculated === storedHash;
 }
 
-export function generateToken(userId: number, username: string): string {
+const TOKEN_SECRET = 'localmate_jwt_secret_hmac_2026_dn_vn';
+
+export async function generateToken(userId: number, username: string): Promise<string> {
   const payload = {
     uid: userId,
     usr: username,
     exp: Date.now() + 7 * 24 * 60 * 60 * 1000 // 7 days
   };
-  return btoa(JSON.stringify(payload));
+  const payloadStr = btoa(JSON.stringify(payload));
+  const enc = new TextEncoder();
+  const key = await crypto.subtle.importKey(
+    'raw',
+    enc.encode(TOKEN_SECRET),
+    { name: 'HMAC', hash: 'SHA-256' },
+    false,
+    ['sign']
+  );
+  const signature = await crypto.subtle.sign('HMAC', key, enc.encode(payloadStr));
+  const sigHex = Array.from(new Uint8Array(signature)).map(b => b.toString(16).padStart(2, '0')).join('');
+  return `${payloadStr}.${sigHex}`;
 }
 
-export function verifyToken(token: string): { uid: number; usr: string } | null {
+export async function verifyToken(token: string): Promise<{ uid: number; usr: string } | null> {
   try {
-    const raw = atob(token);
+    const parts = token.split('.');
+    if (parts.length !== 2) {
+      return null;
+    }
+    const [payloadStr, sigHex] = parts;
+    const enc = new TextEncoder();
+    const key = await crypto.subtle.importKey(
+      'raw',
+      enc.encode(TOKEN_SECRET),
+      { name: 'HMAC', hash: 'SHA-256' },
+      false,
+      ['verify']
+    );
+    const matchHex = sigHex.match(/.{1,2}/g);
+    if (!matchHex) return null;
+    const sigBytes = new Uint8Array(matchHex.map(byte => parseInt(byte, 16)));
+    const isValid = await crypto.subtle.verify('HMAC', key, sigBytes, enc.encode(payloadStr));
+    if (!isValid) {
+      return null;
+    }
+
+    const raw = atob(payloadStr);
     const data = JSON.parse(raw);
     if (!data.uid || !data.exp || data.exp < Date.now()) {
       return null;
