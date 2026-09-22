@@ -145,5 +145,17 @@ if ($Pack -eq "PackC" -or $Pack -eq "All") {
 }
 
 Write-Host "`n[3/4] Successfully processed and replaced all placeholders!" -ForegroundColor Green
-Write-Host "[4/4] Output files saved at: $OutputDir" -ForegroundColor Yellow
+
+# Automatically trigger python docx converter
+$converterScript = Join-Path -Path (Split-Path -Path $legalRoot -Parent) -ChildPath "scripts\convert_legal_to_docx.py"
+if (Test-Path -Path $converterScript) {
+    Write-Host "`n[3.5/4] Generating Word DOCX and Excel XLSX files via Python..." -ForegroundColor Cyan
+    try {
+        & python $converterScript
+    } catch {
+        Write-Warning "Could not run python converter: $_"
+    }
+}
+
+Write-Host "`n[4/4] Output files (both .MD and .DOCX) saved at: $OutputDir" -ForegroundColor Yellow
 Write-Host "==========================================================" -ForegroundColor Cyan
