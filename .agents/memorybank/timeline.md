@@ -6,6 +6,22 @@ Tài liệu này ghi nhận dòng thời gian các mốc cam kết (commits), s�
 
 ## Mốc Sự Kiện & Commits Gần Nhất
 
+### Mốc: Layout & Design System Comprehensive Audit — Triển Khai 10 Subagents & Vá Toàn Diện Layout Hệ Thống
+- **Mã commit**: Pending
+- **Nội dung**: `fix(layout-audit): comprehensive layout polish, anti-overflow, touch targets, and services data engine`
+- **Chi tiết**:
+  - `src/styles/services.css` & `src/pages/ServicesPage.tsx`: Cập nhật CSS thẻ dịch vụ responsive 1 cột dọc trên mobile, deliverables checklist, filter navigation pills, trust strip, nút CTA mở LeadModal.
+  - `src/data/servicesData.ts`: SSOT dữ liệu 5 dịch vụ cốt lõi LocalMate với deliverables định lượng và báo giá minh bạch.
+  - `src/pages/ArticlesIndexPage.tsx`: Sửa lỗi P0 sticky filter bar `top: '68px'` chống bị che lấp bởi header, bổ sung Quick Metrics Toolbar, cố định seed index thumbnail theo `article.id` chống nhảy ảnh, đổi thẻ tiêu đề card sang `h3` line-clamp 2 dòng, nâng cấp touch target >= 44px cho nút Reset và Filter buttons.
+  - `src/components/article/ArticleBody.tsx`: Xóa bỏ rule `display: none` trên blockquote đầu tiên bảo toàn lời khuyên thực tế của tác giả.
+  - `src/styles/globals.css`: Thêm `max-height: calc(100vh - 110px); overflow-y: auto;` cho `.article-sidebar-column` chống trôi nút CTA ra ngoài màn hình laptop 14", chuẩn hóa table `min-width: 520px; white-space: normal; text-wrap: balance;`.
+  - `src/styles/geo-landing.css`: Khai báo `overflow-x: hidden` trên `.geo-page` và `overflow-x: clip;` trên section containers, khống chế art trong mobile viewport, triệt tiêu 100% lỗi tràn ngang 1264px trên mobile 390px.
+  - `src/components/conversion/LeadModal.tsx` & `src/styles/lead-modal.css`: Nâng nút close lên 44x44px, sửa phím Escape reset toàn bộ form state, điều chỉnh mobile alignment chống trôi modal khi bàn phím ảo bật lên.
+  - `src/components/conversion/InArticleCallout.tsx`: Cập nhật cam kết thời gian phản hồi thực tế thành "Phản hồi sớm trong giờ làm việc".
+  - `src/styles/homepage.css`: Xóa `text-wrap: initial`, chuyển Contact Section sang 2 cột cân đối, loại bỏ màu alpha hex và nâng tương phản cam/đỏ chuẩn WCAG AA.
+  - `src/App.tsx`: Sửa điều kiện render MobileFloatingCTA, dọn dẹp duplicate code trong `renderPage()`.
+  - **Kiểm thử**: `npm run build` PASS 100% trong 5.73s, sinh đầy đủ 30 bài viết và 8 static pages.
+
 ### Mốc: Chuẩn Hóa Toàn Diện Bộ Hợp Đồng Pháp Lý B2B, HĐLĐ Kèm IP & Hợp Đồng Đại Lý Agency
 - **Mã commit**: `8447498`, `3320f85`
 - **Nội dung**: `feat(legal): implement 3-tier IP architecture and 'Your Data. Your Business. Your Control' policy with Exit Guarantee`

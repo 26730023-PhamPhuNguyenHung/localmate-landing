@@ -193,5 +193,17 @@
 - Header trang chủ và header public phải cùng tập mục chính; xóa mục điều hướng chỉ trỏ tới anchor khi không còn phù hợp. Footer có thể giữ link nội dung phụ nếu đích thực sự tồn tại.
 - Không hứa thời gian phản hồi cố định trong `LeadModal` khi chưa có quy trình đo được. Với webhook `no-cors`, trạng thái thành công chỉ nói yêu cầu đã gửi qua mạng.
 - Với slogan footer, căn nét vàng theo vùng chữ thay vì `margin-left: auto` về cạnh phải của cột; kiểm tra cả mobile và desktop.
-- Header trang chủ riêng từng có chiều cao 92/82/76/72px, khác `Header` dùng chung; dùng một component cho `/`, `/labs`, `/dich-vu` để tránh lệch. `/logo.webp` có artefact nén nhìn mờ ở cỡ header; `/logo.png` gốc 853×332 rõ hơn.
-- /geo từng có GeoHeader cao 88px và menu cũ chứa route không tồn tại. Hiện /geo dùng Header chung; CTA cuộn đến #bang-gia-geo. /mam-non cũng dùng Header chung. /dich-vu dẫn tới cả hai trang; footer GEO chỉ giữ link có đích thật.
+## Layout Audit, Touch Targets & Anti-Overflow Pass (2026-09-23)
+- **Sticky Filter Bar Offset**: Site Header cố định (cao 68px) đè che lấp hoàn toàn phần tử con có `position: sticky; top: 0;` khi người dùng cuộn trang. Khắc phục: Luôn đặt `top: '68px'` (bằng chiều cao header) để thanh lọc chủ đề luôn nằm ngay dưới header khi cuộn.
+- **Seed Index Ổn Định Cho Thumbnail Bài Viết**: Việc dùng `idx` (chỉ số trong mảng đã filter `filteredArticles.map((article, idx) => ...)`) khiến cùng một bài viết bị nhảy đổi ảnh đại diện liên tục mỗi khi người dùng bấm lọc chuyên mục hoặc gõ từ khóa tìm kiếm. Khắc phục: Luôn tính seed index từ chính `article.id` (`typeof article.id === 'number' ? article.id : parseInt(article.id, 10)`).
+- **Triệt tiêu Horizontal Overflow 1264px trên Mobile (390px)**:
+  - Khi dùng ảnh minh họa trang trí lớn (width 130%-140%, right -20%), nếu container cha thiếu thuộc tính khống chế tràn, trang web sẽ bị sinh thanh cuộn ngang rác khổng lồ.
+  - Khắc phục: Khai báo `overflow-x: hidden; width: 100%; max-width: 100vw;` trên `.geo-page`, đặt `overflow-x: clip;` trên các section container, và trên mobile `<= 640px` khống chế `max-width: 100%; width: 100%; right: 0; left: 0; margin: 0 auto;`.
+- **Touch Target Chuẩn W3C/Google (>= 44px) & Xử Lý Virtual Keyboard**:
+  - Nút đóng `.lead-modal-close` và các filter pill cần đạt tối thiểu 44px x 44px để chống bấm trượt trên mobile.
+  - Trên mobile, modal overlay cần có `align-items: flex-start; padding: 12px;` để modal không bị trôi mất tiêu đề hoặc nút bấm khi bàn phím ảo bật lên.
+  - Phím Escape trong Modal phải gọi hàm `close()` để reset sạch sẽ toàn bộ form state thay vì chỉ gọi `onClose()`.
+- **Anti-Glassmorphism & Tương Phản WCAG AA**:
+  - Loại bỏ hoàn toàn các màu nền bán trong suốt alpha hex (`#ffffff75`, `#ffffffdb`, `#ffffffcc`) sang nền đặc `#ffffff` và viền nhạt tinh tế `#e2e8f0`.
+  - Thay màu cam nhạt `#f47b00` / `#f65e16` thành `#b45309` / `#c2410c` để đạt độ tương phản chuẩn WCAG AA (> 4.5:1) trên nền sáng.
+  - Loại bỏ thuộc tính `text-wrap: initial` gây rớt từ đơn lẻ, đồng bộ sử dụng `text-wrap: pretty` cho tiêu đề và nội dung ngắn.

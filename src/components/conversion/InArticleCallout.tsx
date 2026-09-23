@@ -236,7 +236,7 @@ export const InArticleCallout: React.FC<InArticleCalloutProps> = ({
         <div className="callout-footer">
           <div className="reassurance-item">
             <ShieldCheck size={14} className="reassurance-icon" />
-            <span>Kỹ thuật viên phản hồi trong 15 phút</span>
+            <span>Phản hồi sớm trong giờ làm việc</span>
           </div>
           <span className="sep-dot">•</span>
           <div className="reassurance-item">

@@ -172,10 +172,11 @@ export const ArticlesIndexPage: React.FC<ArticlesIndexPageProps> = ({ onOpenCons
     setSearchQuery('');
   };
 
-  // Helper to get thumbnail for article
-  const getThumbnailForArticle = (article: ArticleMetadata, index: number) => {
+  // Helper to get thumbnail for article (stable by article.id)
+  const getThumbnailForArticle = (article: ArticleMetadata) => {
     const list = TOPIC_THUMBNAILS[article.categorySlug] || TOPIC_THUMBNAILS['website'];
-    return list[index % list.length] || article.featuredImageUrl || '/logo.png';
+    const numericId = typeof article.id === 'number' ? article.id : (parseInt(String(article.id), 10) || 0);
+    return list[numericId % list.length] || article.featuredImageUrl || '/logo.png';
   };
 
   // Get icon for cluster
@@ -336,14 +337,42 @@ export const ArticlesIndexPage: React.FC<ArticlesIndexPageProps> = ({ onOpenCons
                     border: 'none',
                     color: '#64748b',
                     cursor: 'pointer',
-                    padding: '4px',
+                    minWidth: '40px',
+                    minHeight: '40px',
                     display: 'flex',
-                    alignItems: 'center'
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    borderRadius: '8px'
                   }}
                 >
                   <X size={18} />
                 </button>
               )}
+            </div>
+
+            {/* Quick Metrics Bar */}
+            <div
+              style={{
+                display: 'inline-flex',
+                flexWrap: 'wrap',
+                justifyContent: 'center',
+                alignItems: 'center',
+                gap: '0.75rem 1.25rem',
+                padding: '0.6rem 1.25rem',
+                backgroundColor: '#ffffff',
+                border: '1px solid #e2e8f0',
+                borderRadius: '9999px',
+                fontSize: '0.85rem',
+                fontWeight: 600,
+                color: '#475569',
+                boxShadow: '0 1px 3px rgba(0, 0, 0, 0.04)'
+              }}
+            >
+              <span>📚 <strong>30</strong> bài viết thực chiến</span>
+              <span style={{ color: '#cbd5e1' }}>•</span>
+              <span>🎯 <strong>5</strong> cụm chủ đề cốt lõi</span>
+              <span style={{ color: '#cbd5e1' }}>•</span>
+              <span>⚡ <strong>0đ</strong> phí truy cập</span>
             </div>
 
           </div>
@@ -356,9 +385,9 @@ export const ArticlesIndexPage: React.FC<ArticlesIndexPageProps> = ({ onOpenCons
           borderBottom: '1px solid #e2e8f0',
           backgroundColor: '#ffffff',
           position: 'sticky',
-          top: 0,
+          top: '68px',
           zIndex: 40,
-          boxShadow: '0 2px 8px rgba(15, 23, 42, 0.03)'
+          boxShadow: '0 2px 8px rgba(15, 23, 42, 0.04)'
         }}
       >
         <div className="knowledge-container">
@@ -399,8 +428,9 @@ export const ArticlesIndexPage: React.FC<ArticlesIndexPageProps> = ({ onOpenCons
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
-                    gap: '0.4rem',
-                    padding: '0.45rem 0.95rem',
+                    gap: '0.45rem',
+                    minHeight: '44px',
+                    padding: '0.5rem 1rem',
                     borderRadius: '9999px',
                     fontSize: '0.85rem',
                     fontWeight: isActive ? 700 : 600,
@@ -489,17 +519,23 @@ export const ArticlesIndexPage: React.FC<ArticlesIndexPageProps> = ({ onOpenCons
                   setSearchQuery('');
                 }}
                 style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.35rem',
                   fontSize: '0.85rem',
                   fontWeight: 600,
                   color: '#0d7647',
-                  background: 'none',
-                  border: 'none',
+                  backgroundColor: '#edf7f1',
+                  border: '1px solid #c6ebd4',
+                  borderRadius: '8px',
                   cursor: 'pointer',
-                  padding: 0,
-                  textDecoration: 'underline'
+                  minHeight: '44px',
+                  padding: '0.4rem 0.85rem',
+                  transition: 'background-color 0.15s'
                 }}
               >
-                Đặt lại tất cả bộ lọc
+                <X size={15} />
+                <span>Đặt lại tất cả bộ lọc</span>
               </button>
             )}
           </div>
@@ -556,8 +592,8 @@ export const ArticlesIndexPage: React.FC<ArticlesIndexPageProps> = ({ onOpenCons
               gap: '1.5rem'
             }}
           >
-            {filteredArticles.map((article, idx) => {
-              const thumbUrl = getThumbnailForArticle(article, idx);
+            {filteredArticles.map((article) => {
+              const thumbUrl = getThumbnailForArticle(article);
               return (
                 <article
                   key={article.id}
@@ -660,14 +696,19 @@ export const ArticlesIndexPage: React.FC<ArticlesIndexPageProps> = ({ onOpenCons
                     </div>
 
                     {/* Title */}
-                    <h2
+                    <h3
                       style={{
                         fontSize: '1.08rem',
                         fontWeight: 800,
                         lineHeight: 1.45,
                         color: '#0f172a',
                         marginBottom: '0.65rem',
-                        textWrap: 'pretty'
+                        textWrap: 'pretty',
+                        display: '-webkit-box',
+                        WebkitLineClamp: 2,
+                        WebkitBoxOrient: 'vertical',
+                        overflow: 'hidden',
+                        minHeight: '2.9em'
                       }}
                     >
                       <Link
@@ -686,7 +727,7 @@ export const ArticlesIndexPage: React.FC<ArticlesIndexPageProps> = ({ onOpenCons
                       >
                         {article.title}
                       </Link>
-                    </h2>
+                    </h3>
 
                     {/* Excerpt */}
                     <p

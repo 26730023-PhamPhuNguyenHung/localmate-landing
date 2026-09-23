@@ -289,10 +289,6 @@ export const ArticleBody: React.FC<ArticleBodyProps> = ({
         }
 
         /* Blockquote: Editorial Style */
-        .article-body > blockquote:first-of-type,
-        .article-rendered-content > blockquote:first-of-type {
-          display: none;
-        }
 
         .article-body blockquote,
         .article-rendered-content blockquote {

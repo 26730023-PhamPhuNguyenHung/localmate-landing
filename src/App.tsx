@@ -85,7 +85,7 @@ const MainContent: React.FC = () => {
     }
 
     if (normalizedPath === '/dich-vu') {
-      return <ServicesPage />;
+      return <ServicesPage onOpenConsultForm={handleOpenLeadForm} />;
     }
 
     // 3. High-Converting Landing Page for GEO / AI Visibility (/geo)
@@ -180,6 +180,7 @@ const MainContent: React.FC = () => {
   const isReferenceHome = ['/', '/cach-lam-viec', '/quy-trinh'].includes(normalizedPath);
   const hideDefaultHeader = isAdminView || isPreviewView;
   const hideDefaultFooter = isGeoLandingView || isReferenceHome || hideDefaultHeader;
+  const hideMobileFloatingCTA = isAdminView || isPreviewView || normalizedPath === '/labs';
 
   return (
     <div className="localmate-app">
@@ -201,8 +202,8 @@ const MainContent: React.FC = () => {
       </main>
       {!hideDefaultFooter && <Footer />}
 
-      {/* Mobile Floating Sticky CTA */}
-      {!hideDefaultFooter && normalizedPath !== '/labs' && (
+      {/* Mobile Floating Sticky CTA - Luôn hiển thị trên di động ở tất cả các trang công khai */}
+      {!hideMobileFloatingCTA && (
         <MobileFloatingCTA onOpenConsultForm={() => handleOpenLeadForm('Tư vấn Web Demo 0đ')} />
       )}
 

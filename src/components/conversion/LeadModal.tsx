@@ -32,6 +32,15 @@ export const LeadModal: React.FC<LeadModalProps> = ({
     setMessage(initialNote || initialBusinessInput);
   }, [initialNote, initialBusinessInput]);
 
+  const close = React.useCallback(() => {
+    setName('');
+    setPhone('');
+    setMessage('');
+    setStatus('idle');
+    setError('');
+    onClose();
+  }, [onClose]);
+
   useEffect(() => {
     if (!isOpen) return;
     trackFormStart('Universal_Lead_Modal');
@@ -39,25 +48,16 @@ export const LeadModal: React.FC<LeadModalProps> = ({
     document.body.style.overflow = 'hidden';
     nameInput.current?.focus();
     const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') onClose();
+      if (event.key === 'Escape') close();
     };
     document.addEventListener('keydown', closeOnEscape);
     return () => {
       document.body.style.overflow = previousOverflow;
       document.removeEventListener('keydown', closeOnEscape);
     };
-  }, [isOpen, onClose]);
+  }, [isOpen, close]);
 
   if (!isOpen) return null;
-
-  const close = () => {
-    setName('');
-    setPhone('');
-    setMessage('');
-    setStatus('idle');
-    setError('');
-    onClose();
-  };
 
   const submit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();

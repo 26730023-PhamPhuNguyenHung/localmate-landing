@@ -1,6 +1,7 @@
 .lead-modal-overlay { position: fixed; inset: 0; z-index: 9999; display: grid; place-items: center; overflow-y: auto; padding: 16px; background: #0f172ac7; }
 .lead-modal-card { position: relative; width: min(100%, 460px); max-height: calc(100dvh - 32px); overflow-y: auto; padding: 30px; border-radius: 18px; background: #fff; color: #17212b; box-shadow: 0 24px 70px #071f1e40; font-family: var(--font-family); }
-.lead-modal-close { position: absolute; top: 15px; right: 15px; display: grid; place-items: center; width: 36px; height: 36px; border: 0; border-radius: 9px; background: #f1f5f3; color: #334155; cursor: pointer; }
+.lead-modal-close { position: absolute; top: 12px; right: 12px; display: grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: 10px; background: #f1f5f3; color: #334155; cursor: pointer; transition: background .15s ease; }
+.lead-modal-close:hover { background: #e2e8f0; }
 .lead-modal-card h2 { padding-right: 35px; margin: 0 0 6px; font-size: 27px; letter-spacing: -.035em; line-height: 1.25; }
 .lead-modal-intro,.lead-modal-result > p { color: #526172; font-size: 14px; line-height: 1.55; }
 .lead-modal-card form { display: flex; flex-direction: column; margin-top: 23px; }
@@ -25,4 +26,8 @@
 .lead-modal-result .lead-modal-contact { margin-top: 20px; }
 .lead-modal-secondary { margin-top: 20px; border: 0; background: none; color: #475569; font: 600 13px var(--font-family); cursor: pointer; }
 .lead-modal-card button:focus-visible,.lead-modal-card a:focus-visible { outline: 2px solid #0d7647; outline-offset: 3px; }
-@media (max-width: 600px) { .lead-modal-card { padding: 24px 20px; border-radius: 15px; } .lead-modal-card h2 { font-size: 24px; } }
+@media (max-width: 600px) {
+  .lead-modal-overlay { padding: 12px; align-items: flex-start; }
+  .lead-modal-card { padding: 22px 18px; border-radius: 16px; margin: auto 0; }
+  .lead-modal-card h2 { font-size: 22px; }
+}
