@@ -7,7 +7,7 @@ Tài liệu này ghi nhận dòng thời gian các mốc cam kết (commits), s�
 ## Mốc Sự Kiện & Commits Gần Nhất
 
 ### Mốc: Layout & Design System Comprehensive Audit — Triển Khai 10 Subagents & Vá Toàn Diện Layout Hệ Thống
-- **Mã commit**: Pending
+- **Mã commit**: `bd792cd`
 - **Nội dung**: `fix(layout-audit): comprehensive layout polish, anti-overflow, touch targets, and services data engine`
 - **Chi tiết**:
   - `src/styles/services.css` & `src/pages/ServicesPage.tsx`: Cập nhật CSS thẻ dịch vụ responsive 1 cột dọc trên mobile, deliverables checklist, filter navigation pills, trust strip, nút CTA mở LeadModal.
