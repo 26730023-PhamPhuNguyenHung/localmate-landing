@@ -13,7 +13,6 @@ import {
   ArrowRight, 
   BookOpen, 
   Sparkles, 
-  CheckCircle2, 
   Filter,
   X,
   HelpCircle,
@@ -347,30 +346,6 @@ export const ArticlesIndexPage: React.FC<ArticlesIndexPageProps> = ({ onOpenCons
               )}
             </div>
 
-            {/* Quick Metrics Bar */}
-            <div
-              style={{
-                display: 'inline-flex',
-                flexWrap: 'wrap',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '1.25rem',
-                fontSize: '0.85rem',
-                color: '#64748b'
-              }}
-            >
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
-                <CheckCircle2 size={15} color="#0d7647" /> 30 bài viết thực chiến
-              </span>
-              <span style={{ color: '#cbd5e1' }}>•</span>
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
-                <CheckCircle2 size={15} color="#0d7647" /> 5 Cụm chủ đề cốt lõi
-              </span>
-              <span style={{ color: '#cbd5e1' }}>•</span>
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
-                <CheckCircle2 size={15} color="#0d7647" /> Tốc độ tải trang 0ms
-              </span>
-            </div>
           </div>
         </div>
       </section>

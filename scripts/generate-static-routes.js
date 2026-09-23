@@ -87,6 +87,18 @@ export function generateStaticRoutes() {
   // 3. Core Static Policy & Geo Pages
   const staticRoutes = [
     {
+      dir: 'dich-vu',
+      title: 'Dịch vụ LocalMate | Giải pháp số cho doanh nghiệp địa phương',
+      description: 'Khám phá dịch vụ thiết kế website, Google Maps, Google Ads, content và CRM của LocalMate.',
+      url: 'https://localmate.vn/dich-vu'
+    },
+    {
+      dir: 'labs',
+      title: 'LocalMate Labs | Sản phẩm AI cho kinh doanh địa phương',
+      description: 'LocalMate Labs nghiên cứu, thử nghiệm và phát triển sản phẩm AI thực tế cho công việc, tài chính và kinh doanh địa phương.',
+      url: 'https://localmate.vn/labs'
+    },
+    {
       dir: 'mam-non',
       title: 'Localmate Mầm non — Thêm thời gian cho các bé',
       description: 'Giải pháp quản lý lớp và trường mầm non tinh gọn từ Localmate: Điểm danh, hồ sơ bé, nghỉ học, học phí và việc hằng ngày đơn giản, chi phí chỉ từ 3.000đ/ngày.',

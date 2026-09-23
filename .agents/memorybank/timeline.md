@@ -7,8 +7,9 @@ Tài liệu này ghi nhận dòng thời gian các mốc cam kết (commits), s�
 ## Mốc Sự Kiện & Commits Gần Nhất
 
 ### Mốc: Chuẩn Hóa Toàn Diện Bộ Hợp Đồng Pháp Lý B2B, HĐLĐ Kèm IP & Hợp Đồng Đại Lý Agency
-- **Mã commit**: `2a9d8b6` + Pending
-- **Nội dung**: `feat(legal): standardize all legal contracts with vietnam header format, agency partnership and employee IP assignment`
+- **Mã commit**: `8447498`, `3320f85`
+- **Nội dung**: `feat(legal): implement 3-tier IP architecture and 'Your Data. Your Business. Your Control' policy with Exit Guarantee`
+
 - **Chi tiết**:
   - **Chuẩn hóa Quốc hiệu - Tiêu ngữ**: 100% tài liệu pháp lý tuân thủ thể thức Việt Nam với bảng 2 cột Quốc hiệu - Tiêu ngữ borderless, căn cứ Bộ luật Dân sự 2015, Luật Thương mại 2005, Luật SHTT 2022, Bộ luật Lao động 2019, Nghị định 13/2023/NĐ-CP.
   - **Công cụ DOCX Builder chuẩn từng file**: `scripts/build_single_contract_docx.py` tự động nhận diện header borderless, căn chỉnh bảng dữ liệu theo khổ A4 (Margins 0.8 in, body 6.77 in), chống rớt chữ vụn, thêm thuộc tính `w:cantSplit` cho table row.
@@ -456,6 +457,18 @@ Tài liệu này ghi nhận dòng thời gian các mốc cam kết (commits), s�
   - 100% nội dung Hero (Header, Tiêu đề H1, Mô tả, Nút CTA, Ghi chú, Ảnh Art, Card 4 giá trị) nằm trọn vẹn trong màn hình laptop đầu tiên (`fitsInViewport: true`).
   - Đã chụp ảnh minh chứng tại `artifacts/hero-1536x720-perfect.png`.
   - Build `npm run build` PASS 100%.
+
+### [2026-09-23] Tích Hợp Labs & Services Page, Chuẩn Hóa Header/Footer Toàn Cục & Tách Navigation/Styles
+- **Mã commit**: Pending
+- **Nội dung**: `feat(nav-labs): integrate labs & services routes, unify global header/footer, and decouple navigation styles`
+- **Chi tiết**:
+  - `src/pages/LabsPage.tsx` & `src/styles/labs.css`: Trang LocalMate Labs giới thiệu các sản phẩm thử nghiệm & công cụ công nghệ mới.
+  - `src/pages/ServicesPage.tsx` & `src/styles/services.css`: Trang Dịch vụ tổng hợp kết nối toàn bộ hệ sinh thái giải pháp của LocalMate.
+  - `src/components/layout/Header.tsx`, `src/styles/header.css`, `src/data/navigation.ts`: Tách rời dữ liệu navigation, tinh gọn Header từ >1200 dòng xuống kiến trúc modular, khắc phục lỗi hover auto-open trên desktop và chuẩn hóa menu mobile.
+  - `src/components/layout/Footer.tsx`: Căn chỉnh slogan, tối ưu responsive link groups và loại bỏ link thừa.
+  - `src/components/conversion/LeadModal.tsx` & `src/styles/lead-modal.css`: Tách CSS riêng, chuẩn hóa luồng webhook và cam kết minh bạch.
+  - `scripts/generate-seo-files.js` & `scripts/generate-static-routes.js`: Tự động sinh static HTML và sitemap/robots cho `/labs` và `/dich-vu`.
+  - **Kiểm thử**: `tsc && vite build && node scripts/generate-static-routes.js` PASS 100%.
 
 ---
 

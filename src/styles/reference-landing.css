@@ -94,8 +94,8 @@
 }
 
 .handwritten {
-  font-family: 'Mali', 'Patrick Hand', 'Caveat', cursive;
-  font-style: italic;
+  font-family: 'SVN-Dancing Script', 'Dancing Script', 'LocalMate Script', cursive;
+  font-style: normal;
   font-weight: 500;
   font-size: clamp(20px, 1.8vw, 28px);
   line-height: 1.35;

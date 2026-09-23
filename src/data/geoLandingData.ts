@@ -1,5 +1,4 @@
 // Package scope and copy supplied in the four visual references.
-export const geoNav = [['Trang chủ','/'],['Dịch vụ','/dich-vu'],['Bảng giá','#bang-gia-geo'],['Dự án','/du-an'],['Kiến thức','/kien-thuc'],['Giới thiệu','/gioi-thieu'],['Liên hệ','/lien-he']];
 export const geoPlatforms = ['ChatGPT','Google Gemini','Perplexity','Google AI Overviews'];
 export const geoCheckpoints = ['Kiểm tra mức độ được nhắc đến trên AI','Phân tích cơ hội & đề xuất hướng tối ưu','Nhận báo cáo tóm tắt dễ hiểu','Hoàn toàn miễn phí, không phát sinh chi phí'];
 export const geoPlans = [
@@ -14,4 +13,4 @@ export const geoFeatures = [
  {title:'Cần tối ưu gì trước',text:'Đưa ra khuyến nghị cụ thể về nội dung, thông tin, kỹ thuật để tăng khả năng được AI nhắc đến.'},
  {title:'Theo dõi cải thiện ra sao',text:'Đo lường sự thay đổi theo thời gian, báo cáo rõ ràng, dễ hiểu giúp bạn thấy hiệu quả thực tế.'}
 ];
-export const geoServices = [['Tối ưu hiện diện AI (GEO)','/dich-vu/geo'],['SEO cho ChatGPT','/dich-vu/seo-chatgpt'],['Website doanh nghiệp','/thiet-ke-website'],['Google Ads','/google-ads'],['Tư vấn chiến lược AI','/lien-he'],['Audit & Phân tích','/tieu-chuan-audit']];
+export const geoServices = [['Hiện diện trên AI (GEO)','/geo'],['Thiết kế website','/dich-vu#service-0'],['Google Ads','/dich-vu#service-2']];

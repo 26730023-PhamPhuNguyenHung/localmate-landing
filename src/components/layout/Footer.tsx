@@ -1,6 +1,27 @@
 import React from 'react';
 import { useRouter } from './Router';
-import { ArtCrop } from '../ui/ArtCrop';
+
+type FooterLink = { label: string; hash?: string; path: string; secondaryOnMobile?: boolean };
+
+const FOOTER_GROUPS: { title: string; ariaLabel: string; links: FooterLink[] }[] = [
+  {
+    title: 'Dịch vụ', ariaLabel: 'Danh mục dịch vụ', links: [
+      { label: 'Thiết kế website', path: '/dich-vu#service-0' },
+      { label: 'Google Maps & Local SEO', path: '/dich-vu#service-1' },
+      { label: 'Google Ads', path: '/dich-vu#service-2' },
+      { label: 'Content & chăm sóc số', path: '/dich-vu#service-3', secondaryOnMobile: true },
+      { label: 'CRM & Automation', path: '/dich-vu#service-4', secondaryOnMobile: true }
+    ]
+  },
+  {
+    title: 'Khám phá', ariaLabel: 'Khám phá LocalMate', links: [
+      { label: 'LocalMate Labs', path: '/labs' },
+      { label: 'Dự án / Demo', hash: '#stories', path: '/#stories' },
+      { label: 'Cách làm việc', hash: '#process', path: '/#process', secondaryOnMobile: true },
+      { label: 'Kiến thức', path: '/kien-thuc', secondaryOnMobile: true }
+    ]
+  }
+];
 
 export const Footer: React.FC = () => {
   const { currentPath, navigate } = useRouter();
@@ -44,102 +65,31 @@ export const Footer: React.FC = () => {
               className="footer-brand"
               aria-label="Localmate"
             >
-              <ArtCrop
-                image={1}
-                box={[72, 4, 213, 83]}
-                className="logo"
-                role="img"
-                ariaLabel="Localmate"
-              />
+              <img src="/logo.png" className="logo" width="213" height="83" alt="LocalMate" />
             </a>
             <p className="brand-desc">
               Website, Google Maps, quảng cáo và hệ thống số cho hộ kinh doanh &amp; SME.
             </p>
             <p className="location-text">⌖ &nbsp;Đà Nẵng · Hội An · TP.HCM · Toàn quốc</p>
-            <p className="handwritten slogan">Cùng doanh nghiệp địa phương vươn xa hơn</p>
+            <p className="handwritten slogan">Cùng doanh nghiệp địa phương vươn xa hơn<span className="footer-slogan-line" aria-hidden="true" /></p>
           </div>
 
-          {/* Col 2: Services */}
-          <div className="footer-col">
-            <h4>Dịch vụ</h4>
-            <nav className="footer-links" aria-label="Danh mục dịch vụ">
-              <a
-                href="#services"
-                onClick={(e) => handleLinkClick(e, '#services', '/#services')}
-              >
-                Thiết kế website
-              </a>
-              <a
-                href="#services"
-                onClick={(e) => handleLinkClick(e, '#services', '/#services')}
-              >
-                Google Maps &amp; Local SEO
-              </a>
-              <a
-                href="#services"
-                onClick={(e) => handleLinkClick(e, '#services', '/#services')}
-              >
-                Google Ads
-              </a>
-              <a
-                href="#services"
-                onClick={(e) => handleLinkClick(e, '#services', '/#services')}
-              >
-                Content &amp; chăm sóc số
-              </a>
-              <a
-                href="#services"
-                onClick={(e) => handleLinkClick(e, '#services', '/#services')}
-              >
-                CRM &amp; Automation
-              </a>
-            </nav>
-          </div>
-
-          {/* Col 3: Company & Information */}
-          <div className="footer-col">
-            <h4>Thông tin</h4>
-            <nav className="footer-links" aria-label="Thông tin LocalMate">
-              <a
-                href="#process"
-                onClick={(e) => handleLinkClick(e, '#process', '/#process')}
-              >
-                Cách làm việc
-              </a>
-              <a
-                href="#services"
-                onClick={(e) => handleLinkClick(e, '#services', '/#services')}
-              >
-                Bảng giá niêm yết
-              </a>
-              <a
-                href="#stories"
-                onClick={(e) => handleLinkClick(e, '#stories', '/#stories')}
-              >
-                Dự án / Demo
-              </a>
-              <a
-                href="#contact"
-                onClick={(e) => handleLinkClick(e, '#contact', '/#contact')}
-              >
-                Nhận tư vấn 0đ
-              </a>
-              <a
-                href="/chinh-sach-bao-mat"
-                onClick={(e) => {
-                  e.preventDefault();
-                  navigate('/chinh-sach-bao-mat');
-                }}
-              >
-                Chính sách bảo mật
-              </a>
-            </nav>
-          </div>
+          {FOOTER_GROUPS.map((group) => (
+            <div className="footer-col footer-nav-col" key={group.title}>
+              <h4>{group.title}</h4>
+              <nav className="footer-links" aria-label={group.ariaLabel}>
+                {group.links.map((link) => (
+                  <a key={link.label} href={link.path} className={link.secondaryOnMobile ? 'footer-secondary-link' : undefined}
+                    onClick={(event) => handleLinkClick(event, link.hash || '', link.path)}>{link.label}</a>
+                ))}
+              </nav>
+            </div>
+          ))}
 
           {/* Col 4: Support & Contact */}
           <div className="footer-col support-col">
             <h4>Cần hỗ trợ?</h4>
-            <p>Trao đổi trực tiếp với Localmate<br />về nhu cầu của bạn.</p>
+            <p>Trao đổi trực tiếp với LocalMate về nhu cầu của bạn.</p>
             <a
               className="zalo-btn"
               href="https://zalo.me/0834422439"
@@ -218,9 +168,10 @@ export const Footer: React.FC = () => {
         }
 
         .brand-col .logo {
+          display: block;
           width: 185px;
-          aspect-ratio: 213/83;
-          margin-bottom: 12px;
+          height: auto;
+          margin-bottom: 8px;
         }
 
         .brand-desc {
@@ -238,6 +189,9 @@ export const Footer: React.FC = () => {
         }
 
         .slogan {
+          display: inline-flex;
+          flex-direction: column;
+          align-items: center;
           font-family: 'Mali', 'Patrick Hand', 'Caveat', cursive;
           font-style: italic;
           font-weight: 500;
@@ -245,6 +199,8 @@ export const Footer: React.FC = () => {
           color: #12815e;
           margin-top: 16px;
         }
+
+        .footer-slogan-line { display: block; width: 110px; height: 8px; margin: 3px 0 0; border-top: 3px solid #ed9900; border-radius: 50%; transform: rotate(-5deg); }
 
         .footer-col h4 {
           margin: 8px 0 16px;
@@ -363,11 +319,33 @@ export const Footer: React.FC = () => {
 
         @media (max-width: 600px) {
           .site-footer {
-            padding: 32px 0 20px;
+            padding: 24px 0 18px;
           }
           .footer-grid {
-            grid-template-columns: 1fr;
-            gap: 24px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px 16px;
+          }
+          .brand-col, .support-col { grid-column: 1 / -1; }
+          .brand-col .logo { width: 145px; margin-bottom: 4px; }
+          .brand-desc { display: none; }
+          .location-text, .slogan, .footer-secondary-link, .support-col p { display: none !important; }
+          .footer-col h4 { font-size: 14px; margin: 0 0 6px; }
+          .footer-links a { font-size: 13px; line-height: 1.3; margin: 0; padding: 3px 0; }
+          .support-col { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 14px; }
+          .support-col h4 { display: none; }
+          .zalo-btn { width: auto; min-height: 40px; margin: 0; padding: 8px 15px; font-size: 13px; }
+          .contact-line { margin: 0; font-size: 13px; }
+          .contact-line.email { width: 100%; font-size: 12px; }
+          .footer-bottom { margin-top: 18px; padding-top: 12px; gap: 6px; }
+          .footer-bottom span { max-width: 330px; }
+          .bottom-policy-link { text-decoration: underline; text-underline-offset: 2px; }
+          .footer-container { padding: 0 18px; }
+          .footer-grid > .footer-col + .footer-col { border: 0; padding-left: 0; }
+          .footer-nav-col { min-width: 0; }
+          .footer-nav-col a { overflow-wrap: anywhere; }
+          .footer-brand { display: inline-block; }
+          .footer-bottom {
+            flex-direction: column;
           }
           .footer-bottom {
             font-size: 11px;

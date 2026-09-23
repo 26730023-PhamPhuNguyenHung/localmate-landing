@@ -53,6 +53,13 @@ const CORE_PAGES = [
   },
   // Core Services
   {
+    loc: `${BASE_URL}/dich-vu`,
+    lastmod: TODAY_ISO,
+    changefreq: 'monthly',
+    priority: '0.90',
+    title: 'Dịch Vụ LocalMate'
+  },
+  {
     loc: `${BASE_URL}/thiet-ke-website`,
     lastmod: TODAY_ISO,
     changefreq: 'weekly',
@@ -95,6 +102,13 @@ const CORE_PAGES = [
     title: 'Bảng Giá Dịch Vụ Minh Bạch'
   },
   // GEO & Generative AI Search Hub
+  {
+    loc: `${BASE_URL}/labs`,
+    lastmod: TODAY_ISO,
+    changefreq: 'monthly',
+    priority: '0.85',
+    title: 'LocalMate Labs - Sản phẩm AI cho kinh doanh địa phương'
+  },
   {
     loc: `${BASE_URL}/geo`,
     lastmod: TODAY_ISO,

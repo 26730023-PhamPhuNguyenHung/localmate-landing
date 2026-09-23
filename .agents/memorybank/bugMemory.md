@@ -182,3 +182,16 @@
   - Dùng thuật ngữ "Tiền đặt cọc", tuyệt đối không dùng "tiền tạm ứng/trả trước" để không bị ép xuất hóa đơn ngay và được giữ lại 100% cọc khi khách tự ý hủy hợp đồng.
 - **Encoding trên Windows PowerShell CLI**:
   - Tránh hardcode chuỗi ký tự tiếng Việt có dấu trực tiếp trong mã script `.ps1` nếu không có UTF-8 BOM, vì PowerShell 5.1 mặc định parse theo Windows-1252 gây lỗi cú pháp. Dùng tiếng Anh/ASCII cho console logs của script tự động hóa.
+
+## Footer và menu public trên mobile (2026-09-23)
+- Nút `Dịch vụ` trong mobile drawer từng dùng font mặc định của browser (`Arial`) vì `button` không tự kế thừa `font-family`; đặt `font-family: inherit` và dùng weight 700 có trong font đang tải để đồng nhất với navigation.
+- Lỗi menu `Dịch vụ` tự bật khi vào `/labs` xuất phát từ `onMouseEnter` trên desktop dropdown. Chỉ mở dropdown bằng click; đóng dropdown và mobile accordion khi đổi `currentPath` hoặc chọn link. Kiểm tra đường đi `/kien-thuc` → `/labs` khi dropdown đang mở.
+- Footer dùng chung nên giữ link trong `FOOTER_GROUPS`, chỉ ẩn các link phụ ở mobile khi chúng còn truy cập được qua menu khác. Kiểm tra viewport 375/390/430px và route đích trước khi tái sử dụng trên trang mới.
+
+## Điều hướng dịch vụ và form tư vấn (2026-09-23)
+- Menu cũ khai báo các `path` dịch vụ chi tiết nhưng `App` chưa có route tương ứng; các item lại chuyển về `/#services` và bật form. Dùng `/dich-vu` thật với dữ liệu từ `servicesData`, không hiển thị link tới route chưa triển khai.
+- Header trang chủ và header public phải cùng tập mục chính; xóa mục điều hướng chỉ trỏ tới anchor khi không còn phù hợp. Footer có thể giữ link nội dung phụ nếu đích thực sự tồn tại.
+- Không hứa thời gian phản hồi cố định trong `LeadModal` khi chưa có quy trình đo được. Với webhook `no-cors`, trạng thái thành công chỉ nói yêu cầu đã gửi qua mạng.
+- Với slogan footer, căn nét vàng theo vùng chữ thay vì `margin-left: auto` về cạnh phải của cột; kiểm tra cả mobile và desktop.
+- Header trang chủ riêng từng có chiều cao 92/82/76/72px, khác `Header` dùng chung; dùng một component cho `/`, `/labs`, `/dich-vu` để tránh lệch. `/logo.webp` có artefact nén nhìn mờ ở cỡ header; `/logo.png` gốc 853×332 rõ hơn.
+- /geo từng có GeoHeader cao 88px và menu cũ chứa route không tồn tại. Hiện /geo dùng Header chung; CTA cuộn đến #bang-gia-geo. /mam-non cũng dùng Header chung. /dich-vu dẫn tới cả hai trang; footer GEO chỉ giữ link có đích thật.

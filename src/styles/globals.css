@@ -1,5 +1,39 @@
 @import './tokens.css';
 
+/* Local Vietnamese Handwritten Font (SVN-Dancing Script - Việt hoá chuẩn) */
+@font-face {
+  font-family: 'SVN-Dancing Script';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/SVN-Dancing-script.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Dancing Script';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/SVN-Dancing-script.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'LocalMate Script';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/SVN-Dancing-script.ttf') format('truetype');
+}
+
+/* Global Handwritten Class */
+.handwritten,
+.lm-hand,
+.labs-handnote,
+.geo-handwritten,
+.font-handwritten {
+  font-family: var(--font-handwritten, 'SVN-Dancing Script', 'Dancing Script', cursive) !important;
+}
+
 /* CSS Reset & Universal Anti-Overflow Base */
 *, *::before, *::after {
   box-sizing: border-box;

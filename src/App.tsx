@@ -14,6 +14,8 @@ import { HomePage } from './pages/HomeReferencePage';
 // Secondary Public Pages (Lazy Loaded to protect homepage bundle size)
 const MamNonPage = React.lazy(() => import('./pages/mam-non/MamNonPage').then(m => ({ default: m.MamNonPage })));
 const GeoLandingPage = React.lazy(() => import('./pages/GeoLandingPage').then(m => ({ default: m.GeoLandingPage })));
+const LabsPage = React.lazy(() => import('./pages/LabsPage').then(m => ({ default: m.LabsPage })));
+const ServicesPage = React.lazy(() => import('./pages/ServicesPage').then(m => ({ default: m.ServicesPage })));
 const LegalPage = React.lazy(() => import('./pages/LegalPage').then(m => ({ default: m.LegalPage })));
 const NotFoundPage = React.lazy(() => import('./pages/NotFoundPage').then(m => ({ default: m.NotFoundPage })));
 const ArticlesIndexPage = React.lazy(() => import('./pages/ArticlesIndexPage').then(m => ({ default: m.ArticlesIndexPage })));
@@ -70,12 +72,20 @@ const MainContent: React.FC = () => {
 
     // 1. Root Homepage & Quy trình anchor aliases
     if (normalizedPath === '/' || normalizedPath === '/cach-lam-viec' || normalizedPath === '/quy-trinh') {
-      return <HomePage onOpenConsultForm={handleOpenLeadForm} />;
+      return <HomePage />;
     }
 
     // 2. Mam Non Preschool Vertical Landing Page (/mam-non)
     if (normalizedPath === '/mam-non' || normalizedPath === '/mam-non/') {
       return <MamNonPage onOpenConsultForm={handleOpenLeadForm} />;
+    }
+
+    if (normalizedPath === '/labs') {
+      return <LabsPage />;
+    }
+
+    if (normalizedPath === '/dich-vu') {
+      return <ServicesPage />;
     }
 
     // 3. High-Converting Landing Page for GEO / AI Visibility (/geo)
@@ -168,12 +178,15 @@ const MainContent: React.FC = () => {
   const isPreviewView = normalizedPath.startsWith('/preview');
 
   const isReferenceHome = ['/', '/cach-lam-viec', '/quy-trinh'].includes(normalizedPath);
-  const hideDefaultLayout = isReferenceHome || isGeoLandingView || isAdminView || isPreviewView;
+  const hideDefaultHeader = isAdminView || isPreviewView;
+  const hideDefaultFooter = isGeoLandingView || isReferenceHome || hideDefaultHeader;
 
   return (
     <div className="localmate-app">
-      {!hideDefaultLayout && (
-        <Header onOpenDemoForm={(service) => handleOpenLeadForm(service || 'Tư vấn Web Demo 0đ')} />
+      {!hideDefaultHeader && (
+        <Header onOpenDemoForm={isReferenceHome ? undefined : isGeoLandingView
+          ? () => document.getElementById('bang-gia-geo')?.scrollIntoView({ behavior: 'smooth' })
+          : (service) => handleOpenLeadForm(service || 'Tư vấn dịch vụ LocalMate')} />
       )}
       <main id="main-content">
         <React.Suspense
@@ -186,10 +199,10 @@ const MainContent: React.FC = () => {
           {renderPage()}
         </React.Suspense>
       </main>
-      {!hideDefaultLayout && <Footer />}
+      {!hideDefaultFooter && <Footer />}
 
       {/* Mobile Floating Sticky CTA */}
-      {!hideDefaultLayout && (
+      {!hideDefaultFooter && normalizedPath !== '/labs' && (
         <MobileFloatingCTA onOpenConsultForm={() => handleOpenLeadForm('Tư vấn Web Demo 0đ')} />
       )}
 

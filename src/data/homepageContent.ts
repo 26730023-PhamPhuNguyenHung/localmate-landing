@@ -37,6 +37,21 @@ export const servicesData = [
   }
 ];
 
+export const specializedSolutions = [
+  {
+    title: 'Hiện diện trên AI',
+    description: 'Tìm hiểu giải pháp GEO cho doanh nghiệp muốn được tìm thấy qua công cụ AI.',
+    path: '/geo',
+    linkLabel: 'Xem giải pháp GEO'
+  },
+  {
+    title: 'Website cho trường mầm non',
+    description: 'Xem giải pháp website và quản lý thông tin dành cho trường mầm non.',
+    path: '/mam-non',
+    linkLabel: 'Xem giải pháp mầm non'
+  }
+];
+
 // 4 Stories Data
 export const storiesData = [
   {
