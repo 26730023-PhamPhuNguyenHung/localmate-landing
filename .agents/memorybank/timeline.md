@@ -19,8 +19,11 @@ Tài liệu này ghi nhận dòng thời gian các mốc cam kết (commits), s�
   - `src/components/conversion/LeadModal.tsx` & `src/styles/lead-modal.css`: Nâng nút close lên 44x44px, sửa phím Escape reset toàn bộ form state, điều chỉnh mobile alignment chống trôi modal khi bàn phím ảo bật lên.
   - `src/components/conversion/InArticleCallout.tsx`: Cập nhật cam kết thời gian phản hồi thực tế thành "Phản hồi sớm trong giờ làm việc".
   - `src/styles/homepage.css`: Xóa `text-wrap: initial`, chuyển Contact Section sang 2 cột cân đối, loại bỏ màu alpha hex và nâng tương phản cam/đỏ chuẩn WCAG AA.
-  - `src/App.tsx`: Sửa điều kiện render MobileFloatingCTA, dọn dẹp duplicate code trong `renderPage()`.
-  - **Kiểm thử**: `npm run build` PASS 100% trong 5.73s, sinh đầy đủ 30 bài viết và 8 static pages.
+  - **Kiểm thử & Triển khai**: `npm run build` PASS 100% trong 5.73s, sinh đầy đủ 30 bài viết và 8 static pages.
+  - **Triển khai Cloudflare Pages (`localmate-vn`)**:
+    - Deployment URL: `https://b2cea5c4.localmate-vn.pages.dev`
+    - Live Pages: `https://localmate-vn.pages.dev`
+    - Trạng thái HTTP: 200 OK trên tất cả các route chính (`/`, `/dich-vu`, `/labs`, `/kien-thuc`, `/geo`).
 
 ### Mốc: Chuẩn Hóa Toàn Diện Bộ Hợp Đồng Pháp Lý B2B, HĐLĐ Kèm IP & Hợp Đồng Đại Lý Agency
 - **Mã commit**: `8447498`, `3320f85`
